@@ -8,6 +8,27 @@
 module.exports = {
 
   attributes: {
+    nombres: {
+      type: 'String',
+      required: true,
+    },
+    apellidos: {
+      type: 'String',
+      required: true
+    },
+    verificado: {
+      type: 'String',
+      required: true
+    },
+    correo: {
+      type: 'String',
+      required: true
+    },
+    contrasena: {
+      type: 'String',
+      required: true
+    },
+
 
 
 
