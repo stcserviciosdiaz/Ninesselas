@@ -10,6 +10,9 @@ import { ManagementComponent } from './components/management/management.componen
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ContratorComponent } from './components/contrator/contrator.component';
 import { HeaderComponent } from './components/header/header.component';
+import { ModelsComponent } from './components/models/models.component';
+import { TermsComponent } from './components/terms/terms.component';
+import { PrivacyComponent } from './components/privacy/privacy.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,10 @@ import { HeaderComponent } from './components/header/header.component';
     ManagementComponent,
     PageNotFoundComponent,
     ContratorComponent,
-    HeaderComponent
+    HeaderComponent,
+    ModelsComponent,
+    TermsComponent,
+    PrivacyComponent
   ],
   imports: [
     BrowserModule,
