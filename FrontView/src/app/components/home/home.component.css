@@ -1,0 +1,24 @@
+@media (min-width: 992px){
+    header.masthead {
+        padding-top: calc(10rem + 55px);
+        padding-bottom: 10rem;
+    }
+}
+
+header.masthead {
+    position: relative;
+    overflow: hidden;
+    padding-top: calc(7rem + 72px);
+    padding-bottom: 7rem;
+    background: linear-gradient(0deg,#ff6a00 0,#ee0979 100%);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: scroll;
+    background-size: cover;
+}
+.text-white {
+    color: #fff!important;
+}
+.text-center {
+    text-align: center!important;
+}
