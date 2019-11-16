@@ -16,6 +16,7 @@ import { PrivacyComponent } from './components/privacy/privacy.component';
 import { UserComponent } from './components/user/user.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { LoginComponent } from './components/user/login/login.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { LoginComponent } from './components/user/login/login.component';
     PrivacyComponent,
     UserComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
