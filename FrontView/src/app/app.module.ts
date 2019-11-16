@@ -13,6 +13,9 @@ import { HeaderComponent } from './components/header/header.component';
 import { ModelsComponent } from './components/models/models.component';
 import { TermsComponent } from './components/terms/terms.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
+import { UserComponent } from './components/user/user.component';
+import { RegisterComponent } from './components/user/register/register.component';
+import { LoginComponent } from './components/user/login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,10 @@ import { PrivacyComponent } from './components/privacy/privacy.component';
     HeaderComponent,
     ModelsComponent,
     TermsComponent,
-    PrivacyComponent
+    PrivacyComponent,
+    UserComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
