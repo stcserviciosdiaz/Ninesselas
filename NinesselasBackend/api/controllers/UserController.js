@@ -14,12 +14,12 @@ module.exports = {
 
   signup: async (req, res) => {
     let params = req.allParams()
-    let created = await Usuario.create(
+    let created = await User.create(
       {
         email: params.email,
         username: params.username,
         password: params.password,
-        imagenUsuario: params.imagenUsuario
+        rol: params.rol
       }).fetch();
 
     //console.log('resultado de la creacion: ',created);
@@ -136,6 +136,5 @@ module.exports = {
     next()
 
   }
-
 
 };
