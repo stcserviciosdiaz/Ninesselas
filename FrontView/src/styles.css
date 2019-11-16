@@ -1,1 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
+
+/*Tamaños de texto*/
+.fg-30 {
+    font-size: 30px;
+}
+
+.fg-26 {
+    font-size: 26px;
+}
+
+.fg-24 {
+    font-size: 24px;
+}
+
+.fg-22 {
+    font-size: 22px;
+}
+
+.fg-20 {
+    font-size: 20px;
+}
+
+.fg-18 {
+    font-size: 18px;
+}
+
+.fg-16 {
+    font-size: 16px;
+}
+
+.fg-12 {
+    font-size: 12px;
+}
