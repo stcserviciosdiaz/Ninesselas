@@ -1,0 +1,14 @@
+.nvc-terms {
+    background-color: #F6F6F6;
+    margin-bottom: 40px!important;
+    border-radius: 2px;
+}
+.terms__scroll {
+    height: 373px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.termns-t{
+    margin-top: 80px;
+}
