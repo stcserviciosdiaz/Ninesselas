@@ -13,32 +13,32 @@
               <span>Llena el siguiente formulario</span>
             </div>
             <form [formGroup]="actorForm">
-              <input name="utf8" type="hidden" value="✓">
-              <input type="hidden" name="authenticity_token" value="gNy//Q99gJgmTkYh4aNJwIukqTjXo42+NFTf84wzLKbY1/OKQZ2WDuWLvTmhxWdW3hpePaY4Td6Oa21hjwEMpA==">
+<!--              <input name="utf8" type="hidden" value="✓">-->
+<!--              <input type="hidden" form="authenticity_token" value="gNy//Q99gJgmTkYh4aNJwIukqTjXo42+NFTf84wzLKbY1/OKQZ2WDuWLvTmhxWdW3hpePaY4Td6Oa21hjwEMpA==">-->
 
               <div class="form-group"> <!-- Nombre de Usuario -->
-                <label for="full_name_id" class="control-label">Nombre de Usuario</label>
-                <input type="text" class="form-control" id="full_name_id" name="full_name" placeholder="JohnDeerAl">
+                <label class="control-label">Nombre de Usuario</label>
+                <input type="text" class="form-control" id="username" formControlName="username" placeholder="Daniebro">
               </div>
 
               <div class="form-group"> <!-- Nomnbre completos -->
-                <label for="full_name_id" class="control-label">Nombres Completos</label>
-                <input type="text" class="form-control" id="full_name_id" name="full_name" placeholder="John Deer">
+                <label class="control-label">Nombres Completos</label>
+                <input type="text" class="form-control" id="primerNombre" formControlName="primerNombre" placeholder="Danni André">
               </div>
 
               <div class="form-group"> <!-- Apellidos completos -->
-                <label for="full_name_id" class="control-label">Apellidos Completos</label>
-                <input type="text" class="form-control" id="full_name_id" name="full_name" placeholder="Almito Gil">
+                <label class="control-label">Apellidos Completos</label>
+                <input type="text" class="form-control" id="apellidos" formControlName="apellidos" placeholder="Almito Gil">
               </div>
 
               <div class="form-group"><!-- Correo electronico -->
-                <label for="exampleFormControlInput1">Correo electronico</label>
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                <label>Correo electronico</label>
+                <input type="email" class="form-control" id="email" formControlName="email" placeholder="name@example.com">
               </div>
 
               <div class="form-group"><!-- Contraseña -->
-                <label for="inputPassword6">Contraseña</label>
-                <input type="password" id="inputPassword6" class="form-control" aria-describedby="passwordHelpInline">
+                <label>Contraseña</label>
+                <input type="password" id="password" class="form-control" formControlName="password" aria-describedby="passwordHelpInline">
               </div>
 
               <div class="form-group"><!-- Confirma Contraseña -->
@@ -47,8 +47,8 @@
               </div>
 
               <div class="form-group"><!-- Alias -->
-                <label for="validationCustom03">Alias</label>
-                <input type="text" class="form-control" id="" placeholder="Alias" required>
+                <label>Alias</label>
+                <input type="text" class="form-control" id="alias" formControlName="alias" placeholder="Alias">
               </div>
 
               <fieldset class="form-group"><!-- Genero -->
@@ -56,14 +56,14 @@
                   <legend class="col-form-label col-sm-2 pt-0">Genero</legend>
                   <div class="col-sm-10">
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                      <label class="form-check-label" for="gridRadios1">
+                      <input class="form-check-input" type="radio" formControlName="genero" id="gridRadios1" value="0" checked>
+                      <label class="form-check-label">
                         Masculino
                       </label>
                     </div>
                     <div class="form-check">
-                      <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                      <label class="form-check-label" for="gridRadios2">
+                      <input class="form-check-input" type="radio" formControlName="genero" id="gridRadios2" value="1">
+                      <label class="form-check-label">
                         Femenino
                       </label>
                     </div>
@@ -72,259 +72,202 @@
               </fieldset>
 
               <div class="form-group"><!-- Nuemro de teléfono -->
-                <label for="validationCustom03">Numero de Teléfono</label>
-                <input type="text" class="form-control" id="" placeholder="Numero de teléfono" required>
+                <label>Numero de Teléfono</label>
+                <input type="text" class="form-control" id="telefonoFijo" formControlName="telefonoFijo" placeholder="Numero de teléfono">
               </div>
 
               <div class="form-group"> <!-- Fecha de nacimiento -->
-                <label for="" class="control-label">Fecha de nacimiento</label>
-                <input type="number" class="form-control" name="nacido" min="1900">
+                <label class="control-label">Fecha de nacimiento</label>
+                <input type="number" class="form-control" formControlName="fechaNacimiento">
               </div>
 
               <div class="form-group"> <!-- Pais -->
-                <label for="street1_id" class="control-label">Pais</label>
-                <input type="text" class="form-control" id="street1_id" name="street1" placeholder="Pais">
+                <label class="control-label">Pais</label>
+                <input type="text" class="form-control" id="pais" formControlName="pais" placeholder="Pais">
               </div>
 
 
               <div class="form-group d-flex"> <!-- talla de camisa y chaqueta-->
                 <div class="form-group mr-3">
-                  <label for="" class="control-label">Talla de camisa</label>
-                  <input type="text" class="d-inline form-control" id="" name="city" placeholder="talla de camisa">
+                  <label class="control-label">Talla de camisa</label>
+                  <input type="text" class="d-inline form-control" id="tallaCamisa" formControlName="tallaCamisa" placeholder="talla de camisa">
                 </div>
                 <div class="form-group">
-                  <label for="" class="control-label">talla de chaqueta</label>
-                  <input type="text" class="d-inline form-control" id="" name="city" placeholder="talla de chaqueta">
+                  <label class="control-label">talla de chaqueta</label>
+                  <input type="text" class="d-inline form-control" id="tallaChaqueta" formControlName="tallaChaqueta" placeholder="talla de chaqueta">
                 </div>
               </div>
 
               <div class="form-group d-flex"> <!-- talla de Pie y Altura-->
                 <div class="form-group mr-3">
-                  <label for="" class="control-label">Pie</label>
-                  <input type="text" class="d-inline form-control" id="" name="city" placeholder="Pie">
+                  <label class="control-label">Pie</label>
+                  <input type="text" class="d-inline form-control" id="pie" formControlName="pie" placeholder="Pie">
                 </div>
                 <div class="form-group">
-                  <label for="" class="control-label">Altura</label>
-                  <input type="text" class="d-inline form-control" id="" name="city" placeholder="Altura">
+                  <label class="control-label">Altura</label>
+                  <input type="text" class="d-inline form-control" id="altura" formControlName="altura" placeholder="Altura">
                 </div>
               </div>
 
               <div class="form-group d-flex"> <!-- Color de Piel y Pelo-->
                 <div class="form-group mr-3">
-                  <label for="" class="control-label">Color de Piel</label>
-                  <input type="text" class="d-inline form-control" id="" name="city" placeholder="Color de Piel">
+                  <label class="control-label">Color de Piel</label>
+                  <input type="text" class="d-inline form-control" id="colorPiel" formControlName="colorPiel" placeholder="Color de Piel">
                 </div>
                 <div class="form-group">
-                  <label for="" class="control-label">Color de Pelo</label>
-                  <input type="text" class="d-inline form-control" id="" name="city" placeholder="Color de Pelo">
+                  <label class="control-label">Color de Pelo</label>
+                  <input type="text" class="d-inline form-control" id="colorPelo" formControlName="colorPelo" placeholder="Color de Pelo">
                 </div>
               </div>
 
               <div class="form-group d-flex"> <!-- Color de Ojo y DNI-->
                 <div class="form-group mr-3">
-                  <label for="" class="control-label">Color de ojos</label>
-                  <input type="text" class="d-inline form-control" id="" name="city" placeholder="Color de ojos">
+                  <label class="control-label">Color de ojos</label>
+                  <input type="text" class="d-inline form-control" id="colorOjos" formControlName="colorOjos" placeholder="Color de ojos">
                 </div>
                 <div class="form-group">
-                  <label for="zip_id" class="control-label">Code DNI</label>
-                  <input type="text" class="d-inline form-control" id="zip_id" name="zip" placeholder="#####">
+                  <label class="control-label">Code DNI</label>
+                  <input type="text" class="d-inline form-control" id="numeroDNI" formControlName="numeroDNI" placeholder="#####">
                 </div>
               </div>
 
               <div class="form-group d-flex"> <!-- Modelo de Coche y Moto-->
                 <div class="form-group mr-3">
-                  <label for="" class="control-label">Modelo de Coche</label>
-                  <input type="text" class="d-inline form-control" id="" name="" placeholder="Modelo de Coche">
+                  <label class="control-label">Modelo de Coche</label>
+                  <input type="text" class="d-inline form-control" id="modeloCoche" formControlName="modeloCoche" placeholder="Modelo de Coche">
                 </div>
                 <div class="form-group">
-                  <label for="" class="control-label">Modelo de Moto</label>
-                  <input type="text" class="d-inline form-control" id="" name="" placeholder="Modelo de Moto">
+                  <label class="control-label">Modelo de Moto</label>
+                  <input type="text" class="d-inline form-control" id="modeloMoto" formControlName="modeloMoto" placeholder="Modelo de Moto">
                 </div>
               </div>
 
-              <div class="form-group"><!-- Numero de seguro social -->
-                <label for="validationCustom03">Numero de Seguro Social</label>
-                <input type="text" class="form-control" id="" placeholder="Numero de Seguro Social" required>
+              <div class="form-group"> <!-- Numero de Seguridad Social -->
+                <label class="control-label">Numero de Seguridad Social</label>
+                <input type="text" class="form-control" id="numeroSeguridadSocial" formControlName="numeroSeguridadSocial" placeholder="Numero de Seguridad Social">
               </div>
 
-              <div class="form-group"> <!-- State Button -->
-                <label for="state_id" class="control-label">State</label>
-                <select class="form-control" id="state_id">
-                  <option value="AL">Alabama</option>
-                  <option value="AK">Alaska</option>
-                  <option value="AZ">Arizona</option>
-                  <option value="AR">Arkansas</option>
-                  <option value="CA">California</option>
-                  <option value="CO">Colorado</option>
-                  <option value="CT">Connecticut</option>
-                  <option value="DE">Delaware</option>
-                  <option value="DC">District Of Columbia</option>
-                  <option value="FL">Florida</option>
-                  <option value="GA">Georgia</option>
-                  <option value="HI">Hawaii</option>
-                  <option value="ID">Idaho</option>
-                  <option value="IL">Illinois</option>
-                  <option value="IN">Indiana</option>
-                  <option value="IA">Iowa</option>
-                  <option value="KS">Kansas</option>
-                  <option value="KY">Kentucky</option>
-                  <option value="LA">Louisiana</option>
-                  <option value="ME">Maine</option>
-                  <option value="MD">Maryland</option>
-                  <option value="MA">Massachusetts</option>
-                  <option value="MI">Michigan</option>
-                  <option value="MN">Minnesota</option>
-                  <option value="MS">Mississippi</option>
-                  <option value="MO">Missouri</option>
-                  <option value="MT">Montana</option>
-                  <option value="NE">Nebraska</option>
-                  <option value="NV">Nevada</option>
-                  <option value="NH">New Hampshire</option>
-                  <option value="NJ">New Jersey</option>
-                  <option value="NM">New Mexico</option>
-                  <option value="NY">New York</option>
-                  <option value="NC">North Carolina</option>
-                  <option value="ND">North Dakota</option>
-                  <option value="OH">Ohio</option>
-                  <option value="OK">Oklahoma</option>
-                  <option value="OR">Oregon</option>
-                  <option value="PA">Pennsylvania</option>
-                  <option value="RI">Rhode Island</option>
-                  <option value="SC">South Carolina</option>
-                  <option value="SD">South Dakota</option>
-                  <option value="TN">Tennessee</option>
-                  <option value="TX">Texas</option>
-                  <option value="UT">Utah</option>
-                  <option value="VT">Vermont</option>
-                  <option value="VA">Virginia</option>
-                  <option value="WA">Washington</option>
-                  <option value="WV">West Virginia</option>
-                  <option value="WI">Wisconsin</option>
-                  <option value="WY">Wyoming</option>
-                </select>
-              </div>
+<!--              <div class="custom-file mb-3">&lt;!&ndash; Book de Fotos &ndash;&gt;-->
+<!--                <input type="file" class="custom-file-input" id="bookPhotos" formControlName="bookPhotos" lang="es">-->
+<!--                <label class="custom-file-label">Book de Fotos</label>-->
+<!--              </div>-->
 
-              <div class="custom-file mb-3"><!-- Book de Fotos -->
-                <input type="file" class="custom-file-input" id="" lang="es">
-                <label class="custom-file-label" for="">Book de Fotos</label>
-              </div>
+<!--              <div class="custom-file mb-3">&lt;!&ndash; CV &ndash;&gt;-->
+<!--                <input type="file" class="custom-file-input" id="curriculum" formControlName="curriculum">-->
+<!--                <label class="custom-file-label">CV</label>-->
+<!--              </div>-->
 
-              <div class="custom-file mb-3"><!-- CV -->
-                <input type="file" class="custom-file-input" id="">
-                <label class="custom-file-label" for="">CV</label>
-              </div>
+<!--              <div class="custom-file mb-3">&lt;!&ndash; Fotos de Tatuajes &ndash;&gt;-->
+<!--                <input type="file" class="custom-file-input" id="">-->
+<!--                <label class="custom-file-label">Fotos de Tatuajes</label>-->
+<!--              </div>-->
 
-              <div class="custom-file mb-3"><!-- Fotos de Tatuajes -->
-                <input type="file" class="custom-file-input" id="">
-                <label class="custom-file-label" for="">Fotos de Tatuajes</label>
-              </div>
+<!--              <div class="custom-file mb-3">&lt;!&ndash; CV &ndash;&gt;-->
+<!--                <input type="file" class="custom-file-input" id="">-->
+<!--                <label class="custom-file-label">Fotos de Modelo de mano</label>-->
+<!--              </div>-->
 
-              <div class="custom-file mb-3"><!-- CV -->
-                <input type="file" class="custom-file-input" id="">
-                <label class="custom-file-label" for="">Fotos de Modelo de mano</label>
-              </div>
+<!--              <div class="form-group d-flex mb-0"> &lt;!&ndash; Deporte y Nivel de Deporte &ndash;&gt;-->
+<!--                <div class="form-group"> &lt;!&ndash; Deporte &ndash;&gt;-->
+<!--                  <label class="my-1 mr-2">Deporte</label>-->
+<!--                  <select class="custom-select my-1" id="">-->
+<!--                    <option selected>Deporte...</option>-->
+<!--                    <option value="1">Actor</option>-->
+<!--                    <option value="2">Figuración</option>-->
+<!--                    <option value="3">Niños / niñas</option>-->
+<!--                  </select>-->
+<!--                </div>-->
+<!--                <div class="form-group ml-2"> &lt;!&ndash; Nivel de Deporte &ndash;&gt;-->
+<!--                  <label class="my-1 mr-2">Nivel de Deporte</label>-->
+<!--                  <select class="custom-select my-1" id="">-->
+<!--                    <option selected>Nivel...</option>-->
+<!--                    <option value="1">Actor</option>-->
+<!--                    <option value="2">Figuración</option>-->
+<!--                    <option value="3">Niños / niñas</option>-->
+<!--                  </select>-->
+<!--                </div>-->
+<!--              </div>-->
 
-              <div class="form-group d-flex mb-0"> <!-- Deporte y Nivel de Deporte -->
-                <div class="form-group"> <!-- Deporte -->
-                  <label class="my-1 mr-2" for="">Deporte</label>
-                  <select class="custom-select my-1" id="">
-                    <option selected>Deporte...</option>
-                    <option value="1">Actor</option>
-                    <option value="2">Figuración</option>
-                    <option value="3">Niños / niñas</option>
-                  </select>
-                </div>
-                <div class="form-group ml-2"> <!-- Nivel de Deporte -->
-                  <label class="my-1 mr-2" for="">Nivel de Deporte</label>
-                  <select class="custom-select my-1" id="">
-                    <option selected>Nivel...</option>
-                    <option value="1">Actor</option>
-                    <option value="2">Figuración</option>
-                    <option value="3">Niños / niñas</option>
-                  </select>
-                </div>
-              </div>
+<!--              <div class="form-group mb-0"> &lt;!&ndash; Baile &ndash;&gt;-->
+<!--                <label class="my-1 mr-2">Baile</label>-->
+<!--                <select class="custom-select my-1" id="">-->
+<!--                  <option selected>Baile...</option>-->
+<!--                  <option value="1">Actor</option>-->
+<!--                  <option value="2">Figuración</option>-->
+<!--                  <option value="3">Niños / niñas</option>-->
+<!--                </select>-->
+<!--              </div>-->
+<!--              <div class="form-group mb-0"> &lt;!&ndash; Nivel de Baile &ndash;&gt;-->
+<!--                <label class="my-1 mr-2">Nivel de Baile</label>-->
+<!--                <select class="custom-select my-1" id="">-->
+<!--                  <option selected>Nivel...</option>-->
+<!--                  <option value="1">Profesional</option>-->
+<!--                  <option value="2">No Profesional</option>-->
+<!--                </select>-->
+<!--              </div>-->
 
-              <div class="form-group mb-0"> <!-- Baile -->
-                <label class="my-1 mr-2" for="">Baile</label>
-                <select class="custom-select my-1" id="">
-                  <option selected>Baile...</option>
-                  <option value="1">Actor</option>
-                  <option value="2">Figuración</option>
-                  <option value="3">Niños / niñas</option>
-                </select>
-              </div>
-              <div class="form-group mb-0"> <!-- Nivel de Baile -->
-                <label class="my-1 mr-2" for="">Nivel de Baile</label>
-                <select class="custom-select my-1" id="">
-                  <option selected>Nivel...</option>
-                  <option value="1">Profesional</option>
-                  <option value="2">No Profesional</option>
-                </select>
-              </div>
+<!--              <div class="form-group mb-0"> &lt;!&ndash; Musica &ndash;&gt;-->
+<!--                <label class="my-1 mr-2">Musica</label>-->
+<!--                <select class="custom-select my-1" id="">-->
+<!--                  <option selected>Musica...</option>-->
+<!--                  <option value="1">Actor</option>-->
+<!--                  <option value="2">Figuración</option>-->
+<!--                  <option value="3">Niños / niñas</option>-->
+<!--                </select>-->
+<!--              </div>-->
+<!--              <div class="form-group mb-0"> &lt;!&ndash; Nivel de Musica &ndash;&gt;-->
+<!--                <label class="my-1 mr-2">Nivel de Musica</label>-->
+<!--                <select class="custom-select my-1" id="">-->
+<!--                  <option selected>Nivel...</option>-->
+<!--                  <option value="1">Profesional</option>-->
+<!--                  <option value="2">No Profesional</option>-->
+<!--                </select>-->
+<!--              </div>-->
 
-              <div class="form-group mb-0"> <!-- Musica -->
-                <label class="my-1 mr-2" for="">Musica</label>
-                <select class="custom-select my-1" id="">
-                  <option selected>Musica...</option>
-                  <option value="1">Actor</option>
-                  <option value="2">Figuración</option>
-                  <option value="3">Niños / niñas</option>
-                </select>
-              </div>
-              <div class="form-group mb-0"> <!-- Nivel de Musica -->
-                <label class="my-1 mr-2" for="">Nivel de Musica</label>
-                <select class="custom-select my-1" id="">
-                  <option selected>Nivel...</option>
-                  <option value="1">Profesional</option>
-                  <option value="2">No Profesional</option>
-                </select>
-              </div>
+<!--              <div class="form-group mb-0"> &lt;!&ndash; Cantante &ndash;&gt;-->
+<!--                <label class="my-1 mr-2">Cantante</label>-->
+<!--                <select class="custom-select my-1" id="">-->
+<!--                  <option selected>Cantante...</option>-->
+<!--                  <option value="1">Actor</option>-->
+<!--                  <option value="2">Figuración</option>-->
+<!--                  <option value="3">Niños / niñas</option>-->
+<!--                </select>-->
+<!--              </div>-->
+<!--              <div class="form-group"> &lt;!&ndash; Nivel de canto &ndash;&gt;-->
+<!--                <label class="my-1 mr-2">Nivel de Canto</label>-->
+<!--                <select class="custom-select my-1" id="">-->
+<!--                  <option selected>Nivel...</option>-->
+<!--                  <option value="1">Profesional</option>-->
+<!--                  <option value="2">No Profesional</option>-->
+<!--                </select>-->
+<!--              </div>-->
 
-              <div class="form-group mb-0"> <!-- Cantante -->
-                <label class="my-1 mr-2" for="">Cantante</label>
-                <select class="custom-select my-1" id="">
-                  <option selected>Cantante...</option>
-                  <option value="1">Actor</option>
-                  <option value="2">Figuración</option>
-                  <option value="3">Niños / niñas</option>
-                </select>
-              </div>
-              <div class="form-group"> <!-- Nivel de canto -->
-                <label class="my-1 mr-2" for="">Nivel de Canto</label>
-                <select class="custom-select my-1" id="">
-                  <option selected>Nivel...</option>
-                  <option value="1">Profesional</option>
-                  <option value="2">No Profesional</option>
-                </select>
-              </div>
-
-              <div class="form-group mb-0"> <!-- Habilidades -->
-                <label class="my-1 mr-2" for="">Habilidades</label>
-                <select class="custom-select my-1" id="">
-                  <option selected>Habilidades...</option>
-                  <option value="1">Actor</option>
-                  <option value="2">Figuración</option>
-                  <option value="3">Niños / niñas</option>
-                </select>
-              </div>
-              <div class="form-group"> <!-- Idiomas Hablados -->
-                <label class="my-1 mr-2" for="">Idiomas Hablados</label>
-                <select class="custom-select my-1" id="">
-                  <option selected>Idiomas...</option>
-                  <option value="1">Profesional</option>
-                  <option value="2">No Profesional</option>
-                </select>
-              </div>
+<!--              <div class="form-group mb-0"> &lt;!&ndash; Habilidades &ndash;&gt;-->
+<!--                <label class="my-1 mr-2">Habilidades</label>-->
+<!--                <select class="custom-select my-1" id="">-->
+<!--                  <option selected>Habilidades...</option>-->
+<!--                  <option value="1">Actor</option>-->
+<!--                  <option value="2">Figuración</option>-->
+<!--                  <option value="3">Niños / niñas</option>-->
+<!--                </select>-->
+<!--              </div>-->
+<!--              <div class="form-group"> &lt;!&ndash; Idiomas Hablados &ndash;&gt;-->
+<!--                <label class="my-1 mr-2">Idiomas Hablados</label>-->
+<!--                <select class="custom-select my-1" id="">-->
+<!--                  <option selected>Idiomas...</option>-->
+<!--                  <option value="1">Profesional</option>-->
+<!--                  <option value="2">No Profesional</option>-->
+<!--                </select>-->
+<!--              </div>-->
 
               <div class="form-group"> <!-- Submit Button -->
-                <button type="submit" class="btn btn-primary">Registrame!</button>
+                <button type="submit" (click)="registrarActor()" class="btn btn-primary">Registrame!</button>
               </div>
 
               <div class="form-group">
                 <div class="form-check">
                   <input class="form-check-input" type="checkbox" id="gridCheck">
-                  <label class="form-check-label" for="gridCheck">
+                  <label class="form-check-label">
                     Acepta los terminos del registro
                   </label>
                 </div>
