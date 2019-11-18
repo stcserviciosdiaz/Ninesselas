@@ -1,6 +1,7 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import { AuthService } from '../../Services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-actors',
@@ -15,6 +16,7 @@ export class ActorsComponent implements OnInit, OnDestroy {
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
+    private router: Router
   ) {
     this.createRegisterForm();
   }
@@ -83,15 +85,15 @@ export class ActorsComponent implements OnInit, OnDestroy {
       // bookPhotos: this.actorForm.get('bookPhotos').value,
       // curriculum: this.actorForm.get('curriculum').value,
     };
-    alert(JSON.stringify(newUserObject))
     this.subscriber = this.authService.signup(newUserObject).subscribe(
-      res => {
-        alert(res); },
+      // res => {
+      //   alert(res); },
       (err) => {
         alert(err); },
       () => {
-        alert('Successfully created a new user');
+        alert('Tu cuenta ha sido creada exitosamente');
       });
+    this.router.navigate(['home']);
 
   }
 

@@ -1,6 +1,7 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup} from '@angular/forms';
 import {AuthService} from '../../../Services/auth.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -15,6 +16,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
+    private router: Router
     ) {
     this.createRegisterForm();
   }
@@ -43,34 +45,15 @@ export class RegisterComponent implements OnInit, OnDestroy {
       password: this.userForm.get('password').value
     };
     this.subscriber = this.authService.signup(newUserObject).subscribe(
-      res => {
-        alert(res); },
+      // res => {
+      //   alert(res); },
       (err) => {
         alert(err); },
       () => {
-        alert('Successfully created a new user');
+        alert('Tu cuenta ha sido creada exitosamente');
+        this.router.navigate(['home']);
       });
-
   }
 
-  // submitBtn() {
-  //   alert('5')
-  //   const newRecipeObject = {
-  //     username: 'danni5',
-  //     rol: 'gerente5',
-  //     email: 'dasd2@da555sd.com',
-  //     password: 'jdasdja55'
-  //   };
-  //   this.subscriber = this.userService.postAPIData(newRecipeObject).subscribe(
-  //     res => {
-  //       alert(res);},
-  //     (err) => {
-  //       alert(err);},
-  //     () => {
-  //       alert('Successfully created a new recipe');
-  //     });
-
-
-  // }
 
 }
