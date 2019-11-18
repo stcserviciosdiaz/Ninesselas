@@ -13,23 +13,55 @@ module.exports = {
   },
 
   signup: async (req, res) => {
-    let params = req.allParams()
-    let created = await User.create(
-      {
-        email: params.email,
-        username: params.username,
-        password: params.password,
-        rol: params.rol
-      }).fetch();
+    var username = req.body.username;
+    var password = req.body.password;
+    var rol = req.body.rol;
+    var email = req.body.email;
 
-    //console.log('resultado de la creacion: ',created);
-    let payload = {
-      subject: created.id
+    var newuser = {
+      username: username,
+      password: password,
+      rol:rol,
+      email:email
     }
-    //console.log('el payload tiene: ',payload);
-    let token = jwt.sign(payload, 'llaveSecreta');
-    //console.log('el TOKEN ES: ',token);
-    res.status(200).send({token});
+    User.create(newuser).exec(function (err, users) {
+      if (err) {
+        res.status(500).send({error: err + 'Database Error'});
+      }
+      res.json(users);
+    });
+
+
+    // let created = await User.create(
+    //   {
+    //     email: params.email,
+    //     username: params.username,
+    //     password: params.password,
+    //     rol: params.rol
+    //   }).fetch();
+    //
+    // //console.log('resultado de la creacion: ',created);
+    // let payload = {
+    //   subject: created.id
+    // }
+    // //console.log('el payload tiene: ',payload);
+    // let token = jwt.sign(payload, 'llaveSecreta');
+    // //console.log('el TOKEN ES: ',token);
+    // res.status(200).send({token});
+
+  //   var name = req.body.nombre;
+  //   var user = {
+  //     nombre: name
+  //   }
+  //
+  //   User.create(user).exec(function (err, recipes) {
+  //     if (err) {
+  //       res.status(500).send({error: err + 'Database Error'});
+  //     }
+  //     res.json(recipes);
+  //   });
+  // },
+
   },
 
   login:(req,res)=>{
