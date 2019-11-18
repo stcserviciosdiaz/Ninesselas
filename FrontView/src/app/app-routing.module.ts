@@ -10,6 +10,7 @@ import { ActorsComponent } from './components/actors/actors.component';
 import { ContratorComponent } from './components/contrator/contrator.component';
 import { CompanyComponent } from './components/company/company.component';
 import { RegisterComponent } from './components/user/register/register.component';
+import { TermsComponent } from './components/terms/terms.component';
 
 
 const routes: Routes = [
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'actors', component: ActorsComponent },
   { path: 'contrator', component: ContratorComponent },
   { path: 'company', component: CompanyComponent },
+  { path: 'terms', component: TermsComponent },
   { path: '',   redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];
