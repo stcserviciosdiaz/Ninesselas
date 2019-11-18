@@ -8,6 +8,8 @@ import { ActorsComponent } from './components/actors/actors.component';
 import { CompanyComponent } from './components/company/company.component';
 import { RegisterComponent } from './components/user/register/register.component';
 import { TermsComponent } from './components/terms/terms.component';
+import { HomeUserComponent } from './components/home-user/home-user.component';
+import { ManagementComponent } from './components/management/management.component';
 
 
 const routes: Routes = [
@@ -18,6 +20,8 @@ const routes: Routes = [
   { path: 'actors', component: ActorsComponent },
   { path: 'company', component: CompanyComponent },
   { path: 'terms', component: TermsComponent },
+  { path: 'homeuser', component: HomeUserComponent },
+  { path: 'management', component: ManagementComponent },
   { path: '',   redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];

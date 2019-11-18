@@ -20,6 +20,7 @@ import { ActorsComponent } from './components/actors/actors.component';
 import { CompanyComponent } from './components/company/company.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { HomeUserComponent } from './components/home-user/home-user.component';
 
 
 @NgModule({
@@ -39,6 +40,7 @@ import {HttpClientModule} from '@angular/common/http';
     ContactComponent,
     ActorsComponent,
     CompanyComponent,
+    HomeUserComponent,
 
   ],
   imports: [
