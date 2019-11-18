@@ -9,9 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ManagementComponent } from './components/management/management.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { ContratorComponent } from './components/contrator/contrator.component';
 import { HeaderComponent } from './components/header/header.component';
-import { ModelsComponent } from './components/models/models.component';
 import { TermsComponent } from './components/terms/terms.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { UserComponent } from './components/user/user.component';
@@ -19,7 +17,6 @@ import { RegisterComponent } from './components/user/register/register.component
 import { LoginComponent } from './components/user/login/login.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ActorsComponent } from './components/actors/actors.component';
-import { FigurationComponent } from './components/figuration/figuration.component';
 import { CompanyComponent } from './components/company/company.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
@@ -33,9 +30,7 @@ import {HttpClientModule} from '@angular/common/http';
     FooterComponent,
     ManagementComponent,
     PageNotFoundComponent,
-    ContratorComponent,
     HeaderComponent,
-    ModelsComponent,
     TermsComponent,
     PrivacyComponent,
     UserComponent,
@@ -43,7 +38,6 @@ import {HttpClientModule} from '@angular/common/http';
     LoginComponent,
     ContactComponent,
     ActorsComponent,
-    FigurationComponent,
     CompanyComponent,
 
   ],
