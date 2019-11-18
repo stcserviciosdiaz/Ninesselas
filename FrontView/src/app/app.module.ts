@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { AuthService } from './Services/auth.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +21,9 @@ import { ContactComponent } from './components/contact/contact.component';
 import { ActorsComponent } from './components/actors/actors.component';
 import { FigurationComponent } from './components/figuration/figuration.component';
 import { CompanyComponent } from './components/company/company.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -40,13 +44,18 @@ import { CompanyComponent } from './components/company/company.component';
     ContactComponent,
     ActorsComponent,
     FigurationComponent,
-    CompanyComponent
+    CompanyComponent,
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
