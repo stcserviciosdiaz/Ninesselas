@@ -24,6 +24,10 @@ export class ActorsComponent implements OnInit, OnDestroy {
   ngOnInit() {
   }
 
+  navLogin(){
+    console.log(".........")
+  }
+
   ngOnDestroy(): void {
     this.subscriber.unsubscribe();
   }

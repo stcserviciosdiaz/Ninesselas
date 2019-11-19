@@ -148,6 +148,20 @@
                 <input type="text" class="form-control" id="numeroSeguridadSocial" formControlName="numeroSeguridadSocial" placeholder="Numero de Seguridad Social">
               </div>
 
+              <div class="form-group">
+                  <label class="control-label">Ultimo Trabajo</label>
+                  <input type="text" class="d-inline form-control" id="" placeholder="Ultimo Trabajo">
+              </div>
+
+              <div class="form-group">
+                  <label>Eres mayor de edad</label>
+                  <select id="" class="form-control">
+                    <option selected>Seleccione...</option>
+                    <option>Si...</option>
+                    <option>No...</option>
+                  </select>
+              </div>
+
 <!--              <div class="custom-file mb-3">&lt;!&ndash; Book de Fotos &ndash;&gt;-->
 <!--                <input type="file" class="custom-file-input" id="bookPhotos" formControlName="bookPhotos" lang="es">-->
 <!--                <label class="custom-file-label">Book de Fotos</label>-->
@@ -284,8 +298,10 @@
       </div>
       <div class="modal-footer">
         ¿Ya tienes cuenta?
-        <a data-toggle="modal" data-target="#login-modal" data-dismiss="modal" class="link-primary" href="https://www.domestika.org/es/login.js?scope=topics-modal&amp;target=73625-poner-una-imagen-de-fondo-al-100-con-css">Entrar
-        </a></div>
+        <a (click)="navLogin()" class="link-primary">
+          Entrar
+        </a>
+      </div>
     </div>
   </div>
 </div>
