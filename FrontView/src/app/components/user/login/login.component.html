@@ -5,7 +5,7 @@
         <div class="card card-signin my-5">
           <div class="card-body">
             <h5 class="card-title text-center">Login</h5>
-            <form class="form-signin">
+            <form [formGroup]="loginForm">
               <div class="form-label-group">
                 <input type="email" id="inputEmail" class="form-control" placeholder="Direccion correo" required autofocus>
                 <label for="inputEmail">Correo Electronico</label>

@@ -34,7 +34,8 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.userForm = this.formBuilder.group({
       username: [''],
       password: [''],
-      email: ['']
+      email: [''],
+      telefonoFijo: [''],
     });
   }
 
@@ -45,12 +46,12 @@ export class RegisterComponent implements OnInit, OnDestroy {
       username: this.userForm.get('username').value,
       email: this.userForm.get('email').value,
       password: this.userForm.get('password').value,
+      telefonoFijo: this.userForm.get('telefonoFijo').value,
       nombreArtistico: '',
       primerNombre: '',
       apellidos: '',
       alias: '',
       genero: 0,
-      telefonoFijo: '',
       fechaNacimiento: '',
       pais: '',
       tallaPantalon: 0,
