@@ -9,10 +9,10 @@ export class AuthService {
   url;
 
   constructor(private http: HttpClient) {
-    this.url = 'http://localhost:1337/user';
+    this.url = 'http://localhost:1337/user/';
   }
 
   signup(newUser): Observable<any> {
-    return this.http.post(this.url, newUser);
+    return this.http.post(this.url + 'signup', newUser);
   }
 }

@@ -12,17 +12,94 @@ module.exports = {
     return res.send('Hi there!');
   },
 
-  signup: async (req, res) => {
-    var username = req.body.username;
-    var password = req.body.password;
-    var rol = req.body.rol;
-    var email = req.body.email;
+  signup: function (req, res) {
+    var rol = req.param('rol','Common User');
+    var username = req.param('username');
+    var email = req.param('email')
+    var password = req.param('password');
+    var nombreArtistico = req.param('nombreArtistico','');
+    var primerNombre = req.param('');
+    var apellidos = req.param('apellidos','');
+    var genero = req.param('genero',0);
+    var alias = req.param('alias','');
+    var telefonoFijo = req.param('telefonoFijo','');
+    var fechaNacimiento = req.param('fechaNacimiento','');
+    var pais = req.param('pais','');
+    var tallaPantalon = req.param('tallaPantalon',0);
+    var tallaCamisa = req.param('tallaCamisa',0);
+    var tallaChaqueta = req.param('tallaChaqueta',0);
+    var pie = req.param('pie',0);
+    var altura = req.param('altura',0);
+    var colorPiel = req.param('colorPiel','');
+    var colorPelo = req.param('colorPelo','');
+    var colorOjos = req.param('colorOjos','');
+    var numeroDNI = req.param('numeroDNI','');
+    var numeroSeguridadSocial = req.param('numeroSeguridadSocial','');
+    var modeloCoche = req.param('modeloCoche','');
+    var modeloMoto = req.param('modeloMoto','');
+    var razaMascota = req.param('razaMascota','');
+    var numeroDNIPadre = req.param('numeroDNIPadre','');
+    var numeroDNIMadre = req.param('numeroDNIMadre','');
+    var ultimosTrabajos = req.param('ultimosTrabajos','');
 
+
+    // var username = req.param('username');
+    // var password = req.param('passeword');
+    // var rol = req.param('rol','Common User');
+    // var email = req.param('email')
+    // var nombreArtistico = req.body.nombreArtistico;
+    // var primerNombre = req.body.primerNombre;
+    // var apellidos = req.body.apellidos;
+    // var genero = req.body.genero;
+    // var alias = req.body.alias;
+    // var telefonoFijo = req.body.telefonoFijo;
+    // var fechaNacimiento = req.body.fechaNacimiento;
+    // var pais = req.body.pais;
+    // var tallaPantalon = req.body.tallaPantalon;
+    // var tallaCamisa = req.body.tallaCamisa;
+    // var tallaChaqueta = req.body.tallaChaqueta;
+    // var pie = req.body.pie;
+    // var altura = req.body.altura;
+    // var colorPiel = req.body.colorPiel;
+    // var colorPelo = req.body.colorPelo;
+    // var colorOjos = req.body.colorOjos;
+    // var numeroDNI = req.body.numeroDNI;
+    // var numeroSeguridadSocial = req.body.numeroSeguridadSocial;
+    // var modeloCoche = req.body.modeloCoche;
+    // var modeloMoto = req.body.modeloMoto;
+    // var razaMascota = req.body.razaMascota;
+    // var numeroDNIPadre = req.body.numeroDNIPadre;
+    // var numeroDNIMadre = req.body.numeroDNIMadre;
+    // var ultimosTrabajos = req.body.ultimosTrabajos;
     var newuser = {
       username: username,
       password: password,
       rol:rol,
-      email:email
+      email:email,
+      nombreArtistico: nombreArtistico,
+      primerNombre: primerNombre,
+      apellidos: apellidos,
+      genero: genero,
+      alias: alias,
+      telefonoFijo: telefonoFijo,
+      fechaNacimiento: fechaNacimiento,
+      pais: pais,
+      tallaPantalon: tallaPantalon,
+      tallaCamisa: tallaCamisa,
+      tallaChaqueta: tallaChaqueta,
+      pie: pie,
+      altura: altura,
+      colorPiel: colorPiel,
+      colorPelo: colorPelo,
+      colorOjos: colorOjos,
+      numeroDNI: numeroDNI,
+      numeroSeguridadSocial: numeroSeguridadSocial,
+      modeloCoche: modeloCoche,
+      modeloMoto: modeloMoto,
+      razaMascota: razaMascota,
+      numeroDNIPadre: numeroDNIPadre,
+      numeroDNIMadre: numeroDNIMadre,
+      ultimosTrabajos: ultimosTrabajos,
     }
     User.create(newuser).exec(function (err, users) {
       if (err) {
@@ -30,38 +107,6 @@ module.exports = {
       }
       res.json(users);
     });
-
-
-    // let created = await User.create(
-    //   {
-    //     email: params.email,
-    //     username: params.username,
-    //     password: params.password,
-    //     rol: params.rol
-    //   }).fetch();
-    //
-    // //console.log('resultado de la creacion: ',created);
-    // let payload = {
-    //   subject: created.id
-    // }
-    // //console.log('el payload tiene: ',payload);
-    // let token = jwt.sign(payload, 'llaveSecreta');
-    // //console.log('el TOKEN ES: ',token);
-    // res.status(200).send({token});
-
-  //   var name = req.body.nombre;
-  //   var user = {
-  //     nombre: name
-  //   }
-  //
-  //   User.create(user).exec(function (err, recipes) {
-  //     if (err) {
-  //       res.status(500).send({error: err + 'Database Error'});
-  //     }
-  //     res.json(recipes);
-  //   });
-  // },
-
   },
 
   login:(req,res)=>{
@@ -168,5 +213,30 @@ module.exports = {
     next()
 
   }
+
+//   let firstName = req.param('first_name'),
+//   lastName = req.param('last_name'),
+//   age = req.param('age');
+//
+// if(!firstName){
+//   return res.badRequest({err:'Invalid first_name'});
+// }
+//
+// if(!lastName){
+//   return res.badRequest({err:'Invlaid last_name'});
+// }
+//
+// User.create({
+//   first_name : firstName,
+//   last_name : lastName,
+//   age:age
+// })
+//   .then(_user => {
+//     if(!_user) return res.serverError({err:'Unable to create user'});
+//
+//     return res.ok(_user); //to learn more about responses check api/responses folder
+//   })
+//   .catch(err => res.serverError(err.message));
+// }
 
 };

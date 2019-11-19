@@ -68,6 +68,7 @@ export class ActorsComponent implements OnInit, OnDestroy {
       username: this.actorForm.get('username').value,
       email: this.actorForm.get('email').value,
       password: this.actorForm.get('password').value,
+      nombreArtistico: this.actorForm.get('nombreArtistico').value,
       primerNombre: this.actorForm.get('primerNombre').value,
       apellidos: this.actorForm.get('apellidos').value,
       alias: this.actorForm.get('alias').value,
@@ -75,6 +76,7 @@ export class ActorsComponent implements OnInit, OnDestroy {
       telefonoFijo: this.actorForm.get('telefonoFijo').value,
       fechaNacimiento: this.actorForm.get('fechaNacimiento').value,
       pais: this.actorForm.get('pais').value,
+      tallaPantalon: this.actorForm.get('tallaPantalon').value,
       tallaCamisa: this.actorForm.get('tallaCamisa').value,
       tallaChaqueta: this.actorForm.get('tallaChaqueta').value,
       pie: this.actorForm.get('pie').value,
@@ -86,17 +88,24 @@ export class ActorsComponent implements OnInit, OnDestroy {
       modeloCoche: this.actorForm.get('modeloCoche').value,
       modeloMoto: this.actorForm.get('modeloMoto').value,
       numeroSeguridadSocial: this.actorForm.get('numeroSeguridadSocial').value,
+      razaMascota: this.actorForm.get('razaMascota').value,
+      numeroDNIPadre: this.actorForm.get('numeroDNIPadre').value,
+      numeroDNIMadre: this.actorForm.get('numeroDNIMadre').value,
+      ultimosTrabajos: this.actorForm.get('ultimosTrabajos').value,
+
+
+
       // bookPhotos: this.actorForm.get('bookPhotos').value,
       // curriculum: this.actorForm.get('curriculum').value,
     };
     this.subscriber = this.authService.signup(newUserObject).subscribe(
-      res => {
-         alert(res); },
+      // res => {
+      //    alert(res); },
       (err) => {
-        alert(err); },
+        alert(JSON.stringify(err)); },
       () => {
         alert('Tu cuenta ha sido creada exitosamente');
-        this.router.navigate(['home']);
+        // this.router.navigate(['home']);
       });
 
   }
