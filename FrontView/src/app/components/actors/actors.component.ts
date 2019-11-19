@@ -29,7 +29,7 @@ export class ActorsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscriber.unsubscribe();
+    //this.subscriber.unsubscribe();
   }
 
   createRegisterForm() {
