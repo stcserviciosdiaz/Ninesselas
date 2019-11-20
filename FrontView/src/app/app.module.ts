@@ -24,6 +24,7 @@ import { CompanyComponent } from './components/company/company.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeUserComponent } from './components/home-user/home-user.component';
+import { ForgotComponent } from './components/user/forgot/forgot.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { HomeUserComponent } from './components/home-user/home-user.component';
     ActorsComponent,
     CompanyComponent,
     HomeUserComponent,
+    ForgotComponent,
 
   ],
   imports: [
