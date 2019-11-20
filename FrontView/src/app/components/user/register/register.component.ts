@@ -9,11 +9,10 @@ import { EmailService } from '../../../Services/email.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
-export class RegisterComponent implements OnInit, OnDestroy {
+export class RegisterComponent implements OnInit {
   userForm: FormGroup;
 
   @Input() inputArray;
-  subscriber;
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
@@ -24,10 +23,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-  }
-
-  ngOnDestroy(): void {
-    this.subscriber.unsubscribe();
   }
 
   createRegisterForm() {
@@ -71,16 +66,17 @@ export class RegisterComponent implements OnInit, OnDestroy {
       numeroDNIPadre: '',
       ultimosTrabajos: '',
     };
-    this.subscriber = this.authService.signup(newUserObject).subscribe(
+    this.authService.signup(newUserObject)
+      .subscribe(
        res => {
-         alert(JSON.stringify(res)); },
+         alert(JSON.stringify(res));
+         console.log('Tu cuenta ha sido creada exitosamente');
+         this.router.navigate(['/company'])
+         localStorage.setItem('token', res.token);
+         },
       (err) => {
-        alert(JSON.stringify(err)); },
-      () => {
-        alert('Tu cuenta ha sido creada exitosamente');
-        // this.router.navigate(['home']);
-      });
-
+        console.log(JSON.stringify(err));
+       });
     // Uncomment this to send emails
     // this.emailService.sendEmail({
     //   from: '[Mailgun Sandbox <postmaster@sandbox6d7a81b77504424c9dd9928da3d501e1.mailgun.org>]',

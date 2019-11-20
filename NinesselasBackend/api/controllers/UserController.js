@@ -6,13 +6,14 @@
  */
 //const User = require('../models/user')
 const jwt = require('jsonwebtoken')
+
 module.exports = {
 
   hello: async function (req, res) {
     return res.send('Hi there!');
   },
 
-  signup: function (req, res) {
+  signup: async function (req, res) {
     var rol = req.param('rol','Common User');
     var username = req.param('username');
     var email = req.param('email')
@@ -42,35 +43,6 @@ module.exports = {
     var numeroDNIMadre = req.param('numeroDNIMadre','');
     var ultimosTrabajos = req.param('ultimosTrabajos','');
 
-
-    // var username = req.param('username');
-    // var password = req.param('passeword');
-    // var rol = req.param('rol','Common User');
-    // var email = req.param('email')
-    // var nombreArtistico = req.body.nombreArtistico;
-    // var primerNombre = req.body.primerNombre;
-    // var apellidos = req.body.apellidos;
-    // var genero = req.body.genero;
-    // var alias = req.body.alias;
-    // var telefonoFijo = req.body.telefonoFijo;
-    // var fechaNacimiento = req.body.fechaNacimiento;
-    // var pais = req.body.pais;
-    // var tallaPantalon = req.body.tallaPantalon;
-    // var tallaCamisa = req.body.tallaCamisa;
-    // var tallaChaqueta = req.body.tallaChaqueta;
-    // var pie = req.body.pie;
-    // var altura = req.body.altura;
-    // var colorPiel = req.body.colorPiel;
-    // var colorPelo = req.body.colorPelo;
-    // var colorOjos = req.body.colorOjos;
-    // var numeroDNI = req.body.numeroDNI;
-    // var numeroSeguridadSocial = req.body.numeroSeguridadSocial;
-    // var modeloCoche = req.body.modeloCoche;
-    // var modeloMoto = req.body.modeloMoto;
-    // var razaMascota = req.body.razaMascota;
-    // var numeroDNIPadre = req.body.numeroDNIPadre;
-    // var numeroDNIMadre = req.body.numeroDNIMadre;
-    // var ultimosTrabajos = req.body.ultimosTrabajos;
     var newuser = {
       username: username,
       password: password,
@@ -101,35 +73,32 @@ module.exports = {
       numeroDNIMadre: numeroDNIMadre,
       ultimosTrabajos: ultimosTrabajos,
     }
-    User.create(newuser).exec(function (err, users) {
-      if (err) {
-        res.status(500).send({error: err + 'Database Error'});
-      }
-      res.json(users);
-    });
+    await User.create(newuser);
+
+    let payload = { subject: newuser.email }
+    let token = jwt.sign(payload, 'secretKey')
+    res.status(200).send({token});
   },
 
-  login:(req,res)=>{
-    let userData=req.body
-    Usuario.findOne({email:userData.email},(error,user)=>{
-      if(error){
+  login: async function (req,res) {
+    let userData = {
+      email: req.param('email'),
+      password: req.param('password')
+    }
+    await User.findOne(userData, (error, user) => {
+      if (error){
         console.log(error)
-      }else {
-        if(!user){
+      } else {
+        if (!user) {
           res.status(401).send('Invalid email')
-        } else
-        if(user.password !== userData.password) {
-          res.status(401).send('Invalid password')
-        }else
-        {
-          //console.log('el usuario consultado es: ',user);
-          let payload = {
-            subject: user.id
+        } else {
+          if (user.password !== userData.password){
+            res.status(401).send('invalid password')
+          } else {
+            let payload = { subject: user.email}
+            let token = jwt.sign(payload, 'secretKey')
+            res.status(200).send({token: token, rol: user.rol})
           }
-          //console.log('el payload (login) es:', payload);
-          let token = jwt.sign(payload,'llaveSecreta');
-          //console.log('el token (login) es: ', token);
-          res.status(200).send({token});
         }
       }
     })
