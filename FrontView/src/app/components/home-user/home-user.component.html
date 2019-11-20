@@ -1,16 +1,16 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
         <a class="navbar-brand mr-1" href="index.html">Administrativo Usuarios</a>
-    
+
         <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
           <i class="fas fa-bars"></i>
         </button>
-    
+
         <!-- Navbar Search -->
         <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-          
+
         </form>
-    
+
         <!-- Navbar -->
         <ul class="navbar-nav ml-auto ml-md-0">
           <li class="nav-item dropdown no-arrow mx-1">
@@ -40,7 +40,7 @@
             </div>
           </li>
         </ul>
-    
+
 </nav>
       <div id="wrapper">
         <!-- Sidebar -->
@@ -62,19 +62,19 @@
             </div>
           </li>
         </ul>
-    
+
         <div id="content-wrapper">
-    
+
           <div class="container-fluid">
-    
+
             <!-- Breadcrumbs-->
             <ol class="breadcrumb">
               <li class="breadcrumb-item">
                 <a href="#">Dashboard</a>
               </li>
-              <li class="breadcrumb-item active">Overview</li>
+              <li class="breadcrumb-item active">{{userInfo.username}}</li>
             </ol>
-    
+
             <!-- DataTables Example -->
             <div class="card mb-3">
               <div class="card-header">
@@ -86,27 +86,27 @@
                     <tbody>
                         <tr>
                             <td>Nombre Usuario</td>
-                            <td></td>
+                            <td>{{userInfo.username}}</td>
                         </tr>
                         <tr>
                             <td>Correo eléctronico</td>
-                            <td></td>
+                            <td>{{userInfo.email}}</td>
                         </tr>
                         <tr>
                             <td>Contraseña</td>
-                            <td></td>
+                            <td>{{userInfo.password}}</td>
                         </tr>
                         <tr>
                             <td>Alias</td>
-                            <td></td>
+                            <td>{{userInfo.alias}}</td>
                         </tr>
                         <tr>
                             <td>Genero</td>
-                            <td></td>
+                            <td [value]="userInfo.genero ? masculino : ">{{userInfo.genero}}</td>
                         </tr>
                         <tr>
                             <td>Numero de Teléfono</td>
-                            <td></td>
+                            <td>{{userInfo.telefonoFijo}}</td>
                         </tr>
                         <tr>
                             <td>Fecha de nacimiento</td>
@@ -166,10 +166,10 @@
               </div>
               <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
             </div>
-    
+
           </div>
           <!-- /.container-fluid -->
-    
+
           <!-- Sticky Footer -->
           <footer class="sticky-footer">
             <div class="container my-auto">
@@ -178,18 +178,18 @@
               </div>
             </div>
           </footer>
-    
+
         </div>
         <!-- /.content-wrapper -->
-    
+
       </div>
       <!-- /#wrapper -->
-    
+
       <!-- Scroll to Top Button-->
       <a class="scroll-to-top rounded" href="#page-top">
         <i class="fas fa-angle-up"></i>
       </a>
-    
+
       <!-- Logout Modal-->
       <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -203,7 +203,7 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
               <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-              <a class="btn btn-primary" href="login.html">Salir</a>
+              <a class="btn btn-primary" (click)="authService.logoutUser()" href="home">Salir</a>
             </div>
           </div>
         </div>
