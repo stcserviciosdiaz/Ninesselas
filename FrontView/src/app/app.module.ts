@@ -2,6 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AuthService } from './Services/auth.service';
 import { EmailService } from './Services/email.service';
+import { AuthGuard } from './Guards/auth.guard';
+import {TokenInterceptorService} from './Services/token-interceptor.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,7 +22,7 @@ import { ContactComponent } from './components/contact/contact.component';
 import { ActorsComponent } from './components/actors/actors.component';
 import { CompanyComponent } from './components/company/company.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeUserComponent } from './components/home-user/home-user.component';
 
 
@@ -54,7 +56,13 @@ import { HomeUserComponent } from './components/home-user/home-user.component';
   ],
   providers: [
     AuthService,
-    EmailService
+    EmailService,
+    AuthGuard,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

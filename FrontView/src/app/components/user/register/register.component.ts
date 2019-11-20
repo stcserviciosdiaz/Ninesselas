@@ -69,10 +69,8 @@ export class RegisterComponent implements OnInit {
     this.authService.signup(newUserObject)
       .subscribe(
        res => {
-         alert(JSON.stringify(res));
-         console.log('Tu cuenta ha sido creada exitosamente');
-         this.router.navigate(['/company'])
          localStorage.setItem('token', res.token);
+         this.router.navigate(['/company']);
          },
       (err) => {
         console.log(JSON.stringify(err));

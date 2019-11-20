@@ -102,30 +102,31 @@ module.exports = {
         }
       }
     })
+
   },
 
 
-  getUsuario: async (req, res)=>{
+  getUsuario: async function (req, res) {
     if(!req.headers.authorization){
       return res.status(401).send('Unauthorized Request');
     }
     let token = req.headers.authorization.split(' ')[1]
     if(token === 'null'){
-      return res.status(406).send('El token esta vacio');
+      console.log(token)
+      return res.status(406).send('El token esta vacio' + req.headers.authorization);
     }
     console.log('token :',token);
-    let payload = jwt.verify(token, 'llaveSecreta');
+    let payload = jwt.verify(token, 'secretKey');
     if(!payload){
       return res.status(401).send('El token es incorrecto');
     }
-    //console.log('el payload es: ',payload);
-    let idUsuario = payload.subject;
-    //console.log('ahora el id del usuario es: ',idUsuario);
-    Usuario.findOne({id:idUsuario},(error, usuarioEncontrado) =>{
+    let emailUser = payload.subject;
+    console.log(emailUser)
+    User.findOne({email: emailUser},(error, usuarioEncontrado) =>{
       if(error){
         res.status(401).send('no existe el usuario');
       }else{
-        res.status(200).send({usuarioEncontrado});
+        res.status(200).send(usuarioEncontrado);
       }
     })
   },
@@ -160,52 +161,27 @@ module.exports = {
     res.status(200).send({updated});
   },
 
-  deleteUser: async(req, res)=>{
+  deleteUser: async function (req, res) {
     let params = req.allParams();
     let deleted = await Usuario.destroy({_id:params.id}).fetch();
     return res.status(200).json(deleted);
   },
 
-  verifyToken: (req, res, next)=>{
-    if(!req.headers.authorization){
-      return res.status(401).send('Unauthorized Request');
-    }
-    let token = req.headers.authorization.split(' ')[1]
-    if(token === 'null'){
-      return res.status(401).send('Unauthorized Request');
-    }
-    let payload = jwt.verify(token, 'llaveSecreta');
-    if(!payload){
-      return res.status(401).send('Unauthorized Request');
-    }
-    req.userId = payload.subject
-    next()
-
-  }
-
-//   let firstName = req.param('first_name'),
-//   lastName = req.param('last_name'),
-//   age = req.param('age');
-//
-// if(!firstName){
-//   return res.badRequest({err:'Invalid first_name'});
-// }
-//
-// if(!lastName){
-//   return res.badRequest({err:'Invlaid last_name'});
-// }
-//
-// User.create({
-//   first_name : firstName,
-//   last_name : lastName,
-//   age:age
-// })
-//   .then(_user => {
-//     if(!_user) return res.serverError({err:'Unable to create user'});
-//
-//     return res.ok(_user); //to learn more about responses check api/responses folder
-//   })
-//   .catch(err => res.serverError(err.message));
-// }
+  // verifyToken: (req, res, next)=>{
+  //   if(!req.headers.authorization){
+  //     return res.status(401).send('Unauthorized Request');
+  //   }
+  //   let token = req.headers.authorization.split(' ')[1]
+  //   if(token === 'null'){
+  //     return res.status(401).send('Unauthorized Request');
+  //   }
+  //   let payload = jwt.verify(token, 'secretKey');
+  //   if(!payload){
+  //     return res.status(401).send('Unauthorized Request');
+  //   }
+  //   req.email = payload.subject
+  //   next()
+  //
+  // }
 
 };

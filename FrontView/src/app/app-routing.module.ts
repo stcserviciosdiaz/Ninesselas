@@ -10,6 +10,7 @@ import { RegisterComponent } from './components/user/register/register.component
 import { TermsComponent } from './components/terms/terms.component';
 import { HomeUserComponent } from './components/home-user/home-user.component';
 import { ManagementComponent } from './components/management/management.component';
+import {AuthGuard} from './Guards/auth.guard';
 
 
 const routes: Routes = [
@@ -17,11 +18,23 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'actors', component: ActorsComponent },
-  { path: 'company', component: CompanyComponent },
+  { path: 'actors',
+    component: ActorsComponent,
+    canActivate: [AuthGuard]
+  },
+  { path: 'company',
+    component: CompanyComponent,
+    canActivate: [AuthGuard]
+  },
   { path: 'terms', component: TermsComponent },
-  { path: 'homeuser', component: HomeUserComponent },
-  { path: 'management', component: ManagementComponent },
+  { path: 'homeuser',
+    component: HomeUserComponent,
+    canActivate: [AuthGuard]
+  },
+  { path: 'management',
+    component: ManagementComponent,
+    canActivate: [AuthGuard]
+  },
   { path: '',   redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
 ];

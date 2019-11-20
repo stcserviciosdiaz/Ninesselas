@@ -30,6 +30,8 @@ module.exports.routes = {
   'POST /user/login': 'UserController.login',
   'POST /login': 'UserController.login',
 
+  'GET /user': 'UserController.getUsuario',
+
   /***************************************************************************
   *                                                                          *
   * More custom routes here...                                               *

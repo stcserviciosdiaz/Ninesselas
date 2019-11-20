@@ -39,7 +39,6 @@ export class LoginComponent implements OnInit {
     this.authService.login(user)
       .subscribe(
         res => {
-          alert(JSON.stringify(res));
           localStorage.setItem('token', res.token);
           if (res.rol === 'Manager') {
             this.router.navigate(['/management']);

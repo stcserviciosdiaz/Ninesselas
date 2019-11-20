@@ -99,10 +99,10 @@ export class ActorsComponent implements OnInit, OnDestroy {
       // curriculum: this.actorForm.get('curriculum').value,
     };
     this.subscriber = this.authService.signup(newUserObject).subscribe(
-      // res => {
-      //    alert(res); },
+       res => {
+          alert(res); },
       (err) => {
-        alert(JSON.stringify(err)); },
+        console.log(JSON.stringify(err)); },
       () => {
         alert('Tu cuenta ha sido creada exitosamente');
         // this.router.navigate(['home']);
