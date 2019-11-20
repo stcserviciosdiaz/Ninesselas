@@ -7,13 +7,14 @@ import { AuthService } from '../../Services/auth.service';
   styleUrls: ['./home-user.component.css']
 })
 export class HomeUserComponent implements OnInit {
+  userInfo;
 
   constructor(
     private authService: AuthService
   ) { }
 
   ngOnInit() {
-    this.authService.getUser().subscribe(res => alert(JSON.stringify(res)));
+    this.authService.getUser().subscribe(res => this.userInfo = res);
   }
 
 }

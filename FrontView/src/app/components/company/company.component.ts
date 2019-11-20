@@ -8,7 +8,7 @@ import {AuthService} from '../../Services/auth.service';
   styleUrls: ['./company.component.css']
 })
 export class CompanyComponent implements OnInit {
-
+  companyInfo;
 
   constructor(
     private router: Router,
@@ -16,7 +16,7 @@ export class CompanyComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.authService.getUser().subscribe(res => alert(JSON.stringify(res)));
+    this.authService.getUser().subscribe(res => this.companyInfo = res);
   }
 
 }
