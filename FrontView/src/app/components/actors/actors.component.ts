@@ -8,7 +8,7 @@ import {Router} from '@angular/router';
   templateUrl: './actors.component.html',
   styleUrls: ['./actors.component.css']
 })
-export class ActorsComponent implements OnInit, OnDestroy {
+export class ActorsComponent implements OnInit {
   actorForm: FormGroup;
   @Input() inputArray;
   subscriber;
@@ -22,14 +22,6 @@ export class ActorsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-  }
-
-  navLogin() {
-    console.log(".........")
-  }
-
-  ngOnDestroy(): void {
-    //this.subscriber.unsubscribe();
   }
 
   createRegisterForm() {
@@ -61,6 +53,7 @@ export class ActorsComponent implements OnInit, OnDestroy {
       razaMascota: [''],
       numeroDNIPadre: [''],
       numeroDNIMadre: [''],
+      numeroDNIRepresentante: [''],
       ultimosTrabajos: [''],
     });
   }
@@ -93,25 +86,22 @@ export class ActorsComponent implements OnInit, OnDestroy {
       modeloMoto: this.actorForm.get('modeloMoto').value,
       numeroSeguridadSocial: this.actorForm.get('numeroSeguridadSocial').value,
       razaMascota: this.actorForm.get('razaMascota').value,
-      numeroDNIPadre: this.actorForm.get('numeroDNIPadre').value,
-      numeroDNIMadre: this.actorForm.get('numeroDNIMadre').value,
+      numeroDNIRepresentante: this.actorForm.get('numeroDNIRepresentante').value,
       ultimosTrabajos: this.actorForm.get('ultimosTrabajos').value,
-
-
-
       // bookPhotos: this.actorForm.get('bookPhotos').value,
       // curriculum: this.actorForm.get('curriculum').value,
     };
     this.subscriber = this.authService.signup(newUserObject).subscribe(
-       res => {
-          alert(res); },
+      res => {
+        localStorage.setItem('token', res.token);
+        console.log('Cuenta de Actor/Modelo creada exitosamente');
+        this.router.navigate(['/homeuser']);
+      },
       (err) => {
-        console.log(JSON.stringify(err)); },
-      () => {
-        alert('Tu cuenta ha sido creada exitosamente');
-        this.router.navigate(['homeuser']);
+        console.log(JSON.stringify(err));
       });
 
   }
+
 
 }

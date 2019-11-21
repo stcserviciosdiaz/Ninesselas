@@ -12,7 +12,6 @@ import { EmailService } from '../../../Services/email.service';
 export class RegisterComponent implements OnInit {
   userForm: FormGroup;
 
-  @Input() inputArray;
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
@@ -70,6 +69,7 @@ export class RegisterComponent implements OnInit {
       .subscribe(
        res => {
          localStorage.setItem('token', res.token);
+         console.log('Cuenta de Companía creada exitosamente');
          this.router.navigate(['/company']);
          },
       (err) => {
