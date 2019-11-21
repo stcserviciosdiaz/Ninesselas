@@ -10,6 +10,7 @@ import {Router} from '@angular/router';
 })
 export class ActorsComponent implements OnInit {
   actorForm: FormGroup;
+  selectedFile: File = null;
   @Input() inputArray;
   subscriber;
 
@@ -19,6 +20,10 @@ export class ActorsComponent implements OnInit {
     private router: Router
   ) {
     this.createRegisterForm();
+  }
+
+  onFileSelected(event) {
+    this.selectedFile = <File> event.target.files[0];
   }
 
   ngOnInit() {
@@ -55,6 +60,7 @@ export class ActorsComponent implements OnInit {
       numeroDNIMadre: [''],
       numeroDNIRepresentante: [''],
       ultimosTrabajos: [''],
+      avatar: [''],
     });
   }
 
@@ -95,12 +101,21 @@ export class ActorsComponent implements OnInit {
       res => {
         localStorage.setItem('token', res.token);
         console.log('Cuenta de Actor/Modelo creada exitosamente');
+        this.subirFotoPerfil()
         this.router.navigate(['/homeuser']);
       },
       (err) => {
         console.log(JSON.stringify(err));
       });
 
+  }
+
+  subirFotoPerfil() {
+    const fd = new FormData();
+    fd.append('avatar', this.selectedFile, this.selectedFile.name);
+    this.authService.uploadAvatar(fd).subscribe(res => {
+      console.log(res);
+    });
   }
 
 

@@ -8,6 +8,7 @@ import { AuthService } from '../../Services/auth.service';
 })
 export class HomeUserComponent implements OnInit {
   userInfo;
+  avtaraImage;
 
   constructor(
     private authService: AuthService

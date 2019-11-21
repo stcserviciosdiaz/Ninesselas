@@ -45,12 +45,20 @@ module.exports = {
       example: 'true'
     },
 
-    imagenUsuario: {
+    avatarUrl: {
       type: 'string',
       required: false,
       description: 'locacion de la imagen de perfil',
       example: 'PATH',
     },
+
+    avatarFd: {
+      type: 'string',
+      required: false,
+      description: 'file descriptor',
+      example: 'PATH',
+    },
+
     nombreArtistico: {
       type: 'string',
       required: false,

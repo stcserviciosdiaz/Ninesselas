@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
@@ -22,6 +22,10 @@ export class AuthService {
 
   login(user): Observable<any> {
     return this.http.post(this.url + 'login', user);
+  }
+
+  uploadAvatar(avatar): Observable<any> {
+    return this.http.post(this.url + 'uploadAvatar', avatar);
   }
 
   loggedIn() {
