@@ -24,7 +24,7 @@ export class ActorsComponent implements OnInit, OnDestroy {
   ngOnInit() {
   }
 
-  navLogin(){
+  navLogin() {
     console.log(".........")
   }
 
@@ -35,7 +35,9 @@ export class ActorsComponent implements OnInit, OnDestroy {
   createRegisterForm() {
     this.actorForm = this.formBuilder.group({
       username: [''],
+      mayorEdad: [''],
       primerNombre: [''],
+      nombreArtistico: [''],
       apellidos: [''],
       email: [''],
       password: [''],
@@ -44,6 +46,7 @@ export class ActorsComponent implements OnInit, OnDestroy {
       telefonoFijo: [''],
       fechaNacimiento: [''],
       pais: [''],
+      tallaPantalon: [''],
       tallaCamisa: [''],
       tallaChaqueta: [''],
       pie: [''],
@@ -55,19 +58,20 @@ export class ActorsComponent implements OnInit, OnDestroy {
       modeloCoche: [''],
       modeloMoto: [''],
       numeroSeguridadSocial: [''],
+      razaMascota: [''],
+      numeroDNIPadre: [''],
+      numeroDNIMadre: [''],
+      ultimosTrabajos: [''],
     });
   }
 
   registrarActor() {
-    // recipe_name: this.recipeForm.get('recipeName').value,
-
-
-
     const newUserObject = {
       rol: 'CommonUser',
       username: this.actorForm.get('username').value,
       email: this.actorForm.get('email').value,
       password: this.actorForm.get('password').value,
+      mayorEdad: this.actorForm.get('mayorEdad').value,
       nombreArtistico: this.actorForm.get('nombreArtistico').value,
       primerNombre: this.actorForm.get('primerNombre').value,
       apellidos: this.actorForm.get('apellidos').value,
@@ -105,7 +109,7 @@ export class ActorsComponent implements OnInit, OnDestroy {
         console.log(JSON.stringify(err)); },
       () => {
         alert('Tu cuenta ha sido creada exitosamente');
-        // this.router.navigate(['home']);
+        this.router.navigate(['homeuser']);
       });
 
   }

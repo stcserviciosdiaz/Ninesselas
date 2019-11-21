@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 /*Tamaños de texto*/
 .fg-30 {
@@ -36,3 +37,5 @@
 .fg-12 {
     font-size: 12px;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

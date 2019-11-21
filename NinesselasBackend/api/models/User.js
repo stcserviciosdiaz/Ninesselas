@@ -10,18 +10,18 @@ module.exports = {
   attributes: {
 
 
-      rol: {
-        type: 'string',
-        required: true,
-        description: 'Define si busca trabajo, busca contratar o es el administrador',
-        example: 'Administrador',
-      },
-      username: {
-        type: 'string',
-        required: true,
-        description: 'Representación completa del nombre del usuario',
-        example: 'Daniebro',
-      },
+    rol: {
+      type: 'string',
+      required: true,
+      description: 'Define si busca trabajo, busca contratar o es el administrador',
+      example: 'Administrador',
+    },
+    username: {
+      type: 'string',
+      required: true,
+      description: 'Representación completa del nombre del usuario',
+      example: 'Daniebro',
+    },
 
     password: {
       type: 'string',
@@ -38,6 +38,13 @@ module.exports = {
       isEmail: true,
       maxLength: 200,
       example: 'nombre.apellido@ejemplo.com',
+    },
+
+    mayorEdad: {
+      type: 'boolean',
+      required: false,
+      description: "Indica si el modelo/actor/figuración es mayor de edad",
+      example: 'true'
     },
 
     imagenUsuario: {

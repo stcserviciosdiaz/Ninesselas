@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import {AuthService} from '../../Services/auth.service';
 
 @Component({
@@ -11,12 +10,12 @@ export class CompanyComponent implements OnInit {
   companyInfo;
 
   constructor(
-    private router: Router,
-    private authService: AuthService
-  ) { }
+    private authService: AuthService,
+  ) {
+    this.authService.getUser().subscribe(res => this.companyInfo = res);
+  }
 
   ngOnInit() {
-    this.authService.getUser().subscribe(res => this.companyInfo = res);
   }
 
 }

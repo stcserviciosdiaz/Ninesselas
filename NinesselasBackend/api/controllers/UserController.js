@@ -18,6 +18,7 @@ module.exports = {
     var username = req.param('username');
     var email = req.param('email')
     var password = req.param('password');
+    var mayorEdad = req.param('mayorEdad')
     var nombreArtistico = req.param('nombreArtistico','');
     var primerNombre = req.param('');
     var apellidos = req.param('apellidos','');
@@ -46,8 +47,9 @@ module.exports = {
     var newuser = {
       username: username,
       password: password,
-      rol:rol,
-      email:email,
+      rol: rol,
+      email: email,
+      mayorEdad: mayorEdad,
       nombreArtistico: nombreArtistico,
       primerNombre: primerNombre,
       apellidos: apellidos,
@@ -95,14 +97,15 @@ module.exports = {
           if (user.password !== userData.password){
             res.status(401).send('invalid password')
           } else {
+            console.log(JSON.stringify(user) + 'holaaaaaa')
             let payload = { subject: user.email}
             let token = jwt.sign(payload, 'secretKey')
             res.status(200).send({token: token, rol: user.rol})
+
           }
         }
       }
     })
-
   },
 
 
@@ -115,18 +118,17 @@ module.exports = {
       console.log(token)
       return res.status(406).send('El token esta vacio' + req.headers.authorization);
     }
-    console.log('token :',token);
     let payload = jwt.verify(token, 'secretKey');
     if(!payload){
       return res.status(401).send('El token es incorrecto');
     }
     let emailUser = payload.subject;
-    console.log(emailUser)
     User.findOne({email: emailUser},(error, usuarioEncontrado) =>{
       if(error){
-        res.status(401).send('no existe el usuario');
+        res.status(401).send('No existe el usuario');
       }else{
         res.status(200).send(usuarioEncontrado);
+        console.log(JSON.stringify(usuarioEncontrado));
       }
     })
   },
@@ -145,20 +147,12 @@ module.exports = {
       return res.status(401).send('El token es incorrecto');
     }
     console.log('el payload es: ',payload);
-    let idUsuario = payload.subject;
-    console.log('ahora el id del usuario es: ',idUsuario);
-    let Data = req.allParams();
-    console.log('el contenido de la consulta es: ',Data);
-    let updated = await Usuario
-      .update(
-        {id:idUsuario},
-        {
-          nombreUsuario: Data.nombreUsuario,
-          apellidoUsuario: Data.apellidoUsuario,
-          fechaNacimientoUsuario: Data.fechaNacimientoUsuario
-        })
-      .fetch();
-    res.status(200).send({updated});
+    let mailUser = payload.subject;
+    console.log('ahora el id del usuario es: ',mailUser);
+    let userData = req.allParams();
+    console.log('el contenido de la consulta es: ',userData);
+    let updated = await User.update({email:mailUser}).set(userData)
+
   },
 
   deleteUser: async function (req, res) {
@@ -167,21 +161,78 @@ module.exports = {
     return res.status(200).json(deleted);
   },
 
-  // verifyToken: (req, res, next)=>{
-  //   if(!req.headers.authorization){
-  //     return res.status(401).send('Unauthorized Request');
-  //   }
-  //   let token = req.headers.authorization.split(' ')[1]
-  //   if(token === 'null'){
-  //     return res.status(401).send('Unauthorized Request');
-  //   }
-  //   let payload = jwt.verify(token, 'secretKey');
-  //   if(!payload){
-  //     return res.status(401).send('Unauthorized Request');
-  //   }
-  //   req.email = payload.subject
-  //   next()
-  //
-  // }
+  /**
+   * Upload avatar for currently logged-in user
+   *
+   * (POST /user/avatar)
+   */
+  uploadAvatar: function (req, res) {
+
+    req.file('avatar').upload({
+      // don't allow the total upload size to exceed ~10MB
+      maxBytes: 10000000,
+      dirname: require('path').resolve(sails.config.appPath, 'assets/avatars')
+    },function whenDone(err, uploadedFiles) {
+      if (err) {
+        return res.serverError(err);
+      }
+
+      // If no files were uploaded, respond with an error.
+      if (uploadedFiles.length === 0){
+        return res.badRequest('No file was uploaded');
+      }
+
+      // Get the base URL for our deployed application from our custom config
+      // (e.g. this might be "http://foobar.example.com:1339" or "https://example.com")
+      var baseUrl = sails.config.custom.baseUrl;
+
+      // Save the "fd" and the url where the avatar for a user can be accessed
+      User.update(req.email, {
+
+        // Generate a unique URL where the avatar can be downloaded.
+        avatarUrl: require('util').format('%s/user/avatar/%s', baseUrl, req.email),
+
+        // Grab the first file and use it's `fd` (file descriptor)
+        avatarFd: uploadedFiles[0].fd
+      })
+        .exec(function (err){
+          if (err) return res.serverError(err);
+          return res.ok();
+        });
+    });
+  },
+
+
+  /**
+   * Download avatar of the user with the specified id
+   *
+   * (GET /user/avatar/:id)
+   */
+  avatar: function (req, res){
+
+    User.findOne(req.param('id')).exec(function (err, user){
+      if (err) return res.serverError(err);
+      if (!user) return res.notFound();
+
+      // User has no avatar image uploaded.
+      // (should have never have hit this endpoint and used the default image)
+      if (!user.avatarFd) {
+        return res.notFound();
+      }
+
+      var SkipperDisk = require('skipper-disk');
+      var fileAdapter = SkipperDisk(/* optional opts */);
+
+      // set the filename to the same file as the user uploaded
+      res.set("Content-disposition", "attachment; filename='" + file.name + "'");
+
+      // Stream the file down
+      fileAdapter.read(user.avatarFd)
+        .on('error', function (err){
+          return res.serverError(err);
+        })
+        .pipe(res);
+    });
+  }
 
 };

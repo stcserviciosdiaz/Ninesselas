@@ -20,7 +20,6 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'actors',
     component: ActorsComponent,
-    canActivate: [AuthGuard]
   },
   { path: 'company',
     component: CompanyComponent,

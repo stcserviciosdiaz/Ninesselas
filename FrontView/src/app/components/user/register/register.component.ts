@@ -35,13 +35,13 @@ export class RegisterComponent implements OnInit {
   }
 
   registrarUsuario() {
-    // recipe_name: this.recipeForm.get('recipeName').value,
     const newUserObject = {
       rol: 'Company',
       username: this.userForm.get('username').value,
       email: this.userForm.get('email').value,
       password: this.userForm.get('password').value,
       telefonoFijo: this.userForm.get('telefonoFijo').value,
+      mayorEdad: 1,
       nombreArtistico: '',
       primerNombre: '',
       apellidos: '',
@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
       pais: '',
       tallaPantalon: 0,
       tallaCamisa: 0,
-      tallaChaqueta: 0,
+      tallaChaqueta: 888,
       pie: 0,
       altura: 0,
       colorPiel: '',
