@@ -49,4 +49,12 @@ export class AuthService {
     this.router.navigate(['/home']);
   }
 
+  getAllUsers(): Observable<any> {
+    return this.http.get(this.url + 'getAllUsers');
+  }
+
+  getAllCompanies(): Observable<any> {
+    return this.http.get(this.url + 'getAllCompanies');
+  }
+
 }

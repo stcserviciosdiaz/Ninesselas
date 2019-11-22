@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
   }
 
 
-
   ngOnInit() {
   }
 
@@ -44,6 +43,8 @@ export class LoginComponent implements OnInit {
             this.router.navigate(['/management']);
           } else if (res.rol === 'Company') {
             this.router.navigate(['/company']);
+          } else if (res.rol === 'Root' || res.rol === 'Admin') {
+            this.router.navigate(['/management']);
           } else {
             this.router.navigate(['/homeuser']);
           }

@@ -11,6 +11,7 @@ import { TermsComponent } from './components/terms/terms.component';
 import { HomeUserComponent } from './components/home-user/home-user.component';
 import { ManagementComponent } from './components/management/management.component';
 import {AuthGuard} from './Guards/auth.guard';
+import {FiguracionComponent} from './components/figuracion/figuracion.component';
 
 
 const routes: Routes = [
@@ -18,9 +19,8 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'actors',
-    component: ActorsComponent,
-  },
+  { path: 'actors', component: ActorsComponent, },
+  { path: 'figuracion', component: FiguracionComponent, },
   { path: 'company',
     component: CompanyComponent,
     canActivate: [AuthGuard]

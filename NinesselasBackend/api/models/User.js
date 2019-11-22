@@ -42,7 +42,7 @@ module.exports = {
       type: 'boolean',
       required: false,
       description: "Indica si el modelo/actor/figuración es mayor de edad",
-      example: 'true'
+      example: 'true',
     },
 
     avatarUrl: {

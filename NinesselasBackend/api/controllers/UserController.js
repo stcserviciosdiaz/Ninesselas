@@ -137,7 +137,52 @@ module.exports = {
       } else {
         res.status(200).send(usuarioEncontrado);
       }
-    })
+    });
+  },
+
+  getAllUsers: async function (req, res){
+    if (!req.headers.authorization) {
+      return res.status(401).send('Unauthorized Request');
+    }
+    let token = req.headers.authorization.split(' ')[1]
+    if (token === 'null') {
+      console.log(token)
+      return res.status(406).send('El token esta vacio' + req.headers.authorization);
+    }
+    let payload = jwt.verify(token, 'secretKey');
+    if (!payload) {
+      return res.status(401).send('El token es incorrecto');
+    }
+
+    await User.find({rol: 'CommonUser'}, (error, usuariosEncontrados) => {
+      if (error) {
+        res.status(401).send('no se encontraron usuarios');
+      } else {
+        res.status(200).send(usuariosEncontrados);
+      }
+    });
+  },
+
+  getAllCompanies: async function (req, res){
+    if (!req.headers.authorization) {
+      return res.status(401).send('Unauthorized Request');
+    }
+    let token = req.headers.authorization.split(' ')[1]
+    if (token === 'null') {
+      console.log(token)
+      return res.status(406).send('El token esta vacio' + req.headers.authorization);
+    }
+    let payload = jwt.verify(token, 'secretKey');
+    if (!payload) {
+      return res.status(401).send('El token es incorrecto');
+    }
+    await User.find({rol: 'Company'}, (error, usuariosEncontrados) => {
+      if (error) {
+        res.status(401).send('no se encontraron usuarios');
+      } else {
+        res.status(200).send(usuariosEncontrados);
+      }
+    });
   },
 
   updateUsuario: async (req, res) => {

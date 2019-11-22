@@ -4,11 +4,12 @@ import { AuthService } from '../../Services/auth.service';
 import {Router} from '@angular/router';
 
 @Component({
-  selector: 'app-actors',
-  templateUrl: './actors.component.html',
-  styleUrls: ['./actors.component.css']
+  selector: 'app-figuracion',
+  templateUrl: './figuracion.component.html',
+  styleUrls: ['./figuracion.component.css']
 })
-export class ActorsComponent implements OnInit {
+export class FiguracionComponent implements OnInit {
+
   actorForm: FormGroup;
   selectedFile: File = null;
   @Input() inputArray;

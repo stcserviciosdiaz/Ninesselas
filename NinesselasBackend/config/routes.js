@@ -32,6 +32,12 @@ module.exports.routes = {
 
   'GET /user': 'UserController.getUsuario',
 
+  'GET /user/getAllUsers': 'UserController.getAllUsers',
+  'GET /getAllUsers': 'UserController.getAllUsers',
+
+  'GET /user/getAllCompanies': 'UserController.getAllCompanies',
+  'GET /getAllCompanies': 'UserController.getAllCompanies',
+
   'POST /user/uploadAvatar': 'UserController.uploadAvatar',
   'POST /uploadAvatar': 'UserController.uploadAvatar',
 
