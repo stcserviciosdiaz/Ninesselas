@@ -5,13 +5,13 @@
         </div>
         <div class="contact-form">
             <h1 class="title">Contáctenos</h1>
-            <h2 class="subtitle">Asiste mediante nuestros contactos.</h2>
-            <form action="">
-                <input type="text" name="name" placeholder="Ingresa tu nombre" />
-                <input type="email" name="e-mail" placeholder="Inmgresa tu E-mail" />
-                <input type="tel" name="phone" placeholder="Ingresa tu nimero de teléfono"/>
-                <textarea name="text" id="" rows="8" placeholder="Escribenos tu mensaje"></textarea>
-                <button class="btn-send">Enviar</button>
+            <h2 class="subtitle">Ponte en contacto con nosotros</h2>
+            <form [formGroup]="emailForm">
+                <input type="text" formControlName="name" placeholder="Ingresa tu nombre" />
+                <input type="email" formControlName="email" placeholder="Inmgresa tu correo" />
+                <input type="tel" formControlName="phone" placeholder="Ingresa tu número de teléfono"/>
+                <textarea formControlName="message" id="" rows="8" placeholder="Escríbenos tu mensaje"></textarea>
+                <button class="btn-send"(click)="enviarMail()">Enviar</button>
             </form>
         </div>
 </div>

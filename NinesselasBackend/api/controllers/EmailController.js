@@ -6,22 +6,28 @@
  */
 
 module.exports = {
+
+
+
   create: function (req, res) {
     const email = req.body
     sails.hooks.email.send(
       "sendEmail",
       {
-        Name: email.name,
+        recipientEmail: email.from,
+        recipientName: email.name,
+        recipientPhone: email.phone,
+        recipientText: email.text,
       },
       {
         to: email.to,
-        subject: "Welcome Email"
+        subject: "Contacto Ninesselas"
       },
       function(err) {
         console.log(err || "Mail Sent!");
       }
     )
-  }
+  },
 
 };
 

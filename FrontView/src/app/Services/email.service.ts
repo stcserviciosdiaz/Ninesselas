@@ -7,12 +7,16 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class EmailService {
+  url;
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient
+  ) {
+    this.url = 'http://localhost:1337/email';
+  }
 
-  sendEmail(data) {
-    return this.http.post('http://localhost:1337/email/', data).pipe(map((res: any) => {
-      console.log('res', res);
+  sendEmail(data): Observable<any> {
+    return this.http.post(this.url, data).pipe(map((res: any) => {
       return res;
     }));
   }

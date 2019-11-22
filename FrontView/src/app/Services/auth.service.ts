@@ -28,6 +28,10 @@ export class AuthService {
     return this.http.post(this.url + 'uploadAvatar', avatar);
   }
 
+  getAvatar(): Observable<any> {
+    return this.http.get(this.url + 'avatar');
+  }
+
   loggedIn() {
     return !!localStorage.getItem('token');
   }

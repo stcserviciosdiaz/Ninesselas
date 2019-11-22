@@ -235,30 +235,44 @@ module.exports = {
    *
    * (GET /user/avatar/:id)
    */
+
   avatar: function (req, res) {
+    if (!req.headers.authorization) {
+      return res.status(401).send('Unauthorized Request');
+    }
+    let token = req.headers.authorization.split(' ')[1]
+    if (token === 'null') {
+      console.log(token)
+      return res.status(406).send('El token esta vacio' + req.headers.authorization);
+    }
+    let payload = jwt.verify(token, 'secretKey');
+    if (!payload) {
+      return res.status(401).send('El token es incorrecto');
+    }
+    let emailUser = payload.subject;
+    User.findOne({email: emailUser}, (error, usuarioEncontrado) => {
+      if (error) {
+        res.status(401).send('No existe el usuario');
+      } else {
+        var SkipperDisk = require('skipper-disk');
+        var fileAdapter = SkipperDisk(/* optional opts */);
+        // set the filename to the same file as the user uploaded
+        // res.set("Content-disposition", "attachment; filename='" + usuarioEncontrado.avatarFd + "'");
+        // res.attachment(usuarioEncontrado.avatarFd)
+        // console.log('aqui2')
+        // console.log(res)
+        // // Stream the file down
 
-    User.findOne(req.param('email')).exec(function (err, user) {
-      if (err) return res.serverError(err);
-      if (!user) return res.notFound();
+        console.log('hola')
+        res.attachment(usuarioEncontrado.avatarFd)
+        return res
 
-      // User has no avatar image uploaded.
-      // (should have never have hit this endpoint and used the default image)
-      if (!user.avatarFd) {
-        return res.notFound();
+        // fileAdapter.read(usuarioEncontrado.avatarFd)
+        //   .on('error', function (err) {
+        //     return res.serverError(err);
+        //   })
+        //   .pipe(res.attachment());
       }
-
-      var SkipperDisk = require('skipper-disk');
-      var fileAdapter = SkipperDisk(/* optional opts */);
-
-      // set the filename to the same file as the user uploaded
-      res.set("Content-disposition", "attachment; filename='" + file.name + "'");
-
-      // Stream the file down
-      fileAdapter.read(user.avatarFd)
-        .on('error', function (err) {
-          return res.serverError(err);
-        })
-        .pipe(res);
     });
   }
 

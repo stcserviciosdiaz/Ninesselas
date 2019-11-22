@@ -8,14 +8,23 @@ import { AuthService } from '../../Services/auth.service';
 })
 export class HomeUserComponent implements OnInit {
   userInfo;
-  avtaraImage;
+  avatarImageUrl;
 
   constructor(
     private authService: AuthService
   ) { }
 
   ngOnInit() {
-    this.authService.getUser().subscribe(res => this.userInfo = res);
+    this.authService.getUser().subscribe(
+      res => {
+        this.userInfo = res;
+        this.authService.getAvatar()
+          .subscribe(resp => {
+            this.avatarImageUrl = resp;
+            console.log('segunda ' );
+            console.log(JSON.stringify(resp));
+          });
+      });
   }
 
 }
