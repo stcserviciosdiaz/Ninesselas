@@ -13,6 +13,7 @@ export class ManagementComponent implements OnInit {
   userInfo;
   allUsers;
   allCompanies;
+  editField: string;
   headElementsUsers = [
     'ID',
     'Nombres Completos',
@@ -46,6 +47,7 @@ export class ManagementComponent implements OnInit {
     'Correo',
     'Teléfono de Contacto',
     'Contraseña',
+    'Remove'
   ];
 
   searchText = '';
@@ -64,14 +66,12 @@ export class ManagementComponent implements OnInit {
     this.authService.getAllCompanies()
       .subscribe(resp => {
         this.allCompanies = resp;
-        alert(JSON.stringify('otro ' + resp));
       });
     this.authService.getUser()
       .subscribe(res => this.userInfo = res);
     this.authService.getAllUsers()
       .subscribe(res => {
         this.allUsers = res;
-        alert(JSON.stringify(res));
       });
 
     for (const user of this.allUsers) {
@@ -81,11 +81,6 @@ export class ManagementComponent implements OnInit {
         user.mayorEdad = 'NO';
       }
     }
-    this.authService.getAllCompanies()
-      .subscribe(resp => {
-        this.allCompanies = resp;
-        alert(JSON.stringify(resp));
-      });
 
     this.mdbTable.setDataSource(this.allUsers);
     this.previous = this.mdbTable.getDataSource();
@@ -104,6 +99,20 @@ export class ManagementComponent implements OnInit {
       this.allUsers = this.mdbTable.searchLocalDataBy(this.searchText);
       this.mdbTable.setDataSource(prev);
     }
+  }
+  updateList(id: number, property: string, event: any) {
+    const editField = event.target.textContent;
+    this.allCompanies[id][property] = editField;
+  }
+
+  remove(id) {
+    this.allUsers.splice(id, 1);
+    this.authService.deleteUser(id)
+      .subscribe(res => console.log(res));
+  }
+
+  changeValue(id: number, property: string, event: any) {
+    this.editField = event.target.textContent;
   }
 
 

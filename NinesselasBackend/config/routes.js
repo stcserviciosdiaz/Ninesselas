@@ -42,7 +42,10 @@ module.exports.routes = {
   'POST /uploadAvatar': 'UserController.uploadAvatar',
 
   'GET avatar': 'UserController.avatar',
-  'GET /user/avatar': 'UserController.avatar'
+  'GET /user/avatar': 'UserController.avatar',
+
+  'DELETE /user/deleteUser': 'UserController.deleteUser',
+  'DELETE /deleteUser': 'UserController.deleteUser',
 
 
   /***************************************************************************

@@ -140,7 +140,7 @@ module.exports = {
     });
   },
 
-  getAllUsers: async function (req, res){
+  getAllUsers: async function (req, res) {
     if (!req.headers.authorization) {
       return res.status(401).send('Unauthorized Request');
     }
@@ -163,7 +163,7 @@ module.exports = {
     });
   },
 
-  getAllCompanies: async function (req, res){
+  getAllCompanies: async function (req, res) {
     if (!req.headers.authorization) {
       return res.status(401).send('Unauthorized Request');
     }
@@ -209,8 +209,8 @@ module.exports = {
 
   deleteUser: async function (req, res) {
     let params = req.allParams();
-    let deleted = await Usuario.destroy({_id: params.id}).fetch();
-    return res.status(200).json(deleted);
+    await Usuario.destroy({id: params.id});
+    return res.status(200).send('Usuario Eliminado');
   },
 
   /**
@@ -245,7 +245,6 @@ module.exports = {
     })
 
 
-
     req.file('avatar').upload({
       // don't allow the total upload size to exceed ~10MB
       maxBytes: 10000000,
@@ -267,9 +266,9 @@ module.exports = {
       await User.update({id: userId})
         .set({
           // Generate a unique URL where the avatar can be downloaded.
-            avatarUrl: require('util').format('%s/%s', require('path').resolve(sails.config.appPath, 'assets/avatars'), userId),
+          avatarUrl: require('util').format('%s/%s', require('path').resolve(sails.config.appPath, 'assets/avatars'), userId),
           //   // Grab the first file and use it's `fd` (file descriptor)
-            avatarFd: uploadedFiles[0].fd
+          avatarFd: uploadedFiles[0].fd
         })
     });
   },

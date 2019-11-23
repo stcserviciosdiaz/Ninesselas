@@ -129,8 +129,8 @@
                 </div>
                 <div class="col-7 col-md-8">
                   <div class="numbers">
-                    <p class="card-category">Cantidad User</p>
-                    <p class="card-title"> 1,345
+                    <p class="card-category">Numero de Usuarios</p>
+                    <p class="card-title">hola
                     <p>
                   </div>
                 </div>
@@ -233,10 +233,12 @@
                   </div>
                 </div>
               </div>
-              <table mdbTable mdbTableScroll scrollY="true" maxHeight="200" scrollX="true" class="z-depth-1">
+              <table mdbTable mdbTableScroll scrollY="true" maxHeight="200" scrollX="true"
+                     class="table table-bordered table-responsive-md table-striped text-center">
                 <thead>
                 <tr>
-                  <th *ngFor="let head of headElementsUsers; let i = index" aria-controls="tableSortExample" scope="col" [mdbTableSort]="allUsers" [sortBy]="headElementsUsers[i]">{{head | titlecase}}</th>
+                  <th *ngFor="let head of headElementsUsers; let i = index" aria-controls="tableSortExample" scope="col"
+                      [mdbTableSort]="allUsers" [sortBy]="headElementsUsers[i]">{{head | titlecase}}</th>
                   <mdb-icon fas icon="sort"></mdb-icon>
                 </tr>
                 </thead>
@@ -271,25 +273,45 @@
                 </tr>
                 </tbody>
               </table>
-              <table mdbTable mdbTableScroll scrollY="true" maxHeight="200" scrollX="true" class="z-depth-1">
-                <thead>
-                <tr>
-                  <th *ngFor="let head of headElementsCompanies; let i = index" aria-controls="tableSortExample" scope="col" [mdbTableSort]="allUsers" [sortBy]="headElementsCompanies[i]">{{head | titlecase}}</th>
-                  <mdb-icon fas icon="sort"></mdb-icon>
-                </tr>
-                </thead>
-                <tbody>
-                <tr *ngFor="let company of allCompanies; let i = index">
-                  <th scope="row">{{company.id}}</th>
-                  <td>{{company.primerNombre}}</td>
-                  <td>{{company.email}}</td>
-                  <td>{{company.telefonoFijo}}</td>
-                  <td>{{company.password}}</td>
-
-                </tr>
-                </tbody>
-              </table>
-
+              <div id="tableCompanies" class="table-editable">
+                <table mdbTable mdbTableScroll scrollY="true" maxHeight="200" scrollX="true"
+                       class="table table-bordered table-responsive-md table-striped text-center">
+                  <thead>
+                  <tr>
+                    <th *ngFor="let head of headElementsCompanies; let i = index" aria-controls="tableSortExample"
+                        scope="col" [mdbTableSort]="allUsers"
+                        [sortBy]="headElementsCompanies[i]">{{head | titlecase}}</th>
+                    <mdb-icon fas icon="sort"></mdb-icon>
+                  </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let company of allCompanies; let id = index">
+                      <th scope="row">{{company.id}}</th>
+                      <td>
+                        <span (keyup)="changeValue(id, 'username', $event)" (blur)="updateList(id, 'username', $event)"
+                              contenteditable="true">{{company.username}}</span>
+                      </td>
+                      <td>
+                        <span (keyup)="changeValue(id, 'email', $event)" (blur)="updateList(id, 'email', $event)"
+                              contenteditable="true">{{company.email}}</span>
+                      </td>
+                      <td>
+                        <span (keyup)="changeValue(id, 'telefonoFijo', $event)" (blur)="updateList(id, 'telefonoFijo', $event)"
+                              contenteditable="true">{{company.telefonoFijo}}</span>
+                      </td>
+                      <td>
+                        <span (keyup)="changeValue(id, 'password', $event)" (blur)="updateList(id, 'password', $event)"
+                              contenteditable="true">{{company.password}}</span>
+                      </td>
+                      <td>
+                        <span class="table-remove">
+                          <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="remove(id)">Remove</button>
+                        </span>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
               <canvas id=chartHours width="400" height="100"></canvas>
             </div>
             <div class="card-footer ">

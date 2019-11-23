@@ -57,4 +57,8 @@ export class AuthService {
     return this.http.get(this.url + 'getAllCompanies');
   }
 
+  deleteUser(id): Observable<any> {
+    return this.http.delete(this.url + 'deleteUser', id);
+  }
+
 }
