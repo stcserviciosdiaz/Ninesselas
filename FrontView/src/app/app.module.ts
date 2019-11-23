@@ -22,6 +22,7 @@ import { CompanyComponent } from './components/company/company.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeUserComponent } from './components/home-user/home-user.component';
+import { ForgotComponent } from './components/user/forgot/forgot.component';
 
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -81,7 +82,11 @@ import { FiguracionComponent } from './components/figuracion/figuracion.componen
     ActorsComponent,
     CompanyComponent,
     HomeUserComponent,
+<<<<<<< HEAD
     FiguracionComponent,
+=======
+    ForgotComponent,
+>>>>>>> 0cc5d442f8fd58bb2662535d17adacc06c147b7c
 
   ],
   imports: [

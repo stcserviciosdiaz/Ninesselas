@@ -11,7 +11,11 @@ import { TermsComponent } from './components/terms/terms.component';
 import { HomeUserComponent } from './components/home-user/home-user.component';
 import { ManagementComponent } from './components/management/management.component';
 import {AuthGuard} from './Guards/auth.guard';
+<<<<<<< HEAD
 import {FiguracionComponent} from './components/figuracion/figuracion.component';
+=======
+import { ForgotComponent } from './components/user/forgot/forgot.component';
+>>>>>>> 0cc5d442f8fd58bb2662535d17adacc06c147b7c
 
 
 const routes: Routes = [
@@ -19,8 +23,16 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'contact', component: ContactComponent },
+<<<<<<< HEAD
   { path: 'actors', component: ActorsComponent, },
   { path: 'figuracion', component: FiguracionComponent, },
+=======
+  { path: 'forgot', component: ForgotComponent },
+  { path: 'actors',
+    component: ActorsComponent,
+    canActivate: [AuthGuard]
+  },
+>>>>>>> 0cc5d442f8fd58bb2662535d17adacc06c147b7c
   { path: 'company',
     component: CompanyComponent,
     canActivate: [AuthGuard]
