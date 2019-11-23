@@ -276,15 +276,15 @@ module.exports = {
    * @param values
    * @param cb
    */
-  // beforeCreate: function (values, cb) {
-  //
-  //   // Hash password
-  //   bcrypt.hash(values.password, 10, function (err, hash) {
-  //     if (err) return cb(err);
-  //     values.password = hash;
-  //     cb();
-  //   });
-  // }
+  beforeCreate: function (values, cb) {
+
+    // Hash password
+    bcrypt.hash(values.password, 10, function (err, hash) {
+      if (err) return cb(err);
+      values.password = hash;
+      cb();
+    });
+  }
 
 
 };
