@@ -58,7 +58,7 @@ export class AuthService {
   }
 
   deleteUser(id): Observable<any> {
-    return this.http.delete(this.url + 'deleteUser', id);
+    return this.http.delete(this.url + id);
   }
 
 }

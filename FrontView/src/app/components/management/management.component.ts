@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
 import {AuthService} from '../../Services/auth.service';
 import {MdbTableDirective} from 'angular-bootstrap-md';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-management',
@@ -14,6 +15,7 @@ export class ManagementComponent implements OnInit {
   allUsers;
   allCompanies;
   editField: string;
+  numberOfUsers: number;
   headElementsUsers = [
     'ID',
     'Nombres Completos',
@@ -55,6 +57,7 @@ export class ManagementComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private router: Router,
   ) {
   }
 
@@ -73,7 +76,6 @@ export class ManagementComponent implements OnInit {
       .subscribe(res => {
         this.allUsers = res;
       });
-
     for (const user of this.allUsers) {
       if (user.mayorEdad) {
         user.mayorEdad = 'SI';
@@ -81,7 +83,6 @@ export class ManagementComponent implements OnInit {
         user.mayorEdad = 'NO';
       }
     }
-
     this.mdbTable.setDataSource(this.allUsers);
     this.previous = this.mdbTable.getDataSource();
   }
@@ -105,10 +106,9 @@ export class ManagementComponent implements OnInit {
     this.allCompanies[id][property] = editField;
   }
 
-  remove(id) {
-    this.allUsers.splice(id, 1);
-    this.authService.deleteUser(id)
-      .subscribe(res => console.log(res));
+  removeCompany(userId) {
+    this.allUsers.splice(userId, 1);
+    this.authService.deleteUser(userId).subscribe(res => console.log(res));
   }
 
   changeValue(id: number, property: string, event: any) {

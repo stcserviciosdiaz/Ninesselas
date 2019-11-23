@@ -233,7 +233,7 @@
                   </div>
                 </div>
               </div>
-              <table mdbTable mdbTableScroll scrollY="true" maxHeight="200" scrollX="true"
+              <table ng-table="tableParams2" mdbTable mdbTableScroll scrollY="true" maxHeight="200" scrollX="true"
                      class="table table-bordered table-responsive-md table-striped text-center">
                 <thead>
                 <tr>
@@ -269,12 +269,11 @@
                   <td>{{user.numeroSeguridadSocial}}</td>
                   <td>{{user.email}}</td>
                   <td>{{user.telefonoFijo}}</td>
-
                 </tr>
                 </tbody>
               </table>
               <div id="tableCompanies" class="table-editable">
-                <table mdbTable mdbTableScroll scrollY="true" maxHeight="200" scrollX="true"
+                <table mdbTable2 mdbTableScroll scrollY="true" maxHeight="200" NGTab scrollX="true"
                        class="table table-bordered table-responsive-md table-striped text-center">
                   <thead>
                   <tr>
@@ -305,7 +304,7 @@
                       </td>
                       <td>
                         <span class="table-remove">
-                          <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="remove(id)">Remove</button>
+                          <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="removeCompany(company.id, id)">Remove</button>
                         </span>
                       </td>
                     </tr>

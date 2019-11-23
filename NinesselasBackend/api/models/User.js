@@ -4,7 +4,7 @@
  * @description :: A model definition represents a database table/collection.
  * @docs        :: https://sailsjs.com/docs/concepts/models-and-orm/models
  */
-// var bcrypt = require("bcryptjs");
+var bcrypt = require("bcryptjs");
 module.exports = {
 
   attributes: {
@@ -259,6 +259,8 @@ module.exports = {
       via: 'userInstrumentFK',
     },
 
+
+
     // toJSON: function () {
     //   var obj = this.toObject();
     //   delete obj.password; //remove the password field when displaying the user model object
@@ -266,23 +268,6 @@ module.exports = {
     // }
 
   },
-  /**
-   * this holds our validation message by
-   * sails-hook-validation dependency
-   */
-  // validationMessages: { //hand for i18n & l10n
-  //   names: {
-  //     required: 'Name is required'
-  //   },
-  //   email: {
-  //     email: 'Provide valid email address',
-  //     required: 'Email is required',
-  //     unique: 'This email is already existing'
-  //   },
-  //   password: {
-  //     required: 'Password is required'
-  //   }
-  // },
 
   /**
    * this is called so we can create our password hash for us

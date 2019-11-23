@@ -209,7 +209,8 @@ module.exports = {
 
   deleteUser: async function (req, res) {
     let params = req.allParams();
-    await Usuario.destroy({id: params.id});
+    console.log(params.id)
+    await User.destroyOne({id: params.id});
     return res.status(200).send('Usuario Eliminado');
   },
 
@@ -248,7 +249,7 @@ module.exports = {
     req.file('avatar').upload({
       // don't allow the total upload size to exceed ~10MB
       maxBytes: 10000000,
-      dirname: require('path').resolve(sails.config.appPath, 'assets/avatars/')
+      //dirname: require('path').resolve(sails.config.appPath, 'assets/avatars/')
     }, async function whenDone(err, uploadedFiles) {
       if (err) {
         return res.serverError(err);
@@ -298,24 +299,11 @@ module.exports = {
       if (error) {
         res.status(401).send('No existe el usuario');
       } else {
-        var SkipperDisk = require('skipper-disk');
-        var fileAdapter = SkipperDisk(/* optional opts */);
-        // set the filename to the same file as the user uploaded
-        // res.set("Content-disposition", "attachment; filename='" + usuarioEncontrado.avatarFd + "'");
-        // res.attachment(usuarioEncontrado.avatarFd)
-        // console.log('aqui2')
-        // console.log(res)
-        // // Stream the file down
-
-        console.log('hola')
-        res.attachment(usuarioEncontrado.avatarFd)
-        return res
-
-        // fileAdapter.read(usuarioEncontrado.avatarFd)
-        //   .on('error', function (err) {
-        //     return res.serverError(err);
-        //   })
-        //   .pipe(res.attachment());
+        fs.createReadStream(Path.resolve(req.param('path')))
+          .on('error', function (err) {
+            return res.serverError(err);
+          })
+          .pipe(res);
       }
     });
   }
