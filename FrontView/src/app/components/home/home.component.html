@@ -17,18 +17,18 @@
           <div class="bg-circle-2 bg-circle"></div>
           <div class="bg-circle-3 bg-circle"></div>
           <div class="bg-circle-4 bg-circle"></div>
-          <div class="mini-spacer c2a5" style="background-image:url(images/c2a.png)">
-            <div class="container">
-                <div *ngIf="!authService.loggedIn()" class="d-flex">
-                    <div class="fs-26 align-self-center">
-                        <h3 class="font-semibold text-white">¿Quieres trabajar como empresa?</h3>
+        <div class="mini-spacer c2a5" style="background-image:url(images/c2a.png)">
+            <div class="col-12">
+                <div *ngIf="!authService.loggedIn()" class="d-lg-flex d-md-12 d-flex">
+                    <div class="float-lg-left col-lg-7 col-md-8 fs-26 align-self-center">
+                        <p class="font-semibold text-white fg-26">¿Quieres trabajar como empresa?</p>
                     </div>
-                    <div class="ml-auto m-t-10 m-b-10">
+                    <div class="float-lg-right col-lg-5 col-md-4 m-t-10 m-b-10">
                         <button routerLink="/register" class="btn bg-white text-inverse btn-md">Registrate Ahora.!</button>
                     </div>
                 </div>
             </div>
-          </div>
+        </div>
 </header>
 <app-footer></app-footer>
 <!-- <div class="spacer masthead">

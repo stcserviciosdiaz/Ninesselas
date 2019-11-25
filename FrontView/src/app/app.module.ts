@@ -82,11 +82,8 @@ import { FiguracionComponent } from './components/figuracion/figuracion.componen
     ActorsComponent,
     CompanyComponent,
     HomeUserComponent,
-<<<<<<< HEAD
     FiguracionComponent,
-=======
     ForgotComponent,
->>>>>>> 0cc5d442f8fd58bb2662535d17adacc06c147b7c
 
   ],
   imports: [
