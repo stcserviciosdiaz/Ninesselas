@@ -6,6 +6,7 @@
  */
 //const User = require('../models/user')
 const jwt = require('jsonwebtoken')
+var bcrypt = require("bcryptjs");
 
 module.exports = {
 
@@ -96,14 +97,15 @@ module.exports = {
       email: req.param('email'),
       password: req.param('password')
     }
-    await User.findOne(userData, (error, user) => {
+
+    await User.findOne({email: userData.email}, (error, user) => {
       if (error) {
         console.log(error)
       } else {
         if (!user) {
           res.status(401).send('Invalid email')
         } else {
-          if (user.password !== userData.password) {
+          if (!bcrypt.compareSync(userData.password, user.password)) {
             res.status(401).send('invalid password')
           } else {
             let payload = {subject: user.email}

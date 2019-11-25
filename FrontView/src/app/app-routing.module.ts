@@ -20,10 +20,15 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'contact', component: ContactComponent },
+<<<<<<< HEAD
 
 //  { path: 'actors', component: ActorsComponent, },
   { path: 'figuracion', component: FiguracionComponent, },
 
+=======
+  { path: 'actors', component: ActorsComponent, },
+  { path: 'figuracion', component: FiguracionComponent, },
+>>>>>>> 72b24cfc3b91acff8854df9a86de7013deb10a64
   { path: 'forgot', component: ForgotComponent },
   { path: 'actors',
     component: ActorsComponent,
