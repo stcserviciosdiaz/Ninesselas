@@ -125,7 +125,6 @@ module.exports = {
     }
     let token = req.headers.authorization.split(' ')[1]
     if (token === 'null') {
-      console.log(token)
       return res.status(406).send('El token esta vacio' + req.headers.authorization);
     }
     let payload = jwt.verify(token, 'secretKey');
@@ -148,7 +147,6 @@ module.exports = {
     }
     let token = req.headers.authorization.split(' ')[1]
     if (token === 'null') {
-      console.log(token)
       return res.status(406).send('El token esta vacio' + req.headers.authorization);
     }
     let payload = jwt.verify(token, 'secretKey');
@@ -171,7 +169,6 @@ module.exports = {
     }
     let token = req.headers.authorization.split(' ')[1]
     if (token === 'null') {
-      console.log(token)
       return res.status(406).send('El token esta vacio' + req.headers.authorization);
     }
     let payload = jwt.verify(token, 'secretKey');
@@ -195,23 +192,18 @@ module.exports = {
     if (token === 'null') {
       return res.status(406).send('El token esta vacio');
     }
-    console.log('token :', token);
     let payload = jwt.verify(token, 'llaveSecreta');
     if (!payload) {
       return res.status(401).send('El token es incorrecto');
     }
-    console.log('el payload es: ', payload);
     let mailUser = payload.subject;
-    console.log('ahora el id del usuario es: ', mailUser);
     let userData = req.allParams();
-    console.log('el contenido de la consulta es: ', userData);
     let updated = await User.update({email: mailUser}).set(userData)
 
   },
 
   deleteUser: async function (req, res) {
     let params = req.allParams();
-    console.log(params.id)
     await User.destroyOne({id: params.id});
     return res.status(200).send('Usuario Eliminado');
   },
@@ -230,7 +222,6 @@ module.exports = {
     }
     let token = req.headers.authorization.split(' ')[1]
     if (token === 'null') {
-      console.log(token)
       return res.status(406).send('El token esta vacio' + req.headers.authorization);
     }
     let payload = jwt.verify(token, 'secretKey');
@@ -289,7 +280,6 @@ module.exports = {
     }
     let token = req.headers.authorization.split(' ')[1]
     if (token === 'null') {
-      console.log(token)
       return res.status(406).send('El token esta vacio' + req.headers.authorization);
     }
     let payload = jwt.verify(token, 'secretKey');
