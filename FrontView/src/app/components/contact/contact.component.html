@@ -1,18 +1,22 @@
 <app-header></app-header>
-<div class="container my-5">
-        <div class="map mt-5">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d112061.09262729759!2d77.208022!3d28.632485!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x644e33bc3def0667!2sIndior+Tours+Pvt+Ltd.!5e0!3m2!1sen!2sus!4v1527779731123" width="100%" height="500px" frameborder="0" style="border:0" allowfullscreen></iframe>
-        </div>
-        <div class="contact-form">
-            <h1 class="title">Contáctanos</h1>
-            <h2 class="subtitle">Ponte en contacto con nosotros</h2>
-            <form [formGroup]="emailForm">
-                <input type="text" formControlName="name" placeholder="Ingresa tu nombre" />
-                <input type="email" formControlName="email" placeholder="Ingresa tu correo" />
-                <input type="tel" formControlName="phone" placeholder="Ingresa tu número de teléfono"/>
-                <textarea formControlName="message" id="" rows="8" placeholder="Escríbenos tu mensaje"></textarea>
-                <button class="btn-send"(click)="enviarMail()">Enviar</button>
-            </form>
+<div class="container pt-6">
+        <div class="col-12">
+                <div class="d-lg-flex d-md-block">
+                        <div class="col-lg-6 col-md-12 d-lg-block d-none map">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d112061.09262729759!2d77.208022!3d28.632485!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x644e33bc3def0667!2sIndior+Tours+Pvt+Ltd.!5e0!3m2!1sen!2sus!4v1527779731123" width="100%" height="500px" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        </div>
+                        <div class="col-lg-6 col-md-12 contact-form">
+                                <h1 class="title">Contáctanos</h1>
+                                <h2 class="subtitle">Ponte en contacto con nosotros</h2>
+                                <form [formGroup]="emailForm">
+                                    <input type="text" formControlName="name" placeholder="Ingresa tu nombre" />
+                                    <input type="email" formControlName="email" placeholder="Ingresa tu correo" />
+                                    <input type="tel" formControlName="phone" placeholder="Ingresa tu número de teléfono"/>
+                                    <textarea formControlName="message" id="" rows="8" placeholder="Escríbenos tu mensaje"></textarea>
+                                    <button class="btn-send"(click)="enviarMail()">Enviar</button>
+                                </form>
+                        </div>
+                </div>
         </div>
 </div>
 <app-footer></app-footer>

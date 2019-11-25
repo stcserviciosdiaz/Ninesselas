@@ -37,5 +37,20 @@
 .fg-12 {
     font-size: 12px;
 }
+
+@media screen and (max-width: 480px) {
+    .fg-26 {
+        font-size: 13px;
+    } 
+    
+}
+
+/* Padding tamaños*/
+
+.pt-6 {
+    padding-top: 6rem!important;
+}
+
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
