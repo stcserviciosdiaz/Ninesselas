@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
 
@@ -59,6 +59,15 @@ export class AuthService {
 
   deleteUser(id): Observable<any> {
     return this.http.delete(this.url + id);
+  }
+
+  downloadPhotoBook(file: string): Observable<any> {
+      const body = {filename: file};
+
+      return this.http.post(this.url + 'downloadPhotoBook', body, {
+        responseType : 'blob',
+        headers: new HttpHeaders().append('Content-Type', 'application/json')
+      });
   }
 
 }

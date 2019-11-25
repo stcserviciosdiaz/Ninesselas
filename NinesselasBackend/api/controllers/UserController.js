@@ -7,6 +7,7 @@
 //const User = require('../models/user')
 const jwt = require('jsonwebtoken')
 var bcrypt = require("bcryptjs");
+var path = require('path')
 
 module.exports = {
 
@@ -264,12 +265,13 @@ module.exports = {
 
       // Get the base URL for our deployed application from our custom config
       // (e.g. this might be "http://foobar.example.com:1339" or "https://example.com")
-      //var baseUrl = sails.config.custom.baseUrl;
+      var baseUrl = sails.config.custom.baseUrl;
+      console.log(baseUrl)
 
       await User.update({id: userId})
         .set({
           // Generate a unique URL where the avatar can be downloaded.
-          avatarUrl: require('util').format('%s/%s', require('path').resolve(sails.config.appPath, 'assets/avatars'), userId),
+          avatarUrl: require('util').format('%s/user/avatar/%s', baseUrl, userId),
           //   // Grab the first file and use it's `fd` (file descriptor)
           avatarFd: uploadedFiles[0].fd
         })
@@ -284,6 +286,49 @@ module.exports = {
    */
 
   avatar: function (req, res) {
+    console.log('hola 3')
+    if (!req.headers.authorization) {
+      return res.status(401).send('Unauthorized Request');
+    }
+    let token = req.headers.authorization.split(' ')[1]
+    if (token === 'null') {
+      console.log(token)
+      return res.status(406).send('El token esta vacio' + req.headers.authorization);
+    }
+    let payload = jwt.verify(token, 'secretKey');
+    if (!payload) {
+      return res.status(401).send('El token es incorrecto');
+    }
+    let emailUser = payload.subject;
+    console.log('hola 4')
+    User.findOne({email: emailUser}, (error, usuarioEncontrado) => {
+      if (error) {
+        res.status(401).send('No existe el usuario');
+      } else {
+        console.log(JSON.stringify(usuarioEncontrado))
+        var SkipperDisk = require('skipper-disk');
+        console.log('el skipper ' + SkipperDisk)
+        var fileAdapter = SkipperDisk();
+        console.log('fd '+JSON.stringify(fileAdapter))
+
+        // set the filename to the same file as the user uploaded
+        res.set("Content-disposition", "attachment; filename='" + usuarioEncontrado.avatarFd + "'");
+
+        // Stream the file down
+        console.log('hola10')
+        fileAdapter.read(usuarioEncontrado.avatarFd)
+          .on('error', function (err){
+            return res.serverError(err);
+          })
+          .pipe(res);
+      }
+    });
+  },
+
+  uploadPhotobook: function (req, res) {
+
+    let userId;
+
     if (!req.headers.authorization) {
       return res.status(401).send('Unauthorized Request');
     }
@@ -301,13 +346,61 @@ module.exports = {
       if (error) {
         res.status(401).send('No existe el usuario');
       } else {
-        fs.createReadStream(Path.resolve(req.param('path')))
-          .on('error', function (err) {
-            return res.serverError(err);
-          })
-          .pipe(res);
+        res.status(200).send(usuarioEncontrado);
+        userId = usuarioEncontrado.id
       }
+    })
+
+
+    req.file('photoBook').upload({
+      // don't allow the total upload size to exceed ~10MB
+      maxBytes: 10000000,
+      dirname: require('path').resolve(sails.config.appPath, 'assets/photoBooks/')
+    }, async function whenDone(err, uploadedFiles) {
+      if (err) {
+        return res.serverError(err);
+      }
+
+      // If no files were uploaded, respond with an error.
+      if (uploadedFiles.length === 0) {
+        return res.badRequest('No file was uploaded');
+      }
+
+      // Get the base URL for our deployed application from our custom config
+      // (e.g. this might be "http://foobar.example.com:1339" or "https://example.com")
+      //var baseUrl = sails.config.custom.baseUrl;
+
+      await User.update({id: userId})
+        .set({
+          // Generate a unique URL where the avatar can be downloaded.
+          photoBookUrl: require('util').format('%s/%s', path.resolve(sails.config.appPath, 'assets/photoBooks'), userId),
+          //   // Grab the first file and use it's `fd` (file descriptor)
+          photoBookFd: uploadedFiles[0].fd
+        })
     });
-  }
+  },
+
+  downloadPhotoBook: function (req, res) {
+    if (!req.headers.authorization) {
+      return res.status(401).send('Unauthorized Request');
+    }
+    let token = req.headers.authorization.split(' ')[1]
+    if (token === 'null') {
+      console.log(token)
+      return res.status(406).send('El token esta vacio' + req.headers.authorization);
+    }
+    let payload = jwt.verify(token, 'secretKey');
+    if (!payload) {
+      return res.status(401).send('El token es incorrecto');
+    }
+    let emailUser = payload.subject;
+
+    filepath = path.join()
+
+
+    // filepath = path.join(__dirname,'../uploads') +'/'+ req.body.filename;
+    // res.sendFile(filepath);
+
+  },
 
 };

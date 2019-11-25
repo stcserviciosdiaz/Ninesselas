@@ -18,12 +18,14 @@ export class HomeUserComponent implements OnInit {
     this.authService.getUser().subscribe(
       res => {
         this.userInfo = res;
-        this.authService.getAvatar()
-          .subscribe(resp => {
-            this.avatarImageUrl = resp;
-            console.log('segunda ' );
-            console.log(JSON.stringify(resp));
-          });
+      });
+    console.log('hola1');
+    this.authService.getAvatar()
+      .subscribe(resp => {
+        console.log('hola');
+        this.avatarImageUrl = resp;
+        console.log('segunda ' );
+        console.log(JSON.stringify(resp));
       });
   }
 

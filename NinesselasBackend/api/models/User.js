@@ -59,6 +59,20 @@ module.exports = {
       example: 'PATH',
     },
 
+    photoBookUrl: {
+      type: 'string',
+      required: false,
+      description: 'locacion de la imagen de perfil',
+      example: 'PATH',
+    },
+
+    photoBookFd: {
+      type: 'string',
+      required: false,
+      description: 'file descriptor',
+      example: 'PATH',
+    },
+
     nombreArtistico: {
       type: 'string',
       required: false,
@@ -258,14 +272,6 @@ module.exports = {
       collection: 'MusicalInstruments',
       via: 'userInstrumentFK',
     },
-
-
-
-    // toJSON: function () {
-    //   var obj = this.toObject();
-    //   delete obj.password; //remove the password field when displaying the user model object
-    //   return obj;
-    // }
 
   },
 

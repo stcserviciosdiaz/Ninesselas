@@ -61,6 +61,7 @@ export class ActorsComponent implements OnInit {
       numeroDNIRepresentante: [''],
       ultimosTrabajos: [''],
       avatar: [''],
+      photoBook: [''],
     });
   }
 

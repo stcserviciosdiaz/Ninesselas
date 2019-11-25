@@ -34,6 +34,11 @@
                 <input type="file" (change)="onFileSelected($event)" formControlName="avatar"><br>
               </div>
 
+              <div class="form-group"><!-- Subida de photobook -->
+                <label class="control-label">Foto de Perfil</label>
+                <input type="file" (change)="onFileSelected($event)" formControlName="photoBook"><br>
+              </div>
+
               <div class="form-group"> <!-- Nombre Artístico -->
                 <label class="control-label">Nombre Artístico</label>
                 <input type="text" class="form-control" id="nombreArtistico" formControlName="nombreArtistico" placeholder="Almito Gil">
