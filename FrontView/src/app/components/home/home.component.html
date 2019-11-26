@@ -1,20 +1,21 @@
 <app-header></app-header>
 <header class="masthead text-center text-white">
-          <div class="masthead-content">
+        <div class="crossfade">
+                <figure></figure>
+                <figure></figure>
+              </div>
+
+        <div class="masthead-content">
             <div class="container">
-              <h1 class="masthead-heading text-dark">¿Te Gustaria estar al dia de las Novedades del cine, tv y publicidad?</h1>
+              <h1 class="masthead-heading text-dark">¿Te gustaria estar al dia de las Novedades del cine, tv y publicidad?</h1>
               <h4 class="masthead-subheading mb-0 text-dark">Haz tu perfil visible en pocos minutos y nosotros promocionaremos tu talento y trayectoria</h4>
               <a *ngIf="!authService.loggedIn()" routerLink="/figuracion" class="btn btn-primary btn-xl rounded-pill mt-5 ml-2">Figuración</a>
               <a *ngIf="!authService.loggedIn()" routerLink="/figuracion" class="btn btn-primary btn-xl rounded-pill mt-5 ml-2">Actor</a>
               <a *ngIf="!authService.loggedIn()" routerLink="/figuracion" class="btn btn-primary btn-xl rounded-pill mt-5 ml-2">Modelo</a>
               <a *ngIf="!authService.loggedIn()" routerLink="/register" class="btn btn-primary btn-xl rounded-pill mt-5 ml-2">Niños</a>
             </div>
-          </div>
-          <div class="bg-circle-1 bg-circle"></div>
-          <div class="bg-circle-2 bg-circle"></div>
-          <div class="bg-circle-3 bg-circle"></div>
-          <div class="bg-circle-4 bg-circle"></div>
-        <div class="mini-spacer c2a5" style="background-image:url(images/c2a.png)">
+        </div>
+        <!-- <div class="mini-spacer c2a5" style="background-image:url(images/c2a.png)">
             <div class="col-12">
                 <div *ngIf="!authService.loggedIn()" class="d-lg-flex d-md-12 d-flex">
                     <div class="float-lg-left col-lg-7 col-md-8 fs-26 align-self-center">
@@ -25,7 +26,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 </header>
 <app-footer></app-footer>
 <!-- <div class="spacer masthead">
