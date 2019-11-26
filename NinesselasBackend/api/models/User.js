@@ -8,227 +8,56 @@ var bcrypt = require("bcryptjs");
 module.exports = {
 
   attributes: {
-    rol: {
-      type: 'string',
-      required: true,
-      description: 'Define si busca trabajo, busca contratar o es el administrador',
-      example: 'Administrador',
-    },
-    username: {
-      type: 'string',
-      required: true,
-      description: 'Representación completa del nombre del usuario',
-      example: 'Daniebro',
-    },
 
-    password: {
-      type: 'string',
-      required: true,
-      description: 'Se guarda el hash de la password',
-      protect: true,
-      example: '2$28a8eabna301089103-13948134nad',
-    },
-
-    email: {
-      type: 'string',
-      required: true,
-      unique: true,
-      isEmail: true,
-      maxLength: 200,
-      example: 'nombre.apellido@ejemplo.com',
-    },
-
-    mayorEdad: {
-      type: 'boolean',
-      required: false,
-      description: "Indica si el modelo/actor/figuración es mayor de edad",
-      example: 'true',
-    },
-
-    avatarUrl: {
-      type: 'string',
-      required: false,
-      description: 'locacion de la imagen de perfil',
-      example: 'PATH',
-    },
-
-    avatarFd: {
-      type: 'string',
-      required: false,
-      description: 'file descriptor',
-      example: 'PATH',
-    },
-
-    nombreArtistico: {
-      type: 'string',
-      required: false,
-      description: 'Nombre por el cual lo conocen popularmente',
-      example: 'Danni el más pro',
-    },
-    primerNombre: {
-      type: 'string',
-      required: false,
-      description: 'Primer nombre del usuario',
-      example: 'Danni',
-    },
-    apellidos: {
-      type: 'string',
-      required: false,
-      description: 'apellidos del usuario',
-      example: 'Brito Morales',
-    },
-    genero: {
-      type: 'string',
-      required: false,
-      description: 'genero del usuario',
-      example: 'Masculino',
-    },
-
-    alias: {
-      type: 'string',
-      required: false,
-      description: 'Otro nombre del usuario',
-      example: 'Daniebro1',
-    },
-    telefonoFijo: {
-      type: 'string',
-      required: false,
-      description: 'numero de telefono fijo',
-      example: '+593998334100',
-    },
-    fechaNacimiento: {
-      type: 'string',
-      required: false,
-      description: 'Fecha de nacimiento del usuario',
-      example: 'Daniebro',
-    },
-    pais: {
-      type: 'string',
-      required: false,
-      description: 'Pais de origen del usuario',
-      example: 'Daniebro',
-    },
-    tallaPantalon: {
-      type: 'number',
-      required: false,
-      description: 'talla de pantalon que usa el usuario',
-      example: '32',
-    },
-    tallaCamisa: {
-      type: 'number',
-      required: false,
-      description: 'talla de camisa que usa el usuario',
-      example: 'Medium',
-    },
-    tallaChaqueta: {
-      type: 'number',
-      required: false,
-      description: 'talla de chaqueta que usa el usuario',
-      example: 'Large',
-    },
-    pie: {
-      type: 'number',
-      required: false,
-      description: 'talla de zapatos que usa el usuario',
-      example: '40',
-    },
-    altura: {
-      type: 'number',
-      required: false,
-      description: 'altura en centimetros del usuario',
-      example: '172',
-    },
-    colorPiel: {
-      type: 'string',
-      required: false,
-      description: 'color de la piel del usuario',
-      example: 'Blanco',
-    },
-    colorPelo: {
-      type: 'string',
-      required: false,
-      description: 'color de la cabellera del usuario',
-      example: 'Rojo',
-    },
-    colorOjos: {
-      type: 'string',
-      required: false,
-      description: 'color de los ojos del usuario',
-      example: 'verdes',
-    },
-    numeroDNI: {
-      type: 'string',
-      required: false,
-      description: 'numero de identificacion del usuario',
-      example: '17839127391',
-    },
-    numeroDNIRepresentante: {
-      type: 'string',
-      required: false,
-      description: 'numero de identificacion del representante en caso de ser menor de edad',
-      example: '17839127391',
-    },
-    numeroSeguridadSocial: {
-      type: 'string',
-      required: false,
-      description: 'numero de seguro social del usuario',
-      example: '8374987391',
-    },
-    modeloCoche: {
-      type: 'string',
-      required: false,
-      description: 'modelo del coche del usuario',
-      example: 'Nissan Sentra',
-    },
-    modeloMoto: {
-      type: 'string',
-      required: false,
-      description: 'nmodelo de moto del usuario',
-      example: 'Hyundai N57',
-    },
-
-
-    razaMascota: {
-      type: 'string',
-      required: false,
-      description: 'raza de la mascota del usuario',
-      example: 'Pastor Aleman',
-    },
-    ultimosTrabajos: {
-      type: 'string',
-      required: false,
-      description: 'descripcion de los ultimos lugares de trabajo',
-      example: 'Trabaje en ..... por ...',
-    },
-
-    bookPhotos: {
-      type: 'string',
-      required: false,
-      description: 'archivo del book de photos',
-      example: 'PATH',
-    },
-
-    curriculum: {
-      type: 'string',
-      required: false,
-      description: 'archivo del curriculum',
-      example: 'PATH',
-    },
-    fotoMano: {
-      type: 'string',
-      required: false,
-      description: 'archivo de la fotografía de las manos',
-      example: 'PATH',
-    },
+    email:                    { type: 'string', required: true, unique: true, isEmail: true, maxLength: 200 },
+    password:                 { type: 'string', required: true, protect: true },
+    rol:                      { type: 'string', required: true },
+    username:                 { type: 'string', required: false },
+    nombres:                  { type: 'string', required: false },
+    apellidos:                { type: 'string', required: false },
+    numeroDNI:                { type: 'string', required: false },
+    numeroSeguridadSocial:    { type: 'string', required: false },
+    telefonoFijo:             { type: 'string', required: false },
+    telefonoMovil:            { type: 'string', required: false },
+    fechaNacimiento:          { type: 'string', required: false },
+    lugarNacimiento:          { type: 'string', required: false },
+    direccion:                { type: 'string', required: false },
+    pais:                     { type: 'string', required: false },
+    localidad:                { type: 'string', required: false },
+    tallaPantalon:            { type: 'string', required: false },
+    tallaCamisa:              { type: 'string', required: false },
+    tallaChaqueta:            { type: 'string', required: false },
+    pie:                      { type: 'string', required: false },
+    altura:                   { type: 'string', required: false },
+    colorPiel:                { type: 'string', required: false },
+    colorPelo:                { type: 'string', required: false },
+    colorOjos:                { type: 'string', required: false },
+    modeloCoche:              { type: 'string', required: false },
+    colorCoche:               { type: 'string', required: false },
+    colorMoto:                { type: 'string', required: false },
+    descripcionMascotas:      { type: 'string', required: false },
+    nombreArtistico:          { type: 'string', required: false },
+    iban:                     { type: 'string', required: false },
+    mayorEdad:                { type: 'string', required: false },
+    avatarUrl:                { type: 'string', required: false },
+    avatarFd:                 { type: 'string', required: false },
+    genero:                   { type: 'string', required: false },
+    numeroDNIRepresentante:   { type: 'string', required: false },
+    ultimosTrabajos:          { type: 'string', required: false },
+    bookPhotosUrl:            { type: 'string', required: false },
+    bookPhotosFd:             { type: 'string', required: false },
+    curriculum:               { type: 'string', required: false },
 
     idiomasHablados: {
       collection: 'Language',
       via: 'userLanguageFK',
     },
+
     deportes: {
       collection: 'Sport',
       via: 'userSportFK',
     },
+
     tattoos: {
       collection: 'Tattoos',
       via: 'userTattoosFK',
@@ -258,14 +87,6 @@ module.exports = {
       collection: 'MusicalInstruments',
       via: 'userInstrumentFK',
     },
-
-
-
-    // toJSON: function () {
-    //   var obj = this.toObject();
-    //   delete obj.password; //remove the password field when displaying the user model object
-    //   return obj;
-    // }
 
   },
 

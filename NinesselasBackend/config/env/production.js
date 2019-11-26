@@ -48,6 +48,7 @@ module.exports = {
     ***************************************************************************/
     default: {
       adapter: 'sails-mysql',
+      //url: 'mysql://root:Daniebro1995@localhost:3306/Ninsselas'
       url: 'mysql://dbu351629:Ninesselas2019!@db5000231797.hosting-data.io:3306/dbs226404',
       //--------------------------------------------------------------------------
       //  /\   To avoid checking it in to version control, you might opt to set

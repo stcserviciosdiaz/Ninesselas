@@ -1,5 +1,12 @@
 footer{
+    background: black;
+    position: absolute;
     bottom: 0;
     width: 100%;
     color: white;
+}
+a {
+    color:  #5B503C !important;
+    text-decoration: none;
+    background-color: transparent;
 }
