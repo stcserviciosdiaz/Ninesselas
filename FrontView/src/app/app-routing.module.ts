@@ -20,12 +20,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'contact', component: ContactComponent },
-
-//  { path: 'actors', component: ActorsComponent, },
-  { path: 'figuracion', component: FiguracionComponent, },
-
-  { path: 'actors', component: ActorsComponent, },
-  { path: 'figuracion', component: FiguracionComponent, },
+  { path: 'figuracion',
+    component: FiguracionComponent,
+    canActivate: [AuthGuard]
+  },
   { path: 'forgot', component: ForgotComponent },
   { path: 'actors',
     component: ActorsComponent,
