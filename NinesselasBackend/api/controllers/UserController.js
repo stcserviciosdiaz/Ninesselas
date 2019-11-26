@@ -15,89 +15,25 @@ module.exports = {
   },
 
   signup: async function (req, res) {
-    var rol = req.param('rol', 'Common User');
-    var username = req.param('username');
-    var email = req.param('email')
-    var password = req.param('password');
-    var mayorEdad = req.param('mayorEdad', 1)
-    var numeroDNIRepresentante = req.param('numeroDNIRepresentante', '')
-    var nombreArtistico = req.param('nombreArtistico', '');
-    var primerNombre = req.param('');
-    var apellidos = req.param('apellidos', '');
-    var genero = req.param('genero', '');
-    var alias = req.param('alias', '');
-    var telefonoFijo = req.param('telefonoFijo', '');
-    var fechaNacimiento = req.param('fechaNacimiento', '');
-    var pais = req.param('pais', '');
-    var tallaPantalon = req.param('tallaPantalon', 0);
-    var tallaCamisa = req.param('tallaCamisa', 0);
-    var tallaChaqueta = req.param('tallaChaqueta', 0);
-    var pie = req.param('pie', 0);
-    var altura = req.param('altura', 0);
-    var colorPiel = req.param('colorPiel', '');
-    var colorPelo = req.param('colorPelo', '');
-    var colorOjos = req.param('colorOjos', '');
-    var numeroDNI = req.param('numeroDNI', '');
-    var numeroSeguridadSocial = req.param('numeroSeguridadSocial', '');
-    var modeloCoche = req.param('modeloCoche', '');
-    var modeloMoto = req.param('modeloMoto', '');
-    var razaMascota = req.param('razaMascota', '');
-    var ultimosTrabajos = req.param('ultimosTrabajos', '');
-
-    var newuser = {
-      username: username,
-      password: password,
-      rol: rol,
-      email: email,
-      mayorEdad: mayorEdad,
-      numeroDNIRepresentante: numeroDNIRepresentante,
-      nombreArtistico: nombreArtistico,
-      primerNombre: primerNombre,
-      apellidos: apellidos,
-      genero: genero,
-      alias: alias,
-      telefonoFijo: telefonoFijo,
-      fechaNacimiento: fechaNacimiento,
-      pais: pais,
-      tallaPantalon: tallaPantalon,
-      tallaCamisa: tallaCamisa,
-      tallaChaqueta: tallaChaqueta,
-      pie: pie,
-      altura: altura,
-      colorPiel: colorPiel,
-      colorPelo: colorPelo,
-      colorOjos: colorOjos,
-      numeroDNI: numeroDNI,
-      numeroSeguridadSocial: numeroSeguridadSocial,
-      modeloCoche: modeloCoche,
-      modeloMoto: modeloMoto,
-      razaMascota: razaMascota,
-      ultimosTrabajos: ultimosTrabajos,
-    }
-    await User.create(newuser)
-    let userData = {
-      email: newuser.email,
-    }
+    var newuser = req.body;
+    await User.create(newuser);
+    let userId;
+    let userData = { email: newuser.email };
     await User.findOne(userData, (error, user) => {
       if (error) {
         console.log(error)
       } else {
         req.session.userId = user.id;
+        userId = user.id;
       }
-    })
-
-
-    let payload = {subject: newuser.email}
-    let token = jwt.sign(payload, 'secretKey')
+    });
+    let payload = {subject: userId};
+    let token = jwt.sign(payload, 'secretKey');
     res.status(200).send({token});
   },
 
   login: async function (req, res) {
-    let userData = {
-      email: req.param('email'),
-      password: req.param('password')
-    }
-
+    let userData = req.body;
     await User.findOne({email: userData.email}, (error, user) => {
       if (error) {
         console.log(error)
@@ -108,9 +44,9 @@ module.exports = {
           if (!bcrypt.compareSync(userData.password, user.password)) {
             res.status(401).send('invalid password')
           } else {
-            let payload = {subject: user.email}
-            let token = jwt.sign(payload, 'secretKey')
-            res.status(200).send({token: token, rol: user.rol})
+            let payload = { subject: user.id };
+            let token = jwt.sign(payload, 'secretKey');
+            res.status(200).send({ token: token, rol: user.rol });
             req.session.userId = user.id;
           }
         }
@@ -131,8 +67,9 @@ module.exports = {
     if (!payload) {
       return res.status(401).send('El token es incorrecto');
     }
-    let emailUser = payload.subject;
-    User.findOne({email: emailUser}, (error, usuarioEncontrado) => {
+    let userId = payload.subject;
+    User.findOne({ id: userId }, (error, usuarioEncontrado) => {
+      console.log(userId)
       if (error) {
         res.status(401).send('No existe el usuario');
       } else {
@@ -154,7 +91,7 @@ module.exports = {
       return res.status(401).send('El token es incorrecto');
     }
 
-    await User.find({rol: 'CommonUser'}, (error, usuariosEncontrados) => {
+    await User.find({ rol: 'CommonUser' }, (error, usuariosEncontrados) => {
       if (error) {
         res.status(401).send('no se encontraron usuarios');
       } else {
@@ -184,7 +121,7 @@ module.exports = {
     });
   },
 
-  updateUsuario: async (req, res) => {
+  updateUsuario: async function (req, res) {
     if (!req.headers.authorization) {
       return res.status(401).send('Unauthorized Request');
     }
@@ -196,14 +133,14 @@ module.exports = {
     if (!payload) {
       return res.status(401).send('El token es incorrecto');
     }
-    let mailUser = payload.subject;
-    let userData = req.allParams();
-    let updated = await User.update({email: mailUser}).set(userData)
+    let userId = payload.subject;
+    let userData = req.body;
+    await User.update({ id: userId }).set(userData)
 
   },
 
   deleteUser: async function (req, res) {
-    let params = req.allParams();
+    let params = req.body;
     await User.destroyOne({id: params.id});
     return res.status(200).send('Usuario Eliminado');
   },

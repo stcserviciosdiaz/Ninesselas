@@ -27,7 +27,6 @@ const routes: Routes = [
   { path: 'forgot', component: ForgotComponent },
   { path: 'actors',
     component: ActorsComponent,
-    canActivate: [AuthGuard]
   },
   { path: 'company',
     component: CompanyComponent,

@@ -49,7 +49,7 @@ module.exports.datastores = {
     *                                                                          *
     ***************************************************************************/
     adapter: 'sails-mysql',
-    url: 'mysql://dbu351629:Ninesselas2019!@db5000231797.hosting-data.io:3306/dbs226404',
+    url: 'mysql://root:Daniebro1995@localhost:3306/Ninesselas'
 
   },
 
