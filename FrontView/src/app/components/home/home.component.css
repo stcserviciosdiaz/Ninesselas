@@ -1,27 +1,8 @@
-.crossfade > figure:nth-child(1) {
-    background-image: url(https://unsplash.it/1925/950?image=1004);
-}
-.crossfade > figure {
-    animation: imageAnimation 30s linear infinite 0s;
-    backface-visibility: hidden;
-    background-size: cover;
-    background-position: center center;
-    color: transparent;
-    height: 100%;
-    left: 0px;
-    opacity: 0;
-    position: absolute;
-    top: 0px;
-    width: 100%;
-    z-index: 0;
-}
-
-.masthead {
+ .masthead {
     position: relative;
     overflow: hidden;
     padding-top: calc(7rem + 72px);
     padding-bottom: 7rem;
-    //background-image: url(https://lps.ec/wp-content/uploads/2019/11/slider2.png);
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: scroll;
