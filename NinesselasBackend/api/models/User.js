@@ -15,15 +15,12 @@ module.exports = {
     username:                 { type: 'string', required: false },
     nombres:                  { type: 'string', required: false },
     apellidos:                { type: 'string', required: false },
-    numeroDNI:                { type: 'string', required: false },
-    numeroSeguridadSocial:    { type: 'string', required: false },
-    telefonoFijo:             { type: 'string', required: false },
-    telefonoMovil:            { type: 'string', required: false },
+    nombreArtistico:          { type: 'string', required: false },
+    sexo:                     { type: 'string', required: false },
+    telefono:                 { type: 'string', required: false },
     fechaNacimiento:          { type: 'string', required: false },
-    lugarNacimiento:          { type: 'string', required: false },
-    direccion:                { type: 'string', required: false },
-    pais:                     { type: 'string', required: false },
-    localidad:                { type: 'string', required: false },
+    nacionalidad:             { type: 'string', required: false },
+    acento:                   { type: 'string', required: false },
     tallaPantalon:            { type: 'string', required: false },
     tallaCamisa:              { type: 'string', required: false },
     tallaChaqueta:            { type: 'string', required: false },
@@ -32,25 +29,45 @@ module.exports = {
     colorPiel:                { type: 'string', required: false },
     colorPelo:                { type: 'string', required: false },
     colorOjos:                { type: 'string', required: false },
+    numeroDNI:                { type: 'string', required: false },
+    numeroSeguridadSocial:    { type: 'string', required: false },
+    numeroDNIPadre:           { type: 'string', required: false },
+    numeroDNIMadre:           { type: 'string', required: false },
+    libroFamilia:             { type: 'string', required: false },
+    carnetConducir:           { type: 'string', required: false },
     modeloCoche:              { type: 'string', required: false },
     colorCoche:               { type: 'string', required: false },
+    fotoCoche:                { type: 'string', required: false },
+    fotoCocheFd:              { type: 'string', required: false },
+    modeloMoto:               { type: 'string', required: false },
     colorMoto:                { type: 'string', required: false },
-    descripcionMascotas:      { type: 'string', required: false },
-    nombreArtistico:          { type: 'string', required: false },
-    iban:                     { type: 'string', required: false },
-    mayorEdad:                { type: 'string', required: false },
-    avatarUrl:                { type: 'string', required: false },
-    avatarFd:                 { type: 'string', required: false },
-    genero:                   { type: 'string', required: false },
-    numeroDNIRepresentante:   { type: 'string', required: false },
-    ultimosTrabajos:          { type: 'string', required: false },
-    bookPhotosUrl:            { type: 'string', required: false },
-    bookPhotosFd:             { type: 'string', required: false },
+    fotoMoto:                 { type: 'string', required: false },
+    fotoMotoFd:               { type: 'string', required: false },
+    videoBook:                { type: 'string', required: false },
+    videoBookFd:              { type: 'string', required: false },
     curriculum:               { type: 'string', required: false },
+    curriculumFd:             { type: 'string', required: false },
+    avatar:                   { type: 'string', required: false },
+    avatarFd:                 { type: 'string', required: false },
+    ultimosTrabajos:          { type: 'string', required: false },
+    observaciones:            { type: 'string', required: false },
+    direccion:                { type: 'string', required: false },
+    localidad:                { type: 'string', required: false },
+    iban:                     { type: 'string', required: false },
 
-    idiomasHablados: {
-      collection: 'Language',
-      via: 'userLanguageFK',
+    tattoos: {
+      collection: 'Tattoos',
+      via: 'userTattoosFK',
+    },
+
+    manos: {
+      collection: 'Hands',
+      via: 'userHandsFK',
+    },
+
+    mascotas: {
+      collection: 'Pets',
+      via: 'userPetsFK',
     },
 
     deportes: {
@@ -58,35 +75,47 @@ module.exports = {
       via: 'userSportFK',
     },
 
-    tattoos: {
-      collection: 'Tattoos',
-      via: 'userTattoosFK',
-    },
-
-    tipoUsuario: {
-      collection: 'UserType',
-      via: 'userTypeFK',
-    },
-
     bailes: {
       collection: 'DanceRythms',
       via: 'userDanceFK',
-    },
-
-    cantos: {
-      collection: 'SingRythms',
-      via: 'userSingFK',
-    },
-
-    habilidades: {
-      collection: 'Skills',
-      via: 'userSkillsFK',
     },
 
     instrumentos: {
       collection: 'MusicalInstruments',
       via: 'userInstrumentFK',
     },
+
+    cantos: {
+      collection: 'SingRythms',
+      via: 'userSingFK',
+    },
+    habilidades: {
+      collection: 'Skills',
+      via: 'userSkillFK',
+    },
+
+    idiomasHablados: {
+      collection: 'Language',
+      via: 'userLanguageFK',
+    },
+    tipoUsuario: {
+      collection: 'UserType',
+      via: 'userTypeFK',
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   },
 

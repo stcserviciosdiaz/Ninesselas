@@ -23,7 +23,7 @@ module.exports = {
       example: 'profesional',
     },
 
-    userSkillsFK:{
+    userSkillFK:{
       model: 'User',
     },
 

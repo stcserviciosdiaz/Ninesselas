@@ -9,12 +9,8 @@ module.exports = {
 
   attributes: {
 
-    ubicacionFoto:{
-      type: 'string',
-      required: false,
-      description: 'ubicacion del contenedor de la foto',
-      example: 'PATH',
-    },
+    tattooFoto:     { type: 'string', required: false },
+    tattooFotoFd:   { type: 'string', required: false },
 
     userTattoosFK:{
       model: 'User',
