@@ -3,15 +3,17 @@
     overflow: hidden;
     padding-top: calc(7rem + 72px);
     padding-bottom: 7rem;
-    background: linear-gradient(0deg,#ff6a00 0,#ee0979 100%);
+    //background-image: url(https://lps.ec/wp-content/uploads/2019/11/slider2.png);
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: scroll;
     background-size: cover;
     height: 85vh;
+    color: #949494;
 }
-.text-white {
-    color: #fff!important;
+h1.masthead-heading {
+    padding-left: 20%;
+    padding-right: 20%; 
 }
 .text-center {
     text-align: center!important;
@@ -22,7 +24,6 @@
 }
 .mini-spacer {
     padding: 40px 0;
-    background: #f34f32;
     bottom: 0;
     position: absolute;
     width: 100%;

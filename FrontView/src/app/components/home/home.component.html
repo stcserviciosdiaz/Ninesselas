@@ -2,15 +2,12 @@
 <header class="masthead text-center text-white">
           <div class="masthead-content">
             <div class="container">
-              <h1 class="masthead-heading mb-0">¿Quieres Trabajar con nosotros?</h1>
-              <h2 class="masthead-subheading mb-0">Unete, es muy facil.!</h2>
-              <a *ngIf="!authService.loggedIn()" routerLink="/figuracion" class="btn btn-primary btn-xl rounded-pill mt-5 ml-2">Si Quieres Figuración</a>
-              <a *ngIf="!authService.loggedIn()" routerLink="/register" class="btn btn-primary btn-xl rounded-pill mt-5 ml-2">Si Quieres contratar</a>
-            </div>
-            <div class="container">
-                <div class="form-group">
-                    <a *ngIf="!authService.loggedIn()" routerLink="/actors" class="btn btn-primary btn-xl rounded-pill mt-3 mr-2">Si Quieres ser Actor / Modelo</a>
-                </div>
+              <h1 class="masthead-heading text-dark">¿Te Gustaria estar al dia de las Novedades del cine, tv y publicidad?</h1>
+              <h4 class="masthead-subheading mb-0 text-dark">Haz tu perfil visible en pocos minutos y nosotros promocionaremos tu talento y trayectoria</h4>
+              <a *ngIf="!authService.loggedIn()" routerLink="/figuracion" class="btn btn-primary btn-xl rounded-pill mt-5 ml-2">Figuración</a>
+              <a *ngIf="!authService.loggedIn()" routerLink="/figuracion" class="btn btn-primary btn-xl rounded-pill mt-5 ml-2">Actor</a>
+              <a *ngIf="!authService.loggedIn()" routerLink="/figuracion" class="btn btn-primary btn-xl rounded-pill mt-5 ml-2">Modelo</a>
+              <a *ngIf="!authService.loggedIn()" routerLink="/register" class="btn btn-primary btn-xl rounded-pill mt-5 ml-2">Niños</a>
             </div>
           </div>
           <div class="bg-circle-1 bg-circle"></div>
@@ -21,7 +18,7 @@
             <div class="col-12">
                 <div *ngIf="!authService.loggedIn()" class="d-lg-flex d-md-12 d-flex">
                     <div class="float-lg-left col-lg-7 col-md-8 fs-26 align-self-center">
-                        <p class="font-semibold text-white mb-0 fg-26">¿Quieres trabajar como empresa?</p>
+                        <p class="font-semibold text-white mb-0 fg-26 text-dark">¿Quieres trabajar como empresa?</p>
                     </div>
                     <div class="float-lg-right col-lg-5 col-md-4 m-t-10 m-b-10">
                         <button routerLink="/register" class="btn bg-white text-inverse btn-md">Registrate Ahora.!</button>
