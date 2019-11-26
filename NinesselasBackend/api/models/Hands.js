@@ -26,7 +26,7 @@ module.exports = {
     manoFoto:     { type: 'string', required: false },
     manoFotoFd:   { type: 'string', required: false },
 
-    userHandssFK:{
+    userHandsFK:{
       model: 'User',
     },
 

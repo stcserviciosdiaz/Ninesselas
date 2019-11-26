@@ -49,7 +49,7 @@ module.exports = {
     default: {
       adapter: 'sails-mysql',
       //url: 'mysql://root:Daniebro1995@localhost:3306/Ninsselas'
-      url: 'mysql://dbu351629:Ninesselas2019!@db5000231797.hosting-data.io:3306/dbs226404',
+      url: 'mysql://iauel69nh6qfpx7x:upvr4effoe2scu71@w1kr9ijlozl9l79i.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/n5uog36lt7waqgbq',
       //--------------------------------------------------------------------------
       //  /\   To avoid checking it in to version control, you might opt to set
       //  ||   sensitive credentials like `url` using an environment variable.
@@ -102,7 +102,7 @@ module.exports = {
     * choose to keep this enabled.)                                            *
     *                                                                          *
     ***************************************************************************/
-    // cascadeOnDestroy: false,
+    cascadeOnDestroy: false,
 
   },
 
@@ -150,7 +150,7 @@ module.exports = {
     ***************************************************************************/
     cors: {
       allowOrigins: [
-      'http://localhost:4200',
+      'http://ninesselas.com',
       ]
     },
 
@@ -252,7 +252,7 @@ module.exports = {
     *                                                                          *
     ***************************************************************************/
     onlyAllowOrigins: [
-       'http://localhost:4200',
+       'http://ninesselas.com',
      ],
 
 
