@@ -69,7 +69,6 @@ module.exports = {
     }
     let userId = payload.subject;
     User.findOne({ id: userId }, (error, usuarioEncontrado) => {
-      console.log(userId)
       if (error) {
         res.status(401).send('No existe el usuario');
       } else {
