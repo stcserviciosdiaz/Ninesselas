@@ -38,11 +38,20 @@
     font-size: 12px;
 }
 
+.fg-50 {
+    font-size: 50px;
+}
+
 @media screen and (max-width: 480px) {
     .fg-26 {
         font-size: 13px;
     } 
     
+}
+
+/* With tamaños*/
+.w-80{
+    width: 80%;
 }
 
 /* Padding tamaños*/

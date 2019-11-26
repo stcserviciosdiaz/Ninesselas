@@ -2,10 +2,20 @@ html, body {
     margin: 0; padding: 0;
   }
 
-  .bt-dorado{
+  figure {
+    margin: 0;
+}
+
+.btn-elect{
+  background: #0b174a;
+  border-color: #0b174a;
+  color: white;
+}
+
+  /* .bt-dorado{
     background-image: linear-gradient(to bottom, #807154 0px, #5B503C 100%) !important;
     border-color: #5B503C !important;
-  }
+  } */
 
   .center-contenid{
     position: absolute;
@@ -37,6 +47,7 @@ html, body {
 .crossfade>figure:nth-child(2){animation-delay:6s;background-image:url(/assets/img/slider2.png)}
 .crossfade>figure:nth-child(3){animation-delay:12s;background-image:url(/assets/img/slider3.jpg)}
 .crossfade>figure:nth-child(4){animation-delay:18s;background-image:url(/assets/img/slider4.jpg)}
+.crossfade>figure:nth-child(5){animation-delay:24s;background-image:url(/assets/img/slider4.jpg)}
 
 @keyframes imageAnimation{
 
@@ -67,6 +78,28 @@ html, body {
 /* Media 480 */
 @media screen and (max-width: 480px) {
 
+  h1.masthead-heading {
+    font-size: xx-large;
+    
+  }
+  h4.masthead-subheading {
+    font-size: x-large;
+  }
+
+  h5.masthead-subheading {
+    font-size: smaller;
+  }
+
+  .center-contenid {
+    top: 5%;
+  }
+
+  
+
   
     
+}
+
+#navbarResponsive {
+  background: #7c6d51;
 }

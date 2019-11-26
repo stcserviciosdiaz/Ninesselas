@@ -64,6 +64,7 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
 
 import 'hammerjs';
 import { FiguracionComponent } from './components/figuracion/figuracion.component';
+import { IsotopeComponent } from './components/isotope/isotope.component';
 
 
 @NgModule({
@@ -84,6 +85,7 @@ import { FiguracionComponent } from './components/figuracion/figuracion.componen
     HomeUserComponent,
     FiguracionComponent,
     ForgotComponent,
+    IsotopeComponent,
 
   ],
   imports: [
