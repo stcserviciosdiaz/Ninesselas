@@ -8,6 +8,10 @@
 .modal-content {
     border: 0;
 }
+
+.alt-actor{
+    margin-top: 15%;
+}
 .modal-content {
     position: relative;
     display: flex;

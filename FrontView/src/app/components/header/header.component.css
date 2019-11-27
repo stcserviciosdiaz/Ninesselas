@@ -3,3 +3,11 @@
     color: white !important;
     font-weight: 500;
 }
+
+.mt-20{
+    margin-top: 40px;
+}
+
+.nineselas-bg{
+    //background-color: rgba(11, 22, 74, 0.07);
+}
