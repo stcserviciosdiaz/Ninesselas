@@ -1,23 +1,28 @@
-<nav class="navbar navbar-expand-lg navbar-dark navbar-custom nineselas-bg fixed-top">
+<nav class="navbar navbar-expand-lg navbar-custom nineselas-bg fixed-top">
     <div class="container">
     <div class="row">
-      <div class="col d-lg-block d-md-none d-none">
+      <div class="col">
           <a class="navbar-brand smooth-scroll" routerLink="/home">
-            <img src="assets/img/logo.png" alt="" style="height: 17%; width: 38%;">
+            <img src="assets/img/logo.png" alt="" style="width: 25%;">
             <a routerLink="/home" class="navbar-brand" href="#"></a>
           </a> 
       </div>
       <div class="col">
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse w-100" id="navbarResponsive">
+          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+              <div class="hamburger">
+                  <span></span>
+                  <span></span>
+                  <span></span>
+                  <span></span>
+              </div>
+          </button>
+          <div class="collapse navbar-collapse w-100" id="navbarResponsive">
               <ul class="navbar-nav mx-auto mt-20">
                 <li class="nav-item">
                   <a routerLink="/contact" class="text-ajust nav-link" >Contacta con nosotros</a>
                 </li>
                 <li class="nav-item">
-                    <a routerLink="/contact" class="text-ajust nav-link" >Empresas</a>
+                    <a routerLink="/register" class="text-ajust nav-link" >Empresas</a>
                   </li>
                 <li class="nav-item">
                     <a *ngIf="!authService.loggedIn()" routerLink="/login" class="text-ajust nav-link">Login</a>
@@ -26,10 +31,8 @@
                     <a (click)="authService.logoutUser()" class="text-ajust nav-link" *ngIf="authService.loggedIn()" >Cerrar Sesión</a>
                   </li>
               </ul>
-            </div>
+          </div>
       </div>
-    </div>
-          
-          
+    </div>          
     </div>
 </nav>

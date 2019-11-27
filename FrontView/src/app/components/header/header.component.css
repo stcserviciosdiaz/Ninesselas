@@ -1,13 +1,64 @@
 .text-ajust{
     font-size: 20px;
-    color: white !important;
+    color: #c1c1c1;
     font-weight: 500;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
 }
 
 .mt-20{
-    margin-top: 40px;
+    margin-top: 20px;
 }
 
 .nineselas-bg{
-    //background-color: rgba(11, 22, 74, 0.07);
+    //min-height: 77px;
+    transition: all .3s;
+    background: white;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+button.navbar-toggler {
+    outline: none;
+    width: 31px;
+    height: 20px;
+    cursor: pointer;
+    transition: all .2s;
+    position: relative;
+    align-self: center;
+    float: right;
+    transform: translate(0px, 15px);
+}
+
+button.navbar-toggler .hamburger span:nth-child(1) {
+    top: 0;
+    transition: all .2s;
+}
+
+:focus {
+    outline: none;
+}
+
+button.navbar-toggler .hamburger span:nth-child(2) {
+    top: 8px;
+    transition: all .15s;
+}
+
+button.navbar-toggler .hamburger span:nth-child(3) {
+    top: 8px;
+    transition: all .15s;
+}
+
+button.navbar-toggler .hamburger span:nth-child(4) {
+    top: 16px;
+    transition: all .2s;
+}
+
+button.navbar-toggler .hamburger span {
+    position: absolute;
+    right: 0;
+    width: 30px;
+    height: 2px;
+    border-right: 5px;
+    background-color: #232323;
 }

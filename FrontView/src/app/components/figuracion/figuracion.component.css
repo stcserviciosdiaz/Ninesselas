@@ -8,6 +8,21 @@
 .modal-content {
   border: 0;
 }
+
+.bg-fondo{
+  background-image: url(/assets/img/figuration-bg.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: scroll;
+  background-size: cover;
+  height: 100%;
+}
+
+.marc-hv{
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
 .modal-content {
   position: relative;
   display: flex;
@@ -15,30 +30,19 @@
   width: 100%;
   pointer-events: auto;
   background-color: #FFF;
+
+  
   background-clip: padding-box;
   border: 1px solid rgba(0,0,0,0.2);
   border-radius: 0.3rem;
   outline: 0;
-}
-.hook {
-  top: 0;
-  right: 0;
-  position: absolute;
-  width: 50%;
-  height: 100%;
-  max-width: 600px;
-  border-radius: 4px 0 0 4px;
-  background-position: 50% 0;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background: aquamarine;
 }
 .corp {
   overflow-y: scroll;
   overflow-x: hidden;
   height: 65vh;
   top: 0;
-  width: 50%;
+  width: 100%;
   border-radius: 4px 0 0 4px;
 }
 .mt-6{
@@ -46,4 +50,9 @@
 }
 .mt-7{
   margin-top: 7rem!important;
+}
+
+.mx-w{
+  max-width: 800px;
+  padding-right: 0px;
 }
