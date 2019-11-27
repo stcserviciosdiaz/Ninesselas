@@ -25,11 +25,12 @@ module.exports = {
       } else {
         req.session.userId = user.id;
         userId = user.id;
+        let payload = {subject: userId};
+        let token = jwt.sign(payload, 'secretKey');
+        res.status(200).send({token});
       }
     });
-    let payload = {subject: userId};
-    let token = jwt.sign(payload, 'secretKey');
-    res.status(200).send({token});
+
   },
 
   login: async function (req, res) {
@@ -67,7 +68,9 @@ module.exports = {
     if (!payload) {
       return res.status(401).send('El token es incorrecto');
     }
+
     let userId = payload.subject;
+    console.log(userId)
     User.findOne({ id: userId }, (error, usuarioEncontrado) => {
       if (error) {
         res.status(401).send('No existe el usuario');

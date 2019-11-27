@@ -48,8 +48,8 @@ module.exports = {
     ***************************************************************************/
     default: {
       adapter: 'sails-mysql',
-      //url: 'mysql://root:Daniebro1995@localhost:3306/Ninsselas'
-      url: 'mysql://iauel69nh6qfpx7x:upvr4effoe2scu71@w1kr9ijlozl9l79i.chr7pe7iynqr.eu-west-1.rds.amazonaws.com:3306/n5uog36lt7waqgbq',
+      url: 'mysql://root:Daniebro1995@localhost:3306/Ninesselas'
+      // url: 'mysql://j4gf1aof57lwhgt9:tj3l1n2kbxyc8ahr@c584md9egjnm02sk.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/ri612vpj2vvift2i',
       //--------------------------------------------------------------------------
       //  /\   To avoid checking it in to version control, you might opt to set
       //  ||   sensitive credentials like `url` using an environment variable.
@@ -148,9 +148,15 @@ module.exports = {
     * > Be sure to use the right protocol!  ("http://" vs. "https://")         *
     *                                                                          *
     ***************************************************************************/
+    // cors: {
+    //   allowOrigins: [
+    //     'https://ninesselas.herokuapp.com',
+    //   ]
+    // },
+
     cors: {
       allowOrigins: [
-      'http://ninesselas.com',
+        'http://localhost:1337',
       ]
     },
 
@@ -251,9 +257,13 @@ module.exports = {
     * > Be sure to use the right protocol!  ("http://" vs. "https://")         *
     *                                                                          *
     ***************************************************************************/
+    // onlyAllowOrigins: [
+    //   'https://ninesselas.herokuapp.com',
+    // ],
+
     onlyAllowOrigins: [
-       'http://ninesselas.com',
-     ],
+      'http://localhost:1337',
+    ],
 
 
     /***************************************************************************

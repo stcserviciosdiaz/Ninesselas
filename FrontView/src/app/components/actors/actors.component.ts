@@ -101,7 +101,7 @@ export class ActorsComponent implements OnInit {
       res => {
         localStorage.setItem('token', res.token);
         console.log('Cuenta de Actor/Modelo creada exitosamente');
-        this.subirFotoPerfil()
+        // this.subirFotoPerfil();
         this.router.navigate(['/homeuser']);
       },
       (err) => {
