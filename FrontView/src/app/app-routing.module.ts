@@ -13,6 +13,7 @@ import { ManagementComponent } from './components/management/management.componen
 import {AuthGuard} from './Guards/auth.guard';
 import {FiguracionComponent} from './components/figuracion/figuracion.component';
 import { ForgotComponent } from './components/user/forgot/forgot.component';
+import { ChildrenComponent } from './components/children/children.component';
 
 
 const routes: Routes = [
@@ -20,14 +21,10 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'contact', component: ContactComponent },
-  { path: 'figuracion',
-    component: FiguracionComponent,
-    canActivate: [AuthGuard]
-  },
+  { path: 'figuracion',component: FiguracionComponent},
   { path: 'forgot', component: ForgotComponent },
-  { path: 'actors',
-    component: ActorsComponent,
-  },
+  { path: 'actors',component: ActorsComponent,},
+  { path: 'children',component: ChildrenComponent,},
   { path: 'company',
     component: CompanyComponent,
     canActivate: [AuthGuard]

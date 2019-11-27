@@ -24,7 +24,7 @@
   top: 0;
   right: 0;
   position: absolute;
-  width: 100%;
+  width: 50%;
   height: 100%;
   max-width: 600px;
   border-radius: 4px 0 0 4px;
@@ -38,8 +38,7 @@
   overflow-x: hidden;
   height: 65vh;
   top: 0;
-  width: 100%;
-  max-width: 500px;
+  width: 50%;
   border-radius: 4px 0 0 4px;
 }
 .mt-6{
