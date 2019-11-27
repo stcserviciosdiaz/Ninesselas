@@ -2,8 +2,12 @@ html, body {
     margin: 0; padding: 0;
   }
 
-  figure {
+figure {
     margin: 0;
+}
+
+.nine-w {
+  width: 80%;
 }
 
 .btn-elect{
@@ -19,7 +23,7 @@ html, body {
 
   .center-contenid{
     position: absolute;
-    top: 15%;
+    top: 20%;
     width: 100%;
     transform: translateY(100px);
   }
@@ -71,17 +75,34 @@ html, body {
 
 }
 
+
 /* Media 992 */
 @media (min-width: 992px){
    
 }
+
+@media (min-width: 775px) and (max-width: 995px){
+.center-contenid{
+  top: 10%;
+}
+
+}
+
 /* Media 480 */
 @media screen and (max-width: 480px) {
+
+  .center-contenid{
+    top: 50px;
+  }
 
   h1.masthead-heading {
     font-size: xx-large;
     
   }
+  .nine-w {
+    width: 100%;
+  }
+
   h4.masthead-subheading {
     font-size: x-large;
   }
@@ -90,9 +111,6 @@ html, body {
     font-size: smaller;
   }
 
-  .center-contenid {
-    top: 5%;
-  }
 
   
 

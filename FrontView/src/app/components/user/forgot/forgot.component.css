@@ -7,12 +7,17 @@
 .forgot_password {
     position: relative;
     overflow: hidden;
-    padding-top: calc(7rem + 72px);
+    padding-top: 15%;
     padding-bottom: 7rem;
-    background: linear-gradient(0deg,#ff6a00 0,#ee0979 100%);
+    background-image: url(/assets/img/olvido-bg.jpg);
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: scroll;
     background-size: cover;
-    height: 85vh;
+    height: 100%;
 }
+
+.btn-ninessela {
+    color: white;
+    background-color: #0b174a;
+  }

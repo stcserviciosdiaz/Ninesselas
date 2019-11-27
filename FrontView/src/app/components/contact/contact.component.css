@@ -3,6 +3,10 @@ textarea {
   height: 100px;
 }
 
+.alt-padding{
+  padding-top: 15%;
+}
+
 .container .contact-form .title {
   font-size: 2.5em;
   font-family: "Roboto", sans-serif;
