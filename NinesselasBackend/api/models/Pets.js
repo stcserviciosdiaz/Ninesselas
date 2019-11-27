@@ -23,8 +23,9 @@ module.exports = {
     //  ╠═╣╚═╗╚═╗║ ║║  ║╠═╣ ║ ║║ ║║║║╚═╗
     //  ╩ ╩╚═╝╚═╝╚═╝╚═╝╩╩ ╩ ╩ ╩╚═╝╝╚╝╚═╝
 
-    mascotaFoto:     { type: 'string', required: false },
-    mascotaFotoFd:   { type: 'string', required: false },
+    mascotaRaza:      { type: 'string', required: false },
+    mascotaFoto:      { type: 'string', required: false },
+    mascotaFotoFd:    { type: 'string', required: false },
 
     userPetsFK:{
       model: 'User',

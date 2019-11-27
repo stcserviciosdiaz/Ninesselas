@@ -33,18 +33,16 @@ export class FiguracionComponent implements OnInit {
 
   createRegisterForm() {
     this.actorForm = this.formBuilder.group({
-      username: [''],
-      mayorEdad: [''],
-      primerNombre: [''],
-      nombreArtistico: [''],
-      apellidos: [''],
       email: [''],
       password: [''],
-      alias: [''],
-      genero: [''],
-      telefonoFijo: [''],
+      username: [''],
+      nombres: [''],
+      apellidos: [''],
+      sexo: [''],
+      telefono: [''],
       fechaNacimiento: [''],
-      pais: [''],
+      nacionalidad: [''],
+      acento: [''],
       tallaPantalon: [''],
       tallaCamisa: [''],
       tallaChaqueta: [''],
@@ -54,15 +52,18 @@ export class FiguracionComponent implements OnInit {
       colorPelo: [''],
       colorOjos: [''],
       numeroDNI: [''],
-      modeloCoche: [''],
-      modeloMoto: [''],
       numeroSeguridadSocial: [''],
-      razaMascota: [''],
-      numeroDNIPadre: [''],
-      numeroDNIMadre: [''],
-      numeroDNIRepresentante: [''],
-      ultimosTrabajos: [''],
+      carnetConducir: [''],
+      modeloCoche: [''],
+      colorCoche: [''],
+      fotoCoche: [''],
+      modeloMoto: [''],
+      colorMoto: [''],
+      fotoMoto: [''],
       avatar: [''],
+      ultimosTrabajos: [''],
+      tattoos: [''],
+      manos: [''],
     });
   }
 
@@ -72,15 +73,13 @@ export class FiguracionComponent implements OnInit {
       username: this.actorForm.get('username').value,
       email: this.actorForm.get('email').value,
       password: this.actorForm.get('password').value,
-      mayorEdad: this.actorForm.get('mayorEdad').value,
-      nombreArtistico: this.actorForm.get('nombreArtistico').value,
-      primerNombre: this.actorForm.get('primerNombre').value,
+      nombres: this.actorForm.get('nombres').value,
       apellidos: this.actorForm.get('apellidos').value,
-      alias: this.actorForm.get('alias').value,
-      genero: this.actorForm.get('genero').value,
-      telefonoFijo: this.actorForm.get('telefonoFijo').value,
+      sexo: this.actorForm.get('sexo').value,
+      acento: this.actorForm.get('acento').value,
+      telefono: this.actorForm.get('telefono').value,
       fechaNacimiento: this.actorForm.get('fechaNacimiento').value,
-      pais: this.actorForm.get('pais').value,
+      nacionalidad: this.actorForm.get('nacionalidad').value,
       tallaPantalon: this.actorForm.get('tallaPantalon').value,
       tallaCamisa: this.actorForm.get('tallaCamisa').value,
       tallaChaqueta: this.actorForm.get('tallaChaqueta').value,
@@ -92,18 +91,17 @@ export class FiguracionComponent implements OnInit {
       numeroDNI: this.actorForm.get('numeroDNI').value,
       modeloCoche: this.actorForm.get('modeloCoche').value,
       modeloMoto: this.actorForm.get('modeloMoto').value,
+      carnetConducir: this.actorForm.get('carnetConducir').value,
+      colorCoche: this.actorForm.get('colorCoche').value,
+      colorMoto: this.actorForm.get('colorMoto').value,
       numeroSeguridadSocial: this.actorForm.get('numeroSeguridadSocial').value,
-      razaMascota: this.actorForm.get('razaMascota').value,
-      numeroDNIRepresentante: this.actorForm.get('numeroDNIRepresentante').value,
       ultimosTrabajos: this.actorForm.get('ultimosTrabajos').value,
-      // bookPhotos: this.actorForm.get('bookPhotos').value,
-      // curriculum: this.actorForm.get('curriculum').value,
     };
     this.subscriber = this.authService.signup(newUserObject).subscribe(
       res => {
         localStorage.setItem('token', res.token);
-        console.log('Cuenta de Actor/Modelo creada exitosamente');
-        this.subirFotoPerfil()
+        alert('Cuenta de Figuración creada exitosamente');
+        // this.subirFotoPerfil()
         this.router.navigate(['/homeuser']);
       },
       (err) => {
