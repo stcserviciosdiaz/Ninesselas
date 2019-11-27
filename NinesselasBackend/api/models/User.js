@@ -34,6 +34,7 @@ module.exports = {
     numeroDNIPadre:           { type: 'string', required: false },
     numeroDNIMadre:           { type: 'string', required: false },
     libroFamilia:             { type: 'string', required: false },
+    libroFamiliaFd:             { type: 'string', required: false },
     carnetConducir:           { type: 'string', required: false },
     modeloCoche:              { type: 'string', required: false },
     colorCoche:               { type: 'string', required: false },
@@ -102,18 +103,6 @@ module.exports = {
       collection: 'UserType',
       via: 'userTypeFK',
     },
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

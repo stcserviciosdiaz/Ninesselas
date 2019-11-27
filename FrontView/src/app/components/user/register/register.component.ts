@@ -39,8 +39,9 @@ export class RegisterComponent implements OnInit {
       username: this.userForm.get('username').value,
       email: this.userForm.get('email').value,
       password: this.userForm.get('password').value,
-      telefonoFijo: this.userForm.get('telefonoFijo').value,
+      telefono: this.userForm.get('telefonoFijo').value,
     };
+    alert('Companía a registrar: ' + JSON.stringify(newUserObject))
     this.authService.signup(newUserObject)
       .subscribe(
        res => {

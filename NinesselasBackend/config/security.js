@@ -30,7 +30,8 @@ module.exports.security = {
 
   cors: {
     allRoutes: true,
-    allowOrigins: 'http://ninesselas.com',
+    // allowOrigins: 'https://ninesselas.herokuapp.com',
+    allowOrigins: 'http://localhost:4200',
     allowCredentials: true,
     allowRequestHeaders: "content-type, authorization"
   },

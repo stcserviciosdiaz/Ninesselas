@@ -52,11 +52,12 @@ export class CompanyComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authService.getUser().subscribe(res => this.companyInfo = res);
+    this.authService.getUser().subscribe(res => {
+      this.companyInfo = res;
+    });
     this.authService.getAllUsers()
       .subscribe(res => {
         this.allUsers = res;
-        alert(JSON.stringify(res));
       });
     for (const user of this.allUsers) {
       if (user.mayorEdad) {
