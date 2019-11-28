@@ -1,13 +1,19 @@
-@media (min-width: 992px){
-    .modal--credentials--signup .modal-content {
-        min-height: 602px;
-        padding-left: 460px;
-        overflow: hidden;
-    }
-}
 .modal-content {
     border: 0;
 }
+.bg-fondo{
+    background-image: url(/assets/img/figuration-bg.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: scroll;
+    background-size: cover;
+    height: 100%;
+  }
+
+  .mx-w{
+    max-width: 800px;
+    padding-right: 0px;
+  }
 
 .alt-actor{
     margin-top: 15%;
@@ -24,18 +30,10 @@
     border-radius: 0.3rem;
     outline: 0;
 }
-.hook {
-    top: 0;
-    right: 0;
+.marc-hv{
     position: absolute;
+    top: 0;
     width: 100%;
-    height: 100%;
-    max-width: 600px;
-    border-radius: 4px 0 0 4px;
-    background-position: 50% 0;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background: aquamarine;
 }
 .corp {
     overflow-y: scroll;
@@ -43,7 +41,6 @@
     height: 65vh;
     top: 0;
     width: 100%;
-    max-width: 500px;
     border-radius: 4px 0 0 4px;
 }
 .mt-6{
@@ -51,4 +48,12 @@
 }
 .mt-7{
     margin-top: 7rem!important;
+}
+
+@media (min-width: 992px){
+    .modal--credentials--signup .modal-content {
+        min-height: 602px;
+        padding-left: 460px;
+        overflow: hidden;
+    }
 }
