@@ -1,14 +1,6 @@
-@media (min-width: 992px){
-  .modal--credentials--signup .modal-content {
-    min-height: 602px;
-    padding-left: 460px;
-    overflow: hidden;
-  }
-}
 .modal-content {
   border: 0;
 }
-
 .bg-fondo{
   background-image: url(/assets/img/figuration-bg.jpg);
   background-repeat: no-repeat;
@@ -18,11 +10,15 @@
   height: 100%;
 }
 
-.marc-hv{
-  position: absolute;
-  top: 0;
-  width: 100%;
+.mx-w{
+  max-width: 800px;
+  padding-right: 0px;
 }
+
+.alt-actor{
+  margin-top: 10%;
+}
+
 .modal-content {
   position: relative;
   display: flex;
@@ -30,13 +26,18 @@
   width: 100%;
   pointer-events: auto;
   background-color: #FFF;
-
-  
   background-clip: padding-box;
   border: 1px solid rgba(0,0,0,0.2);
   border-radius: 0.3rem;
   outline: 0;
 }
+
+.marc-hv{
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
 .corp {
   overflow-y: scroll;
   overflow-x: hidden;
@@ -52,7 +53,10 @@
   margin-top: 7rem!important;
 }
 
-.mx-w{
-  max-width: 800px;
-  padding-right: 0px;
+@media (min-width: 992px){
+  .modal--credentials--signup .modal-content {
+    min-height: 602px;
+    padding-left: 460px;
+    overflow: hidden;
+  }
 }

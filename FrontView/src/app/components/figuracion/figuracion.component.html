@@ -1,6 +1,6 @@
+<app-header></app-header>
 <div class="h-100 bg-fondo marc-hv">
-    <div class="modal-content container mx-w d-flex mt-7 mb-5 pt-3">
-        <div class="hook d-none d-lg-block"></div>
+    <div class="modal-content container mx-w d-flex alt-actor mb-5">
         <div class="corp">
           <div class="">
             <a class="logo">Registro de Figuración</a>
@@ -14,6 +14,7 @@
                     <span>Llena el siguiente formulario</span>
                   </div>
                   <form [formGroup]="actorForm">
+                    
                     <div class="form-group"> <!-- Nombre de Usuario -->
                       <label class="control-label">Nombre de Usuario</label>
                       <input type="text" class="form-control" id="username" formControlName="username" placeholder="Danni5">
@@ -98,7 +99,6 @@
                       <label class="control-label">Acento</label>
                       <input type="text" class="form-control" id="acento" formControlName="acento" placeholder="Español">
                     </div>
-
 
                     <div class="form-group d-flex"> <!-- talla de camisa y chaqueta y pantalon-->
                       <div class="form-group mr-3">
@@ -192,6 +192,7 @@
                       <label class="control-label">Numero de Seguridad Social</label>
                       <input type="text" class="form-control" id="numeroSeguridadSocial" formControlName="numeroSeguridadSocial" placeholder="Numero de Seguridad Social">
                     </div>
+
                     <div class="form-group"><!-- Habilidades -->
                       <label class="control-label">Habilidades</label>
                         <select class="form-control">
@@ -216,6 +217,7 @@
                           <option>Sombras chinescas</option>
                         </select>
                     </div>
+
                     <div class="form-group"><!-- Idiomas -->
                       <label class="control-label">Idiomas</label>
                       <select class="form-control">
@@ -227,6 +229,7 @@
                           <option>Otros</option>
                         </select>
                     </div>
+
                     <div class="form-group"><!-- Cantantes -->
                       <label class="control-label">Cantantes</label>
                       <select class="form-control">
@@ -235,18 +238,22 @@
                           <option>No Profesional</option>
                         </select>
                     </div>
-                    <div class="form-group"><!-- Direccion -->
-                      <label class="control-label">Direccion</label>
-                      <input type="text" class="d-inline form-control" formControlName="" id="" placeholder=" Direccion">
-                    </div>
+
                     <div class="form-group"><!-- Localidad -->
-                      <label class="control-label">Localidad</label>
-                      <input type="text" class="d-inline form-control" formControlName="" id="" placeholder=" Localidad">
+                      <label for="formGroupExampleInput">Localidad</label>
+                      <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input">
                     </div>
+
+                    <div class="form-group"><!-- Direccion -->
+                      <label for="formGroupExampleInput2">Direccion</label>
+                      <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Another input">
+                    </div>
+
                     <div class="form-group"><!-- Observaciones -->
-                        <label class="control-label">Observaciones</label>
-                        <input type="text" class="d-inline form-control" formControlName="" id="" placeholder="Observaciones">
+                      <label for="exampleFormControlTextarea1">Observaciones</label>
+                      <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                     </div>
+
                     <div class="form-group">
                       <label class="control-label">Descripción de Ultimos Trabajos</label>
                       <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos" id="ultimosTrabajos" placeholder="Ultimos Trabajos">
@@ -264,7 +271,9 @@
                         </label>
                       </div>
                     </div>
+
                   </form>
+
                   <div class="info info--sm">
                     Al hacer clic en "Crear cuenta" certifico que tengo 16 años o más y acepto las
                     <a class="link-secondary--underlined" target="blank" routerLink="/terms">Condiciones de Uso</a>, la
@@ -283,3 +292,4 @@
         </div>
     </div>
 </div>
+<app-footer></app-footer>
