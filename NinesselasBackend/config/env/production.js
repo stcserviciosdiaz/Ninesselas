@@ -148,17 +148,17 @@ module.exports = {
     * > Be sure to use the right protocol!  ("http://" vs. "https://")         *
     *                                                                          *
     ***************************************************************************/
+    cors: {
+      allRoutes: true,
+      allowOrigins: '*',
+      allowCredentials: false
+    }
+
     // cors: {
     //   allowOrigins: [
-    //     'https://ninesselas.herokuapp.com',
+    //     'http://localhost:1337',
     //   ]
     // },
-
-    cors: {
-      allowOrigins: [
-        'http://localhost:1337',
-      ]
-    },
 
   },
 
@@ -257,13 +257,13 @@ module.exports = {
     * > Be sure to use the right protocol!  ("http://" vs. "https://")         *
     *                                                                          *
     ***************************************************************************/
-    // onlyAllowOrigins: [
-    //   'https://ninesselas.herokuapp.com',
-    // ],
-
     onlyAllowOrigins: [
-      'http://localhost:1337',
+      'https://ninesselas.herokuapp.com',
     ],
+
+    // onlyAllowOrigins: [
+    //   'http://localhost:1337',
+    // ],
 
 
     /***************************************************************************
