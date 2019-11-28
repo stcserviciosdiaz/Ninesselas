@@ -42,6 +42,9 @@ const routes: Routes = [
   { path: '**', component: PageNotFoundComponent }
 ];
 
+
+//imports: [RouterModule.forRoot(APP_ROUTES, { useHash: true })],
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
