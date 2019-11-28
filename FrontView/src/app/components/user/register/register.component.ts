@@ -1,5 +1,5 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AuthService} from '../../../Services/auth.service';
 import {Router} from '@angular/router';
 import { EmailService } from '../../../Services/email.service';
@@ -26,10 +26,10 @@ export class RegisterComponent implements OnInit {
 
   createRegisterForm() {
     this.userForm = this.formBuilder.group({
-      username: [''],
-      password: [''],
-      email: [''],
-      telefonoFijo: [''],
+      username: ['', Validators.required],
+      password: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      telefonoFijo: ['', Validators.required],
     });
   }
 
