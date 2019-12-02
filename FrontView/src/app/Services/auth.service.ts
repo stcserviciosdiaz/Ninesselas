@@ -13,8 +13,8 @@ export class AuthService {
     private http: HttpClient,
     private router: Router
   ) {
-     this.url = 'http://localhost:1337/user/';
-     // this.url = 'https://ninesselas.herokuapp.com/user/';
+     // this.url = 'http://localhost:1337/user/';
+     this.url = 'https://ninesselas.herokuapp.com/user/';
   }
 
   signup(newUser): Observable<any> {
