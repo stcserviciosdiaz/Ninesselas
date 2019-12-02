@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthService} from "../../Services/auth.service";
+import {AuthService} from '../../Services/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -7,23 +7,23 @@ import {AuthService} from "../../Services/auth.service";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  modalbtn: true;
+  modalbtn = false;
 
   constructor(public authService: AuthService) { }
 
   ngOnInit() {
   }
 
-<<<<<<< HEAD
-=======
-  ninesselabtn(){
-    
+
+  ninesselabtn() {
+    this.modalbtn = true;
   }
 
- 
-  
+  closebtn() {
+    this.modalbtn = false;
+  }
 
-  
 
->>>>>>> da85499aa8e12e837e2e46f8a2511dc032807eae
+
+
 }
