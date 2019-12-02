@@ -52,6 +52,7 @@ import 'hammerjs';
 import { FiguracionComponent } from './components/figuracion/figuracion.component';
 import { IsotopeComponent } from './components/isotope/isotope.component';
 import { ChildrenComponent } from './components/children/children.component';
+import { ModalComponent } from './components/modal/modal.component';
 
 
 @NgModule({
@@ -74,7 +75,7 @@ import { ChildrenComponent } from './components/children/children.component';
     ForgotComponent,
     IsotopeComponent,
     ChildrenComponent,
-
+    ModalComponent,
   ],
   imports: [
     MDBBootstrapModule.forRoot(),

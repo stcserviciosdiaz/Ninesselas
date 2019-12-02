@@ -1,0 +1,9 @@
+.btn-elect{
+    background: #0b174a;
+    border-color: #0b174a;
+    color: white;
+}
+.modal-dialog {
+    max-width: 300px;
+    margin: 1.75rem auto;
+}

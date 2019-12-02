@@ -1,3 +1,10 @@
+.bg-contact{
+  background-image: url(/assets/img/contactenos.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
 textarea {
   resize: none;
   height: 100px;
