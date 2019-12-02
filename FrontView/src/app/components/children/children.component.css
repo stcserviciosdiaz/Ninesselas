@@ -1,25 +1,12 @@
-  .modal-content {
-    border: 0;
-  }
-  .corp {
-    overflow-y: scroll;
-    overflow-x: hidden;
-    height: 65vh;
-    top: 0;
-    width: 100%;
-    border-radius: 4px 0 0 4px;
-  }
-  .mt-6{
-    margin-top: 4rem!important;
-  }
-  .mt-7{
-    margin-top: 7rem!important;
-  }
-  .marc-hv{
-    position: absolute;
-    top: 0;
-    width: 100%;
-  }
+.contect-Ajuste{
+  max-width: 700px;
+  background: white;
+  transform: translate(0px, 100px);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 70vh;
+}
+ 
 
   .bg-fondo{
     background-image: url(/assets/img/figuration-bg.jpg);
@@ -30,15 +17,13 @@
     height: 100%;
   }
 
-  .mx-w{
-    max-width: 800px;
-    padding-right: 0px;
-  }
+
 
   @media (min-width: 992px){
-    .modal--credentials--signup .modal-content {
-      min-height: 602px;
-      padding-left: 460px;
-      overflow: hidden;
-    }
+    
+  }
+
+  @media (max-width: 775px){
+    
+    
   }

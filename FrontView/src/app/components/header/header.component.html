@@ -1,38 +1,29 @@
-<nav class="navbar navbar-expand-lg navbar-custom nineselas-bg fixed-top">
-    <div class="container">
-    <div class="row">
-      <div class="col">
-          <a class="navbar-brand smooth-scroll" routerLink="/home">
-            <img src="assets/img/logo.png" alt="" style="width: 25%;">
-            <a routerLink="/home" class="navbar-brand" href="#"></a>
-          </a> 
-      </div>
-      <div class="col">
-          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-              <div class="hamburger">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                  <span></span>
-              </div>
+<nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+              <img src="assets/img/Ninesselas-white.png" alt="" style="width: 25%;">
+            </a>
+          <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarDefault"
+            aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
           </button>
-          <div class="collapse navbar-collapse w-100" id="navbarResponsive">
-              <ul class="navbar-nav mx-auto mt-20" id="ejm2">
-                <li class="nav-item">
-                  <a routerLink="/contact" class="text-ajust nav-link" >Contacta con nosotros</a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="/register" class="text-ajust nav-link" >Empresas</a>
-                  </li>
-                <li class="nav-item">
-                    <a *ngIf="!authService.loggedIn()" routerLink="/login" class="text-ajust nav-link">Login</a>
-                  </li>
-                  <li class="nav-item">
-                    <a (click)="authService.logoutUser()" class="text-ajust nav-link" *ngIf="authService.loggedIn()" >Cerrar Sesión</a>
-                  </li>
-              </ul>
+          <div class="navbar-collapse collapse justify-content-end" >
+            <ul class="navbar-nav" id="ejm2">
+              <li class="nav-item">
+                <a class="nav-link js-scroll active" href="#home">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll" routerLink="/contact">Contáctenos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll" routerLink="/register">Empresas</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link js-scroll" *ngIf="!authService.loggedIn()" routerLink="/login">Login</a>
+              </li>
+            </ul>
           </div>
-      </div>
-    </div>          
-    </div>
+        </div>
 </nav>
