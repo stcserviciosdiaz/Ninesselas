@@ -15,11 +15,11 @@ export class ActorsComponent implements OnInit {
   selectedFile: File = null;
   disa = false;
   idiomasHablados = [
-    {id: 1, nombreIdioma: 'Inglés', nivelIdioma: '' , isChecked: false},
-    {id: 2, nombreIdioma: 'Francés', nivelIdioma: '', isChecked: false },
-    {id: 3, nombreIdioma: 'Alemán', nivelIdioma: '', isChecked: false },
-    {id: 4, nombreIdioma: 'Italiano', nivelIdioma: '', isChecked: false },
-    {id: 5, nombreIdioma: 'Catalán', nivelIdioma: '', isChecked: false },
+    {id: 0, nombreIdioma: 'Inglés', nivelIdioma: 'Nivel Medio' , isChecked: false},
+    {id: 1, nombreIdioma: 'Francés', nivelIdioma: 'Nivel Medio', isChecked: false },
+    {id: 2, nombreIdioma: 'Alemán', nivelIdioma: 'Nivel Medio', isChecked: false },
+    {id: 3, nombreIdioma: 'Italiano', nivelIdioma: 'Nivel Medio', isChecked: false },
+    {id: 4, nombreIdioma: 'Catalán', nivelIdioma: 'Nivel Medio', isChecked: false },
   ];
 
   constructor(
@@ -66,25 +66,29 @@ export class ActorsComponent implements OnInit {
       modeloMoto: [''],
       colorMoto: [''],
       ultimosTrabajos: [''],
-      idiomasHablados: new FormArray([])
     });
   }
 
   registrarActor() {
-
-    alert(JSON.stringify(this.actorForm.value));
-
-
-    // this.authService.signup(newUserObject).subscribe(
-    //   res => {
-    //     localStorage.setItem('token', res.token);
-    //     console.log('Cuenta de Actor/Modelo creada exitosamente');
-    //     // this.subirFotoPerfil();
-    //     this.router.navigate(['/homeuser']);
-    //   },
-    //   (err) => {
-    //     console.log(JSON.stringify(err));
-    //   });
+    const newIdioma = [];
+    for (const item of this.idiomasHablados) {
+      if (item.isChecked === true) {
+        newIdioma.push({nombreIdioma: item.nombreIdioma, nivelIdioma: item.nivelIdioma});
+      }
+    }
+    const newUserObject = this.actorForm.value;
+    newUserObject.idiomasHablados = newIdioma;
+    alert(JSON.stringify(newUserObject))
+    this.authService.signup(newUserObject).subscribe(
+      res => {
+        localStorage.setItem('token', res.token);
+        console.log('Cuenta de Actor/Modelo creada exitosamente');
+        // this.subirFotoPerfil();
+        this.router.navigate(['/homeuser']);
+      },
+      (err) => {
+        console.log(JSON.stringify(err));
+      });
 
   }
 
@@ -96,26 +100,25 @@ export class ActorsComponent implements OnInit {
     });
   }
 
-  onCheckChange(event) {
-    const formArray: FormArray = this.actorForm.get('idiomasHablados') as FormArray;
-    /* Selected */
+  onCheckLanguage(event) {
     if (event.target.checked) {
-      // Add a new control in the arrayForm
-      formArray.push(new FormControl(event.target.value));
+      for (const idioma of this.idiomasHablados) {
+        if (idioma.nombreIdioma === event.target.value) {
+          idioma.isChecked = true;
+        }
+      }
     } else {
       // find the unselected element
-      let i = 0;
-
-      formArray.controls.forEach((ctrl: FormControl) => {
-        if (ctrl.value === event.target.value) {
-          // Remove the unselected element from the arrayForm
-          formArray.removeAt(i);
-          return;
+      for (const idioma of this.idiomasHablados) {
+        if (idioma.nombreIdioma === event.target.value) {
+          idioma.isChecked = false;
         }
-
-        i++;
-      });
+      }
     }
+  }
+
+  onCheckLanguageLevel(event, i) {
+    this.idiomasHablados[i].nivelIdioma = event.target.value;
   }
 
 }

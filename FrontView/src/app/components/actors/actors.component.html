@@ -216,12 +216,21 @@
 <!--                        <option>Sombras chinescas</option>-->
 <!--                      </select>-->
 <!--                    </div>-->
-                    <div *ngFor="let idioma of idiomasHablados; let i=index" class="form-group">
-                      <label>
-                        <input type="checkbox" [value]="idioma.nombreIdioma" (change)="onCheckChange($event)">
-                        {{idioma.nombreIdioma}}
-                      </label>
+                    <div class="form-group">
+                      <label class="control-label">Selecciona los idiomas que dominas</label>
+                      <div *ngFor="let idioma of idiomasHablados; let i=index" class="form-group">
+                        <label>
+                          <input type="checkbox" [value]="idioma.nombreIdioma" (change)="onCheckLanguage($event)">
+                          {{idioma.nombreIdioma}}
+                        </label>
+                        <select [disabled]="!idioma.isChecked" (change)="onCheckLanguageLevel($event, i)">
+                          <option>Nivel Medio</option>
+                          <option>Nivel Alto</option>
+                          <option>Bilingüe</option>
+                        </select>
+                      </div>
                     </div>
+
 <!--                    <div class="form-group">&lt;!&ndash; Cantantes &ndash;&gt;-->
 <!--                      <label class="control-label">Cantantes</label>-->
 <!--                      <select class="form-control">-->
