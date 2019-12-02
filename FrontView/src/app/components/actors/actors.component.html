@@ -29,20 +29,20 @@
                       <input type="text" class="form-control" id="apellidos" formControlName="apellidos" placeholder="Almito Gil">
                     </div>
 
-                    <div class="form-group"><!-- Subida de avatar -->
-                      <label class="control-label">Foto de Perfil</label>
-                      <input type="file" (change)="onFileSelected($event)" formControlName="avatar"><br>
-                    </div>
+<!--                    <div class="form-group">&lt;!&ndash; Subida de avatar &ndash;&gt;-->
+<!--                      <label class="control-label">Foto de Perfil</label>-->
+<!--                      <input type="file" (change)="onFileSelected($event)" formControlName="avatar"><br>-->
+<!--                    </div>-->
 
-                    <div class="form-group"><!-- Fotos Tatuajes -->
-                      <label class="control-label">Fotos Tatuajes</label>
-                      <input type="file" (change)="onFileSelected($event)" multiple="multiple" formControlName="tattoos"><br>
-                    </div>
+<!--                    <div class="form-group">&lt;!&ndash; Fotos Tatuajes &ndash;&gt;-->
+<!--                      <label class="control-label">Fotos Tatuajes</label>-->
+<!--                      <input type="file" (change)="onFileSelected($event)" multiple="multiple" formControlName="tattoos"><br>-->
+<!--                    </div>-->
 
-                    <div class="form-group"><!-- Fotos Manos -->
-                      <label class="control-label">Fotos Manos</label>
-                      <input type="file" (change)="onFileSelected($event)" multiple="multiple" formControlName="manos"><br>
-                    </div>
+<!--                    <div class="form-group">&lt;!&ndash; Fotos Manos &ndash;&gt;-->
+<!--                      <label class="control-label">Fotos Manos</label>-->
+<!--                      <input type="file" (change)="onFileSelected($event)" multiple="multiple" formControlName="manos"><br>-->
+<!--                    </div>-->
 
                     <div class="form-group"><!-- Correo electronico -->
                       <label>Correo electronico</label>
@@ -148,16 +148,16 @@
                       </div>
                     </div>
 
-                    <div class="form-group d-flex"> <!-- Foto coche y  foto moto-->
-                      <div class="form-group mr-3">
-                        <label class="control-label">foto coche</label>
-                        <input type="text" class="d-inline form-control" id="fotoCoche" formControlName="fotoCoche" placeholder="Modelo de Coche">
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label">foto moto</label>
-                        <input type="text" class="d-inline form-control" id="fotoMoto" formControlName="fotoMoto" placeholder="Modelo de Moto">
-                      </div>
-                    </div>
+<!--                    <div class="form-group d-flex"> &lt;!&ndash; Foto coche y  foto moto&ndash;&gt;-->
+<!--                      <div class="form-group mr-3">-->
+<!--                        <label class="control-label">foto coche</label>-->
+<!--                        <input type="text" class="d-inline form-control" id="fotoCoche" formControlName="fotoCoche" placeholder="Modelo de Coche">-->
+<!--                      </div>-->
+<!--                      <div class="form-group">-->
+<!--                        <label class="control-label">foto moto</label>-->
+<!--                        <input type="text" class="d-inline form-control" id="fotoMoto" formControlName="fotoMoto" placeholder="Modelo de Moto">-->
+<!--                      </div>-->
+<!--                    </div>-->
 
                     <div class="form-group d-flex"> <!-- Carnet de conducir y coche-->
                       <div class="form-group mr-3">
@@ -192,61 +192,44 @@
                       <label class="control-label">Numero de Seguridad Social</label>
                       <input type="text" class="form-control" id="numeroSeguridadSocial" formControlName="numeroSeguridadSocial" placeholder="Numero de Seguridad Social">
                     </div>
-                    <div class="form-group"><!-- Habilidades -->
-                      <label class="control-label">Habilidades</label>
-                      <select class="form-control">
-                        <option>Seleccione...</option>
-                        <option>Lenguaje de signos</option>
-                        <option>Skater </option>
-                        <option>Skater Acuático </option>
-                        <option>Pompas Jabón</option>
-                        <option>Presentador</option>
-                        <option>Magia</option>
-                        <option>Surf</option>
-                        <option>Buceo</option>
-                        <option>Surf</option>
-                        <option>Cómico</option>
-                        <option>Motocross</option>
-                        <option>Mimo</option>
-                        <option>Puenting</option>
-                        <option>Sky</option>
-                        <option>Parapente</option>
-                        <option>Ciclismo BMX</option>
-                        <option>Parkour snowboarding</option>
-                        <option>Sombras chinescas</option>
-                      </select>
+<!--                    <div class="form-group">&lt;!&ndash; Habilidades &ndash;&gt;-->
+<!--                      <label class="control-label">Habilidades</label>-->
+<!--                      <select class="form-control">-->
+<!--                        <option>Seleccione...</option>-->
+<!--                        <option>Lenguaje de signos</option>-->
+<!--                        <option>Skater </option>-->
+<!--                        <option>Skater Acuático </option>-->
+<!--                        <option>Pompas Jabón</option>-->
+<!--                        <option>Presentador</option>-->
+<!--                        <option>Magia</option>-->
+<!--                        <option>Surf</option>-->
+<!--                        <option>Buceo</option>-->
+<!--                        <option>Surf</option>-->
+<!--                        <option>Cómico</option>-->
+<!--                        <option>Motocross</option>-->
+<!--                        <option>Mimo</option>-->
+<!--                        <option>Puenting</option>-->
+<!--                        <option>Sky</option>-->
+<!--                        <option>Parapente</option>-->
+<!--                        <option>Ciclismo BMX</option>-->
+<!--                        <option>Parkour snowboarding</option>-->
+<!--                        <option>Sombras chinescas</option>-->
+<!--                      </select>-->
+<!--                    </div>-->
+                    <div *ngFor="let idioma of idiomasHablados; let i=index" class="form-group">
+                      <label>
+                        <input type="checkbox" [value]="idioma.nombreIdioma" (change)="onCheckChange($event)">
+                        {{idioma.nombreIdioma}}
+                      </label>
                     </div>
-                    <div class="form-group"><!-- Idiomas -->
-                      <label class="control-label">Idiomas</label>
-                      <select class="form-control">
-                        <option>Seleccione...</option>
-                        <option>Inglés</option>
-                        <option>Frances</option>
-                        <option>Alemén</option>
-                        <option>Catalán</option>
-                        <option>Otros</option>
-                      </select>
-                    </div>
-                    <div class="form-group"><!-- Cantantes -->
-                      <label class="control-label">Cantantes</label>
-                      <select class="form-control">
-                        <option>Seleccione...</option>
-                        <option>Profesional</option>
-                        <option>No Profesional</option>
-                      </select>
-                    </div>
-                    <div class="form-group"><!-- Direccion -->
-                      <label class="control-label">Direccion</label>
-                      <input type="text" class="d-inline form-control" formControlName="" id="" placeholder=" Direccion">
-                    </div>
-                    <div class="form-group"><!-- Localidad -->
-                      <label class="control-label">Localidad</label>
-                      <input type="text" class="d-inline form-control" formControlName="" id="" placeholder=" Localidad">
-                    </div>
-                    <div class="form-group"><!-- Observaciones -->
-                      <label class="control-label">Observaciones</label>
-                      <input type="text" class="d-inline form-control" formControlName="" id="" placeholder="Observaciones">
-                    </div>
+<!--                    <div class="form-group">&lt;!&ndash; Cantantes &ndash;&gt;-->
+<!--                      <label class="control-label">Cantantes</label>-->
+<!--                      <select class="form-control">-->
+<!--                        <option>Seleccione...</option>-->
+<!--                        <option>Profesional</option>-->
+<!--                        <option>No Profesional</option>-->
+<!--                      </select>-->
+<!--                    </div>-->
                     <div class="form-group">
                       <label class="control-label">Descripción de Ultimos Trabajos</label>
                       <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos" id="ultimosTrabajos" placeholder="Ultimos Trabajos">
