@@ -8,21 +8,20 @@
                         <figure></figure>
                 </div>
                 <div class="center-contenid">
-                <div class="col">
-                        <div class="mx-auto nine-w p-3 text-white text-center">
+                        <div class="col">
+                                <div class="mx-auto nine-w p-3 text-white text-center">
                                 <h1 class="masthead-heading fg-50 text-light">Agencia de actores y figuración</h1>
                                 <h4 class="masthead-subheading mb-0 text-light">Queremos contar con tu perfil para futuros proyectos del mundo escénico.</h4>
                                 <h5 class="masthead-subheading mb-0 mt-3 text-light">APORTA TUS DATOS Y RECUERDA ACTUALIZARTE.</h5>
-                                
-                                <div class="" >
-                                        <a *ngIf="!authService.loggedIn()" routerLink="/figuracion" class="btn btn-elect btn-xl  mt-5 ml-2">Figuración</a>
-                                        <a *ngIf="!authService.loggedIn()" routerLink="/actors" class="btn btn-elect btn-xl  mt-5 ml-2">Actor</a>
-                                        <a *ngIf="!authService.loggedIn()" routerLink="/children" class="btn btn-elect btn-xl  mt-5 ml-2">Niños</a>   
                                 </div>
+                             <!--    <a *ngIf="!authService.loggedIn()" routerLink="/figuracion" class="btn btn-elect btn-xl  mt-5 ml-2">Figuración</a>
+                                <a *ngIf="!authService.loggedIn()" routerLink="/actors" class="btn btn-elect btn-xl  mt-5 ml-2">Actor</a>
+                                <a *ngIf="!authService.loggedIn()" routerLink="/children" class="btn btn-elect btn-xl  mt-5 ml-2">Niños</a>    -->
                         </div>
-                </div>
+                        <button class="btn-elect" (click)="ninesselabtn()"><i class="fas fa-chevron-circle-right mr-2"></i>Ingresa Aqui</button>
                 </div>
                 
 </div>
-<app-footer></app-footer>
+<app-modal *ngIf="modalbtn"></app-modal>
+<!-- <app-footer></app-footer> -->
 <!-- <app-isotope></app-isotope> -->

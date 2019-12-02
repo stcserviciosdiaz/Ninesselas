@@ -7,10 +7,15 @@ import {AuthService} from "../../Services/auth.service";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  modalbtn: true;
 
   constructor(private authService: AuthService) { }
 
   ngOnInit() {
+    
+  }
+
+  ninesselabtn(){
     
   }
 
