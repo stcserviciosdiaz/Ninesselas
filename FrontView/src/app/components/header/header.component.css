@@ -74,3 +74,7 @@ ul#ejm2 li a:hover:after{
     opacity:1;
     transform: translateY(15px)
 }
+
+ul li a{
+    color: white;
+}
