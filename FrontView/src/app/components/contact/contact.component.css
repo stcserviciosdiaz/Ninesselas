@@ -5,6 +5,17 @@
     background-position: center;
 }
 
+.transparent{
+  background: rgba(255, 255, 255, 0.08);
+  padding: 10px;
+}
+
+.btn-elect{
+  background: #0b174a;
+  border-color: #0b174a;
+  color: white;
+}
+
 textarea {
   resize: none;
   height: 100px;
@@ -14,65 +25,37 @@ textarea {
   padding-top: 15%;
 }
 
-.container .contact-form .title {
-  font-size: 2.5em;
-  font-family: "Roboto", sans-serif;
-  font-weight: 700;
-  color: #242424;
-  margin: 0% 8%;
+.socials {
+  padding: 1.5rem 0;
+}
+.socials ul li {
+  display: inline-block;
 }
 
-.container .contact-form .subtitle {
-  font-size: 1.2em;
-  font-weight: 400;
-  margin: 0 4% 2% 8%;
+.socials ul li a{
+  color: white;
 }
 
-.container .contact-form input,
-.container .contact-form textarea {
-  width: 60%;
-  padding: 10px;
-  margin: 2% 8%;
-  color: #242424;
-  border: 1px solid #B7B7B7;
+.socials .ico-circle {
+  height: 40px;
+  width: 40px;
+  font-size: 1.7rem;
+  line-height: 1.4;
+  margin: 0 15px 0 0;
+  transition: all 500ms ease;
 }
 
-.container .contact-form input::placeholder,
-.container .contact-form textarea::placeholder {
-  color: #242424;
-}
-
-.container .contact-form .btn-send {
-  background: #007bff;
-  width: 180px;
-  height: 60px;
-  color: #FFFFFF;
-  font-weight: 700;
-  margin: 2% 8%;
-  border: none;
+.ul-resect, .socials ul, .list-ico, .blog-wrapper .post-meta ul, .box-comments .list-comments, .widget-sidebar .list-sidebar, .widget-tags ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
 }
 
 /* Media 480 */
 
 @media screen and (max-width: 480px) {
-
-  .container .contact-form input,
-  .container .contact-form textarea {
-  width: 100%;
-  margin: 2% 0%;
+  .alt-padding{
+    padding-top: 25%;
   }
-
-  .container .contact-form .title {
-    margin: 0;
-  }
-
-  .container .contact-form .subtitle {
-    margin: 0;
-  }
-
-  .container .contact-form .btn-send {
-    margin: 0;
-  }
-
   
 }

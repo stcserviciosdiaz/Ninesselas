@@ -92,6 +92,15 @@ h4.masthead-subheading {
 }
 
 
+/* Media 576 */
+@media (min-width: 576px){
+  .modal-dialog {
+    max-width: 300px;
+    margin: 1.75rem auto;
+  }
+}
+
+
 /* Media 992 */
 @media (min-width: 992px){
    
@@ -106,6 +115,11 @@ h4.masthead-subheading {
 
 /* Media 480 */
 @media screen and (max-width: 480px) {
+
+  .modal-dialog {
+    max-width: 300px;
+    margin: 1.75rem auto;
+  }
 
   .center-contenid{
     top: 50px;

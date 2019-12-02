@@ -21,7 +21,7 @@
 
                     <div class="form-group"> <!-- Nomnbre completos -->
                       <label class="control-label">Nombres Completos</label>
-                      <input type="text" class="form-control" id="nombres" formControlName="nombres" placeholder="Danni André">
+                      <input type="text" class="form-control" id="nombres" formControlName="primerNombre" placeholder="Danni André">
                     </div>
 
                     <div class="form-group"> <!-- Apellidos completos -->
@@ -29,20 +29,20 @@
                       <input type="text" class="form-control" id="apellidos" formControlName="apellidos" placeholder="Almito Gil">
                     </div>
 
-                    <div class="form-group"><!-- Subida de avatar -->
+                    <!-- <div class="form-group">
                       <label class="control-label">Foto de Perfil</label>
                       <input type="file" (change)="onFileSelected($event)" formControlName="avatar"><br>
-                    </div>
+                    </div> -->
 
-                    <div class="form-group"><!-- Fotos Tatuajes -->
+                    <!-- <div class="form-group">
                       <label class="control-label">Fotos Tatuajes</label>
                       <input type="file" (change)="onFileSelected($event)" multiple="multiple" formControlName="tattoos"><br>
-                    </div>
+                    </div> -->
 
-                    <div class="form-group"><!-- Fotos Manos -->
+                    <!-- <div class="form-group">
                       <label class="control-label">Fotos Manos</label>
                       <input type="file" (change)="onFileSelected($event)" multiple="multiple" formControlName="manos"><br>
-                    </div>
+                    </div> -->
 
                     <div class="form-group"><!-- Correo electronico -->
                       <label>Correo electronico</label>
@@ -59,7 +59,7 @@
                       <input type="password" value="" class="form-control" placeholder="Confirm Password">
                     </div>
 
-                    <fieldset class="form-group"><!-- Sexo -->
+                   <!--  <fieldset class="form-group">
                       <div class="row">
                         <legend class="col-form-label col-sm-2 pt-0">Sexo</legend>
                         <div class="col-sm-10">
@@ -77,27 +77,27 @@
                           </div>
                         </div>
                       </div>
-                    </fieldset>
+                    </fieldset> -->
 
                     <div class="form-group"><!-- Nuemro de teléfono -->
                       <label>Numero de Teléfono</label>
-                      <input type="text" class="form-control" id="telefono" formControlName="telefono" placeholder="Numero de teléfono">
+                      <input type="text" class="form-control" formControlName="telefonoFijo" placeholder="Numero de teléfono">
                     </div>
 
                     <div class="form-group"> <!-- Fecha de nacimiento -->
                       <label class="control-label">Fecha de nacimiento</label>
-                      <input type="text" class="form-control" formControlName="fechaNacimiento" id="fechaNacimiento">
+                      <input type="text" class="form-control" formControlName="fechaNacimiento">
                     </div>
 
-                    <div class="form-group"> <!-- Naciomnalidad -->
+                    <!-- <div class="form-group">
                       <label class="control-label">Nacionalidad</label>
-                      <input type="text" class="form-control" id="nacionalidad" formControlName="nacionalidad" placeholder="Pais">
-                    </div>
+                      <input type="text" class="form-control" formControlName="nacionalidad" placeholder="Pais">
+                    </div> -->
 
-                    <div class="form-group"> <!-- Acento -->
+                    <!-- <div class="form-group">
                       <label class="control-label">Acento</label>
-                      <input type="text" class="form-control" id="acento" formControlName="acento" placeholder="Español">
-                    </div>
+                      <input type="text" class="form-control" formControlName="acento" placeholder="Español">
+                    </div> -->
 
 
                     <div class="form-group d-flex"> <!-- talla de camisa y chaqueta y pantalon-->
@@ -148,7 +148,7 @@
                       </div>
                     </div>
 
-                    <div class="form-group d-flex"> <!-- Foto coche y  foto moto-->
+                    <!-- <div class="form-group d-flex">
                       <div class="form-group mr-3">
                         <label class="control-label">foto coche</label>
                         <input type="text" class="d-inline form-control" id="fotoCoche" formControlName="fotoCoche" placeholder="Modelo de Coche">
@@ -157,14 +157,14 @@
                         <label class="control-label">foto moto</label>
                         <input type="text" class="d-inline form-control" id="fotoMoto" formControlName="fotoMoto" placeholder="Modelo de Moto">
                       </div>
-                    </div>
+                    </div> -->
 
-                    <div class="form-group d-flex"> <!-- Carnet de conducir y coche-->
+                    <!-- <div class="form-group d-flex"> 
                       <div class="form-group mr-3">
                         <label class="control-label">Carnet de conducir</label>
                         <input type="text" class="d-inline form-control" id="carnetConducir" formControlName="carnetConducir" placeholder="Modelo de Coche">
                       </div>
-                    </div>
+                    </div> -->
 
                     <div class="form-group d-flex"> <!-- Modelo de Coche y Moto-->
                       <div class="form-group mr-3">
@@ -177,7 +177,7 @@
                       </div>
                     </div>
 
-                    <div class="form-group d-flex"> <!-- Color de Coche y Moto-->
+                    <!-- <div class="form-group d-flex">
                       <div class="form-group mr-3">
                         <label class="control-label">Color de Coche</label>
                         <input type="text" class="d-inline form-control" id="colorCoche" formControlName="colorCoche" placeholder="Modelo de Coche">
@@ -186,13 +186,13 @@
                         <label class="control-label">Color de Moto</label>
                         <input type="text" class="d-inline form-control" id="colorMoto" formControlName="colorMoto" placeholder="Modelo de Moto">
                       </div>
-                    </div>
+                    </div> -->
 
-                    <div class="form-group"> <!-- Numero de Seguridad Social -->
+                    <!-- <div class="form-group">
                       <label class="control-label">Numero de Seguridad Social</label>
-                      <input type="text" class="form-control" id="numeroSeguridadSocial" formControlName="numeroSeguridadSocial" placeholder="Numero de Seguridad Social">
-                    </div>
-                    <div class="form-group"><!-- Habilidades -->
+                      <input type="text" class="form-control" formControlName="numeroSeguridadSocial" placeholder="Numero de Seguridad Social">
+                    </div> -->
+                    <div class="form-group">
                       <label class="control-label">Habilidades</label>
                       <select class="form-control">
                         <option>Seleccione...</option>
@@ -237,19 +237,19 @@
                     </div>
                     <div class="form-group"><!-- Direccion -->
                       <label class="control-label">Direccion</label>
-                      <input type="text" class="d-inline form-control" formControlName="" id="" placeholder=" Direccion">
+                      <input type="text" class="d-inline form-control" formControlName="" placeholder=" Direccion">
                     </div>
                     <div class="form-group"><!-- Localidad -->
                       <label class="control-label">Localidad</label>
-                      <input type="text" class="d-inline form-control" formControlName="" id="" placeholder=" Localidad">
+                      <input type="text" class="d-inline form-control" formControlName=""  placeholder=" Localidad">
                     </div>
                     <div class="form-group"><!-- Observaciones -->
                       <label class="control-label">Observaciones</label>
-                      <input type="text" class="d-inline form-control" formControlName="" id="" placeholder="Observaciones">
+                      <input type="text" class="d-inline form-control" formControlName=""  placeholder="Observaciones">
                     </div>
                     <div class="form-group">
                       <label class="control-label">Descripción de Ultimos Trabajos</label>
-                      <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos" id="ultimosTrabajos" placeholder="Ultimos Trabajos">
+                      <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos" placeholder="Ultimos Trabajos">
                     </div>
 
                     <div class="form-group"> <!-- Submit Button -->
@@ -258,7 +258,7 @@
 
                     <div class="form-group">
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <input class="form-check-input" type="checkbox" >
                         <label class="form-check-label">
                           Acepta los terminos del registro
                         </label>

@@ -1,37 +1,37 @@
 <app-header></app-header>
-<div class="h-100 marc-hv bg-fondo">
-    <div class="modal-content container mx-w d-flex mt-7 mb-5 pt-3">
-        <div class="corp">
+<div class="bg-fondo">
+    <div class="container contect-Ajuste mx-w d-flex">
+        <div class="">
           <div class="">
             <a class="logo">Registro de Niños</a>
             <p class="mt-3">Llena el siguiente formulario</p>
           </div>
-          <div class="modal-body">
-            <div class="modal-inner">
-              <div class="credentials-box">
-                <div class="simple-credentials js-simple-credentials">
-                  <div class="credentials-or">
+          <div class="">
+            <div class="">
+              <div class="">
+                <div class="">
+                  <div class="">
                     <span>Llena el siguiente formulario</span>
                   </div>
                   <form [formGroup]="childForm">
                     <div class="form-group">
                       <label class="control-label">Nombre de Usuario</label>
-                      <input type="text" class="form-control" id="username" formControlName="username" placeholder="Daniebro">
+                      <input type="text" class="form-control"  formControlName="username" placeholder="Daniebro">
                     </div>
 
                     <div class="form-group">
                       <label class="control-label">Nombres Completos</label>
-                      <input type="text" class="form-control" id="nombres" formControlName="nombres" placeholder="Danni André">
+                      <input type="text" class="form-control"  formControlName="nombres" placeholder="Danni André">
                     </div>
 
                     <div class="form-group">
                       <label class="control-label">Apellidos Completos</label>
-                      <input type="text" class="form-control" id="apellidos" formControlName="apellidos" placeholder="Almito Gil">
+                      <input type="text" class="form-control"  formControlName="apellidos" placeholder="Almito Gil">
                     </div>
 
                     <div class="form-group">
                       <label class="control-label">Nombre Artístico</label>
-                      <input type="text" class="form-control" id="nombreArtistico" formControlName="nombreArtistico" placeholder="Almito Gil">
+                      <input type="text" class="form-control"  formControlName="nombreArtistico" placeholder="Almito Gil">
                     </div>
 
                     <div class="form-group">
@@ -46,22 +46,22 @@
 
                     <div class="form-group">
                       <label>DNI del padre</label>
-                      <input type="email" class="form-control" id="numeroDNIPadre" formControlName="numeroDNIPadre" placeholder="30065089H">
+                      <input type="email" class="form-control"  formControlName="numeroDNIPadre" placeholder="30065089H">
                     </div>
 
                     <div class="form-group">
                       <label>DNI de la Madre</label>
-                      <input type="email" class="form-control" id="numeroDNIMadre" formControlName="numeroDNIMadre" placeholder="30065089H">
+                      <input type="email" class="form-control"  formControlName="numeroDNIMadre" placeholder="30065089H">
                     </div>
 
                     <div class="form-group">
                       <label>Correo electronico</label>
-                      <input type="email" class="form-control" id="email" formControlName="email" placeholder="name@example.com">
+                      <input type="email" class="form-control"  formControlName="email" placeholder="name@example.com">
                     </div>
 
                     <div class="form-group">
                       <label>Contraseña</label>
-                      <input type="password" id="password" class="form-control" formControlName="password" aria-describedby="passwordHelpInline">
+                      <input type="password"  class="form-control" formControlName="password" aria-describedby="passwordHelpInline">
                     </div>
 
                     <div class="form-group">
@@ -74,13 +74,13 @@
                         <legend class="col-form-label col-sm-2 pt-0">Sexo</legend>
                         <div class="col-sm-10">
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" formControlName="sexo" id="gridRadios1" value="Masculino" checked>
+                            <input class="form-check-input" type="radio" formControlName="sexo"  value="Masculino" checked>
                             <label class="form-check-label">
                               Masculino
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" formControlName="sexo" id="gridRadios2" value="Femenino">
+                            <input class="form-check-input" type="radio" formControlName="sexo"  value="Femenino">
                             <label class="form-check-label">
                               Femenino
                             </label>
@@ -91,69 +91,69 @@
 
                     <div class="form-group">
                       <label>Numero de Teléfono</label>
-                      <input type="text" class="form-control" id="telefono" formControlName="telefono" placeholder="Numero de teléfono">
+                      <input type="text" class="form-control"  formControlName="telefono" placeholder="Numero de teléfono">
                     </div>
 
                     <div class="form-group">
-                      <label class="control-label">Fecha de nacimiento</label>
+                      
                       <input type="text" class="form-control" formControlName="fechaNacimiento">
                     </div>
 
                     <div class="form-group">
                       <label class="control-label">Naciomnalidad</label>
-                      <input type="text" class="form-control" id="nacimiento" formControlName="nacimiento" placeholder="Pais">
+                      <input type="text" class="form-control"  formControlName="nacionalidad" placeholder="Pais">
                     </div>
                     <div class="form-group">
                       <label class="control-label">Acento</label>
-                      <input type="text" class="form-control" id="acento" formControlName="acento" placeholder="Daniebro">
+                      <input type="text" class="form-control"  formControlName="acento" placeholder="Daniebro">
                     </div>
                     <div class="form-group d-flex">
                       <div class="form-group mr-3">
                         <label class="control-label">Talla de camisa</label>
-                        <input type="text" class="d-inline form-control" id="tallaCamisa" formControlName="tallaCamisa" placeholder="talla de camisa">
+                        <input type="text" class="d-inline form-control"  formControlName="tallaCamisa" placeholder="talla de camisa">
                       </div>
                       <div class="form-group">
                         <label class="control-label">talla de chaqueta</label>
-                        <input type="text" class="d-inline form-control" id="tallaChaqueta" formControlName="tallaChaqueta" placeholder="talla de chaqueta">
+                        <input type="text" class="d-inline form-control"  formControlName="tallaChaqueta" placeholder="talla de chaqueta">
                       </div>
                       <div class="form-group mr-3">
                         <label class="control-label">Talla de pantalon</label>
-                        <input type="text" class="d-inline form-control" id="tallaPantalon" formControlName="tallaPantalon" placeholder="talla de pantalon">
+                        <input type="text" class="d-inline form-control"  formControlName="tallaPantalon" placeholder="talla de pantalon">
                       </div>
                     </div>
                     <div class="form-group d-flex">
                       <div class="form-group mr-3">
                         <label class="control-label">Pie</label>
-                        <input type="text" class="d-inline form-control" id="pie" formControlName="pie" placeholder="Pie">
+                        <input type="text" class="d-inline form-control"  formControlName="pie" placeholder="Pie">
                       </div>
                       <div class="form-group">
                         <label class="control-label">Altura</label>
-                        <input type="text" class="d-inline form-control" id="altura" formControlName="altura" placeholder="Altura">
+                        <input type="text" class="d-inline form-control"  formControlName="altura" placeholder="Altura">
                       </div>
                     </div>
                     <div class="form-group d-flex">
                       <div class="form-group mr-3">
                         <label class="control-label">Color de Piel</label>
-                        <input type="text" class="d-inline form-control" id="colorPiel" formControlName="colorPiel" placeholder="Color de Piel">
+                        <input type="text" class="d-inline form-control"  formControlName="colorPiel" placeholder="Color de Piel">
                       </div>
                       <div class="form-group">
                         <label class="control-label">Color de Pelo</label>
-                        <input type="text" class="d-inline form-control" id="colorPelo" formControlName="colorPelo" placeholder="Color de Pelo">
+                        <input type="text" class="d-inline form-control"  formControlName="colorPelo" placeholder="Color de Pelo">
                       </div>
                     </div>
                     <div class="form-group d-flex">
                       <div class="form-group mr-3">
                         <label class="control-label">Color de ojos</label>
-                        <input type="text" class="d-inline form-control" id="colorOjos" formControlName="colorOjos" placeholder="Color de ojos">
+                        <input type="text" class="d-inline form-control"  formControlName="colorOjos" placeholder="Color de ojos">
                       </div>
                       <div class="form-group">
                         <label class="control-label">Code DNI</label>
-                        <input type="text" class="d-inline form-control" id="numeroDNI" formControlName="numeroDNI" placeholder="#####">
+                        <input type="text" class="d-inline form-control"  formControlName="numeroDNI" placeholder="#####">
                       </div>
                     </div>
                     <div class="form-group">
                       <label class="control-label">Numero de Seguridad Social</label>
-                      <input type="text" class="form-control" id="numeroSeguridadSocial" formControlName="numeroSeguridadSocial" placeholder="Numero de Seguridad Social">
+                      <input type="text" class="form-control"  formControlName="numeroSeguridadSocial" placeholder="Numero de Seguridad Social">
                     </div>
                     <div class="form-group">
                       <label class="control-label">Habilidades</label>
@@ -232,19 +232,17 @@
                           <option>Artes marciales</option>
                         </select>
                     </div>
-
                     <div class="form-group">
                       <label class="control-label">Descripción de Ultimos Trabajos</label>
-                      <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos" id="ultimosTrabajos" placeholder="Ultimos Trabajos">
+                      <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos" placeholder="Ultimos Trabajos">
                     </div>
-
 
                     <div class="form-group">
                       <button class="btn btn-primary" [formGroup]="childForm" (ngSubmit)="signupChild()">Registrame!</button>
                     </div>
                     <div class="form-group">
                       <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="gridCheck">
+                        <input class="form-check-input" type="checkbox">
                         <label class="form-check-label">
                           Acepta los terminos del registro
                         </label>

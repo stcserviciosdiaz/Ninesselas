@@ -1,3 +1,19 @@
+.bg-register{
+  background-image: url(/assets/img/contactenos.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.alt-padding{
+  padding-top: 8%;
+}
+
+.transparent{
+  background: rgba(255, 255, 255, 0.08);
+  padding: 10px;
+}
+
 .card-signin {
   border: 0;
   border-radius: 1rem;
@@ -111,6 +127,15 @@
 
 /* Fallback for Edge
 -------------------------------------------------- */
+
+/* Media 480 */
+
+@media screen and (max-width: 480px) {
+  
+  
+}
+
+
 
 
 

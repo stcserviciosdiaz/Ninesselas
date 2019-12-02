@@ -1,23 +1,82 @@
 <app-header></app-header>
 <div class="alt-padding bg-contact h-100 w-100">
         <div class="container">
-                <div class="col-12">
-                <div class="d-lg-flex d-md-block">
-                        <div class="col-lg-6 col-md-12 d-lg-block d-none map">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d112061.09262729759!2d77.208022!3d28.632485!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x644e33bc3def0667!2sIndior+Tours+Pvt+Ltd.!5e0!3m2!1sen!2sus!4v1527779731123" width="100%" height="500px" frameborder="0" style="border:0" allowfullscreen></iframe>
+                <div class="row transparent">
+                        <div class="col-sm-12">
+                                <div class="contact-mf text-light">
+                                        <div class="box-shadow-full">
+                                                <div class="row">
+                                                  <div class="col-md-6">
+                                                    <div class="title-box-2">
+                                                        <h4 class="title-left d-lg-none d-md-none d-block">
+                                                                ¿Necesita ayuda? Contáctenos
+                                                        </h4>
+                                                      <h5 class="title-left">
+                                                        Envianos tu mensaje
+                                                      </h5>
+                                                    </div>
+                                                    <div>
+                                                        <form [formGroup]="emailForm">
+                                                        <div class="row">
+                                                          <div class="col-md-12 mb-3">
+                                                            <div class="form-group">
+                                                              <input type="text" name="name" class="form-control" formControlName="name" placeholder="Ingresa tu nombre" data-rule="minlen:4" data-msg="Please enter at least 4 chars" />
+                                                              <div class="validation"></div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="col-md-12 mb-3">
+                                                            <div class="form-group">
+                                                              <input type="email" class="form-control" name="email" formControlName="email" placeholder="Ingresa tu correo" data-rule="email" data-msg="Please enter a valid email" />
+                                                              <div class="validation"></div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="col-md-12 mb-3">
+                                                              <div class="form-group">
+                                                                <input type="tel" class="form-control" name="tel" formControlName="phone" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" placeholder="Ingresa tu número de teléfono"/>
+                                                                <div class="validation"></div>
+                                                              </div>
+                                                          </div>
+                                                          <div class="col-md-12 mb-3">
+                                                            <div class="form-group">
+                                                              <textarea class="form-control" formControlName="message" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                                                              <div class="validation"></div>
+                                                            </div>
+                                                          </div>
+                                                          <div class="col-md-12">
+                                                            <button (click)="enviarMail()" class="btn-elect button-a button-big button-rouded">Enviar</button>
+                                                          </div>
+                                                        </div>
+                                                        </form>
+                                                    </div>
+                                                  </div>
+                                                  <div class="col-md-6 d-none d-md-block d-lg-block">
+                                                    <div class="title-box-2 pt-4 pt-md-0">
+                                                      <h4 class="title-left">
+                                                         ¿Necesita ayuda? Contáctenos
+                                                      </h4>
+                                                    </div>
+                                                    <div class="more-info">
+                                                      <p class="lead">
+                                                        Un equipo de profesionales atiende a sus consultas y le asesora de lunes a viernes, de 10 a 13 y de 14 a 18 horas.
+                                                      </p>
+                                                      <ul class="list-ico">
+                                                        <li><span class="ion-ios-location"></span> 329 WASHINGTON ST BOSTON, MA 02108</li>
+                                                        <li><span class="ion-ios-telephone"></span> (617) 557-0089</li>
+                                                        <li><span class="ion-email"></span> contact@ninesselas.com</li>
+                                                      </ul>
+                                                    </div>
+                                                    <div class="socials">
+                                                      <ul>
+                                                        <li><a href=""><span class="ico-circle"><i class="fab fa-facebook"></i></span></a></li>
+                                                        <li><a href=""><span class="ico-circle"><i class="fab fa-instagram"></i></span></a></li>
+                                                        <li><a href=""><span class="ico-circle"><i class="fab fa-twitter"></i></span></a></li>
+                                                      </ul>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                        </div>
+                                </div>
                         </div>
-                        <div class="col-lg-6 col-md-12 contact-form text-light">
-                                <h1 class="title text-light">Contáctanos</h1>
-                                <h2 class="subtitle text-light">Ponte en contacto con nosotros</h2>
-                                <form [formGroup]="emailForm">
-                                    <input type="text" formControlName="name" placeholder="Ingresa tu nombre" />
-                                    <input type="email" formControlName="email" placeholder="Ingresa tu correo" />
-                                    <input type="tel" formControlName="phone" placeholder="Ingresa tu número de teléfono"/>
-                                    <textarea formControlName="message" id="" rows="8" placeholder="Escríbenos tu mensaje"></textarea>
-                                    <button class="btn-send"(click)="enviarMail()">Enviar</button>
-                                </form>
-                        </div>
-                </div>
                 </div>
         </div>
 </div>
