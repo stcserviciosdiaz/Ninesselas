@@ -9,7 +9,7 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "config-prod": "ng build --prod",
-    "config-pre": "ng build --pre" 
+    "config-pre": "ng build --pre"
   },
   "private": true,
   "dependencies": {

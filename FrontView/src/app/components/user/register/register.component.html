@@ -6,29 +6,38 @@
           <div class="card_register">
             <div class="card my-5">
               <div class="card-body">
-                <form [formGroup]="userForm">
+                <form [formGroup]="companyForm" (ngSubmit)="registrarEmpresa()">
                   <div class="form-group">
                     <div class="form-group"><h1 class="text-center">Registrate</h1>
                     </div>
                     <div class="form-group">
                       <label class="control-label">Nombre de Usuario</label>
-                      <input id="username" type="text" matInput formControlName="username" class="form-control" placeholder="username" >
+                      <input id="username" class="form-control" formControlName="username" placeholder="Ninesselas" required >
+                      <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
+                        <div *ngIf="username.errors.required">
+                          Debes poner un nombre de usuario.
+                        </div>
+                      </div>
                     </div>
                     <div class="form-group">
                       <label class="control-label">Correo</label>
-                      <input id="email" type="email" matInput formControlName="email" class="form-control" placeholder="email" >
+                      <input type="text" class="form-control" formControlName="email" placeholder="info@ninesselas.com" required>
                     </div>
                     <div class="form-group">
                       <label class="control-label">Teléfono</label>
-                      <input id="telefono" type="telefonoFijo" matInput formControlName="telefonoFijo" class="form-control" placeholder="teléfono" >
+                      <input type="text" class="form-control" formControlName="telefono"  placeholder="+23371923789" required="">
                     </div>
                     <div class="form-group">
-                      <label class="control-label">Contraseña</label>
-                      <input type="password" matInput formControlName="password" class="form-control" placeholder="Password">
+                      <label class="control-label">Ingresa tu contraseña</label>
+                      <input type="text" class="form-control" formControlName="password" placeholder="***********" required>
+                    </div>
+                    <div class="form-group">
+                      <label class="control-label">Ingresa nuevamente la contraseña</label>
+                      <input type="text" class="form-control" formControlName="password" placeholder="***********" required>
                     </div>
                   </div>
                   <div class="submit-btn">
-                    <button type="button" class="btn btn-primary"  (click)="registrarUsuario()">Registrarme!!!</button>
+                    <button class="btn btn-primary" type="submit">Registrarme</button>
                   </div>
                 </form>
               </div>

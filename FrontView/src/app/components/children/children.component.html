@@ -13,46 +13,45 @@
                   <div class="credentials-or">
                     <span>Llena el siguiente formulario</span>
                   </div>
-                  <form [formGroup]="actorForm">
-                    
-                    <div class="form-group"> 
+                  <form [formGroup]="childForm">
+                    <div class="form-group">
                       <label class="control-label">Nombre de Usuario</label>
                       <input type="text" class="form-control" id="username" formControlName="username" placeholder="Daniebro">
                     </div>
-      
-                    <div class="form-group"> 
+
+                    <div class="form-group">
                       <label class="control-label">Nombres Completos</label>
-                      <input type="text" class="form-control" id="primerNombre" formControlName="primerNombre" placeholder="Danni André">
+                      <input type="text" class="form-control" id="nombres" formControlName="nombres" placeholder="Danni André">
                     </div>
-      
-                    <div class="form-group"> 
+
+                    <div class="form-group">
                       <label class="control-label">Apellidos Completos</label>
                       <input type="text" class="form-control" id="apellidos" formControlName="apellidos" placeholder="Almito Gil">
                     </div>
-      
+
+                    <div class="form-group">
+                      <label class="control-label">Nombre Artístico</label>
+                      <input type="text" class="form-control" id="nombreArtistico" formControlName="nombreArtistico" placeholder="Almito Gil">
+                    </div>
+
                     <div class="form-group">
                       <label class="control-label">Foto de Perfil</label>
-                      <input type="file" (change)="onFileSelected($event)" formControlName="avatar"><br>
+                      <input type="file" (change)="onAvatarSelected($event)" formControlName="avatar"><br>
                     </div>
 
                     <div class="form-group">
                       <label>Libro de familiar</label>
-                      <input type="email" class="form-control" id="numeroDNIRepresentante" formControlName="numeroDNIRepresentante" placeholder="30065089H">
+                      <input type="file" (change)="onFamilyBookSelected($event)" formControlName="libroFamilia">
                     </div>
 
                     <div class="form-group">
                       <label>DNI del padre</label>
-                      <input type="email" class="form-control" id="numeroDNIRepresentante" formControlName="numeroDNIRepresentante" placeholder="30065089H">
+                      <input type="email" class="form-control" id="numeroDNIPadre" formControlName="numeroDNIPadre" placeholder="30065089H">
                     </div>
 
                     <div class="form-group">
                       <label>DNI de la Madre</label>
-                      <input type="email" class="form-control" id="numeroDNIRepresentante" formControlName="numeroDNIRepresentante" placeholder="30065089H">
-                    </div>
-
-                    <div class="form-group">
-                      <label>DNI del Representante Legal</label>
-                      <input type="email" class="form-control" id="numeroDNIRepresentante" formControlName="numeroDNIRepresentante" placeholder="30065089H">
+                      <input type="email" class="form-control" id="numeroDNIMadre" formControlName="numeroDNIMadre" placeholder="30065089H">
                     </div>
 
                     <div class="form-group">
@@ -70,23 +69,18 @@
                       <input type="password" value="" class="form-control" placeholder="Confirm Password">
                     </div>
 
-                    <div class="form-group">
-                      <label>Alias</label>
-                      <input type="text" class="form-control" id="alias" formControlName="alias" placeholder="Alias">
-                    </div>
-
                     <fieldset class="form-group">
                       <div class="row">
-                        <legend class="col-form-label col-sm-2 pt-0">Genero</legend>
+                        <legend class="col-form-label col-sm-2 pt-0">Sexo</legend>
                         <div class="col-sm-10">
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" formControlName="genero" id="gridRadios1" value="Masculino" checked>
+                            <input class="form-check-input" type="radio" formControlName="sexo" id="gridRadios1" value="Masculino" checked>
                             <label class="form-check-label">
                               Masculino
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" formControlName="genero" id="gridRadios2" value="Femenino">
+                            <input class="form-check-input" type="radio" formControlName="sexo" id="gridRadios2" value="Femenino">
                             <label class="form-check-label">
                               Femenino
                             </label>
@@ -97,23 +91,23 @@
 
                     <div class="form-group">
                       <label>Numero de Teléfono</label>
-                      <input type="text" class="form-control" id="telefonoFijo" formControlName="telefonoFijo" placeholder="Numero de teléfono">
+                      <input type="text" class="form-control" id="telefono" formControlName="telefono" placeholder="Numero de teléfono">
                     </div>
 
-                    <div class="form-group"> 
+                    <div class="form-group">
                       <label class="control-label">Fecha de nacimiento</label>
                       <input type="text" class="form-control" formControlName="fechaNacimiento">
                     </div>
-                    
-                    <div class="form-group"> 
+
+                    <div class="form-group">
                       <label class="control-label">Naciomnalidad</label>
-                      <input type="text" class="form-control" id="pais" formControlName="pais" placeholder="Pais">
+                      <input type="text" class="form-control" id="nacimiento" formControlName="nacimiento" placeholder="Pais">
                     </div>
-                    <div class="form-group"> 
+                    <div class="form-group">
                       <label class="control-label">Acento</label>
-                      <input type="text" class="form-control" id="username" formControlName="username" placeholder="Daniebro">
-                    </div>      
-                    <div class="form-group d-flex"> 
+                      <input type="text" class="form-control" id="acento" formControlName="acento" placeholder="Daniebro">
+                    </div>
+                    <div class="form-group d-flex">
                       <div class="form-group mr-3">
                         <label class="control-label">Talla de camisa</label>
                         <input type="text" class="d-inline form-control" id="tallaCamisa" formControlName="tallaCamisa" placeholder="talla de camisa">
@@ -127,7 +121,7 @@
                         <input type="text" class="d-inline form-control" id="tallaPantalon" formControlName="tallaPantalon" placeholder="talla de pantalon">
                       </div>
                     </div>
-                    <div class="form-group d-flex"> 
+                    <div class="form-group d-flex">
                       <div class="form-group mr-3">
                         <label class="control-label">Pie</label>
                         <input type="text" class="d-inline form-control" id="pie" formControlName="pie" placeholder="Pie">
@@ -137,7 +131,7 @@
                         <input type="text" class="d-inline form-control" id="altura" formControlName="altura" placeholder="Altura">
                       </div>
                     </div>
-                    <div class="form-group d-flex"> 
+                    <div class="form-group d-flex">
                       <div class="form-group mr-3">
                         <label class="control-label">Color de Piel</label>
                         <input type="text" class="d-inline form-control" id="colorPiel" formControlName="colorPiel" placeholder="Color de Piel">
@@ -147,7 +141,7 @@
                         <input type="text" class="d-inline form-control" id="colorPelo" formControlName="colorPelo" placeholder="Color de Pelo">
                       </div>
                     </div>
-                    <div class="form-group d-flex"> 
+                    <div class="form-group d-flex">
                       <div class="form-group mr-3">
                         <label class="control-label">Color de ojos</label>
                         <input type="text" class="d-inline form-control" id="colorOjos" formControlName="colorOjos" placeholder="Color de ojos">
@@ -157,7 +151,7 @@
                         <input type="text" class="d-inline form-control" id="numeroDNI" formControlName="numeroDNI" placeholder="#####">
                       </div>
                     </div>
-                    <div class="form-group"> 
+                    <div class="form-group">
                       <label class="control-label">Numero de Seguridad Social</label>
                       <input type="text" class="form-control" id="numeroSeguridadSocial" formControlName="numeroSeguridadSocial" placeholder="Numero de Seguridad Social">
                     </div>
@@ -238,28 +232,15 @@
                           <option>Artes marciales</option>
                         </select>
                     </div>
-                    
-                    <div class="form-group">
-                      <label class="control-label">Direccion</label>
-                      <input type="text" class="d-inline form-control" formControlName="" id="" placeholder=" Direccion">
-                    </div>
-                    <div class="form-group">
-                      <label class="control-label">Localidad</label>
-                      <input type="text" class="d-inline form-control" formControlName="" id="" placeholder=" Localidad">
-                    </div>
-                    <div class="form-group">
-                        <label class="control-label">Observaciones</label>
-                        <input type="text" class="d-inline form-control" formControlName="" id="" placeholder="Observaciones">
-                    </div>
-                    
+
                     <div class="form-group">
                       <label class="control-label">Descripción de Ultimos Trabajos</label>
                       <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos" id="ultimosTrabajos" placeholder="Ultimos Trabajos">
                     </div>
 
-                    
+
                     <div class="form-group">
-                      <button type="submit" (click)="registrarActor()" class="btn btn-primary">Registrame!</button>
+                      <button class="btn btn-primary" [formGroup]="childForm" (ngSubmit)="signupChild()">Registrame!</button>
                     </div>
                     <div class="form-group">
                       <div class="form-check">
@@ -270,7 +251,7 @@
                       </div>
                     </div>
                   </form>
-                  
+
                   <div class="info info--sm">
                     Al hacer clic en "Crear cuenta" certifico que tengo 16 años o más y acepto las
                     <a class="link-secondary--underlined" target="blank" routerLink="/terms">Condiciones de Uso</a>, la

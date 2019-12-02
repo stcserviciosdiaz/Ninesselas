@@ -56,7 +56,7 @@ export class ManagementComponent implements OnInit {
   previous: string;
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
     private router: Router,
   ) {
   }

@@ -11,7 +11,7 @@ export class HomeUserComponent implements OnInit {
   avatarImageUrl;
 
   constructor(
-    private authService: AuthService
+    public authService: AuthService
   ) { }
 
   ngOnInit() {

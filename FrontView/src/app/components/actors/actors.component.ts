@@ -65,38 +65,7 @@ export class ActorsComponent implements OnInit {
   }
 
   registrarActor() {
-    const newUserObject = {
-      rol: 'CommonUser',
-      username: this.actorForm.get('username').value,
-      email: this.actorForm.get('email').value,
-      password: this.actorForm.get('password').value,
-      mayorEdad: this.actorForm.get('mayorEdad').value,
-      nombreArtistico: this.actorForm.get('nombreArtistico').value,
-      primerNombre: this.actorForm.get('primerNombre').value,
-      apellidos: this.actorForm.get('apellidos').value,
-      alias: this.actorForm.get('alias').value,
-      genero: this.actorForm.get('genero').value,
-      telefonoFijo: this.actorForm.get('telefonoFijo').value,
-      fechaNacimiento: this.actorForm.get('fechaNacimiento').value,
-      pais: this.actorForm.get('pais').value,
-      tallaPantalon: this.actorForm.get('tallaPantalon').value,
-      tallaCamisa: this.actorForm.get('tallaCamisa').value,
-      tallaChaqueta: this.actorForm.get('tallaChaqueta').value,
-      pie: this.actorForm.get('pie').value,
-      altura: this.actorForm.get('altura').value,
-      colorPiel: this.actorForm.get('colorPiel').value,
-      colorPelo: this.actorForm.get('colorPelo').value,
-      colorOjos: this.actorForm.get('colorOjos').value,
-      numeroDNI: this.actorForm.get('numeroDNI').value,
-      modeloCoche: this.actorForm.get('modeloCoche').value,
-      modeloMoto: this.actorForm.get('modeloMoto').value,
-      numeroSeguridadSocial: this.actorForm.get('numeroSeguridadSocial').value,
-      razaMascota: this.actorForm.get('razaMascota').value,
-      numeroDNIRepresentante: this.actorForm.get('numeroDNIRepresentante').value,
-      ultimosTrabajos: this.actorForm.get('ultimosTrabajos').value,
-      // bookPhotos: this.actorForm.get('bookPhotos').value,
-      // curriculum: this.actorForm.get('curriculum').value,
-    };
+    const newUserObject = this.actorForm.value
     this.subscriber = this.authService.signup(newUserObject).subscribe(
       res => {
         localStorage.setItem('token', res.token);

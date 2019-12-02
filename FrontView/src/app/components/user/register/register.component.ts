@@ -1,16 +1,33 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {FormGroup, FormControl, Validators, FormBuilder, FormGroupDirective, NgForm} from '@angular/forms';
 import {AuthService} from '../../../Services/auth.service';
 import {Router} from '@angular/router';
 import { EmailService } from '../../../Services/email.service';
+import {ReactiveFormsModule} from '@angular/forms';
+import {ErrorStateMatcher} from '@angular/material/core';
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
 })
+
+
+
 export class RegisterComponent implements OnInit {
-  userForm: FormGroup;
+  companyForm: FormGroup;
+
+  username = new FormControl('', Validators.required);
+  email = new FormControl('', [Validators.required, Validators.email]);
+  telefono = new FormControl('', Validators.required);
+  matcher = new MyErrorStateMatcher();
 
   constructor(
     private authService: AuthService,
@@ -18,30 +35,21 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private emailService: EmailService
     ) {
-    this.createRegisterForm();
   }
 
   ngOnInit() {
-  }
-
-  createRegisterForm() {
-    this.userForm = this.formBuilder.group({
+    this.companyForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      telefonoFijo: ['', Validators.required],
+      telefono: ['', Validators.required],
     });
   }
 
-  registrarUsuario() {
-    const newUserObject = {
-      rol: 'Company',
-      username: this.userForm.get('username').value,
-      email: this.userForm.get('email').value,
-      password: this.userForm.get('password').value,
-      telefono: this.userForm.get('telefonoFijo').value,
-    };
-    alert('Companía a registrar: ' + JSON.stringify(newUserObject))
+  registrarEmpresa() {
+    const newUserObject = this.companyForm.value;
+    newUserObject.rol = 'Company';
+    alert('Companía a registrar: ' + JSON.stringify(newUserObject));
     this.authService.signup(newUserObject)
       .subscribe(
        res => {

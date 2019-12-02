@@ -259,6 +259,7 @@ module.exports = {
     ***************************************************************************/
     onlyAllowOrigins: [
       'https://ninesselas.herokuapp.com',
+      'http://www.ninesselas.com'
     ],
 
     // onlyAllowOrigins: [

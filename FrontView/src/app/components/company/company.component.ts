@@ -43,7 +43,7 @@ export class CompanyComponent implements OnInit {
   previous: string;
 
   constructor(
-    private authService: AuthService,
+    public authService: AuthService,
   ) {
   }
 
