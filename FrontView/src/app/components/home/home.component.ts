@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import {AuthService} from '../../Services/auth.service';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 
 @Component({
   selector: 'app-home',
@@ -7,23 +8,12 @@ import {AuthService} from '../../Services/auth.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  modalbtn = false;
-
-  constructor(public authService: AuthService) { }
+  @ViewChild (TemplateRef, {static: false}) tpl: TemplateRef <any>;
+  constructor(
+    public authService: AuthService,
+    public ngxSmartModalService: NgxSmartModalService) { }
 
   ngOnInit() {
   }
-
-
-  ninesselabtn() {
-    this.modalbtn = true;
-  }
-
-  closebtn() {
-    this.modalbtn = false;
-  }
-
-
-
 
 }

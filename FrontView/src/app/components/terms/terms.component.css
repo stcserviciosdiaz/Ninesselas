@@ -1,4 +1,4 @@
-.nvc-terms {
+.nss-terms {
     background-color: #F6F6F6;
     margin-bottom: 40px!important;
     border-radius: 2px;
@@ -9,6 +9,23 @@
     overflow-x: hidden;
 }
 
-.termns-t{
-    padding-top: 10%;
+
+.contect-Ajuste {
+    max-width: 1200px;
+    transform: translate(0px, 30%);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 70vh;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 10px;
+    
+}
+
+.bg-fondo{
+    background-image: url(/assets/img/politica.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: scroll;
+    background-size: cover;
+    height: 100%;
 }

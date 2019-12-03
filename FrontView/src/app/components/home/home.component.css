@@ -1,13 +1,26 @@
-html, body {
-    margin: 0; padding: 0;
-  }
+button:focus {
+  outline: none;
+}
+.contect-Ajuste{
+  transform: translate(0, 15%);
+  padding-top: 15%;
+}
 
 figure {
     margin: 0;
 }
 
-.nine-w {
-  width: 80%;
+footer{
+  background: #0b174a;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  color: white;
+}
+a {
+  color: white !important;
+  text-decoration: none;
+  background-color: transparent;
 }
 
 h5.masthead-subheading {
@@ -30,26 +43,18 @@ h4.masthead-subheading {
   background: #0b174a;
   border-color: #0b174a;
   color: white;
+  border: 2px solid #ffffff;
+    border-radius: 50px;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 500;
+    height: 40px;
+    line-height: 24px;
+    margin-top: 0;
+    padding: 6px 35px;
+    text-transform: uppercase;
 }
 
-  /* .bt-dorado{
-    background-image: linear-gradient(to bottom, #807154 0px, #5B503C 100%) !important;
-    border-color: #5B503C !important;
-  } */
-
-  .center-contenid{
-    position: absolute;
-    top: 20%;
-    width: 100%;
-    transform: translateY(100px);
-  }
-  
-.css-script-ads{
-  position:absolute;
-  width:100%;
-  text-align:center;
-  z-index:999
-}
 .crossfade>figure{
   animation:imageAnimation 30s linear infinite 0s;
   backface-visibility:hidden;
@@ -58,7 +63,7 @@ h4.masthead-subheading {
   color:transparent;height:100%;
   left:0;
   opacity:0;
-  position:absolute;
+  position: fixed;;
   top:0;
   width:100%;
   z-index:0;
@@ -94,10 +99,7 @@ h4.masthead-subheading {
 
 /* Media 576 */
 @media (min-width: 576px){
-  .modal-dialog {
-    max-width: 300px;
-    margin: 1.75rem auto;
-  }
+  
 }
 
 
@@ -107,47 +109,34 @@ h4.masthead-subheading {
 }
 
 @media (min-width: 775px) and (max-width: 995px){
-.center-contenid{
-  top: 10%;
-}
 
 }
 
 /* Media 480 */
-@media screen and (max-width: 480px) {
+@media (max-width: 480px) {
 
-  .modal-dialog {
-    max-width: 300px;
-    margin: 1.75rem auto;
+  .nsm-body h1{
+    font-size: 10px;
   }
 
-  .center-contenid{
-    top: 50px;
+  .nsm-body p{
+    font-size: 12px;
   }
 
   h1.masthead-heading {
-    font-size: xx-large;
-    
-  }
-  .nine-w {
-    width: 100%;
+    font-size: 25px;
   }
 
   h4.masthead-subheading {
-    font-size: x-large;
+    font-size: 20px;
   }
 
   h5.masthead-subheading {
     font-size: smaller;
   }
 
-
-  
-
-  
-    
-}
-
-#navbarResponsive {
-  background: #7c6d51;
+  .btn-elect{
+    padding: .375rem .75rem;
+  }
+   
 }

@@ -52,6 +52,7 @@ import 'hammerjs';
 import { FiguracionComponent } from './components/figuracion/figuracion.component';
 import { IsotopeComponent } from './components/isotope/isotope.component';
 import { ChildrenComponent } from './components/children/children.component';
+import { NgxSmartModalModule } from 'ngx-smart-modal';
 
 
 @NgModule({
@@ -77,6 +78,7 @@ import { ChildrenComponent } from './components/children/children.component';
   ],
   imports: [
     MDBBootstrapModule.forRoot(),
+    NgxSmartModalModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     FormsModule,

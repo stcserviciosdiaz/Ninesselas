@@ -14,6 +14,7 @@ import {AuthGuard} from './Guards/auth.guard';
 import {FiguracionComponent} from './components/figuracion/figuracion.component';
 import { ForgotComponent } from './components/user/forgot/forgot.component';
 import { ChildrenComponent } from './components/children/children.component';
+import { PrivacyComponent } from './components/privacy/privacy.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'forgot', component: ForgotComponent },
   { path: 'actors',component: ActorsComponent,},
   { path: 'children',component: ChildrenComponent,},
+  { path: 'privacy',component: PrivacyComponent,},
   { path: 'company',
     component: CompanyComponent,
     canActivate: [AuthGuard]
