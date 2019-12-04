@@ -24,6 +24,8 @@ import {HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeUserComponent } from './components/home-user/home-user.component';
 import { ForgotComponent } from './components/user/forgot/forgot.component';
 
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+
 
 import {
   MatButtonModule,
@@ -130,6 +132,7 @@ import { NgxSmartModalModule } from 'ngx-smart-modal';
       useClass: TokenInterceptorService,
       multi: true
     },
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
     {
       provide: ErrorStateMatcher,
       useClass: ShowOnDirtyErrorStateMatcher
