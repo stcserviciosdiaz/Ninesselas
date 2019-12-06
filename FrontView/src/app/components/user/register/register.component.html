@@ -14,31 +14,39 @@
                     <div class="form-group">
                         <div class="form-group">
                             <label class="control-label">Nombre de Usuario</label>
-                            <input id="username" class="form-control" formControlName="username" placeholder="Ninesselas" required >
-                            <div *ngIf="username.invalid && (username.dirty || username.touched)" class="alert alert-danger">
-                              <div *ngIf="username.errors.required">
+                            <input id="username" class="form-control" formControlName="username" placeholder="Ninesselas" [ngClass]="{ 'is-invalid': submitted &amp;&amp; companyForm.controls.username.errors }">
+                            <div *ngIf="submitted &amp;&amp; companyForm.controls.username.errors" class="text-danger">
+                              <div *ngIf="companyForm.controls.username.errors.required">
                                 Debes poner un nombre de usuario.
                               </div>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label">Correo</label>
-                            <input type="text" class="form-control" formControlName="email" placeholder="info@ninesselas.com" required>
+                            <input type="text" class="form-control" formControlName="email" placeholder="info@ninesselas.com" [ngClass]="{ 'is-invalid': submitted &amp;&amp; companyForm.controls.email.errors }">
+                            <div *ngIf="submitted &amp;&amp; companyForm.controls.email.errors" class="text-danger">
+                                <div *ngIf="companyForm.controls.email.errors.required">Correo electrónico es requerido</div>
+                                <div *ngIf="companyForm.controls.email.errors.email">El correo electrónico debe ser una dirección de correo electrónico válida</div>
+                            </div>
                           </div>
                           <div class="form-group">
                             <label class="control-label">Teléfono</label>
-                            <input type="text" class="form-control" formControlName="telefono"  placeholder="+23371923789" required="">
+                            <input type="text" class="form-control" formControlName="telefono"  placeholder="+23371923789" [ngClass]="{ 'is-invalid': submitted &amp;&amp; companyForm.controls.telefono.errors }">
+                            <div *ngIf="submitted &amp;&amp; companyForm.controls.telefono.errors" class="text-danger">
+                                <div *ngIf="companyForm.controls.telefono.errors.required">Correo electrónico es requerido</div>
+                                <div *ngIf="companyForm.controls.telefono.errors.telefono">El correo electrónico debe ser una dirección de correo electrónico válida</div>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="form-group">
                             <label class="control-label">Ingresa tu contraseña</label>
-                            <input type="text" class="form-control" formControlName="password" placeholder="***********" required>
+                            <input type="Password" class="form-control" formControlName="password" placeholder="***********" [ngClass]="{ 'is-invalid': submitted &amp;&amp; companyForm.controls.password.errors }">
+                            <div *ngIf="submitted &amp;&amp; companyForm.controls.password.errors" class="text-danger">
+                                <div *ngIf="companyForm.controls.password.errors.required">La contraseña es requerida</div>
+                                <div *ngIf="companyForm.controls.password.errors.minlength">La contraseña debe tener al menos 6 caracteres</div>
+                            </div>
                           </div>
-                          <div class="form-group">
-                            <label class="control-label">Ingresa nuevamente la contraseña</label>
-                            <input type="text" class="form-control" formControlName="password" placeholder="***********" required>
-                        </div>
                     </div>
                   </div>
                   <div class="submit-btn">

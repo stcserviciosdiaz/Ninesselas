@@ -15,6 +15,9 @@ export class FiguracionComponent implements OnInit {
   @Input() inputArray;
   subscriber;
 
+  habilidades : string[] = ['Skater', 'Skater Acuático', 'Pompas Jabón', 'Presentador', 'Magia', 'Surf', 'Buceo', 'Surf', 'Cómico', 'Motocross', 'Mimo', 'Puenting', 'Sky', 'Parapente', 'Ciclismo BMX', 'Parkour snowboarding', 'Sombras chinescas']
+  cantos : string[] = ['Profesional','No Profesional'];
+  idiomasHablados : string[] = ['Frances', 'Alemén', 'Catalán', 'valenciano'];
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
@@ -36,8 +39,15 @@ export class FiguracionComponent implements OnInit {
       email: [''],
       password: [''],
       username: [''],
+      habilidades: [''],
+      cantos: [''],
+      idiomasHablados: [''],
       nombres: [''],
       apellidos: [''],
+      localidad: [''],
+      provincia: [''],
+      codpostal: [''],
+      direccion: [''],
       sexo: [''],
       telefono: [''],
       fechaNacimiento: [''],

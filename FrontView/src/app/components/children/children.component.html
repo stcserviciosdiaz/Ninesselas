@@ -4,257 +4,314 @@
         <div class="">
           <div class="">
             <a class="logo">Registro de Niños</a>
-            <p class="mt-3">Llena el siguiente formulario</p>
+            <p class="mt-3">-------------------</p>
           </div>
           <div class="">
             <div class="">
               <div class="">
                 <div class="">
                   <div class="">
-                    <span>Llena el siguiente formulario</span>
+                      <p class="mt-3">Llena el siguiente formulario</p>
                   </div>
                   <form [formGroup]="childForm">
-                    <div class="form-group">
+
+                    <div class="form-group"><!-- Foto de Perfil -->
+                        <label class="control-label">Foto de Perfil</label>
+                        <input type="file" (change)="onAvatarSelected($event)" formControlName="avatar" ><br>
+                    </div>
+
+                    <div class="form-group"><!-- Nombre de Usuario -->
                       <label class="control-label">Nombre de Usuario</label>
-                      <input type="text" class="form-control"  formControlName="username" placeholder="Daniebro">
+                      <input type="text" class="form-control"  formControlName="username" placeholder="Ldiaz" [ngClass]="{ 'is-invalid': submitted &amp;&amp; childForm.controls.username.errors }">
+                      <div *ngIf="submitted &amp;&amp; childForm.controls.username.errors" class="text-danger">
+                          <div *ngIf="childForm.controls.username.errors.required">El usuario es requerido</div>
+                      </div>
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group"><!-- Nombres Completos -->
                       <label class="control-label">Nombres Completos</label>
-                      <input type="text" class="form-control"  formControlName="nombres" placeholder="Danni André">
+                      <input type="text" class="form-control"  formControlName="nombres" placeholder="Luis Alfredo">
                     </div>
 
-                    <div class="form-group">
+                    <div class="form-group"><!-- Apellidos Completos -->
                       <label class="control-label">Apellidos Completos</label>
                       <input type="text" class="form-control"  formControlName="apellidos" placeholder="Almito Gil">
                     </div>
 
+                    <div class="form-group"><!-- Edad -->
+                        <label class="control-label">Edad</label>
+                        <select forControlName="edad" class="form-control">
+                          <option [ngValue]="0">Seleccione....</option>
+                          <option *ngFor="let i of edad">{{i}}</option>
+                        </select>
+                    </div>
+
                     <div class="form-group">
+                        <label>Contraseña</label>
+                        <input type="password"  class="form-control" formControlName="password" placeholder="Password" [ngClass]="{ 'is-invalid': submitted &amp;&amp; childForm.controls.password.errors }">
+                        <div *ngIf="submitted &amp;&amp; childForm.controls.password.errors" class="invalid-feedback">
+                            <div *ngIf="childForm.controls.password.errors.required">La contraseña es requerida</div>
+                            <div *ngIf="childForm.controls.password.errors.minlength">La contraseña debe tener al menos 6 caracteres</div>
+                        </div>
+                      </div>
+  
+                      <div class="form-group">
+                        <label>Confirma contraseña</label>
+                        <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && childForm.controls.confirmPassword.errors }" />
+                            <div *ngIf="submitted && childForm.controls.confirmPassword.errors" class="invalid-feedback">
+                            <div *ngIf="childForm.controls.confirmPassword.errors.required">Confirme que se requiere contraseña</div>
+                            <div *ngIf="childForm.controls.confirmPassword.errors.mustMatch">Las contraseñas deben coincidir</div>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group"><!-- Nombre Artístico -->
                       <label class="control-label">Nombre Artístico</label>
                       <input type="text" class="form-control"  formControlName="nombreArtistico" placeholder="Almito Gil">
                     </div>
 
-                    <div class="form-group">
-                      <label class="control-label">Foto de Perfil</label>
-                      <input type="file" (change)="onAvatarSelected($event)" formControlName="avatar"><br>
-                    </div>
-
-                    <div class="form-group">
-                      <label>Libro de familiar</label>
-                      <input type="file" (change)="onFamilyBookSelected($event)" formControlName="libroFamilia">
-                    </div>
-
-                    <div class="form-group">
-                      <label>DNI del padre</label>
-                      <input type="email" class="form-control"  formControlName="numeroDNIPadre" placeholder="30065089H">
-                    </div>
-
-                    <div class="form-group">
-                      <label>DNI de la Madre</label>
-                      <input type="email" class="form-control"  formControlName="numeroDNIMadre" placeholder="30065089H">
-                    </div>
-
-                    <div class="form-group">
-                      <label>Correo electronico</label>
-                      <input type="email" class="form-control"  formControlName="email" placeholder="name@example.com">
-                    </div>
-
-                    <div class="form-group">
-                      <label>Contraseña</label>
-                      <input type="password"  class="form-control" formControlName="password" aria-describedby="passwordHelpInline">
-                    </div>
-
-                    <div class="form-group">
-                      <label>Confirma contraseña</label>
-                      <input type="password" value="" class="form-control" placeholder="Confirm Password">
-                    </div>
-
-                    <fieldset class="form-group">
-                      <div class="row">
-                        <legend class="col-form-label col-sm-2 pt-0">Sexo</legend>
-                        <div class="col-sm-10">
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" formControlName="sexo"  value="Masculino" checked>
-                            <label class="form-check-label">
-                              Masculino
-                            </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" formControlName="sexo"  value="Femenino">
-                            <label class="form-check-label">
-                              Femenino
-                            </label>
+                    <fieldset class="form-group"><!-- Sexo -->
+                        <div class="row">
+                          <legend class="col-form-label col-sm-2 pt-0">Sexo</legend>
+                          <div class="col-sm-10">
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" formControlName="sexo"  value="Masculino" checked>
+                              <label class="form-check-label">
+                                Masculino
+                              </label>
+                            </div>
+                            <div class="form-check">
+                              <input class="form-check-input" type="radio" formControlName="sexo"  value="Femenino">
+                              <label class="form-check-label">
+                                Femenino
+                              </label>
+                            </div>
                           </div>
                         </div>
-                      </div>
                     </fieldset>
 
-                    <div class="form-group">
-                      <label>Numero de Teléfono</label>
-                      <input type="text" class="form-control"  formControlName="telefono" placeholder="Numero de teléfono">
+                    <div class="form-group"><!-- Numero de Teléfono -->
+                        <label>Numero de Teléfono</label>
+                        <input type="text" class="form-control" formControlName="telefono" placeholder="Numero de teléfono">
+                    </div>
+                    
+                    <div class="form-group"><!-- Fecha de nacimiento -->
+                      <mat-form-field>
+                          <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento" placeholder="Fecha de nacimiento">
+                          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                          <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
+                    </div>
+
+                    <div class="form-group"><!-- Naciomnalidad -->
+                        <label class="control-label">Naciomnalidad</label>
+                        <input type="text" class="form-control"  formControlName="nacionalidad" placeholder="Pais">
+                    </div>
+
+                    <div class="form-group"><!-- Correo electronico -->
+                        <label>Correo electronico</label>
+                        <input type="email" class="form-control" formControlName="email" placeholder="name@example.com" [ngClass]="{ 'is-invalid': submitted &amp;&amp; childForm.controls.email.errors }">
+                        <div *ngIf="submitted &amp;&amp; childForm.controls.email.errors" class="invalid-feedback">
+                            <div *ngIf="childForm.controls.email.errors.required">Correo electrónico es requerido</div>
+                            <div *ngIf="childForm.controls.email.errors.email">Debe ser una dirección de correo electrónico válida</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group d-flex">
+                        <div class="form-group mr-3"><!-- Talla de camisa -->
+                          <label class="control-label">Talla de camisa</label>
+                          <input type="text" class="d-inline form-control"  formControlName="tallaCamisa" placeholder="talla de camisa">
+                        </div>
+                        <div class="form-group"><!-- talla de chaqueta -->
+                          <label class="control-label">talla de chaqueta</label>
+                          <input type="text" class="d-inline form-control"  formControlName="tallaChaqueta" placeholder="talla de chaqueta">
+                        </div>
+                        <div class="form-group mr-3"><!-- Talla de pantalon -->
+                          <label class="control-label">Talla de pantalon</label>
+                          <input type="text" class="d-inline form-control"  formControlName="tallaPantalon" placeholder="talla de pantalon">
+                        </div>
+                        <div class="form-group mr-3"><!-- Talla de Pie -->
+                            <label class="control-label">Pie</label>
+                            <input type="text" class="d-inline form-control"  formControlName="pie" placeholder="Pie">
+                          </div>
+                          <div class="form-group"><!-- Talla de Altura -->
+                            <label class="control-label">Altura</label>
+                            <input type="text" class="d-inline form-control"  formControlName="altura" placeholder="Altura">
+                        </div>
+                    </div>
+
+                    <div class="form-group d-flex">
+                        <div class="form-group mr-3"><!-- Color de Piel -->
+                          <label class="control-label">Color de Piel</label>
+                          <input type="text" class="d-inline form-control"  formControlName="colorPiel" placeholder="Color de Piel">
+                        </div>
+                        <div class="form-group"><!-- Color de Pelo -->
+                          <label class="control-label">Color de Pelo</label>
+                          <input type="text" class="d-inline form-control"  formControlName="colorPelo" placeholder="Color de Pelo">
+                        </div>
+                        <div class="form-group mr-3"><!-- Color de ojos -->
+                            <label class="control-label">Color de ojos</label>
+                            <input type="text" class="d-inline form-control"  formControlName="colorOjos" placeholder="Color de ojos">
+                        </div>
+                    </div>
+
+                    <div class="form-group d-flex">
+                        <div class="form-group"><!-- Numero DNI -->
+                          <label class="control-label">Numero DNI</label>
+                          <input type="text" class="d-inline form-control"  formControlName="numeroDNI" placeholder="#####">
+                        </div>
+                    </div>
+
+                    <div class="form-group"><!-- Numero seguridad social -->
+                        <label class="control-label">Numero de Seguridad Social</label>
+                        <input type="text" class="form-control"  formControlName="numeroSeguridadSocial" placeholder="Numero de Seguridad Social">
                     </div>
 
                     <div class="form-group">
-                      
-                      <input type="text" class="form-control" formControlName="fechaNacimiento">
+                        <label>Dirección</label>
+                        <input type="text" class="form-control" forControlName="direccion" placeholder="Apartmento, studio, or floor">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6"><!-- Localidad -->
+                          <label class="control-label">Localidad</label>
+                          <input type="text" class="form-control" forControlName="localidad">
+                        </div>
+                        <div class="form-group col-md-4"><!-- Provincia -->
+                            <label class="control-label">Provincia</label>
+                            <input type="text" class="form-control" forControlName="provincia">
+                        </div>
+                        <div class="form-group col-md-2"><!-- Codigo Postal -->
+                          <label for="inputZip">Codigo Postal</label>
+                          <input type="text" class="form-control" forControlName="codpostal">
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                      <label class="control-label">Naciomnalidad</label>
-                      <input type="text" class="form-control"  formControlName="nacionalidad" placeholder="Pais">
-                    </div>
-                    <div class="form-group">
-                      <label class="control-label">Acento</label>
-                      <input type="text" class="form-control"  formControlName="acento" placeholder="Daniebro">
-                    </div>
-                    <div class="form-group d-flex">
-                      <div class="form-group mr-3">
-                        <label class="control-label">Talla de camisa</label>
-                        <input type="text" class="d-inline form-control"  formControlName="tallaCamisa" placeholder="talla de camisa">
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label">talla de chaqueta</label>
-                        <input type="text" class="d-inline form-control"  formControlName="tallaChaqueta" placeholder="talla de chaqueta">
-                      </div>
-                      <div class="form-group mr-3">
-                        <label class="control-label">Talla de pantalon</label>
-                        <input type="text" class="d-inline form-control"  formControlName="tallaPantalon" placeholder="talla de pantalon">
-                      </div>
-                    </div>
-                    <div class="form-group d-flex">
-                      <div class="form-group mr-3">
-                        <label class="control-label">Pie</label>
-                        <input type="text" class="d-inline form-control"  formControlName="pie" placeholder="Pie">
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label">Altura</label>
-                        <input type="text" class="d-inline form-control"  formControlName="altura" placeholder="Altura">
-                      </div>
-                    </div>
-                    <div class="form-group d-flex">
-                      <div class="form-group mr-3">
-                        <label class="control-label">Color de Piel</label>
-                        <input type="text" class="d-inline form-control"  formControlName="colorPiel" placeholder="Color de Piel">
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label">Color de Pelo</label>
-                        <input type="text" class="d-inline form-control"  formControlName="colorPelo" placeholder="Color de Pelo">
-                      </div>
-                    </div>
-                    <div class="form-group d-flex">
-                      <div class="form-group mr-3">
-                        <label class="control-label">Color de ojos</label>
-                        <input type="text" class="d-inline form-control"  formControlName="colorOjos" placeholder="Color de ojos">
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label">Code DNI</label>
-                        <input type="text" class="d-inline form-control"  formControlName="numeroDNI" placeholder="#####">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label class="control-label">Numero de Seguridad Social</label>
-                      <input type="text" class="form-control"  formControlName="numeroSeguridadSocial" placeholder="Numero de Seguridad Social">
-                    </div>
-                    <div class="form-group">
-                      <label class="control-label">Habilidades</label>
-                        <select class="form-control">
-                          <option>Seleccione...</option>
-                          <option>Lenguaje de signos</option>
-                          <option>Skater </option>
-                          <option>Skater Acuático </option>
-                          <option>Pompas Jabón</option>
-                          <option>Presentador</option>
-                          <option>Magia</option>
-                          <option>Surf</option>
-                          <option>Buceo</option>
-                          <option>Surf</option>
-                          <option>Cómico</option>
-                          <option>Motocross</option>
-                          <option>Mimo</option>
-                          <option>Puenting</option>
-                          <option>Sky</option>
-                          <option>Parapente</option>
-                          <option>Ciclismo BMX</option>
-                          <option>Parkour snowboarding</option>
-                          <option>Sombras chinescas</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                      <label class="control-label">Idiomas</label>
-                      <select class="form-control">
-                          <option>Seleccione...</option>
-                          <option>Inglés</option>
-                          <option>Frances</option>
-                          <option>Alemén</option>
-                          <option>Catalán</option>
-                          <option>Otros</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                      <label class="control-label">Cantantes</label>
-                      <select class="form-control">
-                          <option>Seleccione...</option>
-                          <option>Profesional</option>
-                          <option>No Profesional</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                      <label class="control-label">Bailes</label>
-                      <select class="form-control">
-                          <option>Seleccione...</option>
-                          <option>Profesional</option>
-                          <option>No Profesional</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                      <label class="control-label">Musico</label>
-                      <select class="form-control">
-                          <option>Seleccione...</option>
-                          <option>Profesional</option>
-                          <option>No Profesional</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                      <label class="control-label">Deportes</label>
-                        <select class="form-control">
-                          <option>Seleccione...</option>
-                          <option>Tenis</option>
-                          <option>Esgrima </option>
-                          <option>Tiro con arco</option>
-                          <option>Polo</option>
-                          <option>Golf</option>
-                          <option>Boxeo</option>
-                          <option>Voleibol</option>
-                          <option>Baloncesto</option>
-                          <option>Montar a caballo</option>
-                          <option>Natación</option>
-                          <option>Padel</option>
-                          <option>Artes marciales</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                      <label class="control-label">Descripción de Ultimos Trabajos</label>
-                      <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos" placeholder="Ultimos Trabajos">
+                    <div class="form-group"><!-- DNI del padre -->
+                        <label>DNI del padre</label>
+                        <input type="email" class="form-control"  formControlName="numeroDNIPadre" placeholder="30065089H">
                     </div>
 
-                    <div class="form-group">
-                      <button class="btn btn-primary" [formGroup]="childForm" (ngSubmit)="signupChild()">Registrame!</button>
+                    <div class="form-group"><!-- Numero de Teléfono del padre-->
+                      <label>Numero de Teléfono del padre</label>
+                      <input type="text" class="form-control"  formControlName="telefonofather" placeholder="Numero de teléfono">
                     </div>
-                    <div class="form-group">
-                      <div class="form-check">
-                        <input class="form-check-input" type="checkbox">
-                        <label class="form-check-label">
-                          Acepta los terminos del registro
-                        </label>
+  
+                    <div class="form-group"><!-- DNI de la Madre -->
+                        <label>DNI de la Madre</label>
+                        <input type="email" class="form-control"  formControlName="numeroDNIMadre" placeholder="30065089H">
+                    </div>
+
+                    <div class="form-group"><!-- Numero de Teléfono de la madre-->
+                      <label>Numero de Teléfono del padre</label>
+                      <input type="text" class="form-control"  formControlName="telefonomother" placeholder="Numero de teléfono">
+                    </div>
+
+                    <div class="form-group"><!-- Libro de familiar -->
+                        <label>Libro de familiar</label>
+                        <input type="file" (change)="onFamilyBookSelected($event)" formControlName="libroFamilia">
+                    </div>
+
+                    <div class="form-group"><!-- Deportes -->
+                        <label class="control-label">Deportes</label>
+                          <select forControlName="deportes" class="form-control">
+                            <option [ngValue]="0">Seleccione...</option>
+                            <option *ngFor="let i of deportes">{{i}}</option>
+                          </select>
+                    </div>
+
+                    <div class="form-group"><!-- Bailes -->
+                        <label class="control-label">Bailes</label>
+                        <select forControlName="bailes" class="form-control">
+                            <option [ngValue]="0">Seleccione...</option>
+                            <option *ngFor="let i of bailes">{{i}}</option>
+                          </select>
+                    </div>
+
+                    <div class="form-group"><!-- Estilos de Baile -->
+                        <label class="control-label">Estilos de Baile</label>
+                          <select forControlName="estilobailes" class="form-control">
+                            <option [ngValue]="0">Seleccione...</option>
+                            <option *ngFor="let i of estilobailes">{{i}}</option>
+                          </select>
                       </div>
+
+                      <div class="form-group"><!-- Musico -->
+                          <label class="control-label">Musico</label>
+                          <select forControlName="musicos" class="form-control">
+                              <option [ngValue]="0">Seleccione...</option>
+                              <option *ngFor="let i of musicos">{{i}}</option>
+                          </select>
+                      </div>
+
+                      <div class="form-group"><!-- Instrumentos musical -->
+                        <label class="control-label">Instrumentos musical</label>
+                          <select forControlName="instrumentos" class="form-control">
+                            <option [ngValue]="0">Seleccione...</option>
+                            <option *ngFor="let i of instrumentos">{{i}}</option>
+                          </select>
+                      </div>
+
+                      <div class="form-group"><!-- Cantantes -->
+                          <label forControlName="cantos" class="control-label">Cantantes</label>
+                          <select class="form-control">
+                              <option [ngValue]="0">Seleccione...</option>
+                              <option *ngFor="let i of cantos">{{i}}</option>
+                            </select>
+                      </div>
+
+                      <div class="form-group"><!-- Estilos de flamenco -->
+                        <label class="control-label">Estilos de flamenco</label>
+                          <select forControlName="flamenco" class="form-control">
+                            <option [ngValue]="0">Seleccione...</option>
+                            <option *ngFor="let i of flamenco">{{i}}</option>
+                          </select>
+                      </div>
+
+                      <div class="form-group"><!-- Habilidades -->
+                          <label class="control-label">Habilidades</label>
+                            <select forControlName="habilidades" class="form-control">
+                              <option [ngValue]="0">Seleccione...</option>
+                              <option *ngFor="let i of habilidades">{{i}}</option>
+                            </select>
+                      </div>
+                      <div class="form-group"><!-- Idiomas -->
+                          <label class="control-label">Idiomas</label>
+                          <select formControlName="idiomasHablados" class="form-control">
+                              <option [ngValue]="0">Seleccione...</option>
+                              <option *ngFor="let i of idiomasHablados">{{i}}</option>
+                            </select>
+                      </div>
+                      <div class="form-group"><!-- Ultimos trabajos -->
+                          <label class="control-label">Descripción de Ultimos Trabajos</label>
+                          <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos" placeholder="Teatro">
+                          <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos" placeholder="Cine">
+                          <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos" placeholder="Ficcion">
+                          <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos" placeholder="Publicidad">
+                      </div>
+                      <div class="form-group"><!-- Observaciones -->
+                        <label for="">Observaciones</label>
+                        <textarea class="form-control" id="observaciones" formControlName="observaciones" rows="3"></textarea>
+                      </div>
+                   
+                    <div class="form-group">
+                        <div class="form-check">
+                        <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && childForm.controls.acceptTerms.errors }" />
+                          <label class="form-check-label">
+                            Acepta los terminos del registro
+                          </label>
+                        <div *ngIf="submitted && childForm.controls.acceptTerms.errors" class="invalid-feedback">Los terminos es requerido</div>
+                      </div>
+                    </div>
+
+                    <div class="info info--sm">
+                        Al aceptar los "Terminos del registro" certifico que tengo 16 años o más y acepto las
+                        <a class="link-secondary--underlined" target="blank" routerLink="/terms">Condiciones de Uso</a>, la
+                        <a class="link-secondary--underlined" target="blank" routerLink="/privacy">Política de Privacidad</a> y recibir novedades y promociones.
+                    </div>
+                    <div class="mt-5 form-group">
+                        <button class="btn btn-primary" (click)="signupChild()">Registrame!</button>
                     </div>
                   </form>
-
-                  <div class="info info--sm">
-                    Al hacer clic en "Crear cuenta" certifico que tengo 16 años o más y acepto las
-                    <a class="link-secondary--underlined" target="blank" routerLink="/terms">Condiciones de Uso</a>, la
-                    <a class="link-secondary--underlined" target="blank" routerLink="/privacy">Política de Privacidad</a> y recibir novedades y promociones.
-                  </div>
                 </div>
               </div>
             </div>
