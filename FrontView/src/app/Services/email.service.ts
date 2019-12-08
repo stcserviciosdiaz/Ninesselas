@@ -12,7 +12,8 @@ export class EmailService {
   constructor(
     private http: HttpClient
   ) {
-    this.url = 'http://localhost:1337/email';
+    //this.url = 'http://localhost:1337/email';
+    this.url = 'https://ninesselas/email';
   }
 
   sendEmail(data): Observable<any> {

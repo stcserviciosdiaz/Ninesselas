@@ -1,7 +1,35 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import { AuthService } from '../../Services/auth.service';
 import {Router} from '@angular/router';
+import { ErrorStateMatcher } from '@angular/material';
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
+
+// custom validator to check that two fields match
+export function MustMatch(controlName: string, matchingControlName: string) {
+  return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+
+      if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+          // return if another validator has already found an error on the matchingControl
+          return;
+      }
+
+      // set error on matchingControl if validation fails
+      if (control.value !== matchingControl.value) {
+          matchingControl.setErrors({ mustMatch: true });
+      } else {
+          matchingControl.setErrors(null);
+      }
+  }
+}
 
 @Component({
   selector: 'app-figuracion',
@@ -11,10 +39,11 @@ import {Router} from '@angular/router';
 export class FiguracionComponent implements OnInit {
 
   actorForm: FormGroup;
+  submitted = false;
   selectedFile: File = null;
   @Input() inputArray;
   subscriber;
-
+  matcher = new MyErrorStateMatcher();
   habilidades : string[] = ['Skater', 'Skater Acuático', 'Pompas Jabón', 'Presentador', 'Magia', 'Surf', 'Buceo', 'Surf', 'Cómico', 'Motocross', 'Mimo', 'Puenting', 'Sky', 'Parapente', 'Ciclismo BMX', 'Parkour snowboarding', 'Sombras chinescas']
   cantos : string[] = ['Profesional','No Profesional'];
   idiomasHablados : string[] = ['Frances', 'Alemén', 'Catalán', 'valenciano'];
@@ -36,20 +65,22 @@ export class FiguracionComponent implements OnInit {
 
   createRegisterForm() {
     this.actorForm = this.formBuilder.group({
-      email: [''],
-      password: [''],
-      username: [''],
+      email: ['',[Validators.required,Validators.email]],
+      password: ['',[Validators.required,Validators.minLength(5)]],
+      confirmPassword: ['',Validators.required],
+      username: ['',Validators.required],
+      acceptTerms:['',Validators.required],
       habilidades: [''],
       cantos: [''],
       idiomasHablados: [''],
-      nombres: [''],
-      apellidos: [''],
+      nombres: ['',Validators.required],
+      apellidos: ['',Validators.required],
       localidad: [''],
       provincia: [''],
       codpostal: [''],
       direccion: [''],
       sexo: [''],
-      telefono: [''],
+      telefono: ['',Validators.required],
       fechaNacimiento: [''],
       nacionalidad: [''],
       acento: [''],
@@ -78,6 +109,10 @@ export class FiguracionComponent implements OnInit {
   }
 
   registrarActor() {
+    this.submitted = true;
+    if (this.actorForm.invalid) {
+      return;
+    }
     const newUserObject = {
       rol: 'CommonUser',
       username: this.actorForm.get('username').value,

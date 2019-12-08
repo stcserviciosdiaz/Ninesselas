@@ -1,64 +1,16 @@
-.mt-20{
-    margin-top: 20px;
+li.nav-item {
+    list-style: none;
+    margin-bottom: 10px;
+    margin-top: 15px;
 }
-
-.nineselas-bg{
-    transition: all .3s;
-    background: white;
-    padding-bottom: 0px;
-    padding-top: 0px;
+.bg-nvar{
+    background-color: #0b174a;
 }
-
-button.navbar-toggler {
-    outline: none;
-    width: 31px;
-    height: 20px;
-    cursor: pointer;
-    transition: all .2s;
-    position: relative;
-    align-self: center;
-    float: right;
-    transform: translate(0px, 15px);
-}
-
-button.navbar-toggler .hamburger span:nth-child(1) {
-    top: 0;
-    transition: all .2s;
-}
-
-:focus {
-    outline: none;
-}
-
-button.navbar-toggler .hamburger span:nth-child(2) {
-    top: 8px;
-    transition: all .15s;
-}
-
-button.navbar-toggler .hamburger span:nth-child(3) {
-    top: 8px;
-    transition: all .15s;
-}
-
-button.navbar-toggler .hamburger span:nth-child(4) {
-    top: 16px;
-    transition: all .2s;
-}
-
-button.navbar-toggler .hamburger span {
-    position: absolute;
-    right: 0;
-    width: 30px;
-    height: 2px;
-    border-right: 5px;
-    background-color: #232323;
-}
-
-ul#ejm2 li a{
+ul li a{
     position: relative;
     margin: 0px 15px;
 }
-ul#ejm2 li a:after{
+ul li a:after{
     position: absolute;
     bottom: 2px;
     left: 0px;
@@ -70,7 +22,7 @@ ul#ejm2 li a:after{
     transition: opacity 0.3s ease 0s, transform 0.3s ease 0s;
     transform: translateY(20px);        
 }
-ul#ejm2 li a:hover:after{
+ul li a:hover:after{
     opacity:1;
     transform: translateY(15px)
 }

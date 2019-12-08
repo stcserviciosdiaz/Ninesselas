@@ -1,12 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
 @import"~ngx-smart-modal/ngx-smart-modal";
+@import"~animate.css/animate.min";
 /*Tamaños de texto*/
 .fg-30 {
     font-size: 30px;
 }
 
+.fg-27 {
+    font-size: 27px;
+}
+
 .fg-26 {
     font-size: 26px;
+}
+
+.fg-25 {
+    font-size: 25px;
 }
 
 .fg-24 {

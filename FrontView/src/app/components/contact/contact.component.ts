@@ -1,7 +1,15 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import {FormBuilder, FormGroup, Validators, FormControl, FormGroupDirective, NgForm} from '@angular/forms';
 import {Router} from '@angular/router';
 import {EmailService} from '../../Services/email.service';
+import { ErrorStateMatcher } from '@angular/material';
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
 
 @Component({
   selector: 'app-contact',
@@ -10,6 +18,8 @@ import {EmailService} from '../../Services/email.service';
 })
 export class ContactComponent implements OnInit {
   emailForm: FormGroup;
+  submitted = false;
+  matcher = new MyErrorStateMatcher();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -24,14 +34,18 @@ export class ContactComponent implements OnInit {
 
   createEmailForm() {
     this.emailForm = this.formBuilder.group({
-      name: [''],
-      phone: [''],
-      email: [''],
+      name: ['',Validators.required],
+      phone: ['',Validators.required],
+      email: ['',[Validators.required,Validators.email]],
       message: [''],
     });
   }
 
   enviarMail() {
+    this.submitted = true;
+    if (this.emailForm.invalid) {
+      return;
+    }
     this.emailService.sendEmail({
       from: this.emailForm.get('email').value,
       to: 'ninesselas.contact@gmail.com',
@@ -43,6 +57,7 @@ export class ContactComponent implements OnInit {
         res => {
           alert('Correo Enviado! Gracias por contactarnos, en breve nos comunicaremos contigo!');
           this.createEmailForm();
+          this.router.navigate(['/home']);
           },
         err => console.log(err),
         () => {

@@ -70,20 +70,20 @@ export class ChildrenComponent implements OnInit {
       username: ['', Validators.required],
       nombres: [null, [Validators.required, Validators.minLength(5)]],
       acceptTerms: [false, Validators.requiredTrue],
-      nombreArtistico: [''],
-      apellidos: [''],
+      nombreArtistico: ['',Validators.required],
+      apellidos: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['',Validators.required],
       sexo: [''],
       estilobailes: [''],
       bailes:[''],
-      edad: [''],
+      edad: ['',Validators.requiredTrue],
       codpostal: [''],
       musicos: [''],
-      telefono: [''],
-      telefonofather: [''],
-      telefonomother: [''],
+      telefono: ['',Validators.required],
+      telefonofather: ['',Validators.required],
+      telefonomother: ['',Validators.required],
       fechaNacimiento: [''],
       nacionalidad: [null, [Validators.required]],
       acento: [''],
@@ -92,6 +92,7 @@ export class ChildrenComponent implements OnInit {
       tallaChaqueta: [''],
       localidad: [''],
       provincia: [''],
+      direccion: ['', Validators.required],
       pie: [''],
       cantos: [''],
       habilidades: [''],
@@ -102,10 +103,10 @@ export class ChildrenComponent implements OnInit {
       colorPelo: [''],
       colorOjos: [''],
       observaciones: [''],
-      numeroDNI: [''],
-      numeroSeguridadSocial: [''],
-      numeroDNIPadre: [''],
-      numeroDNIMadre: [''],
+      numeroDNI: ['', Validators.required],
+      numeroSeguridadSocial: ['', Validators.required],
+      numeroDNIPadre: ['', Validators.required],
+      numeroDNIMadre: ['',Validators.required],
       numeroDNIRepresentante: [''],
       ultimosTrabajos: [''],
       avatar: [''],
@@ -127,7 +128,7 @@ export class ChildrenComponent implements OnInit {
   }
 
   signupChild() {
-    alert('SUCCESS!!');
+    //alert('SUCCESS!!');
     this.submitted = true;
     if (this.childForm.invalid) {
       return;

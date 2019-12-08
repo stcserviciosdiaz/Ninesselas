@@ -1,9 +1,38 @@
 import {Component, NgModule, Input, OnDestroy, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import {FormArray, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import { AuthService } from '../../Services/auth.service';
 import {Router} from '@angular/router';
 import {BrowserModule} from '@angular/platform-browser';
 import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
+import { ErrorStateMatcher } from '@angular/material';
+import { invalid } from '@angular/compiler/src/render3/view/util';
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
+
+// custom validator to check that two fields match
+export function MustMatch(controlName: string, matchingControlName: string) {
+  return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+
+      if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+          // return if another validator has already found an error on the matchingControl
+          return;
+      }
+
+      // set error on matchingControl if validation fails
+      if (control.value !== matchingControl.value) {
+          matchingControl.setErrors({ mustMatch: true });
+      } else {
+          matchingControl.setErrors(null);
+      }
+  }
+}
 
 @Component({
   selector: 'app-actors',
@@ -12,8 +41,10 @@ import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 })
 export class ActorsComponent implements OnInit {
   actorForm: FormGroup;
+  submitted = false;
   selectedFile: File = null;
   disa = false;
+  matcher = new MyErrorStateMatcher();
   deporte : string[] = ['Profesional','No Profesional'];
   bailes : string[] = ['Profesional','No Profesional'];
   musicos : string[] = ['Profesional','No Profesional'];
@@ -50,21 +81,23 @@ export class ActorsComponent implements OnInit {
 
   createRegisterForm() {
     this.actorForm = this.formBuilder.group({
-      email: [''],
-      password: [''],
+      email: ['',[Validators.required,Validators.email]],
+      password: ['',[Validators.required,Validators.minLength(5)]],
+      confirmPassword: ['',Validators.required],
+      acceptTerms: [false, Validators.requiredTrue],
       bailes:[''],
       habilidades:[''],
-      username: [''],
-      nombres: [''],
+      username: ['', Validators.required],
+      nombres: ['', Validators.required],
       estilobailes:[''],
       cantos: [''],
       flamenco:[''],
       instrumentos:[''],
       deporte: [''],
-      apellidos: [''],
-      nombreArtistico: [''],
+      apellidos: ['',Validators.required],
+      nombreArtistico: ['',Validators.required],
       sexo: [''],
-      telefono: [''],
+      telefono: ['',Validators.required],
       fechaNacimiento: [''],
       nacionalidad: [''],
       localidad: [''],
@@ -84,8 +117,8 @@ export class ActorsComponent implements OnInit {
       colorPiel: [''],
       colorPelo: [''],
       colorOjos: [''],
-      numeroDNI: [''],
-      numeroSeguridadSocial: [''],
+      numeroDNI: ['',Validators.required],
+      numeroSeguridadSocial: ['',Validators.required],
       carnetConducir: [''],
       modeloCoche: [''],
       colorCoche: [''],
@@ -96,19 +129,23 @@ export class ActorsComponent implements OnInit {
   }
 
   registrarActor() {
-    const newIdioma = [];
+    this.submitted = true;
+    if (this.actorForm.invalid) {
+      return;
+    }
+    //const newIdioma = [];
    /*  for (const item of this.idiomasHablados) {
       if (item.isChecked === true) {
         newIdioma.push({nombreIdioma: item.nombreIdioma, nivelIdioma: item.nivelIdioma});
       }
     } */
     const newUserObject = this.actorForm.value;
-    newUserObject.idiomasHablados = newIdioma;
+    //newUserObject.idiomasHablados = newIdioma;
     alert(JSON.stringify(newUserObject))
     this.authService.signup(newUserObject).subscribe(
       res => {
         localStorage.setItem('token', res.token);
-        console.log('Cuenta de Actor/Modelo creada exitosamente');
+        //console.log('Cuenta de Actor/Modelo creada exitosamente');
         // this.subirFotoPerfil();
         this.router.navigate(['/homeuser']);
       },

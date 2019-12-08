@@ -41,7 +41,11 @@ import {
   MatRadioModule,
   MatSelectModule,
   MatOptionModule,
-  MatSlideToggleModule, ErrorStateMatcher, ShowOnDirtyErrorStateMatcher
+  MatSlideToggleModule, 
+  ErrorStateMatcher, 
+  ShowOnDirtyErrorStateMatcher, 
+  MatTooltipModule, 
+  MatButtonToggleModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -93,8 +97,11 @@ import { NgxSmartModalModule } from 'ngx-smart-modal';
     FormsModule,
     ReactiveFormsModule,
     MatButtonModule,
+    MatButtonModule,
+    MatButtonToggleModule,
     MatMenuModule,
     MatToolbarModule,
+    MatTooltipModule,
     MatIconModule,
     MatCardModule,
     BrowserAnimationsModule,
