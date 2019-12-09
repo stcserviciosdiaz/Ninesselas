@@ -90,6 +90,14 @@
                     </mat-form-field>
                     </div>
 
+                    <div class="form-group"> <!-- Lugar de nacimiento -->
+                      <label class="control-label">Lugar de nacimiento</label>
+                      <input type="text" class="form-control" id="placebirth" formControlName="placebirth" placeholder="Smollville" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.placebirth.errors }">
+                      <div *ngIf="submitted && actorForm.controls.placebirth.errors" class="invalid-feedback">
+                        <div *ngIf="actorForm.controls.placebirth.errors.required">El usuario es requerido</div>
+                      </div>
+                    </div>
+
                     <div class="form-group"><!-- Nuemro de teléfono -->
                       <label>Numero de Teléfono</label>
                       <input type="text" class="form-control" formControlName="telefono" placeholder="Numero de teléfono" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.telefono.errors }">
@@ -178,15 +186,15 @@
                   <div class="form-row">
                       <div class="form-group col-md-6"><!-- Localidad -->
                         <label class="control-label">Localidad</label>
-                        <input type="text" class="form-control" forControlName="localidad">
+                        <input type="text" class="form-control" forControlName="localidad" placeholder="Baleares">
                       </div>
                       <div class="form-group col-md-4"><!-- Provincia -->
                           <label class="control-label">Provincia</label>
-                          <input type="text" class="form-control" forControlName="provincia">
+                          <input type="text" class="form-control" forControlName="provincia" placeholder="Catalan">
                       </div>
                       <div class="form-group col-md-2"><!-- Codigo Postal -->
                         <label for="inputZip">Codigo Postal</label>
-                        <input type="text" class="form-control" forControlName="codpostal">
+                        <input type="text" class="form-control" forControlName="codpostal" placeholder="######">
                       </div>
                   </div>
 
@@ -229,16 +237,40 @@
                     </div>
 
                     <div class="form-group"><!-- Modelos de Manos -->
-                      <label class="control-label">Fotos Manos</label>
+                      <label class="control-label">Modelo de manos profesional</label>
                       <input type="file" (change)="onFileSelected($event)" multiple="multiple" formControlName="manos"><br>
                     </div>
 
-                    <div class="form-group"><!-- Cantantes -->
+                    <div class="form-group"><!-- Baile -->
+                      <label class="control-label">Baile</label>
+                      <select forControlName="bailes" class="form-control">
+                          <option [ngValue]="0">Seleccione...</option>
+                          <option *ngFor="let i of bailes">{{i}}</option>
+                        </select>
+                    </div>
+  
+                    <div class="form-group"><!-- Estilos de Baile -->
+                      <label class="control-label">Estilos de Baile</label>
+                        <select forControlName="estilobailes" class="form-control">
+                          <option [ngValue]="0">Seleccione...</option>
+                          <option *ngFor="let i of estilobailes">{{i}}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group"><!-- Cantos -->
                       <label class="control-label">Cantantes</label>
                       <select class="form-control">
                         <option [ngValue]="0">Seleccione...</option>
                         <option *ngFor="let i of cantos">{{i}}</option>
                       </select>
+                    </div>
+
+                    <div class="form-group"><!-- Estilos de cantos -->
+                      <label forControlName="estilocantos" class="control-label">Estilo de cantos</label>
+                        <select class="form-control">
+                          <option [ngValue]="0">Seleccione...</option>
+                          <option *ngFor="let i of estilocantos">{{i}}</option>
+                        </select>
                     </div>
 
                     <div class="form-group"><!-- Habilidades -->
@@ -256,14 +288,6 @@
                         <option *ngFor="let i of idiomasHablados">{{i}}</option>
                       </select>
                     </div>
-
-                    <div class="form-group"><!-- Ultimos trabajos -->
-                      <label class="control-label">Descripción de Ultimos Trabajos</label>
-                      <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos" placeholder="Teatro">
-                      <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos" placeholder="Cine">
-                      <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos" placeholder="Ficcion">
-                      <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos" placeholder="Publicidad">
-                  </div>
 
                     <div class="form-group"><!-- Observaciones -->
                       <label for="exampleFormControlTextarea1">Observaciones</label>

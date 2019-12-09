@@ -68,15 +68,6 @@
                             <div *ngIf="childForm.controls.confirmPassword.errors.required">Confirme que se requiere contraseña</div>
                             <div *ngIf="childForm.controls.confirmPassword.errors.mustMatch">Las contraseñas deben coincidir</div>
                         </div>
-
-                    </div>
-
-                    <div class="form-group"><!-- Nombre Artístico -->
-                      <label class="control-label">Nombre Artístico</label>
-                      <input type="text" class="form-control"  formControlName="nombreArtistico" placeholder="Almito Gil" [ngClass]="{ 'is-invalid': submitted && childForm.controls.confirmPassword.errors }">
-                      <div *ngIf="submitted && childForm.controls.nombreArtistico.errors" class="invalid-feedback">
-                        <div *ngIf="childForm.controls.nombreArtistico.errors.required">La nombre artistico es requerida</div>
-                      </div>
                     </div>
 
                     <fieldset class="form-group"><!-- Sexo -->
@@ -115,6 +106,14 @@
                       </mat-form-field>
                     </div>
 
+                    <div class="form-group"> <!-- Lugar de nacimiento -->
+                      <label class="control-label">Lugar de nacimiento</label>
+                      <input type="text" class="form-control" id="placebirth" formControlName="placebirth" placeholder="ldiaz" [ngClass]="{ 'is-invalid': submitted && childForm.controls.placebirth.errors }">
+                      <div *ngIf="submitted && childForm.controls.placebirth.errors" class="invalid-feedback">
+                        <div *ngIf="childForm.controls.placebirth.errors.required">El usuario es requerido</div>
+                      </div>
+                    </div>
+
                     <div class="form-group"><!-- Nacionalidad -->
                         <label class="control-label">Nacionalidad</label>
                         <input type="text" class="form-control"  formControlName="nacionalidad" placeholder="Pais" [ngClass]="{ 'is-invalid': submitted && childForm.controls.nacionalidad.errors }">
@@ -130,6 +129,19 @@
                             <div *ngIf="childForm.controls.email.errors.required">Correo electrónico es requerido</div>
                             <div *ngIf="childForm.controls.email.errors.email">Debe ser una dirección de correo electrónico válida</div>
                         </div>
+                    </div>
+
+                    <div class="form-group"><!-- Eres actor-->
+                      <label class="control-label">Eres Actor</label>
+                        <select forControlName="actor" class="form-control">
+                          <option [ngValue]="0">Seleccione...</option>
+                          <option *ngFor="let i of actor">{{i}}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group"> <!-- Link de VideoBook -->
+                      <label class="control-label">Link de VideoBook</label>
+                      <input type="text" class="form-control" id="videoBook" formControlName="videoBook" placeholder="https://www.videoBook.com">
                     </div>
 
                     <div class="form-group d-flex">
@@ -170,24 +182,6 @@
                         </div>
                     </div>
 
-                    <div class="form-group d-flex">
-                        <div class="form-group"><!-- Numero DNI -->
-                          <label class="control-label">Numero DNI</label>
-                          <input type="text" class="d-inline form-control"  formControlName="numeroDNI" placeholder="#####" [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNI.errors }">
-                          <div *ngIf="submitted && childForm.controls.numeroDNI.errors" class="invalid-feedback">
-                            <div *ngIf="childForm.controls.numeroDNI.errors.required">El numero es requerida</div>
-                          </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group"><!-- Numero seguridad social -->
-                        <label class="control-label">Numero de Seguridad Social</label>
-                        <input type="text" class="form-control"  formControlName="numeroSeguridadSocial" placeholder="Numero de Seguridad Social" [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroSeguridadSocial.errors }">
-                        <div *ngIf="submitted && childForm.controls.numeroSeguridadSocial.errors" class="invalid-feedback">
-                          <div *ngIf="childForm.controls.numeroSeguridadSocial.errors.required">El numero es requerida</div>
-                        </div>
-                      </div>
-
                     <div class="form-group">
                         <label>Dirección</label>
                         <input type="text" class="form-control" forControlName="direccion" placeholder="Apartmento, studio, or floor">
@@ -195,26 +189,58 @@
                     <div class="form-row">
                         <div class="form-group col-md-6"><!-- Localidad -->
                           <label class="control-label">Localidad</label>
-                          <input type="text" class="form-control" forControlName="localidad">
+                          <input type="text" class="form-control" forControlName="localidad" placeholder="Smallville">
                         </div>
                         <div class="form-group col-md-4"><!-- Provincia -->
                             <label class="control-label">Provincia</label>
-                            <input type="text" class="form-control" forControlName="provincia">
+                            <input type="text" class="form-control" forControlName="provincia" placeholder="alabama">
                         </div>
                         <div class="form-group col-md-2"><!-- Codigo Postal -->
                           <label for="inputZip">Codigo Postal</label>
-                          <input type="text" class="form-control" forControlName="codpostal">
+                          <input type="text" class="form-control" forControlName="codpostal" placeholder="#####">
                         </div>
+                    </div>
+
+                    <div class="form-group"><!-- Numero DNI del niño-->
+                        <label class="control-label">Numero DNI</label>
+                        <input type="text" class="d-inline form-control"  formControlName="numeroDNI" placeholder="#####" [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNI.errors }">
+                        <div *ngIf="submitted && childForm.controls.numeroDNI.errors" class="invalid-feedback">
+                          <div *ngIf="childForm.controls.numeroDNI.errors.required">El numero es requerida</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group"><!-- Copia del Numero DNI del niño -->
+                      <label>Copia del Numero DNI del niño</label>
+                      <input type="file" (change)="copyDNIkidSelected($event)" formControlName="copyDNIkid">
+                    </div>
+                   
+                    <div class="form-group"><!-- Numero seguridad social -->
+                        <label class="control-label">Numero de Seguridad Social</label>
+                        <input type="text" class="form-control"  formControlName="numeroSeguridadSocial" placeholder="Numero de Seguridad Social" [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroSeguridadSocial.errors }">
+                        <div *ngIf="submitted && childForm.controls.numeroSeguridadSocial.errors" class="invalid-feedback">
+                          <div *ngIf="childForm.controls.numeroSeguridadSocial.errors.required">El numero es requerida</div>
+                        </div>
+                    </div>
+
+                    <div class="form-group"><!-- Copia numero seguridad social -->
+                      <label>Copia numero seguridad social del niño</label>
+                      <input type="file" (change)="copySocialNumberSelected($event)" formControlName="copySocialNumber">
                     </div>
 
                     <div class="form-group"><!-- DNI del padre -->
                         <label>DNI del padre</label>
-                        <input type="email" class="form-control"  formControlName="numeroDNIPadre" placeholder="30065089H" [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNIPadre.errors }">
+                        <input type="text" class="form-control"  formControlName="numeroDNIPadre" placeholder="30065089H" [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNIPadre.errors }">
                         <div *ngIf="submitted && childForm.controls.numeroDNIPadre.errors" class="invalid-feedback">
                           <div *ngIf="childForm.controls.numeroDNIPadre.errors.required">El DNI es requerida</div>
                         </div>
                     </div>
 
+                    <div class="form-group"><!-- Copia del DNI del padre -->
+                      <label>Copia del DNI del padre</label>
+                      <input type="file" (change)="copyDNIFatherSelected($event)" formControlName="copyDNIFather">
+                    </div>
+
+                    
                     <div class="form-group"><!-- Numero de Teléfono del padre-->
                       <label>Numero de Teléfono del padre</label>
                       <input type="text" class="form-control"  formControlName="telefonofather" placeholder="Numero de teléfono" [ngClass]="{ 'is-invalid': submitted && childForm.controls.telefonofather.errors }">
@@ -225,10 +251,15 @@
   
                     <div class="form-group"><!-- DNI de la Madre -->
                         <label>DNI de la Madre</label>
-                        <input type="email" class="form-control"  formControlName="numeroDNIMadre" placeholder="30065089H" [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNIMadre.errors }">
+                        <input type="text" class="form-control"  formControlName="numeroDNIMadre" placeholder="30065089H" [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNIMadre.errors }">
                         <div *ngIf="submitted && childForm.controls.numeroDNIMadre.errors" class="invalid-feedback">
                           <div *ngIf="childForm.controls.numeroDNIMadre.errors.required">El DNI es requerida</div>
                         </div>
+                    </div>
+
+                    <div class="form-group"><!-- Copia del DNI de la madre -->
+                      <label>Copia del DNI de la madre</label>
+                      <input type="file" (change)="copyDNIMotherSelected($event)" formControlName="CopyDNIMother">
                     </div>
 
                     <div class="form-group"><!-- Numero de Teléfono de la madre-->
@@ -246,10 +277,18 @@
 
                     <div class="form-group"><!-- Deportes -->
                         <label class="control-label">Deportes</label>
-                          <select forControlName="deportes" class="form-control">
+                          <select forControlName="deporte" class="form-control">
                             <option [ngValue]="0">Seleccione...</option>
-                            <option *ngFor="let i of deportes">{{i}}</option>
+                            <option *ngFor="let i of deporte">{{i}}</option>
                           </select>
+                    </div>
+
+                    <div class="form-group"><!-- Habilidades del deporte-->
+                      <label class="control-label">Habilidades del deporte</label>
+                        <select forControlName="habdeportes" class="form-control">
+                          <option [ngValue]="0">Seleccione...</option>
+                          <option *ngFor="let i of habdeportes">{{i}}</option>
+                        </select>
                     </div>
 
                     <div class="form-group"><!-- Bailes -->
@@ -292,11 +331,11 @@
                             </select>
                       </div>
 
-                      <div class="form-group"><!-- Estilos de flamenco -->
-                        <label class="control-label">Estilos de flamenco</label>
-                          <select forControlName="flamenco" class="form-control">
+                      <div class="form-group"><!-- Estilos de cantos -->
+                        <label class="control-label">Estilos de cantos</label>
+                          <select forControlName="estilocantos" class="form-control">
                             <option [ngValue]="0">Seleccione...</option>
-                            <option *ngFor="let i of flamenco">{{i}}</option>
+                            <option *ngFor="let i of estilocantos">{{i}}</option>
                           </select>
                       </div>
 

@@ -44,9 +44,12 @@ export class FiguracionComponent implements OnInit {
   @Input() inputArray;
   subscriber;
   matcher = new MyErrorStateMatcher();
+  bailes : string[] = ['Profesional','No Profesional'];
+  estilobailes : string[] = ['Cumbia', 'Salsa', 'Tango', 'Hiphop', 'Chachacha', 'Pasodoble', 'Samba', 'Merengue', 'Breakdance', 'Funky', 'Pole Dance', 'Ballet clasico', 'Claque', 'Flamenco', 'sevillanas', 'Contemporaneo', 'Otros']
+  estilocantos : string[] = ['Lirico','Pop', 'Rock', 'Rap', 'Heavy Metal', 'Reggae', 'Salsa', 'Pop latino', 'Blues', 'Country', 'Dance', 'Tecno', 'Punk', 'Hip Hop', 'Soul', 'Electro Pop', 'Otros'];
   habilidades : string[] = ['Skater', 'Skater Acuático', 'Pompas Jabón', 'Presentador', 'Magia', 'Surf', 'Buceo', 'Surf', 'Cómico', 'Motocross', 'Mimo', 'Puenting', 'Sky', 'Parapente', 'Ciclismo BMX', 'Parkour snowboarding', 'Sombras chinescas']
   cantos : string[] = ['Profesional','No Profesional'];
-  idiomasHablados : string[] = ['Frances', 'Alemén', 'Catalán', 'valenciano'];
+  idiomasHablados : string[] = ['Frances', 'Alemén', 'Catalán', 'valenciano','bilingüe'];
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
@@ -72,11 +75,15 @@ export class FiguracionComponent implements OnInit {
       acceptTerms:['',Validators.required],
       habilidades: [''],
       cantos: [''],
+      estilocantos: [''],
+      placebirth:['',Validators.required],
       idiomasHablados: [''],
       nombres: ['',Validators.required],
       apellidos: ['',Validators.required],
       localidad: [''],
       provincia: [''],
+      bailes: [''],
+      estilobailes:[''],
       codpostal: [''],
       direccion: [''],
       sexo: [''],
@@ -102,7 +109,6 @@ export class FiguracionComponent implements OnInit {
       colorMoto: [''],
       fotoMoto: [''],
       avatar: [''],
-      ultimosTrabajos: [''],
       tattoos: [''],
       manos: [''],
     });
@@ -140,7 +146,6 @@ export class FiguracionComponent implements OnInit {
       colorCoche: this.actorForm.get('colorCoche').value,
       colorMoto: this.actorForm.get('colorMoto').value,
       numeroSeguridadSocial: this.actorForm.get('numeroSeguridadSocial').value,
-      ultimosTrabajos: this.actorForm.get('ultimosTrabajos').value,
     };
     this.subscriber = this.authService.signup(newUserObject).subscribe(
       res => {

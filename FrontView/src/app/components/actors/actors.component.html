@@ -54,7 +54,7 @@
 
                     <div class="form-group"><!-- Contraseña -->
                       <label>Contraseña</label>
-                      <input type="password" id="password" class="form-control" formControlName="password" aria-describedby="passwordHelpInline" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.password.errors }">
+                      <input type="password" id="password" class="form-control" formControlName="password" placeholder="password" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.password.errors }">
                       <div *ngIf="submitted && actorForm.controls.password.errors" class="invalid-feedback">
                         <div *ngIf="actorForm.controls.password.errors.required">La contraseña es requerida</div>
                         <div *ngIf="actorForm.controls.password.errors.minlength">La contraseña debe tener al menos 6 caracteres</div>
@@ -104,6 +104,14 @@
                         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                         <mat-datepicker #picker></mat-datepicker>
                       </mat-form-field>
+                    </div>
+
+                    <div class="form-group"> <!-- Lugar de nacimiento -->
+                      <label class="control-label">Lugar de nacimiento</label>
+                      <input type="text" class="form-control" id="placebirth" formControlName="placebirth" placeholder="Dallas, U.E Estates" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.placebirth.errors }">
+                      <div *ngIf="submitted && actorForm.controls.placebirth.errors" class="invalid-feedback">
+                        <div *ngIf="actorForm.controls.placebirth.errors.required">El usuario es requerido</div>
+                      </div>
                     </div>
 
                     <div class="form-group"> <!-- Naciomnalidad -->
@@ -183,15 +191,15 @@
                   <div class="form-row">
                       <div class="form-group col-md-6"><!-- Localidad -->
                         <label class="control-label">Localidad</label>
-                        <input type="text" class="form-control" forControlName="localidad">
+                        <input type="text" class="form-control" forControlName="localidad" placeholder="Madrid">
                       </div>
                       <div class="form-group col-md-4"><!-- Provincia -->
                           <label class="control-label">Provincia</label>
-                          <input type="text" class="form-control" forControlName="provincia">
+                          <input type="text" class="form-control" forControlName="provincia" placeholder="Bataluña">
                       </div>
                       <div class="form-group col-md-2"><!-- Codigo Postal -->
                         <label for="inputZip">Codigo Postal</label>
-                        <input type="text" class="form-control" forControlName="codpostal">
+                        <input type="text" class="form-control" forControlName="codpostal" placeholder="######">
                       </div>
                   </div>
 
@@ -200,6 +208,19 @@
                         <label class="control-label">Carnet de conducir</label>
                         <input type="text" class="d-inline form-control" id="carnetConducir" formControlName="carnetConducir" placeholder="Modelo de Coche">
                       </div>
+                    </div>
+
+                    <div class="form-group"><!-- Eres actor-->
+                      <label class="control-label">Eres Actor</label>
+                        <select forControlName="actor" class="form-control">
+                          <option [ngValue]="0">Seleccione...</option>
+                          <option *ngFor="let i of actor">{{i}}</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group"> <!-- Link de VideoBook -->
+                      <label class="control-label">Link de VideoBook</label>
+                      <input type="text" class="form-control" id="videoBook" formControlName="videoBook" placeholder="https://www.videoBook.com">
                     </div>
 
                     <div class="form-group d-flex"> <!-- Modelo de Coche y Moto-->
@@ -219,19 +240,19 @@
                     </div>
 
                     <div class="form-group"> <!-- Modelos de manos --> 
-                      <label class="control-label">Modelos de manos</label>
+                      <label class="control-label">Modelo de manos profesional</label>
                       <input type="file" (change)="onFileSelected($event)" multiple="multiple" formControlName="tattoos"><br>
                   </div>
 
                   <div class="form-group"> <!-- Deporte --> 
                      <label class="control-label">Deporte</label>
-                      <select forControlName="deporte" class="form-control">
+                      <select forControlName="deporte" class="form-control" (change)="capturar()">
                         <option [ngValue]="0">Seleccione...</option>
                         <option *ngFor="let i of deporte">{{i}}</option>
                      </select>
                   </div>
 
-                  <div class="form-group"><!-- Habilidades del deporte-->
+                  <div *ngIf="viewDeports" class="form-group"><!-- Habilidades del deporte-->
                     <label class="control-label">Habilidades del deporte</label>
                       <select forControlName="habdeportes" class="form-control">
                         <option [ngValue]="0">Seleccione...</option>
@@ -247,7 +268,7 @@
                       </select>
                   </div>
 
-                  <div class="form-group"><!-- Estilos de Baile -->
+                  <div *ngIf="bl" class="form-group"><!-- Estilos de Baile -->
                     <label class="control-label">Estilos de Baile</label>
                       <select forControlName="estilobailes" class="form-control">
                         <option [ngValue]="0">Seleccione...</option>
@@ -263,7 +284,7 @@
                     </select>
                 </div>
 
-                <div class="form-group"><!-- Instrumentos musical -->
+                <div *ngIf="Im" class="form-group"><!-- Instrumentos musical -->
                   <label class="control-label">Instrumentos musical</label>
                     <select forControlName="instrumentos" class="form-control">
                       <option [ngValue]="0">Seleccione...</option>
@@ -279,11 +300,11 @@
                     </select>
                 </div>
 
-              <div class="form-group"><!-- Estilos de flamenco -->
-                <label forControlName="flamenco" class="control-label">Estilos de flamenco</label>
+              <div *ngIf="ec" class="form-group"><!-- Estilos de cantos -->
+                <label forControlName="estilocantos" class="control-label">Estilo de cantos</label>
                   <select class="form-control">
                     <option [ngValue]="0">Seleccione...</option>
-                    <option *ngFor="let i of flamenco">{{i}}</option>
+                    <option *ngFor="let i of estilocantos">{{i}}</option>
                   </select>
               </div>
 
@@ -315,10 +336,7 @@
               <label for="">Observaciones</label>
               <textarea class="form-control" id="" rows="3"></textarea>
             </div>
-
                   
-                    
-
                     <div class="form-group">
                       <div class="form-check">
                       <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.acceptTerms.errors }" />
