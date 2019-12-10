@@ -2,8 +2,6 @@ import {Component, NgModule, Input, OnDestroy, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import { AuthService } from '../../Services/auth.service';
 import {Router} from '@angular/router';
-import {BrowserModule} from '@angular/platform-browser';
-import {platformBrowserDynamic} from '@angular/platform-browser-dynamic';
 import { ErrorStateMatcher } from '@angular/material';
 import { invalid } from '@angular/compiler/src/render3/view/util';
 
@@ -45,7 +43,8 @@ export class ActorsComponent implements OnInit {
   selectedFile: File = null;
   disa = false;
   matcher = new MyErrorStateMatcher();
-  deporte = ['Profesional','Federado','No Profesional'];
+  etnico: string[] = ['Afro descendiente/Negro','Blanco','Indígena','Mestizo/Moreno','Chino','Otro'];
+  deporte: string[] = ['Profesional','Federado','No Profesional'];
   actor : string[] = ['Si', 'No'];
   bailes : string[] = ['Profesional','No Profesional'];
   musicos : string[] = ['Profesional','No Profesional'];
@@ -57,12 +56,7 @@ export class ActorsComponent implements OnInit {
   estilobailes : string[] = ['Cumbia', 'Salsa', 'Tango', 'Hiphop', 'Chachacha', 'Pasodoble', 'Samba', 'Merengue', 'Breakdance', 'Funky', 'Pole Dance', 'Ballet clasico', 'Claque', 'Flamenco', 'sevillanas', 'Contemporaneo', 'Otros']
   habdeportes : string [] = ['Tenis','Esgrima','Tiro con arco','Polo','Golf','Boxeo','Voleibol','Baloncesto','Montar a caballo','Natación','Padel','Artes marciales']
   
-  
-  select: any;
-  viewDeports = false;
-  
-  
- 
+
   constructor(
     private authService: AuthService,
     private formBuilder: FormBuilder,
@@ -73,7 +67,12 @@ export class ActorsComponent implements OnInit {
 
 
   capturar() {
-   
+    var deporte = this.deporte
+    if (deporte.indexOf('1') || deporte.indexOf('0')){
+      console.log(1, 0);
+    }else{
+      console.log(0)
+    }
   }
 
 
@@ -92,6 +91,7 @@ export class ActorsComponent implements OnInit {
       confirmPassword: ['',Validators.required],
       acceptTerms: [false, Validators.requiredTrue],
       bailes:[''],
+      etnico: [''],
       placebirth:['',Validators.required],
       habilidades:[''],
       username: ['', Validators.required],

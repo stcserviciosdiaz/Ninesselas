@@ -45,6 +45,7 @@ export class FiguracionComponent implements OnInit {
   subscriber;
   matcher = new MyErrorStateMatcher();
   bailes : string[] = ['Profesional','No Profesional'];
+  etnico: string[] = ['Afro descendiente/Negro','Blanco','Indígena','Mestizo/Moreno','Chino','Otro'];
   estilobailes : string[] = ['Cumbia', 'Salsa', 'Tango', 'Hiphop', 'Chachacha', 'Pasodoble', 'Samba', 'Merengue', 'Breakdance', 'Funky', 'Pole Dance', 'Ballet clasico', 'Claque', 'Flamenco', 'sevillanas', 'Contemporaneo', 'Otros']
   estilocantos : string[] = ['Lirico','Pop', 'Rock', 'Rap', 'Heavy Metal', 'Reggae', 'Salsa', 'Pop latino', 'Blues', 'Country', 'Dance', 'Tecno', 'Punk', 'Hip Hop', 'Soul', 'Electro Pop', 'Otros'];
   habilidades : string[] = ['Skater', 'Skater Acuático', 'Pompas Jabón', 'Presentador', 'Magia', 'Surf', 'Buceo', 'Surf', 'Cómico', 'Motocross', 'Mimo', 'Puenting', 'Sky', 'Parapente', 'Ciclismo BMX', 'Parkour snowboarding', 'Sombras chinescas']
@@ -75,6 +76,7 @@ export class FiguracionComponent implements OnInit {
       acceptTerms:['',Validators.required],
       habilidades: [''],
       cantos: [''],
+      etnico: [''],
       estilocantos: [''],
       placebirth:['',Validators.required],
       idiomasHablados: [''],

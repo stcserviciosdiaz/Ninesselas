@@ -7,16 +7,20 @@
   height: 70vh;
 }
  
-
-  .bg-fondo{
-    background-image: url(/assets/img/figuration-bg.jpg);
+.bg-fondo{
+    background-image: url(/assets/img/sliderview/slider03-min.jpg);
     background-repeat: no-repeat;
     background-position: center center;
     background-attachment: scroll;
     background-size: cover;
     height: 100%;
-  }
+}
 
+.form-control{
+    border: 1px solid #f7f7f7;
+    box-shadow: 3px 3px 11px 0 #ccc;
+    outline: none;
+}
 
 
   @media (min-width: 992px){

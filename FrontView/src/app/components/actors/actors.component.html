@@ -52,6 +52,14 @@
                       </div>
                     </div>
 
+                    <div class="form-group"><!-- ¿De qué grupo étnico se considera? -->
+                      <label class="control-label">¿De qué grupo étnico se considera?</label>
+                      <select forControlName="etnico" class="form-control">
+                          <option [ngValue]="0">Seleccione...</option>
+                          <option *ngFor="let i of etnico">{{i}}</option>
+                        </select>
+                    </div>
+
                     <div class="form-group"><!-- Contraseña -->
                       <label>Contraseña</label>
                       <input type="password" id="password" class="form-control" formControlName="password" placeholder="password" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.password.errors }">
@@ -129,19 +137,19 @@
                     </div>
 
                     <div class="form-group d-flex"> 
-                      <div class="form-group mr-3"><!-- Talla de camisa -->
+                      <div class="form-group mr-2"><!-- Talla de camisa -->
                         <label class="control-label">Talla de camisa</label>
                         <input type="text" class="d-inline form-control" id="tallaCamisa" formControlName="tallaCamisa" placeholder="talla de camisa">
                       </div>
-                      <div class="form-group"><!-- talla de chaqueta -->
-                        <label class="control-label">talla de chaqueta</label>
+                      <div class="form-group mr-2"><!-- talla de chaqueta -->
+                        <label class="control-label ">talla de chaqueta</label>
                         <input type="text" class="d-inline form-control" id="tallaChaqueta" formControlName="tallaChaqueta" placeholder="talla de chaqueta">
                       </div>
-                      <div class="form-group mr-3"><!-- Talla de pantalon -->
+                      <div class="form-group mr-2"><!-- Talla de pantalon -->
                         <label class="control-label">Talla de pantalon</label>
                         <input type="text" class="d-inline form-control" id="tallaPantalon" formControlName="tallaPantalon" placeholder="talla de pantalon">
                       </div>
-                      <div class="form-group mr-3"><!-- Talla de Pie -->
+                      <div class="form-group mr-2"><!-- Talla de Pie -->
                           <label class="control-label">Pie</label>
                           <input type="text" class="d-inline form-control" id="pie" formControlName="pie" placeholder="Pie">
                         </div>
@@ -156,7 +164,7 @@
                         <label class="control-label">Color de Piel</label>
                         <input type="text" class="d-inline form-control" id="colorPiel" formControlName="colorPiel" placeholder="Color de Piel">
                       </div>
-                      <div class="form-group"><!-- Color de Pelo -->
+                      <div class="form-group mr-3"><!-- Color de Pelo -->
                         <label class="control-label">Color de Pelo</label>
                         <input type="text" class="d-inline form-control" id="colorPelo" formControlName="colorPelo" placeholder="Color de Pelo">
                       </div>
@@ -246,13 +254,13 @@
 
                   <div class="form-group"> <!-- Deporte --> 
                      <label class="control-label">Deporte</label>
-                      <select forControlName="deporte" class="form-control" (change)="capturar()">
+                      <select forControlName="deporte" class="form-control" (change)="capturar($event)">
                         <option [ngValue]="0">Seleccione...</option>
                         <option *ngFor="let i of deporte">{{i}}</option>
                      </select>
                   </div>
 
-                  <div *ngIf="viewDeports" class="form-group"><!-- Habilidades del deporte-->
+                  <div class="form-group"><!-- Habilidades del deporte-->
                     <label class="control-label">Habilidades del deporte</label>
                       <select forControlName="habdeportes" class="form-control">
                         <option [ngValue]="0">Seleccione...</option>
@@ -268,7 +276,7 @@
                       </select>
                   </div>
 
-                  <div *ngIf="bl" class="form-group"><!-- Estilos de Baile -->
+                  <div class="form-group"><!-- Estilos de Baile -->
                     <label class="control-label">Estilos de Baile</label>
                       <select forControlName="estilobailes" class="form-control">
                         <option [ngValue]="0">Seleccione...</option>
@@ -284,7 +292,7 @@
                     </select>
                 </div>
 
-                <div *ngIf="Im" class="form-group"><!-- Instrumentos musical -->
+                <div class="form-group"><!-- Instrumentos musical -->
                   <label class="control-label">Instrumentos musical</label>
                     <select forControlName="instrumentos" class="form-control">
                       <option [ngValue]="0">Seleccione...</option>
@@ -296,11 +304,11 @@
                   <label class="control-label">Cantantes</label>
                   <select forControlName="cantos" class="form-control">
                       <option [ngValue]="0">Seleccione...</option>
-                      <option *ngFor="let i of cantos">Profesional</option>
+                      <option *ngFor="let i of cantos">{{i}}</option>
                     </select>
                 </div>
 
-              <div *ngIf="ec" class="form-group"><!-- Estilos de cantos -->
+              <div class="form-group"><!-- Estilos de cantos -->
                 <label forControlName="estilocantos" class="control-label">Estilo de cantos</label>
                   <select class="form-control">
                     <option [ngValue]="0">Seleccione...</option>

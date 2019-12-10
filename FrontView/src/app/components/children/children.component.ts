@@ -46,6 +46,7 @@ export class ChildrenComponent implements OnInit {
   musicos : string[] = ['Profesional','No Profesional'];
   bailes : string[] = ['Profesional','No Profesional'];
   actor : string[] = ['Si', 'No'];
+  etnico: string[] = ['Afro descendiente/Negro','Blanco','Indígena','Mestizo/Moreno','Chino','Otro'];
   edad = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
   deporte : string[] = ['Profesional','No Profesional','Federado'];
   habdeportes : string [] = ['Tenis','Esgrima','Tiro con arco','Polo','Golf','Boxeo','Voleibol','Baloncesto','Montar a caballo','Natación','Padel','Artes marciales']
@@ -89,6 +90,7 @@ export class ChildrenComponent implements OnInit {
       placebirth:['',Validators.required],
       estilobailes: [''],
       bailes:[''],
+      etnico: [''],
       edad: ['',Validators.requiredTrue],
       codpostal: [''],
       musicos: [''],

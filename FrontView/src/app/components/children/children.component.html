@@ -90,6 +90,14 @@
                         </div>
                     </fieldset>
 
+                    <div class="form-group"><!-- ¿De qué grupo étnico se considera? -->
+                      <label class="control-label">¿De qué grupo étnico se considera?</label>
+                      <select forControlName="etnico" class="form-control">
+                          <option [ngValue]="0">Seleccione...</option>
+                          <option *ngFor="let i of etnico">{{i}}</option>
+                        </select>
+                    </div>
+
                     <div class="form-group"><!-- Numero de Teléfono -->
                         <label>Numero de Teléfono</label>
                         <input type="text" class="form-control" formControlName="telefono" placeholder="Numero de teléfono" [ngClass]="{ 'is-invalid': submitted && childForm.controls.telefono.errors }">
@@ -145,15 +153,15 @@
                     </div>
 
                     <div class="form-group d-flex">
-                        <div class="form-group mr-3"><!-- Talla de camisa -->
+                        <div class="form-group mr-2"><!-- Talla de camisa -->
                           <label class="control-label">Talla de camisa</label>
                           <input type="text" class="d-inline form-control"  formControlName="tallaCamisa" placeholder="talla de camisa">
                         </div>
-                        <div class="form-group"><!-- talla de chaqueta -->
+                        <div class="form-group mr-2"><!-- talla de chaqueta -->
                           <label class="control-label">talla de chaqueta</label>
                           <input type="text" class="d-inline form-control"  formControlName="tallaChaqueta" placeholder="talla de chaqueta">
                         </div>
-                        <div class="form-group mr-3"><!-- Talla de pantalon -->
+                        <div class="form-group mr-2"><!-- Talla de pantalon -->
                           <label class="control-label">Talla de pantalon</label>
                           <input type="text" class="d-inline form-control"  formControlName="tallaPantalon" placeholder="talla de pantalon">
                         </div>
@@ -172,7 +180,7 @@
                           <label class="control-label">Color de Piel</label>
                           <input type="text" class="d-inline form-control"  formControlName="colorPiel" placeholder="Color de Piel">
                         </div>
-                        <div class="form-group"><!-- Color de Pelo -->
+                        <div class="form-group mr-3"><!-- Color de Pelo -->
                           <label class="control-label">Color de Pelo</label>
                           <input type="text" class="d-inline form-control"  formControlName="colorPelo" placeholder="Color de Pelo">
                         </div>
