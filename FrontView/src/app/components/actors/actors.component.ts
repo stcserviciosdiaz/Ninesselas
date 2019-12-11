@@ -43,13 +43,13 @@ export class ActorsComponent implements OnInit {
   selectedFile: File = null;
   disa = false;
   matcher = new MyErrorStateMatcher();
-  etnico: string[] = ['Afro descendiente/Negro','Blanco','Indígena','Mestizo/Moreno','Chino','Otro'];
+  etnico: string[] = ['Afro descendiente/Negro','Blanco','Indígena','Mestizo/Moreno','Asiático','Otro'];
   deporte: string[] = ['Profesional','Federado','No Profesional'];
   actor : string[] = ['Si', 'No'];
   bailes : string[] = ['Profesional','No Profesional'];
   musicos : string[] = ['Profesional','No Profesional'];
   cantos : string[] = ['Profesional','No Profesional'];
-  idiomasHablados : string[] = ['Frances', 'Alemén', 'Catalán', 'valenciano','bilingüe'];
+  idiomasHablados : string[] = ['Gallego','Italiano','Rumano','Frances', 'Alemén', 'Catalán', 'valenciano','bilingüe'];
   habilidades : string[] = ['Skater', 'Skater Acuático', 'Pompas Jabón', 'Presentador', 'Magia', 'Surf', 'Buceo', 'Surf', 'Cómico', 'Motocross', 'Mimo', 'Puenting', 'Sky', 'Parapente', 'Ciclismo BMX', 'Parkour snowboarding', 'Sombras chinescas']
   estilocantos : string[] = ['Lirico','Pop', 'Rock', 'Rap', 'Heavy Metal', 'Reggae', 'Salsa', 'Pop latino', 'Blues', 'Country', 'Dance', 'Tecno', 'Punk', 'Hip Hop', 'Soul', 'Electro Pop', 'Otros'];
   instrumentos : string[] = ['Piano','Bateria','Guitarra española', 'Guitarra electrica', 'Bajo', 'Bandurria', 'Violin', 'Violonchero', 'Bombo', 'Castañuelas', 'Trombon', 'Trompeta', 'Cantante', 'Otros']

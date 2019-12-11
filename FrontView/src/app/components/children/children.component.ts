@@ -40,13 +40,13 @@ export class ChildrenComponent implements OnInit {
 
   matcher = new MyErrorStateMatcher();
 
-  idiomasHablados : string[] = ['Frances', 'Alemén', 'Catalán', 'valenciano','bilingüe'];
+  idiomasHablados : string[] = ['Gallego','Italiano','Rumano','Frances', 'Alemén', 'Catalán', 'valenciano','bilingüe'];
   habilidades : string[] = ['Skater', 'Skater Acuático', 'Pompas Jabón', 'Presentador', 'Magia', 'Surf', 'Buceo', 'Surf', 'Cómico', 'Motocross', 'Mimo', 'Puenting', 'Sky', 'Parapente', 'Ciclismo BMX', 'Parkour snowboarding', 'Sombras chinescas']
   cantos : string[] = ['Profesional','No Profesional'];
   musicos : string[] = ['Profesional','No Profesional'];
   bailes : string[] = ['Profesional','No Profesional'];
   actor : string[] = ['Si', 'No'];
-  etnico: string[] = ['Afro descendiente/Negro','Blanco','Indígena','Mestizo/Moreno','Chino','Otro'];
+  etnico: string[] = ['Afro descendiente/Negro','Blanco','Indígena','Mestizo/Moreno','Asiático','Otro'];
   edad = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
   deporte : string[] = ['Profesional','No Profesional','Federado'];
   habdeportes : string [] = ['Tenis','Esgrima','Tiro con arco','Polo','Golf','Boxeo','Voleibol','Baloncesto','Montar a caballo','Natación','Padel','Artes marciales']
@@ -144,7 +144,7 @@ export class ChildrenComponent implements OnInit {
     this.copyDNIFather = event.target.files[0] as File;
   }
 
-  CopyDNIMotherSelected(event) {
+  copyDNIMotherSelected(event) {
     this.CopyDNIMother = event.target.files[0] as File;
   }
 
