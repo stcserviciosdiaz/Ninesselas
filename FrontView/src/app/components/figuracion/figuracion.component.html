@@ -46,7 +46,7 @@
 
                     <div class="form-group"><!-- Contraseña -->
                       <label>Contraseña</label>
-                      <input type="password" id="password" class="form-control" formControlName="password" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.password.errors }">
+                      <input type="password" (keypress)="numberOnly($event)" class="form-control" formControlName="password" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.password.errors }">
                       <div *ngIf="submitted && actorForm.controls.password.errors" class="invalid-feedback">
                         <div *ngIf="actorForm.controls.password.errors.required">La contraseña es requerida</div>
                         <div *ngIf="actorForm.controls.password.errors.minlength">La contraseña debe tener al menos 6 caracteres</div>
@@ -55,7 +55,7 @@
 
                     <div class="form-group"><!-- Confirma Contraseña -->
                       <label>Confirma contraseña</label>
-                      <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control" placeholder="Confirm Password" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.confirmPassword.errors }">
+                      <input type="password" (keypress)="numberOnly($event)" formControlName="confirmPassword" class="form-control" placeholder="Confirm Password" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.confirmPassword.errors }">
                       <div *ngIf="submitted && actorForm.controls.confirmPassword.errors" class="invalid-feedback">
                         <div *ngIf="actorForm.controls.confirmPassword.errors.required">Confirme que se requiere contraseña</div>
                         <div *ngIf="actorForm.controls.confirmPassword.errors.mustMatch">Las contraseñas deben coincidir</div>
@@ -108,7 +108,7 @@
 
                     <div class="form-group"><!-- Nuemro de teléfono -->
                       <label>Numero de Teléfono</label>
-                      <input type="text" class="form-control" formControlName="telefono" placeholder="Numero de teléfono" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.telefono.errors }">
+                      <input type="text" class="form-control" (keypress)="numberOnly($event)" formControlName="telefono" placeholder="Numero de teléfono" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.telefono.errors }">
                       <div *ngIf="submitted && actorForm.controls.telefono.errors" class="invalid-feedback">
                         <div *ngIf="actorForm.controls.telefono.errors.required">El telefono es requerida</div>
                       </div>
@@ -173,7 +173,7 @@
 
                     <div class="form-group"><!-- Numero DNI -->
                         <label class="control-label">Numero DNI</label>
-                        <input type="text" class="d-inline form-control" id="numeroDNI" formControlName="numeroDNI" placeholder="#####" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.numeroDNI.errors }">
+                        <input type="text" (keypress)="check($event)" class="d-inline form-control" id="numeroDNI" formControlName="numeroDNI" placeholder="#####" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.numeroDNI.errors }">
                         <div *ngIf="submitted && actorForm.controls.numeroDNI.errors" class="invalid-feedback">
                           <div *ngIf="actorForm.controls.numeroDNI.errors.required">El numero es requerida</div>
                         </div>
@@ -202,7 +202,7 @@
                       </div>
                       <div class="form-group col-md-2"><!-- Codigo Postal -->
                         <label for="inputZip">Codigo Postal</label>
-                        <input type="text" class="form-control" forControlName="codpostal" placeholder="######">
+                        <input type="text" (keypress)="check($event)" class="form-control" forControlName="codpostal" placeholder="######">
                       </div>
                   </div>
 

@@ -1,5 +1,6 @@
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl, FormGroupDirective, NgForm} from '@angular/forms';
+import { NgxSmartModalService, NgxSmartModalComponent } from 'ngx-smart-modal';
 import { AuthService } from '../../Services/auth.service';
 import {Router} from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material';
@@ -64,8 +65,11 @@ export class ChildrenComponent implements OnInit {
   copySocialNumber: File = null;
   copyDNIkid: File = null;
 
+  @ViewChild (TemplateRef, {static: false}) tpl: TemplateRef <any>;
+
   constructor(
     private authService: AuthService,
+    public ngxSmartModalService: NgxSmartModalService,
     private formBuilder: FormBuilder,
     private router: Router
   ) {
@@ -78,7 +82,7 @@ export class ChildrenComponent implements OnInit {
       nombres: [null, [Validators.required, Validators.minLength(5)]],
       acceptTerms: [false, Validators.requiredTrue],
       apellidos: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email,Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['',Validators.required],
       sexo: [''],
@@ -94,9 +98,9 @@ export class ChildrenComponent implements OnInit {
       edad: ['',Validators.requiredTrue],
       codpostal: [''],
       musicos: [''],
-      telefono: ['',Validators.required],
-      telefonofather: ['',Validators.required],
-      telefonomother: ['',Validators.required],
+      telefono: ['',[Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
+      telefonofather: ['',[Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
+      telefonomother: ['',[Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
       fechaNacimiento: [''],
       nacionalidad: [null, [Validators.required]],
       acento: [''],
@@ -136,6 +140,25 @@ export class ChildrenComponent implements OnInit {
 
   }
 
+  signupChild() {
+    this.submitted = true;
+    if (this.childForm.invalid) {
+      return;
+    }
+    const newChild = this.childForm.value;
+    alert('Companía a registrar: ' + JSON.stringify(newChild))
+    this.authService.signup(newChild).subscribe(
+      res => {
+        localStorage.setItem('token', res.token);
+        this.ngxSmartModalService.create('confirm', 'Cuenta de Niño creada exitosamente').open();
+        this.router.navigate(['/homeuser']);
+      },
+      (err) => {
+        this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
+        console.log(JSON.stringify(err));
+      });
+  }
+
   onAvatarSelected(event) {
     this.avatarFile = event.target.files[0] as File;
   }
@@ -160,24 +183,28 @@ export class ChildrenComponent implements OnInit {
     this.copyDNIkid = event.target.files[0] as File;
   }
 
-  signupChild() {
-    //alert('SUCCESS!!');
-    this.submitted = true;
-    if (this.childForm.invalid) {
-      return;
+  /*  Función para permitir solo numeros */
+  numberOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
     }
-    
-    const newChild = this.childForm.value;
-    alert('Companía a registrar: ' + JSON.stringify(newChild))
-    this.authService.signup(newChild).subscribe(
-      res => {
-        localStorage.setItem('token', res.token);
-        //console.log('Cuenta de Niño creada exitosamente');
-        this.router.navigate(['/homeuser']);
-      },
-      (err) => {
-        console.log(JSON.stringify(err));
-      });
+    return true;
   }
+
+  /*  Función para no permitir caracteres especiales */
+  check(e) {
+    const tecla = (document.all) ? e.keyCode : e.which;
+    //Tecla de retroceso para borrar, siempre la permite
+    if (tecla == 8) {
+      return true;
+    }
+    // Patron de entrada, en este caso solo acepta numeros y letras
+    const patron = /[A-Za-z0-9]/;
+    const tecla_final = String.fromCharCode(tecla);
+    return patron.test(tecla_final);
+  }
+
+  
 
 }

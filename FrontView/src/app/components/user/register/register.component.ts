@@ -5,11 +5,32 @@ import {Router} from '@angular/router';
 import { EmailService } from '../../../Services/email.service';
 import {ReactiveFormsModule} from '@angular/forms';
 import {ErrorStateMatcher} from '@angular/material/core';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
     const isSubmitted = form && form.submitted;
     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
+
+// custom validator to check that two fields match
+export function MustMatch(controlName: string, matchingControlName: string) {
+  return (formGroup: FormGroup) => {
+      const control = formGroup.controls[controlName];
+      const matchingControl = formGroup.controls[matchingControlName];
+
+      if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+          // return if another validator has already found an error on the matchingControl
+          return;
+      }
+
+      // set error on matchingControl if validation fails
+      if (control.value !== matchingControl.value) {
+          matchingControl.setErrors({ mustMatch: true });
+      } else {
+          matchingControl.setErrors(null);
+      }
   }
 }
 
@@ -32,6 +53,7 @@ export class RegisterComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    public ngxSmartModalService: NgxSmartModalService,
     private formBuilder: FormBuilder,
     private router: Router,
     private emailService: EmailService
@@ -42,8 +64,12 @@ export class RegisterComponent implements OnInit {
     this.companyForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', [Validators.required, Validators.minLength(6)], Validators.maxLength(9)],
+      confirmPassword: ['',Validators.required],
       email: ['', [Validators.required, Validators.email]],
       telefono: ['',[Validators.required, Validators.pattern(/^-?[0-9][^\.]*$/)]],
+    }
+    , {
+      validator: MustMatch('password', 'confirmPassword')
     });
   }
 
@@ -55,31 +81,26 @@ export class RegisterComponent implements OnInit {
     }
     const newUserObject = this.companyForm.value;
     newUserObject.rol = 'Company';
-    //alert('Companía a registrar: ' + JSON.stringify(newUserObject));
     this.authService.signup(newUserObject)
       .subscribe(
        res => {
          localStorage.setItem('token', res.token);
-         //console.log('Cuenta de Companía creada exitosamente');
+         this.ngxSmartModalService.create('confirm', 'Cuenta de Companía creada exitosamente').open();
          this.router.navigate(['/company']);
          },
       (err) => {
-        alert('SUCCESS!!');
-        this.router.navigate(['/login']);
+        this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
         //console.log(JSON.stringify(err));
        });
-      
-    // Uncomment this to send emails
-    // this.emailService.sendEmail({
-    //   from: '[Mailgun Sandbox <postmaster@sandbox6d7a81b77504424c9dd9928da3d501e1.mailgun.org>]',
-    //   to: '[correo personal]',
-    //   name: 'hola',
-    //   text: 'Funciona',
-    // })
-    //   .subscribe(
-    //     () => {},
-    //     err => console.log(err)
-    //   );
+  }
+
+  /*  Función para permitir solo numeros */
+  numberOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
   }
 
 

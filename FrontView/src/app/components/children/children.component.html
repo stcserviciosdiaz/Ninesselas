@@ -54,7 +54,7 @@
 
                     <div class="form-group">
                         <label>Contraseña</label>
-                        <input type="password"  class="form-control" formControlName="password" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && childForm.controls.password.errors }">
+                        <input type="password" (keypress)="numberOnly($event)"  class="form-control" formControlName="password" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && childForm.controls.password.errors }">
                         <div *ngIf="submitted && childForm.controls.password.errors" class="invalid-feedback">
                             <div *ngIf="childForm.controls.password.errors.required">La contraseña es requerida</div>
                             <div *ngIf="childForm.controls.password.errors.minlength">La contraseña debe tener al menos 6 caracteres</div>
@@ -63,7 +63,7 @@
   
                       <div class="form-group">
                         <label>Confirma contraseña</label>
-                        <input type="password" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && childForm.controls.confirmPassword.errors }" />
+                        <input type="password" (keypress)="numberOnly($event)" class="form-control" formControlName="confirmPassword"  placeholder="Confirm Password" [ngClass]="{ 'is-invalid': submitted && childForm.controls.confirmPassword.errors }" />
                             <div *ngIf="submitted && childForm.controls.confirmPassword.errors" class="invalid-feedback">
                             <div *ngIf="childForm.controls.confirmPassword.errors.required">Confirme que se requiere contraseña</div>
                             <div *ngIf="childForm.controls.confirmPassword.errors.mustMatch">Las contraseñas deben coincidir</div>
@@ -100,9 +100,15 @@
 
                     <div class="form-group"><!-- Numero de Teléfono -->
                         <label>Numero de Teléfono</label>
-                        <input type="text" class="form-control" formControlName="telefono" placeholder="Numero de teléfono" [ngClass]="{ 'is-invalid': submitted && childForm.controls.telefono.errors }">
-                        <div *ngIf="submitted && childForm.controls.telefono.errors" class="invalid-feedback">
-                          <div *ngIf="childForm.controls.telefono.errors.required">El telefono es requerida</div>
+                        <label class="sr-only" for="inlineFormInputGroup">Numero de Teléfono</label>
+                        <div class="input-group mb-2">
+                          <div class="input-group-prepend">
+                            <div class="input-group-text">+34</div>
+                          </div>
+                          <input type="text" (keypress)="numberOnly($event)" class="form-control" formControlName="telefono" placeholder="Numero de teléfono" [ngClass]="{ 'is-invalid': submitted && childForm.controls.telefono.errors }">
+                          <div *ngIf="submitted && childForm.controls.telefono.errors" class="invalid-feedback">
+                            <div *ngIf="childForm.controls.telefono.errors.required">El telefono es requerida</div>
+                          </div>
                         </div>
                     </div>
                     
@@ -141,15 +147,15 @@
 
                     <div class="form-group"><!-- Eres actor-->
                       <label class="control-label">Eres Actor</label>
-                        <select forControlName="actor" class="form-control">
+                        <select forControlName="actor" class="form-control" (change)="toggle()">
                           <option [ngValue]="0">Seleccione...</option>
                           <option *ngFor="let i of actor">{{i}}</option>
                         </select>
                     </div>
-
+                  
                     <div class="form-group"> <!-- Link de VideoBook -->
                       <label class="control-label">Link de VideoBook</label>
-                      <input type="text" class="form-control" id="videoBook" formControlName="videoBook" placeholder="https://www.videoBook.com">
+                      <input type="text" class="form-control" formControlName="videoBook" placeholder="https://www.videoBook.com">
                     </div>
 
                     <div class="form-group d-flex">
@@ -205,13 +211,13 @@
                         </div>
                         <div class="form-group col-md-2"><!-- Codigo Postal -->
                           <label for="inputZip">Codigo Postal</label>
-                          <input type="text" class="form-control" forControlName="codpostal" placeholder="#####">
+                          <input type="text" (keypress)="check($event)" class="form-control" forControlName="codpostal" placeholder="#####">
                         </div>
                     </div>
 
                     <div class="form-group"><!-- Numero DNI del niño-->
                         <label class="control-label">Numero DNI</label>
-                        <input type="text" class="d-inline form-control"  formControlName="numeroDNI" placeholder="#####" [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNI.errors }">
+                        <input type="text" (keypress)="check($event)" class="d-inline form-control"  formControlName="numeroDNI" placeholder="#####" [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNI.errors }">
                         <div *ngIf="submitted && childForm.controls.numeroDNI.errors" class="invalid-feedback">
                           <div *ngIf="childForm.controls.numeroDNI.errors.required">El numero es requerida</div>
                         </div>
@@ -237,7 +243,7 @@
 
                     <div class="form-group"><!-- DNI del padre -->
                         <label>DNI del padre</label>
-                        <input type="text" class="form-control"  formControlName="numeroDNIPadre" placeholder="30065089H" [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNIPadre.errors }">
+                        <input type="text" (keypress)="check($event)" class="form-control"  formControlName="numeroDNIPadre" placeholder="30065089H" [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNIPadre.errors }">
                         <div *ngIf="submitted && childForm.controls.numeroDNIPadre.errors" class="invalid-feedback">
                           <div *ngIf="childForm.controls.numeroDNIPadre.errors.required">El DNI es requerida</div>
                         </div>
@@ -251,7 +257,7 @@
                     
                     <div class="form-group"><!-- Numero de Teléfono del padre-->
                       <label>Numero de Teléfono del padre</label>
-                      <input type="text" class="form-control"  formControlName="telefonofather" placeholder="Numero de teléfono" [ngClass]="{ 'is-invalid': submitted && childForm.controls.telefonofather.errors }">
+                      <input type="text" (keypress)="numberOnly($event)" class="form-control"  formControlName="telefonofather" placeholder="Numero de teléfono" [ngClass]="{ 'is-invalid': submitted && childForm.controls.telefonofather.errors }">
                       <div *ngIf="submitted && childForm.controls.telefonofather.errors" class="invalid-feedback">
                         <div *ngIf="childForm.controls.telefonofather.errors.required">El telefono es requerida</div>
                       </div>
@@ -259,7 +265,7 @@
   
                     <div class="form-group"><!-- DNI de la Madre -->
                         <label>DNI de la Madre</label>
-                        <input type="text" class="form-control"  formControlName="numeroDNIMadre" placeholder="30065089H" [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNIMadre.errors }">
+                        <input type="text" (keypress)="check($event)" class="form-control"  formControlName="numeroDNIMadre" placeholder="30065089H" [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNIMadre.errors }">
                         <div *ngIf="submitted && childForm.controls.numeroDNIMadre.errors" class="invalid-feedback">
                           <div *ngIf="childForm.controls.numeroDNIMadre.errors.required">El DNI es requerida</div>
                         </div>
@@ -272,7 +278,7 @@
 
                     <div class="form-group"><!-- Numero de Teléfono de la madre-->
                       <label>Numero de Teléfono de la madre</label>
-                      <input type="text" class="form-control"  formControlName="telefonomother" placeholder="Numero de teléfono" [ngClass]="{ 'is-invalid': submitted && childForm.controls.telefonomother.errors }">
+                      <input type="text" (keypress)="numberOnly($event)" class="form-control"  formControlName="telefonomother" placeholder="Numero de teléfono" [ngClass]="{ 'is-invalid': submitted && childForm.controls.telefonomother.errors }">
                       <div *ngIf="submitted && childForm.controls.telefonomother.errors" class="invalid-feedback">
                         <div *ngIf="childForm.controls.telefonomother.errors.required">El teléfono es requerida</div>
                       </div>

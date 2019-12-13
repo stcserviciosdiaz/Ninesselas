@@ -1,8 +1,9 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, Input, OnDestroy, OnInit, ViewChild, TemplateRef} from '@angular/core';
 import {FormBuilder, FormGroup, FormControl, FormGroupDirective, NgForm, Validators} from '@angular/forms';
 import { AuthService } from '../../Services/auth.service';
 import {Router} from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -51,8 +52,10 @@ export class FiguracionComponent implements OnInit {
   habilidades : string[] = ['Skater', 'Skater Acuático', 'Pompas Jabón', 'Presentador', 'Magia', 'Surf', 'Buceo', 'Surf', 'Cómico', 'Motocross', 'Mimo', 'Puenting', 'Sky', 'Parapente', 'Ciclismo BMX', 'Parkour snowboarding', 'Sombras chinescas']
   cantos : string[] = ['Profesional','No Profesional'];
   idiomasHablados : string[] = ['Gallego','Italiano','Rumano','Frances', 'Alemén', 'Catalán', 'valenciano','bilingüe'];
+  @ViewChild (TemplateRef, {static: false}) tpl: TemplateRef <any>;
   constructor(
     private authService: AuthService,
+    public ngxSmartModalService: NgxSmartModalService,
     private formBuilder: FormBuilder,
     private router: Router
   ) {
@@ -69,7 +72,7 @@ export class FiguracionComponent implements OnInit {
 
   createRegisterForm() {
     this.actorForm = this.formBuilder.group({
-      email: ['',[Validators.required,Validators.email]],
+      email: ['',[Validators.required,Validators.email,Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       password: ['',[Validators.required,Validators.minLength(5)]],
       confirmPassword: ['',Validators.required],
       username: ['',Validators.required],
@@ -89,7 +92,7 @@ export class FiguracionComponent implements OnInit {
       codpostal: [''],
       direccion: [''],
       sexo: [''],
-      telefono: ['',Validators.required],
+      telefono: ['',[Validators.required,Validators.minLength(6),Validators.maxLength(6)]],
       fechaNacimiento: [''],
       nacionalidad: [''],
       acento: [''],
@@ -113,7 +116,12 @@ export class FiguracionComponent implements OnInit {
       avatar: [''],
       tattoos: [''],
       manos: [''],
+    }
+
+    , {
+      validator: MustMatch('password', 'confirmPassword')
     });
+
   }
 
   registrarActor() {
@@ -152,11 +160,12 @@ export class FiguracionComponent implements OnInit {
     this.subscriber = this.authService.signup(newUserObject).subscribe(
       res => {
         localStorage.setItem('token', res.token);
-        alert('Cuenta de Figuración creada exitosamente');
+        this.ngxSmartModalService.create('confirm', 'Cuenta de Figuración creada exitosamente').open();
         // this.subirFotoPerfil()
         this.router.navigate(['/homeuser']);
       },
       (err) => {
+        this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
         console.log(JSON.stringify(err));
       });
 
@@ -168,6 +177,28 @@ export class FiguracionComponent implements OnInit {
     this.authService.uploadAvatar(fd).subscribe(res => {
       console.log(res);
     });
+  }
+
+  /*  Función para permitir solo numeros */
+  numberOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
+    }
+    return true;
+  }
+
+  /*  Función para no permitir caracteres especiales */
+  check(e) {
+    const tecla = (document.all) ? e.keyCode : e.which;
+    //Tecla de retroceso para borrar, siempre la permite
+    if (tecla == 8) {
+      return true;
+    }
+    // Patron de entrada, en este caso solo acepta numeros y letras
+    const patron = /[A-Za-z0-9]/;
+    const tecla_final = String.fromCharCode(tecla);
+    return patron.test(tecla_final);
   }
 
 

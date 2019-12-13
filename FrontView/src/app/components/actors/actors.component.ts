@@ -1,9 +1,10 @@
-import {Component, NgModule, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, NgModule, Input, OnDestroy, OnInit, ViewChild, TemplateRef} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators} from '@angular/forms';
-import { AuthService } from '../../Services/auth.service';
 import {Router} from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material';
 import { invalid } from '@angular/compiler/src/render3/view/util';
+import { NgxSmartModalService, NgxSmartModalComponent } from 'ngx-smart-modal';
+import { AuthService } from '../../Services/auth.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -56,15 +57,16 @@ export class ActorsComponent implements OnInit {
   estilobailes : string[] = ['Cumbia', 'Salsa', 'Tango', 'Hiphop', 'Chachacha', 'Pasodoble', 'Samba', 'Merengue', 'Breakdance', 'Funky', 'Pole Dance', 'Ballet clasico', 'Claque', 'Flamenco', 'sevillanas', 'Contemporaneo', 'Otros']
   habdeportes : string [] = ['Tenis','Esgrima','Tiro con arco','Polo','Golf','Boxeo','Voleibol','Baloncesto','Montar a caballo','Natación','Padel','Artes marciales']
   
-
+  @ViewChild (TemplateRef, {static: false}) tpl: TemplateRef <any>;
   constructor(
     private authService: AuthService,
+    public ngxSmartModalService: NgxSmartModalService,
     private formBuilder: FormBuilder,
     private router: Router,
+    
   ) {
     this.createRegisterForm();
   }
-
 
   capturar() {
     var deporte = this.deporte
@@ -74,7 +76,6 @@ export class ActorsComponent implements OnInit {
       console.log(0)
     }
   }
-
 
   onFileSelected(event) {
     this.selectedFile = event.target.files[0] as File;
@@ -86,8 +87,8 @@ export class ActorsComponent implements OnInit {
 
   createRegisterForm() {
     this.actorForm = this.formBuilder.group({
-      email: ['',[Validators.required,Validators.email]],
-      password: ['',[Validators.required,Validators.minLength(5)]],
+      email: ['',[Validators.required,Validators.email,Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+      password: ['',[Validators.required,Validators.minLength(6)]],
       confirmPassword: ['',Validators.required],
       acceptTerms: [false, Validators.requiredTrue],
       bailes:[''],
@@ -95,7 +96,7 @@ export class ActorsComponent implements OnInit {
       placebirth:['',Validators.required],
       habilidades:[''],
       username: ['', Validators.required],
-      nombres: ['', Validators.required],
+      nombres: ['', [Validators.required, Validators.minLength(3)]],
       estilobailes:[''],
       cantos: [''],
       estilocantos:[''],
@@ -133,11 +134,13 @@ export class ActorsComponent implements OnInit {
       modeloMoto: [''],
       colorMoto: [''],
       ultimosTrabajos: [''],
-    });
-  }
+    }
 
-  
- 
+    , {
+      validator: MustMatch('password', 'confirmPassword')
+    });
+
+  }
 
   registrarActor() {
     this.submitted = true;
@@ -145,15 +148,15 @@ export class ActorsComponent implements OnInit {
       return;
     }
     const newUserObject = this.actorForm.value;
-    alert(JSON.stringify(newUserObject))
+    //alert(JSON.stringify(newUserObject))
     this.authService.signup(newUserObject).subscribe(
       res => {
+        this.ngxSmartModalService.create('confirm', 'Se ha registrado exitosamente').open();
         localStorage.setItem('token', res.token);
-        //console.log('Cuenta de Actor/Modelo creada exitosamente');
-        // this.subirFotoPerfil();
         this.router.navigate(['/homeuser']);
       },
       (err) => {
+        this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
         console.log(JSON.stringify(err));
       });
 
@@ -167,23 +170,26 @@ export class ActorsComponent implements OnInit {
     });
   }
 
-  
-
- /*  onCheckLanguage(event) {
-    if (event.target.checked) {
-      for (const idioma of this.idiomasHablados) {
-        if (idioma.nombreIdioma === event.target.value) {
-          idioma.isChecked = true;
-        }
-      }
-    } else {
-      // find the unselected element
-      for (const idioma of this.idiomasHablados) {
-        if (idioma.nombreIdioma === event.target.value) {
-          idioma.isChecked = false;
-        }
-      }
+  /*  Función para permitir solo numeros */
+   numberOnly(event): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+      return false;
     }
-  } */
+    return true;
+  }
+
+  /*  Función para no permitir caracteres especiales */
+  check(e) {
+    const tecla = (document.all) ? e.keyCode : e.which;
+    //Tecla de retroceso para borrar, siempre la permite
+    if (tecla == 8) {
+      return true;
+    }
+    // Patron de entrada, en este caso solo acepta numeros y letras
+    const patron = /[A-Za-z0-9]/;
+    const tecla_final = String.fromCharCode(tecla);
+    return patron.test(tecla_final);
+  }
 
 }

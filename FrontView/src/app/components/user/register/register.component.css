@@ -3,15 +3,11 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    height: 100%;
 }
 
 .alt-padding{
-  padding-top: 8%;
-}
-
-.transparent{
-  background: rgba(255, 255, 255, 0.08);
-  padding: 10px;
+  transform: translate(0px, 25%);
 }
 
 .card-signin {
