@@ -18,12 +18,10 @@ export function MustMatch(controlName: string, matchingControlName: string) {
   return (formGroup: FormGroup) => {
       const control = formGroup.controls[controlName];
       const matchingControl = formGroup.controls[matchingControlName];
-
       if (matchingControl.errors && !matchingControl.errors.mustMatch) {
           // return if another validator has already found an error on the matchingControl
           return;
       }
-
       // set error on matchingControl if validation fails
       if (control.value !== matchingControl.value) {
           matchingControl.setErrors({ mustMatch: true });
@@ -45,26 +43,17 @@ export class ActorsComponent implements OnInit {
   disa = false;
   matcher = new MyErrorStateMatcher();
   etnico: string[] = ['Afro descendiente/Negro','Blanco','Indígena','Mestizo/Moreno','Asiático','Otro'];
-  deporte: string[] = ['Profesional','Federado','No Profesional'];
-  actor = [
-    {
-      name: 'Si',
-      value: 0
-    },
-    {
-      name: 'No',
-      value: 1
-    }
-  ];
-  bailes : string[] = ['Profesional','No Profesional'];
-  musicos : string[] = ['Profesional','No Profesional'];
-  cantos : string[] = ['Profesional','No Profesional'];
-  idiomasHablados : string[] = ['Gallego','Italiano','Rumano','Frances', 'Alemén', 'Catalán', 'valenciano','bilingüe'];
-  habilidades : string[] = ['Skater', 'Skater Acuático', 'Pompas Jabón', 'Presentador', 'Magia', 'Surf', 'Buceo', 'Surf', 'Cómico', 'Motocross', 'Mimo', 'Puenting', 'Sky', 'Parapente', 'Ciclismo BMX', 'Parkour snowboarding', 'Sombras chinescas']
+  deporte = [{name: 'Profesional',},{name: 'Federado',},{name: 'No Profesional',},];
+  actor = [{name: 'Si',value: 0},{name: 'No',value: 1}];
+  bailes = [{name: 'Profesional',},{name: 'No Profesional',},];
+  musicos = [{name: 'Profesional',},{name: 'No Profesional',},];
+  cantos = [{name: 'Profesional',},{name: 'No Profesional',},];
+  idiomasHablados : string[] = ['Gallego','Italiano','Rumano','Frances', 'Alemén', 'Catalán', 'valenciano','bilingüe','Otros'];
+  habilidades : string[] = ['Skater', 'Skater Acuático', 'Pompas Jabón', 'Presentador', 'Magia', 'Surf', 'Buceo', 'Surf', 'Cómico', 'Motocross', 'Mimo', 'Puenting', 'Sky', 'Parapente', 'Ciclismo BMX', 'Parkour snowboarding', 'Sombras chinescas','Otros']
   estilocantos : string[] = ['Lirico','Pop', 'Rock', 'Rap', 'Heavy Metal', 'Reggae', 'Salsa', 'Pop latino', 'Blues', 'Country', 'Dance', 'Tecno', 'Punk', 'Hip Hop', 'Soul', 'Electro Pop', 'Otros'];
   instrumentos : string[] = ['Piano','Bateria','Guitarra española', 'Guitarra electrica', 'Bajo', 'Bandurria', 'Violin', 'Violonchero', 'Bombo', 'Castañuelas', 'Trombon', 'Trompeta', 'Cantante', 'Otros']
   estilobailes : string[] = ['Cumbia', 'Salsa', 'Tango', 'Hiphop', 'Chachacha', 'Pasodoble', 'Samba', 'Merengue', 'Breakdance', 'Funky', 'Pole Dance', 'Ballet clasico', 'Claque', 'Flamenco', 'sevillanas', 'Contemporaneo', 'Otros']
-  habdeportes : string [] = ['Tenis','Esgrima','Tiro con arco','Polo','Golf','Boxeo','Voleibol','Baloncesto','Montar a caballo','Natación','Padel','Artes marciales']
+  habdeportes : string [] = ['Tenis','Esgrima','Tiro con arco','Polo','Golf','Boxeo','Voleibol','Baloncesto','Montar a caballo','Natación','Padel','Artes marciales','Otros']
   
   @ViewChild (TemplateRef, {static: false}) tpl: TemplateRef <any>;
 
@@ -92,49 +81,49 @@ export class ActorsComponent implements OnInit {
       password: ['',[Validators.required,Validators.minLength(6)]],
       confirmPassword: ['',Validators.required],
       acceptTerms: [false, Validators.requiredTrue],
-      bailes:[''],
-      etnico: [''],
+      bailes:['',Validators.required],
+      etnico: ['',Validators.required],
       placebirth:['',Validators.required],
-      habilidades:[''],
+      habilidades:['',Validators.required],
       username: ['', Validators.required],
       nombres: ['', [Validators.required, Validators.minLength(3)]],
-      estilobailes:[''],
-      cantos: [''],
-      estilocantos:[''],
-      instrumentos:[''],
-      deporte: [''],
+      estilobailes:['',Validators.required],
+      cantos: ['',Validators.required],
+      estilocantos:['',Validators.required],
+      instrumentos:['',Validators.required],
+      deporte: ['',Validators.required],
       apellidos: ['',Validators.required],
       nombreArtistico: ['',Validators.required],
-      sexo: [''],
+      sexo: ['',Validators.required],
       telefono: ['',Validators.required],
-      fechaNacimiento: [''],
-      nacionalidad: [''],
-      localidad: [''],
-      videoBook: [''],
-      provincia: [''],
-      codpostal: [''],
-      direccion: [''],
-      acento: [''],
-      tallaPantalon: [''],
-      tallaCamisa: [''],
-      tallaChaqueta: [''],
-      pie: [''],
-      tattoos: [''],
-      avatar: [''],
-      habdeportes: [''],
-      altura: [''],
-      musicos:[''],
-      colorPiel: [''],
-      colorPelo: [''],
-      colorOjos: [''],
+      fechaNacimiento: ['',Validators.required],
+      nacionalidad: ['',Validators.required],
+      localidad: ['',Validators.required],
+      videoBook: ['',Validators.required],
+      provincia: ['',Validators.required],
+      codpostal: ['',Validators.required],
+      direccion: ['',Validators.required],
+      acento: ['',Validators.required],
+      tallaPantalon: ['',Validators.required],
+      tallaCamisa: ['',Validators.required],
+      tallaChaqueta: ['',Validators.required],
+      pie: ['',Validators.required],
+      tattoos: ['',Validators.required],
+      avatar: ['',Validators.required],
+      habdeportes: ['',Validators.required],
+      altura: ['',Validators.required],
+      musicos:['',Validators.required],
+      colorPiel: ['',Validators.required],
+      colorPelo: ['',Validators.required],
+      colorOjos: ['',Validators.required],
       numeroDNI: ['',Validators.required],
       numeroSeguridadSocial: ['',Validators.required],
-      carnetConducir: [''],
-      modeloCoche: [''],
-      colorCoche: [''],
-      modeloMoto: [''],
-      colorMoto: [''],
-      ultimosTrabajos: [''],
+      carnetConducir: ['',Validators.required],
+      modeloCoche: ['',Validators.required],
+      colorCoche: ['',Validators.required],
+      modeloMoto: ['',Validators.required],
+      colorMoto: ['',Validators.required],
+      ultimosTrabajos: ['',Validators.required],
     }
 
     , {
@@ -149,7 +138,6 @@ export class ActorsComponent implements OnInit {
       return;
     }
     const newUserObject = this.actorForm.value;
-    //alert(JSON.stringify(newUserObject))
     this.authService.signup(newUserObject).subscribe(
       res => {
         this.ngxSmartModalService.create('confirm', 'Se ha registrado exitosamente').open();
