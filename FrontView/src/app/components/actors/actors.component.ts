@@ -46,7 +46,16 @@ export class ActorsComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   etnico: string[] = ['Afro descendiente/Negro','Blanco','Indígena','Mestizo/Moreno','Asiático','Otro'];
   deporte: string[] = ['Profesional','Federado','No Profesional'];
-  actor : string[] = ['Si', 'No'];
+  actor = [
+    {
+      name: 'Si',
+      value: 0
+    },
+    {
+      name: 'No',
+      value: 1
+    }
+  ];
   bailes : string[] = ['Profesional','No Profesional'];
   musicos : string[] = ['Profesional','No Profesional'];
   cantos : string[] = ['Profesional','No Profesional'];
@@ -58,6 +67,7 @@ export class ActorsComponent implements OnInit {
   habdeportes : string [] = ['Tenis','Esgrima','Tiro con arco','Polo','Golf','Boxeo','Voleibol','Baloncesto','Montar a caballo','Natación','Padel','Artes marciales']
   
   @ViewChild (TemplateRef, {static: false}) tpl: TemplateRef <any>;
+
   constructor(
     private authService: AuthService,
     public ngxSmartModalService: NgxSmartModalService,
@@ -66,15 +76,6 @@ export class ActorsComponent implements OnInit {
     
   ) {
     this.createRegisterForm();
-  }
-
-  capturar() {
-    var deporte = this.deporte
-    if (deporte.indexOf('1') || deporte.indexOf('0')){
-      console.log(1, 0);
-    }else{
-      console.log(0)
-    }
   }
 
   onFileSelected(event) {

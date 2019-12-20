@@ -13,8 +13,9 @@ export class AuthService {
     private http: HttpClient,
     private router: Router
   ) {
-     // this.url = 'http://localhost:1337/user/';
-     this.url = 'http://ninesselas.com/user/';
+     this.url = 'http://localhost:8090/api/';
+     // this.url = 'http://ninesselas.com/user/';
+     
   }
 
   signup(newUser): Observable<any> {

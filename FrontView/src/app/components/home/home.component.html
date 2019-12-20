@@ -1,66 +1,72 @@
 <app-header></app-header>
-<div class="h-100">
-        <div class="crossfade">
-            <figure></figure>
-            <figure></figure>
-            <figure></figure>
-            <figure></figure>
-            <figure></figure>
+<div class="ddd">
+  <div class="h-100">
+    <div class="crossfade">
+        <figure></figure>
+        <figure></figure>
+        <figure></figure>
+        <figure></figure>
+        <figure></figure>
+    </div>
+    <div class="container contect-Ajuste">
+        <div class="col">
+            <div class="text-white text-center">
+                <h1 class="masthead-heading fg-50 text-light fw-600">Agencia de actores y figuración</h1>
+                <h4 class="masthead-subheading mb-0 text-light">Queremos contar con tu perfil para futuros proyectos del mundo escénico.</h4>
+                <h5 class="masthead-subheading mb-0 mt-3 text-light">APORTA TUS DATOS Y RECUERDA ACTUALIZARTE.</h5>
+                <button class="mt-3 btn-elect" (click)="ngxSmartModalService.getModal ('myModal').open()"> Selecciona Aqui. </button>
+              </div>
         </div>
-        <div class="container contect-Ajuste">
-            <div class="col">
-                <div class="text-white text-center">
-                    <h1 class="masthead-heading fg-50 text-light fw-600">Agencia de actores y figuración</h1>
-                    <h4 class="masthead-subheading mb-0 text-light">Queremos contar con tu perfil para futuros proyectos del mundo escénico.</h4>
-                    <h5 class="masthead-subheading mb-0 mt-3 text-light">APORTA TUS DATOS Y RECUERDA ACTUALIZARTE.</h5>
-                    <button class="mt-3 btn-elect" (click)="ngxSmartModalService.getModal ('myModal').open()"> Selecciona Aqui. </button>
-                  </div>
-            </div>
+    </div>
+    
+    <!-- Footer -->
+    <!-- <footer class="footer pt-4 pb-3">
+        <div class="container">
+              <div class="row">
+                <div class="col-lg-9 col-md-12 h-100 text-center text-lg-left my-auto d-none d-sm-none d-lg-block">
+                  <ul class="list-inline mb-2">
+                    <li class="list-inline-item">⋅</li>
+                    <li class="list-inline-item">
+                      <a routerLink="/contact">Contáctanos</a>
+                    </li>
+                    <li class="list-inline-item">⋅</li>
+                    <li class="list-inline-item">
+                      <a routerLink="/terms">Terminos y condiciones</a>
+                    </li>
+                    <li class="list-inline-item">⋅</li>
+                    <li class="list-inline-item">
+                      <a routerLink="/privacy">Politica de privacidad</a>
+                    </li>
+                  </ul>
+                  <p class="text-muted small mb-4 mb-lg-0">© Ninesselas 2019. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-lg-3 col-md-12 h-100 text-center text-lg-right">
+                  <ul class="list-inline mb-0">
+                    <li class="list-inline-item mr-3">
+                      <a href="https://www.facebook.com/ninesselas.cuscu.3" target="_blank">
+                        <i class="fab fa-facebook fa-2x fa-fw"></i>
+                      </a>
+                    </li>
+                    <li class="list-inline-item">
+                      <a href="https://www.instagram.com/ninesselasc/" target="_blank">
+                        <i class="fab fa-instagram fa-2x fa-fw"></i>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
         </div>
-        <!-- Modal -->
-        <ngx-smart-modal #myModal identifier="myModal">
-            <h1> Bienvenidos </h1>
-            <p class="mb-0"> Somos la principal Agencia Profesional </p>
-            <a  routerLink="/figuracion" class="btn btn-elect btn-xl  mt-5 ml-2">Figuración</a>
-            <a  routerLink="/actors" class="btn btn-elect btn-xl  mt-5 ml-2">Actor</a>
-            <a  routerLink="/children" class="btn btn-elect btn-xl  mt-5 ml-1">Niños</a>
-        </ngx-smart-modal>
-        <!-- Footer -->
-        <footer class="footer pt-4 pb-3">
-            <div class="container">
-                  <div class="row">
-                    <div class="col-lg-9 col-md-12 h-100 text-center text-lg-left my-auto d-none d-sm-none d-lg-block">
-                      <ul class="list-inline mb-2">
-                        <li class="list-inline-item">⋅</li>
-                        <li class="list-inline-item">
-                          <a routerLink="/contact">Contáctanos</a>
-                        </li>
-                        <li class="list-inline-item">⋅</li>
-                        <li class="list-inline-item">
-                          <a routerLink="/terms">Terminos y condiciones</a>
-                        </li>
-                        <li class="list-inline-item">⋅</li>
-                        <li class="list-inline-item">
-                          <a routerLink="/privacy">Politica de privacidad</a>
-                        </li>
-                      </ul>
-                      <p class="text-muted small mb-4 mb-lg-0">© Ninesselas 2019. Todos los derechos reservados.</p>
-                    </div>
-                    <div class="col-lg-3 col-md-12 h-100 text-center text-lg-right">
-                      <ul class="list-inline mb-0">
-                        <li class="list-inline-item mr-3">
-                          <a href="https://www.facebook.com/ninesselas.cuscu.3" target="_blank">
-                            <i class="fab fa-facebook fa-2x fa-fw"></i>
-                          </a>
-                        </li>
-                        <li class="list-inline-item">
-                          <a href="https://www.instagram.com/ninesselasc/" target="_blank">
-                            <i class="fab fa-instagram fa-2x fa-fw"></i>
-                          </a>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-            </div>
-        </footer>
+    </footer> -->
+    
+  </div>
+ <!--  <app-isotope></app-isotope> -->
+  <app-footer></app-footer>
 </div>
+<!-- Modal -->
+<ngx-smart-modal #myModal identifier="myModal">
+  <h1> Bienvenidos </h1>
+  <p class="mb-0"> Somos la principal Agencia Profesional </p>
+  <a  routerLink="/figuracion" class="btn btn-elect btn-xl  mt-5 ml-2">Figuración</a>
+  <a  routerLink="/actors" class="btn btn-elect btn-xl  mt-5 ml-2">Actor</a>
+  <a  routerLink="/children" class="btn btn-elect btn-xl  mt-5 ml-1">Niños</a>
+</ngx-smart-modal>

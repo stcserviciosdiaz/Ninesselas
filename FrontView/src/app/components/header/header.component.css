@@ -30,3 +30,8 @@ ul li a:hover:after{
 ul li a{
     color: white;
 }
+
+.text-upp{
+    text-transform: uppercase;
+  }
+  

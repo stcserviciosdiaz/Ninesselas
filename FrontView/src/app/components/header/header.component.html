@@ -1,15 +1,15 @@
 <nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top">
     <div class="container">
       <a class="navbar-brand" href="#">
-        <img src="assets/img/LOGONINESSELAS.png" alt="" width="250" class="d-inline-block align-middle mt-2">
+        <img [src]="'assets/img/LOGONINESSELAS.png'" alt="" width="250" class="d-inline-block align-middle mt-2">
       </a>
       <button class="navbar-toggler" (click)="isNvar = !isNvar" type="button" data-toggle="collapse" data-target="#marco" aria-controls="marco" aria-expanded="false" aria-label="Toggle navigation">
         <span class="toggler-icon">
-            <img src="assets/img/nvarWhite.png" alt="" *ngIf="!isNvar" width="35" class="d-inline-block align-middle">
-            <img src="assets/img/nvarWhiteX.png" alt="" *ngIf="isNvar" width="35" class="d-inline-block align-middle">
+            <img [src]="'assets/img/nvarWhite.png'" alt="" *ngIf="!isNvar" width="35" class="d-inline-block align-middle">
+            <img [src]="'assets/img/nvarWhiteX.png'" alt="" *ngIf="isNvar" width="35" class="d-inline-block align-middle">
         </span>
       </button>
-      <div class="d-md-block d-none">
+      <div class="text-upp d-md-block d-none">
           <ul class="navbar-nav ml-auto">
               <li class="nav-item">
                 <a class="nav-link js-scroll active" href="#home">Home</a>

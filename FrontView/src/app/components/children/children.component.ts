@@ -58,6 +58,8 @@ export class ChildrenComponent implements OnInit {
   childForm: FormGroup;
   submitted = false;
 
+  isavailable = false;
+
   avatarFile: File = null;
   copyDNIFather: File = null;
   CopyDNIMother: File = null;
@@ -137,6 +139,12 @@ export class ChildrenComponent implements OnInit {
     , {
       validator: MustMatch('password', 'confirmPassword')
     });
+
+  }
+
+  changemonths(event) {
+    
+  
 
   }
 
