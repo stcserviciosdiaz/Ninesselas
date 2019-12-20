@@ -41,16 +41,16 @@ export class ChildrenComponent implements OnInit {
 
   matcher = new MyErrorStateMatcher();
 
-  idiomasHablados : string[] = ['Gallego','Italiano','Rumano','Frances', 'Alemén', 'Catalán', 'valenciano','bilingüe'];
-  habilidades : string[] = ['Skater', 'Skater Acuático', 'Pompas Jabón', 'Presentador', 'Magia', 'Surf', 'Buceo', 'Surf', 'Cómico', 'Motocross', 'Mimo', 'Puenting', 'Sky', 'Parapente', 'Ciclismo BMX', 'Parkour snowboarding', 'Sombras chinescas']
-  cantos : string[] = ['Profesional','No Profesional'];
-  musicos : string[] = ['Profesional','No Profesional'];
-  bailes : string[] = ['Profesional','No Profesional'];
-  actor : string[] = ['Si', 'No'];
-  etnico: string[] = ['Afro descendiente/Negro','Blanco','Indígena','Mestizo/Moreno','Asiático','Otro'];
+  idiomasHablados : string[] = ['Gallego','Italiano','Rumano','Frances', 'Alemén', 'Catalán', 'valenciano','bilingüe','Otros'];
+  habilidades : string[] = ['Skater', 'Skater Acuático', 'Pompas Jabón', 'Presentador', 'Magia', 'Surf', 'Buceo', 'Surf', 'Cómico', 'Motocross', 'Mimo', 'Puenting', 'Sky', 'Parapente', 'Ciclismo BMX', 'Parkour snowboarding', 'Sombras chinescas','Otros']
+  musicos = [{name: 'Profesional',},{name: 'No Profesional',},];
+  bailes = [{name: 'Profesional',},{name: 'No Profesional',},];
+  cantos = [{name: 'Profesional',},{name: 'No Profesional',},];
+  actor  = [{name: 'Si',},{name: 'No',},];
+  etnico: string[] = ['Afro descendiente/Negro','Blanco','Indígena','Mestizo/Moreno','Asiático','Otros'];
   edad = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16];
-  deporte : string[] = ['Profesional','No Profesional','Federado'];
-  habdeportes : string [] = ['Tenis','Esgrima','Tiro con arco','Polo','Golf','Boxeo','Voleibol','Baloncesto','Montar a caballo','Natación','Padel','Artes marciales']
+  deporte = [{name: 'Profesional',},{name: 'Federado',},{name: 'No Profesional',},];
+  habdeportes : string [] = ['Tenis','Esgrima','Tiro con arco','Polo','Golf','Boxeo','Voleibol','Baloncesto','Montar a caballo','Natación','Padel','Artes marciales','Otros']
   estilocantos : string[] = ['Lirico','Pop', 'Rock', 'Rap', 'Heavy Metal', 'Reggae', 'Salsa', 'Pop latino', 'Blues', 'Country', 'Dance', 'Tecno', 'Punk', 'Hip Hop', 'Soul', 'Electro Pop', 'Otros'];
   instrumentos : string[] = ['Piano','Bateria','Guitarra española', 'Guitarra electrica', 'Bajo', 'Bandurria', 'Violin', 'Violonchero', 'Bombo', 'Castañuelas', 'Trombon', 'Trompeta', 'Cantante', 'Otros']
   estilobailes : string[] = ['Cumbia', 'Salsa', 'Tango', 'Hiphop', 'Chachacha', 'Pasodoble', 'Samba', 'Merengue', 'Breakdance', 'Funky', 'Pole Dance', 'Ballet clasico', 'Claque', 'Flamenco', 'sevillanas', 'Contemporaneo', 'Otros']
@@ -87,64 +87,58 @@ export class ChildrenComponent implements OnInit {
       email: ['', [Validators.required, Validators.email,Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['',Validators.required],
-      sexo: [''],
-      actor:[''],
-      videoBook:[''],
-      estilocantos:[''],
-      habdeportes:[''],
-      deporte:[''],
+      sexo: ['',Validators.required],
+      actor:['',Validators.required],
+      videoBook:['',Validators.required],
+      estilocantos:['',Validators.required],
+      habdeportes:['',Validators.required],
+      deporte:['',Validators.required],
       placebirth:['',Validators.required],
-      estilobailes: [''],
-      bailes:[''],
-      etnico: [''],
+      estilobailes: ['',Validators.required],
+      bailes:['',Validators.required],
+      etnico: ['',Validators.required],
       edad: ['',Validators.requiredTrue],
-      codpostal: [''],
-      musicos: [''],
+      codpostal: ['',Validators.required],
+      musicos: ['',Validators.required],
       telefono: ['',[Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
       telefonofather: ['',[Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
       telefonomother: ['',[Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
-      fechaNacimiento: [''],
+      fechaNacimiento: ['',Validators.required],
       nacionalidad: [null, [Validators.required]],
-      acento: [''],
-      tallaPantalon: [''],
-      tallaCamisa: [''],
-      tallaChaqueta: [''],
-      localidad: [''],
-      provincia: [''],
+      acento: ['',Validators.required],
+      tallaPantalon: ['',Validators.required],
+      tallaCamisa: ['',Validators.required],
+      tallaChaqueta: ['',Validators.required],
+      localidad: ['',Validators.required],
+      provincia: ['',Validators.required],
       direccion: ['', Validators.required],
-      pie: [''],
-      cantos: [''],
-      habilidades: [''],
-      idiomasHablados: [''],
-      altura: [''],
-      instrumentos : [''],
-      colorPiel: [''],
-      colorPelo: [''],
-      colorOjos: [''],
-      observaciones: [''],
+      pie: ['',Validators.required],
+      cantos: ['',Validators.required],
+      habilidades: ['',Validators.required],
+      idiomasHablados: ['',Validators.required],
+      altura: ['',Validators.required],
+      instrumentos : ['',Validators.required],
+      colorPiel: ['',Validators.required],
+      colorPelo: ['',Validators.required],
+      colorOjos: ['',Validators.required],
+      observaciones: ['',Validators.required],
       numeroDNI: ['', Validators.required],
       numeroSeguridadSocial: ['', Validators.required],
       numeroDNIPadre: ['', Validators.required],
       numeroDNIMadre: ['',Validators.required],
-      numeroDNIRepresentante: [''],
-      ultimosTrabajos: [''],
-      avatar: [''],
-      copyDNIFather: [''],
-      CopyDNIMother: [''],
-      copySocialNumber: [''],
-      copyDNIkid: [''],
-      libroFamilia: [''],
+      numeroDNIRepresentante: ['',Validators.required],
+      ultimosTrabajos: ['',Validators.required],
+      avatar: ['',Validators.required],
+      copyDNIFather: ['',Validators.required],
+      CopyDNIMother: ['',Validators.required],
+      copySocialNumber: ['',Validators.required],
+      copyDNIkid: ['',Validators.required],
+      libroFamilia: ['',Validators.required],
     }
 
     , {
       validator: MustMatch('password', 'confirmPassword')
     });
-
-  }
-
-  changemonths(event) {
-    
-  
 
   }
 

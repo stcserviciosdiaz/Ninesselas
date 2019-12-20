@@ -45,13 +45,13 @@ export class FiguracionComponent implements OnInit {
   @Input() inputArray;
   subscriber;
   matcher = new MyErrorStateMatcher();
-  bailes : string[] = ['Profesional','No Profesional'];
+  bailes = [{name: 'Profesional',},{name: 'No Profesional',},];
+  cantos = [{name: 'Profesional',},{name: 'No Profesional',},];
   etnico: string[] = ['Afro descendiente/Negro','Blanco','Indígena','Mestizo/Moreno','Asiático','Otro'];
   estilobailes : string[] = ['Cumbia', 'Salsa', 'Tango', 'Hiphop', 'Chachacha', 'Pasodoble', 'Samba', 'Merengue', 'Breakdance', 'Funky', 'Pole Dance', 'Ballet clasico', 'Claque', 'Flamenco', 'sevillanas', 'Contemporaneo', 'Otros']
   estilocantos : string[] = ['Lirico','Pop', 'Rock', 'Rap', 'Heavy Metal', 'Reggae', 'Salsa', 'Pop latino', 'Blues', 'Country', 'Dance', 'Tecno', 'Punk', 'Hip Hop', 'Soul', 'Electro Pop', 'Otros'];
-  habilidades : string[] = ['Skater', 'Skater Acuático', 'Pompas Jabón', 'Presentador', 'Magia', 'Surf', 'Buceo', 'Surf', 'Cómico', 'Motocross', 'Mimo', 'Puenting', 'Sky', 'Parapente', 'Ciclismo BMX', 'Parkour snowboarding', 'Sombras chinescas']
-  cantos : string[] = ['Profesional','No Profesional'];
-  idiomasHablados : string[] = ['Gallego','Italiano','Rumano','Frances', 'Alemén', 'Catalán', 'valenciano','bilingüe'];
+  habilidades : string[] = ['Skater', 'Skater Acuático', 'Pompas Jabón', 'Presentador', 'Magia', 'Surf', 'Buceo', 'Surf', 'Cómico', 'Motocross', 'Mimo', 'Puenting', 'Sky', 'Parapente', 'Ciclismo BMX', 'Parkour snowboarding', 'Sombras chinescas','Otros']
+  idiomasHablados : string[] = ['Gallego','Italiano','Rumano','Frances', 'Alemén', 'Catalán', 'valenciano','bilingüe','Otros'];
   @ViewChild (TemplateRef, {static: false}) tpl: TemplateRef <any>;
   constructor(
     private authService: AuthService,
@@ -77,45 +77,45 @@ export class FiguracionComponent implements OnInit {
       confirmPassword: ['',Validators.required],
       username: ['',Validators.required],
       acceptTerms:['',Validators.required],
-      habilidades: [''],
-      cantos: [''],
-      etnico: [''],
-      estilocantos: [''],
+      habilidades: ['',Validators.required],
+      cantos: ['',Validators.required],
+      etnico: ['',Validators.required],
+      estilocantos: ['',Validators.required],
       placebirth:['',Validators.required],
-      idiomasHablados: [''],
+      idiomasHablados: ['',Validators.required],
       nombres: ['',Validators.required],
       apellidos: ['',Validators.required],
-      localidad: [''],
-      provincia: [''],
-      bailes: [''],
-      estilobailes:[''],
-      codpostal: [''],
-      direccion: [''],
-      sexo: [''],
+      localidad: ['',Validators.required],
+      provincia: ['',Validators.required],
+      bailes: ['',Validators.required],
+      estilobailes:['',Validators.required],
+      codpostal: ['',Validators.required],
+      direccion: ['',Validators.required],
+      sexo: ['',Validators.required],
       telefono: ['',[Validators.required,Validators.minLength(6),Validators.maxLength(6)]],
-      fechaNacimiento: [''],
-      nacionalidad: [''],
-      acento: [''],
-      tallaPantalon: [''],
-      tallaCamisa: [''],
-      tallaChaqueta: [''],
-      pie: [''],
-      altura: [''],
-      colorPiel: [''],
-      colorPelo: [''],
-      colorOjos: [''],
-      numeroDNI: [''],
-      numeroSeguridadSocial: [''],
-      carnetConducir: [''],
-      modeloCoche: [''],
-      colorCoche: [''],
-      fotoCoche: [''],
-      modeloMoto: [''],
-      colorMoto: [''],
-      fotoMoto: [''],
-      avatar: [''],
-      tattoos: [''],
-      manos: [''],
+      fechaNacimiento: ['',Validators.required],
+      nacionalidad: ['',Validators.required],
+      acento: ['',Validators.required],
+      tallaPantalon: ['',Validators.required],
+      tallaCamisa: ['',Validators.required],
+      tallaChaqueta: ['',Validators.required],
+      pie: ['',Validators.required],
+      altura: ['',Validators.required],
+      colorPiel: ['',Validators.required],
+      colorPelo: ['',Validators.required],
+      colorOjos: ['',Validators.required],
+      numeroDNI: ['',Validators.required],
+      numeroSeguridadSocial: ['',Validators.required],
+      carnetConducir: ['',Validators.required],
+      modeloCoche: ['',Validators.required],
+      colorCoche: ['',Validators.required],
+      fotoCoche: ['',Validators.required],
+      modeloMoto: ['',Validators.required],
+      colorMoto: ['',Validators.required],
+      fotoMoto: ['',Validators.required],
+      avatar: ['',Validators.required],
+      tattoos: ['',Validators.required],
+      manos: ['',Validators.required],
     }
 
     , {

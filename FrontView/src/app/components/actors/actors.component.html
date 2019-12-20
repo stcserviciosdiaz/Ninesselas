@@ -15,7 +15,7 @@
                   </div>
                   <form [formGroup]="actorForm">
 
-                    <div class="form-group"> <!-- Subida de avatar -->  
+                    <div class="form-group"><!-- Subida de avatar -->  
                         <label class="control-label">Foto de Perfil</label>
                         <input type="file" (change)="onFileSelected($event)" formControlName="avatar">
                     </div>
@@ -143,7 +143,7 @@
                       </div>
                     </div>
 
-                    <div class="form-group d-lg-flex d-md-flex d-block "> 
+                    <div class="form-group d-lg-flex d-md-flex d-block"> 
                       <div class="form-group mr-lg-2 mr-md-2 mr-0"><!-- Talla de camisa -->
                         <label class="control-label">Talla de camisa</label>
                         <input type="text" class="d-inline form-control" formControlName="tallaCamisa" placeholder="talla de camisa" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.tallaCamisa.errors }">

@@ -1,16 +1,16 @@
 <app-header></app-header>
 <div class="bg-fondo">
-    <div class="container contect-Ajuste mx-w d-flex">
-        <div class="corp">
+    <div class="container contect-Ajuste mx-w">
+        <div class="">
           <div class="">
             <a class="logo">Registro de Figuración</a>
             <p class="mt-3">------</p>
           </div>
           <div class="">
             <div class="">
-              <div class="credentials-box">
-                <div class="simple-credentials js-simple-credentials">
-                  <div class="credentials-or">
+              <div class="">
+                <div class="">
+                  <div class="">
                     <span>Llena el siguiente formulario</span>
                   </div>
                   <form [formGroup]="actorForm">
@@ -29,7 +29,7 @@
                     </div>
 
                     <div class="form-group"> <!-- Nomnbre completos -->
-                      <label class="control-label">Nombres Completos</label>
+                      <label class="control-label">Nombre</label>
                       <input type="text" class="form-control" id="nombres" formControlName="nombres" placeholder="Luis Diaz" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.nombres.errors }">
                       <div *ngIf="submitted && actorForm.controls.nombres.errors" class="invalid-feedback">
                         <div *ngIf="actorForm.controls.nombres.errors.required">El nombre es requerido</div>
@@ -84,10 +84,14 @@
 
                     <div class="form-group"><!-- ¿De qué grupo étnico se considera? -->
                       <label class="control-label">¿De qué grupo étnico se considera?</label>
-                      <select forControlName="etnico" class="form-control">
-                          <option [ngValue]="0">Seleccione...</option>
+                        <select forControlName="etnico" class="form-control" [(ngModel)]="etnico.Otro" [ngModelOptions]="{standalone: true}">
+                          <option [ngValue]="i" selected>Seleccione...</option>
                           <option *ngFor="let i of etnico">{{i}}</option>
                         </select>
+                    </div>
+                    <div *ngIf="etnico.Otro == 'Otro'" class="form-group"><!-- especifique -->
+                      <label class="control-label">Especifique otro grupo étnico</label>
+                      <textarea forControlName="otro" class="form-control" rows="3"></textarea>
                     </div>
 
                     <div class="form-group"> <!-- Fecha de nacimiento -->
@@ -121,7 +125,10 @@
 
                     <div class="form-group"> <!-- Naciomnalidad -->
                       <label class="control-label">Nacionalidad</label>
-                      <input type="text" class="form-control" id="nacionalidad" formControlName="nacionalidad" placeholder="Pais">
+                      <input type="text" class="form-control" id="nacionalidad" formControlName="nacionalidad" placeholder="Pais" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.nacionalidad.errors }">
+                      <div *ngIf="submitted && actorForm.controls.nacionalidad.errors" class="invalid-feedback">
+                          <div *ngIf="actorForm.controls.nacionalidad.errors.required">La nacionalidad es requerida</div>
+                      </div>
                     </div>
 
                     <div class="form-group"><!-- Correo electronico -->
@@ -133,41 +140,65 @@
                       </div>
                     </div>
 
-                    <div class="form-group d-flex"> <!-- talla de camisa -->
-                      <div class="form-group mr-2">
+                    <div class="form-group d-lg-flex d-md-flex d-block"> <!-- talla de camisa -->
+                      <div class="form-group mr-lg-2 mr-md-2 mr-0">
                         <label class="control-label">Talla de camisa</label>
-                        <input type="text" class="d-inline form-control" id="tallaCamisa" formControlName="tallaCamisa" placeholder="talla de camisa">
+                        <input type="text" class="d-inline form-control" id="tallaCamisa" formControlName="tallaCamisa" placeholder="talla de camisa" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.tallaCamisa.errors }">
+                        <div *ngIf="submitted && actorForm.controls.tallaCamisa.errors" class="invalid-feedback">
+                            <div *ngIf="actorForm.controls.tallaCamisa.errors.required">La talla es requerido</div>
+                        </div>
                       </div>
-                      <div class="form-group mr-2"><!-- talla de chaqueta -->
+                      <div class="form-group mr-lg-2 mr-md-2 mr-0"><!-- talla de chaqueta -->
                         <label class="control-label">talla de chaqueta</label>
-                        <input type="text" class="d-inline form-control" id="tallaChaqueta" formControlName="tallaChaqueta" placeholder="talla de chaqueta">
+                        <input type="text" class="d-inline form-control" id="tallaChaqueta" formControlName="tallaChaqueta" placeholder="talla de chaqueta" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.tallaChaqueta.errors }">
+                        <div *ngIf="submitted && actorForm.controls.tallaChaqueta.errors" class="invalid-feedback">
+                            <div *ngIf="actorForm.controls.tallaChaqueta.errors.required">La talla es requerido</div>
+                        </div>
                       </div>
-                      <div class="form-group mr-2"><!-- talla de pantalon -->
+                      <div class="form-group mr-lg-2 mr-md-2 mr-0"><!-- talla de pantalon -->
                         <label class="control-label">Talla de pantalon</label>
-                        <input type="text" class="d-inline form-control" id="tallaPantalon" formControlName="tallaPantalon" placeholder="talla de pantalon">
+                        <input type="text" class="d-inline form-control" id="tallaPantalon" formControlName="tallaPantalon" placeholder="talla de pantalon" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.tallaPantalon.errors }">
+                        <div *ngIf="submitted && actorForm.controls.tallaPantalon.errors" class="invalid-feedback">
+                            <div *ngIf="actorForm.controls.tallaPantalon.errors.required">La talla es requerido</div>
+                        </div>
                       </div>
-                      <div class="form-group mr-3"><!-- talla de Pie -->
+                      <div class="form-group mr-lg-3 mr-md-3 mr-0"><!-- talla de Pie -->
                           <label class="control-label">Pie</label>
-                          <input type="text" class="d-inline form-control" id="pie" formControlName="pie" placeholder="Pie">
+                          <input type="text" class="d-inline form-control" id="pie" formControlName="pie" placeholder="Pie" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.pie.errors }">
+                          <div *ngIf="submitted && actorForm.controls.pie.errors" class="invalid-feedback">
+                              <div *ngIf="actorForm.controls.pie.errors.required">La talla es requerido</div>
+                          </div>
                         </div>
                         <div class="form-group"><!-- talla de Altura -->
                           <label class="control-label">Altura</label>
-                          <input type="text" class="d-inline form-control" id="altura" formControlName="altura" placeholder="Altura">
+                          <input type="text" class="d-inline form-control" id="altura" formControlName="altura" placeholder="Altura" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.altura.errors }">
+                          <div *ngIf="submitted && actorForm.controls.altura.errors" class="invalid-feedback">
+                              <div *ngIf="actorForm.controls.altura.errors.required">La talla es requerido</div>
+                          </div>
                       </div>
                     </div>
                     
-                    <div class="form-group d-flex"> <!-- Color de Piel -->
-                      <div class="form-group mr-3">
+                    <div class="form-group d-lg-flex d-md-flex d-block"> <!-- Color de Piel -->
+                      <div class="form-group mr-lg-3 mr-md-3 mr-0">
                         <label class="control-label">Color de Piel</label>
-                        <input type="text" class="d-inline form-control" id="colorPiel" formControlName="colorPiel" placeholder="Color de Piel">
+                        <input type="text" class="d-inline form-control" formControlName="colorPiel" placeholder="Color de Piel" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.colorPiel.errors }">
+                        <div *ngIf="submitted && actorForm.controls.colorPiel.errors" class="invalid-feedback">
+                            <div *ngIf="actorForm.controls.colorPiel.errors.required">El color es requerido</div>
+                        </div>
                       </div>
-                      <div class="form-group mr-3"><!-- Color de Pelo-->
+                      <div class="form-group mr-lg-3 mr-md-3 mr-0"><!-- Color de Pelo-->
                         <label class="control-label">Color de Pelo</label>
-                        <input type="text" class="d-inline form-control" id="colorPelo" formControlName="colorPelo" placeholder="Color de Pelo">
+                        <input type="text" class="d-inline form-control" formControlName="colorPelo" placeholder="Color de Pelo" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.colorPelo.errors }">
+                        <div *ngIf="submitted && actorForm.controls.colorPelo.errors" class="invalid-feedback">
+                            <div *ngIf="actorForm.controls.colorPelo.errors.required">El color es requerido</div>
+                        </div>
                       </div>
-                      <div class="form-group mr-3">
+                      <div class="form-group mr-lg-3 mr-md-3 mr-0">
                           <label class="control-label">Color de ojos</label>
-                          <input type="text" class="d-inline form-control" id="colorOjos" formControlName="colorOjos" placeholder="Color de ojos">
+                          <input type="text" class="d-inline form-control" formControlName="colorOjos" placeholder="Color de ojos" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.colorOjos.errors }">
+                          <div *ngIf="submitted && actorForm.controls.colorOjos.errors" class="invalid-feedback">
+                              <div *ngIf="actorForm.controls.colorOjos.errors.required">El color es requerido</div>
+                          </div>
                       </div>
                     </div>
 
@@ -189,42 +220,61 @@
 
                     <div class="form-group">
                       <label>Dirección</label>
-                      <input type="text" class="form-control" forControlName="direccion" placeholder="Apartmento, studio, or floor">
-                  </div>
-                  <div class="form-row">
-                      <div class="form-group col-md-6"><!-- Localidad -->
-                        <label class="control-label">Localidad</label>
-                        <input type="text" class="form-control" forControlName="localidad" placeholder="Baleares">
+                      <input type="text" class="form-control" forControlName="direccion" placeholder="Apartmento, studio, or floor" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.direccion.errors }">
+                      <div *ngIf="submitted && actorForm.controls.direccion.errors" class="invalid-feedback">
+                          <div *ngIf="actorForm.controls.direccion.errors.required">La direccion es requerida</div>
                       </div>
-                      <div class="form-group col-md-4"><!-- Provincia -->
-                          <label class="control-label">Provincia</label>
-                          <input type="text" class="form-control" forControlName="provincia" placeholder="Catalan">
-                      </div>
-                      <div class="form-group col-md-2"><!-- Codigo Postal -->
-                        <label for="inputZip">Codigo Postal</label>
-                        <input type="text" (keypress)="check($event)" class="form-control" forControlName="codpostal" placeholder="######">
-                      </div>
-                  </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6"><!-- Localidad -->
+                          <label class="control-label">Localidad</label>
+                          <input type="text" class="form-control" forControlName="localidad" placeholder="Baleares" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.localidad.errors }">
+                          <div *ngIf="submitted && actorForm.controls.localidad.errors" class="invalid-feedback">
+                              <div *ngIf="actorForm.controls.localidad.errors.required">La localidad es requerida</div>
+                          </div>
+                        </div>
+                        <div class="form-group col-md-4"><!-- Provincia -->
+                            <label class="control-label">Provincia</label>
+                            <input type="text" class="form-control" forControlName="provincia" placeholder="Catalan" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.provincia.errors }">
+                            <div *ngIf="submitted && actorForm.controls.provincia.errors" class="invalid-feedback">
+                                <div *ngIf="actorForm.controls.provincia.errors.required">La provincia es requerida</div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-2"><!-- Codigo Postal -->
+                          <label for="inputZip">Codigo Postal</label>
+                          <input type="text" (keypress)="check($event)" class="form-control" forControlName="codpostal" placeholder="######" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.codpostal.errors }">
+                          <div *ngIf="submitted && actorForm.controls.codpostal.errors" class="invalid-feedback">
+                              <div *ngIf="actorForm.controls.codpostal.errors.required">Codigo requerido</div>
+                          </div>
+                        </div>
+                    </div>
 
                     <div class="form-group d-flex">
                         <div class="form-group mr-3"><!-- Modelo de Coche -->
                           <label class="control-label">Modelo de Coche</label>
-                          <input type="text" class="d-inline form-control" id="modeloCoche" formControlName="modeloCoche" placeholder="Modelo de Coche">
+                          <input type="text" class="d-inline form-control" id="modeloCoche" formControlName="modeloCoche" placeholder="Modelo de Coche" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.modeloCoche.errors }">
+                          <div *ngIf="submitted && actorForm.controls.modeloCoche.errors" class="invalid-feedback">
+                              <div *ngIf="actorForm.controls.modeloCoche.errors.required">El modelo es requerido</div>
+                          </div>
                         </div>
                         <div class="form-group"><!-- Modelo de Moto-->
                           <label class="control-label">Modelo de Moto</label>
-                          <input type="text" class="d-inline form-control" id="modeloMoto" formControlName="modeloMoto" placeholder="Modelo de Moto">
+                          <input type="text" class="d-inline form-control" id="modeloMoto" formControlName="modeloMoto" placeholder="Modelo de Moto" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.modeloMoto.errors }">
+                          <div *ngIf="submitted && actorForm.controls.modeloMoto.errors" class="invalid-feedback">
+                              <div *ngIf="actorForm.controls.modeloMoto.errors.required">El modelo es requerido</div>
+                          </div>
                         </div>
                     </div>
 
                     <div class="form-group d-flex"> <!-- Foto coche y  foto moto-->
                       <div class="form-group mr-3">
-                        <label class="control-label">foto coche</label>
-                        <input type="text" class="d-inline form-control" id="fotoCoche" formControlName="fotoCoche" placeholder="Modelo de Coche">
+                        <label class="control-label">Foto coche</label>
+                        <input type="file" (change)="PhotoCar($event)" formControlName="fotoCoche">
                       </div>
                       <div class="form-group">
-                        <label class="control-label">foto moto</label>
-                        <input type="text" class="d-inline form-control" id="fotoMoto" formControlName="fotoMoto" placeholder="Modelo de Moto">
+                        <label class="control-label">Foto moto</label>
+                        <input type="file" (change)="CyclePhoto($event)" formControlName="fotoMoto">
                       </div>
                     </div>
 
@@ -251,50 +301,64 @@
 
                     <div class="form-group"><!-- Baile -->
                       <label class="control-label">Baile</label>
-                      <select forControlName="bailes" class="form-control">
-                          <option [ngValue]="0">Seleccione...</option>
-                          <option *ngFor="let i of bailes">{{i}}</option>
+                      <select forControlName="bailes" class="form-control" [(ngModel)]="bailes.name" [ngModelOptions]="{standalone: true}">
+                          <option [ngValue]="i">Seleccione...</option>
+                          <option *ngFor="let i of bailes">{{i.name}}</option>
                         </select>
                     </div>
-  
-                    <div class="form-group"><!-- Estilos de Baile -->
+                    <div *ngIf="bailes.name == 'Profesional' " class="form-group"><!-- Estilos de Baile -->
                       <label class="control-label">Estilos de Baile</label>
-                        <select forControlName="estilobailes" class="form-control">
-                          <option [ngValue]="0">Seleccione...</option>
+                        <select forControlName="estilobailes" class="form-control" [(ngModel)]="estilobailes.Otros" [ngModelOptions]="{standalone: true}">
+                          <option [ngValue]="i">Seleccione...</option>
                           <option *ngFor="let i of estilobailes">{{i}}</option>
                         </select>
                     </div>
-
-                    <div class="form-group"><!-- Cantos -->
-                      <label class="control-label">Cantantes</label>
-                      <select class="form-control">
-                        <option [ngValue]="0">Seleccione...</option>
-                        <option *ngFor="let i of cantos">{{i}}</option>
-                      </select>
+                    <div *ngIf="estilobailes.Otros == 'Otros'" class="form-group"><!-- Espesifique otro baile -->
+                      <label class="control-label">Espesifique otro baile</label>
+                      <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
                     </div>
 
-                    <div class="form-group"><!-- Estilos de cantos -->
-                      <label forControlName="estilocantos" class="control-label">Estilo de cantos</label>
-                        <select class="form-control">
-                          <option [ngValue]="0">Seleccione...</option>
+                    <div class="form-group"><!-- Cantantes -->
+                      <label class="control-label">Cantantes</label>
+                      <select forControlName="cantos" class="form-control" [(ngModel)]="cantos.name" [ngModelOptions]="{standalone: true}">
+                          <option [ngValue]="i">Seleccione...</option>
+                          <option *ngFor="let i of cantos">{{i.name}}</option>
+                        </select>
+                    </div>
+                    <div *ngIf="cantos.name == 'Profesional'" class="form-group"><!-- Estilos de cantos -->
+                      <label class="control-label">Estilo de cantos</label>
+                        <select class="form-control" forControlName="estilocantos" [(ngModel)]="estilocantos.Otros" [ngModelOptions]="{standalone: true}">
+                          <option [ngValue]="i">Seleccione...</option>
                           <option *ngFor="let i of estilocantos">{{i}}</option>
                         </select>
+                    </div>
+                    <div *ngIf="estilocantos.Otros == 'Otros'" class="form-group"><!-- Espesifique otros estilos -->
+                      <label class="control-label">Espesifique otro estilos</label>
+                      <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
                     </div>
 
                     <div class="form-group"><!-- Habilidades -->
                       <label class="control-label">Habilidades</label>
-                      <select forControlName="habilidades" class="form-control">
-                        <option [ngValue]="0">Seleccione...</option>
-                        <option *ngFor="let i of habilidades">{{i}}</option>
-                      </select>
+                        <select forControlName="habilidades" class="form-control" [(ngModel)]="habilidades.Otros" [ngModelOptions]="{standalone: true}">
+                          <option [ngValue]="i">Seleccione...</option>
+                          <option *ngFor="let i of habilidades">{{i}}</option>
+                        </select>
+                    </div>
+                    <div *ngIf="habilidades.Otros == 'Otros'" class="form-group"><!-- Espesifique otras habilidades -->
+                      <label class="control-label">Espesifique otras habilidades</label>
+                      <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
                     </div>
 
                     <div class="form-group"><!-- Idiomas -->
                       <label class="control-label">Idiomas</label>
-                      <select formControlName="idiomasHablados" class="form-control">
-                        <option [ngValue]="0">Seleccione...</option>
-                        <option *ngFor="let i of idiomasHablados">{{i}}</option>
-                      </select>
+                      <select forControlName="idiomasHablados" class="form-control" [(ngModel)]="idiomasHablados.Otros" [ngModelOptions]="{standalone: true}">
+                          <option [ngValue]="i">Seleccione...</option>
+                          <option *ngFor="let i of idiomasHablados">{{i}}</option>
+                        </select>
+                    </div>
+                    <div *ngIf="idiomasHablados.Otros == 'Otros'" class="form-group"><!-- Espesifique otro Idioma -->
+                      <label class="control-label">Espesifique otro Idioma</label>
+                      <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
                     </div>
 
                     <div class="form-group"><!-- Observaciones -->

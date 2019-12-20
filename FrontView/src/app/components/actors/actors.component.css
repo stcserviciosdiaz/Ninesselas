@@ -11,11 +11,6 @@
     display: block;
 }
 
-.imgViews{
-    width: 180px;
-    height: 180px;
-}
-
 ::-webkit-scrollbar{
     width: 10px;
     background-color: #F5F5F5;
