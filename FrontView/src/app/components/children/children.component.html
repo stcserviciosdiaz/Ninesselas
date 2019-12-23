@@ -212,7 +212,7 @@
                         </div>
                         <div class="form-group mr-3"><!-- Color de ojos -->
                             <label class="control-label">Color de ojos</label>
-                            <input type="text" class="d-inline form-control"  formControlName="colorOjos" placeholder="Color de ojos" [ngClass]="{ 'is-invalid': submitted && childForm.controls.colorOjos.errors }">
+                            <input type="text" class="d-inline form-control" formControlName="colorOjos" placeholder="Color de ojos" [ngClass]="{ 'is-invalid': submitted && childForm.controls.colorOjos.errors }">
                             <div *ngIf="submitted && childForm.controls.colorOjos.errors" class="invalid-feedback">
                                 <div *ngIf="childForm.controls.colorOjos.errors.required">El color es requerido</div>
                             </div>
@@ -221,32 +221,24 @@
 
                     <div class="form-group">
                         <label>Dirección</label>
-                        <input type="text" class="form-control" forControlName="direccion" placeholder="Apartmento, studio, or floor" [ngClass]="{ 'is-invalid': submitted && childForm.controls.direccion.errors }">
-                        <div *ngIf="submitted && childForm.controls.direccion.errors" class="invalid-feedback">
-                            <div *ngIf="childForm.controls.direccion.errors.required">La direccion es requerida</div>
-                        </div>
+                        <input type="text" class="form-control" forControlName="direccion" placeholder="Apartmento, studio, or floor">
+                          
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-6"><!-- Localidad -->
                           <label class="control-label">Localidad</label>
-                          <input type="text" class="form-control" forControlName="localidad" placeholder="Smallville" [ngClass]="{ 'is-invalid': submitted && childForm.controls.localidad.errors }">
-                          <div *ngIf="submitted && childForm.controls.localidad.errors" class="invalid-feedback">
-                              <div *ngIf="childForm.controls.localidad.errors.required">La localidad es requerida</div>
-                          </div>
+                          <input type="text" class="form-control" forControlName="localidad" placeholder="Smallville" >
+                          
                         </div>
                         <div class="form-group col-md-4"><!-- Provincia -->
                             <label class="control-label">Provincia</label>
-                            <input type="text" class="form-control" forControlName="provincia" placeholder="alabama" [ngClass]="{ 'is-invalid': submitted && childForm.controls.provincia.errors }">
-                            <div *ngIf="submitted && childForm.controls.provincia.errors" class="invalid-feedback">
-                                <div *ngIf="childForm.controls.provincia.errors.required">La provincia es requerida</div>
-                            </div>
+                            <input type="text" class="form-control" forControlName="provincia" placeholder="alabama" >
+                           
                         </div>
                         <div class="form-group col-md-2"><!-- Codigo Postal -->
                           <label for="inputZip">Codigo Postal</label>
-                          <input type="text" (keypress)="check($event)" class="form-control" forControlName="codpostal" placeholder="#####" [ngClass]="{ 'is-invalid': submitted && childForm.controls.codpostal.errors }">
-                          <div *ngIf="submitted && childForm.controls.codpostal.errors" class="invalid-feedback">
-                              <div *ngIf="childForm.controls.codpostal.errors.required">Codigo requerido</div>
-                          </div>
+                          <input type="text" (keypress)="check($event)" class="form-control" forControlName="codpostal" placeholder="#####" >
+                         
                         </div>
                     </div>
 

@@ -111,7 +111,7 @@ export class ChildrenComponent implements OnInit {
       tallaChaqueta: ['',Validators.required],
       localidad: ['',Validators.required],
       provincia: ['',Validators.required],
-      direccion: ['', Validators.required],
+      direccion: ['', [Validators.required,Validators.minLength(5),Validators.maxLength(100)]],
       pie: ['',Validators.required],
       cantos: ['',Validators.required],
       habilidades: ['',Validators.required],
