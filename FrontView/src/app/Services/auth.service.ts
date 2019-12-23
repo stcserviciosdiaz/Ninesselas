@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {Router} from '@angular/router';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +13,17 @@ export class AuthService {
     private http: HttpClient,
     private router: Router
   ) {
-     this.url = 'http://localhost:8090/api/';
-     // this.url = 'http://ninesselas.com/user/';
-     
+    this.url = 'http://localhost:5000/servicio-login/';
+    // this.url = 'http://ninesselas.com/user/';
+
+  }
+
+  signup2(newUser): Observable<any> {
+    return this.http.post<any>(this.url + 'crear', newUser);
+  }
+
+  login2(usuario, password): Observable<any> {
+    return this.http.get(this.url + 'login/' + usuario + "/" + password);
   }
 
   signup(newUser): Observable<any> {
@@ -47,7 +55,7 @@ export class AuthService {
   }
 
   logoutUser() {
-    localStorage.removeItem('token');
+    localStorage.removeItem('token'); 0
     this.router.navigate(['/home']);
   }
 

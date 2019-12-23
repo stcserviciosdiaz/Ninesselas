@@ -45,18 +45,18 @@ export class LoginComponent implements OnInit {
   loginUser() {
     this.isSubmitted = true;
     //alert('SUCCESS!!');
-    if(this.loginForm.invalid){
+    /*if(this.loginForm.invalid){
       return;
-    }
+    }*/
     const user = {
       email: this.loginForm.get('email').value,
       password: this.loginForm.get('password').value,
     };
-    this.authService.login(user)
+    this.authService.login2(user.email, user.password)
       .subscribe(
         res => {
-          localStorage.setItem('token', res.token);
-          if (res.rol === 'Manager') {
+          localStorage.setItem('token', res.sexo);
+          if (res.sexo === 'MASCULINO') {
             this.router.navigate(['/management']);
           } else if (res.rol === 'Company') {
             this.router.navigate(['/company']);

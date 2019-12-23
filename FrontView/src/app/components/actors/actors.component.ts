@@ -134,14 +134,95 @@ export class ActorsComponent implements OnInit {
 
   registrarActor() {
     this.submitted = true;
-    if (this.actorForm.invalid) {
+    /*if (this.actorForm.invalid) {
       return;
-    }
+    }*/
     const newUserObject = this.actorForm.value;
-    this.authService.signup(newUserObject).subscribe(
+    
+      const usuario = {
+        
+        "acento": "A",
+        "altura": 1.76,
+        "apellidos": "CASTRO LIMA",
+        "carnetConducir": "999999999",
+        "codigoPostal": "9652147",
+        "colorOjos": "NEGROS",
+        "colorPelo": "NEGRO",
+        "colorPiel": "BLANCO",
+        "curriculumVitae": "/PATH",
+        "direccion": "AV. REPUBLICA E INGLATERRA",
+        "dniMadre": "999999999",
+        "dniPadre": "999999999",
+        "dniUser": "999999999",
+        "email": "WILSON.CASTRO@YAHOO.COM",
+        "fechaNacimiento": "1988-10-22",
+        "libroFamilia": "/PATH",
+        "localidad": "QUITO",
+        "nacionalidad": "ECUATORIANA",
+        "nombreArtistico": "WILLYS",
+        "nombreCompleto": "WILSON RAMIRO CASTRO LIMA",
+        "nombres": "WILSON RAMIRO",
+        "numeroSeguroSocial": "9999999999",
+        "observaciones": "NINGUNA",
+        "password": "abd7372bba55577590736ef6cb3533c6",
+        "pathDniMadre": "/PATH",
+        "pathDniPadre": "/PATH",
+        "pathDniUser": "/PATH",
+        "pathSeguroSocial": "/PATH",
+        "provincia": "PICHINCHA",
+        "sexo": "MASCULINO",
+        "telefono": "999999999",
+        "username": "wilson",
+        "videobook": "https://youtube.com",
+        "instrumentoList": [],
+        "estilosCantoList": [],
+        "deporteList": [],
+        "estiloBaileList": [],
+        "idiomasList": [],
+        "habilidadesList": [],
+        "tallasList": [],
+        "ultimosTrabajosList": [],
+        "idCantante": {
+          "idCantante": 1,
+          "descripcionCantante": "NO APLICA",
+          "nombreCantante": "NOAPLICA"
+        },
+        "idBailarin": {
+          "idBailarin": 1,
+          "descripcionBailarin": "NO APLICA",
+          "nombreBailarin": "NO APLICA"
+        },
+        "idEtnia": {
+          "idEtnia": 1,
+          "nombreEtnia": "BLANCO editado"
+        },
+        "idType": {
+          "idType": 1,
+          "description": "ACTOR",
+          "nombres": "ACTOR"
+        },
+        "idDeportista": {
+          "idDeportista": 1,
+          "descripcionDeportista": "NO APLICA",
+          "nombreDeportista": "NO APLICA"
+        },
+        "idMusico": {
+          "idMusico": 1,
+          "descipcionMusico": "NO APLICA",
+          "nombreMusico": "NO APLICA"
+        },
+        "motoList": [],
+        "cocheList": [],
+        "fotosTatuajesList": [],
+        "fotosManosList": []
+      }
+    
+    //alert(JSON.stringify(newUserObject))
+    console.info(usuario);
+    this.authService.signup2(usuario).subscribe(
       res => {
-        this.ngxSmartModalService.create('confirm', 'Se ha registrado exitosamente').open();
-        localStorage.setItem('token', res.token);
+        this.ngxSmartModalService.create('confirm', 'Se ha registrado exitosamente'+usuario.nombreCompleto).open();
+        localStorage.setItem('token', res);
         this.router.navigate(['/homeuser']);
       },
       (err) => {
