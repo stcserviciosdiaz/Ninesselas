@@ -1,7 +1,6 @@
 <app-header></app-header>
 <div class="h-100">
     <div class="forgot_password text-white text-center">
-        <div class="overlay"></div>
         <div class="container">
           <div class="row">
             <div class="col-xl-9 mx-auto">
@@ -9,14 +8,21 @@
                 los pasos para restablecer tu contraseña</h1>
             </div>
             <div class="col-md-10 col-lg-8 col-xl-7 mx-auto">
-              <form>
+              <form [formGroup]="ResetForm" (submit)="sendPasswordResetRequest()">
                 <div class="form-row">
                   <div class="col-12 col-md-7 mb-2 mb-md-0">
-                    <input type="email" class="form-control form-control-lg" placeholder="Ingresa tu Email...">
+                    <input type="email"
+                           formControlName="email" 
+                           class="form-control form-control-lg" 
+                           placeholder="Ingresa tu Email..." [ngClass]="{ 'is-invalid': submitted && ResetForm.controls.email.errors }" />
+                    <div *ngIf="submitted && ResetForm.controls.email.errors" class="invalid-feedback">
+                        <div *ngIf="ResetForm.controls.email.errors.required">Correo electrónico es requerido</div>
+                        <div *ngIf="ResetForm.controls.email.errors.email">Debe ser una dirección de correo electrónico válida</div>
+                    </div>
                     <p class="forgot-password " routerLink="/home"><i class="fas fa-external-link-alt pr-2"></i>Volver Al Home</p>
                   </div>
                   <div class="col-12 col-md-5">
-                    <button type="submit" class="btn btn-block btn-lg btn-ninessela">Recuperar contraseña!</button>
+                    <button type="submit" [disabled]="ResetForm.invalid" class="btn btn-block btn-lg btn-ninessela">Recuperar contraseña!</button>
                   </div>
                 </div>
               </form>
