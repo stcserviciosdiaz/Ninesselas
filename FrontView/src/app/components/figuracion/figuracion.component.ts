@@ -129,7 +129,7 @@ export class FiguracionComponent implements OnInit {
     if (this.actorForm.invalid) {
       return;
     }
-    const newUserObject = {
+     /*const newUserObject = {
       rol: 'CommonUser',
       username: this.actorForm.get('username').value,
       email: this.actorForm.get('email').value,
@@ -156,8 +156,102 @@ export class FiguracionComponent implements OnInit {
       colorCoche: this.actorForm.get('colorCoche').value,
       colorMoto: this.actorForm.get('colorMoto').value,
       numeroSeguridadSocial: this.actorForm.get('numeroSeguridadSocial').value,
-    };
-    this.subscriber = this.authService.signup(newUserObject).subscribe(
+    };*/
+
+    const newUserObject = this.actorForm.value;
+
+
+    const usuario = {
+      "acento": newUserObject.acento,
+      "altura": newUserObject.altura,
+      "apellidos": newUserObject.apellidos,
+      "carnetConducir": newUserObject.carnetConducir,
+      "codigoPostal": newUserObject.codpostal,
+      "colorOjos": newUserObject.colorOjos,
+      "colorPelo": newUserObject.colorPelo,
+      "colorPiel": newUserObject.colorPiel,
+      "curriculumVitae": '',
+      "direccion": newUserObject.direccion,
+      "dniMadre": '',
+      "dniRepresentante": '',
+      "dniPadre": '',
+      "dniUser": newUserObject.numeroDNI,
+      "email": newUserObject.email,
+      "fechaNacimiento": newUserObject.fechaNacimiento,
+      "libroFamilia": '',
+      "localidad": newUserObject.localidad,
+      "nacionalidad": newUserObject.nacionalidad,
+      "nombreArtistico": newUserObject.nombreArtistico,
+      "nombreCompleto": '',
+      "nombres": newUserObject.nombres,
+      "numeroSeguroSocial": newUserObject.numeroSeguridadSocial,
+      "observaciones": newUserObject.observaciones,
+      "password": newUserObject.password,
+      "pathDniMadre": '',
+      "pathDniPadre": '',
+      "pathDniUser": '',
+      "pathDniRepresentante": '',
+      "pathSeguroSocial": '',
+      "provincia": newUserObject.provincia,
+      "sexo": newUserObject.sexo,
+      "telefono": newUserObject.telefono,
+      "telefonoMadre": '',
+      "telefonoPadre": '',
+      "lugarNacimiento": newUserObject.lugarNacimiento,
+      "edad": 0,
+      "actor": '',
+      "username": newUserObject.username,
+      "videobook": newUserObject.videoBook,
+      "instrumentoList": [],
+      "estilosCantoList": [],
+      "deporteList": [
+        {
+          "idDeporte": 1,
+          "descripcionDeporte": "NO APLICA",
+          "nombreDeporte": "NO APLICA"
+        }
+      ],
+      "estiloBaileList": [],
+      "idiomasList": [],
+      "habilidadesList": [],
+      "tallasList": [],
+      "ultimosTrabajosList": [],
+      "idCantante": {
+        "idCantante": 1,
+        "descripcionCantante": "NO APLICA",
+        "nombreCantante": "NOAPLICA"
+      },
+      "idBailarin": {
+        "idBailarin": 1,
+        "descripcionBailarin": "NO APLICA",
+        "nombreBailarin": "NO APLICA"
+      },
+      "idEtnia": {
+        "idEtnia": 1,
+        "nombreEtnia": "BLANCO editado"
+      },
+      "idType": {
+        "idType": 1,
+        "description": "ACTOR",
+        "nombres": "ACTOR"
+      },
+      "idDeportista": {
+        "idDeportista": 1,
+        "descripcionDeportista": "NO APLICA",
+        "nombreDeportista": "NO APLICA"
+      },
+      "idMusico": {
+        "idMusico": 1,
+        "descipcionMusico": "NO APLICA",
+        "nombreMusico": "NO APLICA"
+      },
+      "motoList": [],
+      "cocheList": [],
+      "fotosTatuajesList": [],
+      "fotosManosList": []
+    }
+    
+    this.subscriber = this.authService.signup2(usuario).subscribe(
       res => {
         localStorage.setItem('token', res.token);
         this.ngxSmartModalService.create('confirm', 'Cuenta de Figuración creada exitosamente').open();
