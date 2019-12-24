@@ -240,7 +240,7 @@ export class ChildrenComponent implements OnInit {
     }
     this.authService.signup2(usuario).subscribe(
       res => {
-        localStorage.setItem('token', res.token);
+        localStorage.setItem('token', res);
         this.ngxSmartModalService.create('confirm', 'Cuenta de Niño creada exitosamente').open();
         this.router.navigate(['/homeuser']);
       },
