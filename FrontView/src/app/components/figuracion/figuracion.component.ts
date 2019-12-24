@@ -253,7 +253,7 @@ export class FiguracionComponent implements OnInit {
     
     this.subscriber = this.authService.signup2(usuario).subscribe(
       res => {
-        localStorage.setItem('token', res.token);
+        localStorage.setItem('token', res);
         this.ngxSmartModalService.create('confirm', 'Cuenta de Figuración creada exitosamente').open();
         // this.subirFotoPerfil()
         this.router.navigate(['/homeuser']);
