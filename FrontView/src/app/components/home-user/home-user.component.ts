@@ -6,18 +6,22 @@ import { AuthService } from '../../Services/auth.service';
   templateUrl: './home-user.component.html',
   styleUrls: ['./home-user.component.css']
 })
+
 export class HomeUserComponent implements OnInit {
-  userInfo;
+  newUserObject;
   avatarImageUrl;
+  usuario;
+  
 
   constructor(
     public authService: AuthService
   ) { }
 
+
   ngOnInit() {
     this.authService.getUser().subscribe(
       res => {
-        this.userInfo = res;
+        this.newUserObject = res;
       });
     // this.authService.getAvatar()
     //   .subscribe(resp => {

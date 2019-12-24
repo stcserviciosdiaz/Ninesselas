@@ -84,12 +84,12 @@
 
                     <div class="form-group"><!-- ¿De qué grupo étnico se considera? -->
                       <label class="control-label">¿De qué grupo étnico se considera?</label>
-                        <select forControlName="etnico" class="form-control" [(ngModel)]="etnico.Otro" [ngModelOptions]="{standalone: true}">
+                        <select forControlName="etnico" class="form-control" [(ngModel)]="etnico.Otros" [ngModelOptions]="{standalone: true}">
                           <option [ngValue]="i" selected>Seleccione...</option>
                           <option *ngFor="let i of etnico">{{i}}</option>
                         </select>
                     </div>
-                    <div *ngIf="etnico.Otro == 'Otro'" class="form-group"><!-- especifique -->
+                    <div *ngIf="etnico.Otros == 'Otros'" class="form-group"><!-- especifique -->
                       <label class="control-label">Especifique otro grupo étnico</label>
                       <textarea forControlName="otro" class="form-control" rows="3"></textarea>
                     </div>
@@ -221,7 +221,6 @@
                     <div class="form-group">
                       <label>Dirección</label>
                       <input type="text" class="form-control" forControlName="direccion" placeholder="Apartmento, studio, or floor" >
-                     
                     </div>
 
                     <div class="form-row">

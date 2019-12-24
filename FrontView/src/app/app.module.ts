@@ -59,6 +59,7 @@ import { FiguracionComponent } from './components/figuracion/figuracion.componen
 import { IsotopeComponent } from './components/isotope/isotope.component';
 import { ChildrenComponent } from './components/children/children.component';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
+import { DatePipe } from './pipes/date.pipe';
 
 
 @NgModule({
@@ -81,6 +82,7 @@ import { NgxSmartModalModule } from 'ngx-smart-modal';
     ForgotComponent,
     IsotopeComponent,
     ChildrenComponent,
+    DatePipe,
   ],
   imports: [
     MDBBootstrapModule.forRoot(),

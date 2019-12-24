@@ -42,7 +42,7 @@ export class ActorsComponent implements OnInit {
   selectedFile: File = null;
   disa = false;
   matcher = new MyErrorStateMatcher();
-  etnico: string[] = ['Afro descendiente/Negro','Blanco','Indígena','Mestizo/Moreno','Asiático','Otro'];
+  etnico: string[] = ['Afro descendiente/Negro','Blanco','Indígena','Mestizo/Moreno','Asiático','Otros'];
   deporte = [{name: 'Profesional',},{name: 'Federado',},{name: 'No Profesional',},];
   actor = [{name: 'Si',value: 0},{name: 'No',value: 1}];
   bailes = [{name: 'Profesional',},{name: 'No Profesional',},];
