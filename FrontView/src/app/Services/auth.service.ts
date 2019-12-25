@@ -13,7 +13,7 @@ export class AuthService {
     private http: HttpClient,
     private router: Router
   ) {
-    this.url = 'https://servicio-login.herokuapp.com/servicio-login/';
+    this.url = 'http://localhost:5000/servicio-login/';
     // this.url = 'http://ninesselas.com/user/';
 
   }
@@ -24,6 +24,10 @@ export class AuthService {
 
   login2(usuario, password): Observable<any> {
     return this.http.get(this.url + 'login/' + usuario + "/" + password);
+  }
+  findByToken(): Observable<any> {
+    console.info("TOKEN GUARDADO:  "+this.getToken());
+    return this.http.get(this.url + 'ver/' + this.getToken());
   }
 
   signup(newUser): Observable<any> {
@@ -50,6 +54,10 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
+  obtenerUsuario():string {
+    return localStorage.getItem('token');
+  }
+
   getUser(): Observable<any> {
     return this.http.get(this.url);
   }
@@ -60,11 +68,11 @@ export class AuthService {
   }
 
   getAllUsers(): Observable<any> {
-    return this.http.get(this.url + 'getAllUsers');
+    return this.http.get(this.url + 'listar');
   }
 
   getAllCompanies(): Observable<any> {
-    return this.http.get(this.url + 'getAllCompanies');
+    return this.http.get(this.url + 'listar');
   }
 
   deleteUser(id): Observable<any> {

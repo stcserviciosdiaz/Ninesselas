@@ -144,15 +144,104 @@ export class ChildrenComponent implements OnInit {
 
   signupChild() {
     this.submitted = true;
-    if (this.childForm.invalid) {
+    /*if (this.childForm.invalid) {
       return;
-    }
+    }*/
     const newChild = this.childForm.value;
-    alert('Companía a registrar: ' + JSON.stringify(newChild))
-    this.authService.signup(newChild).subscribe(
+    alert('Niño a registrar: ' + JSON.stringify(newChild))
+    const usuario = {
+      "acento": newChild.acento,
+      "altura": newChild.altura,
+      "apellidos": newChild.apellidos,
+      "carnetConducir": newChild.carnetConducir,
+      "codigoPostal": newChild.codpostal,
+      "colorOjos": newChild.colorOjos,
+      "colorPelo": newChild.colorPelo,
+      "colorPiel": newChild.colorPiel,
+      "curriculumVitae": newChild.curriculumVitae,
+      "direccion": newChild.direccion,
+      "dniMadre": newChild.numeroDNIMadre,
+      "dniRepresentante": newChild.numeroDNIRepresentante,
+      "dniPadre": newChild.numeroDNIPadre,
+      "dniUser": newChild.numeroDNI,
+      "email": newChild.email,
+      "fechaNacimiento": newChild.fechaNacimiento,
+      "libroFamilia": newChild.libroFamilia,
+      "localidad": newChild.localidad,
+      "nacionalidad": newChild.nacionalidad,
+      "nombreArtistico": newChild.nombreArtistico,
+      "nombreCompleto": newChild.nombreCompleto,
+      "nombres": newChild.nombres,
+      "numeroSeguroSocial": newChild.numeroSeguridadSocial,
+      "observaciones": newChild.observaciones,
+      "password": newChild.password,
+      "pathDniMadre": newChild.CopyDNIMother,
+      "pathDniPadre": newChild.copyDNIFather,
+      "pathDniUser": newChild.copyDNIkid,
+      "pathDniRepresentante": newChild.pathDniRepresentante,
+      "pathSeguroSocial": newChild.copySocialNumber,
+      "provincia": newChild.provincia,
+      "sexo": newChild.sexo,
+      "telefono": newChild.telefono,
+      "telefonoMadre": newChild.telefonoMadre,
+      "telefonoPadre": newChild.telefonomother,
+      "lugarNacimiento": newChild.lugarNacimiento,
+      "edad": newChild.edad,
+      "actor": newChild.actor,
+      "username": newChild.username,
+      "videobook": newChild.videoBook,
+      "instrumentoList": [],
+      "estilosCantoList": [],
+      "deporteList": [
+        {
+          "idDeporte": 1,
+          "descripcionDeporte": "NO APLICA",
+          "nombreDeporte": "NO APLICA"
+        }
+      ],
+      "estiloBaileList": [],
+      "idiomasList": [],
+      "habilidadesList": [],
+      "tallasList": [],
+      "ultimosTrabajosList": [],
+      "idCantante": {
+        "idCantante": 1,
+        "descripcionCantante": "NO APLICA",
+        "nombreCantante": "NOAPLICA"
+      },
+      "idBailarin": {
+        "idBailarin": 1,
+        "descripcionBailarin": "NO APLICA",
+        "nombreBailarin": "NO APLICA"
+      },
+      "idEtnia": {
+        "idEtnia": 1,
+        "nombreEtnia": "BLANCO editado"
+      },
+      "idType": {
+        "idType": 3,
+        "description": "NIÑOS",
+        "nombres": "NIÑOS"
+      },
+      "idDeportista": {
+        "idDeportista": 1,
+        "descripcionDeportista": "NO APLICA",
+        "nombreDeportista": "NO APLICA"
+      },
+      "idMusico": {
+        "idMusico": 1,
+        "descipcionMusico": "NO APLICA",
+        "nombreMusico": "NO APLICA"
+      },
+      "motoList": [],
+      "cocheList": [],
+      "fotosTatuajesList": [],
+      "fotosManosList": []
+    }
+    this.authService.signup2(usuario).subscribe(
       res => {
-        localStorage.setItem('token', res.token);
-        this.ngxSmartModalService.create('confirm', 'Cuenta de Niño creada exitosamente').open();
+        localStorage.setItem('token', res.idUser);
+        this.ngxSmartModalService.create('confirm', 'Cuenta de Niño creada exitosamente '+ res.nombres+' '+res.apellidos).open();
         this.router.navigate(['/homeuser']);
       },
       (err) => {

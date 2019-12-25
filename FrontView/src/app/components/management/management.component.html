@@ -3,7 +3,7 @@
     <div class="logo">
       <a href="http://www.creative-tim.com" class="simple-text logo-mini">
         <div class="logo-image-small">
-          <img src="../assets/img/logo-small.png">
+          <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/46b63d3c-ae67-464c-9a37-670829b2a157/d8ttdm6-5617aa77-87d8-4fb7-bb78-4aab6b0956b5.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzQ2YjYzZDNjLWFlNjctNDY0Yy05YTM3LTY3MDgyOWIyYTE1N1wvZDh0dGRtNi01NjE3YWE3Ny04N2Q4LTRmYjctYmI3OC00YWFiNmIwOTU2YjUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.L80L4l2NOeCIV3WB491ANP4Ii_9NiIg2m-tgY5M_IaA">
         </div>
       </a>
       <a href="http://www.creative-tim.com" class="fg-16 simple-text logo-normal">
@@ -51,10 +51,10 @@
               <span class="navbar-toggler-bar bar3"></span>
             </button>
           </div>
-          <a>{{userInfo.username}}</a>
+          <a>{{userInfo.idUser}} {{userInfo.username}} : {{userInfo.nombres}}  {{userInfo.apellidos}}</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
-                aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+          aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-bar navbar-kebab"></span>
           <span class="navbar-toggler-bar navbar-kebab"></span>
           <span class="navbar-toggler-bar navbar-kebab"></span>
@@ -69,22 +69,23 @@
                 </div>
               </div>
             </div>
-            <a class="dropdown-item" href="#" (click)="authService.logoutUser()">Cerrar Sesión</a>
           </form>
           <ul class="navbar-nav">
             <li class="nav-item btn-rotate dropdown">
               <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"
-                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-tasks"></i>
                 <p>
                   <span class="d-lg-none d-md-block">Configuración</span>
                 </p>
               </a>
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#" (click)="authService.logoutUser()">Cerrar Sesión</a>
                 <a class="dropdown-item" href="#">Another action</a>
                 <a class="dropdown-item" href="#">Something else here</a>
               </div>
+            </li>
+            <li> <a class="btn btn-primary" (click)="authService.logoutUser()" href="home">Salir</a>
+
             </li>
           </ul>
         </div>
@@ -106,7 +107,7 @@
                   <div class="numbers">
                     <p class="card-category">Capacity</p>
                     <p class="card-title">150GB
-                    <p>
+                      <p>
                   </div>
                 </div>
               </div>
@@ -130,9 +131,9 @@
                 </div>
                 <div class="col-7 col-md-8">
                   <div class="numbers">
-                    <p class="card-category">Numero de Usuarios</p>
-                    <p class="card-title">hola
-                    <p>
+                    <p class="card-category">Usuarios</p>
+                    <p class="card-title">5
+                      <p>
                   </div>
                 </div>
               </div>
@@ -158,7 +159,7 @@
                   <div class="numbers">
                     <p class="card-category">Errors</p>
                     <p class="card-title">23
-                    <p>
+                      <p>
                   </div>
                 </div>
               </div>
@@ -184,7 +185,7 @@
                   <div class="numbers">
                     <p class="card-category">Followers</p>
                     <p class="card-title">+45K
-                    <p>
+                      <p>
                   </div>
                 </div>
               </div>
@@ -203,27 +204,26 @@
           <div class="card ">
             <div class="card-header ">
               <h5 class="card-title">Información de Usuario Administrativo</h5>
-              <p class="card-category">............</p>
             </div>
             <div class="card-body ">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <tbody>
-                <tr>
-                  <td>Nombre Usuario</td>
-                  <td>{{userInfo.username}}</td>
-                </tr>
-                <tr>
-                  <td>Correo eléctronico</td>
-                  <td>{{userInfo.email}}</td>
-                </tr>
-                <tr>
-                  <td>Contraseña</td>
-                  <td>{{userInfo.password}}</td>
-                </tr>
-                <tr>
-                  <td>Teléfonos</td>
-                  <td>{{userInfo.telefonoFijo}}</td>
-                </tr>
+                  <tr>
+                    <td>Nombre Usuario</td>
+                    <td>{{userInfo.username}}</td>
+                  </tr>
+                  <tr>
+                    <td>Correo eléctronico</td>
+                    <td>{{userInfo.email}}</td>
+                  </tr>
+                  <tr>
+                    <td>Contraseña</td>
+                    <td>{{userInfo.password}}</td>
+                  </tr>
+                  <tr>
+                    <td>Teléfonos</td>
+                    <td>{{userInfo.telefono}}</td>
+                  </tr>
                 </tbody>
               </table>
               <div class="row">
@@ -235,77 +235,80 @@
                 </div>
               </div>
               <table ng-table="tableParams2" mdbTable mdbTableScroll scrollY="true" maxHeight="200" scrollX="true"
-                     class="table table-bordered table-responsive-md table-striped text-center">
+                class="table table-bordered table-responsive-md table-striped text-center">
                 <thead>
-                <tr>
-                  <th *ngFor="let head of headElementsUsers; let i = index" aria-controls="tableSortExample" scope="col"
-                      [mdbTableSort]="allUsers" [sortBy]="headElementsUsers[i]">{{head | titlecase}}</th>
-                  <mdb-icon fas icon="sort"></mdb-icon>
-                </tr>
+                  <tr>
+                    <th *ngFor="let head of headElementsUsers; let i = index" aria-controls="tableSortExample"
+                      scope="col" [mdbTableSort]="allUsers" [sortBy]="headElementsUsers[i]">{{head | titlecase}}</th>
+                    <mdb-icon fas icon="sort"></mdb-icon>
+                  </tr>
                 </thead>
                 <tbody>
-                <tr *ngFor="let user of allUsers; let i = index">
-                  <th scope="row">{{user.id}}</th>
-                  <td>{{user.primerNombre}} {{user.apellidos}}</td>
-                  <td>{{user.mayorEdad}}</td>
-                  <td>{{user.nombreArtistico}}</td>
-                  <td>{{user.genero}}</td>
-                  <td>{{user.alias}}</td>
-                  <td>{{user.fechaNacimiento}}</td>
-                  <td>{{user.first}}</td>
-                  <td>{{user.Pais}}</td>
-                  <td>{{user.tallaPantalon}}</td>
-                  <td>{{user.tallaCamisa}}</td>
-                  <td>{{user.tallaChaqueta}}</td>
-                  <td>{{user.pie}}</td>
-                  <td>{{user.altura}}</td>
-                  <td>{{user.colorPiel}}</td>
-                  <td>{{user.colorPelo}}</td>
-                  <td>{{user.colorOjos}}</td>
-                  <td>{{user.modeloCoche}}</td>
-                  <td>{{user.modeloMoto}}</td>
-                  <td>{{user.razaMascota}}</td>
-                  <td>{{user.ultimosTrabajos}}</td>
-                  <td>{{user.numeroDNI}}</td>
-                  <td>{{user.numeroSeguridadSocial}}</td>
-                  <td>{{user.email}}</td>
-                  <td>{{user.telefonoFijo}}</td>
-                </tr>
+                  <tr *ngFor="let user of allUsers; let i = index">
+                    <th scope="row">{{user.idUser}}</th>
+                    <td>{{user.nombres}} {{user.apellidos}}</td>
+                    <td>{{user.edad}}</td>
+                    <td>{{user.nombreArtistico}}</td>
+                    <td>{{user.sexo}}</td>
+                    <td>{{user.alias}}</td>
+                    <td>{{user.fechaNacimiento}}</td>
+                    <td>{{user.localidad}}</td>
+                    <td>{{user.tallaPantalon}}</td>
+                    <td>{{user.tallaCamisa}}</td>
+                    <td>{{user.tallaChaqueta}}</td>
+                    <td>{{user.pie}}</td>
+                    <td>{{user.altura}}</td>
+                    <td>{{user.colorPiel}}</td>
+                    <td>{{user.colorPelo}}</td>
+                    <td>{{user.colorOjos}}</td>
+                    <td>{{user.modeloCoche}}</td>
+                    <td>{{user.modeloMoto}}</td>
+                    <td>{{user.razaMascota}}</td>
+                    <td>{{user.ultimosTrabajos}}</td>
+                    <td>{{user.dniUser}}</td>
+                    <td>{{user.numeroSeguroSocial}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.telefono}}</td>
+                    <td>{{user.telefono}}</td>
+
+                  </tr>
                 </tbody>
               </table>
               <div id="tableCompanies" class="table-editable">
                 <table mdbTable2 mdbTableScroll scrollY="true" maxHeight="200" NGTab scrollX="true"
-                       class="table table-bordered table-responsive-md table-striped text-center">
+                  class="table table-bordered table-responsive-md table-striped text-center">
                   <thead>
-                  <tr>
-                    <th *ngFor="let head of headElementsCompanies; let i = index" aria-controls="tableSortExample"
-                        scope="col" [mdbTableSort]="allUsers"
-                        [sortBy]="headElementsCompanies[i]">{{head | titlecase}}</th>
-                    <mdb-icon fas icon="sort"></mdb-icon>
-                  </tr>
+                    <tr>
+                      <th *ngFor="let head of headElementsCompanies; let i = index" aria-controls="tableSortExample"
+                        scope="col" [mdbTableSort]="allUsers" [sortBy]="headElementsCompanies[i]">{{head | titlecase}}
+                      </th>
+                      <mdb-icon fas icon="sort"></mdb-icon>
+                    </tr>
                   </thead>
                   <tbody>
                     <tr *ngFor="let company of allCompanies; let id = index">
-                      <th scope="row">{{company.id}}</th>
+                      <th scope="row">{{company.idUser}}</th>
                       <td>
                         <span (keyup)="changeValue(id, 'username', $event)" (blur)="updateList(id, 'username', $event)"
-                              contenteditable="true">{{company.username}}</span>
+                          contenteditable="true">{{company.username}}</span>
                       </td>
                       <td>
                         <span (keyup)="changeValue(id, 'email', $event)" (blur)="updateList(id, 'email', $event)"
-                              contenteditable="true">{{company.email}}</span>
+                          contenteditable="true">{{company.email}}</span>
                       </td>
                       <td>
-                        <span (keyup)="changeValue(id, 'telefonoFijo', $event)" (blur)="updateList(id, 'telefonoFijo', $event)"
-                              contenteditable="true">{{company.telefonoFijo}}</span>
+                        <span (keyup)="changeValue(id, 'telefonoFijo', $event)"
+                          (blur)="updateList(id, 'telefonoFijo', $event)"
+                          contenteditable="true">{{company.telefono}}</span>
                       </td>
                       <td>
                         <span (keyup)="changeValue(id, 'password', $event)" (blur)="updateList(id, 'password', $event)"
-                              contenteditable="true">{{company.password}}</span>
+                          contenteditable="true">{{company.password}}</span>
                       </td>
                       <td>
                         <span class="table-remove">
-                          <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0" (click)="removeCompany(company.id)">Remove</button>
+                          <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0"
+                            (click)="removeCompany(company.id)">Remove</button>
                         </span>
                       </td>
                     </tr>
