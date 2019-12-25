@@ -231,9 +231,9 @@ export class FiguracionComponent implements OnInit {
         "nombreEtnia": "BLANCO editado"
       },
       "idType": {
-        "idType": 1,
-        "description": "ACTOR",
-        "nombres": "ACTOR"
+        "idType": 2,
+        "description": "FIGURACION",
+        "nombres": "FIGURACION"
       },
       "idDeportista": {
         "idDeportista": 1,
