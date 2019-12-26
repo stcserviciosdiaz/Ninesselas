@@ -29,7 +29,7 @@
                     </div>
 
                     <div class="form-group"><!-- Nombres Completos -->
-                      <label class="control-label">Nombres Completos</label>
+                      <label class="control-label">Nombres</label>
                       <input type="text" class="form-control"  formControlName="nombres" placeholder="Luis Alfredo" [ngClass]="{ 'is-invalid': submitted && childForm.controls.nombres.errors }">
                       <div *ngIf="submitted && childForm.controls.nombres.errors" class="invalid-feedback">
                         <div *ngIf="childForm.controls.nombres.errors.required">El nombre es requerido</div>
@@ -37,7 +37,7 @@
                     </div>
 
                     <div class="form-group"><!-- Apellidos Completos -->
-                      <label class="control-label">Apellidos Completos</label>
+                      <label class="control-label">Apellidos</label>
                       <input type="text" class="form-control"  formControlName="apellidos" placeholder="Almito Gil" [ngClass]="{ 'is-invalid': submitted && childForm.controls.apellidos.errors }">
                       <div *ngIf="submitted && childForm.controls.apellidos.errors" class="invalid-feedback">
                         <div *ngIf="childForm.controls.apellidos.errors.required">El apellido es requerido</div>

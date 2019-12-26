@@ -29,7 +29,7 @@
                     </div>
 
                     <div class="form-group"> <!-- Nomnbre completos -->
-                      <label class="control-label">Nombre</label>
+                      <label class="control-label">Nombres</label>
                       <input type="text" class="form-control" id="nombres" formControlName="nombres" placeholder="Luis Diaz" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.nombres.errors }">
                       <div *ngIf="submitted && actorForm.controls.nombres.errors" class="invalid-feedback">
                         <div *ngIf="actorForm.controls.nombres.errors.required">El nombre es requerido</div>
@@ -37,7 +37,7 @@
                     </div>
 
                     <div class="form-group"> <!-- Apellidos completos -->
-                      <label class="control-label">Apellidos Completos</label>
+                      <label class="control-label">Apellidos</label>
                       <input type="text" class="form-control" id="apellidos" formControlName="apellidos" placeholder="Almito Gil" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.apellidos.errors }">
                       <div *ngIf="submitted && actorForm.controls.apellidos.errors" class="invalid-feedback">
                         <div *ngIf="actorForm.controls.apellidos.errors.required">El apellido es requerido</div>
@@ -239,6 +239,16 @@
                           <input type="text" (keypress)="check($event)" class="form-control" forControlName="codpostal" placeholder="######" >
                          
                         </div>
+                    </div>
+
+                    <div class="form-group d-lg-flex d-md-flex d-block"> <!-- Carnet de conducir y coche-->
+                      <div class="form-group mr-lg-3 mr-md-3 mr-0">
+                        <label class="control-label">Carnet de conducir</label>
+                        <input type="text" class="d-inline form-control" formControlName="carnetConducir" placeholder="Modelo de Coche" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.carnetConducir.errors }">
+                        <div *ngIf="submitted && actorForm.controls.carnetConducir.errors" class="invalid-feedback">
+                          <div *ngIf="actorForm.controls.carnetConducir.errors.required">Carnet es requerido</div>
+                        </div>
+                      </div>
                     </div>
 
                     <div class="form-group d-flex">

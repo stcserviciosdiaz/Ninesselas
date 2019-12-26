@@ -240,7 +240,6 @@ export class ActorsComponent implements OnInit {
         this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
         console.log(JSON.stringify(err));
       });
-
   }
 
   subirFotoPerfil() {

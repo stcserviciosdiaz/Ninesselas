@@ -37,7 +37,7 @@
                     </div>
 
                     <div class="form-group"> <!-- Apellidos completos -->
-                      <label class="control-label">Apellidos Completos</label>
+                      <label class="control-label">Apellidos</label>
                       <input type="text" class="form-control" id="apellidos" formControlName="apellidos" placeholder="Almito Gil" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.apellidos.errors }">
                       <div *ngIf="submitted && actorForm.controls.apellidos.errors" class="invalid-feedback">
                         <div *ngIf="actorForm.controls.apellidos.errors.required">El apellido es requerido</div>
