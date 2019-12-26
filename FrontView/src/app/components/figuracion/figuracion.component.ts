@@ -45,6 +45,7 @@ export class FiguracionComponent implements OnInit {
   @Input() inputArray;
   subscriber;
   matcher = new MyErrorStateMatcher();
+  typecarnet : string [] = ['Tipo A','Tipo B','Tipo C','Tipo D','Tipo BTP'];
   bailes = [{name: 'Profesional',},{name: 'No Profesional',},];
   cantos = [{name: 'Profesional',},{name: 'No Profesional',},];
   etnico: string[] = ['Afro descendiente/Negro','Blanco','Indígena','Mestizo/Moreno','Asiático','Otros'];

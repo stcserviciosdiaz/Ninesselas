@@ -10,14 +10,22 @@
             <div class="">
               <div class="">
                 <div class="">
-                  <div class="">
+                  <div class="pb-4">
                     <span>Llena el siguiente formulario</span>
                   </div>
                   <form [formGroup]="actorForm">
 
-                    <div class="form-group"><!-- Subida de avatar -->
+                    <div class="form-group"><!-- foto perfil -->
                         <label class="control-label">Foto de Perfil</label>
                         <input type="file" (change)="onFileSelected($event)" formControlName="avatar"><br>
+                    </div>
+                    <div class="form-group"><!-- cuerpo entero -->
+                      <label class="control-label">Foto cuerpo entero</label>
+                      <input type="file" (change)="onFileSelected($event)" formControlName="avatar"><br>
+                    </div>
+                    <div class="form-group"><!-- foto artistico -->
+                      <label class="control-label">Foto artistico</label>
+                      <input type="file" (change)="onFileSelected($event)" formControlName="avatar"><br>
                     </div>
                     
                     <div class="form-group"> <!-- Nombre de Usuario -->
@@ -249,6 +257,13 @@
                           <div *ngIf="actorForm.controls.carnetConducir.errors.required">Carnet es requerido</div>
                         </div>
                       </div>
+                      <div class="form-group"><!-- Tipo de carnet -->
+                        <label for="exampleFormControlSelect2">Tipo de carnet</label>
+                        <select class="form-control" formControlName="typecarnet" [(ngModel)]="item" [ngModelOptions]="{standalone: true}">
+                          <option [ngValue]="item">Seleccione</option>
+                          <option *ngFor="let item of typecarnet">{{item}}</option>
+                        </select>
+                      </div>
                     </div>
 
                     <div class="form-group d-flex">
@@ -295,8 +310,16 @@
                       <input type="file" (change)="onFileSelected($event)" multiple="multiple" formControlName="tattoos"><br>
                     </div>
 
+                    <div class="form-group pb-3"><!-- Eres modelo de manos profesional -->
+                      <label for="exampleFormControlSelect2">Eres modelo de manos profesional</label>
+                      <select class="form-control" id="exampleFormControlSelect2">
+                        <option>si</option>
+                        <option>no</option>
+                      </select>
+                    </div>
+
                     <div class="form-group"><!-- Modelos de Manos -->
-                      <label class="control-label">Modelo de manos profesional</label>
+                      <label class="control-label">Foto de modelo de manos profesional</label>
                       <input type="file" (change)="onFileSelected($event)" multiple="multiple" formControlName="manos"><br>
                     </div>
 
@@ -355,7 +378,7 @@
                       <select forControlName="idiomasHablados" class="form-control" [(ngModel)]="idiomasHablados.Otros" [ngModelOptions]="{standalone: true}">
                           <option [ngValue]="i">Seleccione...</option>
                           <option *ngFor="let i of idiomasHablados">{{i}}</option>
-                        </select>
+                      </select>
                     </div>
                     <div *ngIf="idiomasHablados.Otros == 'Otros'" class="form-group"><!-- Espesifique otro Idioma -->
                       <label class="control-label">Espesifique otro Idioma</label>
