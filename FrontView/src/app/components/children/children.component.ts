@@ -144,11 +144,11 @@ export class ChildrenComponent implements OnInit {
 
   signupChild() {
     this.submitted = true;
-    if (this.childForm.invalid) {
+    /*if (this.childForm.invalid) {
       return;
-    }
+    }*/
     const newChild = this.childForm.value;
-    alert('Companía a registrar: ' + JSON.stringify(newChild))
+    alert('Niño a registrar: ' + JSON.stringify(newChild))
     const usuario = {
       "acento": newChild.acento,
       "altura": newChild.altura,
@@ -240,8 +240,8 @@ export class ChildrenComponent implements OnInit {
     }
     this.authService.signup2(usuario).subscribe(
       res => {
-        localStorage.setItem('token', res);
-        this.ngxSmartModalService.create('confirm', 'Cuenta de Niño creada exitosamente').open();
+        localStorage.setItem('token', res.idUser);
+        this.ngxSmartModalService.create('confirm', 'Cuenta de Niño creada exitosamente '+ res.nombres+' '+res.apellidos).open();
         this.router.navigate(['/homeuser']);
       },
       (err) => {

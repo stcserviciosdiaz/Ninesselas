@@ -19,11 +19,11 @@ module.exports.routes = {
    *                                                                          *
    ***************************************************************************/
 
-  '/': {view: 'pages/homepage'},
+  // '/': {view: 'pages/homepage'},
 
-  // '/': {
-  //   //   view: 'index.html'
-  //   // },
+  '/': {
+      view: 'index.html'
+    },
 
   // user
 

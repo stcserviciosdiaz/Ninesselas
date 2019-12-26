@@ -126,9 +126,9 @@ export class FiguracionComponent implements OnInit {
 
   registrarActor() {
     this.submitted = true;
-    if (this.actorForm.invalid) {
+    /*if (this.actorForm.invalid) {
       return;
-    }
+    }*/
      /*const newUserObject = {
       rol: 'CommonUser',
       username: this.actorForm.get('username').value,
@@ -231,9 +231,9 @@ export class FiguracionComponent implements OnInit {
         "nombreEtnia": "BLANCO editado"
       },
       "idType": {
-        "idType": 1,
-        "description": "ACTOR",
-        "nombres": "ACTOR"
+        "idType": 2,
+        "description": "FIGURACION",
+        "nombres": "FIGURACION"
       },
       "idDeportista": {
         "idDeportista": 1,
@@ -250,11 +250,10 @@ export class FiguracionComponent implements OnInit {
       "fotosTatuajesList": [],
       "fotosManosList": []
     }
-    
     this.subscriber = this.authService.signup2(usuario).subscribe(
       res => {
-        localStorage.setItem('token', res);
-        this.ngxSmartModalService.create('confirm', 'Cuenta de Figuración creada exitosamente').open();
+        localStorage.setItem('token', res.idUser);
+        this.ngxSmartModalService.create('confirm', 'Cuenta de Figuración creada exitosamente '+res.nombres +' '+res.apellidos).open();
         // this.subirFotoPerfil()
         this.router.navigate(['/homeuser']);
       },

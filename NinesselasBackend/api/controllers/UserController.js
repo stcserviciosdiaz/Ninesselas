@@ -16,6 +16,7 @@ module.exports = {
 
   signup: async function (req, res) {
     var newuser = req.body;
+    delete newuser.idiomasHablados;
     await User.create(newuser);
     let userId;
     let userData = { email: newuser.email };
@@ -27,10 +28,16 @@ module.exports = {
         userId = user.id;
         let payload = {subject: userId};
         let token = jwt.sign(payload, 'secretKey');
-        res.status(200).send({token});
+        res.status(200).send('usuario creado');
+        // let languages = req.body.idiomasHablados;
+        // if (!languages.isEmpty){
+        //   for (let language of languages) {
+        //     language.userLanguageFK = userId;
+        //     Language.create(language);
+        //   }
+        // }
       }
     });
-
   },
 
   login: async function (req, res) {
@@ -47,8 +54,8 @@ module.exports = {
           } else {
             let payload = { subject: user.id };
             let token = jwt.sign(payload, 'secretKey');
-            res.status(200).send({ token: token, rol: user.rol });
             req.session.userId = user.id;
+            res.status(200).send({ token: token, rol: user.rol });
           }
         }
       }

@@ -139,7 +139,7 @@ export class ActorsComponent implements OnInit {
     }*/
     const newUserObject = this.actorForm.value;
     
-      const usuario = {
+    const usuario = {
       "acento": newUserObject.acento,
       "altura": newUserObject.altura,
       "apellidos": newUserObject.apellidos,
@@ -228,13 +228,12 @@ export class ActorsComponent implements OnInit {
       "fotosTatuajesList": [],
       "fotosManosList": []
     }
-    
     //alert(JSON.stringify(newUserObject))
     console.info(usuario);
     this.authService.signup2(usuario).subscribe(
       res => {
         this.ngxSmartModalService.create('confirm', 'Se ha registrado exitosamente'+usuario.nombreCompleto).open();
-        localStorage.setItem('token', res);
+        localStorage.setItem('token', res.idUser);
         this.router.navigate(['/homeuser']);
       },
       (err) => {

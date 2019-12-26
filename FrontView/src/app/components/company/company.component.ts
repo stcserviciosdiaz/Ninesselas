@@ -1,6 +1,6 @@
 import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
-import {AuthService} from '../../Services/auth.service';
-import {MdbTableDirective} from 'angular-bootstrap-md';
+import { AuthService } from '../../Services/auth.service';
+import { MdbTableDirective } from 'angular-bootstrap-md';
 
 @Component({
   selector: 'app-company',
@@ -52,9 +52,8 @@ export class CompanyComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authService.getUser().subscribe(res => {
-      this.companyInfo = res;
-    });
+    this.authService.findByToken()
+      .subscribe(res => this.companyInfo = res);
     this.authService.getAllUsers()
       .subscribe(res => {
         this.allUsers = res;

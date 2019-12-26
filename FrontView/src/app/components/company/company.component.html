@@ -1,14 +1,13 @@
-<app-header></app-header>
 <div class="wrapper ">
   <div class="sidebar" data-color="white" data-active-color="danger">
     <div class="logo">
       <a href="http://www.creative-tim.com" class="simple-text logo-mini">
         <div class="logo-image-small">
-          <img src="../assets/img/logo-small.png">
+          <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/46b63d3c-ae67-464c-9a37-670829b2a157/d8ttdm6-5617aa77-87d8-4fb7-bb78-4aab6b0956b5.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzQ2YjYzZDNjLWFlNjctNDY0Yy05YTM3LTY3MDgyOWIyYTE1N1wvZDh0dGRtNi01NjE3YWE3Ny04N2Q4LTRmYjctYmI3OC00YWFiNmIwOTU2YjUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.L80L4l2NOeCIV3WB491ANP4Ii_9NiIg2m-tgY5M_IaA">
         </div>
       </a>
       <a href="http://www.creative-tim.com" class="fg-16 simple-text logo-normal">
-        Administrativo
+        COMPAÑIA
       </a>
     </div>
     <div class="sidebar-wrapper">
@@ -52,7 +51,7 @@
               <span class="navbar-toggler-bar bar3"></span>
             </button>
           </div>
-          <a>{{companyInfo.username}}</a>
+          <a>{{companyInfo.idUser}} {{companyInfo.username}} : {{companyInfo.email}}</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
                 aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -86,6 +85,8 @@
                 <a class="dropdown-item" href="#">Something else here</a>
               </div>
             </li>
+            <li> <a class="btn btn-primary" (click)="authService.logoutUser()" href="home">Salir</a>
+
           </ul>
         </div>
       </div>
@@ -202,8 +203,7 @@
         <div class="col-md-12">
           <div class="card ">
             <div class="card-header ">
-              <h5 class="card-title">Información de Usuario Administrativo</h5>
-              <p class="card-category">............</p>
+              <h5 class="card-title">Información de Compañia</h5>
             </div>
             <div class="card-body ">
               <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -222,7 +222,7 @@
                 </tr>
                 <tr>
                   <td>Teléfonos</td>
-                  <td>{{companyInfo.telefonoFijo}}</td>
+                  <td>{{companyInfo.telefono}}</td>
                 </tr>
                 </tbody>
               </table>
@@ -243,31 +243,30 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let user of allUsers; let i = index">
-                  <th scope="row">{{user.id}}</th>
-                  <td>{{user.primerNombre}} {{user.apellidos}}</td>
-                  <td>{{user.mayorEdad}}</td>
-                  <td>{{user.nombreArtistico}}</td>
-                  <td>{{user.genero}}</td>
-                  <td>{{user.alias}}</td>
-                  <td>{{user.fechaNacimiento}}</td>
-                  <td>{{user.first}}</td>
-                  <td>{{user.Pais}}</td>
-                  <td>{{user.tallaPantalon}}</td>
-                  <td>{{user.tallaCamisa}}</td>
-                  <td>{{user.tallaChaqueta}}</td>
-                  <td>{{user.pie}}</td>
-                  <td>{{user.altura}}</td>
-                  <td>{{user.colorPiel}}</td>
-                  <td>{{user.colorPelo}}</td>
-                  <td>{{user.colorOjos}}</td>
-                  <td>{{user.modeloCoche}}</td>
-                  <td>{{user.modeloMoto}}</td>
-                  <td>{{user.razaMascota}}</td>
-                  <td>{{user.ultimosTrabajos}}</td>
-                  <td>{{user.numeroDNI}}</td>
-                  <td>{{user.numeroSeguridadSocial}}</td>
-                  <td>{{user.email}}</td>
-                  <td>{{user.telefonoFijo}}</td>
+                  <th scope="row">{{user.idUser}}</th>
+                  <td>{{user.nombres}} {{user.apellidos}}</td>
+                    <td>{{user.edad}}</td>
+                    <td>{{user.nombreArtistico}}</td>
+                    <td>{{user.sexo}}</td>
+                    <td>{{user.alias}}</td>
+                    <td>{{user.fechaNacimiento}}</td>
+                    <td>{{user.localidad}}</td>
+                    <td>{{user.tallaPantalon}}</td>
+                    <td>{{user.tallaCamisa}}</td>
+                    <td>{{user.tallaChaqueta}}</td>
+                    <td>{{user.pie}}</td>
+                    <td>{{user.altura}}</td>
+                    <td>{{user.colorPiel}}</td>
+                    <td>{{user.colorPelo}}</td>
+                    <td>{{user.colorOjos}}</td>
+                    <td>{{user.modeloCoche}}</td>
+                    <td>{{user.modeloMoto}}</td>
+                    <td>{{user.razaMascota}}</td>
+                    <td>{{user.ultimosTrabajos}}</td>
+                    <td>{{user.dniUser}}</td>
+                    <td>{{user.numeroSeguroSocial}}</td>
+                    <td>{{user.email}}</td>
+                    <td>{{user.telefono}}</td>
                 </tr>
                 </tbody>
               </table>
@@ -304,4 +303,3 @@
     </footer>
   </div>
 </div>
-<app-footer></app-footer>

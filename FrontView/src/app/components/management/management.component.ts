@@ -1,7 +1,7 @@
 import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
-import {AuthService} from '../../Services/auth.service';
-import {MdbTableDirective} from 'angular-bootstrap-md';
-import {Router} from "@angular/router";
+import { AuthService } from '../../Services/auth.service';
+import { MdbTableDirective } from 'angular-bootstrap-md';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-management',
@@ -13,6 +13,7 @@ export class ManagementComponent implements OnInit {
   @ViewChild(MdbTableDirective, { static: true }) mdbTable: MdbTableDirective;
   userInfo;
   allUsers;
+  subscriber;
   allCompanies;
   editField: string;
   numberOfUsers: number;
@@ -70,8 +71,13 @@ export class ManagementComponent implements OnInit {
       .subscribe(resp => {
         this.allCompanies = resp;
       });
-    this.authService.getUser()
+    this.authService.findByToken()
       .subscribe(res => this.userInfo = res);
+
+    /* this.subscriber = this.authService.findByToken().subscribe(
+       res => {
+         this.userInfo = res;
+       });*/
     this.authService.getAllUsers()
       .subscribe(res => {
         this.allUsers = res;

@@ -16,6 +16,12 @@ a [Sails v1](https://sailsjs.com) application
 
 This app was originally generated on Fri Nov 15 2019 10:03:15 GMT-0500 (Ecuador Time) using Sails v1.2.3.
 
+Change URL on security, auth.service, routes and production.
+
+the ng build --prod.
+
+the copy all dist folder to assets in sails.
+
 <!-- Internally, Sails used [`sails-generate@1.16.13`](https://github.com/balderdashy/sails-generate/tree/v1.16.13/lib/core-generators/new). -->
 
 

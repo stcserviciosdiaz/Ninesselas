@@ -59,7 +59,8 @@ import { FiguracionComponent } from './components/figuracion/figuracion.componen
 import { IsotopeComponent } from './components/isotope/isotope.component';
 import { ChildrenComponent } from './components/children/children.component';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
-import { DatePipe } from './pipes/date.pipe';
+import { DatePipe } from './pipes/date/date.pipe';
+
 
 
 @NgModule({
