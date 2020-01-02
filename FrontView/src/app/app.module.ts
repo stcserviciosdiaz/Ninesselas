@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AuthService } from './Services/auth.service';
 import { EmailService } from './Services/email.service';
 import { AuthGuard } from './Guards/auth.guard';
-import {TokenInterceptorService} from './Services/token-interceptor.service';
+import { TokenInterceptorService } from './Services/token-interceptor.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,8 +19,8 @@ import { LoginComponent } from './components/user/login/login.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { ActorsComponent } from './components/actors/actors.component';
 import { CompanyComponent } from './components/company/company.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HomeUserComponent } from './components/home-user/home-user.component';
 import { ForgotComponent } from './components/user/forgot/forgot.component';
 
@@ -41,10 +41,10 @@ import {
   MatRadioModule,
   MatSelectModule,
   MatOptionModule,
-  MatSlideToggleModule, 
-  ErrorStateMatcher, 
-  ShowOnDirtyErrorStateMatcher, 
-  MatTooltipModule, 
+  MatSlideToggleModule,
+  ErrorStateMatcher,
+  ShowOnDirtyErrorStateMatcher,
+  MatTooltipModule,
   MatButtonToggleModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -60,7 +60,9 @@ import { IsotopeComponent } from './components/isotope/isotope.component';
 import { ChildrenComponent } from './components/children/children.component';
 import { NgxSmartModalModule } from 'ngx-smart-modal';
 
-
+import { AngularFireStorageModule } from '@angular/fire/storage';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from '../environments/environment';
 @NgModule({
   declarations: [
     AppComponent,
@@ -109,7 +111,9 @@ import { NgxSmartModalModule } from 'ngx-smart-modal';
     MatRadioModule,
     MatSelectModule,
     MatOptionModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule
   ],
   exports: [
     MatButtonModule,
@@ -143,6 +147,6 @@ import { NgxSmartModalModule } from 'ngx-smart-modal';
     }
   ],
   bootstrap: [AppComponent],
-  schemas: [ NO_ERRORS_SCHEMA ]
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule { }

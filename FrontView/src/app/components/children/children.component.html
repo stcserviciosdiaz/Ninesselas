@@ -1,466 +1,612 @@
 <app-header></app-header>
 <div class="bg-fondo">
-    <div class="container contect-Ajuste mx-w d-flex">
+  <div class="container contect-Ajuste mx-w d-flex">
+    <div class="">
+      <div class="">
+        <a class="logo">Registro de Niños</a>
+      </div>
+      <div class="">
         <div class="">
-          <div class="">
-            <a class="logo">Registro de Niños</a>
-            <p class="mt-3">-------------------</p>
-          </div>
           <div class="">
             <div class="">
               <div class="">
-                <div class="">
-                  <div class="">
-                      <p class="mt-3">Llena el siguiente formulario</p>
-                  </div>
-                  <form [formGroup]="childForm">
-
-                    <div class="form-group"><!-- Foto de Perfil -->
-                        <label class="control-label">Foto de Perfil</label>
-                        <input type="file" (change)="onAvatarSelected($event)" formControlName="avatar" ><br>
-                    </div>
-
-                    <div class="form-group"><!-- Nombre de Usuario -->
-                      <label class="control-label">Nombre de Usuario</label>
-                      <input type="text" class="form-control"  formControlName="username" placeholder="Ldiaz" [ngClass]="{ 'is-invalid': submitted && childForm.controls.username.errors }">
-                      <div *ngIf="submitted && childForm.controls.username.errors" class="invalid-feedback">
-                          <div *ngIf="childForm.controls.username.errors.required">El usuario es requerido</div>
-                      </div>
-                    </div>
-
-                    <div class="form-group"><!-- Nombres Completos -->
-                      <label class="control-label">Nombres Completos</label>
-                      <input type="text" class="form-control"  formControlName="nombres" placeholder="Luis Alfredo" [ngClass]="{ 'is-invalid': submitted && childForm.controls.nombres.errors }">
-                      <div *ngIf="submitted && childForm.controls.nombres.errors" class="invalid-feedback">
-                        <div *ngIf="childForm.controls.nombres.errors.required">El nombre es requerido</div>
-                      </div>
-                    </div>
-
-                    <div class="form-group"><!-- Apellidos Completos -->
-                      <label class="control-label">Apellidos Completos</label>
-                      <input type="text" class="form-control"  formControlName="apellidos" placeholder="Almito Gil" [ngClass]="{ 'is-invalid': submitted && childForm.controls.apellidos.errors }">
-                      <div *ngIf="submitted && childForm.controls.apellidos.errors" class="invalid-feedback">
-                        <div *ngIf="childForm.controls.apellidos.errors.required">El apellido es requerido</div>
-                      </div>
-                    </div>
-
-                    <div class="form-group"><!-- Edad -->
-                        <label class="control-label">Edad</label>
-                        <select forControlName="edad" class="form-control">
-                          <option [ngValue]="0">Seleccione....</option>
-                          <option *ngFor="let i of edad">{{i}}</option>
-                        </select>                        
-                    </div>
-
-                    <div class="form-group">
-                        <label>Contraseña</label>
-                        <input type="password" (keypress)="numberOnly($event)"  class="form-control" formControlName="password" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && childForm.controls.password.errors }">
-                        <div *ngIf="submitted && childForm.controls.password.errors" class="invalid-feedback">
-                            <div *ngIf="childForm.controls.password.errors.required">La contraseña es requerida</div>
-                            <div *ngIf="childForm.controls.password.errors.minlength">La contraseña debe tener al menos 6 caracteres</div>
-                        </div>
-                      </div>
-  
-                      <div class="form-group">
-                        <label>Confirma contraseña</label>
-                        <input type="password" (keypress)="numberOnly($event)" class="form-control" formControlName="confirmPassword"  placeholder="Confirm Password" [ngClass]="{ 'is-invalid': submitted && childForm.controls.confirmPassword.errors }" />
-                            <div *ngIf="submitted && childForm.controls.confirmPassword.errors" class="invalid-feedback">
-                            <div *ngIf="childForm.controls.confirmPassword.errors.required">Confirme que se requiere contraseña</div>
-                            <div *ngIf="childForm.controls.confirmPassword.errors.mustMatch">Las contraseñas deben coincidir</div>
-                        </div>
-                    </div>
-
-                    <fieldset class="form-group"><!-- Sexo -->
-                        <div class="row">
-                          <legend class="col-form-label col-sm-2 pt-0">Sexo</legend>
-                          <div class="col-sm-10">
-                            <div class="form-check">
-                              <input class="form-check-input" type="radio" formControlName="sexo"  value="Masculino" checked>
-                              <label class="form-check-label">
-                                Masculino
-                              </label>
-                            </div>
-                            <div class="form-check">
-                              <input class="form-check-input" type="radio" formControlName="sexo"  value="Femenino">
-                              <label class="form-check-label">
-                                Femenino
-                              </label>
-                            </div>
-                          </div>
-                        </div>
-                    </fieldset>
-
-                    <div class="form-group"><!-- ¿De qué grupo étnico se considera? -->
-                      <label class="control-label">¿De qué grupo étnico se considera?</label>
-                      <select forControlName="etnico" class="form-control">
-                          <option [ngValue]="0">Seleccione...</option>
-                          <option *ngFor="let i of etnico">{{i}}</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group"><!-- Numero de Teléfono -->
-                        <label>Numero de Teléfono</label>
-                        <label class="sr-only" for="inlineFormInputGroup">Numero de Teléfono</label>
-                        <div class="input-group mb-2">
-                          <div class="input-group-prepend">
-                            <div class="input-group-text">+34</div>
-                          </div>
-                          <input type="text" (keypress)="numberOnly($event)" class="form-control" formControlName="telefono" placeholder="Numero de teléfono" [ngClass]="{ 'is-invalid': submitted && childForm.controls.telefono.errors }">
-                          <div *ngIf="submitted && childForm.controls.telefono.errors" class="invalid-feedback">
-                            <div *ngIf="childForm.controls.telefono.errors.required">El telefono es requerida</div>
-                          </div>
-                        </div>
-                    </div>
-                    
-                    <div class="form-group"><!-- Fecha de nacimiento -->
-                      <mat-form-field>
-                          <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento" placeholder="Fecha de nacimiento">
-                          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                          <mat-datepicker #picker></mat-datepicker>
-                      </mat-form-field>
-                    </div>
-
-                    <div class="form-group"> <!-- Lugar de nacimiento -->
-                      <label class="control-label">Lugar de nacimiento</label>
-                      <input type="text" class="form-control" id="placebirth" formControlName="placebirth" placeholder="ldiaz" [ngClass]="{ 'is-invalid': submitted && childForm.controls.placebirth.errors }">
-                      <div *ngIf="submitted && childForm.controls.placebirth.errors" class="invalid-feedback">
-                        <div *ngIf="childForm.controls.placebirth.errors.required">El lugar es requerido</div>
-                      </div>
-                    </div>
-
-                    <div class="form-group"><!-- Nacionalidad -->
-                        <label class="control-label">Nacionalidad</label>
-                        <input type="text" class="form-control"  formControlName="nacionalidad" placeholder="Pais" [ngClass]="{ 'is-invalid': submitted && childForm.controls.nacionalidad.errors }">
-                        <div *ngIf="submitted && childForm.controls.nacionalidad.errors" class="invalid-feedback">
-                          <div *ngIf="childForm.controls.nacionalidad.errors.required">La nacionalidad es requerido</div>
-                      </div>
-                    </div>
-
-                    <div class="form-group"><!-- Correo electronico -->
-                        <label>Correo electronico</label>
-                        <input type="email" class="form-control" formControlName="email" placeholder="name@example.com" [ngClass]="{ 'is-invalid': submitted && childForm.controls.email.errors }">
-                        <div *ngIf="submitted && childForm.controls.email.errors" class="invalid-feedback">
-                            <div *ngIf="childForm.controls.email.errors.required">Correo electrónico es requerido</div>
-                            <div *ngIf="childForm.controls.email.errors.email">Debe ser una dirección de correo electrónico válida</div>
-                        </div>
-                    </div>
-
-                    <div class="form-group"><!-- Eres actor-->
-                      <label class="control-label">Eres Actor</label>
-                        <select forControlName="actor" class="form-control" [(ngModel)]="actor.name" [ngModelOptions]="{standalone: true}">
-                          <option [ngValue]="i" selected>Seleccione...</option>
-                          <option *ngFor="let i of actor">{{i.name}}</option>
-                        </select>
-                    </div> 
-                    <div *ngIf="actor.name == 'Si'" class="form-group"> <!-- Link de VideoBook -->
-                      <label class="control-label">Link de VideoBook</label>
-                      <input type="text" class="form-control" formControlName="videoBook" placeholder="https://www.videoBook.com">
-                    </div>
-
-                    <div class="form-group d-lg-flex d-md-flex d-block">
-                        <div class="form-group mr-2"><!-- Talla de camisa -->
-                          <label class="control-label">Talla de camisa</label>
-                          <input type="text" class="d-inline form-control"  formControlName="tallaCamisa" placeholder="talla de camisa" [ngClass]="{ 'is-invalid': submitted && childForm.controls.tallaCamisa.errors }">
-                          <div *ngIf="submitted && childForm.controls.tallaCamisa.errors" class="invalid-feedback">
-                              <div *ngIf="childForm.controls.tallaCamisa.errors.required">La talla es requerido</div>
-                          </div>
-                        </div>
-                        <div class="form-group mr-2"><!-- talla de chaqueta -->
-                          <label class="control-label">talla de chaqueta</label>
-                          <input type="text" class="d-inline form-control"  formControlName="tallaChaqueta" placeholder="talla de chaqueta" [ngClass]="{ 'is-invalid': submitted && childForm.controls.tallaChaqueta.errors }">
-                          <div *ngIf="submitted && childForm.controls.tallaChaqueta.errors" class="invalid-feedback">
-                              <div *ngIf="childForm.controls.tallaChaqueta.errors.required">La talla es requerido</div>
-                          </div>
-                        </div>
-                        <div class="form-group mr-2"><!-- Talla de pantalon -->
-                          <label class="control-label">Talla de pantalon</label>
-                          <input type="text" class="d-inline form-control"  formControlName="tallaPantalon" placeholder="talla de pantalon" [ngClass]="{ 'is-invalid': submitted && childForm.controls.tallaPantalon.errors }">
-                          <div *ngIf="submitted && childForm.controls.tallaPantalon.errors" class="invalid-feedback">
-                              <div *ngIf="childForm.controls.tallaPantalon.errors.required">La talla es requerido</div>
-                          </div>
-                        </div>
-                        <div class="form-group mr-3"><!-- Talla de Pie -->
-                            <label class="control-label">Pie</label>
-                            <input type="text" class="d-inline form-control"  formControlName="pie" placeholder="Pie" [ngClass]="{ 'is-invalid': submitted && childForm.controls.pie.errors }">
-                            <div *ngIf="submitted && childForm.controls.pie.errors" class="invalid-feedback">
-                                <div *ngIf="childForm.controls.pie.errors.required">La talla es requerido</div>
-                            </div>
-                          </div>
-                          <div class="form-group"><!-- Talla de Altura -->
-                            <label class="control-label">Altura</label>
-                            <input type="text" class="d-inline form-control"  formControlName="altura" placeholder="Altura" [ngClass]="{ 'is-invalid': submitted && childForm.controls.altura.errors }">
-                            <div *ngIf="submitted && childForm.controls.altura.errors" class="invalid-feedback">
-                                <div *ngIf="childForm.controls.altura.errors.required">La talla es requerido</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group d-lg-flex d-md-flex d-block">
-                        <div class="form-group mr-3"><!-- Color de Piel -->
-                          <label class="control-label">Color de Piel</label>
-                          <input type="text" class="d-inline form-control"  formControlName="colorPiel" placeholder="Color de Piel" [ngClass]="{ 'is-invalid': submitted && childForm.controls.colorPiel.errors }">
-                          <div *ngIf="submitted && childForm.controls.colorPiel.errors" class="invalid-feedback">
-                              <div *ngIf="childForm.controls.colorPiel.errors.required">El color es requerido</div>
-                          </div>
-                        </div>
-                        <div class="form-group mr-3"><!-- Color de Pelo -->
-                          <label class="control-label">Color de Pelo</label>
-                          <input type="text" class="d-inline form-control"  formControlName="colorPelo" placeholder="Color de Pelo" [ngClass]="{ 'is-invalid': submitted && childForm.controls.colorPelo.errors }">
-                          <div *ngIf="submitted && childForm.controls.colorPelo.errors" class="invalid-feedback">
-                              <div *ngIf="childForm.controls.colorPelo.errors.required">El color es requerido</div>
-                          </div>
-                        </div>
-                        <div class="form-group mr-3"><!-- Color de ojos -->
-                            <label class="control-label">Color de ojos</label>
-                            <input type="text" class="d-inline form-control" formControlName="colorOjos" placeholder="Color de ojos" [ngClass]="{ 'is-invalid': submitted && childForm.controls.colorOjos.errors }">
-                            <div *ngIf="submitted && childForm.controls.colorOjos.errors" class="invalid-feedback">
-                                <div *ngIf="childForm.controls.colorOjos.errors.required">El color es requerido</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Dirección</label>
-                        <input type="text" class="form-control" forControlName="direccion" placeholder="Apartmento, studio, or floor">
-                          
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group col-md-6"><!-- Localidad -->
-                          <label class="control-label">Localidad</label>
-                          <input type="text" class="form-control" forControlName="localidad" placeholder="Smallville" >
-                          
-                        </div>
-                        <div class="form-group col-md-4"><!-- Provincia -->
-                            <label class="control-label">Provincia</label>
-                            <input type="text" class="form-control" forControlName="provincia" placeholder="alabama" >
-                           
-                        </div>
-                        <div class="form-group col-md-2"><!-- Codigo Postal -->
-                          <label for="inputZip">Codigo Postal</label>
-                          <input type="text" (keypress)="check($event)" class="form-control" forControlName="codpostal" placeholder="#####" >
-                         
-                        </div>
-                    </div>
-
-                    <div class="form-group"><!-- Numero DNI del niño-->
-                        <label class="control-label">Numero DNI</label>
-                        <input type="text" (keypress)="check($event)" class="d-inline form-control"  formControlName="numeroDNI" placeholder="#####" [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNI.errors }">
-                        <div *ngIf="submitted && childForm.controls.numeroDNI.errors" class="invalid-feedback">
-                          <div *ngIf="childForm.controls.numeroDNI.errors.required">El numero es requerida</div>
-                        </div>
-                    </div>
-
-                    <div class="form-group"><!-- Copia del Numero DNI del niño -->
-                      <label>Copia del Numero DNI del niño</label>
-                      <input type="file" (change)="copyDNIkidSelected($event)" formControlName="copyDNIkid">
-                    </div>
-                   
-                    <div class="form-group"><!-- Numero seguridad social -->
-                        <label class="control-label">Número de la seguridad social del niño</label>
-                        <input type="text" class="form-control"  formControlName="numeroSeguridadSocial" placeholder="Numero de Seguridad Social" [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroSeguridadSocial.errors }">
-                        <div *ngIf="submitted && childForm.controls.numeroSeguridadSocial.errors" class="invalid-feedback">
-                          <div *ngIf="childForm.controls.numeroSeguridadSocial.errors.required">El numero es requerida</div>
-                        </div>
-                    </div>
-
-                    <div class="form-group"><!-- Copia numero seguridad social -->
-                      <label>Copia numero seguridad social del niño</label>
-                      <input type="file" (change)="copySocialNumberSelected($event)" formControlName="copySocialNumber">
-                    </div>
-
-                    <div class="form-group"><!-- DNI del padre -->
-                        <label>DNI del padre</label>
-                        <input type="text" (keypress)="check($event)" class="form-control"  formControlName="numeroDNIPadre" placeholder="30065089H" [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNIPadre.errors }">
-                        <div *ngIf="submitted && childForm.controls.numeroDNIPadre.errors" class="invalid-feedback">
-                          <div *ngIf="childForm.controls.numeroDNIPadre.errors.required">El DNI es requerida</div>
-                        </div>
-                    </div>
-
-                    <div class="form-group"><!-- Copia del DNI del padre -->
-                      <label>Copia del DNI del padre</label>
-                      <input type="file" (change)="copyDNIFatherSelected($event)" formControlName="copyDNIFather">
-                    </div>
-
-                    
-                    <div class="form-group"><!-- Numero de Teléfono del padre-->
-                      <label>Numero de Teléfono del padre</label>
-                      <input type="text" (keypress)="numberOnly($event)" class="form-control"  formControlName="telefonofather" placeholder="Numero de teléfono" [ngClass]="{ 'is-invalid': submitted && childForm.controls.telefonofather.errors }">
-                      <div *ngIf="submitted && childForm.controls.telefonofather.errors" class="invalid-feedback">
-                        <div *ngIf="childForm.controls.telefonofather.errors.required">El telefono es requerida</div>
-                      </div>
-                    </div>
-  
-                    <div class="form-group"><!-- DNI de la Madre -->
-                        <label>DNI de la Madre</label>
-                        <input type="text" (keypress)="check($event)" class="form-control"  formControlName="numeroDNIMadre" placeholder="30065089H" [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNIMadre.errors }">
-                        <div *ngIf="submitted && childForm.controls.numeroDNIMadre.errors" class="invalid-feedback">
-                          <div *ngIf="childForm.controls.numeroDNIMadre.errors.required">El DNI es requerida</div>
-                        </div>
-                    </div>
-
-                    <div class="form-group"><!-- Copia del DNI de la madre -->
-                      <label>Copia del DNI de la madre</label>
-                      <input type="file" (change)="copyDNIMotherSelected($event)" formControlName="CopyDNIMother" [ngClass]="{ 'is-invalid': submitted && childForm.controls.CopyDNIMother.errors }">
-                      <div *ngIf="submitted && childForm.controls.CopyDNIMother.errors" class="invalid-feedback">
-                          <div *ngIf="childForm.controls.CopyDNIMother.errors.required">La copia es requerida</div>
-                      </div>
-                    </div>
-
-                    <div class="form-group"><!-- Numero de Teléfono de la madre-->
-                      <label>Numero de Teléfono de la madre</label>
-                      <input type="text" (keypress)="numberOnly($event)" class="form-control"  formControlName="telefonomother" placeholder="Numero de teléfono" [ngClass]="{ 'is-invalid': submitted && childForm.controls.telefonomother.errors }">
-                      <div *ngIf="submitted && childForm.controls.telefonomother.errors" class="invalid-feedback">
-                        <div *ngIf="childForm.controls.telefonomother.errors.required">El teléfono es requerida</div>
-                      </div>
-                    </div>
-
-                    <div class="form-group"><!-- Libro de familiar -->
-                        <label>Libro de familiar</label>
-                        <input type="file" (change)="onFamilyBookSelected($event)" formControlName="libroFamilia">
-                    </div>
-
-                    <div class="form-group"><!-- Deportes -->
-                        <label class="control-label">Deportes</label>
-                          <select forControlName="deporte" class="form-control" [(ngModel)]="deporte.name" [ngModelOptions]="{standalone: true}">
-                            <option [ngValue]="i" selected>Seleccione...</option>
-                            <option *ngFor="let i of deporte">{{i.name}}</option>
-                          </select>
-                    </div>
-                    <div *ngIf="deporte.name == 'Federado' ||  deporte.name == 'Profesional'" class="form-group"><!-- Habilidades del deporte-->
-                      <label class="control-label">Habilidades del deporte</label>
-                        <select forControlName="habdeportes" class="form-control" [(ngModel)]="habdeportes.Otros" [ngModelOptions]="{standalone: true}">
-                          <option [ngValue]="i">Seleccione...</option>
-                          <option *ngFor="let i of habdeportes">{{i}}</option>
-                        </select>
-                    </div>
-                    <div *ngIf="habdeportes.Otros == 'Otros'" class="form-group"><!-- Espesifique otro deporte -->
-                      <label class="control-label">Espesifique otro deporte</label>
-                      <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
-                    </div>
-
-                    <div class="form-group"><!-- Bailes -->
-                        <label class="control-label">Bailes</label>
-                        <select forControlName="bailes" class="form-control" [(ngModel)]="bailes.name" [ngModelOptions]="{standalone: true}">
-                            <option [ngValue]="i">Seleccione...</option>
-                            <option *ngFor="let i of bailes">{{i.name}}</option>
-                          </select>
-                    </div>
-                    <div *ngIf="bailes.name == 'Profesional'" class="form-group"><!-- Estilos de Baile -->
-                        <label class="control-label">Estilos de Baile</label>
-                          <select forControlName="estilobailes" class="form-control" [(ngModel)]="estilobailes.Otros" [ngModelOptions]="{standalone: true}">
-                            <option [ngValue]="i">Seleccione...</option>
-                            <option *ngFor="let i of estilobailes">{{i}}</option>
-                          </select>
-                      </div>
-                      <div *ngIf="estilobailes.Otros == 'Otros'" class="form-group"><!-- Espesifique otro baile -->
-                        <label class="control-label">Espesifique otro baile</label>
-                        <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
-                      </div>
-
-                      <div class="form-group"><!-- Musico -->
-                          <label class="control-label">Musico</label>
-                          <select forControlName="musicos" class="form-control" [(ngModel)]="musicos.name" [ngModelOptions]="{standalone: true}">
-                              <option [ngValue]="i" selected>Seleccione...</option>
-                              <option *ngFor="let i of musicos">{{i.name}}</option>
-                          </select>
-                      </div>
-                      <div *ngIf="musicos.name == 'Profesional'" class="form-group"><!-- Instrumentos musical -->
-                        <label class="control-label">Instrumentos musical</label>
-                          <select forControlName="instrumentos" class="form-control" [(ngModel)]="instrumentos.Otros" [ngModelOptions]="{standalone: true}">
-                            <option [ngValue]="i">Seleccione...</option>
-                            <option *ngFor="let i of instrumentos">{{i}}</option>
-                          </select>
-                      </div>
-                      <div *ngIf="instrumentos.Otros == 'Otros'" class="form-group"><!-- Espesifique otro instrumento musical -->
-                        <label class="control-label">Espesifique otro instrumento musical</label>
-                        <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
-                      </div>
-
-                      <div class="form-group"><!-- Cantantes -->
-                          <label class="control-label">Cantantes</label>
-                          <select class="form-control" forControlName="cantos" [(ngModel)]="cantos.name" [ngModelOptions]="{standalone: true}">
-                              <option [ngValue]="i">Seleccione...</option>
-                              <option *ngFor="let i of cantos">{{i.name}}</option>
-                            </select>
-                      </div>
-                      <div *ngIf="cantos.name == 'Profesional'" class="form-group"><!-- Estilos de cantos -->
-                        <label class="control-label">Estilos de cantos</label>
-                          <select forControlName="estilocantos" class="form-control" [(ngModel)]="estilocantos.Otros" [ngModelOptions]="{standalone: true}">
-                            <option [ngValue]="i">Seleccione...</option>
-                            <option *ngFor="let i of estilocantos">{{i}}</option>
-                          </select>
-                      </div>
-                      <div *ngIf="estilocantos.Otros == 'Otros'" class="form-group"><!-- Espesifique otros estilos -->
-                        <label class="control-label">Espesifique otro estilos</label>
-                        <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
-                      </div>
-
-                      <div class="form-group"><!-- Habilidades -->
-                          <label class="control-label">Habilidades</label>
-                            <select forControlName="habilidades" class="form-control" [(ngModel)]="habilidades.Otros" [ngModelOptions]="{standalone: true}">
-                              <option [ngValue]="i">Seleccione...</option>
-                              <option *ngFor="let i of habilidades">{{i}}</option>
-                            </select>
-                      </div>
-                      <div *ngIf="habilidades.Otros == 'Otros'" class="form-group"><!-- Espesifique otras habilidades -->
-                        <label class="control-label">Espesifique otras habilidades</label>
-                        <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
-                      </div>
-
-                      <div class="form-group"><!-- Idiomas -->
-                          <label class="control-label">Idiomas</label>
-                          <select formControlName="idiomasHablados" class="form-control" [(ngModel)]="idiomasHablados.Otros" [ngModelOptions]="{standalone: true}">
-                              <option [ngValue]="i">Seleccione...</option>
-                              <option *ngFor="let i of idiomasHablados">{{i}}</option>
-                            </select>
-                      </div>
-                      <div *ngIf="idiomasHablados.Otros == 'Otros'" class="form-group"><!-- Espesifique otro Idioma -->
-                        <label class="control-label">Espesifique otro Idioma</label>
-                        <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
-                      </div>
-
-                      <div class="form-group"><!-- Ultimos trabajos -->
-                          <label class="control-label">Descripción de Ultimos Trabajos</label>
-                          <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos" placeholder="Teatro">
-                          <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos" placeholder="Cine">
-                          <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos" placeholder="Ficcion">
-                          <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos" placeholder="Publicidad">
-                      </div>
-                      <div class="form-group"><!-- Observaciones -->
-                        <label for="">Observaciones</label>
-                        <textarea class="form-control" id="observaciones" formControlName="observaciones" rows="3"></textarea>
-                      </div>
-                   
-                    <div class="form-group">
-                        <div class="form-check">
-                        <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && childForm.controls.acceptTerms.errors }" />
-                          <label class="form-check-label">
-                            Acepta los terminos del registro
-                          </label>
-                        <div *ngIf="submitted && childForm.controls.acceptTerms.errors" class="invalid-feedback">Los terminos es requerido</div>
-                      </div>
-                    </div>
-
-                    <div class="info info--sm">
-                        Al aceptar los "Terminos del registro" certifico que tengo 16 años o más y acepto las
-                        <a class="link-secondary--underlined" target="blank" routerLink="/terms">Condiciones de Uso</a>, la
-                        <a class="link-secondary--underlined" target="blank" routerLink="/privacy">Política de Privacidad</a> y recibir novedades y promociones.
-                    </div>
-                    <div class="mt-5 form-group">
-                        <button class="btn btn-primary" (click)="signupChild()">Registrame!</button>
-                    </div>
-                  </form>
-                </div>
+                <p class="mt-3">Llena el siguiente formulario</p>
               </div>
-            </div>
-            <div class="modal-footer">
-              ¿Ya tienes cuenta?
-              <a routerLink="/login" class="link-primary">
-                Entrar
-              </a>
+              <form [formGroup]="childForm">
+
+                <div class="form-group">
+                  <!-- Foto de Perfil
+                  <h3>Foto de Perfil</h3>
+                  <div class="form-group">
+                    <input type="file" name="image" (change)="fileProgress($event)" />
+                  </div>
+                  <div *ngIf="fileUploadProgress">
+                    Progreso de Carga: {{ fileUploadProgress }}
+                  </div>
+                  <div class="image-preview mb-3" *ngIf="previewUrl">
+                    <img [src]="previewUrl" height="300" />
+                  </div>
+
+                  <div class="mb-3" *ngIf="uploadedFilePath">
+                    {{uploadedFilePath}}
+                  </div>
+
+
+                   <div class="form-group">
+                    <button class="btn btn-primary" (click)="onSubmit()">Submit</button>
+                  </div>
+
+                  -->
+                  <label class="control-label">Foto de Perfil</label>
+                  <input type="file" (change)="onAvatarSelected($event)" formControlName="avatar"><br>
+                </div>
+
+                <div class="form-group">
+                  <!-- Nombre de Usuario -->
+                  <label class="control-label">Nombre de Usuario</label>
+                  <input type="text" class="form-control" formControlName="username" placeholder="Ldiaz"
+                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.username.errors }">
+                  <div *ngIf="submitted && childForm.controls.username.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.username.errors.required">El usuario es requerido</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!-- Nombres Completos -->
+                  <label class="control-label">Nombres Completos</label>
+                  <input type="text" class="form-control" formControlName="nombres" placeholder="Luis Alfredo"
+                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.nombres.errors }">
+                  <div *ngIf="submitted && childForm.controls.nombres.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.nombres.errors.required">El nombre es requerido</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!-- Apellidos Completos -->
+                  <label class="control-label">Apellidos Completos</label>
+                  <input type="text" class="form-control" formControlName="apellidos" placeholder="Almito Gil"
+                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.apellidos.errors }">
+                  <div *ngIf="submitted && childForm.controls.apellidos.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.apellidos.errors.required">El apellido es requerido</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!-- Edad -->
+                  <label class="control-label">Edad</label>
+                  <select forControlName="edad" class="form-control">
+                    <option [ngValue]="0">Seleccione....</option>
+                    <option *ngFor="let i of edad">{{i}}</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label>Contraseña</label>
+                  <input type="password" (keypress)="numberOnly($event)" class="form-control" formControlName="password"
+                    placeholder="Password"
+                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.password.errors }">
+                  <div *ngIf="submitted && childForm.controls.password.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.password.errors.required">La contraseña es requerida</div>
+                    <div *ngIf="childForm.controls.password.errors.minlength">La contraseña debe tener al menos 6
+                      caracteres</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Confirma contraseña</label>
+                  <input type="password" (keypress)="numberOnly($event)" class="form-control"
+                    formControlName="confirmPassword" placeholder="Confirm Password"
+                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.confirmPassword.errors }" />
+                  <div *ngIf="submitted && childForm.controls.confirmPassword.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.confirmPassword.errors.required">Confirme que se requiere contraseña
+                    </div>
+                    <div *ngIf="childForm.controls.confirmPassword.errors.mustMatch">Las contraseñas deben coincidir
+                    </div>
+                  </div>
+                </div>
+
+                <fieldset class="form-group">
+                  <!-- Sexo -->
+                  <div class="row">
+                    <legend class="col-form-label col-sm-2 pt-0">Sexo</legend>
+                    <div class="col-sm-10">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" formControlName="sexo" value="Masculino" checked>
+                        <label class="form-check-label">
+                          Masculino
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" formControlName="sexo" value="Femenino">
+                        <label class="form-check-label">
+                          Femenino
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+
+                <div class="form-group">
+                  <!-- ¿De qué grupo étnico se considera? -->
+                  <label class="control-label">¿De qué grupo étnico se considera?</label>
+                  <select forControlName="etnias" class="form-control" [(ngModel)]="etniaSelect"
+                    [ngModelOptions]="{standalone: true}">
+                    <option selected>Seleccione...</option>
+                    <option [ngValue]="i" *ngFor="let i of etnias">{{i.nombreEtnia}}</option>
+                  </select>
+                </div>
+                <div *ngIf="etniaSelect.nombreEtnia == 'Otro'" class="form-group">
+                  <!-- especifique -->
+                  <label class="control-label">Especifique otro grupo étnico</label>
+                  <textarea forControlName="otro" class="form-control" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                  <!-- Numero de Teléfono -->
+                  <label>Numero de Teléfono</label>
+                  <label class="sr-only" for="inlineFormInputGroup">Numero de Teléfono</label>
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">+34</div>
+                    </div>
+                    <input type="text" (keypress)="numberOnly($event)" class="form-control" formControlName="telefono"
+                      placeholder="Numero de teléfono"
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.telefono.errors }">
+                    <div *ngIf="submitted && childForm.controls.telefono.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.telefono.errors.required">El telefono es requerida</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!-- Fecha de nacimiento -->
+                  <mat-form-field>
+                    <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento"
+                      placeholder="Fecha de nacimiento">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+                </div>
+
+                <div class="form-group">
+                  <!-- Lugar de nacimiento -->
+                  <label class="control-label">Lugar de nacimiento</label>
+                  <input type="text" class="form-control" id="placebirth" formControlName="placebirth"
+                    placeholder="ldiaz" [ngClass]="{ 'is-invalid': submitted && childForm.controls.placebirth.errors }">
+                  <div *ngIf="submitted && childForm.controls.placebirth.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.placebirth.errors.required">El lugar es requerido</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!-- Nacionalidad -->
+                  <label class="control-label">Nacionalidad</label>
+                  <input type="text" class="form-control" formControlName="nacionalidad" placeholder="Pais"
+                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.nacionalidad.errors }">
+                  <div *ngIf="submitted && childForm.controls.nacionalidad.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.nacionalidad.errors.required">La nacionalidad es requerido</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!-- Correo electronico -->
+                  <label>Correo electronico</label>
+                  <input type="email" class="form-control" formControlName="email" placeholder="name@example.com"
+                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.email.errors }">
+                  <div *ngIf="submitted && childForm.controls.email.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.email.errors.required">Correo electrónico es requerido</div>
+                    <div *ngIf="childForm.controls.email.errors.email">Debe ser una dirección de correo electrónico
+                      válida</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!-- Eres actor-->
+                  <label class="control-label">Eres Actor</label>
+                  <select forControlName="actor" class="form-control" [(ngModel)]="actor.name"
+                    [ngModelOptions]="{standalone: true}">
+                    <option [ngValue]="i" selected>Seleccione...</option>
+                    <option *ngFor="let i of actor">{{i.name}}</option>
+                  </select>
+                </div>
+                <div *ngIf="actor.name == 'Si'" class="form-group">
+                  <!-- Link de VideoBook -->
+                  <label class="control-label">Link de VideoBook</label>
+                  <input type="text" class="form-control" formControlName="videoBook"
+                    placeholder="https://www.videoBook.com">
+                </div>
+
+                <div class="form-group d-lg-flex d-md-flex d-block">
+                  <div class="form-group mr-2">
+                    <!-- Talla de camisa -->
+                    <label class="control-label">Talla de camisa</label>
+                    <input type="text" class="d-inline form-control" formControlName="tallaCamisa"
+                      placeholder="talla de camisa"
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.tallaCamisa.errors }">
+                    <div *ngIf="submitted && childForm.controls.tallaCamisa.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.tallaCamisa.errors.required">La talla es requerido</div>
+                    </div>
+                  </div>
+                  <div class="form-group mr-2">
+                    <!-- talla de chaqueta -->
+                    <label class="control-label">talla de chaqueta</label>
+                    <input type="text" class="d-inline form-control" formControlName="tallaChaqueta"
+                      placeholder="talla de chaqueta"
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.tallaChaqueta.errors }">
+                    <div *ngIf="submitted && childForm.controls.tallaChaqueta.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.tallaChaqueta.errors.required">La talla es requerido</div>
+                    </div>
+                  </div>
+                  <div class="form-group mr-2">
+                    <!-- Talla de pantalon -->
+                    <label class="control-label">Talla de pantalon</label>
+                    <input type="text" class="d-inline form-control" formControlName="tallaPantalon"
+                      placeholder="talla de pantalon"
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.tallaPantalon.errors }">
+                    <div *ngIf="submitted && childForm.controls.tallaPantalon.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.tallaPantalon.errors.required">La talla es requerido</div>
+                    </div>
+                  </div>
+                  <div class="form-group mr-3">
+                    <!-- Talla de Pie -->
+                    <label class="control-label">Pie</label>
+                    <input type="text" class="d-inline form-control" formControlName="pie" placeholder="Pie"
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.pie.errors }">
+                    <div *ngIf="submitted && childForm.controls.pie.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.pie.errors.required">La talla es requerido</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <!-- Talla de Altura -->
+                    <label class="control-label">Altura</label>
+                    <input type="text" class="d-inline form-control" formControlName="altura" placeholder="Altura"
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.altura.errors }">
+                    <div *ngIf="submitted && childForm.controls.altura.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.altura.errors.required">La talla es requerido</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group d-lg-flex d-md-flex d-block">
+                  <div class="form-group mr-3">
+                    <!-- Color de Piel -->
+                    <label class="control-label">Color de Piel</label>
+                    <input type="text" class="d-inline form-control" formControlName="colorPiel"
+                      placeholder="Color de Piel"
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.colorPiel.errors }">
+                    <div *ngIf="submitted && childForm.controls.colorPiel.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.colorPiel.errors.required">El color es requerido</div>
+                    </div>
+                  </div>
+                  <div class="form-group mr-3">
+                    <!-- Color de Pelo -->
+                    <label class="control-label">Color de Pelo</label>
+                    <input type="text" class="d-inline form-control" formControlName="colorPelo"
+                      placeholder="Color de Pelo"
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.colorPelo.errors }">
+                    <div *ngIf="submitted && childForm.controls.colorPelo.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.colorPelo.errors.required">El color es requerido</div>
+                    </div>
+                  </div>
+                  <div class="form-group mr-3">
+                    <!-- Color de ojos -->
+                    <label class="control-label">Color de ojos</label>
+                    <input type="text" class="d-inline form-control" formControlName="colorOjos"
+                      placeholder="Color de ojos"
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.colorOjos.errors }">
+                    <div *ngIf="submitted && childForm.controls.colorOjos.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.colorOjos.errors.required">El color es requerido</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Dirección</label>
+                  <input type="text" class="form-control" forControlName="direccion"
+                    placeholder="Apartmento, studio, or floor">
+
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <!-- Localidad -->
+                    <label class="control-label">Localidad</label>
+                    <input type="text" class="form-control" forControlName="localidad" placeholder="Smallville">
+
+                  </div>
+                  <div class="form-group col-md-4">
+                    <!-- Provincia -->
+                    <label class="control-label">Provincia</label>
+                    <input type="text" class="form-control" forControlName="provincia" placeholder="alabama">
+
+                  </div>
+                  <div class="form-group col-md-2">
+                    <!-- Codigo Postal -->
+                    <label for="inputZip">Codigo Postal</label>
+                    <input type="text" (keypress)="check($event)" class="form-control" forControlName="codpostal"
+                      placeholder="#####">
+
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!-- Numero DNI del niño-->
+                  <label class="control-label">Numero DNI</label>
+                  <input type="text" (keypress)="check($event)" class="d-inline form-control"
+                    formControlName="numeroDNI" placeholder="#####"
+                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNI.errors }">
+                  <div *ngIf="submitted && childForm.controls.numeroDNI.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.numeroDNI.errors.required">El numero es requerida</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!-- Copia del Numero DNI del niño -->
+                  <label>Copia del Numero DNI del niño</label>
+                  <input type="file" (change)="copyDNIkidSelected($event)" formControlName="copyDNIkid">
+                </div>
+
+                <div class="form-group">
+                  <!-- Numero seguridad social -->
+                  <label class="control-label">Número de la seguridad social del niño</label>
+                  <input type="text" class="form-control" formControlName="numeroSeguridadSocial"
+                    placeholder="Numero de Seguridad Social"
+                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroSeguridadSocial.errors }">
+                  <div *ngIf="submitted && childForm.controls.numeroSeguridadSocial.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.numeroSeguridadSocial.errors.required">El numero es requerida</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!-- Copia numero seguridad social -->
+                  <label>Copia numero seguridad social del niño</label>
+                  <input type="file" (change)="copySocialNumberSelected($event)" formControlName="copySocialNumber">
+                </div>
+
+                <div class="form-group">
+                  <!-- DNI del padre -->
+                  <label>DNI del padre</label>
+                  <input type="text" (keypress)="check($event)" class="form-control" formControlName="numeroDNIPadre"
+                    placeholder="30065089H"
+                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNIPadre.errors }">
+                  <div *ngIf="submitted && childForm.controls.numeroDNIPadre.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.numeroDNIPadre.errors.required">El DNI es requerida</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!-- Copia del DNI del padre -->
+                  <label>Copia del DNI del padre</label>
+                  <input type="file" (change)="copyDNIFatherSelected($event)" formControlName="copyDNIFather">
+                </div>
+
+
+                <div class="form-group">
+                  <!-- Numero de Teléfono del padre-->
+                  <label>Numero de Teléfono del padre</label>
+                  <input type="text" (keypress)="numberOnly($event)" class="form-control"
+                    formControlName="telefonofather" placeholder="Numero de teléfono"
+                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.telefonofather.errors }">
+                  <div *ngIf="submitted && childForm.controls.telefonofather.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.telefonofather.errors.required">El telefono es requerida</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!-- DNI de la Madre -->
+                  <label>DNI de la Madre</label>
+                  <input type="text" (keypress)="check($event)" class="form-control" formControlName="numeroDNIMadre"
+                    placeholder="30065089H"
+                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNIMadre.errors }">
+                  <div *ngIf="submitted && childForm.controls.numeroDNIMadre.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.numeroDNIMadre.errors.required">El DNI es requerida</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!-- Copia del DNI de la madre -->
+                  <label>Copia del DNI de la madre</label>
+                  <input type="file" (change)="copyDNIMotherSelected($event)" formControlName="CopyDNIMother"
+                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.CopyDNIMother.errors }">
+                  <div *ngIf="submitted && childForm.controls.CopyDNIMother.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.CopyDNIMother.errors.required">La copia es requerida</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!-- Numero de Teléfono de la madre-->
+                  <label>Numero de Teléfono de la madre</label>
+                  <input type="text" (keypress)="numberOnly($event)" class="form-control"
+                    formControlName="telefonomother" placeholder="Numero de teléfono"
+                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.telefonomother.errors }">
+                  <div *ngIf="submitted && childForm.controls.telefonomother.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.telefonomother.errors.required">El teléfono es requerida</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!-- Libro de familiar -->
+                  <label>Libro de familiar</label>
+                  <input type="file" (change)="onFamilyBookSelected($event)" formControlName="libroFamilia">
+                </div>
+
+                <div class="form-group">
+                  <!-- Deporte -->
+                  <label class="control-label">Deporte</label>
+                  <select forControlName="deportista" class="form-control" [(ngModel)]="deportistaSelect"
+                    [ngModelOptions]="{standalone: true}">
+                    <option selected>Seleccione...</option>
+                    <option [ngValue]="i" *ngFor="let i of deportista">{{i.nombreDeportista}}</option>
+                  </select>
+                </div>
+                <div
+                  *ngIf="deportistaSelect.nombreDeportista == 'Federado' ||  deportistaSelect.nombreDeportista == 'Profesional'"
+                  class="form-group">
+                  <!-- Habilidades del deporte-->
+                  <label class="control-label">Habilidades del deporte</label>
+                  <select forControlName="deportes" class="form-control" [(ngModel)]="deporteSelect"
+                    [ngModelOptions]="{standalone: true}">
+                    <option selected>Seleccione...</option>
+                    <option [ngValue]="i" *ngFor="let i of deportes">{{i.nombreDeporte}}</option>
+                  </select>
+                </div>
+                <div *ngIf="deporteSelect.nombreDeporte == 'Otros'" class="form-group">
+                  <!-- Espesifique otro deporte -->
+                  <label class="control-label">Espesifique otro deporte</label>
+                  <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                  <!-- Baile -->
+                  <label class="control-label">Baile</label>
+                  <select forControlName="baile" class="form-control" [(ngModel)]="baileSelect"
+                    [ngModelOptions]="{standalone: true}">
+                    <option selected>Seleccione...</option>
+                    <option [ngValue]="i" *ngFor="let i of baile">{{i.nombreBailarin}}</option>
+                  </select>
+                </div>
+                <div *ngIf="baileSelect.nombreBailarin == 'Profesional' " class="form-group">
+                  <!-- Estilos de Baile -->
+                  <label class="control-label">Estilos de Baile</label>
+                  <select forControlName="estilosBaile" class="form-control" [(ngModel)]="estilosBaileSelect"
+                    [ngModelOptions]="{standalone: true}">
+                    <option selected>Seleccione...</option>
+                    <option [ngValue]="i" *ngFor="let i of estilosBaile">{{i.nombreBaile}}</option>
+                  </select>
+                </div>
+                <div *ngIf="estilosBaileSelect.nombreBaile == 'Otros'" class="form-group">
+                  <!-- Espesifique otro baile -->
+                  <label class="control-label">Espesifique otro baile</label>
+                  <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                  <!-- Musico -->
+                  <label class="control-label">Musico</label>
+                  <select forControlName="musico" class="form-control" [(ngModel)]="musicoSelect"
+                    [ngModelOptions]="{standalone: true}">
+                    <option selected>Seleccione...</option>
+                    <option [ngValue]="i" *ngFor="let i of musico">{{i.nombreMusico}}</option>
+                  </select>
+                </div>
+                <div *ngIf="musicoSelect.nombreMusico == 'Profesional'" class="form-group">
+                  <!-- Instrumentos musical -->
+                  <label class="control-label">Instrumentos musical</label>
+                  <select forControlName="instrumentoss" class="form-control" [(ngModel)]="instrumentoSelect"
+                    [ngModelOptions]="{standalone: true}">
+                    <option selected>Seleccione...</option>
+                    <option [ngValue]="i" *ngFor="let i of instrumentoss">{{i.nombreInstrumento}}</option>
+                  </select>
+                </div>
+                <div *ngIf="instrumentoSelect.nombreInstrumento == 'Otros'" class="form-group">
+                  <!-- Espesifique otro instrumento musical -->
+                  <label class="control-label">Espesifique otro instrumento musical</label>
+                  <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                  <!-- Cantantes -->
+                  <label class="control-label">Cantantes</label>
+                  <select forControlName="cantante" class="form-control" [(ngModel)]="cantanteSelect"
+                    [ngModelOptions]="{standalone: true}">
+                    <option selected>Seleccione...</option>
+                    <option [ngValue]="i" *ngFor="let i of cantante">{{i.nombreCantante}}</option>
+                  </select>
+                </div>
+                <div *ngIf="cantanteSelect.nombreCantante == 'Profesional'" class="form-group">
+                  <!-- Estilos de cantos -->
+                  <label class="control-label">Estilo de cantos</label>
+                  <select class="form-control" forControlName="estilosCanto" [(ngModel)]="estilosCantoSelect"
+                    [ngModelOptions]="{standalone: true}">
+                    <option selected>Seleccione...</option>
+                    <option [ngValue]="i" *ngFor="let i of estilosCanto">{{i.nombreEstiloCanto}}</option>
+                  </select>
+                </div>
+                <div *ngIf="estilosCantoSelect.nombreEstiloCanto == 'Otros'" class="form-group">
+                  <!-- Espesifique otros estilos -->
+                  <label class="control-label">Espesifique otro estilos</label>
+                  <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                  <!-- Habilidades -->
+                  <label class="control-label">Habilidades</label>
+                  <select forControlName="habilidadess" class="form-control" [(ngModel)]="habilidadessSelect"
+                    [ngModelOptions]="{standalone: true}">
+                    <option selected>Seleccione...</option>
+                    <option [ngValue]="i" *ngFor="let i of habilidadess">{{i.nombreHabilidad}}</option>
+                  </select>
+                </div>
+                <div *ngIf="habilidadessSelect.nombreHabilidad == 'Otros'" class="form-group">
+                  <!-- Espesifique otras habilidades -->
+                  <label class="control-label">Espesifique otras habilidades</label>
+                  <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                  <!-- Idiomas -->
+                  <label class="control-label">Idiomas</label>
+                  <select forControlName="idiomas" class="form-control" [(ngModel)]="idiomasSelect"
+                    [ngModelOptions]="{standalone: true}">
+                    <option selected>Seleccione...</option>
+                    <option [ngValue]="i" *ngFor="let i of idiomas">{{i.nombreIdioma}}</option>
+                  </select>
+                </div>
+                <div *ngIf="idiomasSelect.nombreIdioma == 'Otros'" class="form-group">
+                  <!-- Espesifique otro Idioma -->
+                  <label class="control-label">Espesifique otro Idioma</label>
+                  <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                  <!-- Ultimos trabajos -->
+                  <label class="control-label">Descripción de Ultimos Trabajos</label>
+                  <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos"
+                    placeholder="Teatro">
+                  <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos" placeholder="Cine">
+                  <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos"
+                    placeholder="Ficcion">
+                  <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos"
+                    placeholder="Publicidad">
+                </div>
+                <div class="form-group">
+                  <!-- Observaciones -->
+                  <label for="">Observaciones</label>
+                  <textarea class="form-control" id="observaciones" formControlName="observaciones" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                  <div class="form-check">
+                    <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input"
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.acceptTerms.errors }" />
+                    <label class="form-check-label">
+                      Acepta los terminos del registro
+                    </label>
+                    <div *ngIf="submitted && childForm.controls.acceptTerms.errors" class="invalid-feedback">Los
+                      terminos es requerido</div>
+                  </div>
+                </div>
+
+                <div class="info info--sm">
+                  Al aceptar los "Terminos del registro" certifico que tengo 16 años o más y acepto las
+                  <a class="link-secondary--underlined" target="blank" routerLink="/terms">Condiciones de Uso</a>, la
+                  <a class="link-secondary--underlined" target="blank" routerLink="/privacy">Política de Privacidad</a>
+                  y recibir novedades y promociones.
+                </div>
+                <div class="mt-5 form-group">
+                  <button class="btn btn-primary" (click)="signupChild()">Registrame!</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>
+        <div class="modal-footer">
+          ¿Ya tienes cuenta?
+          <a routerLink="/login" class="link-primary">
+            Entrar
+          </a>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 <app-footer></app-footer>
