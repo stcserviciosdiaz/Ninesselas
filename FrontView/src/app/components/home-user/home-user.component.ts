@@ -38,11 +38,13 @@ export class HomeUserComponent implements OnInit {
           this.urlImage = resp;
         });
 
-        filePath = this.userInfo.pathSeguroSocial;
-        ref = this.storage.ref(filePath);
-        ref.getDownloadURL().subscribe(resp => {
-          this.urlPathSeguro = resp;
-        });
+        if (this.userInfo.pathSeguroSocial !== '') {
+          filePath = this.userInfo.pathSeguroSocial;
+          ref = this.storage.ref(filePath);
+          ref.getDownloadURL().subscribe(resp => {
+            this.urlPathSeguro = resp;
+          });
+        }
 
 
       },
@@ -51,7 +53,6 @@ export class HomeUserComponent implements OnInit {
         console.log(JSON.stringify(err));
       });
 
-      console.log('avatar url fuera subscriber: ' + this.userInfo.avatar);
 
 
   }

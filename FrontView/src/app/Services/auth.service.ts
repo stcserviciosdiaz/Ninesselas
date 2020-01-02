@@ -137,6 +137,31 @@ export class AuthService {
   }
   /******* FIN TALLAS *********/
 
+  /********  COCHE *******/
+  saveCoche(coche): Observable<any> {
+    return this.http.post<any>(this.urlGenerica + 'servicio-coche/crear', coche);
+  }
+  /******* FIN COCHE *********/
+
+  /********  MOTO *******/
+  saveMoto(moto): Observable<any> {
+    return this.http.post<any>(this.urlGenerica + 'servicio-moto/crear', moto);
+  }
+  /******* FIN MOTO *********/
+
+  /********  TATUAJES *******/
+  saveTatuajes(tatuajes): Observable<any> {
+    return this.http.post<any>(this.urlGenerica + 'servicio-fotosTatuajes/crear', tatuajes);
+  }
+  /******* FIN TATUAJES *********/
+
+  /********  TATUAJES *******/
+  saveManos(manos): Observable<any> {
+    return this.http.post<any>(this.urlGenerica + 'servicio-fotosManos/crear', manos);
+  }
+  /******* FIN TATUAJES *********/
+
+
   signup2(newUser): Observable<any> {
     return this.http.post<any>(this.url + 'crear', newUser);
   }

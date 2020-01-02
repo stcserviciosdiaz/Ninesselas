@@ -18,7 +18,18 @@
                 <div class="form-group">
                   <!-- Subida de avatar -->
                   <label class="control-label">Foto de Perfil</label>
-                  <input type="file" (change)="onFileSelected($event)" formControlName="avatar">
+                  <input type="file" (change)="onFileAvatarSelected($event)" formControlName="avatar">
+                </div>
+
+                <div class="form-group">
+                  <!-- cuerpo entero -->
+                  <label class="control-label">Foto cuerpo entero</label>
+                  <input type="file" (change)="onFileCuerpoEnteroSelected($event)" formControlName="avatar"><br>
+                </div>
+                <div class="form-group">
+                  <!-- foto artistico -->
+                  <label class="control-label">Foto artistico</label>
+                  <input type="file" (change)="onFileArtisticoSelected($event)" formControlName="avatar"><br>
                 </div>
 
                 <div class="form-group">
@@ -256,6 +267,7 @@
                     </div>
                   </div>
                   <div class="form-group mr-lg-3 mr-md-3 mr-0">
+                    <!-- Color de Ojos -->
                     <label class="control-label">Color de ojos</label>
                     <input type="text" class="d-inline form-control" formControlName="colorOjos"
                       placeholder="Color de ojos"
@@ -328,57 +340,91 @@
                       <div *ngIf="actorForm.controls.carnetConducir.errors.required">Carnet es requerido</div>
                     </div>
                   </div>
+                  <div class="form-group">
+                    <!-- Tipo de carnet -->
+                    <label for="exampleFormControlSelect2">Tipo de carnet</label>
+                    <select class="form-control" formControlName="typecarnet" [(ngModel)]="tipoCarnetSelect"
+                      [ngModelOptions]="{standalone: true}">
+                      <option [ngValue]="">Seleccione</option>
+                      <option [ngValue]="item" *ngFor="let item of typecarnet">{{item}}</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div class="form-group">
                   <!-- Eres actor-->
                   <label class="control-label">Eres Actor</label>
-                  <select forControlName="actor" class="form-control" [(ngModel)]="actor.name"
+                  <select forControlName="actor" class="form-control" [(ngModel)]="actorSelect"
                     [ngModelOptions]="{standalone: true}">
-                    <option [ngValue]="i" selected>Seleccione...</option>
-                    <option *ngFor="let i of actor">{{i.name}}</option>
+                    <option [ngValue]="" selected>Seleccione...</option>
+                    <option [ngValue]="i.name" *ngFor="let i of actor">{{i.name}}</option>
                   </select>
                 </div>
-                <div *ngIf="actor.name == 'Si'" class="form-group">
+                <div *ngIf="actorSelect == 'Si'" class="form-group">
                   <!-- Link de VideoBook -->
                   <label class="control-label">Link de VideoBook</label>
                   <input type="text" class="form-control" id="videoBook" formControlName="videoBook"
                     placeholder="https://www.videoBook.com">
                 </div>
 
-                <div class="form-group d-flex">
-                  <!-- Modelo de Coche y Moto-->
-                  <div class="form-group mr-3">
-                    <label class="control-label">Modelo de Coche</label>
-                    <input type="text" class="d-inline form-control" formControlName="modeloCoche"
-                      placeholder="Modelo de Coche"
-                      [ngClass]="{ 'is-invalid': submitted && actorForm.controls.modeloCoche.errors }">
-                    <div *ngIf="submitted && actorForm.controls.modeloCoche.errors" class="invalid-feedback">
-                      <div *ngIf="actorForm.controls.modeloCoche.errors.required">El modelo es requerido</div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label class="control-label">Modelo de Moto</label>
-                    <input type="text" class="d-inline form-control" formControlName="modeloMoto"
-                      placeholder="Modelo de Moto"
-                      [ngClass]="{ 'is-invalid': submitted && actorForm.controls.modeloMoto.errors }">
-                    <div *ngIf="submitted && actorForm.controls.modeloMoto.errors" class="invalid-feedback">
-                      <div *ngIf="actorForm.controls.modeloMoto.errors.required">El modelo es requerido</div>
-                    </div>
+                <div class="form-group mr-3">
+                  <!-- Modelo de Coche -->
+                  <label class="control-label">Modelo de Coche</label>
+                  <input type="text" class="d-inline form-control" id="modeloCoche" formControlName="modeloCoche"
+                    placeholder="Modelo de Coche"
+                    [ngClass]="{ 'is-invalid': submitted && actorForm.controls.modeloCoche.errors }">
+                  <div *ngIf="submitted && actorForm.controls.modeloCoche.errors" class="invalid-feedback">
+                    <div *ngIf="actorForm.controls.modeloCoche.errors.required">El modelo es requerido</div>
                   </div>
                 </div>
+                <div class="form-group">
+                  <!-- Modelo de Moto-->
+                  <label class="control-label">Modelo de Moto</label>
+                  <input type="text" class="d-inline form-control" id="modeloMoto" formControlName="modeloMoto"
+                    placeholder="Modelo de Moto"
+                    [ngClass]="{ 'is-invalid': submitted && actorForm.controls.modeloMoto.errors }">
+                  <div *ngIf="submitted && actorForm.controls.modeloMoto.errors" class="invalid-feedback">
+                    <div *ngIf="actorForm.controls.modeloMoto.errors.required">El modelo es requerido</div>
+                  </div>
+                </div>
+
+              <div class="form-group d-flex">
+                <!-- Foto coche y  foto moto-->
+                <div class="form-group mr-3">
+                  <label class="control-label">Foto coche</label>
+                  <input type="file" (change)="onFileCocheSelected($event)" formControlName="fotoCoche">
+                </div>
+                <div class="form-group">
+                  <label class="control-label">Foto moto</label>
+                  <input type="file" (change)="onFileMotoSelected($event)" formControlName="fotoMoto">
+                </div>
+              </div>
+
+              <div class="form-group d-flex">
+                <!-- Color de Coche y Moto-->
+                <div class="form-group mr-3">
+                  <label class="control-label">Color de Coche</label>
+                  <input type="text" class="d-inline form-control" id="colorCoche" formControlName="colorCoche"
+                    placeholder="Modelo de Coche">
+                </div>
+                <div class="form-group">
+                  <label class="control-label">Color de Moto</label>
+                  <input type="text" class="d-inline form-control" id="colorMoto" formControlName="colorMoto"
+                    placeholder="Modelo de Moto">
+                </div>
+              </div>
 
                 <div class="form-group">
                   <!-- Fotos Tatuajes -->
                   <label class="control-label">Fotos Tatuajes</label>
-                  <input type="file" (change)="onFileSelected($event)" multiple="multiple"
+                  <input type="file" (change)="onFileTatuajeSelected($event)" multiple="multiple"
                     formControlName="tattoos"><br>
                 </div>
 
                 <div class="form-group">
                   <!-- Modelos de manos -->
                   <label class="control-label">Modelo de manos profesional</label>
-                  <input type="file" (change)="onFileSelected($event)" multiple="multiple"
+                  <input type="file" (change)="onFileManoSelected($event)" multiple="multiple"
                     formControlName="tattoos"><br>
                 </div>
 

@@ -58,21 +58,6 @@ export function MustMatch(controlName: string, matchingControlName: string) {
 export class ChildrenComponent implements OnInit {
 
   matcher = new MyErrorStateMatcher();
-
-  idiomasHablados: string[] = ['Gallego', 'Italiano', 'Rumano', 'Frances', 'Alemén', 'Catalán', 'valenciano', 'bilingüe', 'Otros'];
-  habilidades: string[] = ['Skater', 'Skater Acuático', 'Pompas Jabón', 'Presentador', 'Magia', 'Surf', 'Buceo', 'Surf', 'Cómico', 'Motocross', 'Mimo', 'Puenting', 'Sky', 'Parapente', 'Ciclismo BMX', 'Parkour snowboarding', 'Sombras chinescas', 'Otros']
-  musicos = [{ name: 'Profesional', }, { name: 'No Profesional', },];
-  bailes = [{ name: 'Profesional', }, { name: 'No Profesional', },];
-  cantos = [{ name: 'Profesional', }, { name: 'No Profesional', },];
-  actor = [{ name: 'Si', }, { name: 'No', },];
-  etnico: string[] = ['Afro descendiente/Negro', 'Blanco', 'Indígena', 'Mestizo/Moreno', 'Asiático', 'Otros'];
-  edad = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-  deporte = [{ name: 'Profesional', }, { name: 'Federado', }, { name: 'No Profesional', },];
-  habdeportes: string[] = ['Tenis', 'Esgrima', 'Tiro con arco', 'Polo', 'Golf', 'Boxeo', 'Voleibol', 'Baloncesto', 'Montar a caballo', 'Natación', 'Padel', 'Artes marciales', 'Otros']
-  estilocantos: string[] = ['Lirico', 'Pop', 'Rock', 'Rap', 'Heavy Metal', 'Reggae', 'Salsa', 'Pop latino', 'Blues', 'Country', 'Dance', 'Tecno', 'Punk', 'Hip Hop', 'Soul', 'Electro Pop', 'Otros'];
-  instrumentos: string[] = ['Piano', 'Bateria', 'Guitarra española', 'Guitarra electrica', 'Bajo', 'Bandurria', 'Violin', 'Violonchero', 'Bombo', 'Castañuelas', 'Trombon', 'Trompeta', 'Cantante', 'Otros']
-  estilobailes: string[] = ['Cumbia', 'Salsa', 'Tango', 'Hiphop', 'Chachacha', 'Pasodoble', 'Samba', 'Merengue', 'Breakdance', 'Funky', 'Pole Dance', 'Ballet clasico', 'Claque', 'Flamenco', 'sevillanas', 'Contemporaneo', 'Otros']
-
   childForm: FormGroup;
   submitted = false;
 
@@ -90,6 +75,9 @@ export class ChildrenComponent implements OnInit {
   fileUploadProgress: string = null;
   uploadedFilePath: string = null;
 
+  fileCuerpoEntero: File = null;
+  fileArtistico: File = null;
+
   /***variables para carga de imagenes y archivos */
   uploadPercent: Observable<number>;
   urlImage: Observable<string>;
@@ -106,8 +94,12 @@ export class ChildrenComponent implements OnInit {
   urlMadre: string;
   urlLibroFamilia: string;
   urlRepresentante: string;
+  urlCuerpoEntero: string;
+  urlArtistico: string;
 
   /*******variables para combos********/
+  edad = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+  actor = [{ name: 'Si', }, { name: 'No', },];
   etnias;
   baile;
   estilosBaile;
@@ -121,6 +113,7 @@ export class ChildrenComponent implements OnInit {
   instrumentoss;
 
   //selected
+  actorSelect;
   usuario: Usuario;
   usuarioEdit: Usuario;
   etniaSelect: etnia;
@@ -351,16 +344,32 @@ export class ChildrenComponent implements OnInit {
       });
   }
 
-  signupChild() {
+  guardarTalla(idUser) {
+    const newChild = this.childForm.value;
+    let tallas = {
+      camisaTalla: newChild.tallaCamisa,
+      chaquetaTalla: newChild.tallaChaqueta,
+      pantalonTalla: newChild.tallaPantalon,
+      pieTalla: newChild.pie,
+      idUser: idUser
+    };
+    this.authService.saveTalla(tallas).subscribe(
+      resTalla => {
+        console.log('talla guardada');
+      },
+      (err) => {
+        this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
+        console.log(JSON.stringify(err));
+      });
+  }
+
+  pasarDatosFormUsuario() {
     this.submitted = true;
     /*if (this.childForm.invalid) {
       return;
     }*/
     const newChild = this.childForm.value;
     console.log('Niño a registrar: ' + JSON.stringify(newChild));
-
-    this.subirArchivos();
-
     this.usuario = {
       idUser: 0,
       avatar: this.urlAvatar,
@@ -428,26 +437,18 @@ export class ChildrenComponent implements OnInit {
       fotosManosList: []
     };
 
+  }
 
+  signupChild() {
+
+    this.subirArchivos();
+    this.pasarDatosFormUsuario();
     this.authService.signup2(this.usuario).subscribe(
       res => {
-        let tallas = {
-          camisaTalla: newChild.tallaCamisa,
-          chaquetaTalla: newChild.tallaChaqueta,
-          pantalonTalla: newChild.tallaPantalon,
-          pieTalla: newChild.pie,
-          idUser: res.idUser
-        };
-        this.authService.saveTalla(tallas).subscribe(
-          resTalla => {
-            localStorage.setItem('token', res.idUser);
-            this.ngxSmartModalService.create('confirm', 'Cuenta de Niño creada exitosamente ' + res.nombres + ' ' + res.apellidos).open();
-            this.router.navigate(['/homeuser']);
-          },
-          (err) => {
-            this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
-            console.log(JSON.stringify(err));
-          });
+        localStorage.setItem('token', res.idUser);
+        this.ngxSmartModalService.create('confirm', 'Cuenta de Niño creada exitosamente ' + res.nombres + ' ' + res.apellidos).open();
+        this.router.navigate(['/homeuser']);
+        this.guardarTalla(res.idUser);
       },
       (err) => {
         this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
@@ -457,6 +458,16 @@ export class ChildrenComponent implements OnInit {
 
   onAvatarSelected(event) {
     this.avatarFile = event.target.files[0] as File;
+  }
+
+  /**Upload foto cuerpo entero */
+  onFileCuerpoEnteroSelected(event) {
+    this.fileCuerpoEntero = event.target.files[0] as File;
+  }
+
+  /**Upload foto artistica */
+  onFileArtisticoSelected(event) {
+    this.fileArtistico = event.target.files[0] as File;
   }
 
 
@@ -484,6 +495,14 @@ export class ChildrenComponent implements OnInit {
     let idUser = this.childForm.get('numeroDNI').value;
     this.urlAvatar = 'ninios/' + idUser + '/avatar-' + this.avatarFile.name;
     let task = this.storage.upload(this.urlAvatar, this.avatarFile);
+
+    /**subir cuerpo entero */
+    this.urlCuerpoEntero = 'figuracion/' + idUser + '/cuerpo-' + this.fileCuerpoEntero.name;
+    task = this.storage.upload(this.urlCuerpoEntero, this.fileCuerpoEntero);
+
+    /**subir foto artistica */
+    this.urlArtistico = 'figuracion/' + idUser + '/artistico-' + this.fileArtistico.name;
+    task = this.storage.upload(this.urlArtistico, this.fileArtistico);
 
     /**subir dnipadre */
     this.urlPadre = 'ninios/' + idUser + '/dnipadre-' + this.copyDNIFather.name;

@@ -1,3 +1,4 @@
+import { moto } from './../../models/moto';
 import { tipoUsuario } from './../../models/tipoUsuario';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { Usuario } from './../../models/usuario';
@@ -52,6 +53,9 @@ export function MustMatch(controlName: string, matchingControlName: string) {
 })
 export class FiguracionComponent implements OnInit {
 
+  @Input() inputArray;
+  @ViewChild(TemplateRef, { static: false }) tpl: TemplateRef<any>;
+
   /**Constructor */
   constructor(
     private storage: AngularFireStorage,
@@ -64,10 +68,25 @@ export class FiguracionComponent implements OnInit {
 
   }
 
-
   /***variables para carga de imagenes y archivos */
-  uploadPercent: Observable<number>;
-  urlImage: Observable<string>;
+  fileAvatar: File = null;
+  fileCoche: File = null;
+  fileMoto: File = null;
+  fileTatuajes: File = null;
+  fileManos: File = null;
+  fileCuerpoEntero: File = null;
+  fileArtistico: File = null;
+
+
+  urlAvatar: string;
+  urlMoto: string;
+  urlCoche: string;
+  urlTatuajes: string;
+  urlManos: string;
+  urlCuerpoEntero: string;
+  urlArtistico: string;
+
+
 
   /*******variables para combos********/
   etnias: etnia[];
@@ -77,7 +96,10 @@ export class FiguracionComponent implements OnInit {
   estilosCanto: estilosCanto[];
   habilidadess: habilidades[];
   idiomas: idiomas[];
+  typecarnet: string[] = ['Tipo A', 'Tipo B', 'Tipo C', 'Tipo D', 'Tipo BTP'];
   //selected
+  actorSelect;
+  tipoCarnetSelect;
   usuario: Usuario;
   etniaSelect: etnia;
   baileSelect: bailarin;
@@ -89,18 +111,6 @@ export class FiguracionComponent implements OnInit {
   /*****fin variables combos*****/
   actorForm: FormGroup;
   submitted = false;
-  selectedFile: File = null;
-  @Input() inputArray;
-  subscriber;
-  matcher = new MyErrorStateMatcher();
-  bailes = [{ name: 'Profesional', }, { name: 'No Profesional', },];
-  cantos = [{ name: 'Profesional', }, { name: 'No Profesional', },];
-  etnico: string[] = ['Afro descendiente/Negro', 'Blanco', 'Indígena', 'Mestizo/Moreno', 'Asiático', 'Otro'];
-  estilobailes: string[] = ['Cumbia', 'Salsa', 'Tango', 'Hiphop', 'Chachacha', 'Pasodoble', 'Samba', 'Merengue', 'Breakdance', 'Funky', 'Pole Dance', 'Ballet clasico', 'Claque', 'Flamenco', 'sevillanas', 'Contemporaneo', 'Otros']
-  estilocantos: string[] = ['Lirico', 'Pop', 'Rock', 'Rap', 'Heavy Metal', 'Reggae', 'Salsa', 'Pop latino', 'Blues', 'Country', 'Dance', 'Tecno', 'Punk', 'Hip Hop', 'Soul', 'Electro Pop', 'Otros'];
-  habilidades: string[] = ['Skater', 'Skater Acuático', 'Pompas Jabón', 'Presentador', 'Magia', 'Surf', 'Buceo', 'Surf', 'Cómico', 'Motocross', 'Mimo', 'Puenting', 'Sky', 'Parapente', 'Ciclismo BMX', 'Parkour snowboarding', 'Sombras chinescas', 'Otros']
-  idiomasHablados: string[] = ['Gallego', 'Italiano', 'Rumano', 'Frances', 'Alemén', 'Catalán', 'valenciano', 'bilingüe', 'Otros'];
-  // @ViewChild(TemplateRef, { static: false }) tpl: TemplateRef<any>;
 
   /**Inicializacion */
   ngOnInit() {
@@ -240,29 +250,47 @@ export class FiguracionComponent implements OnInit {
 
   }
 
-  /**Upload foto de perfil */
-  onFileSelected(event) {
-    this.selectedFile = event.target.files[0] as File;
+  /**Upload avatar */
+  onFileAvatarSelected(event) {
+    this.fileAvatar = event.target.files[0] as File;
+  }
+  /**Upload foto cuerpo entero */
+  onFileCuerpoEnteroSelected(event) {
+    this.fileCuerpoEntero = event.target.files[0] as File;
   }
 
-  uploadAvatar() {
-    const id = Math.random().toString(36).substring(2);
-    const filePath = 'figuracion/avatar/' + this.selectedFile.name;
-    const ref = this.storage.ref(filePath);
-    const task = this.storage.upload(filePath, this.selectedFile);
-    this.uploadPercent = task.percentageChanges();
-    task.snapshotChanges().
-      pipe(finalize(() => this.urlImage = ref.getDownloadURL())).
-      subscribe();
+  /**Upload foto artistica */
+  onFileArtisticoSelected(event) {
+    this.fileArtistico = event.target.files[0] as File;
   }
 
-  registrarActor() {
+  /**Upload foto moto */
+  onFileMotoSelected(event) {
+    this.fileMoto = event.target.files[0] as File;
+  }
+
+  /**Upload foto coche */
+  onFileCocheSelected(event) {
+    this.fileCoche = event.target.files[0] as File;
+  }
+
+  /**Upload foto tatuajes */
+  onFileTatuajeSelected(event) {
+    this.fileTatuajes = event.target.files[0] as File;
+  }
+
+  /**Upload foto manos */
+  onFileManoSelected(event) {
+    this.fileManos = event.target.files[0] as File;
+  }
+
+  pasarDatosFormUsuario() {
     this.submitted = true;
     const newUserObject = this.actorForm.value;
 
     this.usuario = {
       idUser: 0,
-      avatar: '',
+      avatar: this.urlAvatar,
       acento: newUserObject.acento,
       altura: newUserObject.altura,
       apellidos: newUserObject.apellidos,
@@ -336,12 +364,113 @@ export class FiguracionComponent implements OnInit {
       fotosTatuajesList: [],
       fotosManosList: []
     };
+  }
 
-    this.subscriber = this.authService.signup2(this.usuario).subscribe(
+  registrarFotos(idUser) {
+    if (this.urlMoto !== '') {
+      let moto = {
+        colorMoto: this.actorForm.get('colorMoto').value,
+        fotoMoto: this.urlMoto,
+        modeloMoto: this.actorForm.get('modeloMoto').value,
+        idUser: idUser
+      };
+
+      /***GUARDE CON SERVICIO */
+      this.authService.saveMoto(moto).subscribe(
+        resTalla => {
+          console.log('info save moto');
+        },
+        (err) => {
+          console.log('error save moto');
+        });
+    }
+
+    if (this.urlCoche !== '') {
+      let coche = {
+        colorCoche: this.actorForm.get('colorCoche').value,
+        fotoCoche: this.urlCoche,
+        modeloCoche: this.actorForm.get('modeloCoche').value,
+        idUser: idUser
+      };
+
+      /***GUARDE CON SERVICIO */
+      this.authService.saveCoche(coche).subscribe(
+        resTalla => {
+          console.log('info save coche');
+        },
+        (err) => {
+          console.log('error save coche');
+        });
+    }
+
+    if (this.urlTatuajes !== '') {
+      let fotosTatuajes = {
+        fechaCargaTatuaje: new Date(),
+        nombreFotoTatuaje: 'tatuaje' + idUser,
+        urlFotoTatuaje: this.urlTatuajes,
+        idUser: idUser
+      };
+
+      /***GUARDE CON SERVICIO */
+      this.authService.saveTatuajes(fotosTatuajes).subscribe(
+        resTalla => {
+          console.log('info save fotosTatuajes');
+        },
+        (err) => {
+          console.log('error save fotosTatuajes');
+        });
+    }
+
+
+    if (this.urlManos !== '') {
+      let fotosManos = {
+        fechaCargaMano: new Date(),
+        nombreFotoMano: 'manos' + idUser,
+        urlFotoMano: this.urlManos,
+        idUser: idUser
+      };
+
+      /***GUARDE CON SERVICIO */
+      this.authService.saveManos(fotosManos).subscribe(
+        resTalla => {
+          console.log('info save fotosManos');
+        },
+        (err) => {
+          console.log('error save fotosManos');
+        });
+    }
+
+  }
+
+
+  guardarTalla(idUser) {
+    const newChild = this.actorForm.value;
+    let tallas = {
+      camisaTalla: newChild.tallaCamisa,
+      chaquetaTalla: newChild.tallaChaqueta,
+      pantalonTalla: newChild.tallaPantalon,
+      pieTalla: newChild.pie,
+      idUser: idUser
+    };
+    this.authService.saveTalla(tallas).subscribe(
+      resTalla => {
+        console.log('talla guardada');
+      },
+      (err) => {
+        this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
+        console.log(JSON.stringify(err));
+      });
+  }
+
+  registrarActor() {
+    this.subirArchivos();
+    this.pasarDatosFormUsuario();
+    this.authService.signup2(this.usuario).subscribe(
       res => {
         localStorage.setItem('token', res.idUser);
         this.ngxSmartModalService.create('confirm', 'Cuenta de Figuración creada exitosamente ' + res.nombres + ' ' + res.apellidos).open();
-        // this.subirFotoPerfil()
+        this.registrarFotos(res.idUser);
+        this.guardarTalla(res.idUser);
         this.router.navigate(['/homeuser']);
       },
       (err) => {
@@ -350,16 +479,36 @@ export class FiguracionComponent implements OnInit {
       });
   }
 
+  subirArchivos() {
+    /**subir avatar */
+    let idUser = this.actorForm.get('numeroDNI').value;
+    this.urlAvatar = 'figuracion/' + idUser + '/avatar-' + this.fileAvatar.name;
+    let task = this.storage.upload(this.urlAvatar, this.fileAvatar);
 
+    /**subir cuerpo entero */
+    this.urlCuerpoEntero = 'figuracion/' + idUser + '/cuerpo-' + this.fileCuerpoEntero.name;
+    task = this.storage.upload(this.urlCuerpoEntero, this.fileCuerpoEntero);
 
-  subirFotoPerfil() {
-    const fd = new FormData();
-    fd.append('avatar', this.selectedFile, this.selectedFile.name);
-    this.authService.uploadAvatar(fd).subscribe(res => {
-      console.log(res);
-    });
+    /**subir foto artistica */
+    this.urlArtistico = 'figuracion/' + idUser + '/artistico-' + this.fileArtistico.name;
+    task = this.storage.upload(this.urlArtistico, this.fileArtistico);
+
+    /**subir coche */
+    this.urlCoche = 'figuracion/' + idUser + '/coche-' + this.fileCoche.name;
+    task = this.storage.upload(this.urlCoche, this.fileCoche);
+
+    /**subir moto */
+    this.urlMoto = 'figuracion/' + idUser + '/moto-' + this.fileMoto.name;
+    task = this.storage.upload(this.urlMoto, this.fileMoto);
+
+    /**subir tatuajes */
+    this.urlTatuajes = 'figuracion/' + idUser + '/tatuajes-' + this.fileTatuajes.name;
+    task = this.storage.upload(this.urlTatuajes, this.fileTatuajes);
+
+    /**subir manos */
+    this.urlManos = 'figuracion/' + idUser + '/manos-' + this.fileManos.name;
+    task = this.storage.upload(this.urlManos, this.fileManos);
   }
-
   /*  Función para permitir solo numeros */
   numberOnly(event): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;

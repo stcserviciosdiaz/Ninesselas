@@ -18,7 +18,18 @@
                 <div class="form-group">
                   <!-- Subida de avatar -->
                   <label class="control-label">Foto de Perfil</label>
-                  <input type="file" (change)="onFileSelected($event)" formControlName="avatar"><br>
+                  <input type="file" (change)="onFileAvatarSelected($event)" formControlName="avatar"><br>
+                </div>
+
+                <div class="form-group">
+                  <!-- cuerpo entero -->
+                  <label class="control-label">Foto cuerpo entero</label>
+                  <input type="file" (change)="onFileCuerpoEnteroSelected($event)" formControlName="avatar"><br>
+                </div>
+                <div class="form-group">
+                  <!-- foto artistico -->
+                  <label class="control-label">Foto artistico</label>
+                  <input type="file" (change)="onFileArtisticoSelected($event)" formControlName="avatar"><br>
                 </div>
 
                 <div class="form-group">
@@ -107,7 +118,7 @@
                   <label class="control-label">¿De qué grupo étnico se considera?</label>
                   <select forControlName="etnias" class="form-control" [(ngModel)]="etniaSelect"
                     [ngModelOptions]="{standalone: true}">
-                    <option [value]="null" selected>Seleccione...</option>
+                    <option selected>Seleccione...</option>
                     <option [ngValue]="i" *ngFor="let i of etnias">{{i.nombreEtnia}}</option>
                   </select>
                 </div>
@@ -251,6 +262,7 @@
                     </div>
                   </div>
                   <div class="form-group mr-lg-3 mr-md-3 mr-0">
+                    <!-- Color de Ojos-->
                     <label class="control-label">Color de ojos</label>
                     <input type="text" class="d-inline form-control" formControlName="colorOjos"
                       placeholder="Color de ojos"
@@ -312,6 +324,28 @@
                   </div>
                 </div>
 
+                <div class="form-group d-lg-flex d-md-flex d-block">
+                  <!-- Carnet de conducir y coche-->
+                  <div class="form-group mr-lg-3 mr-md-3 mr-0">
+                    <label class="control-label">Carnet de conducir</label>
+                    <input type="text" class="d-inline form-control" formControlName="carnetConducir"
+                      placeholder="Modelo de Coche"
+                      [ngClass]="{ 'is-invalid': submitted && actorForm.controls.carnetConducir.errors }">
+                    <div *ngIf="submitted && actorForm.controls.carnetConducir.errors" class="invalid-feedback">
+                      <div *ngIf="actorForm.controls.carnetConducir.errors.required">Carnet es requerido</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <!-- Tipo de carnet -->
+                    <label>Tipo de carnet</label>
+                    <select class="form-control" formControlName="typecarnet" [(ngModel)]="tipoCarnetSelect"
+                      [ngModelOptions]="{standalone: true}">
+                      <option [ngValue]="" selected>Seleccione</option>
+                      <option [ngValue]="item" *ngFor="let item of typecarnet">{{item}}</option>
+                    </select>
+                  </div>
+                </div>
+
                 <div class="form-group d-flex">
                   <div class="form-group mr-3">
                     <!-- Modelo de Coche -->
@@ -339,11 +373,11 @@
                   <!-- Foto coche y  foto moto-->
                   <div class="form-group mr-3">
                     <label class="control-label">Foto coche</label>
-                    <input type="file" (change)="PhotoCar($event)" formControlName="fotoCoche">
+                    <input type="file" (change)="onFileCocheSelected($event)" formControlName="fotoCoche">
                   </div>
                   <div class="form-group">
                     <label class="control-label">Foto moto</label>
-                    <input type="file" (change)="CyclePhoto($event)" formControlName="fotoMoto">
+                    <input type="file" (change)="onFileMotoSelected($event)" formControlName="fotoMoto">
                   </div>
                 </div>
 
@@ -364,14 +398,15 @@
                 <div class="form-group">
                   <!-- Fotos Tatuajes -->
                   <label class="control-label">Fotos Tatuajes</label>
-                  <input type="file" (change)="onFileSelected($event)" multiple="multiple"
+                  <input type="file" (change)="onFileTatuajeSelected($event)" multiple="multiple"
                     formControlName="tattoos"><br>
                 </div>
 
                 <div class="form-group">
                   <!-- Modelos de Manos -->
                   <label class="control-label">Modelo de manos profesional</label>
-                  <input type="file" (change)="onFileSelected($event)" multiple="multiple" formControlName="manos"><br>
+                  <input type="file" (change)="onFileManoSelected($event)" multiple="multiple"
+                    formControlName="manos"><br>
                 </div>
 
                 <div class="form-group">
@@ -401,22 +436,22 @@
                 <div class="form-group">
                   <!-- Cantantes -->
                   <label class="control-label">Cantantes</label>
-                  <select forControlName="cantante" class="form-control" [(ngModel)]="cantante.nombreCantante"
+                  <select forControlName="cantante" class="form-control" [(ngModel)]="cantanteSelect"
                     [ngModelOptions]="{standalone: true}">
-                    <option [ngValue]="i">Seleccione...</option>
-                    <option *ngFor="let i of cantante">{{i.nombreCantante}}</option>
+                    <option [ngValue]="null">Seleccione...</option>
+                    <option [ngValue]="i" *ngFor="let i of cantante">{{i.nombreCantante}}</option>
                   </select>
                 </div>
-                <div *ngIf="cantante.nombreCantante == 'Profesional'" class="form-group">
+                <div *ngIf="cantanteSelect.nombreCantante == 'Profesional'" class="form-group">
                   <!-- Estilos de cantos -->
                   <label class="control-label">Estilo de cantos</label>
-                  <select class="form-control" forControlName="estilosCanto"
-                    [(ngModel)]="estilosCanto.nombreEstiloCanto" [ngModelOptions]="{standalone: true}">
-                    <option [ngValue]="i">Seleccione...</option>
-                    <option *ngFor="let i of estilosCanto">{{i.nombreEstiloCanto}}</option>
+                  <select class="form-control" forControlName="estilosCanto" [(ngModel)]="estilosCantoSelect"
+                    [ngModelOptions]="{standalone: true}">
+                    <option [ngValue]="null">Seleccione...</option>
+                    <option [ngValue]="i" *ngFor="let i of estilosCanto">{{i.nombreEstiloCanto}}</option>
                   </select>
                 </div>
-                <div *ngIf="estilosCanto.nombreEstiloCanto == 'Otros'" class="form-group">
+                <div *ngIf="estilosCantoSelect.nombreEstiloCanto == 'Otros'" class="form-group">
                   <!-- Espesifique otros estilos -->
                   <label class="control-label">Espesifique otro estilos</label>
                   <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
@@ -425,13 +460,13 @@
                 <div class="form-group">
                   <!-- Habilidades -->
                   <label class="control-label">Habilidades</label>
-                  <select forControlName="habilidadess" class="form-control" [(ngModel)]="habilidadess.nombreHabilidad"
+                  <select forControlName="habilidadess" class="form-control" [(ngModel)]="habilidadessSelect"
                     [ngModelOptions]="{standalone: true}">
-                    <option [ngValue]="i">Seleccione...</option>
-                    <option *ngFor="let i of habilidadess">{{i.nombreHabilidad}}</option>
+                    <option [ngValue]="null">Seleccione...</option>
+                    <option [ngValue]="i" *ngFor="let i of habilidadess">{{i.nombreHabilidad}}</option>
                   </select>
                 </div>
-                <div *ngIf="habilidadess.nombreHabilidad == 'Otros'" class="form-group">
+                <div *ngIf="habilidadessSelect.nombreHabilidad == 'Otros'" class="form-group">
                   <!-- Espesifique otras habilidades -->
                   <label class="control-label">Espesifique otras habilidades</label>
                   <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
@@ -440,13 +475,13 @@
                 <div class="form-group">
                   <!-- Idiomas -->
                   <label class="control-label">Idiomas</label>
-                  <select forControlName="idiomas" class="form-control" [(ngModel)]="idiomas.nombreIdioma"
+                  <select forControlName="idiomas" class="form-control" [(ngModel)]="idiomasSelect"
                     [ngModelOptions]="{standalone: true}">
-                    <option [ngValue]="i">Seleccione...</option>
-                    <option *ngFor="let i of idiomas">{{i.nombreIdioma}}</option>
+                    <option [ngValue]="null">Seleccione...</option>
+                    <option [ngValue]="i" *ngFor="let i of idiomas">{{i.nombreIdioma}}</option>
                   </select>
                 </div>
-                <div *ngIf="idiomas.nombreIdioma == 'Otros'" class="form-group">
+                <div *ngIf="idiomasSelect.nombreIdioma == 'Otros'" class="form-group">
                   <!-- Espesifique otro Idioma -->
                   <label class="control-label">Espesifique otro Idioma</label>
                   <textarea class="form-control" forControlName="Otros" rows="3"></textarea>

@@ -76,7 +76,7 @@
                   <label class="control-label">Edad</label>
                   <select forControlName="edad" class="form-control">
                     <option [ngValue]="0">Seleccione....</option>
-                    <option *ngFor="let i of edad">{{i}}</option>
+                    <option [ngValue]="i" *ngFor="let i of edad">{{i}}</option>
                   </select>
                 </div>
 
@@ -203,13 +203,13 @@
                 <div class="form-group">
                   <!-- Eres actor-->
                   <label class="control-label">Eres Actor</label>
-                  <select forControlName="actor" class="form-control" [(ngModel)]="actor.name"
+                  <select forControlName="actor" class="form-control" [(ngModel)]="actorSelect"
                     [ngModelOptions]="{standalone: true}">
-                    <option [ngValue]="i" selected>Seleccione...</option>
-                    <option *ngFor="let i of actor">{{i.name}}</option>
+                    <option [ngValue]="" selected>Seleccione...</option>
+                    <option [ngValue]="i.name" *ngFor="let i of actor">{{i.name}}</option>
                   </select>
                 </div>
-                <div *ngIf="actor.name == 'Si'" class="form-group">
+                <div *ngIf="actorSelect == 'Si'" class="form-group">
                   <!-- Link de VideoBook -->
                   <label class="control-label">Link de VideoBook</label>
                   <input type="text" class="form-control" formControlName="videoBook"
