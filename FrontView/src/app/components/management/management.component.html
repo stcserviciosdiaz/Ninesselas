@@ -13,25 +13,25 @@
     <div class="sidebar-wrapper">
       <ul class="nav">
         <li class="active ">
-          <a href="./dashboard.html">
+          <a routerLink="/home">
             <i class="fas fa-user-cog"></i>
             <p>Dashboard</p>
           </a>
         </li>
         <li>
-          <a href="./notifications.html">
+          <a>
             <i class="fa fa-bell"></i>
             <p>Notifications</p>
           </a>
         </li>
         <li>
-          <a href="./user.html">
+          <a>
             <i class="fas fa-user"></i>
             <p>User Profile</p>
           </a>
         </li>
         <li>
-          <a href="./tables.html">
+          <a>
             <i class="fas fa-list"></i>
             <p>Table List</p>
           </a>
@@ -72,7 +72,7 @@
           </form>
           <ul class="navbar-nav">
             <li class="nav-item btn-rotate dropdown">
-              <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"
+              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-tasks"></i>
                 <p>
@@ -84,7 +84,7 @@
                 <a class="dropdown-item" href="#">Something else here</a>
               </div>
             </li>
-            <li> <a class="btn btn-primary" (click)="authService.logoutUser()" href="home">Salir</a>
+            <li> <a class="btn btn-primary" (click)="authService.logoutUser()" routerLink="/home">Salir</a>
 
             </li>
           </ul>
@@ -270,7 +270,6 @@
                     <td>{{user.email}}</td>
                     <td>{{user.telefono}}</td>
                     <td>{{user.telefono}}</td>
-
                   </tr>
                 </tbody>
               </table>
@@ -333,13 +332,13 @@
           <nav class="footer-nav">
             <ul>
               <li>
-                <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a>
+                <a target="_blank">Creative Tim</a>
               </li>
               <li>
-                <a href="http://blog.creative-tim.com/" target="_blank">Blog</a>
+                <a target="_blank">Blog</a>
               </li>
               <li>
-                <a href="https://www.creative-tim.com/license" target="_blank">Licenses</a>
+                <a routerLink="/terms" target="_blank">Licenses</a>
               </li>
             </ul>
           </nav>
