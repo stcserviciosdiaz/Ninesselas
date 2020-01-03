@@ -1,7 +1,8 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators, FormControl, FormGroupDirective, NgForm} from '@angular/forms';
-import {AuthService} from '../../../Services/auth.service';
-import {Router} from '@angular/router';
+import { Usuario } from 'src/app/models/usuario';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { AuthService } from '../../../Services/auth.service';
+import { Router } from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material';
 
 
@@ -19,7 +20,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
-  isSubmitted  =  false;
+  isSubmitted = false;
 
   matcher = new MyErrorStateMatcher();
 
@@ -37,17 +38,20 @@ export class LoginComponent implements OnInit {
 
   createLoginForm() {
     this.loginForm = this.formBuilder.group({
-      password: ['',[Validators.required, Validators.pattern("^(?=.*[A-Z])(?=.*[!@#\$%\^&\*])(?=.{9,})")]],
-      email: ['',[Validators.required, Validators.email]],
+      password: [''],
+      email: ['', [Validators.required, Validators.email]],
     });
   }
 
   loginUser() {
     this.isSubmitted = true;
     //alert('SUCCESS!!');
-    /*if(this.loginForm.invalid){
+    if (this.loginForm.invalid) {
+      console.log(this.loginForm.get('email').value);
+
+      console.log(this.loginForm.get('password').value);
       return;
-    }*/
+    }
     const user = {
       email: this.loginForm.get('email').value,
       password: this.loginForm.get('password').value,
@@ -55,12 +59,12 @@ export class LoginComponent implements OnInit {
     this.authService.login2(user.email, user.password)
       .subscribe(
         res => {
+          let usuario: Usuario = res;
+
           localStorage.setItem('token', res.idUser);
-          if (res.sexo === 'MASCULINO') {
-            this.router.navigate(['/management']);
-          } else if (res.rol === 'Company') {
+          if (usuario.idType.nombres === 'COMPAÑIA') {
             this.router.navigate(['/company']);
-          } else if (res.rol === 'Root' || res.rol === 'Admin') {
+          } else if (usuario.idType.nombres === 'ROOT' || res.rol === 'ADMIN') {
             this.router.navigate(['/management']);
           } else {
             this.router.navigate(['/homeuser']);

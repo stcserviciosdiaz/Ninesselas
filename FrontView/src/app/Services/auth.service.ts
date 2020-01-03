@@ -15,12 +15,12 @@ export class AuthService {
     private http: HttpClient,
     private router: Router
   ) {
-    
-    
-    //this.urlGenerica = 'http://localhost:5000/';
-    //this.url = 'http://localhost:5000/servicio-login/';
-    this.url = 'https://servicio-login.herokuapp.com/servicio-login/';
-    this.urlGenerica = 'https://servicio-login.herokuapp.com/';
+
+
+    this.urlGenerica = 'http://localhost:5000/';
+    this.url = 'http://localhost:5000/servicio-login/';
+    //this.url = 'https://servicio-login.herokuapp.com/servicio-login/';
+    //this.urlGenerica = 'https://servicio-login.herokuapp.com/';
 
   }
 

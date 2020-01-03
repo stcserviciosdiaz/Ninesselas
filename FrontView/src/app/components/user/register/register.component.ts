@@ -73,14 +73,14 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  
+
 
   registrarEmpresa() {
     this.submitted = true;
     // stop the process here if form is invalid
-    /*if (this.companyForm.invalid) {
+    if (this.companyForm.invalid) {
       return;
-    }*/
+    }
 
     const newUserObject = this.companyForm.value;
 

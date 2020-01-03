@@ -577,11 +577,11 @@
                 <div class="form-group">
                   <div class="form-check">
                     <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input"
-                      [ngClass]="{ 'is-invalid': submitted && actorForm.controls.acceptTerms.errors }" />
+                      [ngClass]="{ 'is-invalid': submitted && actorForm.controls.acceptTerms.value === false }" />
                     <label class="form-check-label">
                       Acepta los terminos del registro
                     </label>
-                    <div *ngIf="submitted && actorForm.controls.acceptTerms.errors" class="invalid-feedback">Los
+                    <div *ngIf="submitted && actorForm.controls.acceptTerms.value === false" class="invalid-feedback">Los
                       terminos es requerido</div>
                   </div>
                 </div>

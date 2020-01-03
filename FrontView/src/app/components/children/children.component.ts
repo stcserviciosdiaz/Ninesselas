@@ -146,72 +146,72 @@ export class ChildrenComponent implements OnInit {
     this.llenarCombos();
     this.childForm = this.formBuilder.group({
       /****variables nuevas */
-      etnias: ['', Validators.required],
-      baile: ['', Validators.required],
-      estilosBaile: ['', Validators.required],
-      cantante: ['', Validators.required],
-      estilosCanto: ['', Validators.required],
-      habilidadess: ['', Validators.required],
-      idiomas: ['', Validators.required],
-      deportista: ['', Validators.required],
-      deportes: ['', Validators.required],
-      musico: ['', Validators.required],
-      instrumentoss: ['', Validators.required],
+      etnias: [''],
+      baile: [''],
+      estilosBaile: [''],
+      cantante: [''],
+      estilosCanto: [''],
+      habilidadess: [''],
+      idiomas: [''],
+      deportista: [''],
+      deportes: [''],
+      musico: [''],
+      instrumentoss: [''],
       /****fin variables nuevas */
       username: ['', Validators.required],
-      nombres: [null, [Validators.required, Validators.minLength(5)]],
+      nombres: ['', [Validators.required, Validators.minLength(5)]],
       acceptTerms: [false, Validators.requiredTrue],
       apellidos: ['', Validators.required],
       email: ['', [Validators.required, Validators.email, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
-      sexo: ['', Validators.required],
-      actor: ['', Validators.required],
-      videoBook: ['', Validators.required],
-      estilocantos: ['', Validators.required],
-      habdeportes: ['', Validators.required],
-      deporte: ['', Validators.required],
-      placebirth: ['', Validators.required],
-      estilobailes: ['', Validators.required],
-      bailes: ['', Validators.required],
-      etnico: ['', Validators.required],
-      edad: ['', Validators.requiredTrue],
-      codpostal: ['', Validators.required],
-      musicos: ['', Validators.required],
+      sexo: [''],
+      actor: [''],
+      videoBook: [''],
+      estilocantos: [''],
+      habdeportes: [''],
+      deporte: [''],
+      placebirth: [''],
+      estilobailes: [''],
+      bailes: [''],
+      etnico: [''],
+      edad: [''],
+      codpostal: [''],
+      musicos: [''],
       telefono: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
       telefonofather: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
       telefonomother: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
       fechaNacimiento: ['', Validators.required],
-      nacionalidad: [null, [Validators.required]],
-      acento: ['', Validators.required],
-      tallaPantalon: ['', Validators.required],
-      tallaCamisa: ['', Validators.required],
-      tallaChaqueta: ['', Validators.required],
-      localidad: ['', Validators.required],
-      provincia: ['', Validators.required],
-      direccion: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
-      pie: ['', Validators.required],
-      cantos: ['', Validators.required],
-      habilidades: ['', Validators.required],
-      idiomasHablados: ['', Validators.required],
-      altura: ['', Validators.required],
-      instrumentos: ['', Validators.required],
-      colorPiel: ['', Validators.required],
-      colorPelo: ['', Validators.required],
-      colorOjos: ['', Validators.required],
-      observaciones: ['', Validators.required],
+      nacionalidad: [''],
+      acento: [''],
+      tallaPantalon: [''],
+      tallaCamisa: [''],
+      tallaChaqueta: [''],
+      localidad: [''],
+      provincia: [''],
+      direccion: [''],
+      pie: [''],
+      cantos: [''],
+      habilidades: [''],
+      idiomasHablados: [''],
+      altura: [''],
+      instrumentos: [''],
+      colorPiel: [''],
+      colorPelo: [''],
+      colorOjos: [''],
+      observaciones: [''],
       numeroDNI: ['', Validators.required],
-      numeroSeguridadSocial: ['', Validators.required],
-      numeroDNIPadre: ['', Validators.required],
-      numeroDNIMadre: ['', Validators.required],
-      numeroDNIRepresentante: ['', Validators.required],
-      ultimosTrabajos: ['', Validators.required],
-      avatar: ['', Validators.required],
-      copyDNIFather: ['', Validators.required],
-      CopyDNIMother: ['', Validators.required],
-      copySocialNumber: ['', Validators.required],
-      copyDNIkid: ['', Validators.required],
-      libroFamilia: ['', Validators.required],
+      numeroSeguridadSocial: [''],
+      numeroDNIPadre: [''],
+      numeroDNIMadre: [''],
+      numeroDNIRepresentante: [''],
+      ultimosTrabajos: [''],
+      avatar: [''],
+      copyDNIFather: [''],
+      CopyDNIMother: [''],
+      copySocialNumber: [''],
+      copyDNIkid: [''],
+      libroFamilia: [''],
     }
 
       , {
@@ -364,10 +364,7 @@ export class ChildrenComponent implements OnInit {
   }
 
   pasarDatosFormUsuario() {
-    this.submitted = true;
-    /*if (this.childForm.invalid) {
-      return;
-    }*/
+
     const newChild = this.childForm.value;
     console.log('Niño a registrar: ' + JSON.stringify(newChild));
     this.usuario = {
@@ -441,6 +438,11 @@ export class ChildrenComponent implements OnInit {
 
   signupChild() {
 
+    this.submitted = true;
+
+    if (this.childForm.invalid || this.childForm.get('acceptTerms').value === false) {
+      return;
+    }
     this.subirArchivos();
     this.pasarDatosFormUsuario();
     this.authService.signup2(this.usuario).subscribe(
@@ -497,11 +499,11 @@ export class ChildrenComponent implements OnInit {
     let task = this.storage.upload(this.urlAvatar, this.avatarFile);
 
     /**subir cuerpo entero */
-    this.urlCuerpoEntero = 'figuracion/' + idUser + '/cuerpo-' + this.fileCuerpoEntero.name;
+    this.urlCuerpoEntero = 'ninios/' + idUser + '/cuerpo-' + this.fileCuerpoEntero.name;
     task = this.storage.upload(this.urlCuerpoEntero, this.fileCuerpoEntero);
 
     /**subir foto artistica */
-    this.urlArtistico = 'figuracion/' + idUser + '/artistico-' + this.fileArtistico.name;
+    this.urlArtistico = 'ninios/' + idUser + '/artistico-' + this.fileArtistico.name;
     task = this.storage.upload(this.urlArtistico, this.fileArtistico);
 
     /**subir dnipadre */
