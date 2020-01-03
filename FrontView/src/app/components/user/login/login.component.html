@@ -19,6 +19,7 @@
                 <input type="password" formControlName="password" class="form-control" placeholder="*************" [ngClass]="{ 'is-invalid': isSubmitted &amp;&amp; loginForm.controls.password.errors }">
                 <div *ngIf="isSubmitted &amp;&amp; loginForm.controls.password.errors" class="text-danger">
                     <div *ngIf="loginForm.controls.password.errors.required">La contraseña es requerida</div>
+                    <div *ngIf="loginForm.controls.password.errors.minlength">La contraseña debe tener al menos 6 caracteres</div>
                 </div>
               </div>
               <div class="custom-control custom-checkbox mb-3">
