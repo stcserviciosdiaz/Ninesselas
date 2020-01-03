@@ -525,6 +525,7 @@ export class ActorsComponent implements OnInit {
     this.submitted = true;
 
     if (this.actorForm.invalid || this.actorForm.get('acceptTerms').value === false) {
+      this.ngxSmartModalService.create('confirm', 'Pofavor, Llenar el formulario con todos los datos').open();
       return;
     }
 

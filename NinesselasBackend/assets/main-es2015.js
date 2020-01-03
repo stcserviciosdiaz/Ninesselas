@@ -45,7 +45,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-header></app-header>\n<div class=\"bg-fondo\">\n    <div class=\"container contect-Ajuste mx-w d-flex\">\n        <div class=\"\">\n          <div class=\"\">\n            <a class=\"logo\">Registro de Actor</a>\n            <p class=\"mt-3\">-----------------</p>\n          </div>\n          <div class=\"\">\n            <div class=\"\">\n              <div class=\"\">\n                <div class=\"\">\n                  <div class=\"\">\n                    <span>Llena el siguiente formulario</span>\n                  </div>\n                  <form [formGroup]=\"actorForm\">\n\n                    <div class=\"form-group\"><!-- Subida de avatar -->  \n                        <label class=\"control-label\">Foto de Perfil</label>\n                        <input type=\"file\" (change)=\"onFileSelected($event)\" formControlName=\"avatar\">\n                    </div>\n\n                    <div class=\"form-group\"> <!-- Nombre de Usuario -->\n                      <label class=\"control-label\">Nombre de Usuario</label>\n                      <input type=\"text\" class=\"form-control\" id=\"username\" formControlName=\"username\" placeholder=\"ldiaz\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.username.errors }\">\n                      <div *ngIf=\"submitted && actorForm.controls.username.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"actorForm.controls.username.errors.required\">El usuario es requerido</div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\"> <!-- Nomnbre completos -->\n                      <label class=\"control-label\">Nombre</label>\n                      <input type=\"text\" class=\"form-control\" id=\"nombres\" formControlName=\"nombres\" placeholder=\"Luis Alfredo\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.nombres.errors }\">\n                      <div *ngIf=\"submitted && actorForm.controls.nombres.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"actorForm.controls.nombres.errors.required\">El nombre es requerido</div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\"> <!-- Apellidos completos -->\n                      <label class=\"control-label\">Apellidos</label>\n                      <input type=\"text\" class=\"form-control\" id=\"apellidos\" formControlName=\"apellidos\" placeholder=\"Almito Gil\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.apellidos.errors }\">\n                      <div *ngIf=\"submitted && actorForm.controls.apellidos.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"actorForm.controls.apellidos.errors.required\">El apellido es requerido</div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Nombre Artístico -->\n                      <label class=\"control-label\">Nombre Artístico</label>\n                      <input type=\"text\" class=\"form-control\"  formControlName=\"nombreArtistico\" placeholder=\"Almito Gil\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.nombreArtistico.errors }\">\n                      <div *ngIf=\"submitted && actorForm.controls.nombreArtistico.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"actorForm.controls.nombreArtistico.errors.required\">La nombre artistico es requerida</div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\"><!-- ¿De qué grupo étnico se considera? -->\n                      <label class=\"control-label\">¿De qué grupo étnico se considera?</label>\n                        <select forControlName=\"etnico\" class=\"form-control\" [(ngModel)]=\"etnico.Otro\" [ngModelOptions]=\"{standalone: true}\">\n                          <option [ngValue]=\"i\" selected>Seleccione...</option>\n                          <option *ngFor=\"let i of etnico\">{{i}}</option>\n                        </select>\n                    </div>\n                    <div *ngIf=\"etnico.Otro == 'Otro'\" class=\"form-group\"><!-- especifique -->\n                      <label class=\"control-label\">Especifique otro grupo étnico</label>\n                      <textarea forControlName=\"otro\" class=\"form-control\" rows=\"3\"></textarea>\n                    </div>\n\n                    <fieldset class=\"form-group\"><!-- Sexo -->\n                      <div class=\"row\">\n                        <legend class=\"col-form-label col-sm-2 pt-0\">Sexo</legend>\n                        <div class=\"col-sm-10\">\n                          <div class=\"form-check\">\n                            <input class=\"form-check-input\" type=\"radio\" formControlName=\"sexo\" id=\"gridRadios1\" value=\"Masculino\" checked>\n                            <label class=\"form-check-label\">\n                              Masculino\n                            </label>\n                          </div>\n                          <div class=\"form-check\">\n                            <input class=\"form-check-input\" type=\"radio\" formControlName=\"sexo\" id=\"gridRadios2\" value=\"Femenino\">\n                            <label class=\"form-check-label\">\n                              Femenino\n                            </label>\n                          </div>\n                        </div>\n                      </div>\n                    </fieldset>\n\n                    <div class=\"form-group\"><!-- Contraseña -->\n                      <label>Contraseña</label>\n                      <input type=\"password\" (keypress)=\"numberOnly($event)\" class=\"form-control\" formControlName=\"password\" placeholder=\"password\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.password.errors }\">\n                      <div *ngIf=\"submitted && actorForm.controls.password.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"actorForm.controls.password.errors.required\">La contraseña es requerida</div>\n                        <div *ngIf=\"actorForm.controls.password.errors.minlength\">La contraseña debe tener al menos 6 caracteres</div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Confirma Contraseña -->\n                      <label>Confirma contraseña</label>\n                      <input type=\"password\" (keypress)=\"numberOnly($event)\" formControlName=\"confirmPassword\" class=\"form-control\" placeholder=\"Confirm Password\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.confirmPassword.errors }\">\n                        <div *ngIf=\"submitted && actorForm.controls.confirmPassword.errors\" class=\"invalid-feedback\">\n                          <div *ngIf=\"actorForm.controls.confirmPassword.errors.required\">Confirme que se requiere contraseña</div>\n                          <div *ngIf=\"actorForm.controls.confirmPassword.errors.mustMatch\">Las contraseñas deben coincidir</div>\n                        </div>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Nuemro de teléfono -->\n                      <label>Numero de Teléfono</label>\n                      <input type=\"text\" class=\"form-control\" (keypress)=\"numberOnly($event)\" formControlName=\"telefono\" placeholder=\"Numero de teléfono\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.telefono.errors }\">\n                      <div *ngIf=\"submitted && actorForm.controls.telefono.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"actorForm.controls.telefono.errors.required\">El telefono es requerida</div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\"> <!-- Fecha de nacimiento -->\n                      <mat-form-field>\n                        <input matInput [matDatepicker]=\"picker\" formControlName=\"fechaNacimiento\" placeholder=\"Fecha de nacimiento\">\n                        <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n                        <mat-datepicker #picker></mat-datepicker>\n                      </mat-form-field>\n                    </div>\n\n                    <div class=\"form-group\"> <!-- Lugar de nacimiento -->\n                      <label class=\"control-label\">Lugar de nacimiento</label>\n                      <input type=\"text\" class=\"form-control\" id=\"placebirth\" formControlName=\"placebirth\" placeholder=\"Dallas, U.E Estates\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.placebirth.errors }\">\n                      <div *ngIf=\"submitted && actorForm.controls.placebirth.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"actorForm.controls.placebirth.errors.required\">El usuario es requerido</div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\"> <!-- Naciomnalidad -->\n                      <label class=\"control-label\">Nacionalidad</label>\n                      <input type=\"text\" class=\"form-control\" formControlName=\"nacionalidad\" placeholder=\"Pais\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.nacionalidad.errors }\">\n                      <div *ngIf=\"submitted && actorForm.controls.nacionalidad.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"actorForm.controls.nacionalidad.errors.required\">La nacionalidad es requerida</div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Correo electronico -->\n                      <label>Correo electronico</label>\n                      <input type=\"email\" class=\"form-control\" formControlName=\"email\" placeholder=\"name@example.com\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.email.errors }\">\n                      <div *ngIf=\"submitted && actorForm.controls.email.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"actorForm.controls.email.errors.required\">Correo electrónico es requerido</div>\n                        <div *ngIf=\"actorForm.controls.email.errors.email\">Debe ser una dirección de correo electrónico válida</div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group d-lg-flex d-md-flex d-block\"> \n                      <div class=\"form-group mr-lg-2 mr-md-2 mr-0\"><!-- Talla de camisa -->\n                        <label class=\"control-label\">Talla de camisa</label>\n                        <input type=\"text\" class=\"d-inline form-control\" formControlName=\"tallaCamisa\" placeholder=\"talla de camisa\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.tallaCamisa.errors }\">\n                        <div *ngIf=\"submitted && actorForm.controls.tallaCamisa.errors\" class=\"invalid-feedback\">\n                          <div *ngIf=\"actorForm.controls.tallaCamisa.errors.required\">La talla es requerido</div>\n                        </div>\n                      </div>\n                      <div class=\"form-group mr-lg-2 mr-md-2 mr-0\"><!-- talla de chaqueta -->\n                        <label class=\"control-label \">Talla de chaqueta</label>\n                        <input type=\"text\" class=\"d-inline form-control\" formControlName=\"tallaChaqueta\" placeholder=\"talla de chaqueta\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.tallaChaqueta.errors }\">\n                        <div *ngIf=\"submitted && actorForm.controls.tallaChaqueta.errors\" class=\"invalid-feedback\">\n                          <div *ngIf=\"actorForm.controls.tallaChaqueta.errors.required\">La talla es requerido</div>\n                        </div>\n                      </div>\n                      <div class=\"form-group mr-lg-2 mr-md-2 mr-0\"><!-- Talla de pantalon -->\n                        <label class=\"control-label\">Talla de pantalon</label>\n                        <input type=\"text\" class=\"d-inline form-control\" formControlName=\"tallaPantalon\" placeholder=\"talla de pantalon\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.tallaPantalon.errors }\">\n                        <div *ngIf=\"submitted && actorForm.controls.tallaPantalon.errors\" class=\"invalid-feedback\">\n                          <div *ngIf=\"actorForm.controls.tallaPantalon.errors.required\">La talla es requerido</div>\n                        </div>\n                      </div>\n                      <div class=\"form-group mr-lg-2 mr-md-2 mr-0\"><!-- Talla de Pie -->\n                          <label class=\"control-label\">Pie</label>\n                          <input type=\"text\" class=\"d-inline form-control\" formControlName=\"pie\" placeholder=\"Pie\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.pie.errors }\">\n                          <div *ngIf=\"submitted && actorForm.controls.pie.errors\" class=\"invalid-feedback\">\n                            <div *ngIf=\"actorForm.controls.pie.errors.required\">La talla es requerido</div>\n                          </div>\n                      </div>\n                      <div class=\"form-group\"><!-- Talla de Altura -->\n                          <label class=\"control-label\">Altura</label>\n                          <input type=\"text\" class=\"d-inline form-control\" formControlName=\"altura\" placeholder=\"Altura\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.altura.errors }\">\n                          <div *ngIf=\"submitted && actorForm.controls.altura.errors\" class=\"invalid-feedback\">\n                            <div *ngIf=\"actorForm.controls.altura.errors.required\">La talla es requerido</div>\n                          </div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group d-lg-flex d-md-flex d-block\"> \n                      <div class=\"form-group mr-lg-3 mr-md-3 mr-0\"><!-- Color de Piel -->\n                        <label class=\"control-label\">Color de Piel</label>\n                        <input type=\"text\" class=\"d-inline form-control\" formControlName=\"colorPiel\" placeholder=\"Color de Piel\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.colorPiel.errors }\">\n                        <div *ngIf=\"submitted && actorForm.controls.colorPiel.errors\" class=\"invalid-feedback\">\n                          <div *ngIf=\"actorForm.controls.colorPiel.errors.required\">El color es requerido</div>\n                        </div>\n                      </div>\n                      <div class=\"form-group mr-lg-3 mr-md-3 mr-0\"><!-- Color de Pelo -->\n                        <label class=\"control-label\">Color de Pelo</label>\n                        <input type=\"text\" class=\"d-inline form-control\" formControlName=\"colorPelo\" placeholder=\"Color de Pelo\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.colorPelo.errors }\">\n                        <div *ngIf=\"submitted && actorForm.controls.colorPelo.errors\" class=\"invalid-feedback\">\n                          <div *ngIf=\"actorForm.controls.colorPelo.errors.required\">El color es requerido</div>\n                        </div>\n                      </div>\n                      <div class=\"form-group mr-lg-3 mr-md-3 mr-0\">\n                          <label class=\"control-label\">Color de ojos</label>\n                          <input type=\"text\" class=\"d-inline form-control\" formControlName=\"colorOjos\" placeholder=\"Color de ojos\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.colorOjos.errors }\">\n                          <div *ngIf=\"submitted && actorForm.controls.colorOjos.errors\" class=\"invalid-feedback\">\n                            <div *ngIf=\"actorForm.controls.colorOjos.errors.required\">El color es requerido</div>\n                          </div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Numero DNI -->\n                        <label class=\"control-label\">Numero DNI</label>\n                        <input type=\"text\" (keypress)=\"check($event)\" class=\"d-inline form-control\" id=\"numeroDNI\" formControlName=\"numeroDNI\" placeholder=\"#####\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.numeroDNI.errors }\">\n                        <div *ngIf=\"submitted && actorForm.controls.numeroDNI.errors\" class=\"invalid-feedback\">\n                          <div *ngIf=\"actorForm.controls.numeroDNI.errors.required\">El numero es requerida</div>\n                        </div>\n                    </div>\n                  \n                    <div class=\"form-group\"> <!-- Numero de Seguridad Social -->\n                      <label class=\"control-label\">Numero de Seguridad Social</label>\n                      <input type=\"text\" class=\"form-control\" id=\"numeroSeguridadSocial\" formControlName=\"numeroSeguridadSocial\" placeholder=\"Numero de Seguridad Social\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.numeroSeguridadSocial.errors }\">\n                      <div *ngIf=\"submitted && actorForm.controls.numeroSeguridadSocial.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"actorForm.controls.numeroSeguridadSocial.errors.required\">El numero es requerida</div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\">\n                      <label>Dirección</label>\n                      <input type=\"text\" class=\"form-control\" forControlName=\"direccion\" placeholder=\"Apartmento, studio, or floor\" >\n                     \n                    </div>\n\n                    <div class=\"form-row\">\n                        <div class=\"form-group col-md-6\"><!-- Localidad -->\n                          <label class=\"control-label\">Localidad</label>\n                          <input type=\"text\" class=\"form-control\" forControlName=\"localidad\" placeholder=\"Madrid\" >\n                          \n                        </div>\n                        <div class=\"form-group col-md-4\"><!-- Provincia -->\n                            <label class=\"control-label\">Provincia</label>\n                            <input type=\"text\" class=\"form-control\" forControlName=\"provincia\" placeholder=\"Bataluña\" >\n                            \n                        </div>\n                        <div class=\"form-group col-md-2\"><!-- Codigo Postal -->\n                          <label for=\"inputZip\">Codigo Postal</label>\n                          <input type=\"text\" (keypress)=\"check($event)\" class=\"form-control\" forControlName=\"codpostal\" placeholder=\"######\" >\n                         \n                        </div>\n                    </div>\n\n                    <div class=\"form-group d-lg-flex d-md-flex d-block\"> <!-- Carnet de conducir y coche-->\n                      <div class=\"form-group mr-lg-3 mr-md-3 mr-0\">\n                        <label class=\"control-label\">Carnet de conducir</label>\n                        <input type=\"text\" class=\"d-inline form-control\" formControlName=\"carnetConducir\" placeholder=\"Modelo de Coche\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.carnetConducir.errors }\">\n                        <div *ngIf=\"submitted && actorForm.controls.carnetConducir.errors\" class=\"invalid-feedback\">\n                          <div *ngIf=\"actorForm.controls.carnetConducir.errors.required\">Carnet es requerido</div>\n                        </div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Eres actor-->\n                      <label class=\"control-label\">Eres Actor</label>\n                        <select forControlName=\"actor\" class=\"form-control\" [(ngModel)]=\"actor.name\" [ngModelOptions]=\"{standalone: true}\">\n                          <option [ngValue]=\"i\" selected>Seleccione...</option>\n                          <option *ngFor=\"let i of actor\">{{i.name}}</option>\n                        </select>\n                    </div>\n                    <div *ngIf=\"actor.name == 'Si'\" class=\"form-group\"> <!-- Link de VideoBook -->\n                      <label class=\"control-label\">Link de VideoBook</label>\n                      <input type=\"text\" class=\"form-control\" id=\"videoBook\" formControlName=\"videoBook\" placeholder=\"https://www.videoBook.com\">\n                    </div>\n\n                    <div class=\"form-group d-flex\"> <!-- Modelo de Coche y Moto-->\n                      <div class=\"form-group mr-3\">\n                        <label class=\"control-label\">Modelo de Coche</label>\n                        <input type=\"text\" class=\"d-inline form-control\" formControlName=\"modeloCoche\" placeholder=\"Modelo de Coche\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.modeloCoche.errors }\">\n                        <div *ngIf=\"submitted && actorForm.controls.modeloCoche.errors\" class=\"invalid-feedback\">\n                          <div *ngIf=\"actorForm.controls.modeloCoche.errors.required\">El modelo es requerido</div>\n                        </div>\n                      </div>\n                      <div class=\"form-group\">\n                        <label class=\"control-label\">Modelo de Moto</label>\n                        <input type=\"text\" class=\"d-inline form-control\" formControlName=\"modeloMoto\" placeholder=\"Modelo de Moto\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.modeloMoto.errors }\">\n                        <div *ngIf=\"submitted && actorForm.controls.modeloMoto.errors\" class=\"invalid-feedback\">\n                          <div *ngIf=\"actorForm.controls.modeloMoto.errors.required\">El modelo es requerido</div>\n                        </div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\"> <!-- Fotos Tatuajes --> \n                        <label class=\"control-label\">Fotos Tatuajes</label>\n                        <input type=\"file\" (change)=\"onFileSelected($event)\" multiple=\"multiple\" formControlName=\"tattoos\"><br>\n                    </div>\n\n                    <div class=\"form-group\"> <!-- Modelos de manos --> \n                      <label class=\"control-label\">Modelo de manos profesional</label>\n                      <input type=\"file\" (change)=\"onFileSelected($event)\" multiple=\"multiple\" formControlName=\"tattoos\"><br>\n                  </div>\n\n                  <div class=\"form-group\"> <!-- Deporte --> \n                     <label class=\"control-label\">Deporte</label>\n                      <select forControlName=\"deporte\" class=\"form-control\" [(ngModel)]=\"deporte.name\" [ngModelOptions]=\"{standalone: true}\">\n                        <option [ngValue]=\"i\" selected>Seleccione...</option>\n                        <option *ngFor=\"let i of deporte\">{{i.name}}</option>\n                     </select>\n                  </div>\n                  <div *ngIf=\"deporte.name == 'Federado' ||  deporte.name == 'Profesional'\" class=\"form-group\"><!-- Habilidades del deporte-->\n                    <label class=\"control-label\">Habilidades del deporte</label>\n                    <select forControlName=\"habdeportes\" class=\"form-control\" [(ngModel)]=\"habdeportes.Otros\" [ngModelOptions]=\"{standalone: true}\">\n                      <option [ngValue]=\"i\">Seleccione...</option>\n                      <option *ngFor=\"let i of habdeportes\">{{i}}</option>\n                    </select>\n                  </div>\n                  <div *ngIf=\"habdeportes.Otros == 'Otros'\" class=\"form-group\"><!-- Espesifique otro deporte -->\n                    <label class=\"control-label\">Espesifique otro deporte</label>\n                    <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                  </div>\n\n                  <div class=\"form-group\"><!-- Baile -->\n                    <label class=\"control-label\">Baile</label>\n                    <select forControlName=\"bailes\" class=\"form-control\" [(ngModel)]=\"bailes.name\" [ngModelOptions]=\"{standalone: true}\">\n                        <option [ngValue]=\"i\">Seleccione...</option>\n                        <option *ngFor=\"let i of bailes\">{{i.name}}</option>\n                      </select>\n                  </div>\n                  <div *ngIf=\"bailes.name == 'Profesional' \" class=\"form-group\"><!-- Estilos de Baile -->\n                    <label class=\"control-label\">Estilos de Baile</label>\n                      <select forControlName=\"estilobailes\" class=\"form-control\" [(ngModel)]=\"estilobailes.Otros\" [ngModelOptions]=\"{standalone: true}\">\n                        <option [ngValue]=\"i\">Seleccione...</option>\n                        <option *ngFor=\"let i of estilobailes\">{{i}}</option>\n                      </select>\n                  </div>\n                  <div *ngIf=\"estilobailes.Otros == 'Otros'\" class=\"form-group\"><!-- Espesifique otro baile -->\n                    <label class=\"control-label\">Espesifique otro baile</label>\n                    <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                  </div>\n\n                  <div class=\"form-group\"><!-- Musico -->\n                      <label class=\"control-label\">Musico</label>\n                      <select forControlName=\"musicos\" class=\"form-control\" [(ngModel)]=\"musicos.name\" [ngModelOptions]=\"{standalone: true}\">\n                          <option [ngValue]=\"i\">Seleccione...</option>\n                          <option *ngFor=\"let i of musicos\">{{i.name}}</option>\n                      </select>\n                  </div>\n                  <div *ngIf=\"musicos.name == 'Profesional'\" class=\"form-group\"><!-- Instrumentos musical -->\n                    <label class=\"control-label\">Instrumentos musical</label>\n                      <select forControlName=\"instrumentos\" class=\"form-control\" [(ngModel)]=\"instrumentos.Otros\" [ngModelOptions]=\"{standalone: true}\">\n                        <option [ngValue]=\"i\">Seleccione...</option>\n                        <option *ngFor=\"let i of instrumentos\">{{i}}</option>\n                      </select>\n                  </div>\n                  <div *ngIf=\"instrumentos.Otros == 'Otros'\" class=\"form-group\"><!-- Espesifique otro instrumento musical -->\n                    <label class=\"control-label\">Espesifique otro instrumento musical</label>\n                    <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                  </div>\n\n                  <div class=\"form-group\"><!-- Cantantes -->\n                    <label class=\"control-label\">Cantantes</label>\n                    <select forControlName=\"cantos\" class=\"form-control\" [(ngModel)]=\"cantos.name\" [ngModelOptions]=\"{standalone: true}\">\n                        <option [ngValue]=\"i\">Seleccione...</option>\n                        <option *ngFor=\"let i of cantos\">{{i.name}}</option>\n                      </select>\n                  </div>\n                  <div *ngIf=\"cantos.name == 'Profesional'\" class=\"form-group\"><!-- Estilos de cantos -->\n                    <label class=\"control-label\">Estilo de cantos</label>\n                      <select class=\"form-control\" forControlName=\"estilocantos\" [(ngModel)]=\"estilocantos.Otros\" [ngModelOptions]=\"{standalone: true}\">\n                        <option [ngValue]=\"i\">Seleccione...</option>\n                        <option *ngFor=\"let i of estilocantos\">{{i}}</option>\n                      </select>\n                  </div>\n                  <div *ngIf=\"estilocantos.Otros == 'Otros'\" class=\"form-group\"><!-- Espesifique otros estilos -->\n                    <label class=\"control-label\">Espesifique otro estilos</label>\n                    <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                  </div>\n\n                  <div class=\"form-group\"><!-- Habilidades -->\n                    <label class=\"control-label\">Habilidades</label>\n                      <select forControlName=\"habilidades\" class=\"form-control\" [(ngModel)]=\"habilidades.Otros\" [ngModelOptions]=\"{standalone: true}\">\n                        <option [ngValue]=\"i\">Seleccione...</option>\n                        <option *ngFor=\"let i of habilidades\">{{i}}</option>\n                      </select>\n                  </div>\n                  <div *ngIf=\"habilidades.Otros == 'Otros'\" class=\"form-group\"><!-- Espesifique otras habilidades -->\n                    <label class=\"control-label\">Espesifique otras habilidades</label>\n                    <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                  </div>\n\n                  <div class=\"form-group\"><!-- Idiomas -->\n                      <label class=\"control-label\">Idiomas</label>\n                      <select forControlName=\"idiomasHablados\" class=\"form-control\" [(ngModel)]=\"idiomasHablados.Otros\" [ngModelOptions]=\"{standalone: true}\">\n                          <option [ngValue]=\"i\">Seleccione...</option>\n                          <option *ngFor=\"let i of idiomasHablados\">{{i}}</option>\n                        </select>\n                  </div>\n                  <div *ngIf=\"idiomasHablados.Otros == 'Otros'\" class=\"form-group\"><!-- Espesifique otro Idioma -->\n                    <label class=\"control-label\">Espesifique otro Idioma</label>\n                    <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                  </div>\n\n                  <div class=\"form-group\"><!-- Ultimos trabajos -->\n                    <label class=\"control-label\">Descripción de Ultimos Trabajos</label>\n                    <input type=\"text\" class=\"d-inline form-control\" formControlName=\"ultimosTrabajos\" placeholder=\"Teatro\">\n                    <input type=\"text\" class=\"d-inline form-control\" formControlName=\"ultimosTrabajos\" placeholder=\"Cine\">\n                    <input type=\"text\" class=\"d-inline form-control\" formControlName=\"ultimosTrabajos\" placeholder=\"Ficcion\">\n                    <input type=\"text\" class=\"d-inline form-control\" formControlName=\"ultimosTrabajos\" placeholder=\"Publicidad\">\n                  </div>\n\n                  <div class=\"form-group\"><!-- Observaciones -->\n                    <label for=\"\">Observaciones</label>\n                    <textarea class=\"form-control\" id=\"\" rows=\"3\"></textarea>\n                  </div>\n                        \n                  <div class=\"form-group\">\n                            <div class=\"form-check\">\n                            <input type=\"checkbox\" formControlName=\"acceptTerms\" id=\"acceptTerms\" class=\"form-check-input\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.acceptTerms.errors }\" />\n                              <label class=\"form-check-label\">\n                                Acepta los terminos del registro\n                              </label>\n                            <div *ngIf=\"submitted && actorForm.controls.acceptTerms.errors\" class=\"invalid-feedback\">Los terminos es requerido</div>\n                          </div>\n                  </div>\n\n                  <div class=\"info info--sm\">\n                          Al hacer clic en \"Crear cuenta\" certifico que tengo 16 años o más y acepto las\n                          <a class=\"link-secondary--underlined\" target=\"blank\" routerLink=\"/terms\">Condiciones de Uso</a>, la\n                          <a class=\"link-secondary--underlined\" target=\"blank\" routerLink=\"/privacy\">Política de Privacidad</a> y recibir novedades y promociones.\n                  </div>\n\n                  <div class=\"mt-4 form-group\"> <!-- Submit Button -->\n                      <button type=\"submit\" (click)=\"registrarActor()\" class=\"btn btn-primary\">Registrame!</button>\n                  </div>\n\n                  </form>\n                </div>\n              </div>\n            </div>\n            <div class=\"\">\n              ¿Ya tienes cuenta?\n              <a routerLink=\"/login\" class=\"link-primary\">\n                Entrar\n              </a>\n            </div>\n          </div>\n        </div>\n      </div>\n</div>\n<app-footer></app-footer>");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header></app-header>\n<div class=\"bg-fondo\">\n  <div class=\"container contect-Ajuste mx-w d-flex\">\n    <div class=\"\">\n      <div class=\"\">\n        <a class=\"logo\">Registro de Actor</a>\n        <p class=\"mt-3\">-----------------</p>\n      </div>\n      <div class=\"\">\n        <div class=\"\">\n          <div class=\"\">\n            <div class=\"\">\n              <div class=\"\">\n                <span>Llena el siguiente formulario</span>\n              </div>\n              <form [formGroup]=\"actorForm\">\n\n                <div class=\"form-group\">\n                  <!-- Subida de avatar -->\n                  <label class=\"control-label\">Foto de Perfil</label>\n                  <input type=\"file\" (change)=\"onFileAvatarSelected($event)\" formControlName=\"avatar\">\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- cuerpo entero -->\n                  <label class=\"control-label\">Foto cuerpo entero</label>\n                  <input type=\"file\" (change)=\"onFileCuerpoEnteroSelected($event)\" formControlName=\"avatar\"><br>\n                </div>\n                <div class=\"form-group\">\n                  <!-- foto artistico -->\n                  <label class=\"control-label\">Foto artistico</label>\n                  <input type=\"file\" (change)=\"onFileArtisticoSelected($event)\" formControlName=\"avatar\"><br>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Nombre de Usuario -->\n                  <label class=\"control-label\">Nombre de Usuario</label>\n                  <input type=\"text\" class=\"form-control\" id=\"username\" formControlName=\"username\" placeholder=\"ldiaz\"\n                    [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.username.errors }\">\n                  <div *ngIf=\"submitted && actorForm.controls.username.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"actorForm.controls.username.errors.required\">El usuario es requerido</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Nomnbre completos -->\n                  <label class=\"control-label\">Nombre</label>\n                  <input type=\"text\" class=\"form-control\" id=\"nombres\" formControlName=\"nombres\"\n                    placeholder=\"Luis Alfredo\"\n                    [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.nombres.errors }\">\n                  <div *ngIf=\"submitted && actorForm.controls.nombres.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"actorForm.controls.nombres.errors.required\">El nombre es requerido</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Apellidos completos -->\n                  <label class=\"control-label\">Apellidos</label>\n                  <input type=\"text\" class=\"form-control\" id=\"apellidos\" formControlName=\"apellidos\"\n                    placeholder=\"Almito Gil\"\n                    [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.apellidos.errors }\">\n                  <div *ngIf=\"submitted && actorForm.controls.apellidos.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"actorForm.controls.apellidos.errors.required\">El apellido es requerido</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Nombre Artístico -->\n                  <label class=\"control-label\">Nombre Artístico</label>\n                  <input type=\"text\" class=\"form-control\" formControlName=\"nombreArtistico\" placeholder=\"Almito Gil\"\n                    [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.nombreArtistico.errors }\">\n                  <div *ngIf=\"submitted && actorForm.controls.nombreArtistico.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"actorForm.controls.nombreArtistico.errors.required\">La nombre artistico es requerida\n                    </div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- ¿De qué grupo étnico se considera? -->\n                  <label class=\"control-label\">¿De qué grupo étnico se considera?</label>\n                  <select forControlName=\"etnias\" class=\"form-control\" [(ngModel)]=\"etniaSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option selected>Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of etnias\">{{i.nombreEtnia}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"etniaSelect.nombreEtnia == 'Otro'\" class=\"form-group\">\n                  <!-- especifique -->\n                  <label class=\"control-label\">Especifique otro grupo étnico</label>\n                  <textarea forControlName=\"otro\" class=\"form-control\" rows=\"3\"></textarea>\n                </div>\n\n                <fieldset class=\"form-group\">\n                  <!-- Sexo -->\n                  <div class=\"row\">\n                    <legend class=\"col-form-label col-sm-2 pt-0\">Sexo</legend>\n                    <div class=\"col-sm-10\">\n                      <div class=\"form-check\">\n                        <input class=\"form-check-input\" type=\"radio\" formControlName=\"sexo\" id=\"gridRadios1\"\n                          value=\"Masculino\" checked>\n                        <label class=\"form-check-label\">\n                          Masculino\n                        </label>\n                      </div>\n                      <div class=\"form-check\">\n                        <input class=\"form-check-input\" type=\"radio\" formControlName=\"sexo\" id=\"gridRadios2\"\n                          value=\"Femenino\">\n                        <label class=\"form-check-label\">\n                          Femenino\n                        </label>\n                      </div>\n                    </div>\n                  </div>\n                </fieldset>\n\n                <div class=\"form-group\">\n                  <!-- Contraseña -->\n                  <label>Contraseña</label>\n                  <input type=\"password\" (keypress)=\"numberOnly($event)\" class=\"form-control\" formControlName=\"password\"\n                    placeholder=\"password\"\n                    [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.password.errors }\">\n                  <div *ngIf=\"submitted && actorForm.controls.password.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"actorForm.controls.password.errors.required\">La contraseña es requerida</div>\n                    <div *ngIf=\"actorForm.controls.password.errors.minlength\">La contraseña debe tener al menos 6\n                      caracteres</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Confirma Contraseña -->\n                  <label>Confirma contraseña</label>\n                  <input type=\"password\" (keypress)=\"numberOnly($event)\" formControlName=\"confirmPassword\"\n                    class=\"form-control\" placeholder=\"Confirm Password\"\n                    [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.confirmPassword.errors }\">\n                  <div *ngIf=\"submitted && actorForm.controls.confirmPassword.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"actorForm.controls.confirmPassword.errors.required\">Confirme que se requiere contraseña\n                    </div>\n                    <div *ngIf=\"actorForm.controls.confirmPassword.errors.mustMatch\">Las contraseñas deben coincidir\n                    </div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Nuemro de teléfono -->\n                  <label>Numero de Teléfono</label>\n                  <input type=\"text\" class=\"form-control\" (keypress)=\"numberOnly($event)\" formControlName=\"telefono\"\n                    placeholder=\"Numero de teléfono\"\n                    [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.telefono.errors }\">\n                  <div *ngIf=\"submitted && actorForm.controls.telefono.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"actorForm.controls.telefono.errors.required\">El telefono es requerida</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Fecha de nacimiento -->\n                  <mat-form-field>\n                    <input matInput [matDatepicker]=\"picker\" formControlName=\"fechaNacimiento\"\n                      placeholder=\"Fecha de nacimiento\">\n                    <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n                    <mat-datepicker #picker></mat-datepicker>\n                  </mat-form-field>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Lugar de nacimiento -->\n                  <label class=\"control-label\">Lugar de nacimiento</label>\n                  <input type=\"text\" class=\"form-control\" id=\"placebirth\" formControlName=\"placebirth\"\n                    placeholder=\"Dallas, U.E Estates\"\n                    [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.placebirth.errors }\">\n                  <div *ngIf=\"submitted && actorForm.controls.placebirth.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"actorForm.controls.placebirth.errors.required\">El usuario es requerido</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Naciomnalidad -->\n                  <label class=\"control-label\">Nacionalidad</label>\n                  <input type=\"text\" class=\"form-control\" formControlName=\"nacionalidad\" placeholder=\"Pais\"\n                    [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.nacionalidad.errors }\">\n                  <div *ngIf=\"submitted && actorForm.controls.nacionalidad.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"actorForm.controls.nacionalidad.errors.required\">La nacionalidad es requerida</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Correo electronico -->\n                  <label>Correo electronico</label>\n                  <input type=\"email\" class=\"form-control\" formControlName=\"email\" placeholder=\"name@example.com\"\n                    [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.email.errors }\">\n                  <div *ngIf=\"submitted && actorForm.controls.email.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"actorForm.controls.email.errors.required\">Correo electrónico es requerido</div>\n                    <div *ngIf=\"actorForm.controls.email.errors.email\">Debe ser una dirección de correo electrónico\n                      válida</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group d-lg-flex d-md-flex d-block\">\n                  <div class=\"form-group mr-lg-2 mr-md-2 mr-0\">\n                    <!-- Talla de camisa -->\n                    <label class=\"control-label\">Talla de camisa</label>\n                    <input type=\"text\" class=\"d-inline form-control\" formControlName=\"tallaCamisa\"\n                      placeholder=\"talla de camisa\"\n                      [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.tallaCamisa.errors }\">\n                    <div *ngIf=\"submitted && actorForm.controls.tallaCamisa.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"actorForm.controls.tallaCamisa.errors.required\">La talla es requerido</div>\n                    </div>\n                  </div>\n                  <div class=\"form-group mr-lg-2 mr-md-2 mr-0\">\n                    <!-- talla de chaqueta -->\n                    <label class=\"control-label \">Talla de chaqueta</label>\n                    <input type=\"text\" class=\"d-inline form-control\" formControlName=\"tallaChaqueta\"\n                      placeholder=\"talla de chaqueta\"\n                      [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.tallaChaqueta.errors }\">\n                    <div *ngIf=\"submitted && actorForm.controls.tallaChaqueta.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"actorForm.controls.tallaChaqueta.errors.required\">La talla es requerido</div>\n                    </div>\n                  </div>\n                  <div class=\"form-group mr-lg-2 mr-md-2 mr-0\">\n                    <!-- Talla de pantalon -->\n                    <label class=\"control-label\">Talla de pantalon</label>\n                    <input type=\"text\" class=\"d-inline form-control\" formControlName=\"tallaPantalon\"\n                      placeholder=\"talla de pantalon\"\n                      [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.tallaPantalon.errors }\">\n                    <div *ngIf=\"submitted && actorForm.controls.tallaPantalon.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"actorForm.controls.tallaPantalon.errors.required\">La talla es requerido</div>\n                    </div>\n                  </div>\n                  <div class=\"form-group mr-lg-2 mr-md-2 mr-0\">\n                    <!-- Talla de Pie -->\n                    <label class=\"control-label\">Pie</label>\n                    <input type=\"text\" class=\"d-inline form-control\" formControlName=\"pie\" placeholder=\"Pie\"\n                      [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.pie.errors }\">\n                    <div *ngIf=\"submitted && actorForm.controls.pie.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"actorForm.controls.pie.errors.required\">La talla es requerido</div>\n                    </div>\n                  </div>\n                  <div class=\"form-group\">\n                    <!-- Talla de Altura -->\n                    <label class=\"control-label\">Altura</label>\n                    <input type=\"text\" class=\"d-inline form-control\" formControlName=\"altura\" placeholder=\"Altura\"\n                      [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.altura.errors }\">\n                    <div *ngIf=\"submitted && actorForm.controls.altura.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"actorForm.controls.altura.errors.required\">La talla es requerido</div>\n                    </div>\n                  </div>\n                </div>\n\n                <div class=\"form-group d-lg-flex d-md-flex d-block\">\n                  <div class=\"form-group mr-lg-3 mr-md-3 mr-0\">\n                    <!-- Color de Piel -->\n                    <label class=\"control-label\">Color de Piel</label>\n                    <input type=\"text\" class=\"d-inline form-control\" formControlName=\"colorPiel\"\n                      placeholder=\"Color de Piel\"\n                      [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.colorPiel.errors }\">\n                    <div *ngIf=\"submitted && actorForm.controls.colorPiel.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"actorForm.controls.colorPiel.errors.required\">El color es requerido</div>\n                    </div>\n                  </div>\n                  <div class=\"form-group mr-lg-3 mr-md-3 mr-0\">\n                    <!-- Color de Pelo -->\n                    <label class=\"control-label\">Color de Pelo</label>\n                    <input type=\"text\" class=\"d-inline form-control\" formControlName=\"colorPelo\"\n                      placeholder=\"Color de Pelo\"\n                      [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.colorPelo.errors }\">\n                    <div *ngIf=\"submitted && actorForm.controls.colorPelo.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"actorForm.controls.colorPelo.errors.required\">El color es requerido</div>\n                    </div>\n                  </div>\n                  <div class=\"form-group mr-lg-3 mr-md-3 mr-0\">\n                    <!-- Color de Ojos -->\n                    <label class=\"control-label\">Color de ojos</label>\n                    <input type=\"text\" class=\"d-inline form-control\" formControlName=\"colorOjos\"\n                      placeholder=\"Color de ojos\"\n                      [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.colorOjos.errors }\">\n                    <div *ngIf=\"submitted && actorForm.controls.colorOjos.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"actorForm.controls.colorOjos.errors.required\">El color es requerido</div>\n                    </div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Numero DNI -->\n                  <label class=\"control-label\">Numero DNI</label>\n                  <input type=\"text\" (keypress)=\"check($event)\" class=\"d-inline form-control\" id=\"numeroDNI\"\n                    formControlName=\"numeroDNI\" placeholder=\"#####\"\n                    [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.numeroDNI.errors }\">\n                  <div *ngIf=\"submitted && actorForm.controls.numeroDNI.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"actorForm.controls.numeroDNI.errors.required\">El numero es requerida</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Numero de Seguridad Social -->\n                  <label class=\"control-label\">Numero de Seguridad Social</label>\n                  <input type=\"text\" class=\"form-control\" id=\"numeroSeguridadSocial\"\n                    formControlName=\"numeroSeguridadSocial\" placeholder=\"Numero de Seguridad Social\"\n                    [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.numeroSeguridadSocial.errors }\">\n                  <div *ngIf=\"submitted && actorForm.controls.numeroSeguridadSocial.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"actorForm.controls.numeroSeguridadSocial.errors.required\">El numero es requerida</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <label>Dirección</label>\n                  <input type=\"text\" class=\"form-control\" forControlName=\"direccion\"\n                    placeholder=\"Apartmento, studio, or floor\">\n\n                </div>\n\n                <div class=\"form-row\">\n                  <div class=\"form-group col-md-6\">\n                    <!-- Localidad -->\n                    <label class=\"control-label\">Localidad</label>\n                    <input type=\"text\" class=\"form-control\" forControlName=\"localidad\" placeholder=\"Madrid\">\n\n                  </div>\n                  <div class=\"form-group col-md-4\">\n                    <!-- Provincia -->\n                    <label class=\"control-label\">Provincia</label>\n                    <input type=\"text\" class=\"form-control\" forControlName=\"provincia\" placeholder=\"Bataluña\">\n\n                  </div>\n                  <div class=\"form-group col-md-2\">\n                    <!-- Codigo Postal -->\n                    <label for=\"inputZip\">Codigo Postal</label>\n                    <input type=\"text\" (keypress)=\"check($event)\" class=\"form-control\" forControlName=\"codpostal\"\n                      placeholder=\"######\">\n\n                  </div>\n                </div>\n\n                <div class=\"form-group d-lg-flex d-md-flex d-block\">\n                  <!-- Carnet de conducir y coche-->\n                  <div class=\"form-group mr-lg-3 mr-md-3 mr-0\">\n                    <label class=\"control-label\">Carnet de conducir</label>\n                    <input type=\"text\" class=\"d-inline form-control\" formControlName=\"carnetConducir\"\n                      placeholder=\"Modelo de Coche\"\n                      [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.carnetConducir.errors }\">\n                    <div *ngIf=\"submitted && actorForm.controls.carnetConducir.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"actorForm.controls.carnetConducir.errors.required\">Carnet es requerido</div>\n                    </div>\n                  </div>\n                  <div class=\"form-group\">\n                    <!-- Tipo de carnet -->\n                    <label for=\"exampleFormControlSelect2\">Tipo de carnet</label>\n                    <select class=\"form-control\" formControlName=\"typecarnet\" [(ngModel)]=\"tipoCarnetSelect\"\n                      [ngModelOptions]=\"{standalone: true}\">\n                      <option [ngValue]=\"\">Seleccione</option>\n                      <option [ngValue]=\"item\" *ngFor=\"let item of typecarnet\">{{item}}</option>\n                    </select>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Eres actor-->\n                  <label class=\"control-label\">Eres Actor</label>\n                  <select forControlName=\"actor\" class=\"form-control\" [(ngModel)]=\"actorSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option [ngValue]=\"\" selected>Seleccione...</option>\n                    <option [ngValue]=\"i.name\" *ngFor=\"let i of actor\">{{i.name}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"actorSelect == 'Si'\" class=\"form-group\">\n                  <!-- Link de VideoBook -->\n                  <label class=\"control-label\">Link de VideoBook</label>\n                  <input type=\"text\" class=\"form-control\" id=\"videoBook\" formControlName=\"videoBook\"\n                    placeholder=\"https://www.videoBook.com\">\n                </div>\n\n                <div class=\"form-group mr-3\">\n                  <!-- Modelo de Coche -->\n                  <label class=\"control-label\">Modelo de Coche</label>\n                  <input type=\"text\" class=\"d-inline form-control\" id=\"modeloCoche\" formControlName=\"modeloCoche\"\n                    placeholder=\"Modelo de Coche\"\n                    [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.modeloCoche.errors }\">\n                  <div *ngIf=\"submitted && actorForm.controls.modeloCoche.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"actorForm.controls.modeloCoche.errors.required\">El modelo es requerido</div>\n                  </div>\n                </div>\n                <div class=\"form-group\">\n                  <!-- Modelo de Moto-->\n                  <label class=\"control-label\">Modelo de Moto</label>\n                  <input type=\"text\" class=\"d-inline form-control\" id=\"modeloMoto\" formControlName=\"modeloMoto\"\n                    placeholder=\"Modelo de Moto\"\n                    [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.modeloMoto.errors }\">\n                  <div *ngIf=\"submitted && actorForm.controls.modeloMoto.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"actorForm.controls.modeloMoto.errors.required\">El modelo es requerido</div>\n                  </div>\n                </div>\n\n              <div class=\"form-group d-flex\">\n                <!-- Foto coche y  foto moto-->\n                <div class=\"form-group mr-3\">\n                  <label class=\"control-label\">Foto coche</label>\n                  <input type=\"file\" (change)=\"onFileCocheSelected($event)\" formControlName=\"fotoCoche\">\n                </div>\n                <div class=\"form-group\">\n                  <label class=\"control-label\">Foto moto</label>\n                  <input type=\"file\" (change)=\"onFileMotoSelected($event)\" formControlName=\"fotoMoto\">\n                </div>\n              </div>\n\n              <div class=\"form-group d-flex\">\n                <!-- Color de Coche y Moto-->\n                <div class=\"form-group mr-3\">\n                  <label class=\"control-label\">Color de Coche</label>\n                  <input type=\"text\" class=\"d-inline form-control\" id=\"colorCoche\" formControlName=\"colorCoche\"\n                    placeholder=\"Modelo de Coche\">\n                </div>\n                <div class=\"form-group\">\n                  <label class=\"control-label\">Color de Moto</label>\n                  <input type=\"text\" class=\"d-inline form-control\" id=\"colorMoto\" formControlName=\"colorMoto\"\n                    placeholder=\"Modelo de Moto\">\n                </div>\n              </div>\n\n                <div class=\"form-group\">\n                  <!-- Fotos Tatuajes -->\n                  <label class=\"control-label\">Fotos Tatuajes</label>\n                  <input type=\"file\" (change)=\"onFileTatuajeSelected($event)\" multiple=\"multiple\"\n                    formControlName=\"tattoos\"><br>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Modelos de manos -->\n                  <label class=\"control-label\">Modelo de manos profesional</label>\n                  <input type=\"file\" (change)=\"onFileManoSelected($event)\" multiple=\"multiple\"\n                    formControlName=\"tattoos\"><br>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Deporte -->\n                  <label class=\"control-label\">Deporte</label>\n                  <select forControlName=\"deportista\" class=\"form-control\" [(ngModel)]=\"deportistaSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option selected>Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of deportista\">{{i.nombreDeportista}}</option>\n                  </select>\n                </div>\n                <div\n                  *ngIf=\"deportistaSelect.nombreDeportista == 'Federado' ||  deportistaSelect.nombreDeportista == 'Profesional'\"\n                  class=\"form-group\">\n                  <!-- Habilidades del deporte-->\n                  <label class=\"control-label\">Habilidades del deporte</label>\n                  <select forControlName=\"deportes\" class=\"form-control\" [(ngModel)]=\"deporteSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option selected>Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of deportes\">{{i.nombreDeporte}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"deporteSelect.nombreDeporte == 'Otros'\" class=\"form-group\">\n                  <!-- Espesifique otro deporte -->\n                  <label class=\"control-label\">Espesifique otro deporte</label>\n                  <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Baile -->\n                  <label class=\"control-label\">Baile</label>\n                  <select forControlName=\"baile\" class=\"form-control\" [(ngModel)]=\"baileSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option selected>Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of baile\">{{i.nombreBailarin}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"baileSelect.nombreBailarin == 'Profesional' \" class=\"form-group\">\n                  <!-- Estilos de Baile -->\n                  <label class=\"control-label\">Estilos de Baile</label>\n                  <select forControlName=\"estilosBaile\" class=\"form-control\" [(ngModel)]=\"estilosBaileSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option selected>Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of estilosBaile\">{{i.nombreBaile}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"estilosBaileSelect.nombreBaile == 'Otros'\" class=\"form-group\">\n                  <!-- Espesifique otro baile -->\n                  <label class=\"control-label\">Espesifique otro baile</label>\n                  <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Musico -->\n                  <label class=\"control-label\">Musico</label>\n                  <select forControlName=\"musico\" class=\"form-control\" [(ngModel)]=\"musicoSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option selected>Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of musico\">{{i.nombreMusico}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"musicoSelect.nombreMusico == 'Profesional'\" class=\"form-group\">\n                  <!-- Instrumentos musical -->\n                  <label class=\"control-label\">Instrumentos musical</label>\n                  <select forControlName=\"instrumentoss\" class=\"form-control\" [(ngModel)]=\"instrumentoSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option selected>Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of instrumentoss\">{{i.nombreInstrumento}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"instrumentoSelect.nombreInstrumento == 'Otros'\" class=\"form-group\">\n                  <!-- Espesifique otro instrumento musical -->\n                  <label class=\"control-label\">Espesifique otro instrumento musical</label>\n                  <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Cantantes -->\n                  <label class=\"control-label\">Cantantes</label>\n                  <select forControlName=\"cantante\" class=\"form-control\" [(ngModel)]=\"cantanteSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option selected>Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of cantante\">{{i.nombreCantante}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"cantanteSelect.nombreCantante == 'Profesional'\" class=\"form-group\">\n                  <!-- Estilos de cantos -->\n                  <label class=\"control-label\">Estilo de cantos</label>\n                  <select class=\"form-control\" forControlName=\"estilosCanto\" [(ngModel)]=\"estilosCantoSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option selected>Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of estilosCanto\">{{i.nombreEstiloCanto}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"estilosCantoSelect.nombreEstiloCanto == 'Otros'\" class=\"form-group\">\n                  <!-- Espesifique otros estilos -->\n                  <label class=\"control-label\">Espesifique otro estilos</label>\n                  <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Habilidades -->\n                  <label class=\"control-label\">Habilidades</label>\n                  <select forControlName=\"habilidadess\" class=\"form-control\" [(ngModel)]=\"habilidadessSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option selected>Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of habilidadess\">{{i.nombreHabilidad}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"habilidadessSelect.nombreHabilidad == 'Otros'\" class=\"form-group\">\n                  <!-- Espesifique otras habilidades -->\n                  <label class=\"control-label\">Espesifique otras habilidades</label>\n                  <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Idiomas -->\n                  <label class=\"control-label\">Idiomas</label>\n                  <select forControlName=\"idiomas\" class=\"form-control\" [(ngModel)]=\"idiomasSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option selected>Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of idiomas\">{{i.nombreIdioma}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"idiomasSelect.nombreIdioma == 'Otros'\" class=\"form-group\">\n                  <!-- Espesifique otro Idioma -->\n                  <label class=\"control-label\">Espesifique otro Idioma</label>\n                  <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Ultimos trabajos -->\n                  <label class=\"control-label\">Descripción de Ultimos Trabajos</label>\n                  <input type=\"text\" class=\"d-inline form-control\" formControlName=\"ultimosTrabajos\"\n                    placeholder=\"Teatro\">\n                  <input type=\"text\" class=\"d-inline form-control\" formControlName=\"ultimosTrabajos\" placeholder=\"Cine\">\n                  <input type=\"text\" class=\"d-inline form-control\" formControlName=\"ultimosTrabajos\"\n                    placeholder=\"Ficcion\">\n                  <input type=\"text\" class=\"d-inline form-control\" formControlName=\"ultimosTrabajos\"\n                    placeholder=\"Publicidad\">\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Observaciones -->\n                  <label for=\"\">Observaciones</label>\n                  <textarea class=\"form-control\" id=\"\" rows=\"3\"></textarea>\n                </div>\n\n                <div class=\"form-group\">\n                  <div class=\"form-check\">\n                    <input type=\"checkbox\" formControlName=\"acceptTerms\" id=\"acceptTerms\" class=\"form-check-input\"\n                      [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.acceptTerms.value === false }\" />\n                    <label class=\"form-check-label\">\n                      Acepta los terminos del registro\n                    </label>\n                    <div *ngIf=\"submitted && actorForm.controls.acceptTerms.value === false\" class=\"invalid-feedback\">Los\n                      terminos es requerido</div>\n                  </div>\n                </div>\n\n                <div class=\"info info--sm\">\n                  Al hacer clic en \"Crear cuenta\" certifico que tengo 16 años o más y acepto las\n                  <a class=\"link-secondary--underlined\" target=\"blank\" routerLink=\"/terms\">Condiciones de Uso</a>, la\n                  <a class=\"link-secondary--underlined\" target=\"blank\" routerLink=\"/privacy\">Política de Privacidad</a>\n                  y recibir novedades y promociones.\n                </div>\n\n                <div class=\"mt-4 form-group\">\n                  <!-- Submit Button -->\n                  <button type=\"submit\" (click)=\"registrarActor()\" class=\"btn btn-primary\">Registrame!</button>\n                </div>\n\n              </form>\n            </div>\n          </div>\n        </div>\n        <div class=\"\">\n          ¿Ya tienes cuenta?\n          <a routerLink=\"/login\" class=\"link-primary\">\n            Entrar\n          </a>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<app-footer></app-footer>\n");
 
 /***/ }),
 
@@ -58,7 +58,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-header></app-header>\n<div class=\"bg-fondo\">\n    <div class=\"container contect-Ajuste mx-w d-flex\">\n        <div class=\"\">\n          <div class=\"\">\n            <a class=\"logo\">Registro de Niños</a>\n            <p class=\"mt-3\">-------------------</p>\n          </div>\n          <div class=\"\">\n            <div class=\"\">\n              <div class=\"\">\n                <div class=\"\">\n                  <div class=\"\">\n                      <p class=\"mt-3\">Llena el siguiente formulario</p>\n                  </div>\n                  <form [formGroup]=\"childForm\">\n\n                    <div class=\"form-group\"><!-- Foto de Perfil -->\n                        <label class=\"control-label\">Foto de Perfil</label>\n                        <input type=\"file\" (change)=\"onAvatarSelected($event)\" formControlName=\"avatar\" ><br>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Nombre de Usuario -->\n                      <label class=\"control-label\">Nombre de Usuario</label>\n                      <input type=\"text\" class=\"form-control\"  formControlName=\"username\" placeholder=\"Ldiaz\" [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.username.errors }\">\n                      <div *ngIf=\"submitted && childForm.controls.username.errors\" class=\"invalid-feedback\">\n                          <div *ngIf=\"childForm.controls.username.errors.required\">El usuario es requerido</div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Nombres Completos -->\n                      <label class=\"control-label\">Nombres</label>\n                      <input type=\"text\" class=\"form-control\"  formControlName=\"nombres\" placeholder=\"Luis Alfredo\" [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.nombres.errors }\">\n                      <div *ngIf=\"submitted && childForm.controls.nombres.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"childForm.controls.nombres.errors.required\">El nombre es requerido</div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Apellidos Completos -->\n                      <label class=\"control-label\">Apellidos</label>\n                      <input type=\"text\" class=\"form-control\"  formControlName=\"apellidos\" placeholder=\"Almito Gil\" [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.apellidos.errors }\">\n                      <div *ngIf=\"submitted && childForm.controls.apellidos.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"childForm.controls.apellidos.errors.required\">El apellido es requerido</div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Edad -->\n                        <label class=\"control-label\">Edad</label>\n                        <select forControlName=\"edad\" class=\"form-control\">\n                          <option [ngValue]=\"0\">Seleccione....</option>\n                          <option *ngFor=\"let i of edad\">{{i}}</option>\n                        </select>                        \n                    </div>\n\n                    <div class=\"form-group\">\n                        <label>Contraseña</label>\n                        <input type=\"password\" (keypress)=\"numberOnly($event)\"  class=\"form-control\" formControlName=\"password\" placeholder=\"Password\" [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.password.errors }\">\n                        <div *ngIf=\"submitted && childForm.controls.password.errors\" class=\"invalid-feedback\">\n                            <div *ngIf=\"childForm.controls.password.errors.required\">La contraseña es requerida</div>\n                            <div *ngIf=\"childForm.controls.password.errors.minlength\">La contraseña debe tener al menos 6 caracteres</div>\n                        </div>\n                      </div>\n  \n                      <div class=\"form-group\">\n                        <label>Confirma contraseña</label>\n                        <input type=\"password\" (keypress)=\"numberOnly($event)\" class=\"form-control\" formControlName=\"confirmPassword\"  placeholder=\"Confirm Password\" [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.confirmPassword.errors }\" />\n                            <div *ngIf=\"submitted && childForm.controls.confirmPassword.errors\" class=\"invalid-feedback\">\n                            <div *ngIf=\"childForm.controls.confirmPassword.errors.required\">Confirme que se requiere contraseña</div>\n                            <div *ngIf=\"childForm.controls.confirmPassword.errors.mustMatch\">Las contraseñas deben coincidir</div>\n                        </div>\n                    </div>\n\n                    <fieldset class=\"form-group\"><!-- Sexo -->\n                        <div class=\"row\">\n                          <legend class=\"col-form-label col-sm-2 pt-0\">Sexo</legend>\n                          <div class=\"col-sm-10\">\n                            <div class=\"form-check\">\n                              <input class=\"form-check-input\" type=\"radio\" formControlName=\"sexo\"  value=\"Masculino\" checked>\n                              <label class=\"form-check-label\">\n                                Masculino\n                              </label>\n                            </div>\n                            <div class=\"form-check\">\n                              <input class=\"form-check-input\" type=\"radio\" formControlName=\"sexo\"  value=\"Femenino\">\n                              <label class=\"form-check-label\">\n                                Femenino\n                              </label>\n                            </div>\n                          </div>\n                        </div>\n                    </fieldset>\n\n                    <div class=\"form-group\"><!-- ¿De qué grupo étnico se considera? -->\n                      <label class=\"control-label\">¿De qué grupo étnico se considera?</label>\n                      <select forControlName=\"etnico\" class=\"form-control\">\n                          <option [ngValue]=\"0\">Seleccione...</option>\n                          <option *ngFor=\"let i of etnico\">{{i}}</option>\n                        </select>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Numero de Teléfono -->\n                        <label>Numero de Teléfono</label>\n                        <label class=\"sr-only\" for=\"inlineFormInputGroup\">Numero de Teléfono</label>\n                        <div class=\"input-group mb-2\">\n                          <div class=\"input-group-prepend\">\n                            <div class=\"input-group-text\">+34</div>\n                          </div>\n                          <input type=\"text\" (keypress)=\"numberOnly($event)\" class=\"form-control\" formControlName=\"telefono\" placeholder=\"Numero de teléfono\" [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.telefono.errors }\">\n                          <div *ngIf=\"submitted && childForm.controls.telefono.errors\" class=\"invalid-feedback\">\n                            <div *ngIf=\"childForm.controls.telefono.errors.required\">El telefono es requerida</div>\n                          </div>\n                        </div>\n                    </div>\n                    \n                    <div class=\"form-group\"><!-- Fecha de nacimiento -->\n                      <mat-form-field>\n                          <input matInput [matDatepicker]=\"picker\" formControlName=\"fechaNacimiento\" placeholder=\"Fecha de nacimiento\">\n                          <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n                          <mat-datepicker #picker></mat-datepicker>\n                      </mat-form-field>\n                    </div>\n\n                    <div class=\"form-group\"> <!-- Lugar de nacimiento -->\n                      <label class=\"control-label\">Lugar de nacimiento</label>\n                      <input type=\"text\" class=\"form-control\" id=\"placebirth\" formControlName=\"placebirth\" placeholder=\"ldiaz\" [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.placebirth.errors }\">\n                      <div *ngIf=\"submitted && childForm.controls.placebirth.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"childForm.controls.placebirth.errors.required\">El lugar es requerido</div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Nacionalidad -->\n                        <label class=\"control-label\">Nacionalidad</label>\n                        <input type=\"text\" class=\"form-control\"  formControlName=\"nacionalidad\" placeholder=\"Pais\" [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.nacionalidad.errors }\">\n                        <div *ngIf=\"submitted && childForm.controls.nacionalidad.errors\" class=\"invalid-feedback\">\n                          <div *ngIf=\"childForm.controls.nacionalidad.errors.required\">La nacionalidad es requerido</div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Correo electronico -->\n                        <label>Correo electronico</label>\n                        <input type=\"email\" class=\"form-control\" formControlName=\"email\" placeholder=\"name@example.com\" [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.email.errors }\">\n                        <div *ngIf=\"submitted && childForm.controls.email.errors\" class=\"invalid-feedback\">\n                            <div *ngIf=\"childForm.controls.email.errors.required\">Correo electrónico es requerido</div>\n                            <div *ngIf=\"childForm.controls.email.errors.email\">Debe ser una dirección de correo electrónico válida</div>\n                        </div>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Eres actor-->\n                      <label class=\"control-label\">Eres Actor</label>\n                        <select forControlName=\"actor\" class=\"form-control\" [(ngModel)]=\"actor.name\" [ngModelOptions]=\"{standalone: true}\">\n                          <option [ngValue]=\"i\" selected>Seleccione...</option>\n                          <option *ngFor=\"let i of actor\">{{i.name}}</option>\n                        </select>\n                    </div> \n                    <div *ngIf=\"actor.name == 'Si'\" class=\"form-group\"> <!-- Link de VideoBook -->\n                      <label class=\"control-label\">Link de VideoBook</label>\n                      <input type=\"text\" class=\"form-control\" formControlName=\"videoBook\" placeholder=\"https://www.videoBook.com\">\n                    </div>\n\n                    <div class=\"form-group d-lg-flex d-md-flex d-block\">\n                        <div class=\"form-group mr-2\"><!-- Talla de camisa -->\n                          <label class=\"control-label\">Talla de camisa</label>\n                          <input type=\"text\" class=\"d-inline form-control\"  formControlName=\"tallaCamisa\" placeholder=\"talla de camisa\" [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.tallaCamisa.errors }\">\n                          <div *ngIf=\"submitted && childForm.controls.tallaCamisa.errors\" class=\"invalid-feedback\">\n                              <div *ngIf=\"childForm.controls.tallaCamisa.errors.required\">La talla es requerido</div>\n                          </div>\n                        </div>\n                        <div class=\"form-group mr-2\"><!-- talla de chaqueta -->\n                          <label class=\"control-label\">talla de chaqueta</label>\n                          <input type=\"text\" class=\"d-inline form-control\"  formControlName=\"tallaChaqueta\" placeholder=\"talla de chaqueta\" [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.tallaChaqueta.errors }\">\n                          <div *ngIf=\"submitted && childForm.controls.tallaChaqueta.errors\" class=\"invalid-feedback\">\n                              <div *ngIf=\"childForm.controls.tallaChaqueta.errors.required\">La talla es requerido</div>\n                          </div>\n                        </div>\n                        <div class=\"form-group mr-2\"><!-- Talla de pantalon -->\n                          <label class=\"control-label\">Talla de pantalon</label>\n                          <input type=\"text\" class=\"d-inline form-control\"  formControlName=\"tallaPantalon\" placeholder=\"talla de pantalon\" [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.tallaPantalon.errors }\">\n                          <div *ngIf=\"submitted && childForm.controls.tallaPantalon.errors\" class=\"invalid-feedback\">\n                              <div *ngIf=\"childForm.controls.tallaPantalon.errors.required\">La talla es requerido</div>\n                          </div>\n                        </div>\n                        <div class=\"form-group mr-3\"><!-- Talla de Pie -->\n                            <label class=\"control-label\">Pie</label>\n                            <input type=\"text\" class=\"d-inline form-control\"  formControlName=\"pie\" placeholder=\"Pie\" [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.pie.errors }\">\n                            <div *ngIf=\"submitted && childForm.controls.pie.errors\" class=\"invalid-feedback\">\n                                <div *ngIf=\"childForm.controls.pie.errors.required\">La talla es requerido</div>\n                            </div>\n                          </div>\n                          <div class=\"form-group\"><!-- Talla de Altura -->\n                            <label class=\"control-label\">Altura</label>\n                            <input type=\"text\" class=\"d-inline form-control\"  formControlName=\"altura\" placeholder=\"Altura\" [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.altura.errors }\">\n                            <div *ngIf=\"submitted && childForm.controls.altura.errors\" class=\"invalid-feedback\">\n                                <div *ngIf=\"childForm.controls.altura.errors.required\">La talla es requerido</div>\n                            </div>\n                        </div>\n                    </div>\n\n                    <div class=\"form-group d-lg-flex d-md-flex d-block\">\n                        <div class=\"form-group mr-3\"><!-- Color de Piel -->\n                          <label class=\"control-label\">Color de Piel</label>\n                          <input type=\"text\" class=\"d-inline form-control\"  formControlName=\"colorPiel\" placeholder=\"Color de Piel\" [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.colorPiel.errors }\">\n                          <div *ngIf=\"submitted && childForm.controls.colorPiel.errors\" class=\"invalid-feedback\">\n                              <div *ngIf=\"childForm.controls.colorPiel.errors.required\">El color es requerido</div>\n                          </div>\n                        </div>\n                        <div class=\"form-group mr-3\"><!-- Color de Pelo -->\n                          <label class=\"control-label\">Color de Pelo</label>\n                          <input type=\"text\" class=\"d-inline form-control\"  formControlName=\"colorPelo\" placeholder=\"Color de Pelo\" [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.colorPelo.errors }\">\n                          <div *ngIf=\"submitted && childForm.controls.colorPelo.errors\" class=\"invalid-feedback\">\n                              <div *ngIf=\"childForm.controls.colorPelo.errors.required\">El color es requerido</div>\n                          </div>\n                        </div>\n                        <div class=\"form-group mr-3\"><!-- Color de ojos -->\n                            <label class=\"control-label\">Color de ojos</label>\n                            <input type=\"text\" class=\"d-inline form-control\" formControlName=\"colorOjos\" placeholder=\"Color de ojos\" [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.colorOjos.errors }\">\n                            <div *ngIf=\"submitted && childForm.controls.colorOjos.errors\" class=\"invalid-feedback\">\n                                <div *ngIf=\"childForm.controls.colorOjos.errors.required\">El color es requerido</div>\n                            </div>\n                        </div>\n                    </div>\n\n                    <div class=\"form-group\">\n                        <label>Dirección</label>\n                        <input type=\"text\" class=\"form-control\" forControlName=\"direccion\" placeholder=\"Apartmento, studio, or floor\">\n                          \n                    </div>\n                    <div class=\"form-row\">\n                        <div class=\"form-group col-md-6\"><!-- Localidad -->\n                          <label class=\"control-label\">Localidad</label>\n                          <input type=\"text\" class=\"form-control\" forControlName=\"localidad\" placeholder=\"Smallville\" >\n                          \n                        </div>\n                        <div class=\"form-group col-md-4\"><!-- Provincia -->\n                            <label class=\"control-label\">Provincia</label>\n                            <input type=\"text\" class=\"form-control\" forControlName=\"provincia\" placeholder=\"alabama\" >\n                           \n                        </div>\n                        <div class=\"form-group col-md-2\"><!-- Codigo Postal -->\n                          <label for=\"inputZip\">Codigo Postal</label>\n                          <input type=\"text\" (keypress)=\"check($event)\" class=\"form-control\" forControlName=\"codpostal\" placeholder=\"#####\" >\n                         \n                        </div>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Numero DNI del niño-->\n                        <label class=\"control-label\">Numero DNI</label>\n                        <input type=\"text\" (keypress)=\"check($event)\" class=\"d-inline form-control\"  formControlName=\"numeroDNI\" placeholder=\"#####\" [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.numeroDNI.errors }\">\n                        <div *ngIf=\"submitted && childForm.controls.numeroDNI.errors\" class=\"invalid-feedback\">\n                          <div *ngIf=\"childForm.controls.numeroDNI.errors.required\">El numero es requerida</div>\n                        </div>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Copia del Numero DNI del niño -->\n                      <label>Copia del Numero DNI del niño</label>\n                      <input type=\"file\" (change)=\"copyDNIkidSelected($event)\" formControlName=\"copyDNIkid\">\n                    </div>\n                   \n                    <div class=\"form-group\"><!-- Numero seguridad social -->\n                        <label class=\"control-label\">Número de la seguridad social del niño</label>\n                        <input type=\"text\" class=\"form-control\"  formControlName=\"numeroSeguridadSocial\" placeholder=\"Numero de Seguridad Social\" [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.numeroSeguridadSocial.errors }\">\n                        <div *ngIf=\"submitted && childForm.controls.numeroSeguridadSocial.errors\" class=\"invalid-feedback\">\n                          <div *ngIf=\"childForm.controls.numeroSeguridadSocial.errors.required\">El numero es requerida</div>\n                        </div>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Copia numero seguridad social -->\n                      <label>Copia numero seguridad social del niño</label>\n                      <input type=\"file\" (change)=\"copySocialNumberSelected($event)\" formControlName=\"copySocialNumber\">\n                    </div>\n\n                    <div class=\"form-group\"><!-- DNI del padre -->\n                        <label>DNI del padre</label>\n                        <input type=\"text\" (keypress)=\"check($event)\" class=\"form-control\"  formControlName=\"numeroDNIPadre\" placeholder=\"30065089H\" [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.numeroDNIPadre.errors }\">\n                        <div *ngIf=\"submitted && childForm.controls.numeroDNIPadre.errors\" class=\"invalid-feedback\">\n                          <div *ngIf=\"childForm.controls.numeroDNIPadre.errors.required\">El DNI es requerida</div>\n                        </div>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Copia del DNI del padre -->\n                      <label>Copia del DNI del padre</label>\n                      <input type=\"file\" (change)=\"copyDNIFatherSelected($event)\" formControlName=\"copyDNIFather\">\n                    </div>\n\n                    \n                    <div class=\"form-group\"><!-- Numero de Teléfono del padre-->\n                      <label>Numero de Teléfono del padre</label>\n                      <input type=\"text\" (keypress)=\"numberOnly($event)\" class=\"form-control\"  formControlName=\"telefonofather\" placeholder=\"Numero de teléfono\" [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.telefonofather.errors }\">\n                      <div *ngIf=\"submitted && childForm.controls.telefonofather.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"childForm.controls.telefonofather.errors.required\">El telefono es requerida</div>\n                      </div>\n                    </div>\n  \n                    <div class=\"form-group\"><!-- DNI de la Madre -->\n                        <label>DNI de la Madre</label>\n                        <input type=\"text\" (keypress)=\"check($event)\" class=\"form-control\"  formControlName=\"numeroDNIMadre\" placeholder=\"30065089H\" [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.numeroDNIMadre.errors }\">\n                        <div *ngIf=\"submitted && childForm.controls.numeroDNIMadre.errors\" class=\"invalid-feedback\">\n                          <div *ngIf=\"childForm.controls.numeroDNIMadre.errors.required\">El DNI es requerida</div>\n                        </div>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Copia del DNI de la madre -->\n                      <label>Copia del DNI de la madre</label>\n                      <input type=\"file\" (change)=\"copyDNIMotherSelected($event)\" formControlName=\"CopyDNIMother\" [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.CopyDNIMother.errors }\">\n                      <div *ngIf=\"submitted && childForm.controls.CopyDNIMother.errors\" class=\"invalid-feedback\">\n                          <div *ngIf=\"childForm.controls.CopyDNIMother.errors.required\">La copia es requerida</div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Numero de Teléfono de la madre-->\n                      <label>Numero de Teléfono de la madre</label>\n                      <input type=\"text\" (keypress)=\"numberOnly($event)\" class=\"form-control\"  formControlName=\"telefonomother\" placeholder=\"Numero de teléfono\" [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.telefonomother.errors }\">\n                      <div *ngIf=\"submitted && childForm.controls.telefonomother.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"childForm.controls.telefonomother.errors.required\">El teléfono es requerida</div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Libro de familiar -->\n                        <label>Libro de familiar</label>\n                        <input type=\"file\" (change)=\"onFamilyBookSelected($event)\" formControlName=\"libroFamilia\">\n                    </div>\n\n                    <div class=\"form-group\"><!-- Deportes -->\n                        <label class=\"control-label\">Deportes</label>\n                          <select forControlName=\"deporte\" class=\"form-control\" [(ngModel)]=\"deporte.name\" [ngModelOptions]=\"{standalone: true}\">\n                            <option [ngValue]=\"i\" selected>Seleccione...</option>\n                            <option *ngFor=\"let i of deporte\">{{i.name}}</option>\n                          </select>\n                    </div>\n                    <div *ngIf=\"deporte.name == 'Federado' ||  deporte.name == 'Profesional'\" class=\"form-group\"><!-- Habilidades del deporte-->\n                      <label class=\"control-label\">Habilidades del deporte</label>\n                        <select forControlName=\"habdeportes\" class=\"form-control\" [(ngModel)]=\"habdeportes.Otros\" [ngModelOptions]=\"{standalone: true}\">\n                          <option [ngValue]=\"i\">Seleccione...</option>\n                          <option *ngFor=\"let i of habdeportes\">{{i}}</option>\n                        </select>\n                    </div>\n                    <div *ngIf=\"habdeportes.Otros == 'Otros'\" class=\"form-group\"><!-- Espesifique otro deporte -->\n                      <label class=\"control-label\">Espesifique otro deporte</label>\n                      <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Bailes -->\n                        <label class=\"control-label\">Bailes</label>\n                        <select forControlName=\"bailes\" class=\"form-control\" [(ngModel)]=\"bailes.name\" [ngModelOptions]=\"{standalone: true}\">\n                            <option [ngValue]=\"i\">Seleccione...</option>\n                            <option *ngFor=\"let i of bailes\">{{i.name}}</option>\n                          </select>\n                    </div>\n                    <div *ngIf=\"bailes.name == 'Profesional'\" class=\"form-group\"><!-- Estilos de Baile -->\n                        <label class=\"control-label\">Estilos de Baile</label>\n                          <select forControlName=\"estilobailes\" class=\"form-control\" [(ngModel)]=\"estilobailes.Otros\" [ngModelOptions]=\"{standalone: true}\">\n                            <option [ngValue]=\"i\">Seleccione...</option>\n                            <option *ngFor=\"let i of estilobailes\">{{i}}</option>\n                          </select>\n                      </div>\n                      <div *ngIf=\"estilobailes.Otros == 'Otros'\" class=\"form-group\"><!-- Espesifique otro baile -->\n                        <label class=\"control-label\">Espesifique otro baile</label>\n                        <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                      </div>\n\n                      <div class=\"form-group\"><!-- Musico -->\n                          <label class=\"control-label\">Musico</label>\n                          <select forControlName=\"musicos\" class=\"form-control\" [(ngModel)]=\"musicos.name\" [ngModelOptions]=\"{standalone: true}\">\n                              <option [ngValue]=\"i\" selected>Seleccione...</option>\n                              <option *ngFor=\"let i of musicos\">{{i.name}}</option>\n                          </select>\n                      </div>\n                      <div *ngIf=\"musicos.name == 'Profesional'\" class=\"form-group\"><!-- Instrumentos musical -->\n                        <label class=\"control-label\">Instrumentos musical</label>\n                          <select forControlName=\"instrumentos\" class=\"form-control\" [(ngModel)]=\"instrumentos.Otros\" [ngModelOptions]=\"{standalone: true}\">\n                            <option [ngValue]=\"i\">Seleccione...</option>\n                            <option *ngFor=\"let i of instrumentos\">{{i}}</option>\n                          </select>\n                      </div>\n                      <div *ngIf=\"instrumentos.Otros == 'Otros'\" class=\"form-group\"><!-- Espesifique otro instrumento musical -->\n                        <label class=\"control-label\">Espesifique otro instrumento musical</label>\n                        <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                      </div>\n\n                      <div class=\"form-group\"><!-- Cantantes -->\n                          <label class=\"control-label\">Cantantes</label>\n                          <select class=\"form-control\" forControlName=\"cantos\" [(ngModel)]=\"cantos.name\" [ngModelOptions]=\"{standalone: true}\">\n                              <option [ngValue]=\"i\">Seleccione...</option>\n                              <option *ngFor=\"let i of cantos\">{{i.name}}</option>\n                            </select>\n                      </div>\n                      <div *ngIf=\"cantos.name == 'Profesional'\" class=\"form-group\"><!-- Estilos de cantos -->\n                        <label class=\"control-label\">Estilos de cantos</label>\n                          <select forControlName=\"estilocantos\" class=\"form-control\" [(ngModel)]=\"estilocantos.Otros\" [ngModelOptions]=\"{standalone: true}\">\n                            <option [ngValue]=\"i\">Seleccione...</option>\n                            <option *ngFor=\"let i of estilocantos\">{{i}}</option>\n                          </select>\n                      </div>\n                      <div *ngIf=\"estilocantos.Otros == 'Otros'\" class=\"form-group\"><!-- Espesifique otros estilos -->\n                        <label class=\"control-label\">Espesifique otro estilos</label>\n                        <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                      </div>\n\n                      <div class=\"form-group\"><!-- Habilidades -->\n                          <label class=\"control-label\">Habilidades</label>\n                            <select forControlName=\"habilidades\" class=\"form-control\" [(ngModel)]=\"habilidades.Otros\" [ngModelOptions]=\"{standalone: true}\">\n                              <option [ngValue]=\"i\">Seleccione...</option>\n                              <option *ngFor=\"let i of habilidades\">{{i}}</option>\n                            </select>\n                      </div>\n                      <div *ngIf=\"habilidades.Otros == 'Otros'\" class=\"form-group\"><!-- Espesifique otras habilidades -->\n                        <label class=\"control-label\">Espesifique otras habilidades</label>\n                        <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                      </div>\n\n                      <div class=\"form-group\"><!-- Idiomas -->\n                          <label class=\"control-label\">Idiomas</label>\n                          <select formControlName=\"idiomasHablados\" class=\"form-control\" [(ngModel)]=\"idiomasHablados.Otros\" [ngModelOptions]=\"{standalone: true}\">\n                              <option [ngValue]=\"i\">Seleccione...</option>\n                              <option *ngFor=\"let i of idiomasHablados\">{{i}}</option>\n                            </select>\n                      </div>\n                      <div *ngIf=\"idiomasHablados.Otros == 'Otros'\" class=\"form-group\"><!-- Espesifique otro Idioma -->\n                        <label class=\"control-label\">Espesifique otro Idioma</label>\n                        <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                      </div>\n\n                      <div class=\"form-group\"><!-- Ultimos trabajos -->\n                          <label class=\"control-label\">Descripción de Ultimos Trabajos</label>\n                          <input type=\"text\" class=\"d-inline form-control\" formControlName=\"ultimosTrabajos\" placeholder=\"Teatro\">\n                          <input type=\"text\" class=\"d-inline form-control\" formControlName=\"ultimosTrabajos\" placeholder=\"Cine\">\n                          <input type=\"text\" class=\"d-inline form-control\" formControlName=\"ultimosTrabajos\" placeholder=\"Ficcion\">\n                          <input type=\"text\" class=\"d-inline form-control\" formControlName=\"ultimosTrabajos\" placeholder=\"Publicidad\">\n                      </div>\n                      <div class=\"form-group\"><!-- Observaciones -->\n                        <label for=\"\">Observaciones</label>\n                        <textarea class=\"form-control\" id=\"observaciones\" formControlName=\"observaciones\" rows=\"3\"></textarea>\n                      </div>\n                   \n                    <div class=\"form-group\">\n                        <div class=\"form-check\">\n                        <input type=\"checkbox\" formControlName=\"acceptTerms\" id=\"acceptTerms\" class=\"form-check-input\" [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.acceptTerms.errors }\" />\n                          <label class=\"form-check-label\">\n                            Acepta los terminos del registro\n                          </label>\n                        <div *ngIf=\"submitted && childForm.controls.acceptTerms.errors\" class=\"invalid-feedback\">Los terminos es requerido</div>\n                      </div>\n                    </div>\n\n                    <div class=\"info info--sm\">\n                        Al aceptar los \"Terminos del registro\" certifico que tengo 16 años o más y acepto las\n                        <a class=\"link-secondary--underlined\" target=\"blank\" routerLink=\"/terms\">Condiciones de Uso</a>, la\n                        <a class=\"link-secondary--underlined\" target=\"blank\" routerLink=\"/privacy\">Política de Privacidad</a> y recibir novedades y promociones.\n                    </div>\n                    <div class=\"mt-5 form-group\">\n                        <button class=\"btn btn-primary\" (click)=\"signupChild()\">Registrame!</button>\n                    </div>\n                  </form>\n                </div>\n              </div>\n            </div>\n            <div class=\"modal-footer\">\n              ¿Ya tienes cuenta?\n              <a routerLink=\"/login\" class=\"link-primary\">\n                Entrar\n              </a>\n            </div>\n          </div>\n        </div>\n    </div>\n</div>\n<app-footer></app-footer>");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header></app-header>\n<div class=\"bg-fondo\">\n  <div class=\"container contect-Ajuste mx-w d-flex\">\n    <div class=\"\">\n      <div class=\"\">\n        <a class=\"logo\">Registro de Niños</a>\n      </div>\n      <div class=\"\">\n        <div class=\"\">\n          <div class=\"\">\n            <div class=\"\">\n              <div class=\"\">\n                <p class=\"mt-3\">Llena el siguiente formulario</p>\n              </div>\n              <form [formGroup]=\"childForm\">\n\n                <div class=\"form-group\">\n                  <!-- Foto de Perfil\n                  <h3>Foto de Perfil</h3>\n                  <div class=\"form-group\">\n                    <input type=\"file\" name=\"image\" (change)=\"fileProgress($event)\" />\n                  </div>\n                  <div *ngIf=\"fileUploadProgress\">\n                    Progreso de Carga: {{ fileUploadProgress }}\n                  </div>\n                  <div class=\"image-preview mb-3\" *ngIf=\"previewUrl\">\n                    <img [src]=\"previewUrl\" height=\"300\" />\n                  </div>\n\n                  <div class=\"mb-3\" *ngIf=\"uploadedFilePath\">\n                    {{uploadedFilePath}}\n                  </div>\n\n\n                   <div class=\"form-group\">\n                    <button class=\"btn btn-primary\" (click)=\"onSubmit()\">Submit</button>\n                  </div>\n\n                  -->\n                  <label class=\"control-label\">Foto de Perfil</label>\n                  <input type=\"file\" (change)=\"onAvatarSelected($event)\" formControlName=\"avatar\"><br>\n                </div>\n                <div class=\"form-group\">\n                  <!-- cuerpo entero -->\n                  <label class=\"control-label\">Foto cuerpo entero</label>\n                  <input type=\"file\" (change)=\"onFileCuerpoEnteroSelected($event)\" formControlName=\"avatar\"><br>\n                </div>\n                <div class=\"form-group\">\n                  <!-- foto artistico -->\n                  <label class=\"control-label\">Foto artistico</label>\n                  <input type=\"file\" (change)=\"onFileArtisticoSelected($event)\" formControlName=\"avatar\"><br>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Nombre de Usuario -->\n                  <label class=\"control-label\">Nombre de Usuario</label>\n                  <input type=\"text\" class=\"form-control\" formControlName=\"username\" placeholder=\"Ldiaz\"\n                    [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.username.errors }\">\n                  <div *ngIf=\"submitted && childForm.controls.username.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"childForm.controls.username.errors.required\">El usuario es requerido</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Nombres Completos -->\n                  <label class=\"control-label\">Nombres</label>\n                  <input type=\"text\" class=\"form-control\" formControlName=\"nombres\" placeholder=\"Luis Alfredo\"\n                    [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.nombres.errors }\">\n                  <div *ngIf=\"submitted && childForm.controls.nombres.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"childForm.controls.nombres.errors.required\">El nombre es requerido</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Apellidos Completos -->\n                  <label class=\"control-label\">Apellidos</label>\n                  <input type=\"text\" class=\"form-control\" formControlName=\"apellidos\" placeholder=\"Almito Gil\"\n                    [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.apellidos.errors }\">\n                  <div *ngIf=\"submitted && childForm.controls.apellidos.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"childForm.controls.apellidos.errors.required\">El apellido es requerido</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Edad -->\n                  <label class=\"control-label\">Edad</label>\n                  <select forControlName=\"edad\" class=\"form-control\">\n                    <option [ngValue]=\"0\">Seleccione....</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of edad\">{{i}}</option>\n                  </select>\n                </div>\n\n                <div class=\"form-group\">\n                  <label>Contraseña</label>\n                  <input type=\"password\" (keypress)=\"numberOnly($event)\" class=\"form-control\" formControlName=\"password\"\n                    placeholder=\"Password\"\n                    [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.password.errors }\">\n                  <div *ngIf=\"submitted && childForm.controls.password.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"childForm.controls.password.errors.required\">La contraseña es requerida</div>\n                    <div *ngIf=\"childForm.controls.password.errors.minlength\">La contraseña debe tener al menos 6\n                      caracteres</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <label>Confirma contraseña</label>\n                  <input type=\"password\" (keypress)=\"numberOnly($event)\" class=\"form-control\"\n                    formControlName=\"confirmPassword\" placeholder=\"Confirm Password\"\n                    [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.confirmPassword.errors }\" />\n                  <div *ngIf=\"submitted && childForm.controls.confirmPassword.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"childForm.controls.confirmPassword.errors.required\">Confirme que se requiere contraseña\n                    </div>\n                    <div *ngIf=\"childForm.controls.confirmPassword.errors.mustMatch\">Las contraseñas deben coincidir\n                    </div>\n                  </div>\n                </div>\n\n                <fieldset class=\"form-group\">\n                  <!-- Sexo -->\n                  <div class=\"row\">\n                    <legend class=\"col-form-label col-sm-2 pt-0\">Sexo</legend>\n                    <div class=\"col-sm-10\">\n                      <div class=\"form-check\">\n                        <input class=\"form-check-input\" type=\"radio\" formControlName=\"sexo\" value=\"Masculino\" checked>\n                        <label class=\"form-check-label\">\n                          Masculino\n                        </label>\n                      </div>\n                      <div class=\"form-check\">\n                        <input class=\"form-check-input\" type=\"radio\" formControlName=\"sexo\" value=\"Femenino\">\n                        <label class=\"form-check-label\">\n                          Femenino\n                        </label>\n                      </div>\n                    </div>\n                  </div>\n                </fieldset>\n\n                <div class=\"form-group\">\n                  <!-- ¿De qué grupo étnico se considera? -->\n                  <label class=\"control-label\">¿De qué grupo étnico se considera?</label>\n                  <select forControlName=\"etnias\" class=\"form-control\" [(ngModel)]=\"etniaSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option selected>Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of etnias\">{{i.nombreEtnia}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"etniaSelect.nombreEtnia == 'Otro'\" class=\"form-group\">\n                  <!-- especifique -->\n                  <label class=\"control-label\">Especifique otro grupo étnico</label>\n                  <textarea forControlName=\"otro\" class=\"form-control\" rows=\"3\"></textarea>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Numero de Teléfono -->\n                  <label>Numero de Teléfono</label>\n                  <label class=\"sr-only\" for=\"inlineFormInputGroup\">Numero de Teléfono</label>\n                  <div class=\"input-group mb-2\">\n                    <div class=\"input-group-prepend\">\n                      <div class=\"input-group-text\">+34</div>\n                    </div>\n                    <input type=\"text\" (keypress)=\"numberOnly($event)\" class=\"form-control\" formControlName=\"telefono\"\n                      placeholder=\"Numero de teléfono\"\n                      [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.telefono.errors }\">\n                    <div *ngIf=\"submitted && childForm.controls.telefono.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"childForm.controls.telefono.errors.required\">El telefono es requerida</div>\n                    </div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Fecha de nacimiento -->\n                  <mat-form-field>\n                    <input matInput [matDatepicker]=\"picker\" formControlName=\"fechaNacimiento\"\n                      placeholder=\"Fecha de nacimiento\">\n                    <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n                    <mat-datepicker #picker></mat-datepicker>\n                  </mat-form-field>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Lugar de nacimiento -->\n                  <label class=\"control-label\">Lugar de nacimiento</label>\n                  <input type=\"text\" class=\"form-control\" id=\"placebirth\" formControlName=\"placebirth\"\n                    placeholder=\"ldiaz\" [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.placebirth.errors }\">\n                  <div *ngIf=\"submitted && childForm.controls.placebirth.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"childForm.controls.placebirth.errors.required\">El lugar es requerido</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Nacionalidad -->\n                  <label class=\"control-label\">Nacionalidad</label>\n                  <input type=\"text\" class=\"form-control\" formControlName=\"nacionalidad\" placeholder=\"Pais\"\n                    [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.nacionalidad.errors }\">\n                  <div *ngIf=\"submitted && childForm.controls.nacionalidad.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"childForm.controls.nacionalidad.errors.required\">La nacionalidad es requerido</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Correo electronico -->\n                  <label>Correo electronico</label>\n                  <input type=\"email\" class=\"form-control\" formControlName=\"email\" placeholder=\"name@example.com\"\n                    [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.email.errors }\">\n                  <div *ngIf=\"submitted && childForm.controls.email.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"childForm.controls.email.errors.required\">Correo electrónico es requerido</div>\n                    <div *ngIf=\"childForm.controls.email.errors.email\">Debe ser una dirección de correo electrónico\n                      válida</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Eres actor-->\n                  <label class=\"control-label\">Eres Actor</label>\n                  <select forControlName=\"actor\" class=\"form-control\" [(ngModel)]=\"actorSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option [ngValue]=\"\" selected>Seleccione...</option>\n                    <option [ngValue]=\"i.name\" *ngFor=\"let i of actor\">{{i.name}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"actorSelect == 'Si'\" class=\"form-group\">\n                  <!-- Link de VideoBook -->\n                  <label class=\"control-label\">Link de VideoBook</label>\n                  <input type=\"text\" class=\"form-control\" formControlName=\"videoBook\"\n                    placeholder=\"https://www.videoBook.com\">\n                </div>\n\n                <div class=\"form-group d-lg-flex d-md-flex d-block\">\n                  <div class=\"form-group mr-2\">\n                    <!-- Talla de camisa -->\n                    <label class=\"control-label\">Talla de camisa</label>\n                    <input type=\"text\" class=\"d-inline form-control\" formControlName=\"tallaCamisa\"\n                      placeholder=\"talla de camisa\"\n                      [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.tallaCamisa.errors }\">\n                    <div *ngIf=\"submitted && childForm.controls.tallaCamisa.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"childForm.controls.tallaCamisa.errors.required\">La talla es requerido</div>\n                    </div>\n                  </div>\n                  <div class=\"form-group mr-2\">\n                    <!-- talla de chaqueta -->\n                    <label class=\"control-label\">talla de chaqueta</label>\n                    <input type=\"text\" class=\"d-inline form-control\" formControlName=\"tallaChaqueta\"\n                      placeholder=\"talla de chaqueta\"\n                      [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.tallaChaqueta.errors }\">\n                    <div *ngIf=\"submitted && childForm.controls.tallaChaqueta.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"childForm.controls.tallaChaqueta.errors.required\">La talla es requerido</div>\n                    </div>\n                  </div>\n                  <div class=\"form-group mr-2\">\n                    <!-- Talla de pantalon -->\n                    <label class=\"control-label\">Talla de pantalon</label>\n                    <input type=\"text\" class=\"d-inline form-control\" formControlName=\"tallaPantalon\"\n                      placeholder=\"talla de pantalon\"\n                      [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.tallaPantalon.errors }\">\n                    <div *ngIf=\"submitted && childForm.controls.tallaPantalon.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"childForm.controls.tallaPantalon.errors.required\">La talla es requerido</div>\n                    </div>\n                  </div>\n                  <div class=\"form-group mr-3\">\n                    <!-- Talla de Pie -->\n                    <label class=\"control-label\">Pie</label>\n                    <input type=\"text\" class=\"d-inline form-control\" formControlName=\"pie\" placeholder=\"Pie\"\n                      [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.pie.errors }\">\n                    <div *ngIf=\"submitted && childForm.controls.pie.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"childForm.controls.pie.errors.required\">La talla es requerido</div>\n                    </div>\n                  </div>\n                  <div class=\"form-group\">\n                    <!-- Talla de Altura -->\n                    <label class=\"control-label\">Altura</label>\n                    <input type=\"text\" class=\"d-inline form-control\" formControlName=\"altura\" placeholder=\"Altura\"\n                      [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.altura.errors }\">\n                    <div *ngIf=\"submitted && childForm.controls.altura.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"childForm.controls.altura.errors.required\">La talla es requerido</div>\n                    </div>\n                  </div>\n                </div>\n\n                <div class=\"form-group d-lg-flex d-md-flex d-block\">\n                  <div class=\"form-group mr-3\">\n                    <!-- Color de Piel -->\n                    <label class=\"control-label\">Color de Piel</label>\n                    <input type=\"text\" class=\"d-inline form-control\" formControlName=\"colorPiel\"\n                      placeholder=\"Color de Piel\"\n                      [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.colorPiel.errors }\">\n                    <div *ngIf=\"submitted && childForm.controls.colorPiel.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"childForm.controls.colorPiel.errors.required\">El color es requerido</div>\n                    </div>\n                  </div>\n                  <div class=\"form-group mr-3\">\n                    <!-- Color de Pelo -->\n                    <label class=\"control-label\">Color de Pelo</label>\n                    <input type=\"text\" class=\"d-inline form-control\" formControlName=\"colorPelo\"\n                      placeholder=\"Color de Pelo\"\n                      [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.colorPelo.errors }\">\n                    <div *ngIf=\"submitted && childForm.controls.colorPelo.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"childForm.controls.colorPelo.errors.required\">El color es requerido</div>\n                    </div>\n                  </div>\n                  <div class=\"form-group mr-3\">\n                    <!-- Color de ojos -->\n                    <label class=\"control-label\">Color de ojos</label>\n                    <input type=\"text\" class=\"d-inline form-control\" formControlName=\"colorOjos\"\n                      placeholder=\"Color de ojos\"\n                      [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.colorOjos.errors }\">\n                    <div *ngIf=\"submitted && childForm.controls.colorOjos.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"childForm.controls.colorOjos.errors.required\">El color es requerido</div>\n                    </div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <label>Dirección</label>\n                  <input type=\"text\" class=\"form-control\" forControlName=\"direccion\"\n                    placeholder=\"Apartmento, studio, or floor\">\n\n                </div>\n                <div class=\"form-row\">\n                  <div class=\"form-group col-md-6\">\n                    <!-- Localidad -->\n                    <label class=\"control-label\">Localidad</label>\n                    <input type=\"text\" class=\"form-control\" forControlName=\"localidad\" placeholder=\"Smallville\">\n\n                  </div>\n                  <div class=\"form-group col-md-4\">\n                    <!-- Provincia -->\n                    <label class=\"control-label\">Provincia</label>\n                    <input type=\"text\" class=\"form-control\" forControlName=\"provincia\" placeholder=\"alabama\">\n\n                  </div>\n                  <div class=\"form-group col-md-2\">\n                    <!-- Codigo Postal -->\n                    <label for=\"inputZip\">Codigo Postal</label>\n                    <input type=\"text\" (keypress)=\"check($event)\" class=\"form-control\" forControlName=\"codpostal\"\n                      placeholder=\"#####\">\n\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Numero DNI del niño-->\n                  <label class=\"control-label\">Numero DNI</label>\n                  <input type=\"text\" (keypress)=\"check($event)\" class=\"d-inline form-control\"\n                    formControlName=\"numeroDNI\" placeholder=\"#####\"\n                    [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.numeroDNI.errors }\">\n                  <div *ngIf=\"submitted && childForm.controls.numeroDNI.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"childForm.controls.numeroDNI.errors.required\">El numero es requerida</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Copia del Numero DNI del niño -->\n                  <label>Copia del Numero DNI del niño</label>\n                  <input type=\"file\" (change)=\"copyDNIkidSelected($event)\" formControlName=\"copyDNIkid\">\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Numero seguridad social -->\n                  <label class=\"control-label\">Número de la seguridad social del niño</label>\n                  <input type=\"text\" class=\"form-control\" formControlName=\"numeroSeguridadSocial\"\n                    placeholder=\"Numero de Seguridad Social\"\n                    [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.numeroSeguridadSocial.errors }\">\n                  <div *ngIf=\"submitted && childForm.controls.numeroSeguridadSocial.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"childForm.controls.numeroSeguridadSocial.errors.required\">El numero es requerida</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Copia numero seguridad social -->\n                  <label>Copia numero seguridad social del niño</label>\n                  <input type=\"file\" (change)=\"copySocialNumberSelected($event)\" formControlName=\"copySocialNumber\">\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- DNI del padre -->\n                  <label>DNI del padre</label>\n                  <input type=\"text\" (keypress)=\"check($event)\" class=\"form-control\" formControlName=\"numeroDNIPadre\"\n                    placeholder=\"30065089H\"\n                    [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.numeroDNIPadre.errors }\">\n                  <div *ngIf=\"submitted && childForm.controls.numeroDNIPadre.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"childForm.controls.numeroDNIPadre.errors.required\">El DNI es requerida</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Copia del DNI del padre -->\n                  <label>Copia del DNI del padre</label>\n                  <input type=\"file\" (change)=\"copyDNIFatherSelected($event)\" formControlName=\"copyDNIFather\">\n                </div>\n\n\n                <div class=\"form-group\">\n                  <!-- Numero de Teléfono del padre-->\n                  <label>Numero de Teléfono del padre</label>\n                  <input type=\"text\" (keypress)=\"numberOnly($event)\" class=\"form-control\"\n                    formControlName=\"telefonofather\" placeholder=\"Numero de teléfono\"\n                    [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.telefonofather.errors }\">\n                  <div *ngIf=\"submitted && childForm.controls.telefonofather.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"childForm.controls.telefonofather.errors.required\">El telefono es requerida</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- DNI de la Madre -->\n                  <label>DNI de la Madre</label>\n                  <input type=\"text\" (keypress)=\"check($event)\" class=\"form-control\" formControlName=\"numeroDNIMadre\"\n                    placeholder=\"30065089H\"\n                    [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.numeroDNIMadre.errors }\">\n                  <div *ngIf=\"submitted && childForm.controls.numeroDNIMadre.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"childForm.controls.numeroDNIMadre.errors.required\">El DNI es requerida</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Copia del DNI de la madre -->\n                  <label>Copia del DNI de la madre</label>\n                  <input type=\"file\" (change)=\"copyDNIMotherSelected($event)\" formControlName=\"CopyDNIMother\"\n                    [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.CopyDNIMother.errors }\">\n                  <div *ngIf=\"submitted && childForm.controls.CopyDNIMother.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"childForm.controls.CopyDNIMother.errors.required\">La copia es requerida</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Numero de Teléfono de la madre-->\n                  <label>Numero de Teléfono de la madre</label>\n                  <input type=\"text\" (keypress)=\"numberOnly($event)\" class=\"form-control\"\n                    formControlName=\"telefonomother\" placeholder=\"Numero de teléfono\"\n                    [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.telefonomother.errors }\">\n                  <div *ngIf=\"submitted && childForm.controls.telefonomother.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"childForm.controls.telefonomother.errors.required\">El teléfono es requerida</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Libro de familiar -->\n                  <label>Libro de familiar</label>\n                  <input type=\"file\" (change)=\"onFamilyBookSelected($event)\" formControlName=\"libroFamilia\">\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Deporte -->\n                  <label class=\"control-label\">Deporte</label>\n                  <select forControlName=\"deportista\" class=\"form-control\" [(ngModel)]=\"deportistaSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option selected>Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of deportista\">{{i.nombreDeportista}}</option>\n                  </select>\n                </div>\n                <div\n                  *ngIf=\"deportistaSelect.nombreDeportista == 'Federado' ||  deportistaSelect.nombreDeportista == 'Profesional'\"\n                  class=\"form-group\">\n                  <!-- Habilidades del deporte-->\n                  <label class=\"control-label\">Habilidades del deporte</label>\n                  <select forControlName=\"deportes\" class=\"form-control\" [(ngModel)]=\"deporteSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option selected>Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of deportes\">{{i.nombreDeporte}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"deporteSelect.nombreDeporte == 'Otros'\" class=\"form-group\">\n                  <!-- Espesifique otro deporte -->\n                  <label class=\"control-label\">Espesifique otro deporte</label>\n                  <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Baile -->\n                  <label class=\"control-label\">Baile</label>\n                  <select forControlName=\"baile\" class=\"form-control\" [(ngModel)]=\"baileSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option selected>Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of baile\">{{i.nombreBailarin}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"baileSelect.nombreBailarin == 'Profesional' \" class=\"form-group\">\n                  <!-- Estilos de Baile -->\n                  <label class=\"control-label\">Estilos de Baile</label>\n                  <select forControlName=\"estilosBaile\" class=\"form-control\" [(ngModel)]=\"estilosBaileSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option selected>Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of estilosBaile\">{{i.nombreBaile}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"estilosBaileSelect.nombreBaile == 'Otros'\" class=\"form-group\">\n                  <!-- Espesifique otro baile -->\n                  <label class=\"control-label\">Espesifique otro baile</label>\n                  <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Musico -->\n                  <label class=\"control-label\">Musico</label>\n                  <select forControlName=\"musico\" class=\"form-control\" [(ngModel)]=\"musicoSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option selected>Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of musico\">{{i.nombreMusico}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"musicoSelect.nombreMusico == 'Profesional'\" class=\"form-group\">\n                  <!-- Instrumentos musical -->\n                  <label class=\"control-label\">Instrumentos musical</label>\n                  <select forControlName=\"instrumentoss\" class=\"form-control\" [(ngModel)]=\"instrumentoSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option selected>Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of instrumentoss\">{{i.nombreInstrumento}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"instrumentoSelect.nombreInstrumento == 'Otros'\" class=\"form-group\">\n                  <!-- Espesifique otro instrumento musical -->\n                  <label class=\"control-label\">Espesifique otro instrumento musical</label>\n                  <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Cantantes -->\n                  <label class=\"control-label\">Cantantes</label>\n                  <select forControlName=\"cantante\" class=\"form-control\" [(ngModel)]=\"cantanteSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option selected>Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of cantante\">{{i.nombreCantante}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"cantanteSelect.nombreCantante == 'Profesional'\" class=\"form-group\">\n                  <!-- Estilos de cantos -->\n                  <label class=\"control-label\">Estilo de cantos</label>\n                  <select class=\"form-control\" forControlName=\"estilosCanto\" [(ngModel)]=\"estilosCantoSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option selected>Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of estilosCanto\">{{i.nombreEstiloCanto}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"estilosCantoSelect.nombreEstiloCanto == 'Otros'\" class=\"form-group\">\n                  <!-- Espesifique otros estilos -->\n                  <label class=\"control-label\">Espesifique otro estilos</label>\n                  <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Habilidades -->\n                  <label class=\"control-label\">Habilidades</label>\n                  <select forControlName=\"habilidadess\" class=\"form-control\" [(ngModel)]=\"habilidadessSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option selected>Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of habilidadess\">{{i.nombreHabilidad}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"habilidadessSelect.nombreHabilidad == 'Otros'\" class=\"form-group\">\n                  <!-- Espesifique otras habilidades -->\n                  <label class=\"control-label\">Espesifique otras habilidades</label>\n                  <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Idiomas -->\n                  <label class=\"control-label\">Idiomas</label>\n                  <select forControlName=\"idiomas\" class=\"form-control\" [(ngModel)]=\"idiomasSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option selected>Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of idiomas\">{{i.nombreIdioma}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"idiomasSelect.nombreIdioma == 'Otros'\" class=\"form-group\">\n                  <!-- Espesifique otro Idioma -->\n                  <label class=\"control-label\">Espesifique otro Idioma</label>\n                  <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Ultimos trabajos -->\n                  <label class=\"control-label\">Descripción de Ultimos Trabajos</label>\n                  <input type=\"text\" class=\"d-inline form-control\" formControlName=\"ultimosTrabajos\"\n                    placeholder=\"Teatro\">\n                  <input type=\"text\" class=\"d-inline form-control\" formControlName=\"ultimosTrabajos\" placeholder=\"Cine\">\n                  <input type=\"text\" class=\"d-inline form-control\" formControlName=\"ultimosTrabajos\"\n                    placeholder=\"Ficcion\">\n                  <input type=\"text\" class=\"d-inline form-control\" formControlName=\"ultimosTrabajos\"\n                    placeholder=\"Publicidad\">\n                </div>\n                <div class=\"form-group\">\n                  <!-- Observaciones -->\n                  <label for=\"\">Observaciones</label>\n                  <textarea class=\"form-control\" id=\"observaciones\" formControlName=\"observaciones\" rows=\"3\"></textarea>\n                </div>\n\n                <div class=\"form-group\">\n                  <div class=\"form-check\">\n                    <input type=\"checkbox\" formControlName=\"acceptTerms\" id=\"acceptTerms\" class=\"form-check-input\"\n                      [ngClass]=\"{ 'is-invalid': submitted && childForm.controls.acceptTerms.value === false }\" />\n                    <label class=\"form-check-label\">\n                      Acepta los terminos del registro\n                    </label>\n                    <div *ngIf=\"submitted && childForm.controls.acceptTerms.value === false\" class=\"invalid-feedback\">Los\n                      terminos es requerido</div>\n                  </div>\n                </div>\n\n                <div class=\"info info--sm\">\n                  Al aceptar los \"Terminos del registro\" certifico que tengo 16 años o más y acepto las\n                  <a class=\"link-secondary--underlined\" target=\"blank\" routerLink=\"/terms\">Condiciones de Uso</a>, la\n                  <a class=\"link-secondary--underlined\" target=\"blank\" routerLink=\"/privacy\">Política de Privacidad</a>\n                  y recibir novedades y promociones.\n                </div>\n                <div class=\"mt-5 form-group\">\n                  <button class=\"btn btn-primary\" (click)=\"signupChild()\">Registrame!</button>\n                </div>\n              </form>\n            </div>\n          </div>\n        </div>\n        <div class=\"modal-footer\">\n          ¿Ya tienes cuenta?\n          <a routerLink=\"/login\" class=\"link-primary\">\n            Entrar\n          </a>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<app-footer></app-footer>\n");
 
 /***/ }),
 
@@ -97,7 +97,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-header></app-header>\n<div class=\"bg-fondo\">\n    <div class=\"container contect-Ajuste mx-w\">\n        <div class=\"\">\n          <div class=\"\">\n            <a class=\"logo\">Registro de Figuración</a>\n            <p class=\"mt-3\">------</p>\n          </div>\n          <div class=\"\">\n            <div class=\"\">\n              <div class=\"\">\n                <div class=\"\">\n                  <div class=\"\">\n                    <span>Llena el siguiente formulario</span>\n                  </div>\n                  <form [formGroup]=\"actorForm\">\n\n                    <div class=\"form-group\"><!-- Subida de avatar -->\n                        <label class=\"control-label\">Foto de Perfil</label>\n                        <input type=\"file\" (change)=\"onFileSelected($event)\" formControlName=\"avatar\"><br>\n                    </div>\n                    \n                    <div class=\"form-group\"> <!-- Nombre de Usuario -->\n                      <label class=\"control-label\">Nombre de Usuario</label>\n                      <input type=\"text\" class=\"form-control\" id=\"username\" formControlName=\"username\" placeholder=\"Ldiaz\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.username.errors }\">\n                      <div *ngIf=\"submitted && actorForm.controls.username.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"actorForm.controls.username.errors.required\">El usuario es requerido</div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\"> <!-- Nomnbre completos -->\n                      <label class=\"control-label\">Nombres</label>\n                      <input type=\"text\" class=\"form-control\" id=\"nombres\" formControlName=\"nombres\" placeholder=\"Luis Diaz\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.nombres.errors }\">\n                      <div *ngIf=\"submitted && actorForm.controls.nombres.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"actorForm.controls.nombres.errors.required\">El nombre es requerido</div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\"> <!-- Apellidos completos -->\n                      <label class=\"control-label\">Apellidos</label>\n                      <input type=\"text\" class=\"form-control\" id=\"apellidos\" formControlName=\"apellidos\" placeholder=\"Almito Gil\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.apellidos.errors }\">\n                      <div *ngIf=\"submitted && actorForm.controls.apellidos.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"actorForm.controls.apellidos.errors.required\">El apellido es requerido</div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Contraseña -->\n                      <label>Contraseña</label>\n                      <input type=\"password\" (keypress)=\"numberOnly($event)\" class=\"form-control\" formControlName=\"password\" placeholder=\"Password\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.password.errors }\">\n                      <div *ngIf=\"submitted && actorForm.controls.password.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"actorForm.controls.password.errors.required\">La contraseña es requerida</div>\n                        <div *ngIf=\"actorForm.controls.password.errors.minlength\">La contraseña debe tener al menos 6 caracteres</div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Confirma Contraseña -->\n                      <label>Confirma contraseña</label>\n                      <input type=\"password\" (keypress)=\"numberOnly($event)\" formControlName=\"confirmPassword\" class=\"form-control\" placeholder=\"Confirm Password\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.confirmPassword.errors }\">\n                      <div *ngIf=\"submitted && actorForm.controls.confirmPassword.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"actorForm.controls.confirmPassword.errors.required\">Confirme que se requiere contraseña</div>\n                        <div *ngIf=\"actorForm.controls.confirmPassword.errors.mustMatch\">Las contraseñas deben coincidir</div>\n                      </div>\n                    </div>\n\n                    <fieldset class=\"form-group\"><!-- Sexo -->\n                      <div class=\"row\">\n                        <legend class=\"col-form-label col-sm-2 pt-0\">Sexo</legend>\n                        <div class=\"col-sm-10\">\n                          <div class=\"form-check\">\n                            <input class=\"form-check-input\" type=\"radio\" formControlName=\"sexo\" id=\"gridRadios1\" value=\"Masculino\" checked>\n                            <label class=\"form-check-label\">\n                              Masculino\n                            </label>\n                          </div>\n                          <div class=\"form-check\">\n                            <input class=\"form-check-input\" type=\"radio\" formControlName=\"sexo\" id=\"gridRadios2\" value=\"Femenino\">\n                            <label class=\"form-check-label\">\n                              Femenino\n                            </label>\n                          </div>\n                        </div>\n                      </div>\n                    </fieldset>\n\n                    <div class=\"form-group\"><!-- ¿De qué grupo étnico se considera? -->\n                      <label class=\"control-label\">¿De qué grupo étnico se considera?</label>\n                        <select forControlName=\"etnico\" class=\"form-control\" [(ngModel)]=\"etnico.Otros\" [ngModelOptions]=\"{standalone: true}\">\n                          <option [ngValue]=\"i\" selected>Seleccione...</option>\n                          <option *ngFor=\"let i of etnico\">{{i}}</option>\n                        </select>\n                    </div>\n                    <div *ngIf=\"etnico.Otros == 'Otros'\" class=\"form-group\"><!-- especifique -->\n                      <label class=\"control-label\">Especifique otro grupo étnico</label>\n                      <textarea forControlName=\"otro\" class=\"form-control\" rows=\"3\"></textarea>\n                    </div>\n\n                    <div class=\"form-group\"> <!-- Fecha de nacimiento -->\n                      <mat-form-field>\n                        <input matInput [matDatepicker]=\"picker\" formControlName=\"fechaNacimiento\" placeholder=\"Fecha de nacimiento\">\n                        <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n                        <mat-datepicker #picker></mat-datepicker>\n                    </mat-form-field>\n                    </div>\n\n                    <div class=\"form-group\"> <!-- Lugar de nacimiento -->\n                      <label class=\"control-label\">Lugar de nacimiento</label>\n                      <input type=\"text\" class=\"form-control\" id=\"placebirth\" formControlName=\"placebirth\" placeholder=\"Smollville\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.placebirth.errors }\">\n                      <div *ngIf=\"submitted && actorForm.controls.placebirth.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"actorForm.controls.placebirth.errors.required\">El usuario es requerido</div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Nuemro de teléfono -->\n                      <label>Numero de Teléfono</label>\n                      <input type=\"text\" class=\"form-control\" (keypress)=\"numberOnly($event)\" formControlName=\"telefono\" placeholder=\"Numero de teléfono\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.telefono.errors }\">\n                      <div *ngIf=\"submitted && actorForm.controls.telefono.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"actorForm.controls.telefono.errors.required\">El telefono es requerida</div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\"> <!-- Acento -->\n                      <label class=\"control-label\">Acento</label>\n                      <input type=\"text\" class=\"form-control\" id=\"acento\" formControlName=\"acento\" placeholder=\"Español\">\n                    </div>\n\n                    <div class=\"form-group\"> <!-- Naciomnalidad -->\n                      <label class=\"control-label\">Nacionalidad</label>\n                      <input type=\"text\" class=\"form-control\" id=\"nacionalidad\" formControlName=\"nacionalidad\" placeholder=\"Pais\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.nacionalidad.errors }\">\n                      <div *ngIf=\"submitted && actorForm.controls.nacionalidad.errors\" class=\"invalid-feedback\">\n                          <div *ngIf=\"actorForm.controls.nacionalidad.errors.required\">La nacionalidad es requerida</div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Correo electronico -->\n                      <label>Correo electronico</label>\n                      <input type=\"email\" class=\"form-control\" formControlName=\"email\" placeholder=\"name@example.com\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.email.errors }\">\n                      <div *ngIf=\"submitted && actorForm.controls.email.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"actorForm.controls.email.errors.required\">Correo electrónico es requerido</div>\n                        <div *ngIf=\"actorForm.controls.email.errors.email\">Debe ser una dirección de correo electrónico válida</div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group d-lg-flex d-md-flex d-block\"> <!-- talla de camisa -->\n                      <div class=\"form-group mr-lg-2 mr-md-2 mr-0\">\n                        <label class=\"control-label\">Talla de camisa</label>\n                        <input type=\"text\" class=\"d-inline form-control\" id=\"tallaCamisa\" formControlName=\"tallaCamisa\" placeholder=\"talla de camisa\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.tallaCamisa.errors }\">\n                        <div *ngIf=\"submitted && actorForm.controls.tallaCamisa.errors\" class=\"invalid-feedback\">\n                            <div *ngIf=\"actorForm.controls.tallaCamisa.errors.required\">La talla es requerido</div>\n                        </div>\n                      </div>\n                      <div class=\"form-group mr-lg-2 mr-md-2 mr-0\"><!-- talla de chaqueta -->\n                        <label class=\"control-label\">talla de chaqueta</label>\n                        <input type=\"text\" class=\"d-inline form-control\" id=\"tallaChaqueta\" formControlName=\"tallaChaqueta\" placeholder=\"talla de chaqueta\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.tallaChaqueta.errors }\">\n                        <div *ngIf=\"submitted && actorForm.controls.tallaChaqueta.errors\" class=\"invalid-feedback\">\n                            <div *ngIf=\"actorForm.controls.tallaChaqueta.errors.required\">La talla es requerido</div>\n                        </div>\n                      </div>\n                      <div class=\"form-group mr-lg-2 mr-md-2 mr-0\"><!-- talla de pantalon -->\n                        <label class=\"control-label\">Talla de pantalon</label>\n                        <input type=\"text\" class=\"d-inline form-control\" id=\"tallaPantalon\" formControlName=\"tallaPantalon\" placeholder=\"talla de pantalon\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.tallaPantalon.errors }\">\n                        <div *ngIf=\"submitted && actorForm.controls.tallaPantalon.errors\" class=\"invalid-feedback\">\n                            <div *ngIf=\"actorForm.controls.tallaPantalon.errors.required\">La talla es requerido</div>\n                        </div>\n                      </div>\n                      <div class=\"form-group mr-lg-3 mr-md-3 mr-0\"><!-- talla de Pie -->\n                          <label class=\"control-label\">Pie</label>\n                          <input type=\"text\" class=\"d-inline form-control\" id=\"pie\" formControlName=\"pie\" placeholder=\"Pie\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.pie.errors }\">\n                          <div *ngIf=\"submitted && actorForm.controls.pie.errors\" class=\"invalid-feedback\">\n                              <div *ngIf=\"actorForm.controls.pie.errors.required\">La talla es requerido</div>\n                          </div>\n                        </div>\n                        <div class=\"form-group\"><!-- talla de Altura -->\n                          <label class=\"control-label\">Altura</label>\n                          <input type=\"text\" class=\"d-inline form-control\" id=\"altura\" formControlName=\"altura\" placeholder=\"Altura\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.altura.errors }\">\n                          <div *ngIf=\"submitted && actorForm.controls.altura.errors\" class=\"invalid-feedback\">\n                              <div *ngIf=\"actorForm.controls.altura.errors.required\">La talla es requerido</div>\n                          </div>\n                      </div>\n                    </div>\n                    \n                    <div class=\"form-group d-lg-flex d-md-flex d-block\"> <!-- Color de Piel -->\n                      <div class=\"form-group mr-lg-3 mr-md-3 mr-0\">\n                        <label class=\"control-label\">Color de Piel</label>\n                        <input type=\"text\" class=\"d-inline form-control\" formControlName=\"colorPiel\" placeholder=\"Color de Piel\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.colorPiel.errors }\">\n                        <div *ngIf=\"submitted && actorForm.controls.colorPiel.errors\" class=\"invalid-feedback\">\n                            <div *ngIf=\"actorForm.controls.colorPiel.errors.required\">El color es requerido</div>\n                        </div>\n                      </div>\n                      <div class=\"form-group mr-lg-3 mr-md-3 mr-0\"><!-- Color de Pelo-->\n                        <label class=\"control-label\">Color de Pelo</label>\n                        <input type=\"text\" class=\"d-inline form-control\" formControlName=\"colorPelo\" placeholder=\"Color de Pelo\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.colorPelo.errors }\">\n                        <div *ngIf=\"submitted && actorForm.controls.colorPelo.errors\" class=\"invalid-feedback\">\n                            <div *ngIf=\"actorForm.controls.colorPelo.errors.required\">El color es requerido</div>\n                        </div>\n                      </div>\n                      <div class=\"form-group mr-lg-3 mr-md-3 mr-0\">\n                          <label class=\"control-label\">Color de ojos</label>\n                          <input type=\"text\" class=\"d-inline form-control\" formControlName=\"colorOjos\" placeholder=\"Color de ojos\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.colorOjos.errors }\">\n                          <div *ngIf=\"submitted && actorForm.controls.colorOjos.errors\" class=\"invalid-feedback\">\n                              <div *ngIf=\"actorForm.controls.colorOjos.errors.required\">El color es requerido</div>\n                          </div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Numero DNI -->\n                        <label class=\"control-label\">Numero DNI</label>\n                        <input type=\"text\" (keypress)=\"check($event)\" class=\"d-inline form-control\" id=\"numeroDNI\" formControlName=\"numeroDNI\" placeholder=\"#####\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.numeroDNI.errors }\">\n                        <div *ngIf=\"submitted && actorForm.controls.numeroDNI.errors\" class=\"invalid-feedback\">\n                          <div *ngIf=\"actorForm.controls.numeroDNI.errors.required\">El numero es requerida</div>\n                        </div>\n                    </div>\n\n                    <div class=\"form-group\"> <!-- Numero de Seguridad Social -->\n                      <label class=\"control-label\">Numero de Seguridad Social</label>\n                      <input type=\"text\" class=\"form-control\" id=\"numeroSeguridadSocial\" formControlName=\"numeroSeguridadSocial\" placeholder=\"Numero de Seguridad Social\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.numeroSeguridadSocial.errors }\">\n                      <div *ngIf=\"submitted && actorForm.controls.numeroSeguridadSocial.errors\" class=\"invalid-feedback\">\n                        <div *ngIf=\"actorForm.controls.numeroSeguridadSocial.errors.required\">El numero es requerida</div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\">\n                      <label>Dirección</label>\n                      <input type=\"text\" class=\"form-control\" forControlName=\"direccion\" placeholder=\"Apartmento, studio, or floor\" >\n                    </div>\n\n                    <div class=\"form-row\">\n                        <div class=\"form-group col-md-6\"><!-- Localidad -->\n                          <label class=\"control-label\">Localidad</label>\n                          <input type=\"text\" class=\"form-control\" forControlName=\"localidad\" placeholder=\"Baleares\" >\n                         \n                        </div>\n                        <div class=\"form-group col-md-4\"><!-- Provincia -->\n                            <label class=\"control-label\">Provincia</label>\n                            <input type=\"text\" class=\"form-control\" forControlName=\"provincia\" placeholder=\"Catalan\" >\n                            \n                        </div>\n                        <div class=\"form-group col-md-2\"><!-- Codigo Postal -->\n                          <label for=\"inputZip\">Codigo Postal</label>\n                          <input type=\"text\" (keypress)=\"check($event)\" class=\"form-control\" forControlName=\"codpostal\" placeholder=\"######\" >\n                         \n                        </div>\n                    </div>\n\n                    <div class=\"form-group d-lg-flex d-md-flex d-block\"> <!-- Carnet de conducir y coche-->\n                      <div class=\"form-group mr-lg-3 mr-md-3 mr-0\">\n                        <label class=\"control-label\">Carnet de conducir</label>\n                        <input type=\"text\" class=\"d-inline form-control\" formControlName=\"carnetConducir\" placeholder=\"Modelo de Coche\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.carnetConducir.errors }\">\n                        <div *ngIf=\"submitted && actorForm.controls.carnetConducir.errors\" class=\"invalid-feedback\">\n                          <div *ngIf=\"actorForm.controls.carnetConducir.errors.required\">Carnet es requerido</div>\n                        </div>\n                      </div>\n                    </div>\n\n                    <div class=\"form-group d-flex\">\n                        <div class=\"form-group mr-3\"><!-- Modelo de Coche -->\n                          <label class=\"control-label\">Modelo de Coche</label>\n                          <input type=\"text\" class=\"d-inline form-control\" id=\"modeloCoche\" formControlName=\"modeloCoche\" placeholder=\"Modelo de Coche\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.modeloCoche.errors }\">\n                          <div *ngIf=\"submitted && actorForm.controls.modeloCoche.errors\" class=\"invalid-feedback\">\n                              <div *ngIf=\"actorForm.controls.modeloCoche.errors.required\">El modelo es requerido</div>\n                          </div>\n                        </div>\n                        <div class=\"form-group\"><!-- Modelo de Moto-->\n                          <label class=\"control-label\">Modelo de Moto</label>\n                          <input type=\"text\" class=\"d-inline form-control\" id=\"modeloMoto\" formControlName=\"modeloMoto\" placeholder=\"Modelo de Moto\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.modeloMoto.errors }\">\n                          <div *ngIf=\"submitted && actorForm.controls.modeloMoto.errors\" class=\"invalid-feedback\">\n                              <div *ngIf=\"actorForm.controls.modeloMoto.errors.required\">El modelo es requerido</div>\n                          </div>\n                        </div>\n                    </div>\n\n                    <div class=\"form-group d-flex\"> <!-- Foto coche y  foto moto-->\n                      <div class=\"form-group mr-3\">\n                        <label class=\"control-label\">Foto coche</label>\n                        <input type=\"file\" (change)=\"PhotoCar($event)\" formControlName=\"fotoCoche\">\n                      </div>\n                      <div class=\"form-group\">\n                        <label class=\"control-label\">Foto moto</label>\n                        <input type=\"file\" (change)=\"CyclePhoto($event)\" formControlName=\"fotoMoto\">\n                      </div>\n                    </div>\n\n                    <div class=\"form-group d-flex\"> <!-- Color de Coche y Moto-->\n                      <div class=\"form-group mr-3\">\n                        <label class=\"control-label\">Color de Coche</label>\n                        <input type=\"text\" class=\"d-inline form-control\" id=\"colorCoche\" formControlName=\"colorCoche\" placeholder=\"Modelo de Coche\">\n                      </div>\n                      <div class=\"form-group\">\n                        <label class=\"control-label\">Color de Moto</label>\n                        <input type=\"text\" class=\"d-inline form-control\" id=\"colorMoto\" formControlName=\"colorMoto\" placeholder=\"Modelo de Moto\">\n                      </div>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Fotos Tatuajes -->\n                      <label class=\"control-label\">Fotos Tatuajes</label>\n                      <input type=\"file\" (change)=\"onFileSelected($event)\" multiple=\"multiple\" formControlName=\"tattoos\"><br>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Modelos de Manos -->\n                      <label class=\"control-label\">Modelo de manos profesional</label>\n                      <input type=\"file\" (change)=\"onFileSelected($event)\" multiple=\"multiple\" formControlName=\"manos\"><br>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Baile -->\n                      <label class=\"control-label\">Baile</label>\n                      <select forControlName=\"bailes\" class=\"form-control\" [(ngModel)]=\"bailes.name\" [ngModelOptions]=\"{standalone: true}\">\n                          <option [ngValue]=\"i\">Seleccione...</option>\n                          <option *ngFor=\"let i of bailes\">{{i.name}}</option>\n                        </select>\n                    </div>\n                    <div *ngIf=\"bailes.name == 'Profesional' \" class=\"form-group\"><!-- Estilos de Baile -->\n                      <label class=\"control-label\">Estilos de Baile</label>\n                        <select forControlName=\"estilobailes\" class=\"form-control\" [(ngModel)]=\"estilobailes.Otros\" [ngModelOptions]=\"{standalone: true}\">\n                          <option [ngValue]=\"i\">Seleccione...</option>\n                          <option *ngFor=\"let i of estilobailes\">{{i}}</option>\n                        </select>\n                    </div>\n                    <div *ngIf=\"estilobailes.Otros == 'Otros'\" class=\"form-group\"><!-- Espesifique otro baile -->\n                      <label class=\"control-label\">Espesifique otro baile</label>\n                      <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Cantantes -->\n                      <label class=\"control-label\">Cantantes</label>\n                      <select forControlName=\"cantos\" class=\"form-control\" [(ngModel)]=\"cantos.name\" [ngModelOptions]=\"{standalone: true}\">\n                          <option [ngValue]=\"i\">Seleccione...</option>\n                          <option *ngFor=\"let i of cantos\">{{i.name}}</option>\n                        </select>\n                    </div>\n                    <div *ngIf=\"cantos.name == 'Profesional'\" class=\"form-group\"><!-- Estilos de cantos -->\n                      <label class=\"control-label\">Estilo de cantos</label>\n                        <select class=\"form-control\" forControlName=\"estilocantos\" [(ngModel)]=\"estilocantos.Otros\" [ngModelOptions]=\"{standalone: true}\">\n                          <option [ngValue]=\"i\">Seleccione...</option>\n                          <option *ngFor=\"let i of estilocantos\">{{i}}</option>\n                        </select>\n                    </div>\n                    <div *ngIf=\"estilocantos.Otros == 'Otros'\" class=\"form-group\"><!-- Espesifique otros estilos -->\n                      <label class=\"control-label\">Espesifique otro estilos</label>\n                      <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Habilidades -->\n                      <label class=\"control-label\">Habilidades</label>\n                        <select forControlName=\"habilidades\" class=\"form-control\" [(ngModel)]=\"habilidades.Otros\" [ngModelOptions]=\"{standalone: true}\">\n                          <option [ngValue]=\"i\">Seleccione...</option>\n                          <option *ngFor=\"let i of habilidades\">{{i}}</option>\n                        </select>\n                    </div>\n                    <div *ngIf=\"habilidades.Otros == 'Otros'\" class=\"form-group\"><!-- Espesifique otras habilidades -->\n                      <label class=\"control-label\">Espesifique otras habilidades</label>\n                      <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Idiomas -->\n                      <label class=\"control-label\">Idiomas</label>\n                      <select forControlName=\"idiomasHablados\" class=\"form-control\" [(ngModel)]=\"idiomasHablados.Otros\" [ngModelOptions]=\"{standalone: true}\">\n                          <option [ngValue]=\"i\">Seleccione...</option>\n                          <option *ngFor=\"let i of idiomasHablados\">{{i}}</option>\n                        </select>\n                    </div>\n                    <div *ngIf=\"idiomasHablados.Otros == 'Otros'\" class=\"form-group\"><!-- Espesifique otro Idioma -->\n                      <label class=\"control-label\">Espesifique otro Idioma</label>\n                      <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                    </div>\n\n                    <div class=\"form-group\"><!-- Observaciones -->\n                      <label for=\"exampleFormControlTextarea1\">Observaciones</label>\n                      <textarea class=\"form-control\" id=\"exampleFormControlTextarea1\" rows=\"3\"></textarea>\n                    </div>\n\n                    <div class=\"form-group\">\n                      <div class=\"form-check\">\n                      <input type=\"checkbox\" formControlName=\"acceptTerms\" id=\"acceptTerms\" class=\"form-check-input\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.acceptTerms.errors }\" />\n                        <label class=\"form-check-label\">\n                          Acepta los terminos del registro\n                        </label>\n                      <div *ngIf=\"submitted && actorForm.controls.acceptTerms.errors\" class=\"invalid-feedback\">Los terminos es requerido</div>\n                    </div>\n                    </div>\n\n                    <div class=\"info info--sm\">\n                      Al hacer clic en \"Crear cuenta\" certifico que tengo 16 años o más y acepto las\n                      <a class=\"link-secondary--underlined\" target=\"blank\" routerLink=\"/terms\">Condiciones de Uso</a>, la\n                      <a class=\"link-secondary--underlined\" target=\"blank\" routerLink=\"/privacy\">Política de Privacidad</a> y recibir novedades y promociones.\n                    </div>\n\n                    <div class=\"mt-4 form-group\"> <!-- Submit Button -->\n                      <button type=\"submit\" (click)=\"registrarActor()\" class=\"btn btn-primary\">Registrame!</button>\n                    </div>\n\n                  </form>\n                </div>\n              </div>\n            </div>\n            <div class=\"\">\n              ¿Ya tienes cuenta?\n              <a routerLink=\"/login\" class=\"link-primary\">\n                Entrar\n              </a>\n            </div>\n          </div>\n        </div>\n    </div>\n</div>\n<app-footer></app-footer>");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header></app-header>\n<div class=\"bg-fondo\">\n  <div class=\"container contect-Ajuste mx-w\">\n    <div class=\"\">\n      <div class=\"\">\n        <a class=\"logo\">Registro de Figuración</a>\n        <p class=\"mt-3\">------</p>\n      </div>\n      <div class=\"\">\n        <div class=\"\">\n          <div class=\"\">\n            <div class=\"\">\n              <div class=\"\">\n                <span>Llena el siguiente formulario</span>\n              </div>\n              <form [formGroup]=\"actorForm\">\n\n                <div class=\"form-group\">\n                  <!-- Subida de avatar -->\n                  <label class=\"control-label\">Foto de Perfil</label>\n                  <input type=\"file\" (change)=\"onFileAvatarSelected($event)\" formControlName=\"avatar\"><br>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- cuerpo entero -->\n                  <label class=\"control-label\">Foto cuerpo entero</label>\n                  <input type=\"file\" (change)=\"onFileCuerpoEnteroSelected($event)\" formControlName=\"avatar\"><br>\n                </div>\n                <div class=\"form-group\">\n                  <!-- foto artistico -->\n                  <label class=\"control-label\">Foto artistico</label>\n                  <input type=\"file\" (change)=\"onFileArtisticoSelected($event)\" formControlName=\"avatar\"><br>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Nombre de Usuario -->\n                  <label class=\"control-label\">Nombre de Usuario</label>\n                  <input type=\"text\" class=\"form-control\" id=\"username\" formControlName=\"username\" placeholder=\"Ldiaz\"\n                    [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.username.errors }\">\n                  <div *ngIf=\"submitted && actorForm.controls.username.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"actorForm.controls.username.errors.required\">El usuario es requerido</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Nomnbre completos -->\n                  <label class=\"control-label\">Nombre</label>\n                  <input type=\"text\" class=\"form-control\" id=\"nombres\" formControlName=\"nombres\" placeholder=\"Luis Diaz\"\n                    [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.nombres.errors }\">\n                  <div *ngIf=\"submitted && actorForm.controls.nombres.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"actorForm.controls.nombres.errors.required\">El nombre es requerido</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Apellidos completos -->\n                  <label class=\"control-label\">Apellidos</label>\n                  <input type=\"text\" class=\"form-control\" id=\"apellidos\" formControlName=\"apellidos\"\n                    placeholder=\"Almito Gil\"\n                    [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.apellidos.errors }\">\n                  <div *ngIf=\"submitted && actorForm.controls.apellidos.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"actorForm.controls.apellidos.errors.required\">El apellido es requerido</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Contraseña -->\n                  <label>Contraseña</label>\n                  <input type=\"password\" (keypress)=\"numberOnly($event)\" class=\"form-control\" formControlName=\"password\"\n                    placeholder=\"Password\"\n                    [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.password.errors }\">\n                  <div *ngIf=\"submitted && actorForm.controls.password.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"actorForm.controls.password.errors.required\">La contraseña es requerida</div>\n                    <div *ngIf=\"actorForm.controls.password.errors.minlength\">La contraseña debe tener al menos 6\n                      caracteres</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Confirma Contraseña -->\n                  <label>Confirma contraseña</label>\n                  <input type=\"password\" (keypress)=\"numberOnly($event)\" formControlName=\"confirmPassword\"\n                    class=\"form-control\" placeholder=\"Confirm Password\"\n                    [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.confirmPassword.errors }\">\n                  <div *ngIf=\"submitted && actorForm.controls.confirmPassword.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"actorForm.controls.confirmPassword.errors.required\">Confirme que se requiere contraseña\n                    </div>\n                    <div *ngIf=\"actorForm.controls.confirmPassword.errors.mustMatch\">Las contraseñas deben coincidir\n                    </div>\n                  </div>\n                </div>\n\n                <fieldset class=\"form-group\">\n                  <!-- Sexo -->\n                  <div class=\"row\">\n                    <legend class=\"col-form-label col-sm-2 pt-0\">Sexo</legend>\n                    <div class=\"col-sm-10\">\n                      <div class=\"form-check\">\n                        <input class=\"form-check-input\" type=\"radio\" formControlName=\"sexo\" id=\"gridRadios1\"\n                          value=\"Masculino\" checked>\n                        <label class=\"form-check-label\">\n                          Masculino\n                        </label>\n                      </div>\n                      <div class=\"form-check\">\n                        <input class=\"form-check-input\" type=\"radio\" formControlName=\"sexo\" id=\"gridRadios2\"\n                          value=\"Femenino\">\n                        <label class=\"form-check-label\">\n                          Femenino\n                        </label>\n                      </div>\n                    </div>\n                  </div>\n                </fieldset>\n\n                <div class=\"form-group\">\n                  <!-- ¿De qué grupo étnico se considera? -->\n                  <label class=\"control-label\">¿De qué grupo étnico se considera?</label>\n                  <select forControlName=\"etnias\" class=\"form-control\" [(ngModel)]=\"etniaSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option selected>Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of etnias\">{{i.nombreEtnia}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"etniaSelect.nombreEtnia == 'Otro'\" class=\"form-group\">\n                  <!-- especifique -->\n                  <label class=\"control-label\">Especifique otro grupo étnico</label>\n                  <textarea forControlName=\"otro\" class=\"form-control\" rows=\"3\"></textarea>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Fecha de nacimiento -->\n                  <mat-form-field>\n                    <input matInput [matDatepicker]=\"picker\" formControlName=\"fechaNacimiento\"\n                      placeholder=\"Fecha de nacimiento\">\n                    <mat-datepicker-toggle matSuffix [for]=\"picker\"></mat-datepicker-toggle>\n                    <mat-datepicker #picker></mat-datepicker>\n                  </mat-form-field>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Lugar de nacimiento -->\n                  <label class=\"control-label\">Lugar de nacimiento</label>\n                  <input type=\"text\" class=\"form-control\" id=\"placebirth\" formControlName=\"placebirth\"\n                    placeholder=\"Smollville\"\n                    [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.placebirth.errors }\">\n                  <div *ngIf=\"submitted && actorForm.controls.placebirth.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"actorForm.controls.placebirth.errors.required\">El usuario es requerido</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Nuemro de teléfono -->\n                  <label>Numero de Teléfono</label>\n                  <input type=\"text\" class=\"form-control\" (keypress)=\"numberOnly($event)\" formControlName=\"telefono\"\n                    placeholder=\"Numero de teléfono\"\n                    [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.telefono.errors }\">\n                  <div *ngIf=\"submitted && actorForm.controls.telefono.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"actorForm.controls.telefono.errors.required\">El telefono es requerida</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Acento -->\n                  <label class=\"control-label\">Acento</label>\n                  <input type=\"text\" class=\"form-control\" id=\"acento\" formControlName=\"acento\" placeholder=\"Español\">\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Naciomnalidad -->\n                  <label class=\"control-label\">Nacionalidad</label>\n                  <input type=\"text\" class=\"form-control\" id=\"nacionalidad\" formControlName=\"nacionalidad\"\n                    placeholder=\"Pais\"\n                    [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.nacionalidad.errors }\">\n                  <div *ngIf=\"submitted && actorForm.controls.nacionalidad.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"actorForm.controls.nacionalidad.errors.required\">La nacionalidad es requerida</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Correo electronico -->\n                  <label>Correo electronico</label>\n                  <input type=\"email\" class=\"form-control\" formControlName=\"email\" placeholder=\"name@example.com\"\n                    [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.email.errors }\">\n                  <div *ngIf=\"submitted && actorForm.controls.email.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"actorForm.controls.email.errors.required\">Correo electrónico es requerido</div>\n                    <div *ngIf=\"actorForm.controls.email.errors.email\">Debe ser una dirección de correo electrónico\n                      válida</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group d-lg-flex d-md-flex d-block\">\n                  <!-- talla de camisa -->\n                  <div class=\"form-group mr-lg-2 mr-md-2 mr-0\">\n                    <label class=\"control-label\">Talla de camisa</label>\n                    <input type=\"text\" class=\"d-inline form-control\" id=\"tallaCamisa\" formControlName=\"tallaCamisa\"\n                      placeholder=\"talla de camisa\"\n                      [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.tallaCamisa.errors }\">\n                    <div *ngIf=\"submitted && actorForm.controls.tallaCamisa.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"actorForm.controls.tallaCamisa.errors.required\">La talla es requerido</div>\n                    </div>\n                  </div>\n                  <div class=\"form-group mr-lg-2 mr-md-2 mr-0\">\n                    <!-- talla de chaqueta -->\n                    <label class=\"control-label\">talla de chaqueta</label>\n                    <input type=\"text\" class=\"d-inline form-control\" id=\"tallaChaqueta\" formControlName=\"tallaChaqueta\"\n                      placeholder=\"talla de chaqueta\"\n                      [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.tallaChaqueta.errors }\">\n                    <div *ngIf=\"submitted && actorForm.controls.tallaChaqueta.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"actorForm.controls.tallaChaqueta.errors.required\">La talla es requerido</div>\n                    </div>\n                  </div>\n                  <div class=\"form-group mr-lg-2 mr-md-2 mr-0\">\n                    <!-- talla de pantalon -->\n                    <label class=\"control-label\">Talla de pantalon</label>\n                    <input type=\"text\" class=\"d-inline form-control\" id=\"tallaPantalon\" formControlName=\"tallaPantalon\"\n                      placeholder=\"talla de pantalon\"\n                      [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.tallaPantalon.errors }\">\n                    <div *ngIf=\"submitted && actorForm.controls.tallaPantalon.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"actorForm.controls.tallaPantalon.errors.required\">La talla es requerido</div>\n                    </div>\n                  </div>\n                  <div class=\"form-group mr-lg-3 mr-md-3 mr-0\">\n                    <!-- talla de Pie -->\n                    <label class=\"control-label\">Pie</label>\n                    <input type=\"text\" class=\"d-inline form-control\" id=\"pie\" formControlName=\"pie\" placeholder=\"Pie\"\n                      [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.pie.errors }\">\n                    <div *ngIf=\"submitted && actorForm.controls.pie.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"actorForm.controls.pie.errors.required\">La talla es requerido</div>\n                    </div>\n                  </div>\n                  <div class=\"form-group\">\n                    <!-- talla de Altura -->\n                    <label class=\"control-label\">Altura</label>\n                    <input type=\"text\" class=\"d-inline form-control\" id=\"altura\" formControlName=\"altura\"\n                      placeholder=\"Altura\" [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.altura.errors }\">\n                    <div *ngIf=\"submitted && actorForm.controls.altura.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"actorForm.controls.altura.errors.required\">La talla es requerido</div>\n                    </div>\n                  </div>\n                </div>\n\n                <div class=\"form-group d-lg-flex d-md-flex d-block\">\n                  <!-- Color de Piel -->\n                  <div class=\"form-group mr-lg-3 mr-md-3 mr-0\">\n                    <label class=\"control-label\">Color de Piel</label>\n                    <input type=\"text\" class=\"d-inline form-control\" formControlName=\"colorPiel\"\n                      placeholder=\"Color de Piel\"\n                      [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.colorPiel.errors }\">\n                    <div *ngIf=\"submitted && actorForm.controls.colorPiel.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"actorForm.controls.colorPiel.errors.required\">El color es requerido</div>\n                    </div>\n                  </div>\n                  <div class=\"form-group mr-lg-3 mr-md-3 mr-0\">\n                    <!-- Color de Pelo-->\n                    <label class=\"control-label\">Color de Pelo</label>\n                    <input type=\"text\" class=\"d-inline form-control\" formControlName=\"colorPelo\"\n                      placeholder=\"Color de Pelo\"\n                      [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.colorPelo.errors }\">\n                    <div *ngIf=\"submitted && actorForm.controls.colorPelo.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"actorForm.controls.colorPelo.errors.required\">El color es requerido</div>\n                    </div>\n                  </div>\n                  <div class=\"form-group mr-lg-3 mr-md-3 mr-0\">\n                    <!-- Color de Ojos-->\n                    <label class=\"control-label\">Color de ojos</label>\n                    <input type=\"text\" class=\"d-inline form-control\" formControlName=\"colorOjos\"\n                      placeholder=\"Color de ojos\"\n                      [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.colorOjos.errors }\">\n                    <div *ngIf=\"submitted && actorForm.controls.colorOjos.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"actorForm.controls.colorOjos.errors.required\">El color es requerido</div>\n                    </div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Numero DNI -->\n                  <label class=\"control-label\">Numero DNI</label>\n                  <input type=\"text\" (keypress)=\"check($event)\" class=\"d-inline form-control\" id=\"numeroDNI\"\n                    formControlName=\"numeroDNI\" placeholder=\"#####\"\n                    [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.numeroDNI.errors }\">\n                  <div *ngIf=\"submitted && actorForm.controls.numeroDNI.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"actorForm.controls.numeroDNI.errors.required\">El numero es requerida</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Numero de Seguridad Social -->\n                  <label class=\"control-label\">Numero de Seguridad Social</label>\n                  <input type=\"text\" class=\"form-control\" id=\"numeroSeguridadSocial\"\n                    formControlName=\"numeroSeguridadSocial\" placeholder=\"Numero de Seguridad Social\"\n                    [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.numeroSeguridadSocial.errors }\">\n                  <div *ngIf=\"submitted && actorForm.controls.numeroSeguridadSocial.errors\" class=\"invalid-feedback\">\n                    <div *ngIf=\"actorForm.controls.numeroSeguridadSocial.errors.required\">El numero es requerida</div>\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <label>Dirección</label>\n                  <input type=\"text\" class=\"form-control\" forControlName=\"direccion\"\n                    placeholder=\"Apartmento, studio, or floor\">\n\n                </div>\n\n                <div class=\"form-row\">\n                  <div class=\"form-group col-md-6\">\n                    <!-- Localidad -->\n                    <label class=\"control-label\">Localidad</label>\n                    <input type=\"text\" class=\"form-control\" forControlName=\"localidad\" placeholder=\"Baleares\">\n\n                  </div>\n                  <div class=\"form-group col-md-4\">\n                    <!-- Provincia -->\n                    <label class=\"control-label\">Provincia</label>\n                    <input type=\"text\" class=\"form-control\" forControlName=\"provincia\" placeholder=\"Catalan\">\n\n                  </div>\n                  <div class=\"form-group col-md-2\">\n                    <!-- Codigo Postal -->\n                    <label for=\"inputZip\">Codigo Postal</label>\n                    <input type=\"text\" (keypress)=\"check($event)\" class=\"form-control\" forControlName=\"codpostal\"\n                      placeholder=\"######\">\n\n                  </div>\n                </div>\n\n                <div class=\"form-group d-lg-flex d-md-flex d-block\">\n                  <!-- Carnet de conducir y coche-->\n                  <div class=\"form-group mr-lg-3 mr-md-3 mr-0\">\n                    <label class=\"control-label\">Carnet de conducir</label>\n                    <input type=\"text\" class=\"d-inline form-control\" formControlName=\"carnetConducir\"\n                      placeholder=\"Modelo de Coche\"\n                      [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.carnetConducir.errors }\">\n                    <div *ngIf=\"submitted && actorForm.controls.carnetConducir.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"actorForm.controls.carnetConducir.errors.required\">Carnet es requerido</div>\n                    </div>\n                  </div>\n                  <div class=\"form-group\">\n                    <!-- Tipo de carnet -->\n                    <label>Tipo de carnet</label>\n                    <select class=\"form-control\" formControlName=\"typecarnet\" [(ngModel)]=\"tipoCarnetSelect\"\n                      [ngModelOptions]=\"{standalone: true}\">\n                      <option [ngValue]=\"\" selected>Seleccione</option>\n                      <option [ngValue]=\"item\" *ngFor=\"let item of typecarnet\">{{item}}</option>\n                    </select>\n                  </div>\n                </div>\n\n                <div class=\"form-group d-flex\">\n                  <div class=\"form-group mr-3\">\n                    <!-- Modelo de Coche -->\n                    <label class=\"control-label\">Modelo de Coche</label>\n                    <input type=\"text\" class=\"d-inline form-control\" id=\"modeloCoche\" formControlName=\"modeloCoche\"\n                      placeholder=\"Modelo de Coche\"\n                      [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.modeloCoche.errors }\">\n                    <div *ngIf=\"submitted && actorForm.controls.modeloCoche.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"actorForm.controls.modeloCoche.errors.required\">El modelo es requerido</div>\n                    </div>\n                  </div>\n                  <div class=\"form-group\">\n                    <!-- Modelo de Moto-->\n                    <label class=\"control-label\">Modelo de Moto</label>\n                    <input type=\"text\" class=\"d-inline form-control\" id=\"modeloMoto\" formControlName=\"modeloMoto\"\n                      placeholder=\"Modelo de Moto\"\n                      [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.modeloMoto.errors }\">\n                    <div *ngIf=\"submitted && actorForm.controls.modeloMoto.errors\" class=\"invalid-feedback\">\n                      <div *ngIf=\"actorForm.controls.modeloMoto.errors.required\">El modelo es requerido</div>\n                    </div>\n                  </div>\n                </div>\n\n                <div class=\"form-group d-flex\">\n                  <!-- Foto coche y  foto moto-->\n                  <div class=\"form-group mr-3\">\n                    <label class=\"control-label\">Foto coche</label>\n                    <input type=\"file\" (change)=\"onFileCocheSelected($event)\" formControlName=\"fotoCoche\">\n                  </div>\n                  <div class=\"form-group\">\n                    <label class=\"control-label\">Foto moto</label>\n                    <input type=\"file\" (change)=\"onFileMotoSelected($event)\" formControlName=\"fotoMoto\">\n                  </div>\n                </div>\n\n                <div class=\"form-group d-flex\">\n                  <!-- Color de Coche y Moto-->\n                  <div class=\"form-group mr-3\">\n                    <label class=\"control-label\">Color de Coche</label>\n                    <input type=\"text\" class=\"d-inline form-control\" id=\"colorCoche\" formControlName=\"colorCoche\"\n                      placeholder=\"Modelo de Coche\">\n                  </div>\n                  <div class=\"form-group\">\n                    <label class=\"control-label\">Color de Moto</label>\n                    <input type=\"text\" class=\"d-inline form-control\" id=\"colorMoto\" formControlName=\"colorMoto\"\n                      placeholder=\"Modelo de Moto\">\n                  </div>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Fotos Tatuajes -->\n                  <label class=\"control-label\">Fotos Tatuajes</label>\n                  <input type=\"file\" (change)=\"onFileTatuajeSelected($event)\" multiple=\"multiple\"\n                    formControlName=\"tattoos\"><br>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Modelos de Manos -->\n                  <label class=\"control-label\">Modelo de manos profesional</label>\n                  <input type=\"file\" (change)=\"onFileManoSelected($event)\" multiple=\"multiple\"\n                    formControlName=\"manos\"><br>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Baile -->\n                  <label class=\"control-label\">Baile</label>\n                  <select forControlName=\"baile\" class=\"form-control\" [(ngModel)]=\"baileSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option [ngValue]=\"null\">Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of baile\">{{i.nombreBailarin}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"baileSelect.nombreBailarin == 'Profesional' \" class=\"form-group\">\n                  <!-- Estilos de Baile -->\n                  <label class=\"control-label\">Estilos de Baile</label>\n                  <select forControlName=\"estilosBaile\" class=\"form-control\" [(ngModel)]=\"estilosBaileSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option [ngValue]=\"null\">Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of estilosBaile\">{{i.nombreBaile}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"estilosBaileSelect.nombreBaile == 'Otros'\" class=\"form-group\">\n                  <!-- Espesifique otro baile -->\n                  <label class=\"control-label\">Espesifique otro baile</label>\n                  <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Cantantes -->\n                  <label class=\"control-label\">Cantantes</label>\n                  <select forControlName=\"cantante\" class=\"form-control\" [(ngModel)]=\"cantanteSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option [ngValue]=\"null\">Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of cantante\">{{i.nombreCantante}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"cantanteSelect.nombreCantante == 'Profesional'\" class=\"form-group\">\n                  <!-- Estilos de cantos -->\n                  <label class=\"control-label\">Estilo de cantos</label>\n                  <select class=\"form-control\" forControlName=\"estilosCanto\" [(ngModel)]=\"estilosCantoSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option [ngValue]=\"null\">Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of estilosCanto\">{{i.nombreEstiloCanto}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"estilosCantoSelect.nombreEstiloCanto == 'Otros'\" class=\"form-group\">\n                  <!-- Espesifique otros estilos -->\n                  <label class=\"control-label\">Espesifique otro estilos</label>\n                  <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Habilidades -->\n                  <label class=\"control-label\">Habilidades</label>\n                  <select forControlName=\"habilidadess\" class=\"form-control\" [(ngModel)]=\"habilidadessSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option [ngValue]=\"null\">Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of habilidadess\">{{i.nombreHabilidad}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"habilidadessSelect.nombreHabilidad == 'Otros'\" class=\"form-group\">\n                  <!-- Espesifique otras habilidades -->\n                  <label class=\"control-label\">Espesifique otras habilidades</label>\n                  <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Idiomas -->\n                  <label class=\"control-label\">Idiomas</label>\n                  <select forControlName=\"idiomas\" class=\"form-control\" [(ngModel)]=\"idiomasSelect\"\n                    [ngModelOptions]=\"{standalone: true}\">\n                    <option [ngValue]=\"null\">Seleccione...</option>\n                    <option [ngValue]=\"i\" *ngFor=\"let i of idiomas\">{{i.nombreIdioma}}</option>\n                  </select>\n                </div>\n                <div *ngIf=\"idiomasSelect.nombreIdioma == 'Otros'\" class=\"form-group\">\n                  <!-- Espesifique otro Idioma -->\n                  <label class=\"control-label\">Espesifique otro Idioma</label>\n                  <textarea class=\"form-control\" forControlName=\"Otros\" rows=\"3\"></textarea>\n                </div>\n\n                <div class=\"form-group\">\n                  <!-- Observaciones -->\n                  <label for=\"exampleFormControlTextarea1\">Observaciones</label>\n                  <textarea class=\"form-control\" id=\"exampleFormControlTextarea1\" rows=\"3\"></textarea>\n                </div>\n\n                <div class=\"form-group\">\n                  <div class=\"form-check\">\n                    <input type=\"checkbox\" formControlName=\"acceptTerms\" id=\"acceptTerms\" class=\"form-check-input\"\n                      [ngClass]=\"{ 'is-invalid': submitted && actorForm.controls.acceptTerms.value === false }\" />\n                    <label class=\"form-check-label\">\n                      Acepta los terminos del registro\n                    </label>\n                    <div *ngIf=\"submitted && actorForm.controls.acceptTerms.value === false\" class=\"invalid-feedback\">\n                      Los\n                      terminos es requerido</div>\n                  </div>\n                </div>\n\n                <div class=\"info info--sm\">\n                  Al hacer clic en \"Crear cuenta\" certifico que tengo 16 años o más y acepto las\n                  <a class=\"link-secondary--underlined\" target=\"blank\" routerLink=\"/terms\">Condiciones de Uso</a>, la\n                  <a class=\"link-secondary--underlined\" target=\"blank\" routerLink=\"/privacy\">Política de Privacidad</a>\n                  y recibir novedades y promociones.\n                </div>\n\n                <div class=\"mt-4 form-group\">\n                  <!-- Submit Button -->\n                  <button type=\"submit\" (click)=\"registrarActor()\" class=\"btn btn-primary\">Registrame!</button>\n                </div>\n\n              </form>\n            </div>\n          </div>\n        </div>\n        <div class=\"\">\n          ¿Ya tienes cuenta?\n          <a routerLink=\"/login\" class=\"link-primary\">\n            Entrar\n          </a>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<app-footer></app-footer>\n");
 
 /***/ }),
 
@@ -123,7 +123,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-b navbar-trans navbar-expand-md fixed-top\">\n    <div class=\"container\">\n      <a class=\"navbar-brand\" href=\"#\">\n        <img [src]=\"'assets/img/LOGONINESSELAS.png'\" alt=\"\" width=\"250\" class=\"d-inline-block align-middle mt-2\">\n      </a>\n      <button class=\"navbar-toggler\" (click)=\"isNvar = !isNvar\" type=\"button\" data-toggle=\"collapse\" data-target=\"#marco\" aria-controls=\"marco\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n        <span class=\"toggler-icon\">\n            <img [src]=\"'assets/img/nvarWhite.png'\" alt=\"\" *ngIf=\"!isNvar\" width=\"35\" class=\"d-inline-block align-middle\">\n            <img [src]=\"'assets/img/nvarWhiteX.png'\" alt=\"\" *ngIf=\"isNvar\" width=\"35\" class=\"d-inline-block align-middle\">\n        </span>\n      </button>\n      <div class=\"text-upp d-md-block d-none\">\n          <ul class=\"navbar-nav ml-auto\">\n              <li class=\"nav-item\">\n                <a class=\"nav-link js-scroll active\" href=\"#home\">Home</a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"nav-link js-scroll\" routerLink=\"/contact\">Contáctanos</a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"nav-link js-scroll\" routerLink=\"/register\">Empresas</a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"nav-link js-scroll\" *ngIf=\"!authService.loggedIn()\" routerLink=\"/login\">Login</a>\n              </li>\n          </ul>\n      </div>\n    </div>\n    <div class=\"mx-auto d-flex bg-nvar pt-4 animated bounceIn\" *ngIf=\"isNvar\">\n        <div class=\"col-4\">\n          <div class=\"mobile-social-links\">\n              <a href=\"https://www.facebook.com/ninesselas.cuscu.3\" target=\"_blank\" title=\"Facebook\">\n                  <i class=\"fab fa-facebook fa-2x fa-fw\"></i>\n              </a>\n              <a href=\"https://www.instagram.com/ninesselasc/\" target=\"_blank\" title=\"Instagram\">\n                  <i class=\"fab fa-instagram fa-2x fa-fw\"></i>\n              </a>\n          </div>\n          <div class=\"text-light mt-4\">\n                <p class=\"address\">\n                  <strong>Ninesselas</strong>\n                  <br>\n                  3203 Lawton Road, 2nd Floor\n                  España, FL 32803\n                </p>\n                <p>\n                  <strong>407.839.8599</strong>\n                </p>\n                <p>\n                  <strong>\n                    <a>info@ninesselas.com</a>\n                  </strong>\n                </p>\n          </div>\n        </div>\n        <div class=\"col-8\">\n          <div class=\"container\">\n              <ul class=\"fg-20 w-100\">\n                <li class=\"nav-item\">\n                    <a class=\"\" href=\"#home\">\n                      <span class=\"\">Home</span>\n                    </a>\n                </li>\n                <li class=\"nav-item\">\n                    <a class=\"\" routerLink=\"/contact\">\n                      <span class=\"\">Contáctenos</span>\n                    </a>\n                </li>\n                <li class=\"nav-item\">\n                    <a routerLink=\"/terms\">\n                      <span class=\"\">Terminos y condiciones</span>\n                    </a>\n                </li>\n                <li class=\"nav-item\">\n                    <a class=\"\" routerLink=\"/register\">\n                      <span class=\"\">Empresas</span>\n                    </a>\n                </li>\n                <li class=\"nav-item\">\n                    <a class=\"\" href=\"#home\" routerLink=\"/login\">\n                      <span class=\"\">Login</span>\n                    </a>\n                </li>\n              </ul>\n          </div>\n        </div>\n    </div>\n  </nav>");
+/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-b navbar-trans navbar-expand-md fixed-top\">\n    <div class=\"container\">\n      <a class=\"navbar-brand\" href=\"#\">\n        <img [src]=\"'assets/img/LOGONINESSELAS.png'\" alt=\"\" width=\"250\" class=\"d-inline-block align-middle mt-2\">\n      </a>\n      <button class=\"navbar-toggler\" (click)=\"isNvar = !isNvar\" type=\"button\" data-toggle=\"collapse\" data-target=\"#marco\" aria-controls=\"marco\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n        <span class=\"toggler-icon\">\n            <img [src]=\"'assets/img/nvarWhite.png'\" alt=\"\" *ngIf=\"!isNvar\" width=\"35\" class=\"d-inline-block align-middle\">\n            <img [src]=\"'assets/img/nvarWhiteX.png'\" alt=\"\" *ngIf=\"isNvar\" width=\"35\" class=\"d-inline-block align-middle\">\n        </span>\n      </button>\n      <div class=\"text-upp d-md-block d-none\">\n          <ul class=\"navbar-nav ml-auto\">\n              <li class=\"nav-item\">\n                <a class=\"nav-link js-scroll active\" routerLink=\"/home\">Home</a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"nav-link js-scroll\" routerLink=\"/contact\">Contáctanos</a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"nav-link js-scroll\" routerLink=\"/register\">Empresas</a>\n              </li>\n              <li class=\"nav-item\">\n                <a class=\"nav-link js-scroll\" *ngIf=\"!authService.loggedIn()\" routerLink=\"/login\">Login</a>\n              </li>\n          </ul>\n      </div>\n    </div>\n    <div class=\"mx-auto d-flex bg-nvar pt-4 animated bounceIn\" *ngIf=\"isNvar\">\n        <div class=\"col-4\">\n          <div class=\"mobile-social-links\">\n              <a href=\"https://www.facebook.com/ninesselas.cuscu.3\" target=\"_blank\" title=\"Facebook\">\n                  <i class=\"fab fa-facebook fa-2x fa-fw\"></i>\n              </a>\n              <a href=\"https://www.instagram.com/ninesselasc/\" target=\"_blank\" title=\"Instagram\">\n                  <i class=\"fab fa-instagram fa-2x fa-fw\"></i>\n              </a>\n          </div>\n          <div class=\"text-light mt-4\">\n                <p class=\"address\">\n                  <strong>Ninesselas</strong>\n                  <br>\n                  3203 Lawton Road, 2nd Floor\n                  España, FL 32803\n                </p>\n                <p>\n                  <strong>407.839.8599</strong>\n                </p>\n                <p>\n                  <strong>\n                    <a>info@ninesselas.com</a>\n                  </strong>\n                </p>\n          </div>\n        </div>\n        <div class=\"col-8\">\n          <div class=\"container\">\n              <ul class=\"fg-20 w-100\">\n                <li class=\"nav-item\">\n                    <a class=\"\" href=\"#home\">\n                      <span class=\"\">Home</span>\n                    </a>\n                </li>\n                <li class=\"nav-item\">\n                    <a class=\"\" routerLink=\"/contact\">\n                      <span class=\"\">Contáctenos</span>\n                    </a>\n                </li>\n                <li class=\"nav-item\">\n                    <a routerLink=\"/terms\">\n                      <span class=\"\">Terminos y condiciones</span>\n                    </a>\n                </li>\n                <li class=\"nav-item\">\n                    <a class=\"\" routerLink=\"/register\">\n                      <span class=\"\">Empresas</span>\n                    </a>\n                </li>\n                <li class=\"nav-item\">\n                    <a class=\"\" routerLink=\"/login\">\n                      <span class=\"\">Login</span>\n                    </a>\n                </li>\n              </ul>\n          </div>\n        </div>\n    </div>\n  </nav>");
 
 /***/ }),
 
@@ -136,7 +136,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-expand navbar-dark bg-dark static-top\">\n\n  <a class=\"navbar-brand mr-1\" href=\"index.html\">Administrativo Usuarios</a>\n\n  <button class=\"btn btn-link btn-sm text-white order-1 order-sm-0\" id=\"sidebarToggle\" href=\"#\">\n    <i class=\"fas fa-bars\"></i>\n  </button>\n\n  <!-- Navbar Search -->\n  <form class=\"d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0\">\n\n  </form>\n\n  <!-- Navbar -->\n  <ul class=\"navbar-nav ml-auto ml-md-0\">\n    <li class=\"nav-item dropdown no-arrow mx-1\">\n      <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"alertsDropdown\">\n        <a class=\"dropdown-item\" href=\"#\">Action</a>\n        <a class=\"dropdown-item\" href=\"#\">Another action</a>\n        <div class=\"dropdown-divider\"></div>\n        <a class=\"dropdown-item\" href=\"#\">Something else here</a>\n      </div>\n    </li>\n    <li class=\"nav-item dropdown no-arrow mx-1\">\n      <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"messagesDropdown\">\n        <a class=\"dropdown-item\" href=\"#\">Action</a>\n        <a class=\"dropdown-item\" href=\"#\">Another action</a>\n        <div class=\"dropdown-divider\"></div>\n        <a class=\"dropdown-item\" href=\"#\">Something else here</a>\n      </div>\n    </li>\n\n    <li class=\"nav-item dropdown no-arrow\">\n      <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"userDropdown\" role=\"button\" data-toggle=\"dropdown\"\n        aria-haspopup=\"true\" aria-expanded=\"false\">\n        <i class=\"fas fa-user-circle fa-fw\"></i>\n      </a>\n\n      <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"userDropdown\">\n        <!-- <a class=\"dropdown-item\" href=\"#\">Settings</a>\n              <a class=\"dropdown-item\" href=\"#\">Activity Log</a> -->\n        <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#logoutModal\">Salir</a>\n      </div>\n    </li>\n    <li> <a class=\"btn btn-primary\" (click)=\"authService.logoutUser()\" routerLink=\"/#/home\">Salir</a>\n    </li>\n  </ul>\n\n</nav>\n<div id=\"wrapper\">\n  <!-- Sidebar -->\n  <ul class=\"sidebar navbar-nav\">\n    <li class=\"nav-item active\">\n      <a class=\"nav-link\" routerLink=\"/home\">\n        <i class=\"fas fa-fw fa-tachometer-alt\"></i>\n        <span>Dashboard</span>\n      </a>\n    </li>\n  </ul>\n\n  <div id=\"content-wrapper\">\n\n    <div class=\"container-fluid\">\n\n      <!-- Breadcrumbs-->\n      <ol class=\"breadcrumb\">\n        <li class=\"breadcrumb-item\">\n          <a href=\"#\">Dashboard</a>\n        </li>\n        <li class=\"breadcrumb-item active\">{{userInfo.username}}</li>\n      </ol>\n\n      <!-- DataTables Example -->\n      <div class=\"card mb-3\">\n        <div class=\"card-header\">\n          <i class=\"fas fa-table\"></i>\n          Información Personal</div>\n        <div class=\"card-body\">\n          <div class=\"table-responsive\">\n            <table class=\"table table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\">\n              <tbody>\n                <img src=\"{{userInfo.avatarFd}}\">\n                <tr>\n                  <td>Nombre Usuario</td>\n                  <td>{{userInfo.nombres}} {{userInfo.apellidos}}</td>\n                </tr>\n                <tr>\n                  <td>Correo eléctronico</td>\n                  <td>{{userInfo.email}}</td>\n                </tr>\n                <tr>\n                  <td>Contraseña</td>\n                  <td>{{userInfo.password}}</td>\n                </tr>\n                <tr>\n                  <td>Alias</td>\n                  <td>{{userInfo.alias}}</td>\n                </tr>\n                <tr>\n                  <td>Genero</td>\n                  <td>{{userInfo.sexo}}</td>\n                </tr>\n                <tr>\n                  <td>Numero de Teléfono</td>\n                  <td>{{userInfo.telefono}}</td>\n                </tr>\n                <tr>\n                  <td>Fecha de nacimiento</td>\n                  <td>{{userInfo.fechaNacimiento}}</td>\n                </tr>\n                <tr>\n                  <td>Pais</td>\n                  <td>{{userInfo.nacionalidad}}</td>\n                </tr>\n                <tr>\n                  <td>Talla de camisa</td>\n                  <td>{{userInfo.tallaCamisa}}</td>\n                </tr>\n                <tr>\n                  <td>Talla de chaqueta</td>\n                  <td>{{userInfo.tallaChaqueta}}</td>\n                </tr>\n                <tr>\n                  <td>Pie</td>\n                  <td>{{userInfo.pie}}</td>\n                </tr>\n                <tr>\n                  <td>Altura</td>\n                  <td>{{userInfo.altura}}</td>\n                </tr>\n                <tr>\n                  <td>Color de Pelo</td>\n                  <td>{{userInfo.colorPelo}}</td>\n                </tr>\n                <tr>\n                  <td>Color de Piel</td>\n                  <td>{{userInfo.colorPiel}}</td>\n                </tr>\n                <tr>\n                  <td>Color de ojos</td>\n                  <td>{{userInfo.colorOjos}}</td>\n                </tr>\n                <tr>\n                  <td>Code DNI</td>\n                  <td>{{userInfo.dniUser}}</td>\n                </tr>\n                <tr>\n                  <td>Modelo de Coche</td>\n                  <td>{{userInfo.modeloCoche}}</td>\n                </tr>\n                <tr>\n                  <td>Modelo de Moto</td>\n                  <td>{{userInfo.modeloMoto}}</td>\n                </tr>\n                <tr>\n                  <td>Numero de seguridad social</td>\n                  <td>{{userInfo.numeroSeguroSocial}}</td>\n                </tr>\n              </tbody>\n            </table>\n          </div>\n        </div>\n        <div class=\"card-footer small text-muted\">Updated yesterday at 11:59 PM</div>\n      </div>\n\n    </div>\n    <!-- /.container-fluid -->\n\n    <!-- Sticky Footer -->\n    <footer class=\"sticky-footer\">\n      <div class=\"container my-auto\">\n        <div class=\"copyright text-center my-auto\">\n          <span>Copyright © Ninesselas 2019</span>\n        </div>\n      </div>\n    </footer>\n\n  </div>\n  <!-- /.content-wrapper -->\n\n</div>\n<!-- /#wrapper -->\n\n<!-- Scroll to Top Button-->\n<a class=\"scroll-to-top rounded\" href=\"#page-top\">\n  <i class=\"fas fa-angle-up\"></i>\n</a>\n\n<!-- Logout Modal-->\n<div class=\"modal fade\" id=\"logoutModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\"\n  aria-hidden=\"true\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h5 class=\"modal-title\" id=\"exampleModalLabel\">Ready to Leave?</h5>\n        <button class=\"close\" type=\"button\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">×</span>\n        </button>\n      </div>\n      <div class=\"modal-body\">Select \"Logout\" below if you are ready to end your current session.</div>\n      <div class=\"modal-footer\">\n        <button class=\"btn btn-secondary\" type=\"button\" data-dismiss=\"modal\">Cancel</button>\n        <a class=\"btn btn-primary\" (click)=\"authService.logoutUser()\" routerLink=\"/#/home\">Salir</a>\n      </div>\n    </div>\n  </div>\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<nav class=\"navbar navbar-expand navbar-dark bg-dark static-top\">\n\n  <a class=\"navbar-brand mr-1\" href=\"index.html\">Administrativo Usuarios</a>\n\n  <button class=\"btn btn-link btn-sm text-white order-1 order-sm-0\" id=\"sidebarToggle\" href=\"#\">\n    <i class=\"fas fa-bars\"></i>\n  </button>\n\n  <!-- Navbar Search -->\n  <form class=\"d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0\">\n\n  </form>\n\n  <!-- Navbar -->\n  <ul class=\"navbar-nav ml-auto ml-md-0\">\n    <li class=\"nav-item dropdown no-arrow mx-1\">\n      <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"alertsDropdown\">\n        <a class=\"dropdown-item\" href=\"#\">Action</a>\n        <a class=\"dropdown-item\" href=\"#\">Another action</a>\n        <div class=\"dropdown-divider\"></div>\n        <a class=\"dropdown-item\" href=\"#\">Something else here</a>\n      </div>\n    </li>\n    <li class=\"nav-item dropdown no-arrow mx-1\">\n      <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"messagesDropdown\">\n        <a class=\"dropdown-item\" href=\"#\">Action</a>\n        <a class=\"dropdown-item\" href=\"#\">Another action</a>\n        <div class=\"dropdown-divider\"></div>\n        <a class=\"dropdown-item\" href=\"#\">Something else here</a>\n      </div>\n    </li>\n\n    <li class=\" nav-item dropdown no-arrow\">\n\n    </li>\n\n    <li class=\" nav-item dropdown no-arrow\">\n      <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"userDropdown\" role=\"button\" data-toggle=\"dropdown\"\n        aria-haspopup=\"true\" aria-expanded=\"false\">\n        <img [src]=\"urlImage\" style=\"width:5%;border-radius: 50%;\" />\n      </a>\n\n      <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"userDropdown\">\n        <!-- <a class=\"dropdown-item\" href=\"#\">Settings</a>\n              <a class=\"dropdown-item\" href=\"#\">Activity Log</a> -->\n        <a class=\"dropdown-item\" href=\"#\" data-toggle=\"modal\" data-target=\"#logoutModal\">Salir</a>\n      </div>\n    </li>\n    <li> <a class=\"btn btn-primary\" (click)=\"authService.logoutUser()\" href=\"home\">Salir</a>\n    </li>\n  </ul>\n\n</nav>\n<div id=\"wrapper\">\n  <!-- Sidebar -->\n  <ul class=\"sidebar navbar-nav\">\n    <li class=\"nav-item active\">\n      <a class=\"nav-link\" href=\"index.html\">\n        <i class=\"fas fa-fw fa-tachometer-alt\"></i>\n        <span>Dashboard</span>\n      </a>\n    </li>\n    <li class=\"nav-item dropdown\">\n      <a class=\"nav-link dropdown-toggle\" href=\"#\" id=\"pagesDropdown\" role=\"button\" data-toggle=\"dropdown\"\n        aria-haspopup=\"true\" aria-expanded=\"false\">\n        <i class=\"fas fa-fw fa-folder\"></i>\n        <span>Paginas</span>\n      </a>\n      <div class=\"dropdown-menu\" aria-labelledby=\"pagesDropdown\">\n        <h6 class=\"dropdown-header\">Bandeja Inicio:</h6>\n        <a class=\"dropdown-item\" routerLink=\"/homeuser\">Home</a>\n      </div>\n    </li>\n  </ul>\n\n  <div id=\"content-wrapper\">\n\n    <div class=\"container-fluid\">\n\n      <!-- Breadcrumbs-->\n      <ol class=\"breadcrumb\">\n        <li class=\"breadcrumb-item\">\n          <a href=\"#\">Dashboard</a>\n        </li>\n        <li class=\"breadcrumb-item active\">{{userInfo.idUser}}</li>\n      </ol>\n\n      <!-- DataTables Example -->\n      <div class=\"card mb-3\">\n        <div class=\"card-header\">\n          <i class=\"fas fa-table\"></i>\n          Información Personal</div>\n        <div class=\"card-body\">\n          <div class=\"table-responsive\">\n            <table class=\"table table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\">\n              <tbody>\n\n                <tr>\n                  <td>Nombre Usuario </td>\n                  <td>{{userInfo.nombres}} {{userInfo.apellidos}}</td>\n                </tr>\n                <tr>\n                  <td>Correo eléctronico</td>\n                  <td>{{userInfo.email}}</td>\n                </tr>\n                <tr>\n                  <td>Contraseña</td>\n                  <td>{{userInfo.password}}</td>\n                </tr>\n                <tr>\n                  <td>Alias</td>\n                  <td>N/A</td>\n                </tr>\n                <tr>\n                  <td>Genero</td>\n                  <td>{{userInfo.sexo}}</td>\n                </tr>\n                <tr>\n                  <td>Numero de Teléfono</td>\n                  <td>{{userInfo.telefono}}</td>\n                </tr>\n                <tr>\n                  <td>Fecha de nacimiento</td>\n                  <td>{{userInfo.fechaNacimiento}}</td>\n                </tr>\n                <tr>\n                  <td>Pais</td>\n                  <td>{{userInfo.nacionalidad}}</td>\n                </tr>\n                <tr>\n                  <td>Talla de camisa</td>\n                  <td>{{userInfo.tallasList[0].camisaTalla}}</td>\n                </tr>\n                <tr>\n                  <td>Talla de Pantalon</td>\n                  <td>{{userInfo.tallasList[0].pantalonTalla}}</td>\n                </tr>\n                <tr>\n                  <td>Talla de chaqueta</td>\n                  <td>{{userInfo.tallasList[0].chaquetaTalla}}</td>\n                </tr>\n                <tr>\n                  <td>Pie</td>\n                  <td>{{userInfo.tallasList[0].pieTalla}}</td>\n                </tr>\n                <tr>\n                  <td>Altura</td>\n                  <td>{{userInfo.altura}}</td>\n                </tr>\n                <tr>\n                  <td>Color de Pelo</td>\n                  <td>{{userInfo.colorPelo}}</td>\n                </tr>\n                <tr>\n                  <td>Color de Piel</td>\n                  <td>{{userInfo.colorPiel}}</td>\n                </tr>\n                <tr>\n                  <td>Color de ojos</td>\n                  <td>{{userInfo.colorOjos}}</td>\n                </tr>\n                <tr>\n                  <td>Code DNI</td>\n                  <td>{{userInfo.dniUser}}</td>\n                </tr>\n                <tr>\n                  <td>Modelo de Coche</td>\n                  <td>{{userInfo.cocheList[0].modeloCoche}}</td>\n                </tr>\n                <tr>\n                  <td>Modelo de Moto</td>\n                  <td>{{userInfo.motoList[0].modeloMoto}}</td>\n                </tr>\n                <tr>\n                  <td>Numero de seguridad social</td>\n                  <td>{{userInfo.numeroSeguroSocial}}</td>\n                </tr>\n                <tr>\n                  <td>Copia de seguridad social</td>\n                  <td><a target=\"_blank\" class=\"btn btn-success\" href={{urlPathSeguro}}>Descargar</a>\n                  </td>\n                </tr>\n              </tbody>\n            </table>\n          </div>\n        </div>\n        <div class=\"card-footer small text-muted\">Updated yesterday at 11:59 PM</div>\n      </div>\n\n    </div>\n    <!-- /.container-fluid -->\n\n    <!-- Sticky Footer -->\n    <footer>\n      <div class=\"container my-auto\">\n        <div class=\"copyright text-center my-auto\">\n          <span>Copyright © Ninesselas 2019</span>\n        </div>\n      </div>\n    </footer>\n\n  </div>\n  <!-- /.content-wrapper -->\n\n</div>\n<!-- /#wrapper -->\n\n<!-- Scroll to Top Button-->\n<a class=\"scroll-to-top rounded\" href=\"#page-top\">\n  <i class=\"fas fa-angle-up\"></i>\n</a>\n\n<!-- Logout Modal-->\n<div class=\"modal fade\" id=\"logoutModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\"\n  aria-hidden=\"true\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <h5 class=\"modal-title\" id=\"exampleModalLabel\">Ready to Leave?</h5>\n        <button class=\"close\" type=\"button\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">×</span>\n        </button>\n      </div>\n      <div class=\"modal-body\">Select \"Logout\" below if you are ready to end your current session.</div>\n      <div class=\"modal-footer\">\n        <button class=\"btn btn-secondary\" type=\"button\" data-dismiss=\"modal\">Cancel</button>\n        <a class=\"btn btn-primary\" (click)=\"authService.logoutUser()\" href=\"home\">Salir</a>\n      </div>\n    </div>\n  </div>\n</div>\n");
 
 /***/ }),
 
@@ -175,7 +175,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"wrapper \">\n  <div class=\"sidebar\" data-color=\"white\" data-active-color=\"danger\">\n    <div class=\"logo\">\n      <a href=\"http://www.creative-tim.com\" class=\"simple-text logo-mini\">\n        <div class=\"logo-image-small\">\n          <img src=\"https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/46b63d3c-ae67-464c-9a37-670829b2a157/d8ttdm6-5617aa77-87d8-4fb7-bb78-4aab6b0956b5.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzQ2YjYzZDNjLWFlNjctNDY0Yy05YTM3LTY3MDgyOWIyYTE1N1wvZDh0dGRtNi01NjE3YWE3Ny04N2Q4LTRmYjctYmI3OC00YWFiNmIwOTU2YjUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.L80L4l2NOeCIV3WB491ANP4Ii_9NiIg2m-tgY5M_IaA\">\n        </div>\n      </a>\n      <a href=\"http://www.creative-tim.com\" class=\"fg-16 simple-text logo-normal\">\n        Administrativo\n      </a>\n    </div>\n    <div class=\"sidebar-wrapper\">\n      <ul class=\"nav\">\n        <li class=\"active \">\n          <a href=\"./dashboard.html\">\n            <i class=\"fas fa-user-cog\"></i>\n            <p>Dashboard</p>\n          </a>\n        </li>\n        <li>\n          <a href=\"./notifications.html\">\n            <i class=\"fa fa-bell\"></i>\n            <p>Notifications</p>\n          </a>\n        </li>\n        <li>\n          <a href=\"./user.html\">\n            <i class=\"fas fa-user\"></i>\n            <p>User Profile</p>\n          </a>\n        </li>\n        <li>\n          <a href=\"./tables.html\">\n            <i class=\"fas fa-list\"></i>\n            <p>Table List</p>\n          </a>\n        </li>\n      </ul>\n    </div>\n  </div>\n  <div class=\"main-panel\">\n    <!-- Navbar -->\n    <nav class=\"navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent\">\n      <div class=\"container-fluid\">\n        <div class=\"navbar-wrapper\">\n          <div class=\"navbar-toggle\">\n            <button type=\"button\" class=\"navbar-toggler\">\n              <span class=\"navbar-toggler-bar bar1\"></span>\n              <span class=\"navbar-toggler-bar bar2\"></span>\n              <span class=\"navbar-toggler-bar bar3\"></span>\n            </button>\n          </div>\n          <a>{{userInfo.idUser}} {{userInfo.username}} : {{userInfo.nombres}}  {{userInfo.apellidos}}</a>\n        </div>\n        <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navigation\"\n          aria-controls=\"navigation-index\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n          <span class=\"navbar-toggler-bar navbar-kebab\"></span>\n          <span class=\"navbar-toggler-bar navbar-kebab\"></span>\n          <span class=\"navbar-toggler-bar navbar-kebab\"></span>\n        </button>\n        <div class=\"collapse navbar-collapse justify-content-end\" id=\"navigation\">\n          <form>\n            <div class=\"input-group no-border\">\n              <input type=\"text\" value=\"\" class=\"form-control\" placeholder=\"Busqueda...\">\n              <div class=\"input-group-append\">\n                <div class=\"input-group-text\">\n                  <i class=\"fas fa-search\"></i>\n                </div>\n              </div>\n            </div>\n          </form>\n          <ul class=\"navbar-nav\">\n            <li class=\"nav-item btn-rotate dropdown\">\n              <a class=\"nav-link dropdown-toggle\" href=\"http://example.com\" id=\"navbarDropdownMenuLink\"\n                data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                <i class=\"fas fa-tasks\"></i>\n                <p>\n                  <span class=\"d-lg-none d-md-block\">Configuración</span>\n                </p>\n              </a>\n              <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"navbarDropdownMenuLink\">\n                <a class=\"dropdown-item\" href=\"#\">Another action</a>\n                <a class=\"dropdown-item\" href=\"#\">Something else here</a>\n              </div>\n            </li>\n            <li> <a class=\"btn btn-primary\" (click)=\"authService.logoutUser()\" href=\"home\">Salir</a>\n\n            </li>\n          </ul>\n        </div>\n      </div>\n    </nav>\n\n    <div class=\"content\">\n      <div class=\"row\">\n        <div class=\"col-lg-3 col-md-6 col-sm-6\">\n          <div class=\"card card-stats\">\n            <div class=\"card-body \">\n              <div class=\"row\">\n                <div class=\"col-5 col-md-4\">\n                  <div class=\"icon-big text-center icon-warning\">\n                    <i class=\"fas fa-warehouse\"></i>\n                  </div>\n                </div>\n                <div class=\"col-7 col-md-8\">\n                  <div class=\"numbers\">\n                    <p class=\"card-category\">Capacity</p>\n                    <p class=\"card-title\">150GB\n                      <p>\n                  </div>\n                </div>\n              </div>\n            </div>\n            <div class=\"card-footer \">\n              <hr>\n              <div class=\"stats\">\n                <i class=\"fa fa-refresh\"></i> Update Now\n              </div>\n            </div>\n          </div>\n        </div>\n        <div class=\"col-lg-3 col-md-6 col-sm-6\">\n          <div class=\"card card-stats\">\n            <div class=\"card-body \">\n              <div class=\"row\">\n                <div class=\"col-5 col-md-4\">\n                  <div class=\"icon-big text-center icon-warning\">\n                    <i class=\"fas fa-users\"></i>\n                  </div>\n                </div>\n                <div class=\"col-7 col-md-8\">\n                  <div class=\"numbers\">\n                    <p class=\"card-category\">Usuarios</p>\n                    <p class=\"card-title\">5\n                      <p>\n                  </div>\n                </div>\n              </div>\n            </div>\n            <div class=\"card-footer \">\n              <hr>\n              <div class=\"stats\">\n                <i class=\"fa fa-calendar-o\"></i> Last day\n              </div>\n            </div>\n          </div>\n        </div>\n        <div class=\"col-lg-3 col-md-6 col-sm-6\">\n          <div class=\"card card-stats\">\n            <div class=\"card-body \">\n              <div class=\"row\">\n                <div class=\"col-5 col-md-4\">\n                  <div class=\"icon-big text-center icon-warning\">\n                    <i class=\"fab fa-pushed\"></i>\n                  </div>\n                </div>\n                <div class=\"col-7 col-md-8\">\n                  <div class=\"numbers\">\n                    <p class=\"card-category\">Errors</p>\n                    <p class=\"card-title\">23\n                      <p>\n                  </div>\n                </div>\n              </div>\n            </div>\n            <div class=\"card-footer \">\n              <hr>\n              <div class=\"stats\">\n                <i class=\"fa fa-clock-o\"></i> In the last hour\n              </div>\n            </div>\n          </div>\n        </div>\n        <div class=\"col-lg-3 col-md-6 col-sm-6\">\n          <div class=\"card card-stats\">\n            <div class=\"card-body \">\n              <div class=\"row\">\n                <div class=\"col-5 col-md-4\">\n                  <div class=\"icon-big text-center icon-warning\">\n                    <i class=\"fab fa-twitter\"></i>\n                  </div>\n                </div>\n                <div class=\"col-7 col-md-8\">\n                  <div class=\"numbers\">\n                    <p class=\"card-category\">Followers</p>\n                    <p class=\"card-title\">+45K\n                      <p>\n                  </div>\n                </div>\n              </div>\n            </div>\n            <div class=\"card-footer \">\n              <hr>\n              <div class=\"stats\">\n                <i class=\"fa fa-refresh\"></i> Update now\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <div class=\"card \">\n            <div class=\"card-header \">\n              <h5 class=\"card-title\">Información de Usuario Administrativo</h5>\n            </div>\n            <div class=\"card-body \">\n              <table class=\"table table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\">\n                <tbody>\n                  <tr>\n                    <td>Nombre Usuario</td>\n                    <td>{{userInfo.username}}</td>\n                  </tr>\n                  <tr>\n                    <td>Correo eléctronico</td>\n                    <td>{{userInfo.email}}</td>\n                  </tr>\n                  <tr>\n                    <td>Contraseña</td>\n                    <td>{{userInfo.password}}</td>\n                  </tr>\n                  <tr>\n                    <td>Teléfonos</td>\n                    <td>{{userInfo.telefono}}</td>\n                  </tr>\n                </tbody>\n              </table>\n              <div class=\"row\">\n                <div class=\"col-md-12 mx-auto\">\n                  <div class=\"md-form\">\n                    <input type=\"text\" [(ngModel)]=\"searchText\" class=\"form-control\" id=\"search\" mdbInput>\n                    <label for=\"search\">Search</label>\n                  </div>\n                </div>\n              </div>\n              <table ng-table=\"tableParams2\" mdbTable mdbTableScroll scrollY=\"true\" maxHeight=\"200\" scrollX=\"true\"\n                class=\"table table-bordered table-responsive-md table-striped text-center\">\n                <thead>\n                  <tr>\n                    <th *ngFor=\"let head of headElementsUsers; let i = index\" aria-controls=\"tableSortExample\"\n                      scope=\"col\" [mdbTableSort]=\"allUsers\" [sortBy]=\"headElementsUsers[i]\">{{head | titlecase}}</th>\n                    <mdb-icon fas icon=\"sort\"></mdb-icon>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr *ngFor=\"let user of allUsers; let i = index\">\n                    <th scope=\"row\">{{user.idUser}}</th>\n                    <td>{{user.nombres}} {{user.apellidos}}</td>\n                    <td>{{user.edad}}</td>\n                    <td>{{user.nombreArtistico}}</td>\n                    <td>{{user.sexo}}</td>\n                    <td>{{user.alias}}</td>\n                    <td>{{user.fechaNacimiento}}</td>\n                    <td>{{user.localidad}}</td>\n                    <td>{{user.tallaPantalon}}</td>\n                    <td>{{user.tallaCamisa}}</td>\n                    <td>{{user.tallaChaqueta}}</td>\n                    <td>{{user.pie}}</td>\n                    <td>{{user.altura}}</td>\n                    <td>{{user.colorPiel}}</td>\n                    <td>{{user.colorPelo}}</td>\n                    <td>{{user.colorOjos}}</td>\n                    <td>{{user.modeloCoche}}</td>\n                    <td>{{user.modeloMoto}}</td>\n                    <td>{{user.razaMascota}}</td>\n                    <td>{{user.ultimosTrabajos}}</td>\n                    <td>{{user.dniUser}}</td>\n                    <td>{{user.numeroSeguroSocial}}</td>\n                    <td>{{user.email}}</td>\n                    <td>{{user.telefono}}</td>\n                    <td>{{user.telefono}}</td>\n\n                  </tr>\n                </tbody>\n              </table>\n              <div id=\"tableCompanies\" class=\"table-editable\">\n                <table mdbTable2 mdbTableScroll scrollY=\"true\" maxHeight=\"200\" NGTab scrollX=\"true\"\n                  class=\"table table-bordered table-responsive-md table-striped text-center\">\n                  <thead>\n                    <tr>\n                      <th *ngFor=\"let head of headElementsCompanies; let i = index\" aria-controls=\"tableSortExample\"\n                        scope=\"col\" [mdbTableSort]=\"allUsers\" [sortBy]=\"headElementsCompanies[i]\">{{head | titlecase}}\n                      </th>\n                      <mdb-icon fas icon=\"sort\"></mdb-icon>\n                    </tr>\n                  </thead>\n                  <tbody>\n                    <tr *ngFor=\"let company of allCompanies; let id = index\">\n                      <th scope=\"row\">{{company.idUser}}</th>\n                      <td>\n                        <span (keyup)=\"changeValue(id, 'username', $event)\" (blur)=\"updateList(id, 'username', $event)\"\n                          contenteditable=\"true\">{{company.username}}</span>\n                      </td>\n                      <td>\n                        <span (keyup)=\"changeValue(id, 'email', $event)\" (blur)=\"updateList(id, 'email', $event)\"\n                          contenteditable=\"true\">{{company.email}}</span>\n                      </td>\n                      <td>\n                        <span (keyup)=\"changeValue(id, 'telefonoFijo', $event)\"\n                          (blur)=\"updateList(id, 'telefonoFijo', $event)\"\n                          contenteditable=\"true\">{{company.telefono}}</span>\n                      </td>\n                      <td>\n                        <span (keyup)=\"changeValue(id, 'password', $event)\" (blur)=\"updateList(id, 'password', $event)\"\n                          contenteditable=\"true\">{{company.password}}</span>\n                      </td>\n                      <td>\n                        <span class=\"table-remove\">\n                          <button type=\"button\" mdbBtn color=\"danger\" rounded=\"true\" size=\"sm\" class=\"my-0\"\n                            (click)=\"removeCompany(company.id)\">Remove</button>\n                        </span>\n                      </td>\n                    </tr>\n                  </tbody>\n                </table>\n              </div>\n              <canvas id=chartHours width=\"400\" height=\"100\"></canvas>\n            </div>\n            <div class=\"card-footer \">\n              <hr>\n              <div class=\"stats\">\n                <i class=\"fa fa-history\"></i> Updated 3 minutes ago\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <footer class=\"footer footer-black  footer-white \">\n      <div class=\"container-fluid\">\n        <div class=\"row\">\n          <nav class=\"footer-nav\">\n            <ul>\n              <li>\n                <a href=\"https://www.creative-tim.com\" target=\"_blank\">Creative Tim</a>\n              </li>\n              <li>\n                <a href=\"http://blog.creative-tim.com/\" target=\"_blank\">Blog</a>\n              </li>\n              <li>\n                <a href=\"https://www.creative-tim.com/license\" target=\"_blank\">Licenses</a>\n              </li>\n            </ul>\n          </nav>\n        </div>\n      </div>\n    </footer>\n  </div>\n</div>");
+/* harmony default export */ __webpack_exports__["default"] = ("<div class=\"wrapper \">\n  <div class=\"sidebar\" data-color=\"white\" data-active-color=\"danger\">\n    <div class=\"logo\">\n      <a href=\"http://www.creative-tim.com\" class=\"simple-text logo-mini\">\n        <div class=\"logo-image-small\">\n          <img src=\"https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/46b63d3c-ae67-464c-9a37-670829b2a157/d8ttdm6-5617aa77-87d8-4fb7-bb78-4aab6b0956b5.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzQ2YjYzZDNjLWFlNjctNDY0Yy05YTM3LTY3MDgyOWIyYTE1N1wvZDh0dGRtNi01NjE3YWE3Ny04N2Q4LTRmYjctYmI3OC00YWFiNmIwOTU2YjUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.L80L4l2NOeCIV3WB491ANP4Ii_9NiIg2m-tgY5M_IaA\">\n        </div>\n      </a>\n      <a href=\"http://www.creative-tim.com\" class=\"fg-16 simple-text logo-normal\">\n        Administrativo\n      </a>\n    </div>\n    <div class=\"sidebar-wrapper\">\n      <ul class=\"nav\">\n        <li class=\"active \">\n          <a routerLink=\"/home\">\n            <i class=\"fas fa-user-cog\"></i>\n            <p>Dashboard</p>\n          </a>\n        </li>\n        <li>\n          <a>\n            <i class=\"fa fa-bell\"></i>\n            <p>Notifications</p>\n          </a>\n        </li>\n        <li>\n          <a>\n            <i class=\"fas fa-user\"></i>\n            <p>User Profile</p>\n          </a>\n        </li>\n        <li>\n          <a>\n            <i class=\"fas fa-list\"></i>\n            <p>Table List</p>\n          </a>\n        </li>\n      </ul>\n    </div>\n  </div>\n  <div class=\"main-panel\">\n    <!-- Navbar -->\n    <nav class=\"navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent\">\n      <div class=\"container-fluid\">\n        <div class=\"navbar-wrapper\">\n          <div class=\"navbar-toggle\">\n            <button type=\"button\" class=\"navbar-toggler\">\n              <span class=\"navbar-toggler-bar bar1\"></span>\n              <span class=\"navbar-toggler-bar bar2\"></span>\n              <span class=\"navbar-toggler-bar bar3\"></span>\n            </button>\n          </div>\n          <a>{{userInfo.idUser}} {{userInfo.username}} : {{userInfo.nombres}}  {{userInfo.apellidos}}</a>\n        </div>\n        <button class=\"navbar-toggler\" type=\"button\" data-toggle=\"collapse\" data-target=\"#navigation\"\n          aria-controls=\"navigation-index\" aria-expanded=\"false\" aria-label=\"Toggle navigation\">\n          <span class=\"navbar-toggler-bar navbar-kebab\"></span>\n          <span class=\"navbar-toggler-bar navbar-kebab\"></span>\n          <span class=\"navbar-toggler-bar navbar-kebab\"></span>\n        </button>\n        <div class=\"collapse navbar-collapse justify-content-end\" id=\"navigation\">\n          <form>\n            <div class=\"input-group no-border\">\n              <input type=\"text\" value=\"\" class=\"form-control\" placeholder=\"Busqueda...\">\n              <div class=\"input-group-append\">\n                <div class=\"input-group-text\">\n                  <i class=\"fas fa-search\"></i>\n                </div>\n              </div>\n            </div>\n          </form>\n          <ul class=\"navbar-nav\">\n            <li class=\"nav-item btn-rotate dropdown\">\n              <a class=\"nav-link dropdown-toggle\" id=\"navbarDropdownMenuLink\"\n                data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n                <i class=\"fas fa-tasks\"></i>\n                <p>\n                  <span class=\"d-lg-none d-md-block\">Configuración</span>\n                </p>\n              </a>\n              <div class=\"dropdown-menu dropdown-menu-right\" aria-labelledby=\"navbarDropdownMenuLink\">\n                <a class=\"dropdown-item\" href=\"#\">Another action</a>\n                <a class=\"dropdown-item\" href=\"#\">Something else here</a>\n              </div>\n            </li>\n            <li> <a class=\"btn btn-primary\" (click)=\"authService.logoutUser()\" routerLink=\"/home\">Salir</a>\n\n            </li>\n          </ul>\n        </div>\n      </div>\n    </nav>\n\n    <div class=\"content\">\n      <div class=\"row\">\n        <div class=\"col-lg-3 col-md-6 col-sm-6\">\n          <div class=\"card card-stats\">\n            <div class=\"card-body \">\n              <div class=\"row\">\n                <div class=\"col-5 col-md-4\">\n                  <div class=\"icon-big text-center icon-warning\">\n                    <i class=\"fas fa-warehouse\"></i>\n                  </div>\n                </div>\n                <div class=\"col-7 col-md-8\">\n                  <div class=\"numbers\">\n                    <p class=\"card-category\">Capacity</p>\n                    <p class=\"card-title\">150GB\n                      <p>\n                  </div>\n                </div>\n              </div>\n            </div>\n            <div class=\"card-footer \">\n              <hr>\n              <div class=\"stats\">\n                <i class=\"fa fa-refresh\"></i> Update Now\n              </div>\n            </div>\n          </div>\n        </div>\n        <div class=\"col-lg-3 col-md-6 col-sm-6\">\n          <div class=\"card card-stats\">\n            <div class=\"card-body \">\n              <div class=\"row\">\n                <div class=\"col-5 col-md-4\">\n                  <div class=\"icon-big text-center icon-warning\">\n                    <i class=\"fas fa-users\"></i>\n                  </div>\n                </div>\n                <div class=\"col-7 col-md-8\">\n                  <div class=\"numbers\">\n                    <p class=\"card-category\">Usuarios</p>\n                    <p class=\"card-title\">5\n                      <p>\n                  </div>\n                </div>\n              </div>\n            </div>\n            <div class=\"card-footer \">\n              <hr>\n              <div class=\"stats\">\n                <i class=\"fa fa-calendar-o\"></i> Last day\n              </div>\n            </div>\n          </div>\n        </div>\n        <div class=\"col-lg-3 col-md-6 col-sm-6\">\n          <div class=\"card card-stats\">\n            <div class=\"card-body \">\n              <div class=\"row\">\n                <div class=\"col-5 col-md-4\">\n                  <div class=\"icon-big text-center icon-warning\">\n                    <i class=\"fab fa-pushed\"></i>\n                  </div>\n                </div>\n                <div class=\"col-7 col-md-8\">\n                  <div class=\"numbers\">\n                    <p class=\"card-category\">Errors</p>\n                    <p class=\"card-title\">23\n                      <p>\n                  </div>\n                </div>\n              </div>\n            </div>\n            <div class=\"card-footer \">\n              <hr>\n              <div class=\"stats\">\n                <i class=\"fa fa-clock-o\"></i> In the last hour\n              </div>\n            </div>\n          </div>\n        </div>\n        <div class=\"col-lg-3 col-md-6 col-sm-6\">\n          <div class=\"card card-stats\">\n            <div class=\"card-body \">\n              <div class=\"row\">\n                <div class=\"col-5 col-md-4\">\n                  <div class=\"icon-big text-center icon-warning\">\n                    <i class=\"fab fa-twitter\"></i>\n                  </div>\n                </div>\n                <div class=\"col-7 col-md-8\">\n                  <div class=\"numbers\">\n                    <p class=\"card-category\">Followers</p>\n                    <p class=\"card-title\">+45K\n                      <p>\n                  </div>\n                </div>\n              </div>\n            </div>\n            <div class=\"card-footer \">\n              <hr>\n              <div class=\"stats\">\n                <i class=\"fa fa-refresh\"></i> Update now\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n      <div class=\"row\">\n        <div class=\"col-md-12\">\n          <div class=\"card \">\n            <div class=\"card-header \">\n              <h5 class=\"card-title\">Información de Usuario Administrativo</h5>\n            </div>\n            <div class=\"card-body \">\n              <table class=\"table table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\">\n                <tbody>\n                  <tr>\n                    <td>Nombre Usuario</td>\n                    <td>{{userInfo.username}}</td>\n                  </tr>\n                  <tr>\n                    <td>Correo eléctronico</td>\n                    <td>{{userInfo.email}}</td>\n                  </tr>\n                  <tr>\n                    <td>Contraseña</td>\n                    <td>{{userInfo.password}}</td>\n                  </tr>\n                  <tr>\n                    <td>Teléfonos</td>\n                    <td>{{userInfo.telefono}}</td>\n                  </tr>\n                </tbody>\n              </table>\n              <div class=\"row\">\n                <div class=\"col-md-12 mx-auto\">\n                  <div class=\"md-form\">\n                    <input type=\"text\" [(ngModel)]=\"searchText\" class=\"form-control\" id=\"search\" mdbInput>\n                    <label for=\"search\">Search</label>\n                  </div>\n                </div>\n              </div>\n              <table ng-table=\"tableParams2\" mdbTable mdbTableScroll scrollY=\"true\" maxHeight=\"200\" scrollX=\"true\"\n                class=\"table table-bordered table-responsive-md table-striped text-center\">\n                <thead>\n                  <tr>\n                    <th *ngFor=\"let head of headElementsUsers; let i = index\" aria-controls=\"tableSortExample\"\n                      scope=\"col\" [mdbTableSort]=\"allUsers\" [sortBy]=\"headElementsUsers[i]\">{{head | titlecase}}</th>\n                    <mdb-icon fas icon=\"sort\"></mdb-icon>\n                  </tr>\n                </thead>\n                <tbody>\n                  <tr *ngFor=\"let user of allUsers; let i = index\">\n                    <th scope=\"row\">{{user.idUser}}</th>\n                    <td>{{user.nombres}} {{user.apellidos}}</td>\n                    <td>{{user.edad}}</td>\n                    <td>{{user.nombreArtistico}}</td>\n                    <td>{{user.sexo}}</td>\n                    <td>{{user.alias}}</td>\n                    <td>{{user.fechaNacimiento}}</td>\n                    <td>{{user.localidad}}</td>\n                    <td>{{user.tallaPantalon}}</td>\n                    <td>{{user.tallaCamisa}}</td>\n                    <td>{{user.tallaChaqueta}}</td>\n                    <td>{{user.pie}}</td>\n                    <td>{{user.altura}}</td>\n                    <td>{{user.colorPiel}}</td>\n                    <td>{{user.colorPelo}}</td>\n                    <td>{{user.colorOjos}}</td>\n                    <td>{{user.modeloCoche}}</td>\n                    <td>{{user.modeloMoto}}</td>\n                    <td>{{user.razaMascota}}</td>\n                    <td>{{user.ultimosTrabajos}}</td>\n                    <td>{{user.dniUser}}</td>\n                    <td>{{user.numeroSeguroSocial}}</td>\n                    <td>{{user.email}}</td>\n                    <td>{{user.telefono}}</td>\n                    <td>{{user.telefono}}</td>\n                  </tr>\n                </tbody>\n              </table>\n              <div id=\"tableCompanies\" class=\"table-editable\">\n                <table mdbTable2 mdbTableScroll scrollY=\"true\" maxHeight=\"200\" NGTab scrollX=\"true\"\n                  class=\"table table-bordered table-responsive-md table-striped text-center\">\n                  <thead>\n                    <tr>\n                      <th *ngFor=\"let head of headElementsCompanies; let i = index\" aria-controls=\"tableSortExample\"\n                        scope=\"col\" [mdbTableSort]=\"allUsers\" [sortBy]=\"headElementsCompanies[i]\">{{head | titlecase}}\n                      </th>\n                      <mdb-icon fas icon=\"sort\"></mdb-icon>\n                    </tr>\n                  </thead>\n                  <tbody>\n                    <tr *ngFor=\"let company of allCompanies; let id = index\">\n                      <th scope=\"row\">{{company.idUser}}</th>\n                      <td>\n                        <span (keyup)=\"changeValue(id, 'username', $event)\" (blur)=\"updateList(id, 'username', $event)\"\n                          contenteditable=\"true\">{{company.username}}</span>\n                      </td>\n                      <td>\n                        <span (keyup)=\"changeValue(id, 'email', $event)\" (blur)=\"updateList(id, 'email', $event)\"\n                          contenteditable=\"true\">{{company.email}}</span>\n                      </td>\n                      <td>\n                        <span (keyup)=\"changeValue(id, 'telefonoFijo', $event)\"\n                          (blur)=\"updateList(id, 'telefonoFijo', $event)\"\n                          contenteditable=\"true\">{{company.telefono}}</span>\n                      </td>\n                      <td>\n                        <span (keyup)=\"changeValue(id, 'password', $event)\" (blur)=\"updateList(id, 'password', $event)\"\n                          contenteditable=\"true\">{{company.password}}</span>\n                      </td>\n                      <td>\n                        <span class=\"table-remove\">\n                          <button type=\"button\" mdbBtn color=\"danger\" rounded=\"true\" size=\"sm\" class=\"my-0\"\n                            (click)=\"removeCompany(company.id)\">Remove</button>\n                        </span>\n                      </td>\n                    </tr>\n                  </tbody>\n                </table>\n              </div>\n              <canvas id=chartHours width=\"400\" height=\"100\"></canvas>\n            </div>\n            <div class=\"card-footer \">\n              <hr>\n              <div class=\"stats\">\n                <i class=\"fa fa-history\"></i> Updated 3 minutes ago\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <footer class=\"footer footer-black  footer-white \">\n      <div class=\"container-fluid\">\n        <div class=\"row\">\n          <nav class=\"footer-nav\">\n            <ul>\n              <li>\n                <a target=\"_blank\">Creative Tim</a>\n              </li>\n              <li>\n                <a target=\"_blank\">Blog</a>\n              </li>\n              <li>\n                <a routerLink=\"/terms\" target=\"_blank\">Licenses</a>\n              </li>\n            </ul>\n          </nav>\n        </div>\n      </div>\n    </footer>\n  </div>\n</div>");
 
 /***/ }),
 
@@ -240,7 +240,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony default export */ __webpack_exports__["default"] = ("<app-header></app-header>\n<div class=\"h-100 alt-login bg-login\">\n    <div class=\"\">\n      <div class=\"col-sm-9 col-md-7 col-lg-5 mx-auto\">\n        <div class=\"card card-signin my-5\">\n          <div class=\"card-body\">\n              <h5 class=\"card-title text-center\">Login</h5>\n              <form [formGroup]=\"loginForm\">\n              <div class=\"form-group\">\n                <label>Correo Electronico</label>\n                <input type=\"email\" formControlName=\"email\" class=\"form-control\" placeholder=\"Enter email\" [ngClass]=\"{ 'is-invalid': isSubmitted &amp;&amp; loginForm.controls.email.errors }\">\n                <div *ngIf=\"isSubmitted &amp;&amp; loginForm.controls.email.errors\" class=\"text-danger\">\n                    <div *ngIf=\"loginForm.controls.email.errors.required\">Correo electrónico es requerido</div>\n                    <div *ngIf=\"loginForm.controls.email.errors.email\">Debe ser una dirección de correo electrónico válida</div>\n                </div>\n              </div>\n              <div class=\"form-group\">\n                <label>Contraseña</label>\n                <input type=\"password\" formControlName=\"password\" class=\"form-control\" placeholder=\"*************\" [ngClass]=\"{ 'is-invalid': isSubmitted &amp;&amp; loginForm.controls.password.errors }\">\n                <div *ngIf=\"isSubmitted &amp;&amp; loginForm.controls.password.errors\" class=\"text-danger\">\n                    <div *ngIf=\"loginForm.controls.password.errors.required\">La contraseña es requerida</div>\n                </div>\n              </div>\n              <div class=\"custom-control custom-checkbox mb-3\">\n                <input type=\"checkbox\" class=\"custom-control-input\" id=\"customCheck1\">\n                <label class=\"custom-control-label\" for=\"customCheck1\">Recordar Contraseña</label>\n              </div>\n              <button class=\"btn btn-lg btn-ninessela btn-block text-uppercase\" (click)=\"loginUser()\" type=\"submit\">Ingresar</button>\n              <p class=\"forgot-password \" routerLink=\"/forgot\">¿Olvidaste tu contraseña?</p>\n              </form>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <app-footer></app-footer>");
+/* harmony default export */ __webpack_exports__["default"] = ("<app-header></app-header>\n<div class=\"h-100 alt-login bg-login\">\n    <div class=\"\">\n      <div class=\"col-sm-9 col-md-7 col-lg-5 mx-auto\">\n        <div class=\"card card-signin my-5\">\n          <div class=\"card-body\">\n              <h5 class=\"card-title text-center\">Login</h5>\n              <form [formGroup]=\"loginForm\">\n              <div class=\"form-group\">\n                <label>Correo Electronico</label>\n                <input type=\"email\" formControlName=\"email\" class=\"form-control\" placeholder=\"Enter email\" [ngClass]=\"{ 'is-invalid': isSubmitted &amp;&amp; loginForm.controls.email.errors }\">\n                <div *ngIf=\"isSubmitted &amp;&amp; loginForm.controls.email.errors\" class=\"text-danger\">\n                    <div *ngIf=\"loginForm.controls.email.errors.required\">Correo electrónico es requerido</div>\n                    <div *ngIf=\"loginForm.controls.email.errors.email\">Debe ser una dirección de correo electrónico válida</div>\n                </div>\n              </div>\n              <div class=\"form-group\">\n                <label>Contraseña</label>\n                <input type=\"password\" formControlName=\"password\" class=\"form-control\" placeholder=\"*************\" required>\n              </div>\n              <div class=\"custom-control custom-checkbox mb-3\">\n                <input type=\"checkbox\" class=\"custom-control-input\" id=\"customCheck1\">\n                <label class=\"custom-control-label\" for=\"customCheck1\">Recordar Contraseña</label>\n              </div>\n              <button class=\"btn btn-lg btn-ninessela btn-block text-uppercase\" (click)=\"loginUser()\" type=\"submit\">Ingresar</button>\n              <p class=\"forgot-password \" routerLink=\"/forgot\">¿Olvidaste tu contraseña?</p>\n              </form>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n  <app-footer></app-footer>");
 
 /***/ }),
 
@@ -544,8 +544,8 @@ AuthGuard = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AuthService", function() { return AuthService; });
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 
 
@@ -555,9 +555,126 @@ let AuthService = class AuthService {
     constructor(http, router) {
         this.http = http;
         this.router = router;
+        //this.urlGenerica = 'http://localhost:5000/';
         //this.url = 'http://localhost:5000/servicio-login/';
         this.url = 'https://servicio-login.herokuapp.com/servicio-login/';
+        this.urlGenerica = 'https://servicio-login.herokuapp.com/';
     }
+    /********  USUARIO *******/
+    finByIdUsuario(id) {
+        return this.http.get(this.urlGenerica + 'servicio-login/ver/' + id);
+    }
+    editUser(user) {
+        return this.http.put(this.urlGenerica + 'servicio-login/editar/', user);
+    }
+    /******* FIN USUARIO *********/
+    /********  ETNIA *******/
+    getAllEtinas() {
+        return this.http.get(this.urlGenerica + 'servicio-etnia/listar');
+    }
+    finByIdEtnia(id) {
+        return this.http.get(this.urlGenerica + 'servicio-etnia/ver/' + id);
+    }
+    saveEtnia(etnia) {
+        return this.http.post(this.urlGenerica + 'servicio-etnia/crear', etnia);
+    }
+    /******* FIN ETNIA *********/
+    /********  BAILES *******/
+    getAllBailarin() {
+        return this.http.get(this.urlGenerica + 'servicio-bailarin/listar');
+    }
+    finByIdBailarin(id) {
+        return this.http.get(this.urlGenerica + 'servicio-bailarin/ver/' + id);
+    }
+    getAllEstilosBailes() {
+        return this.http.get(this.urlGenerica + 'servicio-estilos-baile/listar');
+    }
+    finByIdEstilosBile(id) {
+        return this.http.get(this.urlGenerica + 'servicio-estilos-baile/ver/' + id);
+    }
+    /******* FIN BAILES *********/
+    /********  CANTO *******/
+    getAllCantante() {
+        return this.http.get(this.urlGenerica + 'servicio-cantante/listar');
+    }
+    finByIdCantante(id) {
+        return this.http.get(this.urlGenerica + 'servicio-cantante/ver/' + id);
+    }
+    getAllEstilosCanto() {
+        return this.http.get(this.urlGenerica + 'servicio-estilos-canto/listar');
+    }
+    finByIdEstilosCanto(id) {
+        return this.http.get(this.urlGenerica + 'servicio-estilos-canto/ver/' + id);
+    }
+    /******* FIN CANTOS *********/
+    /********  HABILIDADES *******/
+    getAllHabilidades() {
+        return this.http.get(this.urlGenerica + 'servicio-habilidades/listar');
+    }
+    finByIdHabilidades(id) {
+        return this.http.get(this.urlGenerica + 'servicio-habilidades/ver/' + id);
+    }
+    /******* FIN HABILIDADES *********/
+    /********  IDIOMAS *******/
+    getAllIdiomas() {
+        return this.http.get(this.urlGenerica + 'servicio-idiomas/listar');
+    }
+    finByIdIdiomas(id) {
+        return this.http.get(this.urlGenerica + 'servicio-idiomas/ver/' + id);
+    }
+    /******* FIN IDIOMAS *********/
+    /********  DEPORTES *******/
+    getAllDeportista() {
+        return this.http.get(this.urlGenerica + 'servicio-deportista/listar');
+    }
+    finByIdDeportista(id) {
+        return this.http.get(this.urlGenerica + 'servicio-deportista/ver/' + id);
+    }
+    getAllDeportes() {
+        return this.http.get(this.urlGenerica + 'servicio-deportes/listar');
+    }
+    finByIdDeportes(id) {
+        return this.http.get(this.urlGenerica + 'servicio-deportes/ver/' + id);
+    }
+    /******* FIN DEPORTES *********/
+    /********  MUSICO *******/
+    getAllMusico() {
+        return this.http.get(this.urlGenerica + 'servicio-musico/listar');
+    }
+    finByIdMusico(id) {
+        return this.http.get(this.urlGenerica + 'servicio-musico/ver/' + id);
+    }
+    getAllInstrumentos() {
+        return this.http.get(this.urlGenerica + 'servicio-instrumentos/listar');
+    }
+    finByIdInstrumento(id) {
+        return this.http.get(this.urlGenerica + 'servicio-instrumentos/ver/' + id);
+    }
+    /********  TALLAS *******/
+    saveTalla(talla) {
+        return this.http.post(this.urlGenerica + 'servicio-tallas/crear', talla);
+    }
+    /******* FIN TALLAS *********/
+    /********  COCHE *******/
+    saveCoche(coche) {
+        return this.http.post(this.urlGenerica + 'servicio-coche/crear', coche);
+    }
+    /******* FIN COCHE *********/
+    /********  MOTO *******/
+    saveMoto(moto) {
+        return this.http.post(this.urlGenerica + 'servicio-moto/crear', moto);
+    }
+    /******* FIN MOTO *********/
+    /********  TATUAJES *******/
+    saveTatuajes(tatuajes) {
+        return this.http.post(this.urlGenerica + 'servicio-fotosTatuajes/crear', tatuajes);
+    }
+    /******* FIN TATUAJES *********/
+    /********  MANOS *******/
+    saveManos(manos) {
+        return this.http.post(this.urlGenerica + 'servicio-fotosManos/crear', manos);
+    }
+    /******* FIN MANOS *********/
     signup2(newUser) {
         return this.http.post(this.url + 'crear', newUser);
     }
@@ -565,7 +682,6 @@ let AuthService = class AuthService {
         return this.http.get(this.url + 'login/' + usuario + "/" + password);
     }
     findByToken() {
-        console.info("TOKEN GUARDADO:  " + this.getToken());
         return this.http.get(this.url + 'ver/' + this.getToken());
     }
     signup(newUser) {
@@ -608,11 +724,11 @@ let AuthService = class AuthService {
     }
 };
 AuthService.ctorParameters = () => [
-    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] },
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_1__["HttpClient"] },
     { type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"] }
 ];
 AuthService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])({
         providedIn: 'root'
     })
 ], AuthService);
@@ -894,7 +1010,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_isotope_isotope_component__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! ./components/isotope/isotope.component */ "./src/app/components/isotope/isotope.component.ts");
 /* harmony import */ var _components_children_children_component__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! ./components/children/children.component */ "./src/app/components/children/children.component.ts");
 /* harmony import */ var ngx_smart_modal__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! ngx-smart-modal */ "./node_modules/ngx-smart-modal/esm2015/ngx-smart-modal.js");
-/* harmony import */ var _pipes_date_date_pipe__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! ./pipes/date/date.pipe */ "./src/app/pipes/date/date.pipe.ts");
+/* harmony import */ var _angular_fire_storage__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! @angular/fire/storage */ "./node_modules/@angular/fire/storage/es2015/index.js");
+/* harmony import */ var _angular_fire__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(/*! @angular/fire */ "./node_modules/@angular/fire/es2015/index.js");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_36__ = __webpack_require__(/*! ../environments/environment */ "./src/environments/environment.ts");
+
+
 
 
 
@@ -954,7 +1074,6 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _components_user_forgot_forgot_component__WEBPACK_IMPORTED_MODULE_24__["ForgotComponent"],
             _components_isotope_isotope_component__WEBPACK_IMPORTED_MODULE_31__["IsotopeComponent"],
             _components_children_children_component__WEBPACK_IMPORTED_MODULE_32__["ChildrenComponent"],
-            _pipes_date_date_pipe__WEBPACK_IMPORTED_MODULE_34__["DatePipe"],
         ],
         imports: [
             angular_bootstrap_md__WEBPACK_IMPORTED_MODULE_28__["MDBBootstrapModule"].forRoot(),
@@ -983,7 +1102,9 @@ AppModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
             _angular_material__WEBPACK_IMPORTED_MODULE_26__["MatRadioModule"],
             _angular_material__WEBPACK_IMPORTED_MODULE_26__["MatSelectModule"],
             _angular_material__WEBPACK_IMPORTED_MODULE_26__["MatOptionModule"],
-            _angular_material__WEBPACK_IMPORTED_MODULE_26__["MatSlideToggleModule"]
+            _angular_material__WEBPACK_IMPORTED_MODULE_26__["MatSlideToggleModule"],
+            _angular_fire__WEBPACK_IMPORTED_MODULE_35__["AngularFireModule"].initializeApp(_environments_environment__WEBPACK_IMPORTED_MODULE_36__["environment"].firebase),
+            _angular_fire_storage__WEBPACK_IMPORTED_MODULE_34__["AngularFireStorageModule"]
         ],
         exports: [
             _angular_material__WEBPACK_IMPORTED_MODULE_26__["MatButtonModule"],
@@ -1056,6 +1177,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var ngx_smart_modal__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-smart-modal */ "./node_modules/ngx-smart-modal/esm2015/ngx-smart-modal.js");
 /* harmony import */ var _Services_auth_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../Services/auth.service */ "./src/app/Services/auth.service.ts");
+/* harmony import */ var _angular_fire_storage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/fire/storage */ "./node_modules/@angular/fire/storage/es2015/index.js");
+
 
 
 
@@ -1087,199 +1210,415 @@ function MustMatch(controlName, matchingControlName) {
     };
 }
 let ActorsComponent = class ActorsComponent {
-    constructor(authService, ngxSmartModalService, formBuilder, router) {
+    /*****fin variables combos*****/
+    constructor(storage, authService, ngxSmartModalService, formBuilder, router) {
+        this.storage = storage;
         this.authService = authService;
         this.ngxSmartModalService = ngxSmartModalService;
         this.formBuilder = formBuilder;
         this.router = router;
         this.submitted = false;
-        this.selectedFile = null;
         this.disa = false;
         this.matcher = new MyErrorStateMatcher();
-        this.etnico = ['Afro descendiente/Negro', 'Blanco', 'Indígena', 'Mestizo/Moreno', 'Asiático', 'Otros'];
-        this.deporte = [{ name: 'Profesional', }, { name: 'Federado', }, { name: 'No Profesional', },];
+        /***variables para carga de imagenes y archivos */
+        this.fileAvatar = null;
+        this.fileCoche = null;
+        this.fileMoto = null;
+        this.fileTatuajes = null;
+        this.fileManos = null;
+        this.fileCuerpoEntero = null;
+        this.fileArtistico = null;
+        this.typecarnet = ['Tipo A', 'Tipo B', 'Tipo C', 'Tipo D', 'Tipo BTP'];
         this.actor = [{ name: 'Si', value: 0 }, { name: 'No', value: 1 }];
-        this.bailes = [{ name: 'Profesional', }, { name: 'No Profesional', },];
-        this.musicos = [{ name: 'Profesional', }, { name: 'No Profesional', },];
-        this.cantos = [{ name: 'Profesional', }, { name: 'No Profesional', },];
-        this.idiomasHablados = ['Gallego', 'Italiano', 'Rumano', 'Frances', 'Alemén', 'Catalán', 'valenciano', 'bilingüe', 'Otros'];
-        this.habilidades = ['Skater', 'Skater Acuático', 'Pompas Jabón', 'Presentador', 'Magia', 'Surf', 'Buceo', 'Surf', 'Cómico', 'Motocross', 'Mimo', 'Puenting', 'Sky', 'Parapente', 'Ciclismo BMX', 'Parkour snowboarding', 'Sombras chinescas', 'Otros'];
-        this.estilocantos = ['Lirico', 'Pop', 'Rock', 'Rap', 'Heavy Metal', 'Reggae', 'Salsa', 'Pop latino', 'Blues', 'Country', 'Dance', 'Tecno', 'Punk', 'Hip Hop', 'Soul', 'Electro Pop', 'Otros'];
-        this.instrumentos = ['Piano', 'Bateria', 'Guitarra española', 'Guitarra electrica', 'Bajo', 'Bandurria', 'Violin', 'Violonchero', 'Bombo', 'Castañuelas', 'Trombon', 'Trompeta', 'Cantante', 'Otros'];
-        this.estilobailes = ['Cumbia', 'Salsa', 'Tango', 'Hiphop', 'Chachacha', 'Pasodoble', 'Samba', 'Merengue', 'Breakdance', 'Funky', 'Pole Dance', 'Ballet clasico', 'Claque', 'Flamenco', 'sevillanas', 'Contemporaneo', 'Otros'];
-        this.habdeportes = ['Tenis', 'Esgrima', 'Tiro con arco', 'Polo', 'Golf', 'Boxeo', 'Voleibol', 'Baloncesto', 'Montar a caballo', 'Natación', 'Padel', 'Artes marciales', 'Otros'];
         this.createRegisterForm();
     }
-    onFileSelected(event) {
-        this.selectedFile = event.target.files[0];
-    }
     ngOnInit() {
+        this.llenarCombos();
+    }
+    /**Upload avatar */
+    onFileAvatarSelected(event) {
+        this.fileAvatar = event.target.files[0];
+    }
+    /**Upload foto cuerpo entero */
+    onFileCuerpoEnteroSelected(event) {
+        this.fileCuerpoEntero = event.target.files[0];
+    }
+    /**Upload foto artistica */
+    onFileArtisticoSelected(event) {
+        this.fileArtistico = event.target.files[0];
+    }
+    /**Upload foto moto */
+    onFileMotoSelected(event) {
+        this.fileMoto = event.target.files[0];
+    }
+    /**Upload foto coche */
+    onFileCocheSelected(event) {
+        this.fileCoche = event.target.files[0];
+    }
+    /**Upload foto tatuajes */
+    onFileTatuajeSelected(event) {
+        this.fileTatuajes = event.target.files[0];
+    }
+    /**Upload foto manos */
+    onFileManoSelected(event) {
+        this.fileManos = event.target.files[0];
+    }
+    llenarCombos() {
+        //llenado de etnias
+        this.authService.getAllEtinas()
+            .subscribe(resp => {
+            this.etnias = resp;
+        });
+        this.authService.finByIdEtnia(1)
+            .subscribe(resp => {
+            this.etniaSelect = resp;
+        });
+        //llenado de baile
+        this.authService.getAllBailarin()
+            .subscribe(resp => {
+            this.baile = resp;
+        });
+        this.authService.finByIdBailarin(1)
+            .subscribe(resp => {
+            this.baileSelect = resp;
+        });
+        //llenado de estilos baile
+        this.authService.getAllEstilosBailes()
+            .subscribe(resp => {
+            this.estilosBaile = resp;
+        });
+        this.authService.finByIdEstilosBile(1)
+            .subscribe(resp => {
+            this.estilosBaileSelect = resp;
+        });
+        //llenado de cantate
+        this.authService.getAllCantante()
+            .subscribe(resp => {
+            this.cantante = resp;
+        });
+        this.authService.finByIdCantante(1)
+            .subscribe(resp => {
+            this.cantanteSelect = resp;
+        });
+        //llenado de estilosCanto
+        this.authService.getAllEstilosCanto()
+            .subscribe(resp => {
+            this.estilosCanto = resp;
+        });
+        this.authService.finByIdEstilosCanto(1)
+            .subscribe(resp => {
+            this.estilosCantoSelect = resp;
+        });
+        //llenado de habilidadess
+        this.authService.getAllHabilidades()
+            .subscribe(resp => {
+            this.habilidadess = resp;
+        });
+        this.authService.finByIdHabilidades(1)
+            .subscribe(resp => {
+            this.habilidadessSelect = resp;
+        });
+        //llenado de idiomas
+        this.authService.getAllIdiomas()
+            .subscribe(resp => {
+            this.idiomas = resp;
+        });
+        this.authService.finByIdIdiomas(1)
+            .subscribe(resp => {
+            this.idiomasSelect = resp;
+        });
+        //llenado de deportista
+        this.authService.getAllDeportista()
+            .subscribe(resp => {
+            this.deportista = resp;
+        });
+        this.authService.finByIdDeportista(1)
+            .subscribe(resp => {
+            this.deportistaSelect = resp;
+        });
+        //llenado de deportes
+        this.authService.getAllDeportes()
+            .subscribe(resp => {
+            this.deportes = resp;
+        });
+        this.authService.finByIdDeportes(1)
+            .subscribe(resp => {
+            this.deporteSelect = resp;
+        });
+        //llenado de musico
+        this.authService.getAllMusico()
+            .subscribe(resp => {
+            this.musico = resp;
+        });
+        this.authService.finByIdMusico(1)
+            .subscribe(resp => {
+            this.musicoSelect = resp;
+        });
+        //llenado de instrumento
+        this.authService.getAllInstrumentos()
+            .subscribe(resp => {
+            this.instrumentoss = resp;
+        });
+        this.authService.finByIdInstrumento(1)
+            .subscribe(resp => {
+            this.instrumentoSelect = resp;
+        });
     }
     createRegisterForm() {
         this.actorForm = this.formBuilder.group({
+            /****variables nuevas */
+            etnias: [''],
+            baile: [''],
+            estilosBaile: [''],
+            cantante: [''],
+            estilosCanto: [''],
+            habilidadess: [''],
+            idiomas: [''],
+            deportista: [''],
+            deportes: [''],
+            musico: [''],
+            instrumentoss: [''],
+            /****fin variables nuevas */
             email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].email, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
             password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(6)]],
             confirmPassword: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             acceptTerms: [false, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].requiredTrue],
-            bailes: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            etnico: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            placebirth: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            habilidades: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            bailes: [''],
+            etnico: [''],
+            placebirth: [''],
+            habilidades: [''],
             username: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             nombres: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(3)]],
-            estilobailes: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            cantos: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            estilocantos: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            instrumentos: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            deporte: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            apellidos: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            nombreArtistico: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            sexo: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            telefono: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            fechaNacimiento: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            nacionalidad: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            localidad: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            videoBook: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            provincia: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            codpostal: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            direccion: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            acento: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            tallaPantalon: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            tallaCamisa: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            tallaChaqueta: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            pie: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            tattoos: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            avatar: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            habdeportes: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            altura: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            musicos: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            colorPiel: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            colorPelo: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            colorOjos: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            numeroDNI: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            numeroSeguridadSocial: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            carnetConducir: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            modeloCoche: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            colorCoche: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            modeloMoto: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            colorMoto: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            ultimosTrabajos: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            estilobailes: [''],
+            cantos: [''],
+            estilocantos: [''],
+            instrumentos: [''],
+            deporte: [''],
+            apellidos: [''],
+            nombreArtistico: [''],
+            sexo: [''],
+            telefono: [''],
+            fechaNacimiento: [''],
+            nacionalidad: [''],
+            localidad: [''],
+            videoBook: [''],
+            provincia: [''],
+            codpostal: [''],
+            direccion: [''],
+            acento: [''],
+            tallaPantalon: [''],
+            tallaCamisa: [''],
+            tallaChaqueta: [''],
+            pie: [''],
+            tattoos: [''],
+            avatar: [''],
+            habdeportes: [''],
+            altura: [''],
+            musicos: [''],
+            colorPiel: [''],
+            colorPelo: [''],
+            colorOjos: [''],
+            numeroDNI: [''],
+            numeroSeguridadSocial: [''],
+            carnetConducir: [''],
+            modeloCoche: [''],
+            colorCoche: [''],
+            modeloMoto: [''],
+            colorMoto: [''],
+            ultimosTrabajos: [''],
         }, {
             validator: MustMatch('password', 'confirmPassword')
         });
     }
-    registrarActor() {
+    pasarDatosFormUsuario() {
+        console.log('DATOS DE ETNIA' + this.etniaSelect.idEtnia);
         this.submitted = true;
         /*if (this.actorForm.invalid) {
           return;
         }*/
         const newUserObject = this.actorForm.value;
-        const usuario = {
-            "acento": newUserObject.acento,
-            "altura": newUserObject.altura,
-            "apellidos": newUserObject.apellidos,
-            "carnetConducir": newUserObject.carnetConducir,
-            "codigoPostal": newUserObject.codpostal,
-            "colorOjos": newUserObject.colorOjos,
-            "colorPelo": newUserObject.colorPelo,
-            "colorPiel": newUserObject.colorPiel,
-            "curriculumVitae": '',
-            "direccion": newUserObject.direccion,
-            "dniMadre": '',
-            "dniRepresentante": '',
-            "dniPadre": '',
-            "dniUser": newUserObject.numeroDNI,
-            "email": newUserObject.email,
-            "fechaNacimiento": newUserObject.fechaNacimiento,
-            "libroFamilia": '',
-            "localidad": newUserObject.localidad,
-            "nacionalidad": newUserObject.nacionalidad,
-            "nombreArtistico": newUserObject.nombreArtistico,
-            "nombreCompleto": '',
-            "nombres": newUserObject.nombres,
-            "numeroSeguroSocial": newUserObject.numeroSeguridadSocial,
-            "observaciones": newUserObject.observaciones,
-            "password": newUserObject.password,
-            "pathDniMadre": '',
-            "pathDniPadre": '',
-            "pathDniUser": '',
-            "pathDniRepresentante": '',
-            "pathSeguroSocial": '',
-            "provincia": newUserObject.provincia,
-            "sexo": newUserObject.sexo,
-            "telefono": newUserObject.telefono,
-            "telefonoMadre": '',
-            "telefonoPadre": '',
-            "lugarNacimiento": newUserObject.lugarNacimiento,
-            "edad": 0,
-            "actor": '',
-            "username": newUserObject.username,
-            "videobook": newUserObject.videoBook,
-            "instrumentoList": [],
-            "estilosCantoList": [],
-            "deporteList": [
-                {
-                    "idDeporte": 1,
-                    "descripcionDeporte": "NO APLICA",
-                    "nombreDeporte": "NO APLICA"
-                }
-            ],
-            "estiloBaileList": [],
-            "idiomasList": [],
-            "habilidadesList": [],
-            "tallasList": [],
-            "ultimosTrabajosList": [],
-            "idCantante": {
-                "idCantante": 1,
-                "descripcionCantante": "NO APLICA",
-                "nombreCantante": "NOAPLICA"
+        this.usuario = {
+            idUser: 0,
+            avatar: this.urlAvatar,
+            acento: newUserObject.acento,
+            altura: newUserObject.altura,
+            apellidos: newUserObject.apellidos,
+            carnetConducir: newUserObject.carnetConducir,
+            codigoPostal: newUserObject.codpostal,
+            colorOjos: newUserObject.colorOjos,
+            colorPelo: newUserObject.colorPelo,
+            colorPiel: newUserObject.colorPiel,
+            curriculumVitae: '',
+            direccion: newUserObject.direccion,
+            dniMadre: '',
+            dniRepresentante: '',
+            dniPadre: '',
+            dniUser: newUserObject.numeroDNI,
+            email: newUserObject.email,
+            fechaNacimiento: newUserObject.fechaNacimiento,
+            libroFamilia: '',
+            localidad: newUserObject.localidad,
+            nacionalidad: newUserObject.nacionalidad,
+            nombreArtistico: '',
+            nombreCompleto: '',
+            nombres: newUserObject.nombres,
+            numeroSeguroSocial: newUserObject.numeroSeguridadSocial,
+            observaciones: '',
+            password: newUserObject.password,
+            pathDniMadre: '',
+            pathDniPadre: '',
+            pathDniUser: '',
+            pathDniRepresentante: '',
+            pathSeguroSocial: '',
+            provincia: newUserObject.provincia,
+            sexo: newUserObject.sexo,
+            telefono: newUserObject.telefono,
+            telefonoMadre: '',
+            telefonoPadre: '',
+            lugarNacimiento: newUserObject.placebirth,
+            edad: 0,
+            actor: '',
+            username: newUserObject.username,
+            videobook: '',
+            instrumentoList: [],
+            estilosCantoList: [this.estilosCantoSelect],
+            deporteList: [this.deporteSelect],
+            estiloBaileList: [this.estilosBaileSelect],
+            idiomasList: [this.idiomasSelect],
+            habilidadesList: [this.habilidadessSelect],
+            tallasList: [],
+            ultimosTrabajosList: [],
+            idCantante: this.cantanteSelect,
+            idBailarin: this.baileSelect,
+            idEtnia: this.etniaSelect,
+            idType: {
+                idType: 1,
+                description: 'ACTOR',
+                nombres: 'ACTOR'
             },
-            "idBailarin": {
-                "idBailarin": 1,
-                "descripcionBailarin": "NO APLICA",
-                "nombreBailarin": "NO APLICA"
-            },
-            "idEtnia": {
-                "idEtnia": 1,
-                "nombreEtnia": "BLANCO editado"
-            },
-            "idType": {
-                "idType": 1,
-                "description": "ACTOR",
-                "nombres": "ACTOR"
-            },
-            "idDeportista": {
-                "idDeportista": 1,
-                "descripcionDeportista": "NO APLICA",
-                "nombreDeportista": "NO APLICA"
-            },
-            "idMusico": {
-                "idMusico": 1,
-                "descipcionMusico": "NO APLICA",
-                "nombreMusico": "NO APLICA"
-            },
-            "motoList": [],
-            "cocheList": [],
-            "fotosTatuajesList": [],
-            "fotosManosList": []
+            idDeportista: this.deportistaSelect,
+            idMusico: this.musicoSelect,
+            motoList: [],
+            cocheList: [],
+            fotosTatuajesList: [],
+            fotosManosList: []
         };
-        //alert(JSON.stringify(newUserObject))
-        console.info(usuario);
-        this.authService.signup2(usuario).subscribe(res => {
-            this.ngxSmartModalService.create('confirm', 'Se ha registrado exitosamente' + usuario.nombreCompleto).open();
-            localStorage.setItem('token', res.idUser);
-            this.router.navigate(['/homeuser']);
+    }
+    guardarTalla(idUser) {
+        const newChild = this.actorForm.value;
+        let tallas = {
+            camisaTalla: newChild.tallaCamisa,
+            chaquetaTalla: newChild.tallaChaqueta,
+            pantalonTalla: newChild.tallaPantalon,
+            pieTalla: newChild.pie,
+            idUser: idUser
+        };
+        this.authService.saveTalla(tallas).subscribe(resTalla => {
+            console.log('talla guardada');
         }, (err) => {
             this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
             console.log(JSON.stringify(err));
         });
     }
-    subirFotoPerfil() {
-        const fd = new FormData();
-        fd.append('avatar', this.selectedFile, this.selectedFile.name);
-        this.authService.uploadAvatar(fd).subscribe(res => {
-            console.log(res);
+    registrarFotos(idUser) {
+        if (this.urlMoto !== '') {
+            let moto = {
+                colorMoto: this.actorForm.get('colorMoto').value,
+                fotoMoto: this.urlMoto,
+                modeloMoto: this.actorForm.get('modeloMoto').value,
+                idUser: idUser
+            };
+            /***GUARDE CON SERVICIO */
+            this.authService.saveMoto(moto).subscribe(resTalla => {
+                console.log('info save moto');
+            }, (err) => {
+                console.log('error save moto');
+            });
+        }
+        if (this.urlCoche !== '') {
+            let coche = {
+                colorCoche: this.actorForm.get('colorCoche').value,
+                fotoCoche: this.urlCoche,
+                modeloCoche: this.actorForm.get('modeloCoche').value,
+                idUser: idUser
+            };
+            /***GUARDE CON SERVICIO */
+            this.authService.saveCoche(coche).subscribe(resTalla => {
+                console.log('info save coche');
+            }, (err) => {
+                console.log('error save coche');
+            });
+        }
+        if (this.urlTatuajes !== '') {
+            let fotosTatuajes = {
+                fechaCargaTatuaje: new Date(),
+                nombreFotoTatuaje: 'tatuaje' + idUser,
+                urlFotoTatuaje: this.urlTatuajes,
+                idUser: idUser
+            };
+            /***GUARDE CON SERVICIO */
+            this.authService.saveTatuajes(fotosTatuajes).subscribe(resTalla => {
+                console.log('info save fotosTatuajes');
+            }, (err) => {
+                console.log('error save fotosTatuajes');
+            });
+        }
+        if (this.urlManos !== '') {
+            let fotosManos = {
+                fechaCargaMano: new Date(),
+                nombreFotoMano: 'manos' + idUser,
+                urlFotoMano: this.urlManos,
+                idUser: idUser
+            };
+            /***GUARDE CON SERVICIO */
+            this.authService.saveManos(fotosManos).subscribe(resTalla => {
+                console.log('info save fotosManos');
+            }, (err) => {
+                console.log('error save fotosManos');
+            });
+        }
+    }
+    registrarActor() {
+        this.submitted = true;
+        if (this.actorForm.invalid || this.actorForm.get('acceptTerms').value === false) {
+            return;
+        }
+        this.subirArchivos();
+        this.pasarDatosFormUsuario();
+        this.authService.signup2(this.usuario).subscribe(res => {
+            this.registrarFotos(res.idUser);
+            this.guardarTalla(res.idUser);
+            localStorage.setItem('token', res.idUser);
+            this.router.navigate(['/homeuser']);
+            this.ngxSmartModalService.create('confirm', 'Se ha registrado exitosamente' + this.usuario.nombreCompleto).open();
+        }, (err) => {
+            this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
+            console.log(JSON.stringify(err));
         });
+    }
+    subirArchivos() {
+        /**subir avatar */
+        let idUser = this.actorForm.get('numeroDNI').value;
+        this.urlAvatar = 'actor/' + idUser + '/avatar-' + this.fileAvatar.name;
+        let task = this.storage.upload(this.urlAvatar, this.fileAvatar);
+        /**subir cuerpo entero */
+        this.urlCuerpoEntero = 'actor/' + idUser + '/cuerpo-' + this.fileCuerpoEntero.name;
+        task = this.storage.upload(this.urlCuerpoEntero, this.fileCuerpoEntero);
+        /**subir foto artistica */
+        this.urlArtistico = 'actor/' + idUser + '/artistico-' + this.fileArtistico.name;
+        task = this.storage.upload(this.urlArtistico, this.fileArtistico);
+        /**subir coche */
+        this.urlCoche = 'actor/' + idUser + '/coche-' + this.fileCoche.name;
+        task = this.storage.upload(this.urlCoche, this.fileCoche);
+        /**subir moto */
+        this.urlMoto = 'actor/' + idUser + '/moto-' + this.fileMoto.name;
+        task = this.storage.upload(this.urlMoto, this.fileMoto);
+        /**subir tatuajes */
+        this.urlTatuajes = 'actor/' + idUser + '/tatuajes-' + this.fileTatuajes.name;
+        task = this.storage.upload(this.urlTatuajes, this.fileTatuajes);
+        /**subir manos */
+        this.urlManos = 'actor/' + idUser + '/manos-' + this.fileManos.name;
+        task = this.storage.upload(this.urlManos, this.fileManos);
     }
     /*  Función para permitir solo numeros */
     numberOnly(event) {
@@ -1303,6 +1642,7 @@ let ActorsComponent = class ActorsComponent {
     }
 };
 ActorsComponent.ctorParameters = () => [
+    { type: _angular_fire_storage__WEBPACK_IMPORTED_MODULE_6__["AngularFireStorage"] },
     { type: _Services_auth_service__WEBPACK_IMPORTED_MODULE_5__["AuthService"] },
     { type: ngx_smart_modal__WEBPACK_IMPORTED_MODULE_4__["NgxSmartModalService"] },
     { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
@@ -1354,6 +1694,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var ngx_smart_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-smart-modal */ "./node_modules/ngx-smart-modal/esm2015/ngx-smart-modal.js");
 /* harmony import */ var _Services_auth_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../Services/auth.service */ "./src/app/Services/auth.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var _angular_fire_storage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/fire/storage */ "./node_modules/@angular/fire/storage/es2015/index.js");
+
+
 
 
 
@@ -1385,25 +1729,14 @@ function MustMatch(controlName, matchingControlName) {
     };
 }
 let ChildrenComponent = class ChildrenComponent {
-    constructor(authService, ngxSmartModalService, formBuilder, router) {
+    constructor(storage, http, authService, ngxSmartModalService, formBuilder, router) {
+        this.storage = storage;
+        this.http = http;
         this.authService = authService;
         this.ngxSmartModalService = ngxSmartModalService;
         this.formBuilder = formBuilder;
         this.router = router;
         this.matcher = new MyErrorStateMatcher();
-        this.idiomasHablados = ['Gallego', 'Italiano', 'Rumano', 'Frances', 'Alemén', 'Catalán', 'valenciano', 'bilingüe', 'Otros'];
-        this.habilidades = ['Skater', 'Skater Acuático', 'Pompas Jabón', 'Presentador', 'Magia', 'Surf', 'Buceo', 'Surf', 'Cómico', 'Motocross', 'Mimo', 'Puenting', 'Sky', 'Parapente', 'Ciclismo BMX', 'Parkour snowboarding', 'Sombras chinescas', 'Otros'];
-        this.musicos = [{ name: 'Profesional', }, { name: 'No Profesional', },];
-        this.bailes = [{ name: 'Profesional', }, { name: 'No Profesional', },];
-        this.cantos = [{ name: 'Profesional', }, { name: 'No Profesional', },];
-        this.actor = [{ name: 'Si', }, { name: 'No', },];
-        this.etnico = ['Afro descendiente/Negro', 'Blanco', 'Indígena', 'Mestizo/Moreno', 'Asiático', 'Otros'];
-        this.edad = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
-        this.deporte = [{ name: 'Profesional', }, { name: 'Federado', }, { name: 'No Profesional', },];
-        this.habdeportes = ['Tenis', 'Esgrima', 'Tiro con arco', 'Polo', 'Golf', 'Boxeo', 'Voleibol', 'Baloncesto', 'Montar a caballo', 'Natación', 'Padel', 'Artes marciales', 'Otros'];
-        this.estilocantos = ['Lirico', 'Pop', 'Rock', 'Rap', 'Heavy Metal', 'Reggae', 'Salsa', 'Pop latino', 'Blues', 'Country', 'Dance', 'Tecno', 'Punk', 'Hip Hop', 'Soul', 'Electro Pop', 'Otros'];
-        this.instrumentos = ['Piano', 'Bateria', 'Guitarra española', 'Guitarra electrica', 'Bajo', 'Bandurria', 'Violin', 'Violonchero', 'Bombo', 'Castañuelas', 'Trombon', 'Trompeta', 'Cantante', 'Otros'];
-        this.estilobailes = ['Cumbia', 'Salsa', 'Tango', 'Hiphop', 'Chachacha', 'Pasodoble', 'Samba', 'Merengue', 'Breakdance', 'Funky', 'Pole Dance', 'Ballet clasico', 'Claque', 'Flamenco', 'sevillanas', 'Contemporaneo', 'Otros'];
         this.submitted = false;
         this.isavailable = false;
         this.avatarFile = null;
@@ -1412,167 +1745,289 @@ let ChildrenComponent = class ChildrenComponent {
         this.familyBookFile = null;
         this.copySocialNumber = null;
         this.copyDNIkid = null;
+        this.fileData = null;
+        this.previewUrl = null;
+        this.fileUploadProgress = null;
+        this.uploadedFilePath = null;
+        this.fileCuerpoEntero = null;
+        this.fileArtistico = null;
+        /*******variables para combos********/
+        this.edad = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
+        this.actor = [{ name: 'Si', }, { name: 'No', },];
     }
     ngOnInit() {
+        this.llenarCombos();
         this.childForm = this.formBuilder.group({
+            /****variables nuevas */
+            etnias: [''],
+            baile: [''],
+            estilosBaile: [''],
+            cantante: [''],
+            estilosCanto: [''],
+            habilidadess: [''],
+            idiomas: [''],
+            deportista: [''],
+            deportes: [''],
+            musico: [''],
+            instrumentoss: [''],
+            /****fin variables nuevas */
             username: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            nombres: [null, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(5)]],
+            nombres: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(5)]],
             acceptTerms: [false, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].requiredTrue],
             apellidos: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
             email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].email, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
             password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(6)]],
             confirmPassword: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            sexo: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            actor: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            videoBook: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            estilocantos: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            habdeportes: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            deporte: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            placebirth: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            estilobailes: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            bailes: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            etnico: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            edad: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].requiredTrue],
-            codpostal: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            musicos: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            sexo: [''],
+            actor: [''],
+            videoBook: [''],
+            estilocantos: [''],
+            habdeportes: [''],
+            deporte: [''],
+            placebirth: [''],
+            estilobailes: [''],
+            bailes: [''],
+            etnico: [''],
+            edad: [''],
+            codpostal: [''],
+            musicos: [''],
             telefono: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(6), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].maxLength(6)]],
             telefonofather: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(6), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].maxLength(6)]],
             telefonomother: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(6), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].maxLength(6)]],
             fechaNacimiento: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            nacionalidad: [null, [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required]],
-            acento: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            tallaPantalon: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            tallaCamisa: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            tallaChaqueta: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            localidad: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            provincia: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            direccion: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(5), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].maxLength(100)]],
-            pie: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            cantos: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            habilidades: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            idiomasHablados: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            altura: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            instrumentos: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            colorPiel: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            colorPelo: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            colorOjos: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            observaciones: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            nacionalidad: [''],
+            acento: [''],
+            tallaPantalon: [''],
+            tallaCamisa: [''],
+            tallaChaqueta: [''],
+            localidad: [''],
+            provincia: [''],
+            direccion: [''],
+            pie: [''],
+            cantos: [''],
+            habilidades: [''],
+            idiomasHablados: [''],
+            altura: [''],
+            instrumentos: [''],
+            colorPiel: [''],
+            colorPelo: [''],
+            colorOjos: [''],
+            observaciones: [''],
             numeroDNI: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            numeroSeguridadSocial: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            numeroDNIPadre: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            numeroDNIMadre: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            numeroDNIRepresentante: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            ultimosTrabajos: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            avatar: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            copyDNIFather: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            CopyDNIMother: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            copySocialNumber: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            copyDNIkid: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            libroFamilia: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            numeroSeguridadSocial: [''],
+            numeroDNIPadre: [''],
+            numeroDNIMadre: [''],
+            numeroDNIRepresentante: [''],
+            ultimosTrabajos: [''],
+            avatar: [''],
+            copyDNIFather: [''],
+            CopyDNIMother: [''],
+            copySocialNumber: [''],
+            copyDNIkid: [''],
+            libroFamilia: [''],
         }, {
             validator: MustMatch('password', 'confirmPassword')
         });
     }
+    llenarCombos() {
+        //llenado de etnias
+        this.authService.getAllEtinas()
+            .subscribe(resp => {
+            this.etnias = resp;
+        });
+        this.authService.finByIdEtnia(1)
+            .subscribe(resp => {
+            this.etniaSelect = resp;
+        });
+        //llenado de baile
+        this.authService.getAllBailarin()
+            .subscribe(resp => {
+            this.baile = resp;
+        });
+        this.authService.finByIdBailarin(1)
+            .subscribe(resp => {
+            this.baileSelect = resp;
+        });
+        //llenado de estilos baile
+        this.authService.getAllEstilosBailes()
+            .subscribe(resp => {
+            this.estilosBaile = resp;
+        });
+        this.authService.finByIdEstilosBile(1)
+            .subscribe(resp => {
+            this.estilosBaileSelect = resp;
+        });
+        //llenado de cantate
+        this.authService.getAllCantante()
+            .subscribe(resp => {
+            this.cantante = resp;
+        });
+        this.authService.finByIdCantante(1)
+            .subscribe(resp => {
+            this.cantanteSelect = resp;
+        });
+        //llenado de estilosCanto
+        this.authService.getAllEstilosCanto()
+            .subscribe(resp => {
+            this.estilosCanto = resp;
+        });
+        this.authService.finByIdEstilosCanto(1)
+            .subscribe(resp => {
+            this.estilosCantoSelect = resp;
+        });
+        //llenado de habilidadess
+        this.authService.getAllHabilidades()
+            .subscribe(resp => {
+            this.habilidadess = resp;
+        });
+        this.authService.finByIdHabilidades(1)
+            .subscribe(resp => {
+            this.habilidadessSelect = resp;
+        });
+        //llenado de idiomas
+        this.authService.getAllIdiomas()
+            .subscribe(resp => {
+            this.idiomas = resp;
+        });
+        this.authService.finByIdIdiomas(1)
+            .subscribe(resp => {
+            this.idiomasSelect = resp;
+        });
+        //llenado de deportista
+        this.authService.getAllDeportista()
+            .subscribe(resp => {
+            this.deportista = resp;
+        });
+        this.authService.finByIdDeportista(1)
+            .subscribe(resp => {
+            this.deportistaSelect = resp;
+        });
+        //llenado de deportes
+        this.authService.getAllDeportes()
+            .subscribe(resp => {
+            this.deportes = resp;
+        });
+        this.authService.finByIdDeportes(1)
+            .subscribe(resp => {
+            this.deporteSelect = resp;
+        });
+        //llenado de musico
+        this.authService.getAllMusico()
+            .subscribe(resp => {
+            this.musico = resp;
+        });
+        this.authService.finByIdMusico(1)
+            .subscribe(resp => {
+            this.musicoSelect = resp;
+        });
+        //llenado de instrumento
+        this.authService.getAllInstrumentos()
+            .subscribe(resp => {
+            this.instrumentoss = resp;
+        });
+        this.authService.finByIdInstrumento(1)
+            .subscribe(resp => {
+            this.instrumentoSelect = resp;
+        });
+    }
+    guardarTalla(idUser) {
+        const newChild = this.childForm.value;
+        let tallas = {
+            camisaTalla: newChild.tallaCamisa,
+            chaquetaTalla: newChild.tallaChaqueta,
+            pantalonTalla: newChild.tallaPantalon,
+            pieTalla: newChild.pie,
+            idUser: idUser
+        };
+        this.authService.saveTalla(tallas).subscribe(resTalla => {
+            console.log('talla guardada');
+        }, (err) => {
+            this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
+            console.log(JSON.stringify(err));
+        });
+    }
+    pasarDatosFormUsuario() {
+        const newChild = this.childForm.value;
+        console.log('Niño a registrar: ' + JSON.stringify(newChild));
+        this.usuario = {
+            idUser: 0,
+            avatar: this.urlAvatar,
+            acento: newChild.acento,
+            altura: newChild.altura,
+            apellidos: newChild.apellidos,
+            carnetConducir: newChild.carnetConducir,
+            codigoPostal: newChild.codpostal,
+            colorOjos: newChild.colorOjos,
+            colorPelo: newChild.colorPelo,
+            colorPiel: newChild.colorPiel,
+            curriculumVitae: newChild.curriculumVitae,
+            direccion: newChild.direccion,
+            dniMadre: newChild.numeroDNIMadre,
+            dniRepresentante: newChild.numeroDNIRepresentante,
+            dniPadre: newChild.numeroDNIPadre,
+            dniUser: newChild.numeroDNI,
+            email: newChild.email,
+            fechaNacimiento: newChild.fechaNacimiento,
+            libroFamilia: this.urlLibroFamilia,
+            localidad: newChild.localidad,
+            nacionalidad: newChild.nacionalidad,
+            nombreArtistico: newChild.nombreArtistico,
+            nombreCompleto: '',
+            nombres: newChild.nombres,
+            numeroSeguroSocial: newChild.numeroSeguridadSocial,
+            observaciones: '',
+            password: newChild.password,
+            pathDniMadre: this.urlMadre,
+            pathDniPadre: this.urlPadre,
+            pathDniUser: this.urlUsuario,
+            pathDniRepresentante: this.urlRepresentante,
+            pathSeguroSocial: this.urlSegurosocial,
+            provincia: newChild.provincia,
+            sexo: newChild.sexo,
+            telefono: newChild.telefono,
+            telefonoMadre: newChild.telefonomother,
+            telefonoPadre: newChild.telefonofather,
+            lugarNacimiento: newChild.placebirth,
+            edad: newChild.edad,
+            actor: newChild.actor,
+            username: newChild.username,
+            videobook: newChild.videoBook,
+            instrumentoList: [this.instrumentoSelect],
+            estilosCantoList: [this.estilosCantoSelect],
+            deporteList: [this.deporteSelect],
+            estiloBaileList: [this.estilosBaileSelect],
+            idiomasList: [this.idiomasSelect],
+            habilidadesList: [this.habilidadessSelect],
+            tallasList: [],
+            ultimosTrabajosList: [],
+            idCantante: this.cantanteSelect,
+            idBailarin: this.baileSelect,
+            idEtnia: this.etniaSelect,
+            idType: {
+                idType: 3,
+                description: 'NIÑOS',
+                nombres: 'NIÑOS'
+            },
+            idDeportista: this.deportistaSelect,
+            idMusico: this.musicoSelect,
+            motoList: [],
+            cocheList: [],
+            fotosTatuajesList: [],
+            fotosManosList: []
+        };
+    }
     signupChild() {
         this.submitted = true;
-        /*if (this.childForm.invalid) {
-          return;
-        }*/
-        const newChild = this.childForm.value;
-        alert('Niño a registrar: ' + JSON.stringify(newChild));
-        const usuario = {
-            "acento": newChild.acento,
-            "altura": newChild.altura,
-            "apellidos": newChild.apellidos,
-            "carnetConducir": newChild.carnetConducir,
-            "codigoPostal": newChild.codpostal,
-            "colorOjos": newChild.colorOjos,
-            "colorPelo": newChild.colorPelo,
-            "colorPiel": newChild.colorPiel,
-            "curriculumVitae": newChild.curriculumVitae,
-            "direccion": newChild.direccion,
-            "dniMadre": newChild.numeroDNIMadre,
-            "dniRepresentante": newChild.numeroDNIRepresentante,
-            "dniPadre": newChild.numeroDNIPadre,
-            "dniUser": newChild.numeroDNI,
-            "email": newChild.email,
-            "fechaNacimiento": newChild.fechaNacimiento,
-            "libroFamilia": newChild.libroFamilia,
-            "localidad": newChild.localidad,
-            "nacionalidad": newChild.nacionalidad,
-            "nombreArtistico": newChild.nombreArtistico,
-            "nombreCompleto": newChild.nombreCompleto,
-            "nombres": newChild.nombres,
-            "numeroSeguroSocial": newChild.numeroSeguridadSocial,
-            "observaciones": newChild.observaciones,
-            "password": newChild.password,
-            "pathDniMadre": newChild.CopyDNIMother,
-            "pathDniPadre": newChild.copyDNIFather,
-            "pathDniUser": newChild.copyDNIkid,
-            "pathDniRepresentante": newChild.pathDniRepresentante,
-            "pathSeguroSocial": newChild.copySocialNumber,
-            "provincia": newChild.provincia,
-            "sexo": newChild.sexo,
-            "telefono": newChild.telefono,
-            "telefonoMadre": newChild.telefonoMadre,
-            "telefonoPadre": newChild.telefonomother,
-            "lugarNacimiento": newChild.lugarNacimiento,
-            "edad": newChild.edad,
-            "actor": newChild.actor,
-            "username": newChild.username,
-            "videobook": newChild.videoBook,
-            "instrumentoList": [],
-            "estilosCantoList": [],
-            "deporteList": [
-                {
-                    "idDeporte": 1,
-                    "descripcionDeporte": "NO APLICA",
-                    "nombreDeporte": "NO APLICA"
-                }
-            ],
-            "estiloBaileList": [],
-            "idiomasList": [],
-            "habilidadesList": [],
-            "tallasList": [],
-            "ultimosTrabajosList": [],
-            "idCantante": {
-                "idCantante": 1,
-                "descripcionCantante": "NO APLICA",
-                "nombreCantante": "NOAPLICA"
-            },
-            "idBailarin": {
-                "idBailarin": 1,
-                "descripcionBailarin": "NO APLICA",
-                "nombreBailarin": "NO APLICA"
-            },
-            "idEtnia": {
-                "idEtnia": 1,
-                "nombreEtnia": "BLANCO editado"
-            },
-            "idType": {
-                "idType": 3,
-                "description": "NIÑOS",
-                "nombres": "NIÑOS"
-            },
-            "idDeportista": {
-                "idDeportista": 1,
-                "descripcionDeportista": "NO APLICA",
-                "nombreDeportista": "NO APLICA"
-            },
-            "idMusico": {
-                "idMusico": 1,
-                "descipcionMusico": "NO APLICA",
-                "nombreMusico": "NO APLICA"
-            },
-            "motoList": [],
-            "cocheList": [],
-            "fotosTatuajesList": [],
-            "fotosManosList": []
-        };
-        this.authService.signup2(usuario).subscribe(res => {
+        if (this.childForm.invalid || this.childForm.get('acceptTerms').value === false) {
+            return;
+        }
+        this.subirArchivos();
+        this.pasarDatosFormUsuario();
+        this.authService.signup2(this.usuario).subscribe(res => {
             localStorage.setItem('token', res.idUser);
             this.ngxSmartModalService.create('confirm', 'Cuenta de Niño creada exitosamente ' + res.nombres + ' ' + res.apellidos).open();
             this.router.navigate(['/homeuser']);
+            this.guardarTalla(res.idUser);
         }, (err) => {
             this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
             console.log(JSON.stringify(err));
@@ -1580,6 +2035,57 @@ let ChildrenComponent = class ChildrenComponent {
     }
     onAvatarSelected(event) {
         this.avatarFile = event.target.files[0];
+    }
+    /**Upload foto cuerpo entero */
+    onFileCuerpoEnteroSelected(event) {
+        this.fileCuerpoEntero = event.target.files[0];
+    }
+    /**Upload foto artistica */
+    onFileArtisticoSelected(event) {
+        this.fileArtistico = event.target.files[0];
+    }
+    fileProgress(fileInput) {
+        this.fileData = fileInput.target.files[0];
+        this.preview();
+    }
+    preview() {
+        // Show preview
+        var mimeType = this.fileData.type;
+        if (mimeType.match(/image\/*/) == null) {
+            return;
+        }
+        var reader = new FileReader();
+        reader.readAsDataURL(this.fileData);
+        reader.onload = (_event) => {
+            this.previewUrl = reader.result;
+        };
+    }
+    subirArchivos() {
+        /**subir avatar */
+        let idUser = this.childForm.get('numeroDNI').value;
+        this.urlAvatar = 'ninios/' + idUser + '/avatar-' + this.avatarFile.name;
+        let task = this.storage.upload(this.urlAvatar, this.avatarFile);
+        /**subir cuerpo entero */
+        this.urlCuerpoEntero = 'ninios/' + idUser + '/cuerpo-' + this.fileCuerpoEntero.name;
+        task = this.storage.upload(this.urlCuerpoEntero, this.fileCuerpoEntero);
+        /**subir foto artistica */
+        this.urlArtistico = 'ninios/' + idUser + '/artistico-' + this.fileArtistico.name;
+        task = this.storage.upload(this.urlArtistico, this.fileArtistico);
+        /**subir dnipadre */
+        this.urlPadre = 'ninios/' + idUser + '/dnipadre-' + this.copyDNIFather.name;
+        task = this.storage.upload(this.urlPadre, this.copyDNIFather);
+        /**subir dnimadre */
+        this.urlMadre = 'ninios/' + idUser + '/dnimadre-' + this.CopyDNIMother.name;
+        task = this.storage.upload(this.urlMadre, this.CopyDNIMother);
+        /**subir family book  */
+        this.urlLibroFamilia = 'ninios/' + idUser + '/librofamiliar-' + this.familyBookFile.name;
+        task = this.storage.upload(this.urlLibroFamilia, this.familyBookFile);
+        /**subir numero de seguro social  */
+        this.urlSegurosocial = 'ninios/' + idUser + '/segurosocial-' + this.copySocialNumber.name;
+        task = this.storage.upload(this.urlSegurosocial, this.copySocialNumber);
+        /**subir dni user  */
+        this.urlUsuario = 'ninios/' + idUser + '/dniuser-' + this.copyDNIkid.name;
+        task = this.storage.upload(this.urlUsuario, this.copyDNIkid);
     }
     copyDNIFatherSelected(event) {
         this.copyDNIFather = event.target.files[0];
@@ -1618,6 +2124,8 @@ let ChildrenComponent = class ChildrenComponent {
     }
 };
 ChildrenComponent.ctorParameters = () => [
+    { type: _angular_fire_storage__WEBPACK_IMPORTED_MODULE_7__["AngularFireStorage"] },
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_6__["HttpClient"] },
     { type: _Services_auth_service__WEBPACK_IMPORTED_MODULE_4__["AuthService"] },
     { type: ngx_smart_modal__WEBPACK_IMPORTED_MODULE_3__["NgxSmartModalService"] },
     { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
@@ -1883,6 +2391,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Services_auth_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../Services/auth.service */ "./src/app/Services/auth.service.ts");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
 /* harmony import */ var ngx_smart_modal__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ngx-smart-modal */ "./node_modules/ngx-smart-modal/esm2015/ngx-smart-modal.js");
+/* harmony import */ var _angular_fire_storage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/fire/storage */ "./node_modules/@angular/fire/storage/es2015/index.js");
+
 
 
 
@@ -1914,217 +2424,365 @@ function MustMatch(controlName, matchingControlName) {
     };
 }
 let FiguracionComponent = class FiguracionComponent {
-    constructor(authService, ngxSmartModalService, formBuilder, router) {
+    /**Constructor */
+    constructor(storage, authService, ngxSmartModalService, formBuilder, router) {
+        this.storage = storage;
         this.authService = authService;
         this.ngxSmartModalService = ngxSmartModalService;
         this.formBuilder = formBuilder;
         this.router = router;
+        /***variables para carga de imagenes y archivos */
+        this.fileAvatar = null;
+        this.fileCoche = null;
+        this.fileMoto = null;
+        this.fileTatuajes = null;
+        this.fileManos = null;
+        this.fileCuerpoEntero = null;
+        this.fileArtistico = null;
+        this.typecarnet = ['Tipo A', 'Tipo B', 'Tipo C', 'Tipo D', 'Tipo BTP'];
         this.submitted = false;
-        this.selectedFile = null;
-        this.matcher = new MyErrorStateMatcher();
-        this.bailes = [{ name: 'Profesional', }, { name: 'No Profesional', },];
-        this.cantos = [{ name: 'Profesional', }, { name: 'No Profesional', },];
-        this.etnico = ['Afro descendiente/Negro', 'Blanco', 'Indígena', 'Mestizo/Moreno', 'Asiático', 'Otros'];
-        this.estilobailes = ['Cumbia', 'Salsa', 'Tango', 'Hiphop', 'Chachacha', 'Pasodoble', 'Samba', 'Merengue', 'Breakdance', 'Funky', 'Pole Dance', 'Ballet clasico', 'Claque', 'Flamenco', 'sevillanas', 'Contemporaneo', 'Otros'];
-        this.estilocantos = ['Lirico', 'Pop', 'Rock', 'Rap', 'Heavy Metal', 'Reggae', 'Salsa', 'Pop latino', 'Blues', 'Country', 'Dance', 'Tecno', 'Punk', 'Hip Hop', 'Soul', 'Electro Pop', 'Otros'];
-        this.habilidades = ['Skater', 'Skater Acuático', 'Pompas Jabón', 'Presentador', 'Magia', 'Surf', 'Buceo', 'Surf', 'Cómico', 'Motocross', 'Mimo', 'Puenting', 'Sky', 'Parapente', 'Ciclismo BMX', 'Parkour snowboarding', 'Sombras chinescas', 'Otros'];
-        this.idiomasHablados = ['Gallego', 'Italiano', 'Rumano', 'Frances', 'Alemén', 'Catalán', 'valenciano', 'bilingüe', 'Otros'];
         this.createRegisterForm();
     }
-    onFileSelected(event) {
-        this.selectedFile = event.target.files[0];
-    }
+    /**Inicializacion */
     ngOnInit() {
+        this.llenarCombos();
     }
+    llenarCombos() {
+        //llenado de etnias
+        this.authService.getAllEtinas()
+            .subscribe(resp => {
+            this.etnias = resp;
+        });
+        this.authService.finByIdEtnia(1)
+            .subscribe(resp => {
+            this.etniaSelect = resp;
+        });
+        //llenado de baile
+        this.authService.getAllBailarin()
+            .subscribe(resp => {
+            this.baile = resp;
+        });
+        this.authService.finByIdBailarin(1)
+            .subscribe(resp => {
+            this.baileSelect = resp;
+        });
+        //llenado de estilos baile
+        this.authService.getAllEstilosBailes()
+            .subscribe(resp => {
+            this.estilosBaile = resp;
+        });
+        this.authService.finByIdEstilosBile(1)
+            .subscribe(resp => {
+            this.estilosBaileSelect = resp;
+        });
+        //llenado de cantate
+        this.authService.getAllCantante()
+            .subscribe(resp => {
+            this.cantante = resp;
+        });
+        this.authService.finByIdCantante(1)
+            .subscribe(resp => {
+            this.cantanteSelect = resp;
+        });
+        //llenado de estilosCanto
+        this.authService.getAllEstilosCanto()
+            .subscribe(resp => {
+            this.estilosCanto = resp;
+        });
+        this.authService.finByIdEstilosCanto(1)
+            .subscribe(resp => {
+            this.estilosCantoSelect = resp;
+        });
+        //llenado de habilidadess
+        this.authService.getAllHabilidades()
+            .subscribe(resp => {
+            this.habilidadess = resp;
+        });
+        this.authService.finByIdHabilidades(1)
+            .subscribe(resp => {
+            this.habilidadessSelect = resp;
+        });
+        //llenado de idiomas
+        this.authService.getAllIdiomas()
+            .subscribe(resp => {
+            this.idiomas = resp;
+        });
+        this.authService.finByIdIdiomas(1)
+            .subscribe(resp => {
+            this.idiomasSelect = resp;
+        });
+    }
+    /**Construccion de form match variables y campos */
     createRegisterForm() {
         this.actorForm = this.formBuilder.group({
             email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].email, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
             password: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(5)]],
             confirmPassword: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            username: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            acceptTerms: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            habilidades: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            cantos: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            etnico: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            estilocantos: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            placebirth: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            idiomasHablados: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            nombres: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            apellidos: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            localidad: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            provincia: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            bailes: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            estilobailes: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            codpostal: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            direccion: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            sexo: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            username: [''],
+            acceptTerms: [false, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            habilidades: [''],
+            cantos: [''],
+            estilocantos: [''],
+            placebirth: [''],
+            idiomasHablados: [''],
+            nombres: [''],
+            apellidos: [''],
+            localidad: [''],
+            provincia: [''],
+            bailes: [''],
+            estilobailes: [''],
+            codpostal: [''],
+            direccion: [''],
+            sexo: [''],
             telefono: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].minLength(6), _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].maxLength(6)]],
-            fechaNacimiento: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            nacionalidad: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            acento: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            tallaPantalon: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            tallaCamisa: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            tallaChaqueta: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            pie: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            altura: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            colorPiel: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            colorPelo: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            colorOjos: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            numeroDNI: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            numeroSeguridadSocial: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            carnetConducir: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            modeloCoche: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            colorCoche: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            fotoCoche: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            modeloMoto: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            colorMoto: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            fotoMoto: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            avatar: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            tattoos: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
-            manos: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            fechaNacimiento: [''],
+            nacionalidad: [''],
+            acento: [''],
+            tallaPantalon: [''],
+            tallaCamisa: [''],
+            tallaChaqueta: [''],
+            pie: [''],
+            altura: [''],
+            colorPiel: [''],
+            colorPelo: [''],
+            colorOjos: [''],
+            numeroDNI: [''],
+            numeroSeguridadSocial: [''],
+            carnetConducir: [''],
+            modeloCoche: [''],
+            colorCoche: [''],
+            fotoCoche: [''],
+            modeloMoto: [''],
+            colorMoto: [''],
+            fotoMoto: [''],
+            avatar: [''],
+            tattoos: [''],
+            manos: [''],
         }, {
             validator: MustMatch('password', 'confirmPassword')
         });
     }
+    /**Upload avatar */
+    onFileAvatarSelected(event) {
+        this.fileAvatar = event.target.files[0];
+    }
+    /**Upload foto cuerpo entero */
+    onFileCuerpoEnteroSelected(event) {
+        this.fileCuerpoEntero = event.target.files[0];
+    }
+    /**Upload foto artistica */
+    onFileArtisticoSelected(event) {
+        this.fileArtistico = event.target.files[0];
+    }
+    /**Upload foto moto */
+    onFileMotoSelected(event) {
+        this.fileMoto = event.target.files[0];
+    }
+    /**Upload foto coche */
+    onFileCocheSelected(event) {
+        this.fileCoche = event.target.files[0];
+    }
+    /**Upload foto tatuajes */
+    onFileTatuajeSelected(event) {
+        this.fileTatuajes = event.target.files[0];
+    }
+    /**Upload foto manos */
+    onFileManoSelected(event) {
+        this.fileManos = event.target.files[0];
+    }
+    pasarDatosFormUsuario() {
+        this.submitted = true;
+        const newUserObject = this.actorForm.value;
+        this.usuario = {
+            idUser: 0,
+            avatar: this.urlAvatar,
+            acento: newUserObject.acento,
+            altura: newUserObject.altura,
+            apellidos: newUserObject.apellidos,
+            carnetConducir: newUserObject.carnetConducir,
+            codigoPostal: newUserObject.codpostal,
+            colorOjos: newUserObject.colorOjos,
+            colorPelo: newUserObject.colorPelo,
+            colorPiel: newUserObject.colorPiel,
+            curriculumVitae: '',
+            direccion: newUserObject.direccion,
+            dniMadre: '',
+            dniRepresentante: '',
+            dniPadre: '',
+            dniUser: newUserObject.numeroDNI,
+            email: newUserObject.email,
+            fechaNacimiento: newUserObject.fechaNacimiento,
+            libroFamilia: '',
+            localidad: newUserObject.localidad,
+            nacionalidad: newUserObject.nacionalidad,
+            nombreArtistico: '',
+            nombreCompleto: '',
+            nombres: newUserObject.nombres,
+            numeroSeguroSocial: newUserObject.numeroSeguridadSocial,
+            observaciones: '',
+            password: newUserObject.password,
+            pathDniMadre: '',
+            pathDniPadre: '',
+            pathDniUser: '',
+            pathDniRepresentante: '',
+            pathSeguroSocial: '',
+            provincia: newUserObject.provincia,
+            sexo: newUserObject.sexo,
+            telefono: newUserObject.telefono,
+            telefonoMadre: '',
+            telefonoPadre: '',
+            lugarNacimiento: newUserObject.placebirth,
+            edad: 0,
+            actor: '',
+            username: newUserObject.username,
+            videobook: '',
+            instrumentoList: [],
+            estilosCantoList: [this.estilosCantoSelect],
+            deporteList: [],
+            estiloBaileList: [this.estilosBaileSelect],
+            idiomasList: [this.idiomasSelect],
+            habilidadesList: [this.habilidadessSelect],
+            tallasList: [],
+            ultimosTrabajosList: [],
+            idCantante: this.cantanteSelect,
+            idBailarin: this.baileSelect,
+            idEtnia: this.etniaSelect,
+            idType: {
+                idType: 2,
+                description: 'FIGURACION',
+                nombres: 'FIGURACION'
+            },
+            idDeportista: {
+                idDeportista: 1,
+                descripcionDeportista: 'NO APLICA',
+                nombreDeportista: 'NO APLICA'
+            },
+            idMusico: {
+                idMusico: 1,
+                descipcionMusico: 'NO APLICA',
+                nombreMusico: 'NO APLICA'
+            },
+            motoList: [],
+            cocheList: [],
+            fotosTatuajesList: [],
+            fotosManosList: []
+        };
+    }
+    registrarFotos(idUser) {
+        if (this.urlMoto !== '') {
+            let moto = {
+                colorMoto: this.actorForm.get('colorMoto').value,
+                fotoMoto: this.urlMoto,
+                modeloMoto: this.actorForm.get('modeloMoto').value,
+                idUser: idUser
+            };
+            /***GUARDE CON SERVICIO */
+            this.authService.saveMoto(moto).subscribe(resTalla => {
+                console.log('info save moto');
+            }, (err) => {
+                console.log('error save moto');
+            });
+        }
+        if (this.urlCoche !== '') {
+            let coche = {
+                colorCoche: this.actorForm.get('colorCoche').value,
+                fotoCoche: this.urlCoche,
+                modeloCoche: this.actorForm.get('modeloCoche').value,
+                idUser: idUser
+            };
+            /***GUARDE CON SERVICIO */
+            this.authService.saveCoche(coche).subscribe(resTalla => {
+                console.log('info save coche');
+            }, (err) => {
+                console.log('error save coche');
+            });
+        }
+        if (this.urlTatuajes !== '') {
+            let fotosTatuajes = {
+                fechaCargaTatuaje: new Date(),
+                nombreFotoTatuaje: 'tatuaje' + idUser,
+                urlFotoTatuaje: this.urlTatuajes,
+                idUser: idUser
+            };
+            /***GUARDE CON SERVICIO */
+            this.authService.saveTatuajes(fotosTatuajes).subscribe(resTalla => {
+                console.log('info save fotosTatuajes');
+            }, (err) => {
+                console.log('error save fotosTatuajes');
+            });
+        }
+        if (this.urlManos !== '') {
+            let fotosManos = {
+                fechaCargaMano: new Date(),
+                nombreFotoMano: 'manos' + idUser,
+                urlFotoMano: this.urlManos,
+                idUser: idUser
+            };
+            /***GUARDE CON SERVICIO */
+            this.authService.saveManos(fotosManos).subscribe(resTalla => {
+                console.log('info save fotosManos');
+            }, (err) => {
+                console.log('error save fotosManos');
+            });
+        }
+    }
+    guardarTalla(idUser) {
+        const newChild = this.actorForm.value;
+        let tallas = {
+            camisaTalla: newChild.tallaCamisa,
+            chaquetaTalla: newChild.tallaChaqueta,
+            pantalonTalla: newChild.tallaPantalon,
+            pieTalla: newChild.pie,
+            idUser: idUser
+        };
+        this.authService.saveTalla(tallas).subscribe(resTalla => {
+            console.log('talla guardada');
+        }, (err) => {
+            this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
+            console.log(JSON.stringify(err));
+        });
+    }
     registrarActor() {
         this.submitted = true;
-        /*if (this.actorForm.invalid) {
-          return;
-        }*/
-        /*const newUserObject = {
-         rol: 'CommonUser',
-         username: this.actorForm.get('username').value,
-         email: this.actorForm.get('email').value,
-         password: this.actorForm.get('password').value,
-         nombres: this.actorForm.get('nombres').value,
-         apellidos: this.actorForm.get('apellidos').value,
-         sexo: this.actorForm.get('sexo').value,
-         acento: this.actorForm.get('acento').value,
-         telefono: this.actorForm.get('telefono').value,
-         fechaNacimiento: this.actorForm.get('fechaNacimiento').value,
-         nacionalidad: this.actorForm.get('nacionalidad').value,
-         tallaPantalon: this.actorForm.get('tallaPantalon').value,
-         tallaCamisa: this.actorForm.get('tallaCamisa').value,
-         tallaChaqueta: this.actorForm.get('tallaChaqueta').value,
-         pie: this.actorForm.get('pie').value,
-         altura: this.actorForm.get('altura').value,
-         colorPiel: this.actorForm.get('colorPiel').value,
-         colorPelo: this.actorForm.get('colorPelo').value,
-         colorOjos: this.actorForm.get('colorOjos').value,
-         numeroDNI: this.actorForm.get('numeroDNI').value,
-         modeloCoche: this.actorForm.get('modeloCoche').value,
-         modeloMoto: this.actorForm.get('modeloMoto').value,
-         carnetConducir: this.actorForm.get('carnetConducir').value,
-         colorCoche: this.actorForm.get('colorCoche').value,
-         colorMoto: this.actorForm.get('colorMoto').value,
-         numeroSeguridadSocial: this.actorForm.get('numeroSeguridadSocial').value,
-       };*/
-        const newUserObject = this.actorForm.value;
-        const usuario = {
-            "acento": newUserObject.acento,
-            "altura": newUserObject.altura,
-            "apellidos": newUserObject.apellidos,
-            "carnetConducir": newUserObject.carnetConducir,
-            "codigoPostal": newUserObject.codpostal,
-            "colorOjos": newUserObject.colorOjos,
-            "colorPelo": newUserObject.colorPelo,
-            "colorPiel": newUserObject.colorPiel,
-            "curriculumVitae": '',
-            "direccion": newUserObject.direccion,
-            "dniMadre": '',
-            "dniRepresentante": '',
-            "dniPadre": '',
-            "dniUser": newUserObject.numeroDNI,
-            "email": newUserObject.email,
-            "fechaNacimiento": newUserObject.fechaNacimiento,
-            "libroFamilia": '',
-            "localidad": newUserObject.localidad,
-            "nacionalidad": newUserObject.nacionalidad,
-            "nombreArtistico": newUserObject.nombreArtistico,
-            "nombreCompleto": '',
-            "nombres": newUserObject.nombres,
-            "numeroSeguroSocial": newUserObject.numeroSeguridadSocial,
-            "observaciones": newUserObject.observaciones,
-            "password": newUserObject.password,
-            "pathDniMadre": '',
-            "pathDniPadre": '',
-            "pathDniUser": '',
-            "pathDniRepresentante": '',
-            "pathSeguroSocial": '',
-            "provincia": newUserObject.provincia,
-            "sexo": newUserObject.sexo,
-            "telefono": newUserObject.telefono,
-            "telefonoMadre": '',
-            "telefonoPadre": '',
-            "lugarNacimiento": newUserObject.lugarNacimiento,
-            "edad": 0,
-            "actor": '',
-            "username": newUserObject.username,
-            "videobook": newUserObject.videoBook,
-            "instrumentoList": [],
-            "estilosCantoList": [],
-            "deporteList": [
-                {
-                    "idDeporte": 1,
-                    "descripcionDeporte": "NO APLICA",
-                    "nombreDeporte": "NO APLICA"
-                }
-            ],
-            "estiloBaileList": [],
-            "idiomasList": [],
-            "habilidadesList": [],
-            "tallasList": [],
-            "ultimosTrabajosList": [],
-            "idCantante": {
-                "idCantante": 1,
-                "descripcionCantante": "NO APLICA",
-                "nombreCantante": "NOAPLICA"
-            },
-            "idBailarin": {
-                "idBailarin": 1,
-                "descripcionBailarin": "NO APLICA",
-                "nombreBailarin": "NO APLICA"
-            },
-            "idEtnia": {
-                "idEtnia": 1,
-                "nombreEtnia": "BLANCO editado"
-            },
-            "idType": {
-                "idType": 2,
-                "description": "FIGURACION",
-                "nombres": "FIGURACION"
-            },
-            "idDeportista": {
-                "idDeportista": 1,
-                "descripcionDeportista": "NO APLICA",
-                "nombreDeportista": "NO APLICA"
-            },
-            "idMusico": {
-                "idMusico": 1,
-                "descipcionMusico": "NO APLICA",
-                "nombreMusico": "NO APLICA"
-            },
-            "motoList": [],
-            "cocheList": [],
-            "fotosTatuajesList": [],
-            "fotosManosList": []
-        };
-        this.subscriber = this.authService.signup2(usuario).subscribe(res => {
+        if (this.actorForm.invalid || this.actorForm.get('acceptTerms').value === false) {
+            return;
+        }
+        this.subirArchivos();
+        this.pasarDatosFormUsuario();
+        this.authService.signup2(this.usuario).subscribe(res => {
             localStorage.setItem('token', res.idUser);
             this.ngxSmartModalService.create('confirm', 'Cuenta de Figuración creada exitosamente ' + res.nombres + ' ' + res.apellidos).open();
-            // this.subirFotoPerfil()
+            this.registrarFotos(res.idUser);
+            this.guardarTalla(res.idUser);
             this.router.navigate(['/homeuser']);
         }, (err) => {
             this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
             console.log(JSON.stringify(err));
         });
     }
-    subirFotoPerfil() {
-        const fd = new FormData();
-        fd.append('avatar', this.selectedFile, this.selectedFile.name);
-        this.authService.uploadAvatar(fd).subscribe(res => {
-            console.log(res);
-        });
+    subirArchivos() {
+        /**subir avatar */
+        let idUser = this.actorForm.get('numeroDNI').value;
+        this.urlAvatar = 'figuracion/' + idUser + '/avatar-' + this.fileAvatar.name;
+        let task = this.storage.upload(this.urlAvatar, this.fileAvatar);
+        /**subir cuerpo entero */
+        this.urlCuerpoEntero = 'figuracion/' + idUser + '/cuerpo-' + this.fileCuerpoEntero.name;
+        task = this.storage.upload(this.urlCuerpoEntero, this.fileCuerpoEntero);
+        /**subir foto artistica */
+        this.urlArtistico = 'figuracion/' + idUser + '/artistico-' + this.fileArtistico.name;
+        task = this.storage.upload(this.urlArtistico, this.fileArtistico);
+        /**subir coche */
+        this.urlCoche = 'figuracion/' + idUser + '/coche-' + this.fileCoche.name;
+        task = this.storage.upload(this.urlCoche, this.fileCoche);
+        /**subir moto */
+        this.urlMoto = 'figuracion/' + idUser + '/moto-' + this.fileMoto.name;
+        task = this.storage.upload(this.urlMoto, this.fileMoto);
+        /**subir tatuajes */
+        this.urlTatuajes = 'figuracion/' + idUser + '/tatuajes-' + this.fileTatuajes.name;
+        task = this.storage.upload(this.urlTatuajes, this.fileTatuajes);
+        /**subir manos */
+        this.urlManos = 'figuracion/' + idUser + '/manos-' + this.fileManos.name;
+        task = this.storage.upload(this.urlManos, this.fileManos);
     }
     /*  Función para permitir solo numeros */
     numberOnly(event) {
@@ -2148,6 +2806,7 @@ let FiguracionComponent = class FiguracionComponent {
     }
 };
 FiguracionComponent.ctorParameters = () => [
+    { type: _angular_fire_storage__WEBPACK_IMPORTED_MODULE_6__["AngularFireStorage"] },
     { type: _Services_auth_service__WEBPACK_IMPORTED_MODULE_3__["AuthService"] },
     { type: ngx_smart_modal__WEBPACK_IMPORTED_MODULE_5__["NgxSmartModalService"] },
     { type: _angular_forms__WEBPACK_IMPORTED_MODULE_2__["FormBuilder"] },
@@ -2293,126 +2952,43 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
 /* harmony import */ var _Services_auth_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../Services/auth.service */ "./src/app/Services/auth.service.ts");
 /* harmony import */ var ngx_smart_modal__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ngx-smart-modal */ "./node_modules/ngx-smart-modal/esm2015/ngx-smart-modal.js");
+/* harmony import */ var _angular_fire_storage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/fire/storage */ "./node_modules/@angular/fire/storage/es2015/index.js");
+
 
 
 
 
 let HomeUserComponent = class HomeUserComponent {
-    constructor(authService, ngxSmartModalService) {
+    constructor(storage, authService, ngxSmartModalService) {
+        this.storage = storage;
         this.authService = authService;
         this.ngxSmartModalService = ngxSmartModalService;
     }
     ngOnInit() {
-        let usuario = {
-            "acento": '',
-            "altura": '',
-            "apellidos": '',
-            "carnetConducir": '',
-            "codigoPostal": '',
-            "colorOjos": '',
-            "colorPelo": '',
-            "colorPiel": '',
-            "curriculumVitae": '',
-            "direccion": '',
-            "dniMadre": '',
-            "dniRepresentante": '',
-            "dniPadre": '',
-            "dniUser": '',
-            "email": '',
-            "fechaNacimiento": '',
-            "libroFamilia": '',
-            "localidad": '',
-            "nacionalidad": '',
-            "nombreArtistico": '',
-            "nombreCompleto": '',
-            "nombres": '',
-            "numeroSeguroSocial": '',
-            "observaciones": '',
-            "password": '',
-            "pathDniMadre": '',
-            "pathDniPadre": '',
-            "pathDniUser": '',
-            "pathDniRepresentante": '',
-            "pathSeguroSocial": '',
-            "provincia": '',
-            "sexo": '',
-            "telefono": '',
-            "telefonoMadre": '',
-            "telefonoPadre": '',
-            "lugarNacimiento": '',
-            "edad": 0,
-            "actor": '',
-            "username": '',
-            "videobook": '',
-            "instrumentoList": [],
-            "estilosCantoList": [],
-            "deporteList": [
-                {
-                    "idDeporte": 1,
-                    "descripcionDeporte": "NO APLICA",
-                    "nombreDeporte": "NO APLICA"
-                }
-            ],
-            "estiloBaileList": [],
-            "idiomasList": [],
-            "habilidadesList": [],
-            "tallasList": [],
-            "ultimosTrabajosList": [],
-            "idCantante": {
-                "idCantante": 1,
-                "descripcionCantante": "NO APLICA",
-                "nombreCantante": "NOAPLICA"
-            },
-            "idBailarin": {
-                "idBailarin": 1,
-                "descripcionBailarin": "NO APLICA",
-                "nombreBailarin": "NO APLICA"
-            },
-            "idEtnia": {
-                "idEtnia": 1,
-                "nombreEtnia": "BLANCO editado"
-            },
-            "idType": {
-                "idType": 1,
-                "description": "ACTOR",
-                "nombres": "ACTOR"
-            },
-            "idDeportista": {
-                "idDeportista": 1,
-                "descripcionDeportista": "NO APLICA",
-                "nombreDeportista": "NO APLICA"
-            },
-            "idMusico": {
-                "idMusico": 1,
-                "descipcionMusico": "NO APLICA",
-                "nombreMusico": "NO APLICA"
-            },
-            "motoList": [],
-            "cocheList": [],
-            "fotosTatuajesList": [],
-            "fotosManosList": []
-        };
-        /*this.userInfo = this.authService.obtenerUsuario();
-        usuario=this.userInfo;*/
-        this.subscriber = this.authService.findByToken().subscribe(res => {
+        this.authService.findByToken().subscribe(res => {
             this.userInfo = res;
+            console.log('avatar url dentro subscriber: ' + this.userInfo.avatar);
+            let filePath = this.userInfo.avatar;
+            let ref = this.storage.ref(filePath);
+            this.urlImage = ref.getDownloadURL();
+            ref.getDownloadURL().subscribe(resp => {
+                this.urlImage = resp;
+            });
+            if (this.userInfo.pathSeguroSocial !== '') {
+                filePath = this.userInfo.pathSeguroSocial;
+                ref = this.storage.ref(filePath);
+                ref.getDownloadURL().subscribe(resp => {
+                    this.urlPathSeguro = resp;
+                });
+            }
         }, (err) => {
             this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
             console.log(JSON.stringify(err));
         });
-        /*this.authService.obtenerUsuario().subscribe(
-          res => {
-            this.userInfo = res;
-          });*/
-        // this.authService.getAvatar()
-        //   .subscribe(resp => {
-        //     this.avatarImageUrl = resp;
-        //     console.log('segunda ' );
-        //     console.log(JSON.stringify(resp));
-        //   });
     }
 };
 HomeUserComponent.ctorParameters = () => [
+    { type: _angular_fire_storage__WEBPACK_IMPORTED_MODULE_4__["AngularFireStorage"] },
     { type: _Services_auth_service__WEBPACK_IMPORTED_MODULE_2__["AuthService"] },
     { type: ngx_smart_modal__WEBPACK_IMPORTED_MODULE_3__["NgxSmartModalService"] }
 ];
@@ -2965,30 +3541,30 @@ let LoginComponent = class LoginComponent {
     }
     createLoginForm() {
         this.loginForm = this.formBuilder.group({
-            password: ['', _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required],
+            password: [''],
             email: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].required, _angular_forms__WEBPACK_IMPORTED_MODULE_2__["Validators"].email]],
         });
     }
     loginUser() {
         this.isSubmitted = true;
         //alert('SUCCESS!!');
-        /*if(this.loginForm.invalid){
-          return;
-        }*/
+        if (this.loginForm.invalid) {
+            console.log(this.loginForm.get('email').value);
+            console.log(this.loginForm.get('password').value);
+            return;
+        }
         const user = {
             email: this.loginForm.get('email').value,
             password: this.loginForm.get('password').value,
         };
         this.authService.login2(user.email, user.password)
             .subscribe(res => {
+            let usuario = res;
             localStorage.setItem('token', res.idUser);
-            if (res.sexo === 'MASCULINO') {
-                this.router.navigate(['/management']);
-            }
-            else if (res.rol === 'Company') {
+            if (usuario.idType.nombres === 'COMPAÑIA') {
                 this.router.navigate(['/company']);
             }
-            else if (res.rol === 'Root' || res.rol === 'Admin') {
+            else if (usuario.idType.nombres === 'ROOT' || res.rol === 'ADMIN') {
                 this.router.navigate(['/management']);
             }
             else {
@@ -3104,9 +3680,9 @@ let RegisterComponent = class RegisterComponent {
     registrarEmpresa() {
         this.submitted = true;
         // stop the process here if form is invalid
-        /*if (this.companyForm.invalid) {
-          return;
-        }*/
+        if (this.companyForm.invalid) {
+            return;
+        }
         const newUserObject = this.companyForm.value;
         const usuario = {
             "acento": newUserObject.acento,
@@ -3236,35 +3812,6 @@ RegisterComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
 
 /***/ }),
 
-/***/ "./src/app/pipes/date/date.pipe.ts":
-/*!*****************************************!*\
-  !*** ./src/app/pipes/date/date.pipe.ts ***!
-  \*****************************************/
-/*! exports provided: DatePipe */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "DatePipe", function() { return DatePipe; });
-/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
-/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
-
-
-let DatePipe = class DatePipe {
-    transform(value, ...args) {
-        return null;
-    }
-};
-DatePipe = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
-    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Pipe"])({
-        name: 'date'
-    })
-], DatePipe);
-
-
-
-/***/ }),
-
 /***/ "./src/environments/environment.ts":
 /*!*****************************************!*\
   !*** ./src/environments/environment.ts ***!
@@ -3281,7 +3828,25 @@ __webpack_require__.r(__webpack_exports__);
 // The list of file replacements can be found in `angular.json`.
 
 const environment = {
-    production: false
+    production: false,
+    firebase: {
+        apiKey: "AIzaSyC1Xi_KPZfByVuXPPJTQhk-nF09wL0vptQ",
+        authDomain: "ninesselas-351a6.firebaseapp.com",
+        databaseURL: "https://ninesselas-351a6.firebaseio.com",
+        projectId: "ninesselas-351a6",
+        storageBucket: "ninesselas-351a6.appspot.com",
+        messagingSenderId: "666343376358",
+        appId: "1:666343376358:web:efa2131baaeee1d1780227",
+        measurementId: "G-055H88LTWL"
+        /*
+        apiKey: "AIzaSyDyZC6-JLSX8pHilBUJjdfsjZenIF_Jf20",
+        authDomain: "app1-b8446.firebaseapp.com",
+        databaseURL: "https://app1-b8446.firebaseio.com",
+        projectId: "app1-b8446",
+        storageBucket: "app1-b8446.appspot.com",
+        messagingSenderId: "160492490753",
+        appId: "1:160492490753:web:af864f521a8ad3e514b000"*/
+    }
 };
 /*
  * For easier debugging in development mode, you can import the following file
@@ -3339,4 +3904,3 @@ module.exports = __webpack_require__(/*! /Users/grabbeditor3/Desktop/CLIENTES/Ni
 /***/ })
 
 },[[0,"runtime","vendor"]]]);
-//# sourceMappingURL=main-es2015.js.map
