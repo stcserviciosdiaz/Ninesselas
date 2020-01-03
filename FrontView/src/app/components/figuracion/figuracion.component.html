@@ -340,8 +340,8 @@
                     <label>Tipo de carnet</label>
                     <select class="form-control" formControlName="typecarnet" [(ngModel)]="tipoCarnetSelect"
                       [ngModelOptions]="{standalone: true}">
-                      <option [ngValue]="" selected>Seleccione</option>
-                      <option [ngValue]="item" *ngFor="let item of typecarnet">{{item}}</option>
+                      <option [ngValue]="0" selected>Seleccione</option>
+                      <option *ngFor="let item of typecarnet">{{item}}</option>
                     </select>
                   </div>
                 </div>
@@ -515,7 +515,9 @@
 
                 <div class="mt-4 form-group">
                   <!-- Submit Button -->
-                  <button type="submit" (click)="registrarActor()" class="btn btn-primary">Registrame!</button>
+                  <button type="submit" (click)="registrarActor()" class="btn btn-primary">
+                      <span *ngIf="submitted && actorForm.controls.acceptTerms.value === true"><i class="fa fa-spinner fa-spin fa-3x fa-fw" style="font-size: 13px;"></i></span>
+                      Registrame!</button>
                 </div>
 
               </form>

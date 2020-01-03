@@ -219,7 +219,7 @@ export class FiguracionComponent implements OnInit {
       codpostal: [''],
       direccion: [''],
       sexo: [''],
-      telefono: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
+      telefono: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(18)]],
       fechaNacimiento: [''],
       nacionalidad: [''],
       acento: [''],
@@ -466,6 +466,7 @@ export class FiguracionComponent implements OnInit {
     this.submitted = true;
 
     if (this.actorForm.invalid || this.actorForm.get('acceptTerms').value === false) {
+      this.ngxSmartModalService.create('confirm', 'Pofavor, Llenar el formulario con todos los datos').open();
       return;
     }
     this.subirArchivos();

@@ -441,6 +441,7 @@ export class ChildrenComponent implements OnInit {
     this.submitted = true;
 
     if (this.childForm.invalid || this.childForm.get('acceptTerms').value === false) {
+      this.ngxSmartModalService.create('confirm', 'Pofavor, Llenar el formulario con todos los datos').open();
       return;
     }
     this.subirArchivos();
