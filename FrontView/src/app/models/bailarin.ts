@@ -1,5 +1,5 @@
 export interface bailarin {
-    idBailarin: Int32Array;
+    idBailarin: any;
     descripcionBailarin: string;
     nombreBailarin: string;
 }

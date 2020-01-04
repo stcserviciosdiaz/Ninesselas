@@ -41,7 +41,7 @@
                     <div class="#">
                         <div class="mt-2">
                             <label class="control-label">Ingresa tu contraseña</label>
-                            <input type="Password" class="form-control" formControlName="password" placeholder="***********" [ngClass]="{ 'is-invalid': submitted &amp;&amp; companyForm.controls.password.errors }">
+                            <input type="Password" class="form-control" formControlName="password" placeholder="***********" [ngClass]="{ 'is-invalid': submitted && companyForm.controls.password.errors }">
                             <div *ngIf="submitted && companyForm.controls.password.errors" class="invalid-feedback">
                                 <div *ngIf="companyForm.controls.password.errors.required">La contraseña es requerida</div>
                                 <div *ngIf="companyForm.controls.password.errors.minlength">La contraseña debe tener al menos 6 caracteres</div>
@@ -50,7 +50,7 @@
 
                           <div class="mt-2"><!-- Confirma Contraseña -->
                             <label>Confirma contraseña</label>
-                            <input type="password" (keypress)="numberOnly($event)" formControlName="confirmPassword" class="form-control" placeholder="***********" [ngClass]="{ 'is-invalid': submitted && companyForm.controls.confirmPassword.errors }">
+                            <input type="password" formControlName="confirmPassword" class="form-control" placeholder="***********" [ngClass]="{ 'is-invalid': submitted && companyForm.controls.confirmPassword.errors }">
                               <div *ngIf="submitted && companyForm.controls.confirmPassword.errors" class="invalid-feedback">
                                 <div *ngIf="companyForm.controls.confirmPassword.errors.required">Confirme que se requiere contraseña</div>
                                 <div *ngIf="companyForm.controls.confirmPassword.errors.mustMatch">Las contraseñas deben coincidir</div>

@@ -1,5 +1,5 @@
 export interface cantante {
-    idCantante: Int32Array;
+    idCantante: any;
     descripcionCantante: string;
     nombreCantante: string;
 }
