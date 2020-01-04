@@ -595,9 +595,11 @@
 
                 <div class="mt-4 form-group">
                   <!-- Submit Button -->
-                  <button type="submit" (click)="registrarActor()" class="btn btn-primary">Registrame!</button>
+                  <button type="submit" (click)="registrarActor()" class="btn btn-primary">
+                    Registrame!
+                    <span *ngIf="submitted && actorForm.controls.acceptTerms.value === true"><i class="fa fa-spinner fa-spin fa-3x fa-fw" style="font-size: 13px;"></i></span>
+                  </button>
                 </div>
-
               </form>
             </div>
           </div>

@@ -603,7 +603,9 @@
                   y recibir novedades y promociones.
                 </div>
                 <div class="mt-5 form-group">
-                  <button class="btn btn-primary" (click)="signupChild()">Registrame!</button>
+                  <button class="btn btn-primary" (click)="signupChild()">Registrame!
+                      <span *ngIf="submitted && childForm.controls.acceptTerms.value === true"><i class="fa fa-spinner fa-spin fa-3x fa-fw" style="font-size: 13px;"></i></span>
+                  </button>
                 </div>
               </form>
             </div>
