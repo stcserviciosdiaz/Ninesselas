@@ -63,6 +63,7 @@ import { NgxSmartModalModule } from 'ngx-smart-modal';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
+import { DatePipe } from './pipes/date/date.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,6 +71,7 @@ import { environment } from '../environments/environment';
     FooterComponent,
     ManagementComponent,
     PageNotFoundComponent,
+    DatePipe,
     HeaderComponent,
     TermsComponent,
     PrivacyComponent,

@@ -178,9 +178,9 @@ export class ChildrenComponent implements OnInit {
       edad: [''],
       codpostal: [''],
       musicos: [''],
-      telefono: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
-      telefonofather: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
-      telefonomother: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(6)]],
+      telefono: ['', [Validators.required, Validators.minLength(6)]],
+      telefonofather: ['', [Validators.required, Validators.minLength(6)]],
+      telefonomother: ['', [Validators.required, Validators.minLength(6)]],
       fechaNacimiento: ['', Validators.required],
       nacionalidad: [''],
       acento: [''],
@@ -200,7 +200,7 @@ export class ChildrenComponent implements OnInit {
       colorPelo: [''],
       colorOjos: [''],
       observaciones: [''],
-      numeroDNI: ['', Validators.required],
+      numeroDNI: [''],
       numeroSeguridadSocial: [''],
       numeroDNIPadre: [''],
       numeroDNIMadre: [''],
@@ -213,7 +213,6 @@ export class ChildrenComponent implements OnInit {
       copyDNIkid: [''],
       libroFamilia: [''],
     }
-
       , {
         validator: MustMatch('password', 'confirmPassword')
       });

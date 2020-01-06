@@ -219,7 +219,7 @@ export class FiguracionComponent implements OnInit {
       codpostal: [''],
       direccion: [''],
       sexo: [''],
-      telefono: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(18)]],
+      telefono: ['', [Validators.required, Validators.minLength(6)]],
       fechaNacimiento: [''],
       nacionalidad: [''],
       acento: [''],

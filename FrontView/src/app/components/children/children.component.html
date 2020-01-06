@@ -15,28 +15,6 @@
               <form [formGroup]="childForm">
 
                 <div class="form-group">
-                  <!-- Foto de Perfil
-                  <h3>Foto de Perfil</h3>
-                  <div class="form-group">
-                    <input type="file" name="image" (change)="fileProgress($event)" />
-                  </div>
-                  <div *ngIf="fileUploadProgress">
-                    Progreso de Carga: {{ fileUploadProgress }}
-                  </div>
-                  <div class="image-preview mb-3" *ngIf="previewUrl">
-                    <img [src]="previewUrl" height="300" />
-                  </div>
-
-                  <div class="mb-3" *ngIf="uploadedFilePath">
-                    {{uploadedFilePath}}
-                  </div>
-
-
-                   <div class="form-group">
-                    <button class="btn btn-primary" (click)="onSubmit()">Submit</button>
-                  </div>
-
-                  -->
                   <label class="control-label">Foto de Perfil</label>
                   <input type="file" (change)="onAvatarSelected($event)" formControlName="avatar"><br>
                 </div>
@@ -54,7 +32,7 @@
                 <div class="form-group">
                   <!-- Nombre de Usuario -->
                   <label class="control-label">Nombre de Usuario</label>
-                  <input type="text" class="form-control" formControlName="username" placeholder="Ldiaz"
+                  <input type="text" class="form-control" formControlName="username" placeholder="Nombre de Usuario"
                     [ngClass]="{ 'is-invalid': submitted && childForm.controls.username.errors }">
                   <div *ngIf="submitted && childForm.controls.username.errors" class="invalid-feedback">
                     <div *ngIf="childForm.controls.username.errors.required">El usuario es requerido</div>
@@ -64,7 +42,7 @@
                 <div class="form-group">
                   <!-- Nombres Completos -->
                   <label class="control-label">Nombres</label>
-                  <input type="text" class="form-control" formControlName="nombres" placeholder="Luis Alfredo"
+                  <input type="text" class="form-control" formControlName="nombres" placeholder="Nombres"
                     [ngClass]="{ 'is-invalid': submitted && childForm.controls.nombres.errors }">
                   <div *ngIf="submitted && childForm.controls.nombres.errors" class="invalid-feedback">
                     <div *ngIf="childForm.controls.nombres.errors.required">El nombre es requerido</div>
@@ -74,7 +52,7 @@
                 <div class="form-group">
                   <!-- Apellidos Completos -->
                   <label class="control-label">Apellidos</label>
-                  <input type="text" class="form-control" formControlName="apellidos" placeholder="Almito Gil"
+                  <input type="text" class="form-control" formControlName="apellidos" placeholder="Apellidos"
                     [ngClass]="{ 'is-invalid': submitted && childForm.controls.apellidos.errors }">
                   <div *ngIf="submitted && childForm.controls.apellidos.errors" class="invalid-feedback">
                     <div *ngIf="childForm.controls.apellidos.errors.required">El apellido es requerido</div>
@@ -138,10 +116,10 @@
 
                 <div class="form-group">
                   <!-- ¿De qué grupo étnico se considera? -->
-                  <label class="control-label">¿De qué grupo étnico se considera?</label>
+                  <label class="control-label">Raza</label>
                   <select forControlName="etnias" class="form-control" [(ngModel)]="etniaSelect"
                     [ngModelOptions]="{standalone: true}">
-                    <option selected>Seleccione...</option>
+                    <option [ngValue]="0" selected>Seleccione...</option>
                     <option [ngValue]="i" *ngFor="let i of etnias">{{i.nombreEtnia}}</option>
                   </select>
                 </div>
@@ -182,7 +160,7 @@
                   <!-- Lugar de nacimiento -->
                   <label class="control-label">Lugar de nacimiento</label>
                   <input type="text" class="form-control" id="placebirth" formControlName="placebirth"
-                    placeholder="ldiaz" [ngClass]="{ 'is-invalid': submitted && childForm.controls.placebirth.errors }">
+                    placeholder="Lugar de nacimiento" [ngClass]="{ 'is-invalid': submitted && childForm.controls.placebirth.errors }">
                   <div *ngIf="submitted && childForm.controls.placebirth.errors" class="invalid-feedback">
                     <div *ngIf="childForm.controls.placebirth.errors.required">El lugar es requerido</div>
                   </div>
@@ -191,7 +169,7 @@
                 <div class="form-group">
                   <!-- Nacionalidad -->
                   <label class="control-label">Nacionalidad</label>
-                  <input type="text" class="form-control" formControlName="nacionalidad" placeholder="Pais"
+                  <input type="text" class="form-control" formControlName="nacionalidad" placeholder="Nacionalidad"
                     [ngClass]="{ 'is-invalid': submitted && childForm.controls.nacionalidad.errors }">
                   <div *ngIf="submitted && childForm.controls.nacionalidad.errors" class="invalid-feedback">
                     <div *ngIf="childForm.controls.nacionalidad.errors.required">La nacionalidad es requerido</div>
@@ -313,20 +291,20 @@
                 <div class="form-group">
                   <label>Dirección</label>
                   <input type="text" class="form-control" forControlName="direccion"
-                    placeholder="Apartmento, studio, or floor">
+                    placeholder="Dirección">
 
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <!-- Localidad -->
                     <label class="control-label">Localidad</label>
-                    <input type="text" class="form-control" forControlName="localidad" placeholder="Smallville">
+                    <input type="text" class="form-control" forControlName="localidad" placeholder="Localidad">
 
                   </div>
                   <div class="form-group col-md-4">
                     <!-- Provincia -->
                     <label class="control-label">Provincia</label>
-                    <input type="text" class="form-control" forControlName="provincia" placeholder="alabama">
+                    <input type="text" class="form-control" forControlName="provincia" placeholder="Provincia">
 
                   </div>
                   <div class="form-group col-md-2">
