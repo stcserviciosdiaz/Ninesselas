@@ -32,7 +32,7 @@
                 <div class="form-group">
                   <!-- Nombre de Usuario -->
                   <label class="control-label">Nombre de Usuario</label>
-                  <input type="text" class="form-control" formControlName="username" placeholder="Nombre de Usuario"
+                  <input type="text" class="form-control" formControlName="username" placeholder=""
                     [ngClass]="{ 'is-invalid': submitted && childForm.controls.username.errors }">
                   <div *ngIf="submitted && childForm.controls.username.errors" class="invalid-feedback">
                     <div *ngIf="childForm.controls.username.errors.required">El usuario es requerido</div>
@@ -42,7 +42,7 @@
                 <div class="form-group">
                   <!-- Nombres Completos -->
                   <label class="control-label">Nombres</label>
-                  <input type="text" class="form-control" formControlName="nombres" placeholder="Nombres"
+                  <input type="text" class="form-control" formControlName="nombres" placeholder=""
                     [ngClass]="{ 'is-invalid': submitted && childForm.controls.nombres.errors }">
                   <div *ngIf="submitted && childForm.controls.nombres.errors" class="invalid-feedback">
                     <div *ngIf="childForm.controls.nombres.errors.required">El nombre es requerido</div>
@@ -52,7 +52,7 @@
                 <div class="form-group">
                   <!-- Apellidos Completos -->
                   <label class="control-label">Apellidos</label>
-                  <input type="text" class="form-control" formControlName="apellidos" placeholder="Apellidos"
+                  <input type="text" class="form-control" formControlName="apellidos" placeholder=""
                     [ngClass]="{ 'is-invalid': submitted && childForm.controls.apellidos.errors }">
                   <div *ngIf="submitted && childForm.controls.apellidos.errors" class="invalid-feedback">
                     <div *ngIf="childForm.controls.apellidos.errors.required">El apellido es requerido</div>
@@ -71,7 +71,7 @@
                 <div class="form-group">
                   <label>Contraseña</label>
                   <input type="password" (keypress)="numberOnly($event)" class="form-control" formControlName="password"
-                    placeholder="Password"
+                    placeholder=""
                     [ngClass]="{ 'is-invalid': submitted && childForm.controls.password.errors }">
                   <div *ngIf="submitted && childForm.controls.password.errors" class="invalid-feedback">
                     <div *ngIf="childForm.controls.password.errors.required">La contraseña es requerida</div>
@@ -83,7 +83,7 @@
                 <div class="form-group">
                   <label>Confirma contraseña</label>
                   <input type="password" (keypress)="numberOnly($event)" class="form-control"
-                    formControlName="confirmPassword" placeholder="Confirm Password"
+                    formControlName="confirmPassword" placeholder=""
                     [ngClass]="{ 'is-invalid': submitted && childForm.controls.confirmPassword.errors }" />
                   <div *ngIf="submitted && childForm.controls.confirmPassword.errors" class="invalid-feedback">
                     <div *ngIf="childForm.controls.confirmPassword.errors.required">Confirme que se requiere contraseña
@@ -138,7 +138,7 @@
                       <div class="input-group-text">+34</div>
                     </div>
                     <input type="text" (keypress)="numberOnly($event)" class="form-control" formControlName="telefono"
-                      placeholder="Numero de teléfono"
+                      placeholder=""
                       [ngClass]="{ 'is-invalid': submitted && childForm.controls.telefono.errors }">
                     <div *ngIf="submitted && childForm.controls.telefono.errors" class="invalid-feedback">
                       <div *ngIf="childForm.controls.telefono.errors.required">El telefono es requerida</div>
@@ -160,7 +160,7 @@
                   <!-- Lugar de nacimiento -->
                   <label class="control-label">Lugar de nacimiento</label>
                   <input type="text" class="form-control" id="placebirth" formControlName="placebirth"
-                    placeholder="Lugar de nacimiento" [ngClass]="{ 'is-invalid': submitted && childForm.controls.placebirth.errors }">
+                    placeholder="" [ngClass]="{ 'is-invalid': submitted && childForm.controls.placebirth.errors }">
                   <div *ngIf="submitted && childForm.controls.placebirth.errors" class="invalid-feedback">
                     <div *ngIf="childForm.controls.placebirth.errors.required">El lugar es requerido</div>
                   </div>
@@ -169,7 +169,7 @@
                 <div class="form-group">
                   <!-- Nacionalidad -->
                   <label class="control-label">Nacionalidad</label>
-                  <input type="text" class="form-control" formControlName="nacionalidad" placeholder="Nacionalidad"
+                  <input type="text" class="form-control" formControlName="nacionalidad" placeholder=""
                     [ngClass]="{ 'is-invalid': submitted && childForm.controls.nacionalidad.errors }">
                   <div *ngIf="submitted && childForm.controls.nacionalidad.errors" class="invalid-feedback">
                     <div *ngIf="childForm.controls.nacionalidad.errors.required">La nacionalidad es requerido</div>
@@ -335,7 +335,7 @@
 
                 <div class="form-group">
                   <!-- Numero seguridad social -->
-                  <label class="control-label">Número de la seguridad social del niño</label>
+                  <label class="control-label">Numero propio de la seguridad social del niño</label>
                   <input type="text" class="form-control" formControlName="numeroSeguridadSocial"
                     placeholder="Numero de Seguridad Social"
                     [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroSeguridadSocial.errors }">
@@ -372,7 +372,7 @@
                   <!-- Numero de Teléfono del padre-->
                   <label>Numero de Teléfono del padre</label>
                   <input type="text" (keypress)="numberOnly($event)" class="form-control"
-                    formControlName="telefonofather" placeholder="Numero de teléfono"
+                    formControlName="telefonofather" placeholder=""
                     [ngClass]="{ 'is-invalid': submitted && childForm.controls.telefonofather.errors }">
                   <div *ngIf="submitted && childForm.controls.telefonofather.errors" class="invalid-feedback">
                     <div *ngIf="childForm.controls.telefonofather.errors.required">El telefono es requerida</div>
@@ -383,7 +383,7 @@
                   <!-- DNI de la Madre -->
                   <label>DNI de la Madre</label>
                   <input type="text" (keypress)="check($event)" class="form-control" formControlName="numeroDNIMadre"
-                    placeholder="30065089H"
+                    placeholder=""
                     [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNIMadre.errors }">
                   <div *ngIf="submitted && childForm.controls.numeroDNIMadre.errors" class="invalid-feedback">
                     <div *ngIf="childForm.controls.numeroDNIMadre.errors.required">El DNI es requerida</div>
@@ -404,7 +404,7 @@
                   <!-- Numero de Teléfono de la madre-->
                   <label>Numero de Teléfono de la madre</label>
                   <input type="text" (keypress)="numberOnly($event)" class="form-control"
-                    formControlName="telefonomother" placeholder="Numero de teléfono"
+                    formControlName="telefonomother" placeholder=""
                     [ngClass]="{ 'is-invalid': submitted && childForm.controls.telefonomother.errors }">
                   <div *ngIf="submitted && childForm.controls.telefonomother.errors" class="invalid-feedback">
                     <div *ngIf="childForm.controls.telefonomother.errors.required">El teléfono es requerida</div>

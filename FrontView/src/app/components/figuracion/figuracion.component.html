@@ -26,16 +26,16 @@
                   <label class="control-label">Foto cuerpo entero</label>
                   <input type="file" (change)="onFileCuerpoEnteroSelected($event)" formControlName="avatar"><br>
                 </div>
-                <div class="form-group">
-                  <!-- foto artistico -->
+                <!-- foto artistico -->
+                <!-- <div class="form-group">
                   <label class="control-label">Foto artistico</label>
                   <input type="file" (change)="onFileArtisticoSelected($event)" formControlName="avatar"><br>
-                </div>
+                </div> -->
 
                 <div class="form-group">
                   <!-- Nombre de Usuario -->
                   <label class="control-label">Nombre de Usuario</label>
-                  <input type="text" class="form-control" id="username" formControlName="username" placeholder="Nombre de Usuario"
+                  <input type="text" class="form-control" id="username" formControlName="username" placeholder=""
                     [ngClass]="{ 'is-invalid': submitted && actorForm.controls.username.errors }">
                   <div *ngIf="submitted && actorForm.controls.username.errors" class="invalid-feedback">
                     <div *ngIf="actorForm.controls.username.errors.required">El usuario es requerido</div>
@@ -45,7 +45,7 @@
                 <div class="form-group">
                   <!-- Nomnbre completos -->
                   <label class="control-label">Nombre</label>
-                  <input type="text" class="form-control" id="nombres" formControlName="nombres" placeholder="Nombre"
+                  <input type="text" class="form-control" id="nombres" formControlName="nombres" placeholder=""
                     [ngClass]="{ 'is-invalid': submitted && actorForm.controls.nombres.errors }">
                   <div *ngIf="submitted && actorForm.controls.nombres.errors" class="invalid-feedback">
                     <div *ngIf="actorForm.controls.nombres.errors.required">El nombre es requerido</div>
@@ -56,7 +56,7 @@
                   <!-- Apellidos completos -->
                   <label class="control-label">Apellidos</label>
                   <input type="text" class="form-control" id="apellidos" formControlName="apellidos"
-                    placeholder="Apellidos"
+                    placeholder=""
                     [ngClass]="{ 'is-invalid': submitted && actorForm.controls.apellidos.errors }">
                   <div *ngIf="submitted && actorForm.controls.apellidos.errors" class="invalid-feedback">
                     <div *ngIf="actorForm.controls.apellidos.errors.required">El apellido es requerido</div>
@@ -67,7 +67,7 @@
                   <!-- Contraseña -->
                   <label>Contraseña</label>
                   <input type="password" (keypress)="numberOnly($event)" class="form-control" formControlName="password"
-                    placeholder="Password"
+                    placeholder=""
                     [ngClass]="{ 'is-invalid': submitted && actorForm.controls.password.errors }">
                   <div *ngIf="submitted && actorForm.controls.password.errors" class="invalid-feedback">
                     <div *ngIf="actorForm.controls.password.errors.required">La contraseña es requerida</div>
@@ -80,7 +80,7 @@
                   <!-- Confirma Contraseña -->
                   <label>Confirma contraseña</label>
                   <input type="password" (keypress)="numberOnly($event)" formControlName="confirmPassword"
-                    class="form-control" placeholder="Confirm Password"
+                    class="form-control" placeholder=""
                     [ngClass]="{ 'is-invalid': submitted && actorForm.controls.confirmPassword.errors }">
                   <div *ngIf="submitted && actorForm.controls.confirmPassword.errors" class="invalid-feedback">
                     <div *ngIf="actorForm.controls.confirmPassword.errors.required">Confirme que se requiere contraseña
@@ -142,7 +142,7 @@
                   <!-- Lugar de nacimiento -->
                   <label class="control-label">Lugar de nacimiento</label>
                   <input type="text" class="form-control" id="placebirth" formControlName="placebirth"
-                    placeholder="Lugar de nacimiento"
+                    placeholder=""
                     [ngClass]="{ 'is-invalid': submitted && actorForm.controls.placebirth.errors }">
                   <div *ngIf="submitted && actorForm.controls.placebirth.errors" class="invalid-feedback">
                     <div *ngIf="actorForm.controls.placebirth.errors.required">El usuario es requerido</div>
@@ -153,7 +153,7 @@
                   <!-- Nuemro de teléfono -->
                   <label>Numero de Teléfono</label>
                   <input type="text" class="form-control" (keypress)="numberOnly($event)" formControlName="telefono"
-                    placeholder="Numero de teléfono"
+                    placeholder=""
                     [ngClass]="{ 'is-invalid': submitted && actorForm.controls.telefono.errors }">
                   <div *ngIf="submitted && actorForm.controls.telefono.errors" class="invalid-feedback">
                     <div *ngIf="actorForm.controls.telefono.errors.required">El telefono es requerida</div>
@@ -170,7 +170,7 @@
                   <!-- Naciomnalidad -->
                   <label class="control-label">Nacionalidad</label>
                   <input type="text" class="form-control" id="nacionalidad" formControlName="nacionalidad"
-                    placeholder="Pais"
+                    placeholder=""
                     [ngClass]="{ 'is-invalid': submitted && actorForm.controls.nacionalidad.errors }">
                   <div *ngIf="submitted && actorForm.controls.nacionalidad.errors" class="invalid-feedback">
                     <div *ngIf="actorForm.controls.nacionalidad.errors.required">La nacionalidad es requerida</div>
@@ -180,7 +180,7 @@
                 <div class="form-group">
                   <!-- Correo electronico -->
                   <label>Correo electronico</label>
-                  <input type="email" class="form-control" formControlName="email" placeholder="name@example.com"
+                  <input type="email" class="form-control" formControlName="email" placeholder=""
                     [ngClass]="{ 'is-invalid': submitted && actorForm.controls.email.errors }">
                   <div *ngIf="submitted && actorForm.controls.email.errors" class="invalid-feedback">
                     <div *ngIf="actorForm.controls.email.errors.required">Correo electrónico es requerido</div>
@@ -194,7 +194,7 @@
                   <div class="form-group mr-lg-2 mr-md-2 mr-0">
                     <label class="control-label">Talla de camisa</label>
                     <input type="text" class="d-inline form-control" id="tallaCamisa" formControlName="tallaCamisa"
-                      placeholder="talla de camisa"
+                      placeholder=""
                       [ngClass]="{ 'is-invalid': submitted && actorForm.controls.tallaCamisa.errors }">
                     <div *ngIf="submitted && actorForm.controls.tallaCamisa.errors" class="invalid-feedback">
                       <div *ngIf="actorForm.controls.tallaCamisa.errors.required">La talla es requerido</div>
@@ -204,7 +204,7 @@
                     <!-- talla de chaqueta -->
                     <label class="control-label">talla de chaqueta</label>
                     <input type="text" class="d-inline form-control" id="tallaChaqueta" formControlName="tallaChaqueta"
-                      placeholder="talla de chaqueta"
+                      placeholder=""
                       [ngClass]="{ 'is-invalid': submitted && actorForm.controls.tallaChaqueta.errors }">
                     <div *ngIf="submitted && actorForm.controls.tallaChaqueta.errors" class="invalid-feedback">
                       <div *ngIf="actorForm.controls.tallaChaqueta.errors.required">La talla es requerido</div>
@@ -214,7 +214,7 @@
                     <!-- talla de pantalon -->
                     <label class="control-label">Talla de pantalon</label>
                     <input type="text" class="d-inline form-control" id="tallaPantalon" formControlName="tallaPantalon"
-                      placeholder="talla de pantalon"
+                      placeholder=""
                       [ngClass]="{ 'is-invalid': submitted && actorForm.controls.tallaPantalon.errors }">
                     <div *ngIf="submitted && actorForm.controls.tallaPantalon.errors" class="invalid-feedback">
                       <div *ngIf="actorForm.controls.tallaPantalon.errors.required">La talla es requerido</div>
@@ -233,7 +233,7 @@
                     <!-- talla de Altura -->
                     <label class="control-label">Altura</label>
                     <input type="text" class="d-inline form-control" id="altura" formControlName="altura"
-                      placeholder="Altura" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.altura.errors }">
+                      placeholder="" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.altura.errors }">
                     <div *ngIf="submitted && actorForm.controls.altura.errors" class="invalid-feedback">
                       <div *ngIf="actorForm.controls.altura.errors.required">La talla es requerido</div>
                     </div>
@@ -245,7 +245,7 @@
                   <div class="form-group mr-lg-3 mr-md-3 mr-0">
                     <label class="control-label">Color de Piel</label>
                     <input type="text" class="d-inline form-control" formControlName="colorPiel"
-                      placeholder="Color de Piel"
+                      placeholder=""
                       [ngClass]="{ 'is-invalid': submitted && actorForm.controls.colorPiel.errors }">
                     <div *ngIf="submitted && actorForm.controls.colorPiel.errors" class="invalid-feedback">
                       <div *ngIf="actorForm.controls.colorPiel.errors.required">El color es requerido</div>
@@ -255,7 +255,7 @@
                     <!-- Color de Pelo-->
                     <label class="control-label">Color de Pelo</label>
                     <input type="text" class="d-inline form-control" formControlName="colorPelo"
-                      placeholder="Color de Pelo"
+                      placeholder=""
                       [ngClass]="{ 'is-invalid': submitted && actorForm.controls.colorPelo.errors }">
                     <div *ngIf="submitted && actorForm.controls.colorPelo.errors" class="invalid-feedback">
                       <div *ngIf="actorForm.controls.colorPelo.errors.required">El color es requerido</div>
@@ -265,7 +265,7 @@
                     <!-- Color de Ojos-->
                     <label class="control-label">Color de ojos</label>
                     <input type="text" class="d-inline form-control" formControlName="colorOjos"
-                      placeholder="Color de ojos"
+                      placeholder=""
                       [ngClass]="{ 'is-invalid': submitted && actorForm.controls.colorOjos.errors }">
                     <div *ngIf="submitted && actorForm.controls.colorOjos.errors" class="invalid-feedback">
                       <div *ngIf="actorForm.controls.colorOjos.errors.required">El color es requerido</div>
@@ -288,7 +288,7 @@
                   <!-- Numero de Seguridad Social -->
                   <label class="control-label">Numero de Seguridad Social</label>
                   <input type="text" class="form-control" id="numeroSeguridadSocial"
-                    formControlName="numeroSeguridadSocial" placeholder="Numero de Seguridad Social"
+                    formControlName="numeroSeguridadSocial" placeholder=""
                     [ngClass]="{ 'is-invalid': submitted && actorForm.controls.numeroSeguridadSocial.errors }">
                   <div *ngIf="submitted && actorForm.controls.numeroSeguridadSocial.errors" class="invalid-feedback">
                     <div *ngIf="actorForm.controls.numeroSeguridadSocial.errors.required">El numero es requerida</div>
@@ -298,21 +298,20 @@
                 <div class="form-group">
                   <label>Dirección</label>
                   <input type="text" class="form-control" forControlName="direccion"
-                    placeholder="Apartmento, studio, or floor">
-
+                    placeholder="">
                 </div>
 
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <!-- Localidad -->
                     <label class="control-label">Localidad</label>
-                    <input type="text" class="form-control" forControlName="localidad" placeholder="Localidad">
+                    <input type="text" class="form-control" forControlName="localidad" placeholder="">
 
                   </div>
                   <div class="form-group col-md-4">
                     <!-- Provincia -->
                     <label class="control-label">Provincia</label>
-                    <input type="text" class="form-control" forControlName="provincia" placeholder="Provincia">
+                    <input type="text" class="form-control" forControlName="provincia" placeholder="">
 
                   </div>
                   <div class="form-group col-md-2">
@@ -329,7 +328,7 @@
                   <div class="form-group mr-lg-3 mr-md-3 mr-0">
                     <label class="control-label">Carnet de conducir</label>
                     <input type="text" class="d-inline form-control" formControlName="carnetConducir"
-                      placeholder="Modelo de Coche"
+                      placeholder=""
                       [ngClass]="{ 'is-invalid': submitted && actorForm.controls.carnetConducir.errors }">
                     <div *ngIf="submitted && actorForm.controls.carnetConducir.errors" class="invalid-feedback">
                       <div *ngIf="actorForm.controls.carnetConducir.errors.required">Carnet es requerido</div>
@@ -351,7 +350,7 @@
                     <!-- Modelo de Coche -->
                     <label class="control-label">Modelo de Coche</label>
                     <input type="text" class="d-inline form-control" id="modeloCoche" formControlName="modeloCoche"
-                      placeholder="Modelo de Coche"
+                      placeholder=""
                       [ngClass]="{ 'is-invalid': submitted && actorForm.controls.modeloCoche.errors }">
                     <div *ngIf="submitted && actorForm.controls.modeloCoche.errors" class="invalid-feedback">
                       <div *ngIf="actorForm.controls.modeloCoche.errors.required">El modelo es requerido</div>
@@ -361,7 +360,7 @@
                     <!-- Modelo de Moto-->
                     <label class="control-label">Modelo de Moto</label>
                     <input type="text" class="d-inline form-control" id="modeloMoto" formControlName="modeloMoto"
-                      placeholder="Modelo de Moto"
+                      placeholder=""
                       [ngClass]="{ 'is-invalid': submitted && actorForm.controls.modeloMoto.errors }">
                     <div *ngIf="submitted && actorForm.controls.modeloMoto.errors" class="invalid-feedback">
                       <div *ngIf="actorForm.controls.modeloMoto.errors.required">El modelo es requerido</div>
@@ -386,12 +385,12 @@
                   <div class="form-group mr-3">
                     <label class="control-label">Color de Coche</label>
                     <input type="text" class="d-inline form-control" id="colorCoche" formControlName="colorCoche"
-                      placeholder="Modelo de Coche">
+                      placeholder="">
                   </div>
                   <div class="form-group">
                     <label class="control-label">Color de Moto</label>
                     <input type="text" class="d-inline form-control" id="colorMoto" formControlName="colorMoto"
-                      placeholder="Modelo de Moto">
+                      placeholder="">
                   </div>
                 </div>
 
@@ -543,7 +542,6 @@
                       <span *ngIf="submitted && actorForm.controls.acceptTerms.value === true"><i class="fa fa-spinner fa-spin fa-3x fa-fw" style="font-size: 13px;"></i></span>
                       Registrame!</button>
                 </div>
-
               </form>
             </div>
           </div>

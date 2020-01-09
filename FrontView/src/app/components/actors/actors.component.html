@@ -351,16 +351,16 @@
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <!-- Eres actor-->
+                <!-- Eres actor-->
+                <!-- <div class="form-group">
                   <label class="control-label">Eres Actor</label>
                   <select forControlName="actor" class="form-control" [(ngModel)]="actorSelect"
                     [ngModelOptions]="{standalone: true}">
                     <option [ngValue]="" selected>Seleccione...</option>
                     <option [ngValue]="i.name" *ngFor="let i of actor">{{i.name}}</option>
                   </select>
-                </div>
-                <div *ngIf="actorSelect == 'Si'" class="form-group">
+                </div> -->
+                <div class="form-group">
                   <!-- Link de VideoBook -->
                   <label class="control-label">Link de VideoBook</label>
                   <input type="text" class="form-control" id="videoBook" formControlName="videoBook"
@@ -371,7 +371,7 @@
                   <!-- Modelo de Coche -->
                   <label class="control-label">Modelo de Coche</label>
                   <input type="text" class="d-inline form-control" id="modeloCoche" formControlName="modeloCoche"
-                    placeholder="Modelo de Coche"
+                    placeholder=""
                     [ngClass]="{ 'is-invalid': submitted && actorForm.controls.modeloCoche.errors }">
                   <div *ngIf="submitted && actorForm.controls.modeloCoche.errors" class="invalid-feedback">
                     <div *ngIf="actorForm.controls.modeloCoche.errors.required">El modelo es requerido</div>
@@ -381,7 +381,7 @@
                   <!-- Modelo de Moto-->
                   <label class="control-label">Modelo de Moto</label>
                   <input type="text" class="d-inline form-control" id="modeloMoto" formControlName="modeloMoto"
-                    placeholder="Modelo de Moto"
+                    placeholder=""
                     [ngClass]="{ 'is-invalid': submitted && actorForm.controls.modeloMoto.errors }">
                   <div *ngIf="submitted && actorForm.controls.modeloMoto.errors" class="invalid-feedback">
                     <div *ngIf="actorForm.controls.modeloMoto.errors.required">El modelo es requerido</div>
@@ -405,12 +405,12 @@
                 <div class="form-group mr-3">
                   <label class="control-label">Color de Coche</label>
                   <input type="text" class="d-inline form-control" id="colorCoche" formControlName="colorCoche"
-                    placeholder="Modelo de Coche">
+                    placeholder="">
                 </div>
                 <div class="form-group">
                   <label class="control-label">Color de Moto</label>
                   <input type="text" class="d-inline form-control" id="colorMoto" formControlName="colorMoto"
-                    placeholder="Modelo de Moto">
+                    placeholder="">
                 </div>
               </div>
 

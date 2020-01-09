@@ -77,7 +77,7 @@ export class FiguracionComponent implements OnInit {
   fileTatuajes: File = null;
   fileManos: File = null;
   fileCuerpoEntero: File = null;
-  fileArtistico: File = null;
+  /* fileArtistico: File = null; */
 
 
   urlAvatar: string;
@@ -86,7 +86,7 @@ export class FiguracionComponent implements OnInit {
   urlTatuajes: string;
   urlManos: string;
   urlCuerpoEntero: string;
-  urlArtistico: string;
+ /*  urlArtistico: string; */
 
 
 
@@ -288,9 +288,9 @@ export class FiguracionComponent implements OnInit {
   }
 
   /**Upload foto artistica */
-  onFileArtisticoSelected(event) {
+  /* onFileArtisticoSelected(event) {
     this.fileArtistico = event.target.files[0] as File;
-  }
+  } */
 
   /**Upload foto moto */
   onFileMotoSelected(event) {
@@ -524,8 +524,8 @@ export class FiguracionComponent implements OnInit {
     task = this.storage.upload(this.urlCuerpoEntero, this.fileCuerpoEntero);
 
     /**subir foto artistica */
-    this.urlArtistico = 'figuracion/' + idUser + '/artistico-' + this.fileArtistico.name;
-    task = this.storage.upload(this.urlArtistico, this.fileArtistico);
+   /*  this.urlArtistico = 'figuracion/' + idUser + '/artistico-' + this.fileArtistico.name;
+    task = this.storage.upload(this.urlArtistico, this.fileArtistico); */
 
     /**subir coche */
     this.urlCoche = 'figuracion/' + idUser + '/coche-' + this.fileCoche.name;
