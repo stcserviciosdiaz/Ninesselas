@@ -421,6 +421,19 @@
                     formControlName="tattoos"><br>
                 </div>
 
+                <!-- Eres modelo de manos? -->
+                <!--  <div>
+                  <label class="control-label">Eres modelo de manos?</label>
+                  <select class="form-control">
+                    <option [ngValue]="0">Seleccione...</option>
+                    <option>Si</option>
+                    <option>No</option>
+                  </select>
+                </div> -->
+                <!-- Link de trabajos -->
+
+                <!-- Adjunta fotos Profesionales -->
+
                 <div class="form-group">
                   <!-- Modelos de manos -->
                   <label class="control-label">Modelo de manos profesional</label>
@@ -428,15 +441,6 @@
                     formControlName="tattoos"><br>
                 </div>
 
-                <div class="form-group">
-                  <!-- Deporte -->
-                  <label class="control-label">Deporte</label>
-                  <select forControlName="deportista" class="form-control" [(ngModel)]="deportistaSelect"
-                    [ngModelOptions]="{standalone: true}">
-                    <option selected>Seleccione...</option>
-                    <option [ngValue]="i" *ngFor="let i of deportista">{{i.nombreDeportista}}</option>
-                  </select>
-                </div>
                 <div
                  class="form-group">
                   <!-- Habilidades del deporte-->
@@ -447,6 +451,17 @@
                     <option [ngValue]="i" *ngFor="let i of deportes">{{i.nombreDeporte}}</option>
                   </select>
                 </div>
+
+                <div class="form-group">
+                    <!-- Deporte -->
+                    <label class="control-label">Deporte</label>
+                    <select forControlName="deportista" class="form-control" [(ngModel)]="deportistaSelect"
+                      [ngModelOptions]="{standalone: true}">
+                      <option selected>Seleccione...</option>
+                      <option [ngValue]="i" *ngFor="let i of deportista">{{i.nombreDeportista}}</option>
+                    </select>
+                </div>
+
                 <div *ngIf="deporteSelect.nombreDeporte == 'Otros'" class="form-group">
                   <!-- Espesifique otro deporte -->
                   <label class="control-label">Espesifique otro deporte</label>
@@ -553,6 +568,12 @@
                   <!-- Espesifique otro Idioma -->
                   <label class="control-label">Espesifique otro Idioma</label>
                   <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
+                </div>
+
+                <!-- Bilingue -->
+                <div class="form-group">
+                  <label class="control-label">Bilingue</label>
+                  <input type="text" class="form-control" id="bilingue" formControlName="bilingue" placeholder="">
                 </div>
 
                 <div class="form-group">

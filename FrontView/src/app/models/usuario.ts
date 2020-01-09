@@ -23,6 +23,7 @@ export class Usuario {
   acento: string;
   altura: number;
   apellidos: string;
+  bilingue: string;
   carnetConducir: string;
   codigoPostal: string;
   colorOjos: string;

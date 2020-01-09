@@ -99,6 +99,7 @@ export class RegisterComponent implements OnInit {
       email: newChild.email,
       fechaNacimiento: null,
       libroFamilia: "",
+      bilingue: "",
       localidad: "",
       nacionalidad: "",
       nombreArtistico: "",

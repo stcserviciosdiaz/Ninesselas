@@ -120,7 +120,7 @@
                   <select forControlName="etnias" class="form-control" [(ngModel)]="etniaSelect"
                     [ngModelOptions]="{standalone: true}">
                     <option [ngValue]="0" selected>Seleccione...</option>
-                    <option [ngValue]="i" *ngFor="let i of etnias">{{i.nombreEtnia}}</option>
+                    <option [ngValue]="i" *ngFor="let i of etnias">{{i}}</option>
                   </select>
                 </div>
                 <div *ngIf="etniaSelect.nombreEtnia == 'Otro'" class="form-group">
@@ -292,27 +292,23 @@
                   <label>Dirección</label>
                   <input type="text" class="form-control" forControlName="direccion"
                     placeholder="Dirección">
-
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <!-- Localidad -->
                     <label class="control-label">Localidad</label>
                     <input type="text" class="form-control" forControlName="localidad" placeholder="Localidad">
-
                   </div>
                   <div class="form-group col-md-4">
                     <!-- Provincia -->
                     <label class="control-label">Provincia</label>
                     <input type="text" class="form-control" forControlName="provincia" placeholder="Provincia">
-
                   </div>
                   <div class="form-group col-md-2">
                     <!-- Codigo Postal -->
                     <label for="inputZip">Codigo Postal</label>
                     <input type="text" (keypress)="check($event)" class="form-control" forControlName="codpostal"
                       placeholder="#####">
-
                   </div>
                 </div>
 
@@ -337,7 +333,7 @@
                   <!-- Numero seguridad social -->
                   <label class="control-label">Numero propio de la seguridad social del niño</label>
                   <input type="text" class="form-control" formControlName="numeroSeguridadSocial"
-                    placeholder="Numero de Seguridad Social"
+                    placeholder=""
                     [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroSeguridadSocial.errors }">
                   <div *ngIf="submitted && childForm.controls.numeroSeguridadSocial.errors" class="invalid-feedback">
                     <div *ngIf="childForm.controls.numeroSeguridadSocial.errors.required">El numero es requerida</div>
@@ -542,6 +538,12 @@
                   <!-- Espesifique otro Idioma -->
                   <label class="control-label">Espesifique otro Idioma</label>
                   <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
+                </div>
+
+                <!-- Bilingue -->
+                <div class="form-group">
+                    <label class="control-label">Bilingue</label>
+                    <input type="text" class="form-control" id="bilingue" formControlName="bilingue" placeholder="">
                 </div>
 
                 <div class="form-group">
