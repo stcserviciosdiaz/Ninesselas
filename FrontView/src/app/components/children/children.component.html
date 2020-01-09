@@ -179,7 +179,7 @@
                 <div class="form-group">
                   <!-- Correo electronico -->
                   <label>Correo electronico</label>
-                  <input type="email" class="form-control" formControlName="email" placeholder="name@example.com"
+                  <input type="email" class="form-control" formControlName="email" placeholder=""
                     [ngClass]="{ 'is-invalid': submitted && childForm.controls.email.errors }">
                   <div *ngIf="submitted && childForm.controls.email.errors" class="invalid-feedback">
                     <div *ngIf="childForm.controls.email.errors.required">Correo electrónico es requerido</div>
@@ -209,7 +209,7 @@
                     <!-- Talla de camisa -->
                     <label class="control-label">Talla de camisa</label>
                     <input type="text" class="d-inline form-control" formControlName="tallaCamisa"
-                      placeholder="talla de camisa"
+                      placeholder=""
                       [ngClass]="{ 'is-invalid': submitted && childForm.controls.tallaCamisa.errors }">
                     <div *ngIf="submitted && childForm.controls.tallaCamisa.errors" class="invalid-feedback">
                       <div *ngIf="childForm.controls.tallaCamisa.errors.required">La talla es requerido</div>
@@ -219,7 +219,7 @@
                     <!-- talla de chaqueta -->
                     <label class="control-label">talla de chaqueta</label>
                     <input type="text" class="d-inline form-control" formControlName="tallaChaqueta"
-                      placeholder="talla de chaqueta"
+                      placeholder=""
                       [ngClass]="{ 'is-invalid': submitted && childForm.controls.tallaChaqueta.errors }">
                     <div *ngIf="submitted && childForm.controls.tallaChaqueta.errors" class="invalid-feedback">
                       <div *ngIf="childForm.controls.tallaChaqueta.errors.required">La talla es requerido</div>
@@ -229,7 +229,7 @@
                     <!-- Talla de pantalon -->
                     <label class="control-label">Talla de pantalon</label>
                     <input type="text" class="d-inline form-control" formControlName="tallaPantalon"
-                      placeholder="talla de pantalon"
+                      placeholder=""
                       [ngClass]="{ 'is-invalid': submitted && childForm.controls.tallaPantalon.errors }">
                     <div *ngIf="submitted && childForm.controls.tallaPantalon.errors" class="invalid-feedback">
                       <div *ngIf="childForm.controls.tallaPantalon.errors.required">La talla es requerido</div>
@@ -238,7 +238,7 @@
                   <div class="form-group mr-3">
                     <!-- Talla de Pie -->
                     <label class="control-label">Pie</label>
-                    <input type="text" class="d-inline form-control" formControlName="pie" placeholder="Pie"
+                    <input type="text" class="d-inline form-control" formControlName="pie" placeholder=""
                       [ngClass]="{ 'is-invalid': submitted && childForm.controls.pie.errors }">
                     <div *ngIf="submitted && childForm.controls.pie.errors" class="invalid-feedback">
                       <div *ngIf="childForm.controls.pie.errors.required">La talla es requerido</div>
@@ -247,7 +247,7 @@
                   <div class="form-group">
                     <!-- Talla de Altura -->
                     <label class="control-label">Altura</label>
-                    <input type="text" class="d-inline form-control" formControlName="altura" placeholder="Altura"
+                    <input type="text" class="d-inline form-control" formControlName="altura" placeholder=""
                       [ngClass]="{ 'is-invalid': submitted && childForm.controls.altura.errors }">
                     <div *ngIf="submitted && childForm.controls.altura.errors" class="invalid-feedback">
                       <div *ngIf="childForm.controls.altura.errors.required">La talla es requerido</div>
@@ -260,7 +260,7 @@
                     <!-- Color de Piel -->
                     <label class="control-label">Color de Piel</label>
                     <input type="text" class="d-inline form-control" formControlName="colorPiel"
-                      placeholder="Color de Piel"
+                      placeholder=""
                       [ngClass]="{ 'is-invalid': submitted && childForm.controls.colorPiel.errors }">
                     <div *ngIf="submitted && childForm.controls.colorPiel.errors" class="invalid-feedback">
                       <div *ngIf="childForm.controls.colorPiel.errors.required">El color es requerido</div>
@@ -270,7 +270,7 @@
                     <!-- Color de Pelo -->
                     <label class="control-label">Color de Pelo</label>
                     <input type="text" class="d-inline form-control" formControlName="colorPelo"
-                      placeholder="Color de Pelo"
+                      placeholder=""
                       [ngClass]="{ 'is-invalid': submitted && childForm.controls.colorPelo.errors }">
                     <div *ngIf="submitted && childForm.controls.colorPelo.errors" class="invalid-feedback">
                       <div *ngIf="childForm.controls.colorPelo.errors.required">El color es requerido</div>
@@ -280,7 +280,7 @@
                     <!-- Color de ojos -->
                     <label class="control-label">Color de ojos</label>
                     <input type="text" class="d-inline form-control" formControlName="colorOjos"
-                      placeholder="Color de ojos"
+                      placeholder=""
                       [ngClass]="{ 'is-invalid': submitted && childForm.controls.colorOjos.errors }">
                     <div *ngIf="submitted && childForm.controls.colorOjos.errors" class="invalid-feedback">
                       <div *ngIf="childForm.controls.colorOjos.errors.required">El color es requerido</div>
@@ -291,18 +291,18 @@
                 <div class="form-group">
                   <label>Dirección</label>
                   <input type="text" class="form-control" forControlName="direccion"
-                    placeholder="Dirección">
+                    placeholder="">
                 </div>
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <!-- Localidad -->
                     <label class="control-label">Localidad</label>
-                    <input type="text" class="form-control" forControlName="localidad" placeholder="Localidad">
+                    <input type="text" class="form-control" forControlName="localidad" placeholder="">
                   </div>
                   <div class="form-group col-md-4">
                     <!-- Provincia -->
                     <label class="control-label">Provincia</label>
-                    <input type="text" class="form-control" forControlName="provincia" placeholder="Provincia">
+                    <input type="text" class="form-control" forControlName="provincia" placeholder="">
                   </div>
                   <div class="form-group col-md-2">
                     <!-- Codigo Postal -->
@@ -350,7 +350,7 @@
                   <!-- DNI del padre -->
                   <label>DNI del padre</label>
                   <input type="text" (keypress)="check($event)" class="form-control" formControlName="numeroDNIPadre"
-                    placeholder="30065089H"
+                    placeholder=""
                     [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNIPadre.errors }">
                   <div *ngIf="submitted && childForm.controls.numeroDNIPadre.errors" class="invalid-feedback">
                     <div *ngIf="childForm.controls.numeroDNIPadre.errors.required">El DNI es requerida</div>
