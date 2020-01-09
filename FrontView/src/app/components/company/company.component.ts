@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
 import { AuthService } from '../../Services/auth.service';
 import { MdbTableDirective } from 'angular-bootstrap-md';
+import { Usuario } from 'src/app/models/usuario';
 
 @Component({
   selector: 'app-company',
@@ -11,7 +12,7 @@ import { MdbTableDirective } from 'angular-bootstrap-md';
 export class CompanyComponent implements OnInit {
   @ViewChild(MdbTableDirective, { static: true }) mdbTable: MdbTableDirective;
   companyInfo;
-  allUsers;
+  allUsers: Usuario[];
   headElements = [
     'ID',
     'Nombres Completos',
@@ -41,6 +42,7 @@ export class CompanyComponent implements OnInit {
 
   searchText = '';
   previous: string;
+  mayorEdad: any;
 
   constructor(
     public authService: AuthService,
@@ -57,17 +59,19 @@ export class CompanyComponent implements OnInit {
     this.authService.getAllUsers()
       .subscribe(res => {
         this.allUsers = res;
+        for (const user of this.allUsers) {
+          if (user.edad >= 18) {
+            this.mayorEdad = 'SI';
+          } else {
+            this.mayorEdad = 'NO';
+          }
+        }
+        this.mdbTable.setDataSource(this.allUsers);
+        this.previous = this.mdbTable.getDataSource();
       });
-    for (const user of this.allUsers) {
-      if (user.mayorEdad) {
-        user.mayorEdad = 'SI';
-      } else {
-        user.mayorEdad = 'NO';
-      }
-    }
 
-    this.mdbTable.setDataSource(this.allUsers);
-    this.previous = this.mdbTable.getDataSource();
+
+
   }
 
 

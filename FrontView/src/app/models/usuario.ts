@@ -21,7 +21,7 @@ export class Usuario {
   idUser: number;
   avatar: string;
   acento: string;
-  altura: string;
+  altura: number;
   apellidos: string;
   carnetConducir: string;
   codigoPostal: string;

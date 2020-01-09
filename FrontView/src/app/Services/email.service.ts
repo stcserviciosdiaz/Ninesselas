@@ -12,23 +12,16 @@ export class EmailService {
   constructor(
     private http: HttpClient
   ) {
-    //this.url = 'http://localhost:1337/email';
-    this.url = 'https://ninesselas/email';
+    this.url = 'http://localhost:5000/';
+    //this.url = 'https://servicio-login.herokuapp.com/';
   }
 
-  sendEmail(data): Observable<any> {
-    return this.http.post(this.url, data).pipe(map((res: any) => {
-      return res;
-    }));
+  /**EMAIL */
+  enviarEmail(email): Observable<any> {
+    return this.http.post<any>(this.url + 'servicio-email/enviar', email);
   }
-  private _errorHandler(error: HttpErrorResponse) {
-    console.error(error);
-    return Observable.throw(error || 'Server Error');
-  }
+  /**FIN SERVICIO EMAIL */
 
-//   return this.http.post(`${environment.apiPrefix}/auth/login`, credential).pipe(map((res: any) => {
-// console.log('res', res);
-// return res;
-// }));
+
 
 }

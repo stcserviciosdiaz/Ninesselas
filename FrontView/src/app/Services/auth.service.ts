@@ -8,8 +8,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
-  url;
   urlGenerica;
+
+  urlFirmesa;
 
   constructor(
     private http: HttpClient,
@@ -17,11 +18,10 @@ export class AuthService {
   ) {
 
     //this.urlGenerica = 'http://localhost:5000/';
-    //this.url = 'http://localhost:5000/servicio-login/';
-    this.url = 'https://servicio-login.herokuapp.com/servicio-login/';
     this.urlGenerica = 'https://servicio-login.herokuapp.com/';
-
   }
+
+
 
   /********  USUARIO *******/
   finByIdUsuario(id): Observable<any> {
@@ -30,6 +30,17 @@ export class AuthService {
 
   editUser(user): Observable<any> {
     return this.http.put(this.urlGenerica + 'servicio-login/editar/', user);
+  }
+
+  signup2(newUser): Observable<any> {
+    return this.http.post<any>(this.urlGenerica + 'servicio-login/crear', newUser);
+  }
+
+  login2(usuario, password): Observable<any> {
+    return this.http.get(this.urlGenerica + 'servicio-login/login/' + usuario + "/" + password);
+  }
+  findByToken(): Observable<any> {
+    return this.http.get(this.urlGenerica + 'servicio-login/ver/' + this.getToken());
   }
 
   /******* FIN USUARIO *********/
@@ -163,34 +174,6 @@ export class AuthService {
   }
   /******* FIN MANOS *********/
 
-
-  signup2(newUser): Observable<any> {
-    return this.http.post<any>(this.url + 'crear', newUser);
-  }
-
-  login2(usuario, password): Observable<any> {
-    return this.http.get(this.url + 'login/' + usuario + "/" + password);
-  }
-  findByToken(): Observable<any> {
-    return this.http.get(this.url + 'ver/' + this.getToken());
-  }
-
-  signup(newUser): Observable<any> {
-    return this.http.post<any>(this.url + 'signup', newUser);
-  }
-
-  login(user): Observable<any> {
-    return this.http.post(this.url + 'login', user);
-  }
-
-  uploadAvatar(avatar): Observable<any> {
-    return this.http.post(this.url + 'uploadAvatar', avatar);
-  }
-
-  getAvatar(): Observable<any> {
-    return this.http.get(this.url + 'avatar');
-  }
-
   loggedIn() {
     return !!localStorage.getItem('token');
   }
@@ -203,25 +186,21 @@ export class AuthService {
     return localStorage.getItem('token');
   }
 
-  getUser(): Observable<any> {
-    return this.http.get(this.url);
-  }
-
   logoutUser() {
     localStorage.removeItem('token'); 0
     this.router.navigate(['/home']);
   }
 
   getAllUsers(): Observable<any> {
-    return this.http.get(this.url + 'listar');
+    return this.http.get(this.urlGenerica + 'servicio-login/' + 'listar');
   }
 
   getAllCompanies(): Observable<any> {
-    return this.http.get(this.url + 'listar');
+    return this.http.get(this.urlGenerica + 'servicio-login/' + 'listar');
   }
 
   deleteUser(id): Observable<any> {
-    return this.http.delete(this.url + id);
+    return this.http.delete(this.urlGenerica + 'servicio-login/eliminar/' + id);
   }
 
 }

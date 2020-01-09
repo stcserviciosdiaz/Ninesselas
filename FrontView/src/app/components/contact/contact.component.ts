@@ -1,8 +1,9 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup, Validators, FormControl, FormGroupDirective, NgForm} from '@angular/forms';
-import {Router} from '@angular/router';
-import {EmailService} from '../../Services/email.service';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { EmailService } from '../../Services/email.service';
 import { ErrorStateMatcher } from '@angular/material';
+import { Email } from 'src/app/models/email';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -34,9 +35,9 @@ export class ContactComponent implements OnInit {
 
   createEmailForm() {
     this.emailForm = this.formBuilder.group({
-      name: ['',Validators.required],
-      phone: ['',Validators.required],
-      email: ['',[Validators.required,Validators.email]],
+      name: ['', Validators.required],
+      phone: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
       message: [''],
     });
   }
@@ -46,19 +47,19 @@ export class ContactComponent implements OnInit {
     if (this.emailForm.invalid) {
       return;
     }
-    this.emailService.sendEmail({
-      from: this.emailForm.get('email').value,
-      to: 'ninesselas.contact@gmail.com',
-      name: this.emailForm.get('name').value,
-      text: this.emailForm.get('message').value,
-      phone: this.emailForm.get('phone').value,
-    })
+    const email: Email = {
+      usernameTo: this.emailForm.get('name').value,
+      emailTo: this.emailForm.get('email').value,
+      telefonoTo: this.emailForm.get('phone').value,
+      mensajeTo: this.emailForm.get('message').value
+    };
+    this.emailService.enviarEmail(email)
       .subscribe(
         res => {
           alert('Correo Enviado! Gracias por contactarnos, en breve nos comunicaremos contigo!');
           this.createEmailForm();
           this.router.navigate(['/home']);
-          },
+        },
         err => console.log(err),
         () => {
           alert('Correo Enviado! Gracias por contactarnos, en breve nos comunicaremos contigo!');

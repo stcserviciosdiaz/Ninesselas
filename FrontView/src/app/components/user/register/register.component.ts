@@ -81,47 +81,47 @@ export class RegisterComponent implements OnInit {
     console.log('Compania a registrar: ' + JSON.stringify(newChild));
     this.usuario = {
       idUser: 0,
-      avatar: '',
-      acento: '',
-      altura: '',
-      apellidos: '',
-      carnetConducir: '',
-      codigoPostal: '',
-      colorOjos: '',
-      colorPelo: '',
-      colorPiel: '',
-      curriculumVitae: '',
-      direccion: '',
-      dniMadre: '',
-      dniRepresentante: '',
-      dniPadre: '',
-      dniUser: '',
+      avatar: "",
+      acento: "",
+      altura: 0.0,
+      apellidos: "",
+      carnetConducir: "",
+      codigoPostal: "",
+      colorOjos: "",
+      colorPelo: "",
+      colorPiel: "",
+      curriculumVitae: "",
+      direccion: "",
+      dniMadre: "",
+      dniRepresentante: "",
+      dniPadre: "",
+      dniUser: "",
       email: newChild.email,
-      fechaNacimiento: new Date(),
-      libroFamilia: '',
-      localidad: '',
-      nacionalidad: '',
-      nombreArtistico: '',
-      nombreCompleto: '',
-      nombres: newChild.username,
-      numeroSeguroSocial: '',
-      observaciones: '',
+      fechaNacimiento: null,
+      libroFamilia: "",
+      localidad: "",
+      nacionalidad: "",
+      nombreArtistico: "",
+      nombreCompleto: "",
+      nombres: "",
+      numeroSeguroSocial: "",
+      observaciones: "",
       password: newChild.password,
-      pathDniMadre: '',
-      pathDniPadre: '',
-      pathDniUser: '',
-      pathDniRepresentante: '',
-      pathSeguroSocial: '',
-      provincia: '',
-      sexo: '',
+      pathDniMadre: "",
+      pathDniPadre: "",
+      pathDniUser: "",
+      pathDniRepresentante: "",
+      pathSeguroSocial: "",
+      provincia: "",
+      sexo: "",
       telefono: newChild.telefono,
-      telefonoMadre: '',
-      telefonoPadre: '',
-      lugarNacimiento: '',
+      telefonoMadre: "",
+      telefonoPadre: "",
+      lugarNacimiento: "",
       edad: 0,
-      actor: '',
-      username: newChild.email,
-      videobook: '',
+      actor: "NO",
+      username: newChild.username,
+      videobook: "",
       instrumentoList: [],
       estilosCantoList: [],
       deporteList: [],
@@ -132,41 +132,39 @@ export class RegisterComponent implements OnInit {
       ultimosTrabajosList: [],
       idCantante: {
         idCantante: 1,
-        descripcionCantante: 'NO APLICA',
-        nombreCantante: 'NOAPLICA'
+        descripcionCantante: "NO APLICA",
+        nombreCantante: "NOAPLICA"
       },
       idBailarin: {
         idBailarin: 1,
-        descripcionBailarin: 'NO APLICA',
-        nombreBailarin: 'NO APLICA'
+        descripcionBailarin: "NO APLICA",
+        nombreBailarin: "NO APLICA"
       },
       idEtnia: {
         idEtnia: 1,
-        nombreEtnia: 'NO APLICA'
+        nombreEtnia: "BLANCO editado"
       },
       idType: {
         idType: 4,
-        description: 'COMPAÑIA',
-        nombres: 'COMPAÑIA'
+        description: "COMPAÑIA",
+        nombres: "COMPAÑIA"
       },
       idDeportista: {
         idDeportista: 1,
-        descripcionDeportista: 'NO APLICA',
-        nombreDeportista: 'NO APLICA'
+        descripcionDeportista: "NO APLICA",
+        nombreDeportista: "NO APLICA"
       },
       idMusico: {
         idMusico: 1,
-        descipcionMusico: 'NO APLICA',
-        nombreMusico: 'NO APLICA'
+        descipcionMusico: "NO APLICA",
+        nombreMusico: "NO APLICA"
       },
       motoList: [],
       cocheList: [],
       fotosTatuajesList: [],
       fotosManosList: []
-    };
-
+    }
   }
-
 
   registrarEmpresa() {
     this.submitted = true;

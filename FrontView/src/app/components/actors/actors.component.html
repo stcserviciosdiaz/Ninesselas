@@ -438,8 +438,7 @@
                   </select>
                 </div>
                 <div
-                  *ngIf="deportistaSelect.nombreDeportista == 'Federado' ||  deportistaSelect.nombreDeportista == 'Profesional'"
-                  class="form-group">
+                 class="form-group">
                   <!-- Habilidades del deporte-->
                   <label class="control-label">Habilidades del deporte</label>
                   <select forControlName="deportes" class="form-control" [(ngModel)]="deporteSelect"
@@ -463,7 +462,7 @@
                     <option [ngValue]="i" *ngFor="let i of baile">{{i.nombreBailarin}}</option>
                   </select>
                 </div>
-                <div *ngIf="baileSelect.nombreBailarin == 'Profesional' " class="form-group">
+                <div  class="form-group">
                   <!-- Estilos de Baile -->
                   <label class="control-label">Estilos de Baile</label>
                   <select forControlName="estilosBaile" class="form-control" [(ngModel)]="estilosBaileSelect"
@@ -511,7 +510,7 @@
                     <option [ngValue]="i" *ngFor="let i of cantante">{{i.nombreCantante}}</option>
                   </select>
                 </div>
-                <div *ngIf="cantanteSelect.nombreCantante == 'Profesional'" class="form-group">
+                <div  class="form-group">
                   <!-- Estilos de cantos -->
                   <label class="control-label">Estilo de cantos</label>
                   <select class="form-control" forControlName="estilosCanto" [(ngModel)]="estilosCantoSelect"

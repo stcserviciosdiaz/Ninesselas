@@ -18,6 +18,8 @@ import { idiomas } from 'src/app/models/idiomas';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs/internal/Observable';
+import { deportista } from 'src/app/models/deportista';
+import { deportes } from 'src/app/models/deportes';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -96,6 +98,8 @@ export class FiguracionComponent implements OnInit {
   estilosCanto: estilosCanto[];
   habilidadess: habilidades[];
   idiomas: idiomas[];
+  deportista: deportista[];
+  deportes: deportes[];
   typecarnet: string[] = ['Tipo A', 'Tipo B', 'Tipo C', 'Tipo D', 'Tipo BTP'];
   //selected
   actorSelect;
@@ -108,6 +112,8 @@ export class FiguracionComponent implements OnInit {
   estilosCantoSelect: estilosCanto;
   habilidadessSelect: habilidades;
   idiomasSelect: idiomas;
+  deportistaSelect: deportista;
+  deporteSelect: deportes;
   /*****fin variables combos*****/
   actorForm: FormGroup;
   submitted = false;
@@ -147,6 +153,28 @@ export class FiguracionComponent implements OnInit {
     this.authService.finByIdEstilosBile(1)
       .subscribe(resp => {
         this.estilosBaileSelect = resp;
+      });
+
+    //llenado de deportista
+    this.authService.getAllDeportista()
+      .subscribe(resp => {
+        this.deportista = resp;
+      });
+
+    this.authService.finByIdDeportista(1)
+      .subscribe(resp => {
+        this.deportistaSelect = resp;
+      });
+
+    //llenado de deportes
+    this.authService.getAllDeportes()
+      .subscribe(resp => {
+        this.deportes = resp;
+      });
+
+    this.authService.finByIdDeportes(1)
+      .subscribe(resp => {
+        this.deporteSelect = resp;
       });
 
     //llenado de cantate

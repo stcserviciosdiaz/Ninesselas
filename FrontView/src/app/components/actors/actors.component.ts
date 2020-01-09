@@ -154,6 +154,7 @@ export class ActorsComponent implements OnInit {
   }
 
   llenarCombos() {
+
     //llenado de etnias
     this.authService.getAllEtinas()
       .subscribe(resp => {
