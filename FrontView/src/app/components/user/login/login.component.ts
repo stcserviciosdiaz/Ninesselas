@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', res.idUser);
           if (usuario.idType.nombres === 'COMPAÑIA') {
             this.router.navigate(['/company']);
-          } else if (usuario.idType.nombres === 'ROOT' || res.rol === 'ADMIN') {
+          } else if (usuario.idType.nombres === 'ROOT' || usuario.idType.nombres === 'ADMIN') {
             this.router.navigate(['/management']);
           } else {
             this.router.navigate(['/homeuser']);
