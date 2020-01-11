@@ -304,7 +304,7 @@ export class ActorsComponent implements OnInit {
       placebirth: [''],
       habilidades: [''],
       username: ['', Validators.required],
-      nombres: ['', [Validators.required, Validators.minLength(3)]],
+      nombres: ['', Validators.required],
       estilobailes: [''],
       cantos: [''],
       estilocantos: [''],

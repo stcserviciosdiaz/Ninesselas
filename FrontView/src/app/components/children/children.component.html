@@ -120,7 +120,7 @@
                   <select forControlName="etnias" class="form-control" [(ngModel)]="etniaSelect"
                     [ngModelOptions]="{standalone: true}">
                     <option [ngValue]="0" selected>Seleccione...</option>
-                    <option [ngValue]="i" *ngFor="let i of etnias">{{i}}</option>
+                    <option [ngValue]="i" *ngFor="let i of etnias">{{i.nombreEtnia}}</option>
                   </select>
                 </div>
                 <div *ngIf="etniaSelect.nombreEtnia == 'Otro'" class="form-group">
