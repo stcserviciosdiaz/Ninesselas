@@ -1,5 +1,5 @@
 export class moto {
-    idMoto: Int32Array;
+    idMoto: any;
     colorMoto: string;
     fotoMoto: string;
     modeloMoto: string;

@@ -1,5 +1,5 @@
 export class tallas {
-    idTalla: Int32Array;
+    idTalla: any;
     camisaTalla: string;
     chaquetaTalla: string;
     pantalonTalla: string;

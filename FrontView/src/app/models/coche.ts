@@ -1,5 +1,5 @@
 export class coche {
-    idCoche: Int32Array;
+    idCoche: any;
     colorCoche: string;
     fotoCoche: string;
     modeloCoche: string;

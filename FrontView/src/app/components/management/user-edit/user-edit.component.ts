@@ -143,8 +143,6 @@ export class UserEditComponent implements OnInit {
   ngOnInit() {
     this.setearDataForm();
     this.llenarCombos();
-
-
   }
 
   setearDataForm() {
@@ -270,7 +268,18 @@ export class UserEditComponent implements OnInit {
     this.estilosCantoSelect = this.estilosCantoSelect;
     this.habilidadessSelect = this.usuario.habilidadesList[0];
     this.idiomasSelect = this.usuario.idiomasList[0];
+  }
 
+  pasarUrlPaths() {
+    this.urlAvatar = this.usuario.avatar;
+    this.urlUsuario = this.usuario.pathDniUser;
+    this.urlSegurosocial = this.usuario.pathSeguroSocial;
+    this.urlPadre = this.usuario.pathDniPadre;
+    this.urlMadre = this.usuario.pathDniMadre;
+    this.urlLibroFamilia = this.usuario.libroFamilia;
+    this.urlRepresentante = this.usuario.pathDniRepresentante;
+    this.urlCuerpoEntero = '';
+    this.urlArtistico = '';
   }
 
   llenarCombos() {
@@ -509,9 +518,11 @@ export class UserEditComponent implements OnInit {
   subirArchivos() {
     /**subir avatar */
     let idUser = this.childForm.get('numeroDNI').value;
-    this.urlAvatar = 'ninios/' + idUser + '/avatar-' + this.avatarFile.name;
-    let task = this.storage.upload(this.urlAvatar, this.avatarFile);
-
+    let task: any;
+    if (this.avatarFile !== null) {
+      this.urlAvatar = 'ninios/' + idUser + '/avatar-' + this.avatarFile.name;
+      task = this.storage.upload(this.urlAvatar, this.avatarFile);
+    }
     /**subir cuerpo entero */
     this.urlCuerpoEntero = 'ninios/' + idUser + '/cuerpo-' + this.fileCuerpoEntero.name;
     task = this.storage.upload(this.urlCuerpoEntero, this.fileCuerpoEntero);

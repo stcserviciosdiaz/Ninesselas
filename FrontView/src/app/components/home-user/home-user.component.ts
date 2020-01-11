@@ -11,12 +11,11 @@ import { Usuario } from 'src/app/models/usuario';
   styleUrls: ['./home-user.component.css']
 })
 export class HomeUserComponent implements OnInit {
-  userInfo: Usuario;
+  userInfo: Usuario = new Usuario();
   avatarImageUrl;
   subscriber;
 
   urlImage: Observable<string>;
-  urlPathSeguro: Observable<string>;
 
 
   constructor(
@@ -30,7 +29,6 @@ export class HomeUserComponent implements OnInit {
     this.authService.findByToken().subscribe(
       res => {
         this.userInfo = res;
-        console.log('avatar url dentro subscriber: ' + this.userInfo.avatar);
         let filePath = this.userInfo.avatar;
         let ref = this.storage.ref(filePath);
         this.urlImage = ref.getDownloadURL();
@@ -38,12 +36,28 @@ export class HomeUserComponent implements OnInit {
           this.urlImage = resp;
         });
 
-        if (this.userInfo.pathSeguroSocial !== '') {
-          filePath = this.userInfo.pathSeguroSocial;
-          ref = this.storage.ref(filePath);
-          ref.getDownloadURL().subscribe(resp => {
-            this.urlPathSeguro = resp;
-          });
+
+        if (this.userInfo.motoList.length === 0) {
+          this.userInfo.motoList
+            .push({
+              idMoto: 0,
+              colorMoto: 'N/A',
+              fotoMoto: 'N/A',
+              modeloMoto: 'N/A'
+            }
+            );
+        }
+
+        if (this.userInfo.cocheList.length === 0) {
+          this.userInfo.cocheList
+            .push(
+              {
+                idCoche: 0,
+                colorCoche: 'N/A',
+                fotoCoche: 'N/A',
+                modeloCoche: 'N/A'
+              }
+            );
         }
 
 

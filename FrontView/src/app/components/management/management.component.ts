@@ -1,3 +1,4 @@
+import { tallas } from './../../models/tallas';
 import { Usuario } from './../../models/usuario';
 import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
 import { AuthService } from '../../Services/auth.service';
@@ -15,6 +16,13 @@ export class ManagementComponent implements OnInit {
   mdbTableUsers: MdbTableDirective;
   userInfo: Usuario = new Usuario();
   allUsers: Usuario[] = [];
+  tallaVacia: tallas = {
+    "idTalla": 3,
+    "camisaTalla": "N/A",
+    "chaquetaTalla": "N/A",
+    "pantalonTalla": "N/A",
+    "pieTalla": "N/A"
+  };
   editField: string;
   numberOfUsers: number;
   searchText = '';
@@ -39,7 +47,6 @@ export class ManagementComponent implements OnInit {
     'Color de Ojos',
     'Modelo de Coche',
     'Modelo de Moto',
-    'Últimos Trabajos',
     'Número DNI',
     'Número de Seguridad Social',
     'Correo de Contacto',
@@ -63,15 +70,10 @@ export class ManagementComponent implements OnInit {
         this.allUsers = res;
         this.mdbTableUsers.setDataSource(this.allUsers);
         this.previousUser = this.mdbTableUsers.getDataSource();
-
         this.numberOfUsers = this.allUsers.length;
-        for (const user of this.allUsers) {
-          if (user.edad > 18) {
-            this.mayorEdad = 'SI';
-          } else {
-            this.mayorEdad = 'NO';
-          }
-        }
+
+        this.llenaListasVacias();
+
       });
   }
 
@@ -81,6 +83,41 @@ export class ManagementComponent implements OnInit {
     this.buscarUsuarios();
 
   }
+
+  obtenerModeloCoche(lista: any): string {
+    if (lista.length === 0) {
+      return 'N/A';
+    } else { return lista[0].modeloCoche; }
+  }
+
+  llenaListasVacias() {
+    for (let index = 0; index < this.allUsers.length; index++) {
+      if (this.allUsers[index].motoList.length === 0) {
+        this.allUsers[index].motoList
+          .push(
+            {
+              idMoto: 0,
+              colorMoto: 'N/A',
+              fotoMoto: 'N/A',
+              modeloMoto: 'N/A'
+            }
+          );
+      }
+
+      if (this.allUsers[index].cocheList.length === 0) {
+        this.allUsers[index].cocheList
+          .push(
+            {
+              idCoche: 0,
+              colorCoche: 'N/A',
+              fotoCoche: 'N/A',
+              modeloCoche: 'N/A'
+            }
+          );
+      }
+    }
+  }
+
 
   buscarUsuarios() {
 
