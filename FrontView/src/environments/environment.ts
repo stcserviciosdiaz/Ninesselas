@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   firebase:{
-     apiKey: "AIzaSyC1Xi_KPZfByVuXPPJTQhk-nF09wL0vptQ",
+    apiKey: "AIzaSyC1Xi_KPZfByVuXPPJTQhk-nF09wL0vptQ",
     authDomain: "ninesselas-351a6.firebaseapp.com",
     databaseURL: "https://ninesselas-351a6.firebaseio.com",
     projectId: "ninesselas-351a6",
@@ -20,8 +20,8 @@ export const environment = {
     projectId: "app1-b8446",
     storageBucket: "app1-b8446.appspot.com",
     messagingSenderId: "160492490753",
-    appId: "1:160492490753:web:af864f521a8ad3e514b000"
-    */
+    appId: "1:160492490753:web:af864f521a8ad3e514b000"*/
+
   }
 };
 

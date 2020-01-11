@@ -500,7 +500,7 @@
                   <label class="control-label">Estilo de cantos</label>
                   <select class="form-control" forControlName="estilosCanto" [(ngModel)]="estilosCantoSelect"
                     [ngModelOptions]="{standalone: true}">
-                    <option selected>Seleccione...</option>
+                    <option [ngValue]="0" selected>Seleccione...</option>
                     <option [ngValue]="i" *ngFor="let i of estilosCanto">{{i.nombreEstiloCanto}}</option>
                   </select>
                 </div>

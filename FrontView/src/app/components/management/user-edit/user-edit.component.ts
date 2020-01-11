@@ -114,6 +114,7 @@ export class UserEditComponent implements OnInit {
   //selected
   actorSelect;
   usuario: Usuario = new Usuario();
+  usuarioEdit: Usuario = new Usuario();
   etniaSelect: etnia = new etnia();
   baileSelect: bailarin = new bailarin();
   estilosBaileSelect: estilosBaile = new estilosBaile();
@@ -292,6 +293,8 @@ export class UserEditComponent implements OnInit {
 
         this.pasarEntidadesSelect();
 
+        this.pasarUrlPaths();
+
 
         /**Previsualizacion de imagen del storage */
         /*let storageRef = this.storage.ref(this.usuario.avatar);
@@ -389,7 +392,7 @@ export class UserEditComponent implements OnInit {
   pasarDatosFormUsuario() {
 
     const newChild = this.childForm.value;
-    this.usuario = {
+    this.usuarioEdit = {
       idUser: this.usuario.idUser,
       avatar: this.urlAvatar,
       acento: newChild.acento,
@@ -469,12 +472,12 @@ export class UserEditComponent implements OnInit {
     }
     this.subirArchivos();
     this.pasarDatosFormUsuario();
-    this.authService.editUser(this.usuario).subscribe(
+    this.authService.editUser(this.usuarioEdit).subscribe(
       res => {
         localStorage.removeItem('useredit');
-        this.router.navigate(['/management']);
-        this.actualizarTalla(res.idUser, res.tallasList[0].idTalla);
+        this.actualizarTalla(this.usuario.idUser, res.tallasList[0].idTalla);
         this.ngxSmartModalService.create('EDICION', 'Cuenta actualizada exitosamente ').open();
+        this.router.navigate(['/management']);
       },
       (err) => {
         this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
@@ -524,33 +527,40 @@ export class UserEditComponent implements OnInit {
       task = this.storage.upload(this.urlAvatar, this.avatarFile);
     }
     /**subir cuerpo entero */
-    this.urlCuerpoEntero = 'ninios/' + idUser + '/cuerpo-' + this.fileCuerpoEntero.name;
-    task = this.storage.upload(this.urlCuerpoEntero, this.fileCuerpoEntero);
-
+    if (this.fileCuerpoEntero !== null) {
+      this.urlCuerpoEntero = 'ninios/' + idUser + '/cuerpo-' + this.fileCuerpoEntero.name;
+      task = this.storage.upload(this.urlCuerpoEntero, this.fileCuerpoEntero);
+    }
     /**subir foto artistica */
-    this.urlArtistico = 'ninios/' + idUser + '/artistico-' + this.fileArtistico.name;
-    task = this.storage.upload(this.urlArtistico, this.fileArtistico);
-
+    if (this.fileArtistico !== null) {
+      this.urlArtistico = 'ninios/' + idUser + '/artistico-' + this.fileArtistico.name;
+      task = this.storage.upload(this.urlArtistico, this.fileArtistico);
+    }
     /**subir dnipadre */
-    this.urlPadre = 'ninios/' + idUser + '/dnipadre-' + this.copyDNIFather.name;
-    task = this.storage.upload(this.urlPadre, this.copyDNIFather);
-
+    if (this.copyDNIFather !== null) {
+      this.urlPadre = 'ninios/' + idUser + '/dnipadre-' + this.copyDNIFather.name;
+      task = this.storage.upload(this.urlPadre, this.copyDNIFather);
+    }
     /**subir dnimadre */
-    this.urlMadre = 'ninios/' + idUser + '/dnimadre-' + this.CopyDNIMother.name;
-    task = this.storage.upload(this.urlMadre, this.CopyDNIMother);
-
+    if (this.CopyDNIMother !== null) {
+      this.urlMadre = 'ninios/' + idUser + '/dnimadre-' + this.CopyDNIMother.name;
+      task = this.storage.upload(this.urlMadre, this.CopyDNIMother);
+    }
     /**subir family book  */
-    this.urlLibroFamilia = 'ninios/' + idUser + '/librofamiliar-' + this.familyBookFile.name;
-    task = this.storage.upload(this.urlLibroFamilia, this.familyBookFile);
-
+    if (this.familyBookFile !== null) {
+      this.urlLibroFamilia = 'ninios/' + idUser + '/librofamiliar-' + this.familyBookFile.name;
+      task = this.storage.upload(this.urlLibroFamilia, this.familyBookFile);
+    }
     /**subir numero de seguro social  */
-    this.urlSegurosocial = 'ninios/' + idUser + '/segurosocial-' + this.copySocialNumber.name;
-    task = this.storage.upload(this.urlSegurosocial, this.copySocialNumber);
-
+    if (this.copySocialNumber !== null) {
+      this.urlSegurosocial = 'ninios/' + idUser + '/segurosocial-' + this.copySocialNumber.name;
+      task = this.storage.upload(this.urlSegurosocial, this.copySocialNumber);
+    }
     /**subir dni user  */
-    this.urlUsuario = 'ninios/' + idUser + '/dniuser-' + this.copyDNIkid.name;
-    task = this.storage.upload(this.urlUsuario, this.copyDNIkid);
-
+    if (this.copyDNIkid !== null) {
+      this.urlUsuario = 'ninios/' + idUser + '/dniuser-' + this.copyDNIkid.name;
+      task = this.storage.upload(this.urlUsuario, this.copyDNIkid);
+    }
   }
 
   copyDNIFatherSelected(event) {
