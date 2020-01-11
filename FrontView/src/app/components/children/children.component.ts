@@ -158,7 +158,7 @@ export class ChildrenComponent implements OnInit {
       instrumentoss: [''],
       /****fin variables nuevas */
       username: ['', Validators.required],
-      nombres: ['', [Validators.required, Validators.minLength(5)]],
+      nombres: ['', Validators.required],
       acceptTerms: [false, Validators.requiredTrue],
       apellidos: ['', Validators.required],
       bilingue: [''],
