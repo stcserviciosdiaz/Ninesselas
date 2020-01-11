@@ -230,11 +230,13 @@
               <div class="row">
                 <div class="col-md-12 mx-auto">
                   <div class="md-form">
-                    <input type="text" [(ngModel)]="searchText" class="form-control" id="search" mdbInput>
                     <label for="search">Search</label>
+                    <input placeholder="Búsqueda por diferentes Parámetros..." type="text" [(ngModel)]="searchText"
+                      class="form-control" id="search" mdbInput>
                   </div>
                 </div>
               </div>
+              <br/>
               <table mdbTable mdbTableScroll scrollY="true" maxHeight="200" scrollX="true" class="z-depth-1">
                 <thead>
                   <tr>

@@ -1,4 +1,4 @@
-export interface tallas {
+export class tallas {
     idTalla: Int32Array;
     camisaTalla: string;
     chaquetaTalla: string;

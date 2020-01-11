@@ -1,9 +1,6 @@
-import { Usuario } from './../../models/usuario';
-import { tallas } from './../../models/tallas';
 import { Component, Input, OnDestroy, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, FormGroupDirective, NgForm } from '@angular/forms';
 import { NgxSmartModalService, NgxSmartModalComponent } from 'ngx-smart-modal';
-import { AuthService } from '../../Services/auth.service';
 import { Router } from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material';
 import { bailarin } from 'src/app/models/bailarin';
@@ -21,6 +18,8 @@ import { HttpClient, HttpEventType } from '@angular/common/http';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs/internal/Observable';
 import { finalize } from 'rxjs/operators';
+import { Usuario } from 'src/app/models/usuario';
+import { AuthService } from 'src/app/Services/auth.service';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -51,11 +50,11 @@ export function MustMatch(controlName: string, matchingControlName: string) {
 }
 
 @Component({
-  selector: 'app-children',
-  templateUrl: './children.component.html',
-  styleUrls: ['./children.component.css']
+  selector: 'app-user-edit',
+  templateUrl: './user-edit.component.html',
+  styleUrls: ['./user-edit.component.css']
 })
-export class ChildrenComponent implements OnInit {
+export class UserEditComponent implements OnInit {
 
   matcher = new MyErrorStateMatcher();
   childForm: FormGroup;
@@ -142,7 +141,13 @@ export class ChildrenComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.setearDataForm();
     this.llenarCombos();
+
+
+  }
+
+  setearDataForm() {
     this.childForm = this.formBuilder.group({
       /****variables nuevas */
       etnias: [''],
@@ -216,19 +221,80 @@ export class ChildrenComponent implements OnInit {
       , {
         validator: MustMatch('password', 'confirmPassword')
       });
+
+  }
+
+  pasarDatosForm() {
+    this.childForm.controls.username.setValue(this.usuario.username);
+    this.childForm.controls.nombres.setValue(this.usuario.nombres);
+    this.childForm.controls.apellidos.setValue(this.usuario.apellidos);
+    this.childForm.controls.edad.setValue(this.usuario.edad);
+    this.childForm.controls.password.setValue(this.usuario.password);
+    this.childForm.controls.sexo.setValue(this.usuario.sexo);
+    this.childForm.controls.telefono.setValue(this.usuario.telefono);
+    this.childForm.controls.fechaNacimiento.setValue(this.usuario.fechaNacimiento);
+    this.childForm.controls.placebirth.setValue(this.usuario.lugarNacimiento);
+    this.childForm.controls.nacionalidad.setValue(this.usuario.nacionalidad);
+    this.childForm.controls.email.setValue(this.usuario.email);
+    this.childForm.controls.actor.setValue(this.usuario.actor);
+    this.childForm.controls.tallaCamisa.setValue(this.usuario.tallasList[0].camisaTalla);
+    this.childForm.controls.tallaChaqueta.setValue(this.usuario.tallasList[0].chaquetaTalla);
+    this.childForm.controls.tallaPantalon.setValue(this.usuario.tallasList[0].pantalonTalla);
+    this.childForm.controls.pie.setValue(this.usuario.tallasList[0].pieTalla);
+    this.childForm.controls.altura.setValue(this.usuario.altura);
+    this.childForm.controls.colorPiel.setValue(this.usuario.colorPiel);
+    this.childForm.controls.colorPelo.setValue(this.usuario.colorPelo);
+    this.childForm.controls.colorOjos.setValue(this.usuario.colorOjos);
+    this.childForm.controls.direccion.setValue(this.usuario.direccion);
+    this.childForm.controls.localidad.setValue(this.usuario.localidad);
+    this.childForm.controls.provincia.setValue(this.usuario.provincia);
+    this.childForm.controls.codpostal.setValue(this.usuario.codigoPostal);
+    this.childForm.controls.numeroDNI.setValue(this.usuario.dniUser);
+    this.childForm.controls.numeroSeguridadSocial.setValue(this.usuario.numeroSeguroSocial);
+    this.childForm.controls.numeroDNIPadre.setValue(this.usuario.dniPadre);
+    this.childForm.controls.numeroDNIMadre.setValue(this.usuario.dniMadre);
+    this.childForm.controls.numeroDNIRepresentante.setValue(this.usuario.dniRepresentante);
+    this.childForm.controls.telefonofather.setValue(this.usuario.telefonoPadre);
+    this.childForm.controls.telefonomother.setValue(this.usuario.telefonoMadre);
+  }
+
+  pasarEntidadesSelect() {
+    this.etniaSelect = this.usuario.idEtnia;
+    this.deportistaSelect = this.usuario.idDeportista;
+    this.deporteSelect = this.usuario.deporteList[0];
+    this.baileSelect = this.usuario.idBailarin;
+    this.estilosBaileSelect = this.usuario.estiloBaileList[0];
+    this.musicoSelect = this.usuario.idMusico;
+    this.instrumentoSelect = this.usuario.instrumentoList[0];
+    this.cantanteSelect = this.usuario.idCantante;
+    this.estilosCantoSelect = this.estilosCantoSelect;
+    this.habilidadessSelect = this.usuario.habilidadesList[0];
+    this.idiomasSelect = this.usuario.idiomasList[0];
+
   }
 
   llenarCombos() {
 
     //llenado de etnias
+    this.authService.finByIdUsuario(localStorage.getItem('useredit'))
+      .pipe().subscribe(res => {
+        this.usuario = res;
+        this.pasarDatosForm();
+
+        this.pasarEntidadesSelect();
+
+
+        /**Previsualizacion de imagen del storage */
+        /*let storageRef = this.storage.ref(this.usuario.avatar);
+        storageRef.getDownloadURL().subscribe(url => this.urlImage = url);
+        */
+      });
+
+
+    //llenado de etnias
     this.authService.getAllEtinas()
       .subscribe(resp => {
         this.etnias = resp;
-      });
-
-    this.authService.finByIdEtnia(1)
-      .subscribe(resp => {
-        this.etniaSelect = resp;
       });
 
     //llenado de baile
@@ -237,21 +303,10 @@ export class ChildrenComponent implements OnInit {
         this.baile = resp;
       });
 
-    this.authService.finByIdBailarin(1)
-      .subscribe(resp => {
-        this.baileSelect = resp;
-      });
-
-
     //llenado de estilos baile
     this.authService.getAllEstilosBailes()
       .subscribe(resp => {
         this.estilosBaile = resp;
-      });
-
-    this.authService.finByIdEstilosBile(1)
-      .subscribe(resp => {
-        this.estilosBaileSelect = resp;
       });
 
     //llenado de cantate
@@ -260,20 +315,10 @@ export class ChildrenComponent implements OnInit {
         this.cantante = resp;
       });
 
-    this.authService.finByIdCantante(1)
-      .subscribe(resp => {
-        this.cantanteSelect = resp;
-      });
-
     //llenado de estilosCanto
     this.authService.getAllEstilosCanto()
       .subscribe(resp => {
         this.estilosCanto = resp;
-      });
-
-    this.authService.finByIdEstilosCanto(1)
-      .subscribe(resp => {
-        this.estilosCantoSelect = resp;
       });
 
     //llenado de habilidadess
@@ -282,20 +327,10 @@ export class ChildrenComponent implements OnInit {
         this.habilidadess = resp;
       });
 
-    this.authService.finByIdHabilidades(1)
-      .subscribe(resp => {
-        this.habilidadessSelect = resp;
-      });
-
     //llenado de idiomas
     this.authService.getAllIdiomas()
       .subscribe(resp => {
         this.idiomas = resp;
-      });
-
-    this.authService.finByIdIdiomas(1)
-      .subscribe(resp => {
-        this.idiomasSelect = resp;
       });
 
     //llenado de deportista
@@ -304,20 +339,10 @@ export class ChildrenComponent implements OnInit {
         this.deportista = resp;
       });
 
-    this.authService.finByIdDeportista(1)
-      .subscribe(resp => {
-        this.deportistaSelect = resp;
-      });
-
     //llenado de deportes
     this.authService.getAllDeportes()
       .subscribe(resp => {
         this.deportes = resp;
-      });
-
-    this.authService.finByIdDeportes(1)
-      .subscribe(resp => {
-        this.deporteSelect = resp;
       });
 
     //llenado de musico
@@ -326,24 +351,14 @@ export class ChildrenComponent implements OnInit {
         this.musico = resp;
       });
 
-    this.authService.finByIdMusico(1)
-      .subscribe(resp => {
-        this.musicoSelect = resp;
-      });
-
     //llenado de instrumento
     this.authService.getAllInstrumentos()
       .subscribe(resp => {
         this.instrumentoss = resp;
       });
-
-    this.authService.finByIdInstrumento(1)
-      .subscribe(resp => {
-        this.instrumentoSelect = resp;
-      });
   }
 
-  guardarTalla(idUser) {
+  actualizarTalla(idUser, idTalla) {
     const newChild = this.childForm.value;
     let tallas = {
       camisaTalla: newChild.tallaCamisa,
@@ -352,9 +367,9 @@ export class ChildrenComponent implements OnInit {
       pieTalla: newChild.pie,
       idUser: idUser
     };
-    this.authService.saveTalla(tallas).subscribe(
+    this.authService.editTalla(tallas, idTalla).subscribe(
       resTalla => {
-        console.log('talla guardada');
+        console.log('talla actualizada');
       },
       (err) => {
         this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
@@ -365,9 +380,8 @@ export class ChildrenComponent implements OnInit {
   pasarDatosFormUsuario() {
 
     const newChild = this.childForm.value;
-    console.log('Niño a registrar: ' + JSON.stringify(newChild));
     this.usuario = {
-      idUser: 0,
+      idUser: this.usuario.idUser,
       avatar: this.urlAvatar,
       acento: newChild.acento,
       altura: newChild.altura,
@@ -422,9 +436,9 @@ export class ChildrenComponent implements OnInit {
       idBailarin: this.baileSelect,
       idEtnia: this.etniaSelect,
       idType: {
-        idType: 3,
-        description: 'NIÑOS',
-        nombres: 'NIÑOS'
+        idType: this.usuario.idType.idType,
+        description: this.usuario.idType.description,
+        nombres: this.usuario.idType.nombres
       },
       idDeportista: this.deportistaSelect,
       idMusico: this.musicoSelect,
@@ -446,12 +460,12 @@ export class ChildrenComponent implements OnInit {
     }
     this.subirArchivos();
     this.pasarDatosFormUsuario();
-    this.authService.signup2(this.usuario).subscribe(
+    this.authService.editUser(this.usuario).subscribe(
       res => {
-        localStorage.setItem('token', res.idUser);
-        this.ngxSmartModalService.create('confirm', 'Cuenta de Niño creada exitosamente ' + res.nombres + ' ' + res.apellidos).open();
-        this.router.navigate(['/homeuser']);
-        this.guardarTalla(res.idUser);
+        localStorage.removeItem('useredit');
+        this.router.navigate(['/management']);
+        this.actualizarTalla(res.idUser, res.tallasList[0].idTalla);
+        this.ngxSmartModalService.create('EDICION', 'Cuenta actualizada exitosamente ').open();
       },
       (err) => {
         this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
@@ -459,8 +473,12 @@ export class ChildrenComponent implements OnInit {
       });
   }
 
+  /**Upload foto avatar */
   onAvatarSelected(event) {
     this.avatarFile = event.target.files[0] as File;
+
+    /**Previsualizacion del select file image */
+    //this.preview(this.avatarFile);
   }
 
   /**Upload foto cuerpo entero */
@@ -476,18 +494,13 @@ export class ChildrenComponent implements OnInit {
 
   fileProgress(fileInput: any) {
     this.fileData = <File>fileInput.target.files[0];
-    this.preview();
+    //    this.preview();
   }
 
-  preview() {
+  preview(file: any) {
     // Show preview
-    var mimeType = this.fileData.type;
-    if (mimeType.match(/image\/*/) == null) {
-      return;
-    }
-
     var reader = new FileReader();
-    reader.readAsDataURL(this.fileData);
+    reader.readAsDataURL(file);
     reader.onload = (_event) => {
       this.previewUrl = reader.result;
     }
@@ -574,3 +587,4 @@ export class ChildrenComponent implements OnInit {
 
 
 }
+

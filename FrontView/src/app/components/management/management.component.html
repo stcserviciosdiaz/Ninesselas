@@ -3,7 +3,8 @@
     <div class="logo">
       <a href="http://www.creative-tim.com" class="simple-text logo-mini">
         <div class="logo-image-small">
-          <img src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/46b63d3c-ae67-464c-9a37-670829b2a157/d8ttdm6-5617aa77-87d8-4fb7-bb78-4aab6b0956b5.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzQ2YjYzZDNjLWFlNjctNDY0Yy05YTM3LTY3MDgyOWIyYTE1N1wvZDh0dGRtNi01NjE3YWE3Ny04N2Q4LTRmYjctYmI3OC00YWFiNmIwOTU2YjUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.L80L4l2NOeCIV3WB491ANP4Ii_9NiIg2m-tgY5M_IaA">
+          <img
+            src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/46b63d3c-ae67-464c-9a37-670829b2a157/d8ttdm6-5617aa77-87d8-4fb7-bb78-4aab6b0956b5.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzQ2YjYzZDNjLWFlNjctNDY0Yy05YTM3LTY3MDgyOWIyYTE1N1wvZDh0dGRtNi01NjE3YWE3Ny04N2Q4LTRmYjctYmI3OC00YWFiNmIwOTU2YjUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.L80L4l2NOeCIV3WB491ANP4Ii_9NiIg2m-tgY5M_IaA">
         </div>
       </a>
       <a href="http://www.creative-tim.com" class="fg-16 simple-text logo-normal">
@@ -51,7 +52,7 @@
               <span class="navbar-toggler-bar bar3"></span>
             </button>
           </div>
-          <a>{{userInfo.idUser}} {{userInfo.username}} : {{userInfo.nombres}}  {{userInfo.apellidos}}</a>
+          <a>{{userInfo.idUser}} {{userInfo.username}} : {{userInfo.nombres}} {{userInfo.apellidos}}</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
           aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -60,30 +61,9 @@
           <span class="navbar-toggler-bar navbar-kebab"></span>
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navigation">
-          <form>
-            <div class="input-group no-border">
-              <input type="text" value="" class="form-control" placeholder="Busqueda...">
-              <div class="input-group-append">
-                <div class="input-group-text">
-                  <i class="fas fa-search"></i>
-                </div>
-              </div>
-            </div>
-          </form>
+
           <ul class="navbar-nav">
-            <li class="nav-item btn-rotate dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
-                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-tasks"></i>
-                <p>
-                  <span class="d-lg-none d-md-block">Configuración</span>
-                </p>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
+
             <li> <a class="btn btn-primary" (click)="authService.logoutUser()" routerLink="#/home">Salir</a>
             </li>
           </ul>
@@ -131,7 +111,7 @@
                 <div class="col-7 col-md-8">
                   <div class="numbers">
                     <p class="card-category">Usuarios</p>
-                    <p class="card-title">5
+                    <p class="card-title">{{numberOfUsers}}
                       <p>
                   </div>
                 </div>
@@ -198,6 +178,7 @@
           </div>
         </div>
       </div>
+
       <div class="row">
         <div class="col-md-12">
           <div class="card ">
@@ -225,94 +206,84 @@
                   </tr>
                 </tbody>
               </table>
-              <div class="row">
-                <div class="col-md-12 mx-auto">
-                  <div class="md-form">
-                    <input type="text" [(ngModel)]="searchText" class="form-control" id="search" mdbInput>
-                    <label for="search">Search</label>
+
+
+
+              <mdb-card cascade="true" narrower="true">
+                <!--Card image-->
+                <div style="padding: 25px;"
+                  class="view view-cascade gradient-card-header blue-gradient narrower py-4 mx-2 mb-3 d-flex justify-content-between align-items-center">
+
+                  <div style="width: 50%;">
+                    <div class="md-form">
+                      <input type="text" placeholder="Búsqueda por parámetros" [(ngModel)]="searchText"
+                        class="form-control" id="search" mdbInput>
+                    </div>
+                  </div>
+
+                  <a href="" class="white-text mx-3">Usuarios</a>
+
+                  <div>
+
+                  </div>
+
+                </div>
+                <!--/Card image-->
+
+                <div class="px-8">
+
+                  <div class="table-wrapper">
+                    <table class="mb-0" hover="true" ng-table="tableParams2" small="true" resposive="true"
+                      striped="true" mdbTable mdbTableScroll scrollY="true" maxHeight="350" scrollX="true"
+                      class="table table-bordered table-responsive-md table-striped text-center">
+                      <thead>
+                        <tr>
+                          <th *ngFor="let head of headElementsUsers; let i = index" aria-controls="tableSortExample"
+                            scope="col" [mdbTableSort]="allUsers" [sortBy]="headElementsUsers[i]">{{head | titlecase}}
+                          </th>
+                          <mdb-icon fas icon="sort"></mdb-icon>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let user of allUsers; let i = index">
+                          <th scope="row">{{user.idUser}}</th>
+                          <td>{{user.nombres}} {{user.apellidos}}</td>
+                          <td>{{user.edad}}</td>
+                          <td>{{user.nombreArtistico}}</td>
+                          <td>{{user.sexo}}</td>
+                          <td>{{user.fechaNacimiento}}</td>
+                          <td>{{user.localidad}}</td>
+                          <td>{{user.tallasList[0]}}</td>
+                          <td>{{user.tallasList[0]}}</td>
+                          <td>{{user.tallasList[0]}}</td>
+                          <td>{{user.tallasList[0]}}</td>
+                          <td>{{user.altura}}</td>
+                          <td>{{user.colorPiel}}</td>
+                          <td>{{user.colorPelo}}</td>
+                          <td>{{user.colorOjos}}</td>
+                          <td>{{user.cocheList[0]}}</td>
+                          <td>{{user.motoList[0]}}</td>
+                          <td>{{user.ultimosTrabajosList[0]}}</td>
+                          <td>{{user.dniUser}}</td>
+                          <td>{{user.numeroSeguroSocial}}</td>
+                          <td>{{user.email}}</td>
+                          <td>{{user.telefono}}</td>
+                          <td>{{user.telefono}}</td>
+                          <td style="display: flex; justify-content: space-between;">
+                            <button  type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0"
+                              (click)="removeUser(i,user.idUser)">Eliminar</button>
+
+                            <button type="button" mdbBtn mdbWavesEffect gradient="blue" rounded="true" size="sm"
+                              class="my-0" (click)="editarUser(i,user.idUser)">Editar</button>
+                          </td>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
-              </div>
-              <table ng-table="tableParams2" mdbTable mdbTableScroll scrollY="true" maxHeight="200" scrollX="true"
-                class="table table-bordered table-responsive-md table-striped text-center">
-                <thead>
-                  <tr>
-                    <th *ngFor="let head of headElementsUsers; let i = index" aria-controls="tableSortExample"
-                      scope="col" [mdbTableSort]="allUsers" [sortBy]="headElementsUsers[i]">{{head | titlecase}}</th>
-                    <mdb-icon fas icon="sort"></mdb-icon>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let user of allUsers; let i = index">
-                    <th scope="row">{{user.idUser}}</th>
-                    <td>{{user.nombres}} {{user.apellidos}}</td>
-                    <td>{{user.edad}}</td>
-                    <td>{{user.nombreArtistico}}</td>
-                    <td>{{user.sexo}}</td>
-                    <td>{{user.alias}}</td>
-                    <td>{{user.fechaNacimiento}}</td>
-                    <td>{{user.localidad}}</td>
-                    <td>{{user.tallaPantalon}}</td>
-                    <td>{{user.tallaCamisa}}</td>
-                    <td>{{user.tallaChaqueta}}</td>
-                    <td>{{user.pie}}</td>
-                    <td>{{user.altura}}</td>
-                    <td>{{user.colorPiel}}</td>
-                    <td>{{user.colorPelo}}</td>
-                    <td>{{user.colorOjos}}</td>
-                    <td>{{user.modeloCoche}}</td>
-                    <td>{{user.modeloMoto}}</td>
-                    <td>{{user.razaMascota}}</td>
-                    <td>{{user.ultimosTrabajos}}</td>
-                    <td>{{user.dniUser}}</td>
-                    <td>{{user.numeroSeguroSocial}}</td>
-                    <td>{{user.email}}</td>
-                    <td>{{user.telefono}}</td>
-                    <td>{{user.telefono}}</td>
-                  </tr>
-                </tbody>
-              </table>
-              <div id="tableCompanies" class="table-editable">
-                <table mdbTable2 mdbTableScroll scrollY="true" maxHeight="200" NGTab scrollX="true"
-                  class="table table-bordered table-responsive-md table-striped text-center">
-                  <thead>
-                    <tr>
-                      <th *ngFor="let head of headElementsCompanies; let i = index" aria-controls="tableSortExample"
-                        scope="col" [mdbTableSort]="allUsers" [sortBy]="headElementsCompanies[i]">{{head | titlecase}}
-                      </th>
-                      <mdb-icon fas icon="sort"></mdb-icon>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr *ngFor="let company of allCompanies; let id = index">
-                      <th scope="row">{{company.idUser}}</th>
-                      <td>
-                        <span (keyup)="changeValue(id, 'username', $event)" (blur)="updateList(id, 'username', $event)"
-                          contenteditable="true">{{company.username}}</span>
-                      </td>
-                      <td>
-                        <span (keyup)="changeValue(id, 'email', $event)" (blur)="updateList(id, 'email', $event)"
-                          contenteditable="true">{{company.email}}</span>
-                      </td>
-                      <td>
-                        <span (keyup)="changeValue(id, 'telefonoFijo', $event)"
-                          (blur)="updateList(id, 'telefonoFijo', $event)"
-                          contenteditable="true">{{company.telefono}}</span>
-                      </td>
-                      <td>
-                        <span (keyup)="changeValue(id, 'password', $event)" (blur)="updateList(id, 'password', $event)"
-                          contenteditable="true">{{company.password}}</span>
-                      </td>
-                      <td>
-                        <span class="table-remove">
-                          <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0"
-                            (click)="removeCompany(company.id)">Remove</button>
-                        </span>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              </mdb-card>
+              <br />
+              <app-management-company></app-management-company>
+
               <canvas id=chartHours width="400" height="100"></canvas>
             </div>
             <div class="card-footer ">
@@ -325,6 +296,10 @@
         </div>
       </div>
     </div>
+
+
+
+
     <footer class="footer footer-black  footer-white ">
       <div class="container-fluid">
         <div class="row">

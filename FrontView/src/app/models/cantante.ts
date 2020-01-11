@@ -1,4 +1,4 @@
-export interface cantante {
+export class cantante {
     idCantante: any;
     descripcionCantante: string;
     nombreCantante: string;

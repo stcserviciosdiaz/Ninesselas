@@ -1,9 +1,11 @@
+import { ManagementCompanyComponent } from './components/management/management-company/management-company.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AuthService } from './Services/auth.service';
 import { EmailService } from './Services/email.service';
 import { AuthGuard } from './Guards/auth.guard';
 import { TokenInterceptorService } from './Services/token-interceptor.service';
+import { MatSliderModule } from '@angular/material/slider';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -64,8 +66,11 @@ import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { DatePipe } from './pipes/date/date.pipe';
+import { UserEditComponent } from './components/management/user-edit/user-edit.component';
 @NgModule({
   declarations: [
+    UserEditComponent,
+    ManagementCompanyComponent,
     AppComponent,
     HomeComponent,
     FooterComponent,
@@ -87,6 +92,7 @@ import { DatePipe } from './pipes/date/date.pipe';
     ChildrenComponent,
   ],
   imports: [
+    MatSliderModule,
     MDBBootstrapModule.forRoot(),
     NgxSmartModalModule.forRoot(),
     BrowserModule,

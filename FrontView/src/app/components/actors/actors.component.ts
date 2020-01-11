@@ -1,7 +1,5 @@
-import { instrumento } from './../../models/instrumentos';
-import { musico } from './../../models/musico';
+
 import { deportes } from './../../models/deportes';
-import { deportista } from './../../models/deportista';
 import { Component, NgModule, Input, OnDestroy, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -17,6 +15,10 @@ import { estilosCanto } from 'src/app/models/estilosCanto';
 import { habilidades } from 'src/app/models/habilidades';
 import { idiomas } from 'src/app/models/idiomas';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { deportista } from 'src/app/models/deportista';
+import { musico } from 'src/app/models/musico';
+import { instrumento } from 'src/app/models/instrumentos';
+import { etnia } from 'src/app/models/etnia';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -92,18 +94,18 @@ export class ActorsComponent implements OnInit {
   //selected
   actorSelect;
   tipoCarnetSelect;
-  etniaSelect;
-  usuario: Usuario;
-  baileSelect: bailarin;
-  estilosBaileSelect: estilosBaile;
-  cantanteSelect: cantante;
-  estilosCantoSelect: estilosCanto;
-  habilidadessSelect: habilidades;
-  idiomasSelect: idiomas;
-  deportistaSelect: deportista;
-  deporteSelect: deportes;
-  musicoSelect: musico;
-  instrumentoSelect: instrumento;
+  etniaSelect: etnia = new etnia();
+  usuario: Usuario = new Usuario();
+  baileSelect: bailarin = new bailarin();
+  estilosBaileSelect: estilosBaile = new estilosBaile();
+  cantanteSelect: cantante = new cantante();
+  estilosCantoSelect: estilosCanto = new estilosCanto();
+  habilidadessSelect: habilidades = new habilidades();
+  idiomasSelect: idiomas = new idiomas();
+  deportistaSelect: deportista = new deportista();
+  deporteSelect: deportes = new deportes();
+  musicoSelect: musico = new musico();
+  instrumentoSelect: instrumento = new instrumento();
   /*****fin variables combos*****/
   constructor(
     private storage: AngularFireStorage,
@@ -341,6 +343,9 @@ export class ActorsComponent implements OnInit {
       modeloMoto: [''],
       colorMoto: [''],
       ultimosTrabajos: [''],
+      typecarnet: [''],
+      fotoCoche: [''],
+      fotoMoto: [''],
     }
 
       , {
@@ -554,6 +559,7 @@ export class ActorsComponent implements OnInit {
     let idUser = this.actorForm.get('numeroDNI').value;
     this.urlAvatar = 'actor/' + idUser + '/avatar-' + this.fileAvatar.name;
     let task = this.storage.upload(this.urlAvatar, this.fileAvatar);
+
 
     /**subir cuerpo entero */
     this.urlCuerpoEntero = 'actor/' + idUser + '/cuerpo-' + this.fileCuerpoEntero.name;

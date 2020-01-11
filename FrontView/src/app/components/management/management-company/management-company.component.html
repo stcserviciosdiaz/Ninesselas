@@ -1,0 +1,68 @@
+<mdb-card cascade="true" narrower="true">
+  <!--Card image-->
+  <div style="padding: 25px;background: linear-gradient(40deg,#f8f9fa,#dc3545)!important;"
+    class="view view-cascade gradient-card-header blue-gradient narrower py-4 mx-2 mb-3 d-flex justify-content-between align-items-center">
+
+    <div style="width: 50%;">
+      <div class="md-form">
+        <input type="text" placeholder="Búsqueda por parámetros" [(ngModel)]="searchText2" class="form-control"
+          id="search2" mdbInput>
+      </div>
+    </div>
+
+    <a href="" class="white-text mx-3">Compañias</a>
+
+    <div>
+
+    </div>
+
+  </div>
+  <!--/Card image-->
+
+  <div class="px-4">
+
+    <div class="table-wrapper">
+      <div id="tableCompanies" class="table-editable">
+        <table class="mb-0" hover="true" ng-table="tableParams2" small="true" resposive="true" striped="true" mdbTable
+          mdbTableScroll scrollY="true" maxHeight="350" scrollX="true"
+          class="table table-bordered table-responsive-md table-striped text-center">
+          <thead>
+            <tr>
+              <th *ngFor="let head of headElementsCompanies; let i = index" aria-controls="tableSortExample" scope="col"
+                [mdbTableSort]="allCompanies" [sortBy]="headElementsCompanies[i]">{{head | titlecase}}
+              </th>
+              <mdb-icon fas icon="sort"></mdb-icon>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let company of allCompanies; let id = index">
+              <th scope="row">{{company.idUser}}</th>
+              <td>
+                <span (keyup)="changeValue(id, 'username', $event)" (blur)="updateListCompany(id, 'username', $event)"
+                  contenteditable="true">{{company.username}}</span>
+              </td>
+              <td>
+                <span (keyup)="changeValue(id, 'email', $event)" (blur)="updateListCompany(id, 'email', $event)"
+                  contenteditable="true">{{company.email}}</span>
+              </td>
+              <td>
+                <span (keyup)="changeValue(id, 'telefono', $event)" (blur)="updateListCompany(id, 'telefono', $event)"
+                  contenteditable="true">{{company.telefono}}</span>
+              </td>
+              <td>
+                <span (keyup)="changeValue(id, 'password', $event)" (blur)="updateListCompany(id, 'password', $event)"
+                  contenteditable="true">{{company.password}}</span>
+              </td>
+              <td>
+                <span class="table-remove">
+                  <button type="button" mdbBtn color="danger" rounded="true" size="sm" class="my-0"
+                    (click)="removeCompany(id,company.idUser)">Eliminar</button>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</mdb-card>

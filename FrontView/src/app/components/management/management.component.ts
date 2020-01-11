@@ -1,29 +1,32 @@
+import { Usuario } from './../../models/usuario';
 import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
 import { AuthService } from '../../Services/auth.service';
 import { MdbTableDirective } from 'angular-bootstrap-md';
 import { Router } from "@angular/router";
-
 @Component({
   selector: 'app-management',
   templateUrl: './management.component.html',
   styleUrls: ['./management.component.css']
 })
+
 export class ManagementComponent implements OnInit {
 
-  @ViewChild(MdbTableDirective, { static: true }) mdbTable: MdbTableDirective;
-  userInfo;
-  allUsers;
-  subscriber;
-  allCompanies;
+  @ViewChild(MdbTableDirective, { static: true })
+  mdbTableUsers: MdbTableDirective;
+  userInfo: Usuario = new Usuario();
+  allUsers: Usuario[] = [];
   editField: string;
   numberOfUsers: number;
+  searchText = '';
+  previousUser: string;
+  mayorEdad: string;
+
   headElementsUsers = [
     'ID',
     'Nombres Completos',
     'Mayor de Edad',
     'Nombre Artístico',
     'Género',
-    'Alias',
     'Fecha de Nacimiento',
     'País',
     'Talla de Pantalón',
@@ -36,25 +39,14 @@ export class ManagementComponent implements OnInit {
     'Color de Ojos',
     'Modelo de Coche',
     'Modelo de Moto',
-    'Raza de Mascota',
     'Últimos Trabajos',
     'Número DNI',
     'Número de Seguridad Social',
     'Correo de Contacto',
     'Contraseña',
     'Teléfono de Contacto',
+    'Eliminar',
   ];
-  headElementsCompanies = [
-    'ID',
-    'Nombre de Usuario',
-    'Correo',
-    'Teléfono de Contacto',
-    'Contraseña',
-    'Remove'
-  ];
-
-  searchText = '';
-  previous: string;
 
   constructor(
     public authService: AuthService,
@@ -62,64 +54,88 @@ export class ManagementComponent implements OnInit {
   ) {
   }
 
-  @HostListener('input') oninput() {
-    this.searchItems();
-  }
-
   ngOnInit() {
-    this.authService.getAllCompanies()
-      .subscribe(resp => {
-        this.allCompanies = resp;
-      });
     this.authService.findByToken()
       .subscribe(res => this.userInfo = res);
 
-    /* this.subscriber = this.authService.findByToken().subscribe(
-       res => {
-         this.userInfo = res;
-       });*/
-    this.authService.getAllUsers()
+    this.authService.findUsuariosByTipo([1, 2, 3])
       .subscribe(res => {
         this.allUsers = res;
+        this.mdbTableUsers.setDataSource(this.allUsers);
+        this.previousUser = this.mdbTableUsers.getDataSource();
+
+        this.numberOfUsers = this.allUsers.length;
+        for (const user of this.allUsers) {
+          if (user.edad > 18) {
+            this.mayorEdad = 'SI';
+          } else {
+            this.mayorEdad = 'NO';
+          }
+        }
       });
-    for (const user of this.allUsers) {
-      if (user.mayorEdad) {
-        user.mayorEdad = 'SI';
-      } else {
-        user.mayorEdad = 'NO';
-      }
-    }
-    this.mdbTable.setDataSource(this.allUsers);
-    this.previous = this.mdbTable.getDataSource();
   }
 
+  /***BUSQUEDA EN LISTAS */
 
-  searchItems() {
-    const prev = this.mdbTable.getDataSource();
+  @HostListener('input') oninput() {
+    this.buscarUsuarios();
+
+  }
+
+  buscarUsuarios() {
+
+    const prev = this.mdbTableUsers.getDataSource();
 
     if (!this.searchText) {
-      this.mdbTable.setDataSource(this.previous);
-      this.allUsers = this.mdbTable.getDataSource();
+      this.mdbTableUsers.setDataSource(this.previousUser);
+      this.allUsers = this.mdbTableUsers.getDataSource();
     }
 
     if (this.searchText) {
-      this.allUsers = this.mdbTable.searchLocalDataBy(this.searchText);
-      this.mdbTable.setDataSource(prev);
+      this.allUsers = this.mdbTableUsers.searchLocalDataBy(this.searchText);
+      this.mdbTableUsers.setDataSource(prev);
     }
   }
-  updateList(id: number, property: string, event: any) {
-    const editField = event.target.textContent;
-    this.allCompanies[id][property] = editField;
+
+
+
+  /**EDICIONES RAPIDAS */
+  updateListUsers(id: number, property: string, event: any) {
+    const editField = event.target.ttextContent;
+    this.allUsers[id][property] = editField;
+
+    let usuarioEdit: Usuario = this.allUsers[id];
+
+    this.authService.editUser(usuarioEdit)
+      .subscribe(
+        res => {
+          console.log(res);
+          usuarioEdit = res;
+        }
+      );
+    console.log('ID EDITABLE: ' + usuarioEdit.username);
   }
 
-  removeCompany(userId) {
-    this.allUsers.splice(userId, 1);
+  /**IR A EDICION DE USUARIO */
+  editarUser(idList: any, userId: any) {
+    localStorage.setItem('useredit', userId);
+    this.router.navigate(['/useredit']);
+  }
+
+  /**ELIMINACION */
+  removeUser(idList: any, userId: any) {
+    this.allUsers.splice(idList, 1);
     this.authService.deleteUser(userId).subscribe(res => console.log(res));
   }
 
   changeValue(id: number, property: string, event: any) {
     this.editField = event.target.textContent;
+
+    console.log('change value: ' + this.editField);
   }
 
 
+
 }
+
+

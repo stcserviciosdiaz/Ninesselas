@@ -21,15 +21,21 @@ export class AuthService {
     this.urlGenerica = 'https://servicio-login.herokuapp.com/';
   }
 
-
-
   /********  USUARIO *******/
   finByIdUsuario(id): Observable<any> {
     return this.http.get(this.urlGenerica + 'servicio-login/ver/' + id);
   }
 
+  findUsuariosByTipo(expresion): Observable<any> {
+    return this.http.post(this.urlGenerica + 'servicio-login/listaByTipoUser', expresion);
+  }
+
   editUser(user): Observable<any> {
-    return this.http.put(this.urlGenerica + 'servicio-login/editar/', user);
+    return this.http.put(this.urlGenerica + 'servicio-login/editar/' + user.idUser, user);
+  }
+
+  deleteUser(id): Observable<any> {
+    return this.http.delete(this.urlGenerica + 'servicio-login/eliminar/' + id);
   }
 
   signup2(newUser): Observable<any> {
@@ -148,6 +154,9 @@ export class AuthService {
   saveTalla(talla): Observable<any> {
     return this.http.post<any>(this.urlGenerica + 'servicio-tallas/crear', talla);
   }
+  editTalla(talla, idTalla): Observable<any> {
+    return this.http.post<any>(this.urlGenerica + 'servicio-tallas/editar/' + idTalla, talla);
+  }
   /******* FIN TALLAS *********/
 
   /********  COCHE *******/
@@ -199,8 +208,6 @@ export class AuthService {
     return this.http.get(this.urlGenerica + 'servicio-login/' + 'listar');
   }
 
-  deleteUser(id): Observable<any> {
-    return this.http.delete(this.urlGenerica + 'servicio-login/eliminar/' + id);
-  }
+
 
 }

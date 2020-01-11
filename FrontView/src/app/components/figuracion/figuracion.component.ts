@@ -66,7 +66,6 @@ export class FiguracionComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router
   ) {
-    this.createRegisterForm();
 
   }
 
@@ -86,40 +85,41 @@ export class FiguracionComponent implements OnInit {
   urlTatuajes: string;
   urlManos: string;
   urlCuerpoEntero: string;
- /*  urlArtistico: string; */
+  /*  urlArtistico: string; */
 
 
 
   /*******variables para combos********/
-  etnias: etnia[];
-  baile: bailarin[];
-  estilosBaile: estilosBaile[];
-  cantante: cantante[];
-  estilosCanto: estilosCanto[];
-  habilidadess: habilidades[];
-  idiomas: idiomas[];
-  deportista: deportista[];
-  deportes: deportes[];
+  etnias: etnia[] = [];
+  baile: bailarin[] = [];
+  estilosBaile: estilosBaile[] = [];
+  cantante: cantante[] = [];
+  estilosCanto: estilosCanto[] = [];
+  habilidadess: habilidades[] = [];
+  idiomas: idiomas[] = [];
+  deportista: deportista[] = [];
+  deportes: deportes[] = [];
   typecarnet: string[] = ['Tipo A', 'Tipo B', 'Tipo C', 'Tipo D', 'Tipo BTP'];
   //selected
   actorSelect;
   tipoCarnetSelect;
-  usuario: Usuario;
-  etniaSelect: etnia;
-  baileSelect: bailarin;
-  estilosBaileSelect: estilosBaile;
-  cantanteSelect: cantante;
-  estilosCantoSelect: estilosCanto;
-  habilidadessSelect: habilidades;
-  idiomasSelect: idiomas;
-  deportistaSelect: deportista;
-  deporteSelect: deportes;
+  usuario: Usuario = new Usuario();
+  etniaSelect: etnia = new etnia();
+  baileSelect: bailarin = new bailarin();
+  estilosBaileSelect: estilosBaile = new estilosBaile();
+  cantanteSelect: cantante = new cantante();
+  estilosCantoSelect: estilosCanto = new estilosCanto();
+  habilidadessSelect: habilidades = new habilidades();
+  idiomasSelect: idiomas = new idiomas();
+  deportistaSelect: deportista = new deportista();
+  deporteSelect: deportes = new deportes();
   /*****fin variables combos*****/
   actorForm: FormGroup;
   submitted = false;
 
   /**Inicializacion */
   ngOnInit() {
+    this.createRegisterForm();
     this.llenarCombos();
   }
 
@@ -272,6 +272,7 @@ export class FiguracionComponent implements OnInit {
       avatar: [''],
       tattoos: [''],
       manos: [''],
+      typecarnet:[''],
     }
       , {
         validator: MustMatch('password', 'confirmPassword')
@@ -526,8 +527,8 @@ export class FiguracionComponent implements OnInit {
     task = this.storage.upload(this.urlCuerpoEntero, this.fileCuerpoEntero);
 
     /**subir foto artistica */
-   /*  this.urlArtistico = 'figuracion/' + idUser + '/artistico-' + this.fileArtistico.name;
-    task = this.storage.upload(this.urlArtistico, this.fileArtistico); */
+    /*  this.urlArtistico = 'figuracion/' + idUser + '/artistico-' + this.fileArtistico.name;
+     task = this.storage.upload(this.urlArtistico, this.fileArtistico); */
 
     /**subir coche */
     this.urlCoche = 'figuracion/' + idUser + '/coche-' + this.fileCoche.name;
