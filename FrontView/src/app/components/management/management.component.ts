@@ -4,6 +4,26 @@ import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
 import { AuthService } from '../../Services/auth.service';
 import { MdbTableDirective } from 'angular-bootstrap-md';
 import { Router } from "@angular/router";
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { NgxSmartModalService } from 'ngx-smart-modal';
+export function MustMatch(controlName: string, matchingControlName: string) {
+  return (formGroup: FormGroup) => {
+    const control = formGroup.controls[controlName];
+    const matchingControl = formGroup.controls[matchingControlName];
+
+    if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+      // return if another validator has already found an error on the matchingControl
+      return;
+    }
+
+    // set error on matchingControl if validation fails
+    if (control.value !== matchingControl.value) {
+      matchingControl.setErrors({ mustMatch: true });
+    } else {
+      matchingControl.setErrors(null);
+    }
+  };
+}
 @Component({
   selector: 'app-management',
   templateUrl: './management.component.html',
@@ -16,19 +36,14 @@ export class ManagementComponent implements OnInit {
   mdbTableUsers: MdbTableDirective;
   userInfo: Usuario = new Usuario();
   allUsers: Usuario[] = [];
-  tallaVacia: tallas = {
-    "idTalla": 3,
-    "camisaTalla": "N/A",
-    "chaquetaTalla": "N/A",
-    "pantalonTalla": "N/A",
-    "pieTalla": "N/A"
-  };
   editField: string;
   numberOfUsers: number;
+  idUserToUpdatePass: number;
+  passtoUpdate: string;
   searchText = '';
   previousUser: string;
   mayorEdad: string;
-
+  validatingForm: FormGroup;
   headElementsUsers = [
     'ID',
     'Nombres Completos',
@@ -56,14 +71,22 @@ export class ManagementComponent implements OnInit {
   ];
 
   constructor(
+    public ngxSmartModalService: NgxSmartModalService,
+    private formBuilder: FormBuilder,
     public authService: AuthService,
     private router: Router,
   ) {
   }
 
   ngOnInit() {
+    this.iniciarFormCambioPass();
+
     this.authService.findByToken()
-      .subscribe(res => this.userInfo = res);
+      .subscribe(res => {
+        this.userInfo = res;
+      }, (err) => {
+        this.userInfo = new Usuario();
+      });
 
     this.authService.findUsuariosByTipo([1, 2, 3])
       .subscribe(res => {
@@ -71,23 +94,26 @@ export class ManagementComponent implements OnInit {
         this.mdbTableUsers.setDataSource(this.allUsers);
         this.previousUser = this.mdbTableUsers.getDataSource();
         this.numberOfUsers = this.allUsers.length;
-
         this.llenaListasVacias();
 
       });
   }
 
-  /***BUSQUEDA EN LISTAS */
-
-  @HostListener('input') oninput() {
-    this.buscarUsuarios();
-
+  /**Iniciar FORM CAMBIO PASS */
+  iniciarFormCambioPass() {
+    this.validatingForm = this.formBuilder.group({
+      modalFormRegisterEmail: new FormControl('', Validators.email),
+      modalFormRegisterPassword: new FormControl('', Validators.required),
+      modalFormRegisterRepeatPassword: new FormControl('', Validators.required)
+    }
+      , {
+        validator: MustMatch('modalFormRegisterPassword', 'modalFormRegisterRepeatPassword')
+      });
   }
 
-  obtenerModeloCoche(lista: any): string {
-    if (lista.length === 0) {
-      return 'N/A';
-    } else { return lista[0].modeloCoche; }
+  /***BUSQUEDA EN LISTAS */
+  @HostListener('input') oninput() {
+    this.buscarUsuarios();
   }
 
   llenaListasVacias() {
@@ -120,20 +146,35 @@ export class ManagementComponent implements OnInit {
 
 
   buscarUsuarios() {
-
     const prev = this.mdbTableUsers.getDataSource();
-
     if (!this.searchText) {
       this.mdbTableUsers.setDataSource(this.previousUser);
       this.allUsers = this.mdbTableUsers.getDataSource();
     }
-
     if (this.searchText) {
       this.allUsers = this.mdbTableUsers.searchLocalDataBy(this.searchText);
       this.mdbTableUsers.setDataSource(prev);
     }
   }
 
+  /**Update PasswordUsuario */
+  pasarUsuarioUpdatePassword(user) {
+    this.validatingForm.controls.modalFormRegisterEmail.setValue(user.email);
+    this.idUserToUpdatePass = user.idUser;
+  }
+  actualizarPassword() {
+    if (this.validatingForm.invalid) {
+      this.ngxSmartModalService.create('Password', 'Contraseñas no coinciden').open();
+      return;
+    }
+    this.passtoUpdate = this.validatingForm.get('modalFormRegisterPassword').value;
+    this.authService.editUserPassword(this.passtoUpdate, this.idUserToUpdatePass)
+      .subscribe(
+        res => {
+          this.ngxSmartModalService.create('Password', 'Clave Actualizada Exitosamente').open();
+        }
+      );
+  }
 
 
   /**EDICIONES RAPIDAS */
@@ -150,13 +191,21 @@ export class ManagementComponent implements OnInit {
           usuarioEdit = res;
         }
       );
-    console.log('ID EDITABLE: ' + usuarioEdit.username);
   }
 
   /**IR A EDICION DE USUARIO */
-  editarUser(idList: any, userId: any) {
-    localStorage.setItem('useredit', userId);
-    this.router.navigate(['/useredit']);
+  editarUser(idList: any, user: any) {
+    localStorage.setItem('useredit', user.idUser);
+    if (user.idType.nombres === 'FIGURACION') {
+      this.router.navigate(['/figuracionedit']);
+      localStorage.setItem('figuracionedit', user.idUser);
+    } else if (user.idType.nombres === 'ACTOR') {
+      this.router.navigate(['/actoredit']);
+      localStorage.setItem('actoredit', user.idUser);
+    } else if (user.idType.nombres === 'NIÑOS') {
+      this.router.navigate(['/ninioedit']);
+      localStorage.setItem('ninioedit', user.idUser);
+    }
   }
 
   /**ELIMINACION */
@@ -167,11 +216,21 @@ export class ManagementComponent implements OnInit {
 
   changeValue(id: number, property: string, event: any) {
     this.editField = event.target.textContent;
-
-    console.log('change value: ' + this.editField);
   }
 
 
+  /***GETTERS */
+  get modalFormRegisterEmail() {
+    return this.validatingForm.get('modalFormRegisterEmail');
+  }
+
+  get modalFormRegisterPassword() {
+    return this.validatingForm.get('modalFormRegisterPassword');
+  }
+
+  get modalFormRegisterRepeatPassword() {
+    return this.validatingForm.get('modalFormRegisterRepeatPassword');
+  }
 
 }
 

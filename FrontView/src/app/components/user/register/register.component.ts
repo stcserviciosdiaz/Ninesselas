@@ -86,6 +86,7 @@ export class RegisterComponent implements OnInit {
       altura: 0.0,
       apellidos: "",
       carnetConducir: "",
+      tipoCarnetConducir: "",
       codigoPostal: "",
       colorOjos: "",
       colorPelo: "",

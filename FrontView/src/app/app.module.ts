@@ -1,3 +1,5 @@
+import { ActorEditComponent } from './components/management/actor-edit/actor-edit.component';
+import { FiguracionEditComponent } from './components/management/figuracion-edit/figuracion-edit.component';
 import { ManagementCompanyComponent } from './components/management/management-company/management-company.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -69,7 +71,9 @@ import { DatePipe } from './pipes/date/date.pipe';
 import { UserEditComponent } from './components/management/user-edit/user-edit.component';
 @NgModule({
   declarations: [
+    ActorEditComponent,
     UserEditComponent,
+    FiguracionEditComponent,
     ManagementCompanyComponent,
     AppComponent,
     HomeComponent,

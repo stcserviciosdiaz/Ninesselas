@@ -34,6 +34,10 @@ export class AuthService {
     return this.http.put(this.urlGenerica + 'servicio-login/editar/' + user.idUser, user);
   }
 
+  editUserPassword(password, idUser): Observable<any> {
+    return this.http.put(this.urlGenerica + 'servicio-login/actualizaPassword/' + idUser, password);
+  }
+
   deleteUser(id): Observable<any> {
     return this.http.delete(this.urlGenerica + 'servicio-login/eliminar/' + id);
   }
@@ -155,7 +159,7 @@ export class AuthService {
     return this.http.post<any>(this.urlGenerica + 'servicio-tallas/crear', talla);
   }
   editTalla(talla, idTalla): Observable<any> {
-    return this.http.post<any>(this.urlGenerica + 'servicio-tallas/editar/' + idTalla, talla);
+    return this.http.put<any>(this.urlGenerica + 'servicio-tallas/editar/' + idTalla, talla);
   }
   /******* FIN TALLAS *********/
 
@@ -163,11 +167,19 @@ export class AuthService {
   saveCoche(coche): Observable<any> {
     return this.http.post<any>(this.urlGenerica + 'servicio-coche/crear', coche);
   }
+
+  editCoche(coche): Observable<any> {
+    return this.http.put<any>(this.urlGenerica + 'servicio-coche/editar/' + coche.idCoche, coche);
+  }
   /******* FIN COCHE *********/
 
   /********  MOTO *******/
   saveMoto(moto): Observable<any> {
     return this.http.post<any>(this.urlGenerica + 'servicio-moto/crear', moto);
+  }
+
+  editMoto(moto): Observable<any> {
+    return this.http.put<any>(this.urlGenerica + 'servicio-moto/editar/' + moto.idMoto, moto);
   }
   /******* FIN MOTO *********/
 
@@ -175,11 +187,19 @@ export class AuthService {
   saveTatuajes(tatuajes): Observable<any> {
     return this.http.post<any>(this.urlGenerica + 'servicio-fotosTatuajes/crear', tatuajes);
   }
+
+  editTatuajes(tatuajes): Observable<any> {
+    return this.http.put<any>(this.urlGenerica + 'servicio-fotosTatuajes/editar/' + tatuajes.idFotoTatuaje, tatuajes);
+  }
   /******* FIN TATUAJES *********/
 
   /********  MANOS *******/
   saveManos(manos): Observable<any> {
     return this.http.post<any>(this.urlGenerica + 'servicio-fotosManos/crear', manos);
+  }
+
+  editManos(manos): Observable<any> {
+    return this.http.post<any>(this.urlGenerica + 'servicio-fotosManos/editar/' + manos.idFotoMano, manos);
   }
   /******* FIN MANOS *********/
 

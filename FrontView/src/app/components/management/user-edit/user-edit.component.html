@@ -8,7 +8,7 @@
           <div>
           </div>
 
-          <a href="" class="white-text mx-3">EDICION DE USUARIO</a>
+          <a href="" class="white-text mx-3">EDICION DE USUARIO TIPO NIÑO</a>
 
           <div>
           </div>
@@ -24,20 +24,20 @@
 
 
 
-                  <div class="form-group">
-                    <label class="control-label">Foto de Perfil</label>
-                    <input type="file" (change)="onAvatarSelected($event)" formControlName="avatar"><br>
-                  </div>
-                  <div class="form-group">
-                    <!-- cuerpo entero -->
-                    <label class="control-label">Foto cuerpo entero</label>
-                    <input type="file" (change)="onFileCuerpoEnteroSelected($event)" formControlName="avatar"><br>
-                  </div>
-                  <div class="form-group">
-                    <!-- foto artistico -->
-                    <label class="control-label">Foto artistico</label>
-                    <input type="file" (change)="onFileArtisticoSelected($event)" formControlName="avatar"><br>
-                  </div>
+                <div class="form-group">
+                  <label class="control-label">Foto de Perfil</label>
+                  <input type="file" (change)="onAvatarSelected($event)"><br>
+                </div>
+                <div class="form-group">
+                  <!-- cuerpo entero -->
+                  <label class="control-label">Foto cuerpo entero</label>
+                  <input type="file" (change)="onFileCuerpoEnteroSelected($event)"><br>
+                </div>
+                <div class="form-group">
+                  <!-- foto artistico -->
+                  <label class="control-label">Foto artistico</label>
+                  <input type="file" (change)="onFileArtisticoSelected($event)"><br>
+                </div>
 
 
                 <div class="form-group">
@@ -79,30 +79,9 @@
                   </select>
                 </div>
 
-                <div class="form-group">
-                  <label>Contraseña</label>
-                  <input type="password" (keypress)="numberOnly($event)" class="form-control" formControlName="password"
-                    placeholder="" [ngClass]="{ 'is-invalid': submitted && childForm.controls.password.errors }">
-                  <div *ngIf="submitted && childForm.controls.password.errors" class="invalid-feedback">
-                    <div *ngIf="childForm.controls.password.errors.required">La contraseña es requerida</div>
-                    <div *ngIf="childForm.controls.password.errors.minlength">La contraseña debe tener al menos 6
-                      caracteres</div>
-                  </div>
-                </div>
 
-                <div class="form-group">
-                  <label>Confirma contraseña</label>
-                  <input type="password" (keypress)="numberOnly($event)" class="form-control"
-                    formControlName="confirmPassword" placeholder=""
-                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.confirmPassword.errors }" />
-                  <div *ngIf="submitted && childForm.controls.confirmPassword.errors" class="invalid-feedback">
-                    <div *ngIf="childForm.controls.confirmPassword.errors.required">Confirme que se requiere
-                      contraseña
-                    </div>
-                    <div *ngIf="childForm.controls.confirmPassword.errors.mustMatch">Las contraseñas deben coincidir
-                    </div>
-                  </div>
-                </div>
+
+
 
                 <fieldset class="form-group">
                   <!-- Sexo -->
@@ -128,8 +107,7 @@
                 <div class="form-group">
                   <!-- ¿De qué grupo étnico se considera? -->
                   <label class="control-label">Raza</label>
-                  <select forControlName="etnias" class="form-control" [(ngModel)]="etniaSelect"
-                    [ngModelOptions]="{standalone: true}">
+                  <select class="form-control" [(ngModel)]="etniaSelect" [ngModelOptions]="{standalone: true}">
                     <option [ngValue]="0">Seleccione...</option>
                     <option [ngValue]="i" selected *ngFor="let i of etnias">{{i.nombreEtnia}}</option>
                   </select>
@@ -293,27 +271,37 @@
                 </div>
 
                 <div class="form-group">
-                  <label>Dirección</label>
-                  <input type="text" class="d-inline form-control" forControlName="direccion" placeholder="">
+                  <!-- Direccion -->
+                  <label class="control-label">Dirección</label>
+                  <input type="text" class="form-control" formControlName="direccion" placeholder=""
+                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.direccion.errors }">
+                  <div *ngIf="submitted && childForm.controls.direccion.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.direccion.errors.required">La dirección es requerida
+                    </div>
+                  </div>
                 </div>
+
+
                 <div class="form-row">
                   <div class="form-group col-md-6">
                     <!-- Localidad -->
                     <label class="control-label">Localidad</label>
-                    <input type="text" class="form-control" forControlName="localidad" placeholder="">
+                    <input type="text" class="form-control" formControlName="localidad" placeholder=""
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.localidad.errors }">
                   </div>
                   <div class="form-group col-md-4">
                     <!-- Provincia -->
                     <label class="control-label">Provincia</label>
-                    <input type="text" class="form-control" forControlName="provincia" placeholder="">
+                    <input type="text" class="form-control" formControlName="provincia" placeholder="">
                   </div>
                   <div class="form-group col-md-2">
                     <!-- Codigo Postal -->
                     <label for="inputZip">Codigo Postal</label>
-                    <input type="text" (keypress)="check($event)" class="form-control" forControlName="codpostal"
-                      placeholder="#####">
+                    <input type="text" (keypress)="check($event)" class="form-control" formControlName="codpostal"
+                      placeholder="">
                   </div>
                 </div>
+
 
                 <div class="form-group">
                   <!-- Numero DNI del niño-->
@@ -329,7 +317,7 @@
                 <div class="form-group">
                   <!-- Copia del Numero DNI del niño -->
                   <label>Copia del Numero DNI del niño</label>
-                  <input type="file" (change)="copyDNIkidSelected($event)" formControlName="copyDNIkid">
+                  <input type="file" (change)="copyDNIkidSelected($event)">
                 </div>
 
                 <div class="form-group">
@@ -345,7 +333,7 @@
                 <div class="form-group">
                   <!-- Copia numero seguridad social -->
                   <label>Copia numero seguridad social del niño</label>
-                  <input type="file" (change)="copySocialNumberSelected($event)" formControlName="copySocialNumber">
+                  <input type="file" (change)="copySocialNumberSelected($event)">
                 </div>
 
                 <div class="form-group">
@@ -361,7 +349,7 @@
                 <div class="form-group">
                   <!-- Copia del DNI del padre -->
                   <label>Copia del DNI del padre</label>
-                  <input type="file" (change)="copyDNIFatherSelected($event)" formControlName="copyDNIFather">
+                  <input type="file" (change)="copyDNIFatherSelected($event)">
                 </div>
 
 
@@ -389,11 +377,8 @@
                 <div class="form-group">
                   <!-- Copia del DNI de la madre -->
                   <label>Copia del DNI de la madre</label>
-                  <input type="file" (change)="copyDNIMotherSelected($event)" formControlName="CopyDNIMother"
-                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.CopyDNIMother.errors }">
-                  <div *ngIf="submitted && childForm.controls.CopyDNIMother.errors" class="invalid-feedback">
-                    <div *ngIf="childForm.controls.CopyDNIMother.errors.required">La copia es requerida</div>
-                  </div>
+                  <input type="file" (change)="copyDNIMotherSelected($event)">
+
                 </div>
 
                 <div class="form-group">
@@ -410,14 +395,13 @@
                 <div class="form-group">
                   <!-- Libro de familiar -->
                   <label>Libro de familiar</label>
-                  <input type="file" (change)="onFamilyBookSelected($event)" formControlName="libroFamilia">
+                  <input type="file" (change)="onFamilyBookSelected($event)">
                 </div>
 
                 <div class="form-group">
                   <!-- Deporte -->
                   <label class="control-label">Deporte</label>
-                  <select forControlName="deportista" class="form-control" [(ngModel)]="deportistaSelect"
-                    [ngModelOptions]="{standalone: true}">
+                  <select class="form-control" [(ngModel)]="deportistaSelect" [ngModelOptions]="{standalone: true}">
                     <option selected>Seleccione...</option>
                     <option [ngValue]="i" *ngFor="let i of deportista">{{i.nombreDeportista}}</option>
                   </select>
@@ -425,8 +409,7 @@
                 <div class="form-group">
                   <!-- Habilidades del deporte-->
                   <label class="control-label">Habilidades del deporte</label>
-                  <select forControlName="deportes" class="form-control" [(ngModel)]="deporteSelect"
-                    [ngModelOptions]="{standalone: true}">
+                  <select class="form-control" [(ngModel)]="deporteSelect" [ngModelOptions]="{standalone: true}">
                     <option selected>Seleccione...</option>
                     <option [ngValue]="i" *ngFor="let i of deportes">{{i.nombreDeporte}}</option>
                   </select>
@@ -440,8 +423,7 @@
                 <div class="form-group">
                   <!-- Baile -->
                   <label class="control-label">Baile</label>
-                  <select forControlName="baile" class="form-control" [(ngModel)]="baileSelect"
-                    [ngModelOptions]="{standalone: true}">
+                  <select class="form-control" [(ngModel)]="baileSelect" [ngModelOptions]="{standalone: true}">
                     <option selected>Seleccione...</option>
                     <option [ngValue]="i" *ngFor="let i of baile">{{i.nombreBailarin}}</option>
                   </select>
@@ -449,8 +431,7 @@
                 <div class="form-group">
                   <!-- Estilos de Baile -->
                   <label class="control-label">Estilos de Baile</label>
-                  <select forControlName="estilosBaile" class="form-control" [(ngModel)]="estilosBaileSelect"
-                    [ngModelOptions]="{standalone: true}">
+                  <select class="form-control" [(ngModel)]="estilosBaileSelect" [ngModelOptions]="{standalone: true}">
                     <option selected>Seleccione...</option>
                     <option [ngValue]="i" *ngFor="let i of estilosBaile">{{i.nombreBaile}}</option>
                   </select>
@@ -464,8 +445,7 @@
                 <div class="form-group">
                   <!-- Musico -->
                   <label class="control-label">Musico</label>
-                  <select forControlName="musico" class="form-control" [(ngModel)]="musicoSelect"
-                    [ngModelOptions]="{standalone: true}">
+                  <select class="form-control" [(ngModel)]="musicoSelect" [ngModelOptions]="{standalone: true}">
                     <option selected>Seleccione...</option>
                     <option [ngValue]="i" *ngFor="let i of musico">{{i.nombreMusico}}</option>
                   </select>
@@ -473,8 +453,7 @@
                 <div *ngIf="musicoSelect.nombreMusico == 'Profesional'" class="form-group">
                   <!-- Instrumentos musical -->
                   <label class="control-label">Instrumentos musical</label>
-                  <select forControlName="instrumentoss" class="form-control" [(ngModel)]="instrumentoSelect"
-                    [ngModelOptions]="{standalone: true}">
+                  <select class="form-control" [(ngModel)]="instrumentoSelect" [ngModelOptions]="{standalone: true}">
                     <option selected>Seleccione...</option>
                     <option [ngValue]="i" *ngFor="let i of instrumentoss">{{i.nombreInstrumento}}</option>
                   </select>
@@ -488,8 +467,7 @@
                 <div class="form-group">
                   <!-- Cantantes -->
                   <label class="control-label">Cantantes</label>
-                  <select forControlName="cantante" class="form-control" [(ngModel)]="cantanteSelect"
-                    [ngModelOptions]="{standalone: true}">
+                  <select class="form-control" [(ngModel)]="cantanteSelect" [ngModelOptions]="{standalone: true}">
                     <option selected>Seleccione...</option>
                     <option [ngValue]="i" *ngFor="let i of cantante">{{i.nombreCantante}}</option>
                   </select>
@@ -497,8 +475,7 @@
                 <div class="form-group">
                   <!-- Estilos de cantos -->
                   <label class="control-label">Estilo de cantos</label>
-                  <select class="form-control" forControlName="estilosCanto" [(ngModel)]="estilosCantoSelect"
-                    [ngModelOptions]="{standalone: true}">
+                  <select class="form-control" [(ngModel)]="estilosCantoSelect" [ngModelOptions]="{standalone: true}">
                     <option selected>Seleccione...</option>
                     <option [ngValue]="i" *ngFor="let i of estilosCanto">{{i.nombreEstiloCanto}}</option>
                   </select>
@@ -512,8 +489,7 @@
                 <div class="form-group">
                   <!-- Habilidades -->
                   <label class="control-label">Habilidades</label>
-                  <select forControlName="habilidadess" class="form-control" [(ngModel)]="habilidadessSelect"
-                    [ngModelOptions]="{standalone: true}">
+                  <select class="form-control" [(ngModel)]="habilidadessSelect" [ngModelOptions]="{standalone: true}">
                     <option selected>Seleccione...</option>
                     <option [ngValue]="i" *ngFor="let i of habilidadess">{{i.nombreHabilidad}}</option>
                   </select>
@@ -527,8 +503,7 @@
                 <div class="form-group">
                   <!-- Idiomas -->
                   <label class="control-label">Idiomas</label>
-                  <select forControlName="idiomas" class="form-control" [(ngModel)]="idiomasSelect"
-                    [ngModelOptions]="{standalone: true}">
+                  <select class="form-control" [(ngModel)]="idiomasSelect" [ngModelOptions]="{standalone: true}">
                     <option selected>Seleccione...</option>
                     <option [ngValue]="i" *ngFor="let i of idiomas">{{i.nombreIdioma}}</option>
                   </select>
@@ -592,12 +567,7 @@
             </div>
           </div>
         </div>
-        <div class="modal-footer">
-          ¿Ya tienes cuenta?
-          <a routerLink="/login" class="link-primary">
-            Entrar
-          </a>
-        </div>
+
       </div>
     </div>
   </div>

@@ -326,6 +326,7 @@ export class FiguracionComponent implements OnInit {
       apellidos: newUserObject.apellidos,
       bilingue: newUserObject.bilingue,
       carnetConducir: newUserObject.carnetConducir,
+      tipoCarnetConducir: this.tipoCarnetSelect,
       codigoPostal: newUserObject.codpostal,
       colorOjos: newUserObject.colorOjos,
       colorPelo: newUserObject.colorPelo,
@@ -364,7 +365,7 @@ export class FiguracionComponent implements OnInit {
       videobook: '',
       instrumentoList: [],
       estilosCantoList: [this.estilosCantoSelect],
-      deporteList: [],
+      deporteList: [this.deporteSelect],
       estiloBaileList: [this.estilosBaileSelect],
       idiomasList: [this.idiomasSelect],
       habilidadesList: [this.habilidadessSelect],
@@ -380,11 +381,7 @@ export class FiguracionComponent implements OnInit {
         description: 'FIGURACION',
         nombres: 'FIGURACION'
       },
-      idDeportista: {
-        idDeportista: 1,
-        descripcionDeportista: 'NO APLICA',
-        nombreDeportista: 'NO APLICA'
-      },
+      idDeportista: this.deportistaSelect,
       idMusico: {
         idMusico: 1,
         descipcionMusico: 'NO APLICA',

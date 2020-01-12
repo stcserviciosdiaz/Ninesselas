@@ -25,6 +25,7 @@ export class Usuario {
   apellidos: string;
   bilingue: string;
   carnetConducir: string;
+  tipoCarnetConducir: string;
   codigoPostal: string;
   colorOjos: string;
   colorPelo: string;

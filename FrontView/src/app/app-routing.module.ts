@@ -1,3 +1,5 @@
+import { ActorEditComponent } from './components/management/actor-edit/actor-edit.component';
+import { FiguracionEditComponent } from './components/management/figuracion-edit/figuracion-edit.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
@@ -40,8 +42,18 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'useredit',
+    path: 'ninioedit',
     component: UserEditComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'figuracionedit',
+    component: FiguracionEditComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'actoredit',
+    component: ActorEditComponent,
     canActivate: [AuthGuard]
   },
   {
