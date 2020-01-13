@@ -1,0 +1,43 @@
+.bg-about{
+    background-image: url(/assets/img/sliderview/slider08-min.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100%;
+}
+.small-sm {
+    font-size: 13px;
+    line-height: 24px;
+}
+.about-list {
+    list-style-type: none;
+    position: relative;
+    float: left;
+}
+.fl {
+    float: left;
+    width: 100%;
+}
+.btn-wrap {
+    position: relative;
+    display: inline-block;
+}
+.h0-md {
+    height: 0px;
+}
+.h50-xs {
+    height: 50px;
+}
+.h60-md {
+    height: 60px;
+}
+.h30-xs {
+    height: 30px;
+}
+.h20-xs {
+    height: 20px;
+}
+.empty-space {
+    position: relative;
+    display: block;
+}

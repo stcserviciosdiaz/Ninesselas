@@ -354,15 +354,6 @@
                   </div>
                 </div>
 
-                <!-- Eres actor-->
-                <!-- <div class="form-group">
-                  <label class="control-label">Eres Actor</label>
-                  <select forControlName="actor" class="form-control" [(ngModel)]="actorSelect"
-                    [ngModelOptions]="{standalone: true}">
-                    <option [ngValue]="" selected>Seleccione...</option>
-                    <option [ngValue]="i.name" *ngFor="let i of actor">{{i.name}}</option>
-                  </select>
-                </div> -->
                 <div class="form-group">
                   <!-- Link de VideoBook -->
                   <label class="control-label">Link de VideoBook</label>
@@ -417,14 +408,14 @@
                 </div>
               </div>
               <!-- Tienes tatuajes? -->
-              <!--  <div>
+              <div>
                   <label class="control-label">Tienes tatuajes?</label>
                   <select class="form-control">
                     <option [ngValue]="0">Seleccione...</option>
                     <option>Si</option>
                     <option>No</option>
                   </select>
-                </div> -->
+                </div>
                 <!-- Adjuntar fotos de tatuaje-->
                 <div class="form-group">
                   <label class="control-label">Fotos Tatuajes</label>
@@ -433,20 +424,20 @@
                 </div>
 
                 <!-- Eres modelo de manos? -->
-                <!--  <div>
+                <div>
                   <label class="control-label">Eres modelo de manos?</label>
                   <select class="form-control">
                     <option [ngValue]="0">Seleccione...</option>
                     <option>Si</option>
                     <option>No</option>
                   </select>
-                </div> -->
+                </div>
                 <!-- Link de trabajos -->
-                <!-- <div class="form-group">
+                <div class="form-group">
                     <label class="control-label">Link de trabajos</label>
                     <input type="text" class="form-control" id="" formControlName=""
                       placeholder="https://www.Trabajos.com">
-                </div> -->
+                </div>
                 <!-- Adjunta fotos Profesionales -->
                 <div class="form-group">
                   <!-- Modelos de manos -->
@@ -580,6 +571,7 @@
                     <option [ngValue]="i" *ngFor="let i of idiomas">{{i.nombreIdioma}}</option>
                   </select>
                 </div>
+
                 <div *ngIf="idiomasSelect.nombreIdioma == 'Otros'" class="form-group">
                   <!-- Espesifique otro Idioma -->
                   <label class="control-label">Espesifique otro Idioma</label>
@@ -587,10 +579,10 @@
                 </div>
 
                 <!-- Bilingue -->
-                <!-- <div class="form-group">
+                <div class="form-group">
                   <label class="control-label">Bilingue</label>
                   <input type="text" class="form-control" id="bilingue" formControlName="bilingue" placeholder="">
-                </div> -->
+                </div>
 
                 <div class="form-group">
                   <!-- Ultimos trabajos -->

@@ -69,6 +69,7 @@ import { AngularFireModule } from '@angular/fire';
 import { environment } from '../environments/environment';
 import { DatePipe } from './pipes/date/date.pipe';
 import { UserEditComponent } from './components/management/user-edit/user-edit.component';
+import { AboutComponent } from './components/about/about.component';
 @NgModule({
   declarations: [
     ActorEditComponent,
@@ -94,6 +95,7 @@ import { UserEditComponent } from './components/management/user-edit/user-edit.c
     ForgotComponent,
     IsotopeComponent,
     ChildrenComponent,
+    AboutComponent,
   ],
   imports: [
     MatSliderModule,

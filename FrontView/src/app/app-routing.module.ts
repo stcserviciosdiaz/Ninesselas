@@ -18,6 +18,7 @@ import { ForgotComponent } from './components/user/forgot/forgot.component';
 import { ChildrenComponent } from './components/children/children.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { UserEditComponent } from './components/management/user-edit/user-edit.component';
+import { AboutComponent } from './components/about/about.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'actors', component: ActorsComponent, },
   { path: 'children', component: ChildrenComponent, },
   { path: 'privacy', component: PrivacyComponent, },
+  { path: 'about', component: AboutComponent, },
   {
     path: 'company',
     component: CompanyComponent,
