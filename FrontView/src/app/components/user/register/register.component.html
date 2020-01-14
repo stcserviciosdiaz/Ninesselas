@@ -14,7 +14,7 @@
                     <div class="#">
                         <div class="#">
                             <label class="control-label">Nombre de Usuario</label>
-                            <input type="text" class="form-control" formControlName="username" placeholder="Ninesselas" [ngClass]="{ 'is-invalid': submitted &amp;&amp; companyForm.controls.username.errors }">
+                            <input type="text" class="form-control" formControlName="username" placeholder="" [ngClass]="{ 'is-invalid': submitted &amp;&amp; companyForm.controls.username.errors }">
                             <div *ngIf="submitted &amp;&amp; companyForm.controls.username.errors" class="invalid-feedback">
                               <div *ngIf="companyForm.controls.username.errors.required">
                                 Debes poner un nombre de usuario.
@@ -23,7 +23,7 @@
                         </div>
                         <div class="mt-2">
                             <label class="control-label">Correo</label>
-                            <input type="email" class="form-control" formControlName="email" placeholder="info@ninesselas.com" [ngClass]="{ 'is-invalid': submitted &amp;&amp; companyForm.controls.email.errors }">
+                            <input type="email" class="form-control" formControlName="email" placeholder="" [ngClass]="{ 'is-invalid': submitted &amp;&amp; companyForm.controls.email.errors }">
                             <div *ngIf="submitted &amp;&amp; companyForm.controls.email.errors" class="invalid-feedback">
                                 <div *ngIf="companyForm.controls.email.errors.required">Correo electrónico es requerido</div>
                                 <div *ngIf="companyForm.controls.email.errors.email">Email Inválida</div>
@@ -31,7 +31,7 @@
                         </div>
                         <div class="mt-2">
                             <label class="control-label">Teléfono</label>
-                            <input type="text" class="form-control" formControlName="telefono"  placeholder="+23371923789" [ngClass]="{ 'is-invalid': submitted &amp;&amp; companyForm.controls.telefono.errors }" >
+                            <input type="text" class="form-control" formControlName="telefono"  placeholder="" [ngClass]="{ 'is-invalid': submitted &amp;&amp; companyForm.controls.telefono.errors }" >
                             <div *ngIf="submitted &amp;&amp; companyForm.controls.telefono.errors" class="invalid-feedback">
                                 <div *ngIf="companyForm.controls.telefono.errors.required">El teléfono es requerido</div>
                                 <div *ngIf="companyForm.get('telefono').hasError('pattern')">No es un numero de telefono valido</div>

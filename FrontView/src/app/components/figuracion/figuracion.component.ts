@@ -69,6 +69,8 @@ export class FiguracionComponent implements OnInit {
 
   }
 
+  hide = true;
+  
   /***variables para carga de imagenes y archivos */
   fileAvatar: File = null;
   fileCoche: File = null;

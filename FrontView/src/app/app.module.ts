@@ -49,7 +49,9 @@ import {
   ErrorStateMatcher,
   ShowOnDirtyErrorStateMatcher,
   MatTooltipModule,
-  MatButtonToggleModule
+  MatButtonToggleModule,
+  MatCheckboxModule,
+  MatExpansionModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -124,6 +126,8 @@ import { AboutComponent } from './components/about/about.component';
     MatNativeDateModule,
     MatRadioModule,
     MatSelectModule,
+    MatCheckboxModule,
+    MatExpansionModule,
     MatOptionModule,
     MatSlideToggleModule,
     AngularFireModule.initializeApp(environment.firebase),

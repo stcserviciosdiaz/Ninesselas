@@ -1,3 +1,7 @@
+.navbar{
+    position: absolute;
+    z-index: 1;
+}
 li.nav-item {
     list-style: none;
     margin-bottom: 10px;

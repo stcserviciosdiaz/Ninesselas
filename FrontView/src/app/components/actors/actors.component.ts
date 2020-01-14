@@ -59,6 +59,8 @@ export class ActorsComponent implements OnInit {
   disa = false;
   matcher = new MyErrorStateMatcher();
 
+  hide = true;
+
   /***variables para carga de imagenes y archivos */
   fileAvatar: File = null;
   fileCoche: File = null;
@@ -310,7 +312,7 @@ export class ActorsComponent implements OnInit {
       estilocantos: [''],
       instrumentos: [''],
       deporte: [''],
-      apellidos: [''],
+      apellidos: ['',Validators.required],
       bilingue: [''],
       nombreArtistico: [''],
       sexo: [''],
