@@ -57,6 +57,7 @@ export class FiguracionComponent implements OnInit {
 
   @Input() inputArray;
   @ViewChild(TemplateRef, { static: false }) tpl: TemplateRef<any>;
+ 
 
   /**Constructor */
   constructor(
@@ -102,6 +103,8 @@ export class FiguracionComponent implements OnInit {
   deportista: deportista[] = [];
   deportes: deportes[] = [];
   typecarnet: string[] = ['Tipo A', 'Tipo B', 'Tipo C', 'Tipo D', 'Tipo BTP'];
+  tattos: string[] = ['Si','No'];
+  Models: string[] = ['Si','No'];
   //selected
   actorSelect;
   tipoCarnetSelect;
@@ -232,11 +235,13 @@ export class FiguracionComponent implements OnInit {
     this.actorForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       password: ['', [Validators.required, Validators.minLength(5)]],
-      confirmPassword: ['', Validators.required],
+      confirmPassword: ['', Validators.required],   
       username: [''],
       acceptTerms: [false, Validators.required],
       habilidades: [''],
       cantos: [''],
+      Models: [''],
+      tattos: [''],
       estilocantos: [''],
       placebirth: [''],
       idiomasHablados: [''],

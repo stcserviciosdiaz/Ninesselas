@@ -93,6 +93,8 @@ export class ActorsComponent implements OnInit {
   instrumentoss;
   typecarnet: string[] = ['Tipo A', 'Tipo B', 'Tipo C', 'Tipo D', 'Tipo BTP'];
   actor = [{ name: 'Si', value: 0 }, { name: 'No', value: 1 }];
+  tattos: string[] = ['Si','No'];
+  Models: string[] = ['Si','No'];
   //selected
   actorSelect;
   tipoCarnetSelect;
@@ -290,10 +292,12 @@ export class ActorsComponent implements OnInit {
       estilosBaile: [''],
       cantante: [''],
       estilosCanto: [''],
+      tattos: [''],
       habilidadess: [''],
       idiomas: [''],
       deportista: [''],
       deportes: [''],
+      Models: [''],
       musico: [''],
       instrumentoss: [''],
       /****fin variables nuevas */

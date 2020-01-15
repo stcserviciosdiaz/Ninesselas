@@ -400,43 +400,42 @@
                 </div>
               </div>
               <!-- Tienes tatuajes? -->
-              <div>
+              <div class="form-group">
                   <label class="control-label">Tienes tatuajes?</label>
-                  <select class="form-control">
-                    <option [ngValue]="0">Seleccione...</option>
-                    <option>Si</option>
-                    <option>No</option>
+                  <select class="form-control" id="tattos" formControlName="tattos" [(ngModel)]="LinktattoSelect" [ngModelOptions]="{standalone: true}">
+                    <option [ngValue]="0" selected>Seleccione...</option>
+                    <option *ngFor="let i of tattos">{{i}}</option>
                   </select>
                 </div>
                 <!-- Adjuntar fotos de tatuaje-->
-                <div class="form-group">
+                <div *ngIf="LinktattoSelect == 'Si'" class="form-group">
+                  <!-- Fotos Tatuajes -->
                   <label class="control-label">Fotos Tatuajes</label>
                   <input type="file" (change)="onFileTatuajeSelected($event)" multiple="multiple"
                     formControlName="tattoos"><br>
                 </div>
 
-                <!-- Eres modelo de manos? -->
-                <div>
+                 <!-- Eres modelo de manos? -->
+               <div class="form-group">
                   <label class="control-label">Eres modelo de manos?</label>
-                  <select class="form-control">
+                  <select class="form-control" [(ngModel)]="WorkingSelect" [ngModelOptions]="{standalone: true}">
                     <option [ngValue]="0">Seleccione...</option>
-                    <option>Si</option>
-                    <option>No</option>
+                    <option *ngFor="let item of Models">{{item}}</option>
                   </select>
                 </div>
                 <!-- Link de trabajos -->
-                <div class="form-group">
+                <div *ngIf="WorkingSelect == 'Si'" class="form-group">
                     <label class="control-label">Link de trabajos</label>
                     <input type="text" class="form-control" id="" formControlName=""
                       placeholder="https://www.Trabajos.com">
                 </div>
                 <!-- Adjunta fotos Profesionales -->
-                <div class="form-group">
-                  <!-- Modelos de manos -->
-                  <label class="control-label">Modelo de manos profesional</label>
-                  <input type="file" (change)="onFileManoSelected($event)" multiple="multiple"
-                    formControlName="tattoos"><br>
-                </div>
+                <div *ngIf="WorkingSelect == 'Si'" class="form-group">
+                    <!-- Modelos de manos -->
+                    <label class="control-label">Modelo de manos profesional</label>
+                    <input type="file" (change)="onFileManoSelected($event)" multiple="multiple"
+                      formControlName="tattoos"><br>
+                </div>                
 
                 <div class="form-group">
                     <!-- Deporte -->
