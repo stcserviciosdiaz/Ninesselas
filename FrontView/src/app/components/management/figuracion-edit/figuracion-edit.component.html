@@ -376,16 +376,14 @@
                 <div class="form-group">
                   <!-- Fotos Tatuajes -->
                   <label class="control-label">Fotos Tatuajes</label>
-                  <input type="file" (change)="onFileTatuajeSelected($event)" multiple="multiple"
-                   ><br>
+                  <input type="file" (change)="onFileTatuajeSelected($event)" multiple="multiple"><br>
                 </div>
 
                 <!-- Adjunta fotos Profesionales -->
                 <div class="form-group">
                   <!-- Modelos de Manos -->
                   <label class="control-label">Modelo de manos profesional</label>
-                  <input type="file" (change)="onFileManoSelected($event)" multiple="multiple"
-                   ><br>
+                  <input type="file" (change)="onFileManoSelected($event)" multiple="multiple"><br>
                 </div>
 
 
@@ -401,6 +399,15 @@
                 <div class="form-group">
                   <!-- Habilidades del deporte-->
                   <label class="control-label">Habilidades del deporte</label>
+                  <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                    <div *ngFor="let item of deportes" class="col-md-4 col-sm-6 col-12"
+                      style="padding: 5px 0px 5px 0px;">
+                      <mat-checkbox [checked]="isChecked(item.nombreDeporte)"
+                      (change)="OnChange($event, item, 1)">
+                        <span class="itemitle">{{item.nombreDeporte}}</span>
+                      </mat-checkbox>
+                    </div>
+                  </div>
                   <select class="form-control" [(ngModel)]="deporteSelect" [ngModelOptions]="{standalone: true}">
                     <option selected>Seleccione...</option>
                     <option [ngValue]="i" *ngFor="let i of deportes">{{i.nombreDeporte}}</option>

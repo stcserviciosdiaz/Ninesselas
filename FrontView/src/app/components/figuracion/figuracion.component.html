@@ -867,7 +867,7 @@
                     <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
                       <div *ngFor="let item of idiomas" class="col-md-4 col-sm-6 col-12"
                         style="padding: 5px 0px 5px 0px;">
-                        <mat-checkbox (change)="OnChange($event, item, 5)">
+                        <mat-checkbox checked="true" (change)="OnChange($event, item, 5)">
                           <span class="itemitle">{{item.nombreIdioma}}</span>
                         </mat-checkbox>
                       </div>

@@ -81,7 +81,7 @@ export class FiguracionEditComponent implements OnInit {
   habilidadessSelect: habilidades = new habilidades();
   idiomasSelect: idiomas = new idiomas();
   deportistaSelect: deportista = new deportista();
-  deporteSelect: deportes = new deportes();
+  deporteSelect: deportes []=[];
   /*****fin variables combos*****/
 
   @ViewChild(TemplateRef, { static: false }) tpl: TemplateRef<any>;
@@ -180,7 +180,7 @@ export class FiguracionEditComponent implements OnInit {
   pasarEntidadesSelect() {
     this.etniaSelect = this.usuario.idEtnia;
     this.deportistaSelect = this.usuario.idDeportista;
-    this.deporteSelect = this.usuario.deporteList[0];
+    this.deporteSelect = this.usuario.deporteList;
     this.baileSelect = this.usuario.idBailarin;
     this.estilosBaileSelect = this.usuario.estiloBaileList[0];
     this.cantanteSelect = this.usuario.idCantante;
@@ -272,6 +272,59 @@ export class FiguracionEditComponent implements OnInit {
         this.musico = resp;
       });
 
+  }
+
+  isChecked(id): boolean {
+    const valor = this.deporteSelect.find(x => x.nombreDeporte === id);
+    if (valor)
+      return true;
+    else return false;
+  }
+
+  OnChange($event, item, id) {
+    console.log($event);
+    console.log(item);
+    $event.source.focus();
+
+    /**habilidades deporte 1*/
+    if (id === 1) {
+      if ($event.checked) {
+        this.deporteSelect.push(item);
+      } else {
+        const index: number = this.deporteSelect.indexOf(item);
+        this.deporteSelect.splice(index, 1);
+      }
+    } /*else if (id === 2) {
+      if ($event.checked) {
+        this.estilosBaileSelect.push(item);
+      } else {
+        const index: number = this.estilosBaileSelect.indexOf(item);
+        this.estilosBaileSelect.splice(index, 1);
+      }
+    } else if (id === 3) {
+      if ($event.checked) {
+        this.estilosCantoSelect.push(item);
+      } else {
+        const index: number = this.estilosCantoSelect.indexOf(item);
+        this.estilosCantoSelect.splice(index, 1);
+      }
+    } else if (id === 4) {
+      if ($event.checked) {
+        this.habilidadessSelect.push(item);
+      } else {
+        const index: number = this.habilidadessSelect.indexOf(item);
+        this.habilidadessSelect.splice(index, 1);
+      }
+    } else if (id === 5) {
+      if ($event.checked) {
+        this.idiomasSelect.push(item);
+      } else {
+        const index: number = this.idiomasSelect.indexOf(item);
+        this.idiomasSelect.splice(index, 1);
+      }
+    }*/
+
+    //MatCheckboxChange {checked,MatCheckbox}
   }
 
   actualizarTalla(idUser, idTalla) {
@@ -410,7 +463,7 @@ export class FiguracionEditComponent implements OnInit {
       videobook: 'N/A',
       instrumentoList: [],
       estilosCantoList: [this.estilosCantoSelect],
-      deporteList: [this.deporteSelect],
+      deporteList: this.deporteSelect,
       estiloBaileList: [this.estilosBaileSelect],
       idiomasList: [this.idiomasSelect],
       habilidadesList: [this.habilidadessSelect],
