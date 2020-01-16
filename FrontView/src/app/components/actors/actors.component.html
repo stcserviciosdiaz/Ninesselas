@@ -207,7 +207,7 @@
                     <div class="row">
                       <div class="col-lg-4 example-container">
                         <mat-form-field>
-                          <input id="tallaCamisa" [formControlName]="colorPiel" matInput placeholder="Color Piel"
+                          <input id="colorPiel" [formControlName]="colorPiel" matInput placeholder="Color Piel"
                             [ngClass]="{ 'is-invalid': submitted && actorForm.controls.colorPiel.errors }">
                         </mat-form-field>
                         <div *ngIf="submitted && actorForm.controls.colorPiel.errors" class="invalid-feedback">
@@ -216,7 +216,7 @@
                       </div>
                       <div class="col-lg-4 example-container">
                         <mat-form-field>
-                          <input id="tallaChaqueta" [formControlName]="colorPelo" matInput placeholder="Color Pelo"
+                          <input id="colorPelo" [formControlName]="colorPelo" matInput placeholder="Color Pelo"
                             [ngClass]="{ 'is-invalid': submitted && actorForm.controls.colorPelo.errors }">
                         </mat-form-field>
                         <div *ngIf="submitted && actorForm.controls.colorPelo.errors" class="invalid-feedback">
@@ -225,7 +225,7 @@
                       </div>
                       <div class="col-lg-4 example-container">
                         <mat-form-field>
-                          <input id="tallaPantalon" [formControlName]="colorOjos" matInput placeholder="Color ojos"
+                          <input id="colorOjos" [formControlName]="colorOjos" matInput placeholder="Color ojos"
                             [ngClass]="{ 'is-invalid': submitted && actorForm.controls.colorOjos.errors }">
                         </mat-form-field>
                         <div *ngIf="submitted && actorForm.controls.colorOjos.errors" class="invalid-feedback">
@@ -233,6 +233,27 @@
                         </div>
                       </div>
                     </div>
+                  </div>
+
+                  <div class="form-group">
+                      <div class="row">
+                          <div class="col-lg-6 example-container">
+                              <mat-form-field>
+                                  <input id="pie" [formControlName]="pie" matInput placeholder="Talla de Pie" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.pie.errors }">
+                                </mat-form-field>
+                                <div *ngIf="submitted && actorForm.controls.pie.errors" class="invalid-feedback">
+                                    <div *ngIf="actorForm.controls.pie.errors.required">La talla es requerido</div>
+                                </div>
+                          </div>
+                          <div class="col-lg-6 example-container">
+                              <mat-form-field>
+                                  <input id="altura" [formControlName]="altura" matInput placeholder="Altura" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.altura.errors }"> 
+                                </mat-form-field>
+                                <div *ngIf="submitted && actorForm.controls.altura.errors" class="invalid-feedback">
+                                    <div *ngIf="actorForm.controls.altura.errors.required">La talla es requerido</div>
+                                  </div>
+                          </div>
+                      </div>
                   </div>
 
                   <div class="form-group">
@@ -248,8 +269,7 @@
                       </div>
                       <div class="col-lg-4 example-container">
                         <mat-form-field>
-                          <input id="tallaChaqueta" [formControlName]="tallaChaqueta" matInput
-                            placeholder="Talla de chaqueta"
+                          <input id="tallaChaqueta" [formControlName]="tallaChaqueta" matInput placeholder="Talla de chaqueta"
                             [ngClass]="{ 'is-invalid': submitted && actorForm.controls.tallaChaqueta.errors }">
                         </mat-form-field>
                         <div *ngIf="submitted && actorForm.controls.tallaChaqueta.errors" class="invalid-feedback">
@@ -258,8 +278,7 @@
                       </div>
                       <div class="col-lg-4 example-container">
                         <mat-form-field>
-                          <input id="tallaPantalon" [formControlName]="tallaPantalon" matInput
-                            placeholder="Talla de pantalon"
+                          <input id="tallaPantalon" [formControlName]="tallaPantalon" matInput placeholder="Talla de pantalon"
                             [ngClass]="{ 'is-invalid': submitted && actorForm.controls.tallaPantalon.errors }">
                         </mat-form-field>
                         <div *ngIf="submitted && actorForm.controls.tallaPantalon.errors" class="invalid-feedback">

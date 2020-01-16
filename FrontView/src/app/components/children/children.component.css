@@ -7,12 +7,10 @@
   height: 70vh;
 }
 
-mat-form-field.mat-form-field.ng-tns-c3-0.mat-primary.mat-form-field-type-mat-input.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-has-label.mat-form-field-hide-placeholder {
+.example-container > * {
   width: 100%;
 }
-mat-form-field.mat-form-field.ng-tns-c3-1.mat-primary.mat-form-field-type-mat-input.mat-form-field-appearance-legacy.mat-form-field-can-float.mat-form-field-has-label.mat-form-field-hide-placeholder {
-  width: 100%;
-}
+
 .mat-card {
   background: rgba(255, 255, 255, 0.26);
   color: rgba(0,0,0,.87);
