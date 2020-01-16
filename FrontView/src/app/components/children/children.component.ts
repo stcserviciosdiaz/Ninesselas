@@ -117,15 +117,15 @@ export class ChildrenComponent implements OnInit {
   usuario: Usuario = new Usuario();
   etniaSelect: etnia = new etnia();
   baileSelect: bailarin = new bailarin();
-  estilosBaileSelect: estilosBaile = new estilosBaile();
+  estilosBaileSelect: estilosBaile[] = [];
   cantanteSelect: cantante = new cantante();
-  estilosCantoSelect: estilosCanto = new estilosCanto();
-  habilidadessSelect: habilidades = new habilidades();
-  idiomasSelect: idiomas = new idiomas();
+  estilosCantoSelect: estilosCanto[] = [];
+  habilidadessSelect: habilidades[] = [];
+  idiomasSelect: idiomas[] = [];
   deportistaSelect: deportista = new deportista();
-  deporteSelect: deportes = new deportes();
+  deporteSelect: deportes[] = [];
   musicoSelect: musico = new musico();
-  instrumentoSelect: instrumento = new instrumento();
+  instrumentoSelect: instrumento[] = [];
   /*****fin variables combos*****/
 
   @ViewChild(TemplateRef, { static: false }) tpl: TemplateRef<any>;
@@ -247,10 +247,10 @@ export class ChildrenComponent implements OnInit {
         this.estilosBaile = resp;
       });
 
-    this.authService.finByIdEstilosBile(1)
+    /*this.authService.finByIdEstilosBile(1)
       .subscribe(resp => {
         this.estilosBaileSelect = resp;
-      });
+      });*/
 
     //llenado de cantate
     this.authService.getAllCantante()
@@ -269,10 +269,10 @@ export class ChildrenComponent implements OnInit {
         this.estilosCanto = resp;
       });
 
-    this.authService.finByIdEstilosCanto(1)
+    /*this.authService.finByIdEstilosCanto(1)
       .subscribe(resp => {
         this.estilosCantoSelect = resp;
-      });
+      });*/
 
     //llenado de habilidadess
     this.authService.getAllHabilidades()
@@ -280,10 +280,10 @@ export class ChildrenComponent implements OnInit {
         this.habilidadess = resp;
       });
 
-    this.authService.finByIdHabilidades(1)
+    /*this.authService.finByIdHabilidades(1)
       .subscribe(resp => {
         this.habilidadessSelect = resp;
-      });
+      });*/
 
     //llenado de idiomas
     this.authService.getAllIdiomas()
@@ -291,10 +291,10 @@ export class ChildrenComponent implements OnInit {
         this.idiomas = resp;
       });
 
-    this.authService.finByIdIdiomas(1)
+    /*this.authService.finByIdIdiomas(1)
       .subscribe(resp => {
         this.idiomasSelect = resp;
-      });
+      });*/
 
     //llenado de deportista
     this.authService.getAllDeportista()
@@ -313,10 +313,10 @@ export class ChildrenComponent implements OnInit {
         this.deportes = resp;
       });
 
-    this.authService.finByIdDeportes(1)
+    /*this.authService.finByIdDeportes(1)
       .subscribe(resp => {
         this.deporteSelect = resp;
-      });
+      });*/
 
     //llenado de musico
     this.authService.getAllMusico()
@@ -335,10 +335,10 @@ export class ChildrenComponent implements OnInit {
         this.instrumentoss = resp;
       });
 
-    this.authService.finByIdInstrumento(1)
+    /*this.authService.finByIdInstrumento(1)
       .subscribe(resp => {
         this.instrumentoSelect = resp;
-      });
+      });*/
   }
 
   guardarTalla(idUser) {
@@ -409,12 +409,12 @@ export class ChildrenComponent implements OnInit {
       actor: newChild.actor,
       username: newChild.username,
       videobook: newChild.videoBook,
-      instrumentoList: [this.instrumentoSelect],
-      estilosCantoList: [this.estilosCantoSelect],
-      deporteList: [this.deporteSelect],
-      estiloBaileList: [this.estilosBaileSelect],
-      idiomasList: [this.idiomasSelect],
-      habilidadesList: [this.habilidadessSelect],
+      instrumentoList: this.instrumentoSelect,
+      estilosCantoList: this.estilosCantoSelect,
+      deporteList: this.deporteSelect,
+      estiloBaileList: this.estilosBaileSelect,
+      idiomasList: this.idiomasSelect,
+      habilidadesList: this.habilidadessSelect,
       tallasList: [],
       ultimosTrabajosList: [],
       idCantante: this.cantanteSelect,
@@ -456,6 +456,59 @@ export class ChildrenComponent implements OnInit {
         this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
         console.log(JSON.stringify(err));
       });
+  }
+
+  OnChange($event, item, id) {
+    console.log($event);
+    console.log(item);
+    $event.source.focus();
+
+    /**habilidades deporte 1*/
+    if (id === 1) {
+      if ($event.checked) {
+        this.deporteSelect.push(item);
+      } else {
+        const index: number = this.deporteSelect.indexOf(item);
+        this.deporteSelect.splice(index, 1);
+      }
+    } else if (id === 2) {
+      if ($event.checked) {
+        this.estilosBaileSelect.push(item);
+      } else {
+        const index: number = this.estilosBaileSelect.indexOf(item);
+        this.estilosBaileSelect.splice(index, 1);
+      }
+    } else if (id === 3) {
+      if ($event.checked) {
+        this.instrumentoSelect.push(item);
+      } else {
+        const index: number = this.instrumentoSelect.indexOf(item);
+        this.instrumentoSelect.splice(index, 1);
+      }
+    } else if (id === 4) {
+      if ($event.checked) {
+        this.estilosCantoSelect.push(item);
+      } else {
+        const index: number = this.estilosCantoSelect.indexOf(item);
+        this.estilosCantoSelect.splice(index, 1);
+      }
+    } else if (id === 5) {
+      if ($event.checked) {
+        this.habilidadessSelect.push(item);
+      } else {
+        const index: number = this.habilidadessSelect.indexOf(item);
+        this.habilidadessSelect.splice(index, 1);
+      }
+    } else if (id === 6) {
+      if ($event.checked) {
+        this.idiomasSelect.push(item);
+      } else {
+        const index: number = this.idiomasSelect.indexOf(item);
+        this.idiomasSelect.splice(index, 1);
+      }
+    }
+
+    //MatCheckboxChange {checked,MatCheckbox}
   }
 
   onAvatarSelected(event) {

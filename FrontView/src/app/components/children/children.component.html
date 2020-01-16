@@ -40,21 +40,21 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="row">
-                      <div class="col-6">
-                         <!-- Nomnbre completos -->
-                          <mat-form-field>
-                            <input matInput placeholder="Nombre" id="nombres" formControlName="nombres">
-                          </mat-form-field>
-                      </div>
-                      <div class="col-6">
-                        <!-- Apellidos completos -->
-                          <mat-form-field>
-                            <input matInput placeholder="Apellido" id="apellidos"  formControlName="apellidos">
-                          </mat-form-field>
-                      </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <!-- Nomnbre completos -->
+                      <mat-form-field>
+                        <input matInput placeholder="Nombre" id="nombres" formControlName="nombres">
+                      </mat-form-field>
                     </div>
-                    <!-- <label class="control-label">Nombre</label>
+                    <div class="col-6">
+                      <!-- Apellidos completos -->
+                      <mat-form-field>
+                        <input matInput placeholder="Apellido" id="apellidos" formControlName="apellidos">
+                      </mat-form-field>
+                    </div>
+                  </div>
+                  <!-- <label class="control-label">Nombre</label>
                     <input type="text" class="form-control" id="nombres" formControlName="nombres"
                       placeholder=""
                       [ngClass]="{ 'is-invalid': submitted && actorForm.controls.nombres.errors }">
@@ -97,18 +97,20 @@
                 </div>
 
                 <fieldset class="form-group">
-                    <!-- Sexo -->
-                    <div class="row">
-                        <legend class="col-form-label col-sm-2 pt-0">Sexo</legend>
-                        <mat-radio-group aria-label="Select an option">
-                        <div class="col">
-                            <mat-radio-button value="Masculino" id="gridRadios1" [formControlName]="sexo">Masculino</mat-radio-button>
-                        </div>
-                        <div class="col">
-                            <mat-radio-button value="Femenino" id="gridRadios2" [formControlName]="sexo">Femenino</mat-radio-button>
-                        </div>
-                      </mat-radio-group>
-                    </div>
+                  <!-- Sexo -->
+                  <div class="row">
+                    <legend class="col-form-label col-sm-2 pt-0">Sexo</legend>
+                    <mat-radio-group aria-label="Select an option">
+                      <div class="col">
+                        <mat-radio-button value="Masculino" id="gridRadios1" [formControlName]="sexo">Masculino
+                        </mat-radio-button>
+                      </div>
+                      <div class="col">
+                        <mat-radio-button value="Femenino" id="gridRadios2" [formControlName]="sexo">Femenino
+                        </mat-radio-button>
+                      </div>
+                    </mat-radio-group>
+                  </div>
                 </fieldset>
 
                 <div class="form-group">
@@ -417,12 +419,23 @@
                     <option [ngValue]="i" *ngFor="let i of deportista">{{i.nombreDeportista}}</option>
                   </select>
                 </div>
-                
+
                 <div class="form-group">
-                    <!-- Habilidades del deporte-->
-                    <mat-card>
-                      <h5 class="pb-1">Habilidades del deporte</h5>
-                      <hr>
+                  <!-- Habilidades del deporte-->
+                  <mat-card>
+                    <h5 class="pb-1">Habilidades del deporte</h5>
+                    <hr>
+
+                    <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                      <div *ngFor="let item of deportes" class="col-md-4 col-sm-6 col-12"
+                        style="padding: 5px 0px 5px 0px;">
+                        <mat-checkbox (change)="OnChange($event, item, 1)">
+                          <span class="itemitle">{{item.nombreDeporte}}</span>
+                        </mat-checkbox>
+                      </div>
+                    </div>
+
+                    <!--
                        <div class="d-lg-flex d-md-flex d-sm-block">
                            <div class="col-lg-4">
                              <p>
@@ -448,7 +461,7 @@
                                 </p>
                            </div>
                            <div class="col-lg-4">
-                            
+
                              <p>
                                <mat-checkbox [formControlName]="">Fútbol</mat-checkbox>
                              </p>
@@ -472,7 +485,7 @@
                               </p>
                            </div>
                            <div class="col-lg-4">
-                             
+
                               <p>
                                   <mat-checkbox [formControlName]="">Polo</mat-checkbox>
                               </p>
@@ -493,11 +506,12 @@
                               </p>
                            </div>
                        </div>
-                       <mat-form-field>
-                           <input matInput placeholder="Otro">
-                       </mat-form-field>
-                    </mat-card>
-                   <!--  <div class="form-group">
+                      -->
+                    <mat-form-field>
+                      <input matInput placeholder="Otro">
+                    </mat-form-field>
+                  </mat-card>
+                  <!--  <div class="form-group">
                         <label class="control-label">Habilidades del deporte</label>
                         <select forControlName="deportes" class="form-control" [(ngModel)]="deporteSelect"
                           [ngModelOptions]="{standalone: true}">
@@ -522,71 +536,81 @@
                 </div>
 
                 <div class="form-group">
-                    <!-- Estilos de Baile -->
-                    <mat-card>
-                      <h5 class="pb-1">Estilos de Baile</h5>
-                      <hr>
-                       <div class="d-lg-flex d-md-flex d-sm-block">
-                           <div class="col-lg-4">
-                             <p>
-                               <mat-checkbox [formControlName]="">Ballet clasico</mat-checkbox>
-                             </p>
-                             <p>
-                                 <mat-checkbox [formControlName]="">Breakdance</mat-checkbox>
-                             </p>
-                             <p>
-                                 <mat-checkbox [formControlName]="">Chachacha</mat-checkbox>
-                              </p>
-                              <p>
-                                 <mat-checkbox [formControlName]="">Claqué</mat-checkbox>
-                              </p>
-                              <p>
-                                <mat-checkbox [formControlName]="">Contemporaneo</mat-checkbox>
-                              </p>
-                              <p>
-                                <mat-checkbox [formControlName]="">Cumbia</mat-checkbox>
-                              </p>
-                           </div>
-                           <div class="col-lg-4">
-                             <p>
-                               <mat-checkbox [formControlName]="">Flamenco</mat-checkbox>
-                             </p>
-                             <p>
-                               <mat-checkbox [formControlName]="">Funky</mat-checkbox>
-                             </p>
-                             <p>
-                                <mat-checkbox [formControlName]="">Hiphop</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Merengue</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Pasodoble</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Pole dance</mat-checkbox>
-                              </p>
-                           </div>
-                           <div class="col-lg-4">
-                              <p>
-                                  <mat-checkbox [formControlName]="">Salsa</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Samba</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Sevillanas</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Tango</mat-checkbox>
-                              </p>
-                           </div>
-                       </div>
-                       <mat-form-field>
-                           <input matInput placeholder="Otro">
-                       </mat-form-field>
-                    </mat-card>
-                    <!-- <div class="form-group">
+                  <!-- Estilos de Baile -->
+                  <mat-card>
+                    <h5 class="pb-1">Estilos de Baile</h5>
+                    <hr>
+                    <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                      <div *ngFor="let item of estilosBaile" class="col-md-4 col-sm-6 col-12"
+                        style="padding: 5px 0px 5px 0px;">
+                        <mat-checkbox (change)="OnChange($event, item, 2)">
+                          <span class="itemitle">{{item.nombreBaile}}</span>
+                        </mat-checkbox>
+                      </div>
+                    </div>
+                    <!--
+                    <div class="d-lg-flex d-md-flex d-sm-block">
+                      <div class="col-lg-4">
+                        <p>
+                          <mat-checkbox [formControlName]="">Ballet clasico</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Breakdance</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Chachacha</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Claqué</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Contemporaneo</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Cumbia</mat-checkbox>
+                        </p>
+                      </div>
+                      <div class="col-lg-4">
+                        <p>
+                          <mat-checkbox [formControlName]="">Flamenco</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Funky</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Hiphop</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Merengue</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Pasodoble</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Pole dance</mat-checkbox>
+                        </p>
+                      </div>
+                      <div class="col-lg-4">
+                        <p>
+                          <mat-checkbox [formControlName]="">Salsa</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Samba</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Sevillanas</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Tango</mat-checkbox>
+                        </p>
+                      </div>
+                    </div>
+                    -->
+                    <mat-form-field>
+                      <input matInput placeholder="Otro">
+                    </mat-form-field>
+                  </mat-card>
+                  <!-- <div class="form-group">
                         <label class="control-label">Estilos de Baile</label>
                         <select forControlName="estilosBaile" class="form-control" [(ngModel)]="estilosBaileSelect"
                           [ngModelOptions]="{standalone: true}">
@@ -599,7 +623,7 @@
                         <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
                       </div> -->
                 </div>
-                
+
                 <div class="form-group">
                   <!-- Musico -->
                   <label class="control-label">Musico</label>
@@ -610,7 +634,27 @@
                   </select>
                 </div>
                 <div *ngIf="musicoSelect.nombreMusico == 'Profesional'" class="form-group">
+
                   <!-- Instrumentos musical -->
+                  <h5 class="pb-1">Instrumentos musical</h5>
+                  <hr>
+
+                  <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                    <div *ngFor="let item of instrumentoss" class="col-md-4 col-sm-6 col-12"
+                      style="padding: 5px 0px 5px 0px;">
+                      <mat-checkbox (change)="OnChange($event, item, 3)">
+                        <span class="itemitle">{{item.nombreInstrumento}}</span>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+
+                  <mat-form-field>
+                    <input matInput placeholder="Otro">
+                  </mat-form-field>
+                </div>
+
+                <!--
+                  Instrumentos musical
                   <label class="control-label">Instrumentos musical</label>
                   <select forControlName="instrumentoss" class="form-control" [(ngModel)]="instrumentoSelect"
                     [ngModelOptions]="{standalone: true}">
@@ -619,10 +663,10 @@
                   </select>
                 </div>
                 <div *ngIf="instrumentoSelect.nombreInstrumento == 'Otros'" class="form-group">
-                  <!-- Espesifique otro instrumento musical -->
+                  <!-- Espesifique otro instrumento musical
                   <label class="control-label">Espesifique otro instrumento musical</label>
                   <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
-                </div>
+                </div>-->
 
                 <div class="form-group">
                   <!-- Cantantes -->
@@ -635,74 +679,86 @@
                 </div>
 
                 <div class="form-group">
-                    <!-- Estilos de cantos -->
-                    <mat-card>
-                      <h5 class="pb-1">Estilos de cantos</h5>
-                      <hr>
-                       <div class="d-lg-flex d-md-flex d-sm-block">
-                           <div class="col-lg-4">
-                             <p>
-                               <mat-checkbox [formControlName]="">Blues</mat-checkbox>
-                             </p>
-                             <p>
-                                 <mat-checkbox [formControlName]="">Country</mat-checkbox>
-                             </p>
-                             <p>
-                                 <mat-checkbox [formControlName]="">Dance</mat-checkbox>
-                              </p>
-                              <p>
-                                 <mat-checkbox [formControlName]="">Electro pop</mat-checkbox>
-                              </p>
-                              <p>
-                                <mat-checkbox [formControlName]="">Flamenco</mat-checkbox>
-                              </p>
-                              <p>
-                                <mat-checkbox [formControlName]="">Heavy metal</mat-checkbox>
-                              </p>
-                           </div>
-                           <div class="col-lg-4">
-                             <p>
-                               <mat-checkbox [formControlName]="">Hip hop</mat-checkbox>
-                             </p>
-                             <p>
-                               <mat-checkbox [formControlName]="">Lírico</mat-checkbox>
-                             </p>
-                             <p>
-                                <mat-checkbox [formControlName]="">Pop</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Pop latino</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Punk</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Rap</mat-checkbox>
-                              </p>
-                           </div>
-                           <div class="col-lg-4">
-                              <p>
-                                  <mat-checkbox [formControlName]="">Reggae</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Rock</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Salsa</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Soul</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Tecno</mat-checkbox>
-                              </p>
-                           </div>
-                       </div>
-                       <mat-form-field>
-                           <input matInput placeholder="Otro">
-                       </mat-form-field>
-                    </mat-card>
-                    <!-- <div class="form-group">
+                  <!-- Estilos de cantos -->
+                  <mat-card>
+                    <h5 class="pb-1">Estilos de cantos</h5>
+                    <hr>
+
+                    <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                      <div *ngFor="let item of estilosCanto" class="col-md-4 col-sm-6 col-12"
+                        style="padding: 5px 0px 5px 0px;">
+                        <mat-checkbox (change)="OnChange($event, item, 4)">
+                          <span class="itemitle">{{item.nombreEstiloCanto}}</span>
+                        </mat-checkbox>
+                      </div>
+                    </div>
+
+                    <!--
+                    <div class="d-lg-flex d-md-flex d-sm-block">
+                      <div class="col-lg-4">
+                        <p>
+                          <mat-checkbox [formControlName]="">Blues</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Country</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Dance</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Electro pop</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Flamenco</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Heavy metal</mat-checkbox>
+                        </p>
+                      </div>
+                      <div class="col-lg-4">
+                        <p>
+                          <mat-checkbox [formControlName]="">Hip hop</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Lírico</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Pop</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Pop latino</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Punk</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Rap</mat-checkbox>
+                        </p>
+                      </div>
+                      <div class="col-lg-4">
+                        <p>
+                          <mat-checkbox [formControlName]="">Reggae</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Rock</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Salsa</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Soul</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Tecno</mat-checkbox>
+                        </p>
+                      </div>
+                    </div>
+                    -->
+                    <mat-form-field>
+                      <input matInput placeholder="Otro">
+                    </mat-form-field>
+                  </mat-card>
+                  <!-- <div class="form-group">
                         <label class="control-label">Estilo de cantos</label>
                         <select class="form-control" forControlName="estilosCanto" [(ngModel)]="estilosCantoSelect"
                           [ngModelOptions]="{standalone: true}">
@@ -717,71 +773,81 @@
                 </div>
 
                 <div class="form-group">
-                    <!-- Habilidades -->
-                    <mat-card>
-                      <h5 class="pb-1">Habilidades</h5>
-                      <hr>
-                       <div class="d-lg-flex d-md-flex d-sm-block">
-                           <div class="col-lg-4">
-                             <p>
-                               <mat-checkbox [formControlName]="">Acrobacia</mat-checkbox>
-                             </p>
-                             <p>
-                                 <mat-checkbox [formControlName]="">Buceo</mat-checkbox>
-                             </p>
-                             <p>
-                                 <mat-checkbox [formControlName]="">Ciclismo BMX</mat-checkbox>
-                              </p>
-                              <p>
-                                 <mat-checkbox [formControlName]="">Contorsionista</mat-checkbox>
-                              </p>
-                              <p>
-                                <mat-checkbox [formControlName]="">Escalada</mat-checkbox>
-                              </p>
-                              <p>
-                                <mat-checkbox [formControlName]="">Lenguaje de signos</mat-checkbox>
-                              </p>
-                           </div>
-                           <div class="col-lg-4">
-                             <p>
-                               <mat-checkbox [formControlName]="">Magia</mat-checkbox>
-                             </p>
-                             <p>
-                               <mat-checkbox [formControlName]="">Motocross</mat-checkbox>
-                             </p>
-                             <p>
-                                <mat-checkbox [formControlName]="">Paracaidismo</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Parkour</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Piraguismo</mat-checkbox>
-                              </p>
-                           </div>
-                           <div class="col-lg-4">
-                              <p>
-                                  <mat-checkbox [formControlName]="">Pompas Jabon</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Puenting</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Skater</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Sombras chinescas</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Surf</mat-checkbox>
-                              </p>
-                           </div>
-                       </div>
-                       <mat-form-field>
-                           <input matInput placeholder="Otro">
-                       </mat-form-field>
-                    </mat-card>
-                    <!-- <div class="form-group">
+                  <!-- Habilidades -->
+                  <mat-card>
+                    <h5 class="pb-1">Habilidades</h5>
+                    <hr>
+                    <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                      <div *ngFor="let item of habilidadess" class="col-md-4 col-sm-6 col-12"
+                        style="padding: 5px 0px 5px 0px;">
+                        <mat-checkbox (change)="OnChange($event, item, 5)">
+                          <span class="itemitle">{{item.nombreHabilidad}}</span>
+                        </mat-checkbox>
+                      </div>
+                    </div>
+                    <!--
+                    <div class="d-lg-flex d-md-flex d-sm-block">
+                      <div class="col-lg-4">
+                        <p>
+                          <mat-checkbox [formControlName]="">Acrobacia</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Buceo</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Ciclismo BMX</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Contorsionista</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Escalada</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Lenguaje de signos</mat-checkbox>
+                        </p>
+                      </div>
+                      <div class="col-lg-4">
+                        <p>
+                          <mat-checkbox [formControlName]="">Magia</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Motocross</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Paracaidismo</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Parkour</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Piraguismo</mat-checkbox>
+                        </p>
+                      </div>
+                      <div class="col-lg-4">
+                        <p>
+                          <mat-checkbox [formControlName]="">Pompas Jabon</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Puenting</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Skater</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Sombras chinescas</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Surf</mat-checkbox>
+                        </p>
+                      </div>
+                    </div>
+                    -->
+                    <mat-form-field>
+                      <input matInput placeholder="Otro">
+                    </mat-form-field>
+                  </mat-card>
+                  <!-- <div class="form-group">
                         <label class="control-label">Habilidades</label>
                         <select forControlName="habilidadess" class="form-control" [(ngModel)]="habilidadessSelect"
                           [ngModelOptions]="{standalone: true}">
@@ -796,59 +862,69 @@
                 </div>
 
                 <div class="form-group">
-                    <!-- Idiomas -->
-                    <mat-card>
-                      <h5 class="pb-1">Idiomas</h5>
-                      <hr>
-                       <div class="d-lg-flex d-md-flex d-sm-block">
-                           <div class="col-lg-4">
-                             <p>
-                               <mat-checkbox [formControlName]="">Alemán</mat-checkbox>
-                             </p>
-                             <p>
-                                 <mat-checkbox [formControlName]="">Catalán</mat-checkbox>
-                             </p>
-                             <p>
-                                 <mat-checkbox [formControlName]="">English</mat-checkbox>
-                              </p>
-                              <p>
-                                 <mat-checkbox [formControlName]="">Frances</mat-checkbox>
-                              </p>
-                           </div>
-                           <div class="col-lg-4">
-                             <p>
-                               <mat-checkbox [formControlName]="">Galés</mat-checkbox>
-                             </p>
-                             <p>
-                               <mat-checkbox [formControlName]="">Gallegos</mat-checkbox>
-                             </p>
-                             <p>
-                               <mat-checkbox [formControlName]="">Italiano</mat-checkbox>
-                             </p>
-                             <p>
-                               <mat-checkbox [formControlName]="">Valenciano</mat-checkbox>
-                             </p>
-                           </div>
-                           <div class="col-lg-4">
-                               <p>
-                                 <mat-checkbox [formControlName]="">Romano</mat-checkbox>
-                               </p>
-                               <p>
-                                 <mat-checkbox [formControlName]="">Ruso</mat-checkbox>
-                               </p>
-                               <p>
-                                 <mat-checkbox [formControlName]="">Español</mat-checkbox>
-                               </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Sueco</mat-checkbox>
-                              </p>
-                           </div>
-                       </div>
-                       <mat-form-field>
-                           <input matInput placeholder="Otro">
-                       </mat-form-field>
-                    </mat-card>
-                    <!-- <div class="form-group">
+                  <!-- Idiomas -->
+                  <mat-card>
+                    <h5 class="pb-1">Idiomas</h5>
+                    <hr>
+                    <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                      <div *ngFor="let item of idiomas" class="col-md-4 col-sm-6 col-12"
+                        style="padding: 5px 0px 5px 0px;">
+                        <mat-checkbox (change)="OnChange($event, item, 6)">
+                          <span class="itemitle">{{item.nombreIdioma}}</span>
+                        </mat-checkbox>
+                      </div>
+                    </div>
+                    <!--
+                    <div class="d-lg-flex d-md-flex d-sm-block">
+                      <div class="col-lg-4">
+                        <p>
+                          <mat-checkbox [formControlName]="">Alemán</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Catalán</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">English</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Frances</mat-checkbox>
+                        </p>
+                      </div>
+                      <div class="col-lg-4">
+                        <p>
+                          <mat-checkbox [formControlName]="">Galés</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Gallegos</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Italiano</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Valenciano</mat-checkbox>
+                        </p>
+                      </div>
+                      <div class="col-lg-4">
+                        <p>
+                          <mat-checkbox [formControlName]="">Romano</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Ruso</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Español</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Sueco</mat-checkbox>
+                        </p>
+                      </div>
+                    </div>
+                    -->
+                    <mat-form-field>
+                      <input matInput placeholder="Otro">
+                    </mat-form-field>
+                  </mat-card>
+                  <!-- <div class="form-group">
                         <label class="control-label">Idiomas</label>
                         <select forControlName="idiomas" class="form-control" [(ngModel)]="idiomasSelect"
                           [ngModelOptions]="{standalone: true}">
@@ -864,10 +940,10 @@
 
                 <!-- Bilingue -->
                 <div class="form-group">
-                    <label class="control-label">Bilingue</label>
-                    <input type="text" class="form-control" id="bilingue" formControlName="bilingue" placeholder="">
+                  <label class="control-label">Bilingue</label>
+                  <input type="text" class="form-control" id="bilingue" formControlName="bilingue" placeholder="">
                 </div>
- 
+
                 <div class="form-group">
                   <!-- Ultimos trabajos -->
                   <label class="control-label">Descripción de Ultimos Trabajos</label>
@@ -886,11 +962,14 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="form-check">
-                      <mat-checkbox [formControlName]="acceptTerms" id="acceptTerms" [ngClass]="{ 'is-invalid': submitted && childForm.controls.acceptTerms.value === false }" >Acepta los terminos del registro</mat-checkbox>
-                      <div *ngIf="submitted && childForm.controls.acceptTerms.value === false" class="invalid-feedback">Los
-                        terminos es requerido</div>
-                    </div>
+                  <div class="form-check">
+                    <mat-checkbox [formControlName]="acceptTerms" id="acceptTerms"
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.acceptTerms.value === false }">Acepta
+                      los terminos del registro</mat-checkbox>
+                    <div *ngIf="submitted && childForm.controls.acceptTerms.value === false" class="invalid-feedback">
+                      Los
+                      terminos es requerido</div>
+                  </div>
                 </div>
 
                 <div class="info info--sm">

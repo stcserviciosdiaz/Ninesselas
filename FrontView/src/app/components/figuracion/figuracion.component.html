@@ -30,7 +30,8 @@
                 <div class="form-group example-container">
                   <!-- Nombre de Usuario -->
                   <mat-form-field>
-                    <input matInput placeholder="Nombre de Usuario" id="username" [formControlName]="username" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.username.errors }">
+                    <input matInput placeholder="Nombre de Usuario" id="username" [formControlName]="username"
+                      [ngClass]="{ 'is-invalid': submitted && actorForm.controls.username.errors }">
                   </mat-form-field>
                   <div *ngIf="submitted && actorForm.controls.username.errors" class="invalid-feedback">
                     <div *ngIf="actorForm.controls.username.errors.required">El usuario es requerido</div>
@@ -38,68 +39,75 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="row">
-                      <div class="col-lg-6 example-container">
-                         <!-- Nomnbre completos -->
-                          <mat-form-field>
-                            <input matInput placeholder="Nombre" id="nombres" formControlName="nombres">
-                          </mat-form-field>
-                      </div>
-                      <div class="col-lg-6 example-container">
-                        <!-- Apellidos completos -->
-                          <mat-form-field>
-                            <input matInput placeholder="Apellido" id="apellidos"  formControlName="apellidos">
-                          </mat-form-field>
-                      </div>
+                  <div class="row">
+                    <div class="col-lg-6 example-container">
+                      <!-- Nomnbre completos -->
+                      <mat-form-field>
+                        <input matInput placeholder="Nombre" id="nombres" formControlName="nombres">
+                      </mat-form-field>
                     </div>
+                    <div class="col-lg-6 example-container">
+                      <!-- Apellidos completos -->
+                      <mat-form-field>
+                        <input matInput placeholder="Apellido" id="apellidos" formControlName="apellidos">
+                      </mat-form-field>
+                    </div>
+                  </div>
                 </div>
 
                 <div class="form-group">
                   <div class="row">
-                      <div class="col-lg-6 example-container">
-                          <mat-form-field>
-                              <!-- Contraseña -->
-                              <input [formControlName]="password" matInput placeholder="Ingrese contraseña" [type]="hide ? 'password' : 'text'" 
-                              [ngClass]="{ 'is-invalid': submitted && actorForm.controls.password.errors }">
-                              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-                              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                              </button>
-                              <div *ngIf="submitted && actorForm.controls.password.errors" class="invalid-feedback">
-                                  <div *ngIf="actorForm.controls.password.errors.required">La contraseña es requerida</div>
-                                  <div *ngIf="actorForm.controls.password.errors.minlength">La contraseña debe tener al menos 6
-                                    caracteres</div>
-                              </div>
-                            </mat-form-field>
-                      </div>
-                      <div class="col-lg-6 example-container">
-                          <mat-form-field>
-                              <!-- Confirma Contraseña -->
-                              <input [formControlName]="confirmPassword" matInput placeholder="Repita contraseña" type="number" class="example-right-align" 
-                              [ngClass]="{ 'is-invalid': submitted && actorForm.controls.confirmPassword.errors }">
-                              <div *ngIf="submitted && actorForm.controls.confirmPassword.errors" class="invalid-feedback">
-                                  <div *ngIf="actorForm.controls.confirmPassword.errors.required">Confirme que se requiere contraseña
-                                  </div>
-                                  <div *ngIf="actorForm.controls.confirmPassword.errors.mustMatch">Las contraseñas deben coincidir
-                                  </div>
-                              </div>
-                            </mat-form-field>
-                      </div>
+                    <div class="col-lg-6 example-container">
+                      <mat-form-field>
+                        <!-- Contraseña -->
+                        <input [formControlName]="password" matInput placeholder="Ingrese contraseña"
+                          [type]="hide ? 'password' : 'text'"
+                          [ngClass]="{ 'is-invalid': submitted && actorForm.controls.password.errors }">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                          [attr.aria-pressed]="hide">
+                          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <div *ngIf="submitted && actorForm.controls.password.errors" class="invalid-feedback">
+                          <div *ngIf="actorForm.controls.password.errors.required">La contraseña es requerida</div>
+                          <div *ngIf="actorForm.controls.password.errors.minlength">La contraseña debe tener al menos 6
+                            caracteres</div>
+                        </div>
+                      </mat-form-field>
+                    </div>
+                    <div class="col-lg-6 example-container">
+                      <mat-form-field>
+                        <!-- Confirma Contraseña -->
+                        <input [formControlName]="confirmPassword" matInput placeholder="Repita contraseña"
+                          type="number" class="example-right-align"
+                          [ngClass]="{ 'is-invalid': submitted && actorForm.controls.confirmPassword.errors }">
+                        <div *ngIf="submitted && actorForm.controls.confirmPassword.errors" class="invalid-feedback">
+                          <div *ngIf="actorForm.controls.confirmPassword.errors.required">Confirme que se requiere
+                            contraseña
+                          </div>
+                          <div *ngIf="actorForm.controls.confirmPassword.errors.mustMatch">Las contraseñas deben
+                            coincidir
+                          </div>
+                        </div>
+                      </mat-form-field>
+                    </div>
                   </div>
                 </div>
 
                 <fieldset class="form-group">
-                    <!-- Sexo -->
-                    <div class="row">
-                        <legend class="col-form-label col-sm-2 pt-0">Sexo</legend>
-                        <mat-radio-group aria-label="Select an option">
-                        <div class="col">
-                            <mat-radio-button value="1" id="gridRadios1" [formControlName]="sexo">Masculino</mat-radio-button>
-                        </div>
-                        <div class="col">
-                            <mat-radio-button value="2" id="gridRadios2" [formControlName]="sexo">Femenino</mat-radio-button>
-                        </div>
-                      </mat-radio-group>
-                    </div>
+                  <!-- Sexo -->
+                  <div class="row">
+                    <legend class="col-form-label col-sm-2 pt-0">Sexo</legend>
+                    <mat-radio-group aria-label="Select an option">
+                      <div class="col">
+                        <mat-radio-button value="1" id="gridRadios1" [formControlName]="sexo">Masculino
+                        </mat-radio-button>
+                      </div>
+                      <div class="col">
+                        <mat-radio-button value="2" id="gridRadios2" [formControlName]="sexo">Femenino
+                        </mat-radio-button>
+                      </div>
+                    </mat-radio-group>
+                  </div>
                 </fieldset>
 
                 <div class="form-group">
@@ -118,58 +126,62 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="row">
-                      <div class="col-6 example-container">
-                         <!-- Fecha de nacimiento -->
-                         <mat-form-field>
-                            <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento"
-                              placeholder="Fecha de nacimiento">
-                            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                            <mat-datepicker #picker></mat-datepicker>
-                          </mat-form-field>
-                      </div>
-                      <div class="col-6 example-container">
-                         <!-- Lugar de nacimiento -->
-                          <mat-form-field>
-                            <input id="placebirth" formControlName="placebirth" matInput placeholder="Lugar de nacimiento">
-                          </mat-form-field>
-                      </div>
+                  <div class="row">
+                    <div class="col-6 example-container">
+                      <!-- Fecha de nacimiento -->
+                      <mat-form-field>
+                        <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento"
+                          placeholder="Fecha de nacimiento">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                      </mat-form-field>
                     </div>
+                    <div class="col-6 example-container">
+                      <!-- Lugar de nacimiento -->
+                      <mat-form-field>
+                        <input id="placebirth" formControlName="placebirth" matInput placeholder="Lugar de nacimiento">
+                      </mat-form-field>
+                    </div>
+                  </div>
                 </div>
 
                 <div class="form-group example-container">
                   <!-- Nuemro de teléfono -->
-                    <mat-form-field>
-                        <input id="telefono" (keypress)="numberOnly($event)" [formControlName]="telefono" matInput placeholder="Numero de Teléfono" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.telefono.errors }">
-                        <mat-hint>Ingrese con codigo de area</mat-hint>
-                    </mat-form-field>
-                    <div *ngIf="submitted && actorForm.controls.telefono.errors" class="invalid-feedback">
-                      <div *ngIf="actorForm.controls.telefono.errors.required">El telefono es requerida</div>
-                    </div>
+                  <mat-form-field>
+                    <input id="telefono" (keypress)="numberOnly($event)" [formControlName]="telefono" matInput
+                      placeholder="Numero de Teléfono"
+                      [ngClass]="{ 'is-invalid': submitted && actorForm.controls.telefono.errors }">
+                    <mat-hint>Ingrese con codigo de area</mat-hint>
+                  </mat-form-field>
+                  <div *ngIf="submitted && actorForm.controls.telefono.errors" class="invalid-feedback">
+                    <div *ngIf="actorForm.controls.telefono.errors.required">El telefono es requerida</div>
+                  </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="row">
-                      <div class="col-6 example-container">
-                          <mat-form-field>
-                            <input id="acento" formControlName="acento" matInput placeholder="Acento">
-                          </mat-form-field>
-                      </div>
-                      <div class="col-6 example-container">
-                          <mat-form-field>
-                            <input id="nacionalidad" formControlName="nacionalidad" matInput placeholder="Nacionalidad" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.nacionalidad.errors }">
-                          </mat-form-field>
-                          <div *ngIf="submitted && actorForm.controls.nacionalidad.errors" class="invalid-feedback">
-                              <div *ngIf="actorForm.controls.nacionalidad.errors.required">La nacionalidad es requerida</div>
-                            </div>
+                  <div class="row">
+                    <div class="col-6 example-container">
+                      <mat-form-field>
+                        <input id="acento" formControlName="acento" matInput placeholder="Acento">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-6 example-container">
+                      <mat-form-field>
+                        <input id="nacionalidad" formControlName="nacionalidad" matInput placeholder="Nacionalidad"
+                          [ngClass]="{ 'is-invalid': submitted && actorForm.controls.nacionalidad.errors }">
+                      </mat-form-field>
+                      <div *ngIf="submitted && actorForm.controls.nacionalidad.errors" class="invalid-feedback">
+                        <div *ngIf="actorForm.controls.nacionalidad.errors.required">La nacionalidad es requerida</div>
                       </div>
                     </div>
+                  </div>
                 </div>
 
                 <div class="example-container">
                   <!-- Correo electronico -->
                   <mat-form-field>
-                    <input matInput placeholder="Ingrese su correo" [formControl]="email" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.email.errors }">
+                    <input matInput placeholder="Ingrese su correo" [formControl]="email"
+                      [ngClass]="{ 'is-invalid': submitted && actorForm.controls.email.errors }">
                     <div *ngIf="submitted && actorForm.controls.email.errors" class="invalid-feedback">
                       <div *ngIf="actorForm.controls.email.errors.required">Correo electrónico es requerido</div>
                       <div *ngIf="actorForm.controls.email.errors.email">Debe ser una dirección de correo electrónico
@@ -179,109 +191,125 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="row">
-                      <div class="col-lg-6 example-container">
-                          <mat-form-field>
-                            <input id="tallaCamisa" [formControlName]="colorPiel" matInput placeholder="Talla de Pie" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.pie.errors }">
-                          </mat-form-field>
-                          <div *ngIf="submitted && actorForm.controls.pie.errors" class="invalid-feedback">
-                              <div *ngIf="actorForm.controls.pie.errors.required">La talla es requerido</div>
-                          </div>
-                      </div>
-                      <div class="col-lg-6 example-container">
-                          <mat-form-field>
-                            <input id="tallaChaqueta" [formControlName]="colorPelo" matInput placeholder="Talla de altura" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.altura.errors }">
-                          </mat-form-field>
-                          <div *ngIf="submitted && actorForm.controls.altura.errors" class="invalid-feedback">
-                              <div *ngIf="actorForm.controls.altura.errors.required">La talla es requerido</div>
-                          </div>
-                      </div>
-                    </div>
-                </div>
-
-                <div class="form-group">
                   <div class="row">
-                    <div class="col-lg-4 example-container">
-                        <mat-form-field>
-                          <input id="tallaCamisa" [formControlName]="tallaCamisa" matInput placeholder="Talla de camisa" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.tallaCamisa.errors }">
-                        </mat-form-field>
-                        <div *ngIf="submitted && actorForm.controls.tallaCamisa.errors" class="invalid-feedback">
-                            <div *ngIf="actorForm.controls.tallaCamisa.errors.required">La talla es requerido</div>
-                        </div>
+                    <div class="col-lg-6 example-container">
+                      <mat-form-field>
+                        <input id="tallaCamisa" [formControlName]="colorPiel" matInput placeholder="Talla de Pie"
+                          [ngClass]="{ 'is-invalid': submitted && actorForm.controls.pie.errors }">
+                      </mat-form-field>
+                      <div *ngIf="submitted && actorForm.controls.pie.errors" class="invalid-feedback">
+                        <div *ngIf="actorForm.controls.pie.errors.required">La talla es requerido</div>
+                      </div>
                     </div>
-                    <div class="col-lg-4 example-container">
-                        <mat-form-field>
-                          <input id="tallaChaqueta" [formControlName]="tallaChaqueta" matInput placeholder="Talla de chaqueta" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.tallaChaqueta.errors }">
-                        </mat-form-field>
-                        <div *ngIf="submitted && actorForm.controls.tallaChaqueta.errors" class="invalid-feedback">
-                            <div *ngIf="actorForm.controls.tallaChaqueta.errors.required">La talla es requerido</div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 example-container">
-                        <mat-form-field>
-                          <input id="tallaPantalon" [formControlName]="tallaPantalon" matInput placeholder="Talla de pantalon" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.tallaPantalon.errors }">
-                        </mat-form-field>
-                        <div *ngIf="submitted && actorForm.controls.tallaPantalon.errors" class="invalid-feedback">
-                            <div *ngIf="actorForm.controls.tallaPantalon.errors.required">La talla es requerido</div>
-                        </div>
+                    <div class="col-lg-6 example-container">
+                      <mat-form-field>
+                        <input id="tallaChaqueta" [formControlName]="colorPelo" matInput placeholder="Talla de altura"
+                          [ngClass]="{ 'is-invalid': submitted && actorForm.controls.altura.errors }">
+                      </mat-form-field>
+                      <div *ngIf="submitted && actorForm.controls.altura.errors" class="invalid-feedback">
+                        <div *ngIf="actorForm.controls.altura.errors.required">La talla es requerido</div>
+                      </div>
                     </div>
                   </div>
                 </div>
 
                 <div class="form-group">
-                    <div class="row">
-                      <div class="col-lg-4 example-container">
-                          <mat-form-field>
-                            <input id="tallaCamisa" [formControlName]="colorPiel" matInput placeholder="Color Piel" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.colorPiel.errors }">
-                          </mat-form-field>
-                          <div *ngIf="submitted && actorForm.controls.colorPiel.errors" class="invalid-feedback">
-                              <div *ngIf="actorForm.controls.colorPiel.errors.required">El color es requerido</div>
-                            </div>
-                      </div>
-                      <div class="col-lg-4 example-container">
-                          <mat-form-field>
-                            <input id="tallaChaqueta" [formControlName]="colorPelo" matInput placeholder="Color Pelo" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.colorPelo.errors }">
-                          </mat-form-field>
-                          <div *ngIf="submitted && actorForm.controls.colorPelo.errors" class="invalid-feedback">
-                              <div *ngIf="actorForm.controls.colorPelo.errors.required">El color es requerido</div>
-                            </div>
-                      </div>
-                      <div class="col-lg-4 example-container">
-                          <mat-form-field>
-                            <input id="tallaPantalon" [formControlName]="colorOjos" matInput placeholder="Color ojos" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.colorOjos.errors }">
-                          </mat-form-field>
-                          <div *ngIf="submitted && actorForm.controls.colorOjos.errors" class="invalid-feedback">
-                              <div *ngIf="actorForm.controls.colorOjos.errors.required">El color es requerido</div>
-                            </div>
+                  <div class="row">
+                    <div class="col-lg-4 example-container">
+                      <mat-form-field>
+                        <input id="tallaCamisa" [formControlName]="tallaCamisa" matInput placeholder="Talla de camisa"
+                          [ngClass]="{ 'is-invalid': submitted && actorForm.controls.tallaCamisa.errors }">
+                      </mat-form-field>
+                      <div *ngIf="submitted && actorForm.controls.tallaCamisa.errors" class="invalid-feedback">
+                        <div *ngIf="actorForm.controls.tallaCamisa.errors.required">La talla es requerido</div>
                       </div>
                     </div>
+                    <div class="col-lg-4 example-container">
+                      <mat-form-field>
+                        <input id="tallaChaqueta" [formControlName]="tallaChaqueta" matInput
+                          placeholder="Talla de chaqueta"
+                          [ngClass]="{ 'is-invalid': submitted && actorForm.controls.tallaChaqueta.errors }">
+                      </mat-form-field>
+                      <div *ngIf="submitted && actorForm.controls.tallaChaqueta.errors" class="invalid-feedback">
+                        <div *ngIf="actorForm.controls.tallaChaqueta.errors.required">La talla es requerido</div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 example-container">
+                      <mat-form-field>
+                        <input id="tallaPantalon" [formControlName]="tallaPantalon" matInput
+                          placeholder="Talla de pantalon"
+                          [ngClass]="{ 'is-invalid': submitted && actorForm.controls.tallaPantalon.errors }">
+                      </mat-form-field>
+                      <div *ngIf="submitted && actorForm.controls.tallaPantalon.errors" class="invalid-feedback">
+                        <div *ngIf="actorForm.controls.tallaPantalon.errors.required">La talla es requerido</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-               
+
                 <div class="form-group">
-                    <div class="row">
-                      <div class="col-lg-6 example-container">
-                          <mat-form-field>
-                            <input id="numeroDNI" [formControlName]="numeroDNI" matInput placeholder="Numero DNI" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.numeroDNI.errors }">
-                          </mat-form-field>
-                          <div *ngIf="submitted && actorForm.controls.numeroDNI.errors" class="invalid-feedback">
-                              <div *ngIf="actorForm.controls.numeroDNI.errors.required">El numero es requerida</div>
-                          </div>
-                      </div>
-                      <div class="col-lg-6 example-container">
-                          <mat-form-field>
-                            <input id="numeroSeguridadSocial" [formControlName]="numeroSeguridadSocial" matInput placeholder="Numero de Seguridad Social" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.numeroSeguridadSocial.errors }">
-                          </mat-form-field>
-                          <div *ngIf="submitted && actorForm.controls.numeroSeguridadSocial.errors" class="invalid-feedback">
-                              <div *ngIf="actorForm.controls.numeroSeguridadSocial.errors.required">El numero es requerida</div>
-                          </div>
+                  <div class="row">
+                    <div class="col-lg-4 example-container">
+                      <mat-form-field>
+                        <input id="tallaCamisa" [formControlName]="colorPiel" matInput placeholder="Color Piel"
+                          [ngClass]="{ 'is-invalid': submitted && actorForm.controls.colorPiel.errors }">
+                      </mat-form-field>
+                      <div *ngIf="submitted && actorForm.controls.colorPiel.errors" class="invalid-feedback">
+                        <div *ngIf="actorForm.controls.colorPiel.errors.required">El color es requerido</div>
                       </div>
                     </div>
+                    <div class="col-lg-4 example-container">
+                      <mat-form-field>
+                        <input id="tallaChaqueta" [formControlName]="colorPelo" matInput placeholder="Color Pelo"
+                          [ngClass]="{ 'is-invalid': submitted && actorForm.controls.colorPelo.errors }">
+                      </mat-form-field>
+                      <div *ngIf="submitted && actorForm.controls.colorPelo.errors" class="invalid-feedback">
+                        <div *ngIf="actorForm.controls.colorPelo.errors.required">El color es requerido</div>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 example-container">
+                      <mat-form-field>
+                        <input id="tallaPantalon" [formControlName]="colorOjos" matInput placeholder="Color ojos"
+                          [ngClass]="{ 'is-invalid': submitted && actorForm.controls.colorOjos.errors }">
+                      </mat-form-field>
+                      <div *ngIf="submitted && actorForm.controls.colorOjos.errors" class="invalid-feedback">
+                        <div *ngIf="actorForm.controls.colorOjos.errors.required">El color es requerido</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-lg-6 example-container">
+                      <mat-form-field>
+                        <input id="numeroDNI" [formControlName]="numeroDNI" matInput placeholder="Numero DNI"
+                          [ngClass]="{ 'is-invalid': submitted && actorForm.controls.numeroDNI.errors }">
+                      </mat-form-field>
+                      <div *ngIf="submitted && actorForm.controls.numeroDNI.errors" class="invalid-feedback">
+                        <div *ngIf="actorForm.controls.numeroDNI.errors.required">El numero es requerida</div>
+                      </div>
+                    </div>
+                    <div class="col-lg-6 example-container">
+                      <mat-form-field>
+                        <input id="numeroSeguridadSocial" [formControlName]="numeroSeguridadSocial" matInput
+                          placeholder="Numero de Seguridad Social"
+                          [ngClass]="{ 'is-invalid': submitted && actorForm.controls.numeroSeguridadSocial.errors }">
+                      </mat-form-field>
+                      <div *ngIf="submitted && actorForm.controls.numeroSeguridadSocial.errors"
+                        class="invalid-feedback">
+                        <div *ngIf="actorForm.controls.numeroSeguridadSocial.errors.required">El numero es requerida
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 <div class="form-group example-container">
-                  <!-- Direccion -->                  
+                  <!-- Direccion -->
                   <mat-form-field>
-                        <input id="direccion" [formControlName]="direccion" matInput placeholder="Direccion" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.direccion.errors }">
+                    <input id="direccion" [formControlName]="direccion" matInput placeholder="Direccion"
+                      [ngClass]="{ 'is-invalid': submitted && actorForm.controls.direccion.errors }">
                   </mat-form-field>
                   <div *ngIf="submitted && actorForm.controls.direccion.errors" class="invalid-feedback">
                     <div *ngIf="actorForm.controls.direccion.errors.required">La dirección es requerida
@@ -290,34 +318,35 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="row">
-                      <div class="col-lg-4 example-container">
-                          <mat-form-field>
-                            <input id="localidad" [formControlName]="localidad" matInput placeholder="Localidad" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.localidad.errors }">
-                          </mat-form-field>
-                          <div *ngIf="submitted && actorForm.controls.localidad.errors" class="invalid-feedback">
-                              <div *ngIf="actorForm.controls.localidad.errors.required">La talla es requerido</div>
-                          </div>
-                      </div>
-                      <div class="col-lg-4 example-container">
-                          <mat-form-field>
-                            <input id="provincia" [formControlName]="provincia" matInput placeholder="Provincia">
-                          </mat-form-field>
-                      </div>
-                      <div class="col-lg-4 example-container">
-                          <mat-form-field>
-                            <input id="codpostal" (keypress)="check($event)" [formControlName]="codpostal" matInput placeholder="Codigo postal">
-                          </mat-form-field>
+                  <div class="row">
+                    <div class="col-lg-4 example-container">
+                      <mat-form-field>
+                        <input id="localidad" [formControlName]="localidad" matInput placeholder="Localidad"
+                          [ngClass]="{ 'is-invalid': submitted && actorForm.controls.localidad.errors }">
+                      </mat-form-field>
+                      <div *ngIf="submitted && actorForm.controls.localidad.errors" class="invalid-feedback">
+                        <div *ngIf="actorForm.controls.localidad.errors.required">La talla es requerido</div>
                       </div>
                     </div>
+                    <div class="col-lg-4 example-container">
+                      <mat-form-field>
+                        <input id="provincia" [formControlName]="provincia" matInput placeholder="Provincia">
+                      </mat-form-field>
+                    </div>
+                    <div class="col-lg-4 example-container">
+                      <mat-form-field>
+                        <input id="codpostal" (keypress)="check($event)" [formControlName]="codpostal" matInput
+                          placeholder="Codigo postal">
+                      </mat-form-field>
+                    </div>
                   </div>
+                </div>
 
                 <div class="form-group d-lg-flex d-md-flex d-block">
                   <!-- Carnet de conducir y coche-->
                   <div class="form-group mr-lg-3 mr-md-3 mr-0">
                     <label class="control-label">Carnet de conducir</label>
-                    <input type="text" class="d-inline form-control" formControlName="carnetConducir"
-                      placeholder=""
+                    <input type="text" class="d-inline form-control" formControlName="carnetConducir" placeholder=""
                       [ngClass]="{ 'is-invalid': submitted && actorForm.controls.carnetConducir.errors }">
                     <div *ngIf="submitted && actorForm.controls.carnetConducir.errors" class="invalid-feedback">
                       <div *ngIf="actorForm.controls.carnetConducir.errors.required">Carnet es requerido</div>
@@ -335,24 +364,26 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="row">
-                      <div class="col-lg-6 example-container">
-                          <mat-form-field>
-                            <input id="modeloCoche" [formControlName]="modeloCoche" matInput placeholder="Modelo de Coche" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.modeloCoche.errors }">
-                          </mat-form-field>
-                          <div *ngIf="submitted && actorForm.controls.modeloCoche.errors" class="invalid-feedback">
-                              <div *ngIf="actorForm.controls.modeloCoche.errors.required">El modelo es requerido</div>
-                          </div>
-                      </div>
-                      <div class="col-lg-6 example-container">
-                          <mat-form-field>
-                            <input id="modeloMoto" [formControlName]="modeloMoto" matInput placeholder="Modelo de Moto" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.modeloMoto.errors }">
-                          </mat-form-field>
-                          <div *ngIf="submitted && actorForm.controls.modeloMoto.errors" class="invalid-feedback">
-                              <div *ngIf="actorForm.controls.modeloMoto.errors.required">El modelo es requerido</div>
-                            </div>
+                  <div class="row">
+                    <div class="col-lg-6 example-container">
+                      <mat-form-field>
+                        <input id="modeloCoche" [formControlName]="modeloCoche" matInput placeholder="Modelo de Coche"
+                          [ngClass]="{ 'is-invalid': submitted && actorForm.controls.modeloCoche.errors }">
+                      </mat-form-field>
+                      <div *ngIf="submitted && actorForm.controls.modeloCoche.errors" class="invalid-feedback">
+                        <div *ngIf="actorForm.controls.modeloCoche.errors.required">El modelo es requerido</div>
                       </div>
                     </div>
+                    <div class="col-lg-6 example-container">
+                      <mat-form-field>
+                        <input id="modeloMoto" [formControlName]="modeloMoto" matInput placeholder="Modelo de Moto"
+                          [ngClass]="{ 'is-invalid': submitted && actorForm.controls.modeloMoto.errors }">
+                      </mat-form-field>
+                      <div *ngIf="submitted && actorForm.controls.modeloMoto.errors" class="invalid-feedback">
+                        <div *ngIf="actorForm.controls.modeloMoto.errors.required">El modelo es requerido</div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 <div class="form-group d-flex">
@@ -368,24 +399,25 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="row">
-                      <div class="col-lg-6 example-container">
-                          <mat-form-field>
-                            <input id="colorCoche" [formControlName]="colorCoche" matInput placeholder="Color de Coche">
-                          </mat-form-field>
-                      </div>
-                      <div class="col-lg-6 example-container">
-                          <mat-form-field>
-                            <input id="colorMoto" [formControlName]="colorMoto" matInput placeholder="Color de Moto">
-                          </mat-form-field>
-                      </div>
+                  <div class="row">
+                    <div class="col-lg-6 example-container">
+                      <mat-form-field>
+                        <input id="colorCoche" [formControlName]="colorCoche" matInput placeholder="Color de Coche">
+                      </mat-form-field>
                     </div>
+                    <div class="col-lg-6 example-container">
+                      <mat-form-field>
+                        <input id="colorMoto" [formControlName]="colorMoto" matInput placeholder="Color de Moto">
+                      </mat-form-field>
+                    </div>
+                  </div>
                 </div>
 
-              <!-- Tienes tatuajes? -->
+                <!-- Tienes tatuajes? -->
                 <div class="form-group">
                   <label class="control-label">Tienes tatuajes?</label>
-                  <select class="form-control" id="tattos" formControlName="tattos" [(ngModel)]="LinktattoSelect" [ngModelOptions]="{standalone: true}">
+                  <select class="form-control" id="tattos" formControlName="tattos" [(ngModel)]="LinktattoSelect"
+                    [ngModelOptions]="{standalone: true}">
                     <option [ngValue]="0" selected>Seleccione...</option>
                     <option *ngFor="let i of tattos">{{i}}</option>
                   </select>
@@ -399,7 +431,7 @@
                 </div>
 
                 <!-- Eres modelo de manos? -->
-               <div class="form-group">
+                <div class="form-group">
                   <label class="control-label">Eres modelo de manos?</label>
                   <select class="form-control" [(ngModel)]="WorkingSelect" [ngModelOptions]="{standalone: true}">
                     <option [ngValue]="0">Seleccione...</option>
@@ -408,9 +440,9 @@
                 </div>
                 <!-- Link de trabajos -->
                 <div *ngIf="WorkingSelect == 'Si'" class="form-group">
-                    <label class="control-label">Link de trabajos</label>
-                    <input type="text" class="form-control" id="" formControlName=""
-                      placeholder="https://www.Trabajos.com">
+                  <label class="control-label">Link de trabajos</label>
+                  <input type="text" class="form-control" id="" formControlName=""
+                    placeholder="https://www.Trabajos.com">
                 </div>
                 <!-- Adjunta fotos Profesionales -->
                 <div *ngIf="WorkingSelect == 'Si'" class="form-group">
@@ -423,19 +455,29 @@
                 <div class="form-group">
                   <!-- Deporte -->
                   <label class="control-label">Deporte</label>
-                  <select  class="form-control" [(ngModel)]="deportistaSelect"
-                    [ngModelOptions]="{standalone: true}">
+                  <select class="form-control" [(ngModel)]="deportistaSelect" [ngModelOptions]="{standalone: true}">
                     <option selected>Seleccione...</option>
                     <option [ngValue]="i" *ngFor="let i of deportista">{{i.nombreDeportista}}</option>
                   </select>
                 </div>
-               
+
                 <div class="form-group">
-                    <!-- Habilidades del deporte-->
-                    <mat-card>
-                      <h5 class="pb-1">Habilidades del deporte</h5>
-                      <hr>
-                       <div class="d-lg-flex d-md-flex d-sm-block">
+                  <!-- Habilidades del deporte-->
+                  <mat-card>
+                    <h5 class="pb-1">Habilidades del deporte</h5>
+                    <hr>
+
+                    <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                      <div *ngFor="let item of deportes" class="col-md-4 col-sm-6 col-12"
+                        style="padding: 5px 0px 5px 0px;">
+                        <mat-checkbox (change)="OnChange($event, item, 1)">
+                          <span class="itemitle">{{item.nombreDeporte}}</span>
+                        </mat-checkbox>
+                      </div>
+                    </div>
+
+                    <!--
+                     <div class="d-lg-flex d-md-flex d-sm-block">
                            <div class="col-lg-4">
                              <p>
                                <mat-checkbox [formControlName]="">Artes marciales</mat-checkbox>
@@ -460,7 +502,7 @@
                                 </p>
                            </div>
                            <div class="col-lg-4">
-                            
+
                              <p>
                                <mat-checkbox [formControlName]="">Fútbol</mat-checkbox>
                              </p>
@@ -484,7 +526,7 @@
                               </p>
                            </div>
                            <div class="col-lg-4">
-                             
+
                               <p>
                                   <mat-checkbox [formControlName]="">Polo</mat-checkbox>
                               </p>
@@ -505,11 +547,12 @@
                               </p>
                            </div>
                        </div>
-                       <mat-form-field>
-                           <input matInput placeholder="Otro">
-                       </mat-form-field>
-                    </mat-card>
-                    <!-- <div class="form-group">
+                       -->
+                    <mat-form-field>
+                      <input matInput placeholder="Otro">
+                    </mat-form-field>
+                  </mat-card>
+                  <!-- <div class="form-group">
                         <label class="control-label">Habilidades del deporte</label>
                         <select  class="form-control" [(ngModel)]="deporteSelect"
                           [ngModelOptions]="{standalone: true}">
@@ -534,71 +577,81 @@
                 </div>
 
                 <div class="form-group">
-                    <!-- Estilos de Baile -->
-                    <mat-card>
-                      <h5 class="pb-1">Estilos de Baile</h5>
-                      <hr>
-                       <div class="d-lg-flex d-md-flex d-sm-block">
-                           <div class="col-lg-4">
-                             <p>
-                               <mat-checkbox [formControlName]="">Ballet clasico</mat-checkbox>
-                             </p>
-                             <p>
-                                 <mat-checkbox [formControlName]="">Breakdance</mat-checkbox>
-                             </p>
-                             <p>
-                                 <mat-checkbox [formControlName]="">Chachacha</mat-checkbox>
-                              </p>
-                              <p>
-                                 <mat-checkbox [formControlName]="">Claqué</mat-checkbox>
-                              </p>
-                              <p>
-                                <mat-checkbox [formControlName]="">Contemporaneo</mat-checkbox>
-                              </p>
-                              <p>
-                                <mat-checkbox [formControlName]="">Cumbia</mat-checkbox>
-                              </p>
-                           </div>
-                           <div class="col-lg-4">
-                             <p>
-                               <mat-checkbox [formControlName]="">Flamenco</mat-checkbox>
-                             </p>
-                             <p>
-                               <mat-checkbox [formControlName]="">Funky</mat-checkbox>
-                             </p>
-                             <p>
-                                <mat-checkbox [formControlName]="">Hiphop</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Merengue</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Pasodoble</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Pole dance</mat-checkbox>
-                              </p>
-                           </div>
-                           <div class="col-lg-4">
-                              <p>
-                                  <mat-checkbox [formControlName]="">Salsa</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Samba</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Sevillanas</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Tango</mat-checkbox>
-                              </p>
-                           </div>
-                       </div>
-                       <mat-form-field>
-                           <input matInput placeholder="Otro">
-                       </mat-form-field>
-                    </mat-card>
-                    <!-- <div class="form-group">
+                  <!-- Estilos de Baile -->
+                  <mat-card>
+                    <h5 class="pb-1">Estilos de Baile</h5>
+                    <hr>
+                    <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                      <div *ngFor="let item of estilosBaile" class="col-md-4 col-sm-6 col-12"
+                        style="padding: 5px 0px 5px 0px;">
+                        <mat-checkbox (change)="OnChange($event, item, 2)">
+                          <span class="itemitle">{{item.nombreBaile}}</span>
+                        </mat-checkbox>
+                      </div>
+                    </div>
+                    <!--
+                    <div class="d-lg-flex d-md-flex d-sm-block">
+                      <div class="col-lg-4">
+                        <p>
+                          <mat-checkbox [formControlName]="">Ballet clasico</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Breakdance</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Chachacha</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Claqué</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Contemporaneo</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Cumbia</mat-checkbox>
+                        </p>
+                      </div>
+                      <div class="col-lg-4">
+                        <p>
+                          <mat-checkbox [formControlName]="">Flamenco</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Funky</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Hiphop</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Merengue</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Pasodoble</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Pole dance</mat-checkbox>
+                        </p>
+                      </div>
+                      <div class="col-lg-4">
+                        <p>
+                          <mat-checkbox [formControlName]="">Salsa</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Samba</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Sevillanas</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Tango</mat-checkbox>
+                        </p>
+                      </div>
+                    </div>
+                    -->
+                    <mat-form-field>
+                      <input matInput placeholder="Otro">
+                    </mat-form-field>
+                  </mat-card>
+                  <!-- <div class="form-group">
                         <label class="control-label">Estilos de Baile</label>
                         <select forControlName="estilosBaile" class="form-control" [(ngModel)]="estilosBaileSelect"
                           [ngModelOptions]="{standalone: true}">
@@ -621,76 +674,87 @@
                     <option [ngValue]="i" *ngFor="let i of cantante">{{i.nombreCantante}}</option>
                   </select>
                 </div>
-                
+
                 <div class="form-group">
-                    <!-- Estilos de cantos -->
-                    <mat-card>
-                      <h5 class="pb-1">Estilos de cantos</h5>
-                      <hr>
-                       <div class="d-lg-flex d-md-flex d-sm-block">
-                           <div class="col-lg-4">
-                             <p>
-                               <mat-checkbox [formControlName]="">Blues</mat-checkbox>
-                             </p>
-                             <p>
-                                 <mat-checkbox [formControlName]="">Country</mat-checkbox>
-                             </p>
-                             <p>
-                                 <mat-checkbox [formControlName]="">Dance</mat-checkbox>
-                              </p>
-                              <p>
-                                 <mat-checkbox [formControlName]="">Electro pop</mat-checkbox>
-                              </p>
-                              <p>
-                                <mat-checkbox [formControlName]="">Flamenco</mat-checkbox>
-                              </p>
-                              <p>
-                                <mat-checkbox [formControlName]="">Heavy metal</mat-checkbox>
-                              </p>
-                           </div>
-                           <div class="col-lg-4">
-                             <p>
-                               <mat-checkbox [formControlName]="">Hip hop</mat-checkbox>
-                             </p>
-                             <p>
-                               <mat-checkbox [formControlName]="">Lírico</mat-checkbox>
-                             </p>
-                             <p>
-                                <mat-checkbox [formControlName]="">Pop</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Pop latino</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Punk</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Rap</mat-checkbox>
-                              </p>
-                           </div>
-                           <div class="col-lg-4">
-                              <p>
-                                  <mat-checkbox [formControlName]="">Reggae</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Rock</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Salsa</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Soul</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Tecno</mat-checkbox>
-                              </p>
-                           </div>
-                       </div>
-                       <mat-form-field>
-                           <input matInput placeholder="Otro">
-                       </mat-form-field>
-                    </mat-card>
-                   <!--  <div  class="form-group">
+                  <!-- Estilos de cantos -->
+                  <mat-card>
+                    <h5 class="pb-1">Estilos de cantos</h5>
+                    <hr>
+
+                    <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                      <div *ngFor="let item of estilosCanto" class="col-md-4 col-sm-6 col-12"
+                        style="padding: 5px 0px 5px 0px;">
+                        <mat-checkbox (change)="OnChange($event, item, 3)">
+                          <span class="itemitle">{{item.nombreEstiloCanto}}</span>
+                        </mat-checkbox>
+                      </div>
+                    </div>
+                    <!--
+                    <div class="d-lg-flex d-md-flex d-sm-block">
+                      <div class="col-lg-4">
+                        <p>
+                          <mat-checkbox [formControlName]="">Blues</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Country</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Dance</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Electro pop</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Flamenco</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Heavy metal</mat-checkbox>
+                        </p>
+                      </div>
+                      <div class="col-lg-4">
+                        <p>
+                          <mat-checkbox [formControlName]="">Hip hop</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Lírico</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Pop</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Pop latino</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Punk</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Rap</mat-checkbox>
+                        </p>
+                      </div>
+                      <div class="col-lg-4">
+                        <p>
+                          <mat-checkbox [formControlName]="">Reggae</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Rock</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Salsa</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Soul</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Tecno</mat-checkbox>
+                        </p>
+                      </div>
+                    </div>
+                    -->
+                    <mat-form-field>
+                      <input matInput placeholder="Otro">
+                    </mat-form-field>
+                  </mat-card>
+                  <!--  <div  class="form-group">
                         <label class="control-label">Estilo de cantos</label>
                         <select class="form-control" forControlName="estilosCanto" [(ngModel)]="estilosCantoSelect"
                           [ngModelOptions]="{standalone: true}">
@@ -705,71 +769,82 @@
                 </div>
 
                 <div class="form-group">
-                    <!-- Habilidades -->
-                    <mat-card>
-                      <h5 class="pb-1">Habilidades</h5>
-                      <hr>
-                       <div class="d-lg-flex d-md-flex d-sm-block">
-                           <div class="col-lg-4">
-                             <p>
-                               <mat-checkbox [formControlName]="">Acrobacia</mat-checkbox>
-                             </p>
-                             <p>
-                                 <mat-checkbox [formControlName]="">Buceo</mat-checkbox>
-                             </p>
-                             <p>
-                                 <mat-checkbox [formControlName]="">Ciclismo BMX</mat-checkbox>
-                              </p>
-                              <p>
-                                 <mat-checkbox [formControlName]="">Contorsionista</mat-checkbox>
-                              </p>
-                              <p>
-                                <mat-checkbox [formControlName]="">Escalada</mat-checkbox>
-                              </p>
-                              <p>
-                                <mat-checkbox [formControlName]="">Lenguaje de signos</mat-checkbox>
-                              </p>
-                           </div>
-                           <div class="col-lg-4">
-                             <p>
-                               <mat-checkbox [formControlName]="">Magia</mat-checkbox>
-                             </p>
-                             <p>
-                               <mat-checkbox [formControlName]="">Motocross</mat-checkbox>
-                             </p>
-                             <p>
-                                <mat-checkbox [formControlName]="">Paracaidismo</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Parkour</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Piraguismo</mat-checkbox>
-                              </p>
-                           </div>
-                           <div class="col-lg-4">
-                              <p>
-                                  <mat-checkbox [formControlName]="">Pompas Jabon</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Puenting</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Skater</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Sombras chinescas</mat-checkbox>
-                              </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Surf</mat-checkbox>
-                              </p>
-                           </div>
-                       </div>
-                       <mat-form-field>
-                           <input matInput placeholder="Otro">
-                       </mat-form-field>
-                    </mat-card>
-                    <!-- <div class="form-group">
+                  <!-- Habilidades -->
+                  <mat-card>
+                    <h5 class="pb-1">Habilidades</h5>
+                    <hr>
+                    <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                      <div *ngFor="let item of habilidadess" class="col-md-4 col-sm-6 col-12"
+                        style="padding: 5px 0px 5px 0px;">
+                        <mat-checkbox (change)="OnChange($event, item, 4)">
+                          <span class="itemitle">{{item.nombreHabilidad}}</span>
+                        </mat-checkbox>
+                      </div>
+                    </div>
+
+                    <!--
+                    <div class="d-lg-flex d-md-flex d-sm-block">
+                      <div class="col-lg-4">
+                        <p>
+                          <mat-checkbox [formControlName]="">Acrobacia</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Buceo</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Ciclismo BMX</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Contorsionista</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Escalada</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Lenguaje de signos</mat-checkbox>
+                        </p>
+                      </div>
+                      <div class="col-lg-4">
+                        <p>
+                          <mat-checkbox [formControlName]="">Magia</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Motocross</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Paracaidismo</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Parkour</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Piraguismo</mat-checkbox>
+                        </p>
+                      </div>
+                      <div class="col-lg-4">
+                        <p>
+                          <mat-checkbox [formControlName]="">Pompas Jabon</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Puenting</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Skater</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Sombras chinescas</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Surf</mat-checkbox>
+                        </p>
+                      </div>
+                    </div>
+                  -->
+                    <mat-form-field>
+                      <input matInput placeholder="Otro">
+                    </mat-form-field>
+                  </mat-card>
+                  <!-- <div class="form-group">
                         <label class="control-label">Habilidades</label>
                         <select forControlName="habilidadess" class="form-control" [(ngModel)]="habilidadessSelect"
                           [ngModelOptions]="{standalone: true}">
@@ -784,59 +859,71 @@
                 </div>
 
                 <div class="form-group">
-                    <!-- Idiomas -->
-                    <mat-card>
-                      <h5 class="pb-1">Idiomas</h5>
-                      <hr>
-                       <div class="d-lg-flex d-md-flex d-sm-block">
-                           <div class="col-lg-4">
-                             <p>
-                               <mat-checkbox [formControlName]="">Alemán</mat-checkbox>
-                             </p>
-                             <p>
-                                 <mat-checkbox [formControlName]="">Catalán</mat-checkbox>
-                             </p>
-                             <p>
-                                 <mat-checkbox [formControlName]="">English</mat-checkbox>
-                              </p>
-                              <p>
-                                 <mat-checkbox [formControlName]="">Frances</mat-checkbox>
-                              </p>
-                           </div>
-                           <div class="col-lg-4">
-                             <p>
-                               <mat-checkbox [formControlName]="">Galés</mat-checkbox>
-                             </p>
-                             <p>
-                               <mat-checkbox [formControlName]="">Gallegos</mat-checkbox>
-                             </p>
-                             <p>
-                               <mat-checkbox [formControlName]="">Italiano</mat-checkbox>
-                             </p>
-                             <p>
-                               <mat-checkbox [formControlName]="">Valenciano</mat-checkbox>
-                             </p>
-                           </div>
-                           <div class="col-lg-4">
-                               <p>
-                                 <mat-checkbox [formControlName]="">Romano</mat-checkbox>
-                               </p>
-                               <p>
-                                 <mat-checkbox [formControlName]="">Ruso</mat-checkbox>
-                               </p>
-                               <p>
-                                 <mat-checkbox [formControlName]="">Español</mat-checkbox>
-                               </p>
-                              <p>
-                                  <mat-checkbox [formControlName]="">Sueco</mat-checkbox>
-                              </p>
-                           </div>
-                       </div>
-                       <mat-form-field>
-                           <input matInput placeholder="Otro">
-                       </mat-form-field>
-                    </mat-card>
-                    <!-- <div class="form-group">
+                  <!-- Idiomas -->
+                  <mat-card>
+                    <h5 class="pb-1">Idiomas</h5>
+                    <hr>
+
+                    <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                      <div *ngFor="let item of idiomas" class="col-md-4 col-sm-6 col-12"
+                        style="padding: 5px 0px 5px 0px;">
+                        <mat-checkbox (change)="OnChange($event, item, 5)">
+                          <span class="itemitle">{{item.nombreIdioma}}</span>
+                        </mat-checkbox>
+                      </div>
+                    </div>
+
+                    <!--
+                    <div class="d-lg-flex d-md-flex d-sm-block">
+                      <div class="col-lg-4">
+                        <p>
+                          <mat-checkbox [formControlName]="">Alemán</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Catalán</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">English</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Frances</mat-checkbox>
+                        </p>
+                      </div>
+                      <div class="col-lg-4">
+                        <p>
+                          <mat-checkbox [formControlName]="">Galés</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Gallegos</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Italiano</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Valenciano</mat-checkbox>
+                        </p>
+                      </div>
+                      <div class="col-lg-4">
+                        <p>
+                          <mat-checkbox [formControlName]="">Romano</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Ruso</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Español</mat-checkbox>
+                        </p>
+                        <p>
+                          <mat-checkbox [formControlName]="">Sueco</mat-checkbox>
+                        </p>
+                      </div>
+                    </div>
+                    -->
+                    <mat-form-field>
+                      <input matInput placeholder="Otro">
+                    </mat-form-field>
+                  </mat-card>
+                  <!-- <div class="form-group">
                         <label class="control-label">Idiomas</label>
                         <select forControlName="idiomas" class="form-control" [(ngModel)]="idiomasSelect"
                           [ngModelOptions]="{standalone: true}">
@@ -859,16 +946,19 @@
                 <div class="form-group example-container">
                   <!-- Observaciones -->
                   <mat-form-field>
-                      <textarea [formControlName]="observaciones" matInput placeholder="Observaciones"></textarea>
+                    <textarea [formControlName]="observaciones" matInput placeholder="Observaciones"></textarea>
                   </mat-form-field>
                 </div>
 
                 <div class="form-group">
-                    <div class="form-check">
-                      <mat-checkbox [formControlName]="acceptTerms" id="acceptTerms" [ngClass]="{ 'is-invalid': submitted && actorForm.controls.acceptTerms.value === false }" >Acepta los terminos del registro</mat-checkbox>
-                      <div *ngIf="submitted && actorForm.controls.acceptTerms.value === false" class="invalid-feedback">Los
-                        terminos es requerido</div>
-                    </div>
+                  <div class="form-check">
+                    <mat-checkbox [formControlName]="acceptTerms" id="acceptTerms"
+                      [ngClass]="{ 'is-invalid': submitted && actorForm.controls.acceptTerms.value === false }">Acepta
+                      los terminos del registro</mat-checkbox>
+                    <div *ngIf="submitted && actorForm.controls.acceptTerms.value === false" class="invalid-feedback">
+                      Los
+                      terminos es requerido</div>
+                  </div>
                 </div>
 
                 <div class="info info--sm">
@@ -881,8 +971,9 @@
                 <div class="mt-4 form-group">
                   <!-- Submit Button -->
                   <button type="submit" (click)="registrarActor()" class="btn btn-primary">
-                      <span *ngIf="submitted && actorForm.controls.acceptTerms.value === true"><i class="fa fa-spinner fa-spin fa-3x fa-fw" style="font-size: 13px;"></i></span>
-                      Registrame!</button>
+                    <span *ngIf="submitted && actorForm.controls.acceptTerms.value === true"><i
+                        class="fa fa-spinner fa-spin fa-3x fa-fw" style="font-size: 13px;"></i></span>
+                    Registrame!</button>
                 </div>
               </form>
             </div>

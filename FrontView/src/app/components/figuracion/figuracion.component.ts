@@ -57,7 +57,7 @@ export class FiguracionComponent implements OnInit {
 
   @Input() inputArray;
   @ViewChild(TemplateRef, { static: false }) tpl: TemplateRef<any>;
- 
+
 
   /**Constructor */
   constructor(
@@ -71,7 +71,7 @@ export class FiguracionComponent implements OnInit {
   }
 
   hide = true;
-  
+
   /***variables para carga de imagenes y archivos */
   fileAvatar: File = null;
   fileCoche: File = null;
@@ -103,21 +103,21 @@ export class FiguracionComponent implements OnInit {
   deportista: deportista[] = [];
   deportes: deportes[] = [];
   typecarnet: string[] = ['Tipo A', 'Tipo B', 'Tipo C', 'Tipo D', 'Tipo BTP'];
-  tattos: string[] = ['Si','No'];
-  Models: string[] = ['Si','No'];
+  tattos: string[] = ['Si', 'No'];
+  Models: string[] = ['Si', 'No'];
   //selected
   actorSelect;
   tipoCarnetSelect;
   usuario: Usuario = new Usuario();
   etniaSelect: etnia = new etnia();
   baileSelect: bailarin = new bailarin();
-  estilosBaileSelect: estilosBaile = new estilosBaile();
+  estilosBaileSelect: estilosBaile[] = [];
   cantanteSelect: cantante = new cantante();
-  estilosCantoSelect: estilosCanto = new estilosCanto();
-  habilidadessSelect: habilidades = new habilidades();
-  idiomasSelect: idiomas = new idiomas();
+  estilosCantoSelect: estilosCanto[] = [];
+  habilidadessSelect: habilidades[] = [];
+  idiomasSelect: idiomas[] = [];
   deportistaSelect: deportista = new deportista();
-  deporteSelect: deportes = new deportes();
+  deporteSelect: deportes[] = [];
   /*****fin variables combos*****/
   actorForm: FormGroup;
   submitted = false;
@@ -126,6 +126,8 @@ export class FiguracionComponent implements OnInit {
   ngOnInit() {
     this.createRegisterForm();
     this.llenarCombos();
+
+    this.deporteSelect = [];
   }
 
   llenarCombos() {
@@ -155,10 +157,10 @@ export class FiguracionComponent implements OnInit {
         this.estilosBaile = resp;
       });
 
-    this.authService.finByIdEstilosBile(1)
-      .subscribe(resp => {
-        this.estilosBaileSelect = resp;
-      });
+    /* this.authService.finByIdEstilosBile(1)
+       .subscribe(resp => {
+         this.estilosBaileSelect = resp;
+       });*/
 
     //llenado de deportista
     this.authService.getAllDeportista()
@@ -177,10 +179,10 @@ export class FiguracionComponent implements OnInit {
         this.deportes = resp;
       });
 
-    this.authService.finByIdDeportes(1)
+    /*this.authService.finByIdDeportes(1)
       .subscribe(resp => {
         this.deporteSelect = resp;
-      });
+      });*/
 
     //llenado de cantate
     this.authService.getAllCantante()
@@ -201,10 +203,10 @@ export class FiguracionComponent implements OnInit {
         this.estilosCanto = resp;
       });
 
-    this.authService.finByIdEstilosCanto(1)
+    /*this.authService.finByIdEstilosCanto(1)
       .subscribe(resp => {
         this.estilosCantoSelect = resp;
-      });
+      });*/
 
     //llenado de habilidadess
     this.authService.getAllHabilidades()
@@ -212,10 +214,10 @@ export class FiguracionComponent implements OnInit {
         this.habilidadess = resp;
       });
 
-    this.authService.finByIdHabilidades(1)
+    /*this.authService.finByIdHabilidades(1)
       .subscribe(resp => {
         this.habilidadessSelect = resp;
-      });
+      });*/
 
     //llenado de idiomas
     this.authService.getAllIdiomas()
@@ -224,10 +226,10 @@ export class FiguracionComponent implements OnInit {
       });
 
 
-    this.authService.finByIdIdiomas(1)
-      .subscribe(resp => {
-        this.idiomasSelect = resp;
-      });
+    /* this.authService.finByIdIdiomas(1)
+       .subscribe(resp => {
+         this.idiomasSelect = resp;
+       });*/
   }
 
   /**Construccion de form match variables y campos */
@@ -235,7 +237,7 @@ export class FiguracionComponent implements OnInit {
     this.actorForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       password: ['', [Validators.required, Validators.minLength(5)]],
-      confirmPassword: ['', Validators.required],   
+      confirmPassword: ['', Validators.required],
       username: [''],
       acceptTerms: [false, Validators.required],
       habilidades: [''],
@@ -279,7 +281,7 @@ export class FiguracionComponent implements OnInit {
       avatar: [''],
       tattoos: [''],
       manos: [''],
-      typecarnet:[''],
+      typecarnet: [''],
     }
       , {
         validator: MustMatch('password', 'confirmPassword')
@@ -371,11 +373,11 @@ export class FiguracionComponent implements OnInit {
       username: newUserObject.username,
       videobook: '',
       instrumentoList: [],
-      estilosCantoList: [this.estilosCantoSelect],
-      deporteList: [this.deporteSelect],
-      estiloBaileList: [this.estilosBaileSelect],
-      idiomasList: [this.idiomasSelect],
-      habilidadesList: [this.habilidadessSelect],
+      estilosCantoList: this.estilosCantoSelect,
+      deporteList: this.deporteSelect,
+      estiloBaileList: this.estilosBaileSelect,
+      idiomasList: this.idiomasSelect,
+      habilidadesList: this.habilidadessSelect,
       tallasList: [],
       ultimosTrabajosList: [],
       idCantante: this.cantanteSelect,
@@ -399,6 +401,53 @@ export class FiguracionComponent implements OnInit {
       fotosTatuajesList: [],
       fotosManosList: []
     };
+  }
+
+
+  OnChange($event, item, id) {
+    console.log($event);
+    console.log(item);
+    $event.source.focus();
+
+    /**habilidades deporte 1*/
+    if (id === 1) {
+      if ($event.checked) {
+        this.deporteSelect.push(item);
+      } else {
+        const index: number = this.deporteSelect.indexOf(item);
+        this.deporteSelect.splice(index, 1);
+      }
+    } else if (id === 2) {
+      if ($event.checked) {
+        this.estilosBaileSelect.push(item);
+      } else {
+        const index: number = this.estilosBaileSelect.indexOf(item);
+        this.estilosBaileSelect.splice(index, 1);
+      }
+    } else if (id === 3) {
+      if ($event.checked) {
+        this.estilosCantoSelect.push(item);
+      } else {
+        const index: number = this.estilosCantoSelect.indexOf(item);
+        this.estilosCantoSelect.splice(index, 1);
+      }
+    } else if (id === 4) {
+      if ($event.checked) {
+        this.habilidadessSelect.push(item);
+      } else {
+        const index: number = this.habilidadessSelect.indexOf(item);
+        this.habilidadessSelect.splice(index, 1);
+      }
+    } else if (id === 5) {
+      if ($event.checked) {
+        this.idiomasSelect.push(item);
+      } else {
+        const index: number = this.idiomasSelect.indexOf(item);
+        this.idiomasSelect.splice(index, 1);
+      }
+    }
+
+    //MatCheckboxChange {checked,MatCheckbox}
   }
 
   registrarFotos(idUser) {
@@ -471,7 +520,7 @@ export class FiguracionComponent implements OnInit {
           console.log('info save fotosManos');
         },
         (err) => {
-          console.log('error save fotosManos');
+          console.log('error save fotosManos' + err);
         });
     }
 

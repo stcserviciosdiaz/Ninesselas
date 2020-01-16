@@ -199,7 +199,7 @@ export class AuthService {
   }
 
   editManos(manos): Observable<any> {
-    return this.http.post<any>(this.urlGenerica + 'servicio-fotosManos/editar/' + manos.idFotoMano, manos);
+    return this.http.put<any>(this.urlGenerica + 'servicio-fotosManos/editar/' + manos.idFotoMano, manos);
   }
   /******* FIN MANOS *********/
 

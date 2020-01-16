@@ -93,23 +93,23 @@ export class ActorsComponent implements OnInit {
   instrumentoss;
   typecarnet: string[] = ['Tipo A', 'Tipo B', 'Tipo C', 'Tipo D', 'Tipo BTP'];
   actor = [{ name: 'Si', value: 0 }, { name: 'No', value: 1 }];
-  tattos: string[] = ['Si','No'];
-  Models: string[] = ['Si','No'];
+  tattos: string[] = ['Si', 'No'];
+  Models: string[] = ['Si', 'No'];
   //selected
   actorSelect;
   tipoCarnetSelect;
   etniaSelect: etnia = new etnia();
   usuario: Usuario = new Usuario();
   baileSelect: bailarin = new bailarin();
-  estilosBaileSelect: estilosBaile = new estilosBaile();
+  estilosBaileSelect: estilosBaile[] = [];
   cantanteSelect: cantante = new cantante();
-  estilosCantoSelect: estilosCanto = new estilosCanto();
-  habilidadessSelect: habilidades = new habilidades();
-  idiomasSelect: idiomas = new idiomas();
+  estilosCantoSelect: estilosCanto[] = [];
+  habilidadessSelect: habilidades[] = [];
+  idiomasSelect: idiomas[] = [];
   deportistaSelect: deportista = new deportista();
-  deporteSelect: deportes = new deportes();
+  deporteSelect: deportes[] = [];
   musicoSelect: musico = new musico();
-  instrumentoSelect: instrumento = new instrumento();
+  instrumentoSelect: instrumento[] = [];
   /*****fin variables combos*****/
   constructor(
     private storage: AngularFireStorage,
@@ -190,10 +190,10 @@ export class ActorsComponent implements OnInit {
         this.estilosBaile = resp;
       });
 
-    this.authService.finByIdEstilosBile(1)
+    /*this.authService.finByIdEstilosBile(1)
       .subscribe(resp => {
         this.estilosBaileSelect = resp;
-      });
+      });*/
 
     //llenado de cantate
     this.authService.getAllCantante()
@@ -212,10 +212,10 @@ export class ActorsComponent implements OnInit {
         this.estilosCanto = resp;
       });
 
-    this.authService.finByIdEstilosCanto(1)
+    /*this.authService.finByIdEstilosCanto(1)
       .subscribe(resp => {
         this.estilosCantoSelect = resp;
-      });
+      });*/
 
     //llenado de habilidadess
     this.authService.getAllHabilidades()
@@ -223,10 +223,10 @@ export class ActorsComponent implements OnInit {
         this.habilidadess = resp;
       });
 
-    this.authService.finByIdHabilidades(1)
+    /*this.authService.finByIdHabilidades(1)
       .subscribe(resp => {
         this.habilidadessSelect = resp;
-      });
+      });*/
 
     //llenado de idiomas
     this.authService.getAllIdiomas()
@@ -234,10 +234,10 @@ export class ActorsComponent implements OnInit {
         this.idiomas = resp;
       });
 
-    this.authService.finByIdIdiomas(1)
+    /*this.authService.finByIdIdiomas(1)
       .subscribe(resp => {
         this.idiomasSelect = resp;
-      });
+      });*/
 
     //llenado de deportista
     this.authService.getAllDeportista()
@@ -256,10 +256,10 @@ export class ActorsComponent implements OnInit {
         this.deportes = resp;
       });
 
-    this.authService.finByIdDeportes(1)
+    /*this.authService.finByIdDeportes(1)
       .subscribe(resp => {
         this.deporteSelect = resp;
-      });
+      });*/
 
     //llenado de musico
     this.authService.getAllMusico()
@@ -278,10 +278,10 @@ export class ActorsComponent implements OnInit {
         this.instrumentoss = resp;
       });
 
-    this.authService.finByIdInstrumento(1)
+    /*this.authService.finByIdInstrumento(1)
       .subscribe(resp => {
         this.instrumentoSelect = resp;
-      });
+      });*/
   }
 
   createRegisterForm() {
@@ -316,7 +316,7 @@ export class ActorsComponent implements OnInit {
       estilocantos: [''],
       instrumentos: [''],
       deporte: [''],
-      apellidos: ['',Validators.required],
+      apellidos: ['', Validators.required],
       bilingue: [''],
       nombreArtistico: [''],
       sexo: [''],
@@ -361,11 +361,8 @@ export class ActorsComponent implements OnInit {
   }
 
   pasarDatosFormUsuario() {
-    console.log('DATOS DE ETNIA' + this.etniaSelect.idEtnia);
     this.submitted = true;
-    /*if (this.actorForm.invalid) {
-      return;
-    }*/
+
     const newUserObject = this.actorForm.value;
 
     this.usuario = {
@@ -413,12 +410,12 @@ export class ActorsComponent implements OnInit {
       actor: 'SI',
       username: newUserObject.username,
       videobook: newUserObject.videoBook,
-      instrumentoList: [this.instrumentoSelect],
-      estilosCantoList: [this.estilosCantoSelect],
-      deporteList: [this.deporteSelect],
-      estiloBaileList: [this.estilosBaileSelect],
-      idiomasList: [this.idiomasSelect],
-      habilidadesList: [this.habilidadessSelect],
+      instrumentoList: this.instrumentoSelect,
+      estilosCantoList: this.estilosCantoSelect,
+      deporteList: this.deporteSelect,
+      estiloBaileList: this.estilosBaileSelect,
+      idiomasList: this.idiomasSelect,
+      habilidadesList: this.habilidadessSelect,
       tallasList: [],
       ultimosTrabajosList: [],
       idCantante: this.cantanteSelect,
@@ -456,6 +453,59 @@ export class ActorsComponent implements OnInit {
         this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
         console.log(JSON.stringify(err));
       });
+  }
+
+  OnChange($event, item, id) {
+    console.log($event);
+    console.log(item);
+    $event.source.focus();
+
+    /**habilidades deporte 1*/
+    if (id === 1) {
+      if ($event.checked) {
+        this.deporteSelect.push(item);
+      } else {
+        const index: number = this.deporteSelect.indexOf(item);
+        this.deporteSelect.splice(index, 1);
+      }
+    } else if (id === 2) {
+      if ($event.checked) {
+        this.estilosBaileSelect.push(item);
+      } else {
+        const index: number = this.estilosBaileSelect.indexOf(item);
+        this.estilosBaileSelect.splice(index, 1);
+      }
+    } else if (id === 3) {
+      if ($event.checked) {
+        this.instrumentoSelect.push(item);
+      } else {
+        const index: number = this.instrumentoSelect.indexOf(item);
+        this.instrumentoSelect.splice(index, 1);
+      }
+    } else if (id === 4) {
+      if ($event.checked) {
+        this.estilosCantoSelect.push(item);
+      } else {
+        const index: number = this.estilosCantoSelect.indexOf(item);
+        this.estilosCantoSelect.splice(index, 1);
+      }
+    } else if (id === 5) {
+      if ($event.checked) {
+        this.habilidadessSelect.push(item);
+      } else {
+        const index: number = this.habilidadessSelect.indexOf(item);
+        this.habilidadessSelect.splice(index, 1);
+      }
+    } else if (id === 6) {
+      if ($event.checked) {
+        this.idiomasSelect.push(item);
+      } else {
+        const index: number = this.idiomasSelect.indexOf(item);
+        this.idiomasSelect.splice(index, 1);
+      }
+    }
+
+    //MatCheckboxChange {checked,MatCheckbox}
   }
 
   registrarFotos(idUser) {
