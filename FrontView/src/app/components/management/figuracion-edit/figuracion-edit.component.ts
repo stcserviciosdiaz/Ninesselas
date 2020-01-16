@@ -75,13 +75,14 @@ export class FiguracionEditComponent implements OnInit {
   usuarioEdit: Usuario = new Usuario();
   etniaSelect: etnia = new etnia();
   baileSelect: bailarin = new bailarin();
-  estilosBaileSelect: estilosBaile = new estilosBaile();
-  cantanteSelect: cantante = new cantante();
-  estilosCantoSelect: estilosCanto = new estilosCanto();
-  habilidadessSelect: habilidades = new habilidades();
-  idiomasSelect: idiomas = new idiomas();
   deportistaSelect: deportista = new deportista();
-  deporteSelect: deportes []=[];
+  cantanteSelect: cantante = new cantante();
+
+  estilosBaileSelect: estilosBaile[] = [];
+  estilosCantoSelect: estilosCanto[] = [];
+  habilidadessSelect: habilidades[] = [];
+  idiomasSelect: idiomas[] = [];
+  deporteSelect: deportes[] = [];
   /*****fin variables combos*****/
 
   @ViewChild(TemplateRef, { static: false }) tpl: TemplateRef<any>;
@@ -182,11 +183,11 @@ export class FiguracionEditComponent implements OnInit {
     this.deportistaSelect = this.usuario.idDeportista;
     this.deporteSelect = this.usuario.deporteList;
     this.baileSelect = this.usuario.idBailarin;
-    this.estilosBaileSelect = this.usuario.estiloBaileList[0];
+    this.estilosBaileSelect = this.usuario.estiloBaileList;
     this.cantanteSelect = this.usuario.idCantante;
-    this.estilosCantoSelect = this.usuario.estilosCantoList[0];
-    this.habilidadessSelect = this.usuario.habilidadesList[0];
-    this.idiomasSelect = this.usuario.idiomasList[0];
+    this.estilosCantoSelect = this.usuario.estilosCantoList;
+    this.habilidadessSelect = this.usuario.habilidadesList;
+    this.idiomasSelect = this.usuario.idiomasList;
   }
 
   pasarUrlPaths() {
@@ -274,11 +275,33 @@ export class FiguracionEditComponent implements OnInit {
 
   }
 
-  isChecked(id): boolean {
-    const valor = this.deporteSelect.find(x => x.nombreDeporte === id);
-    if (valor)
-      return true;
-    else return false;
+  isChecked(idItem, id): boolean {
+    if (id === 1) {
+      const valor = this.deporteSelect.find(x => x.nombreDeporte === idItem);
+      if (valor)
+        return true;
+      else return false;
+    } else if (id === 2) {
+      const valor = this.estilosBaileSelect.find(x => x.nombreBaile === idItem);
+      if (valor)
+        return true;
+      else return false;
+    } else if (id === 3) {
+      const valor = this.estilosCantoSelect.find(x => x.nombreEstiloCanto === idItem);
+      if (valor)
+        return true;
+      else return false;
+    } else if (id === 4) {
+      const valor = this.habilidadessSelect.find(x => x.nombreHabilidad === idItem);
+      if (valor)
+        return true;
+      else return false;
+    } else if (id === 5) {
+      const valor = this.idiomasSelect.find(x => x.nombreIdioma === idItem);
+      if (valor)
+        return true;
+      else return false;
+    }
   }
 
   OnChange($event, item, id) {
@@ -294,7 +317,7 @@ export class FiguracionEditComponent implements OnInit {
         const index: number = this.deporteSelect.indexOf(item);
         this.deporteSelect.splice(index, 1);
       }
-    } /*else if (id === 2) {
+    } else if (id === 2) {
       if ($event.checked) {
         this.estilosBaileSelect.push(item);
       } else {
@@ -322,7 +345,7 @@ export class FiguracionEditComponent implements OnInit {
         const index: number = this.idiomasSelect.indexOf(item);
         this.idiomasSelect.splice(index, 1);
       }
-    }*/
+    }
 
     //MatCheckboxChange {checked,MatCheckbox}
   }
@@ -462,11 +485,11 @@ export class FiguracionEditComponent implements OnInit {
       username: newChild.username,
       videobook: 'N/A',
       instrumentoList: [],
-      estilosCantoList: [this.estilosCantoSelect],
+      estilosCantoList: this.estilosCantoSelect,
       deporteList: this.deporteSelect,
-      estiloBaileList: [this.estilosBaileSelect],
-      idiomasList: [this.idiomasSelect],
-      habilidadesList: [this.habilidadessSelect],
+      estiloBaileList: this.estilosBaileSelect,
+      idiomasList: this.idiomasSelect,
+      habilidadesList: this.habilidadessSelect,
       tallasList: [],
       ultimosTrabajosList: [],
       idCantante: this.cantanteSelect,

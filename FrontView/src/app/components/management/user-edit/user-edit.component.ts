@@ -117,15 +117,16 @@ export class UserEditComponent implements OnInit {
   usuarioEdit: Usuario = new Usuario();
   etniaSelect: etnia = new etnia();
   baileSelect: bailarin = new bailarin();
-  estilosBaileSelect: estilosBaile = new estilosBaile();
   cantanteSelect: cantante = new cantante();
-  estilosCantoSelect: estilosCanto = new estilosCanto();
-  habilidadessSelect: habilidades = new habilidades();
-  idiomasSelect: idiomas = new idiomas();
   deportistaSelect: deportista = new deportista();
-  deporteSelect: deportes = new deportes();
   musicoSelect: musico = new musico();
-  instrumentoSelect: instrumento = new instrumento();
+
+  estilosBaileSelect: estilosBaile[] = [];
+  estilosCantoSelect: estilosCanto[] = [];
+  habilidadessSelect: habilidades[] = [];
+  idiomasSelect: idiomas[] = [];
+  deporteSelect: deportes[] = [];
+  instrumentoSelect: instrumento[] = [];
   /*****fin variables combos*****/
 
   @ViewChild(TemplateRef, { static: false }) tpl: TemplateRef<any>;
@@ -242,15 +243,16 @@ export class UserEditComponent implements OnInit {
   pasarEntidadesSelect() {
     this.etniaSelect = this.usuario.idEtnia;
     this.deportistaSelect = this.usuario.idDeportista;
-    this.deporteSelect = this.usuario.deporteList[0];
-    this.baileSelect = this.usuario.idBailarin;
-    this.estilosBaileSelect = this.usuario.estiloBaileList[0];
-    this.musicoSelect = this.usuario.idMusico;
-    this.instrumentoSelect = this.usuario.instrumentoList[0];
     this.cantanteSelect = this.usuario.idCantante;
-    this.estilosCantoSelect = this.usuario.estilosCantoList[0];
-    this.habilidadessSelect = this.usuario.habilidadesList[0];
-    this.idiomasSelect = this.usuario.idiomasList[0];
+    this.baileSelect = this.usuario.idBailarin;
+    this.musicoSelect = this.usuario.idMusico;
+
+    this.deporteSelect = this.usuario.deporteList;
+    this.estilosBaileSelect = this.usuario.estiloBaileList;
+    this.instrumentoSelect = this.usuario.instrumentoList;
+    this.estilosCantoSelect = this.usuario.estilosCantoList;
+    this.habilidadessSelect = this.usuario.habilidadesList;
+    this.idiomasSelect = this.usuario.idiomasList;
   }
 
   pasarUrlPaths() {
@@ -417,12 +419,12 @@ export class UserEditComponent implements OnInit {
       actor: newChild.actor.name,
       username: newChild.username,
       videobook: newChild.videoBook,
-      instrumentoList: [this.instrumentoSelect],
-      estilosCantoList: [this.estilosCantoSelect],
-      deporteList: [this.deporteSelect],
-      estiloBaileList: [this.estilosBaileSelect],
-      idiomasList: [this.idiomasSelect],
-      habilidadesList: [this.habilidadessSelect],
+      instrumentoList: this.instrumentoSelect,
+      estilosCantoList: this.estilosCantoSelect,
+      deporteList: this.deporteSelect,
+      estiloBaileList: this.estilosBaileSelect,
+      idiomasList: this.idiomasSelect,
+      habilidadesList: this.habilidadessSelect,
       tallasList: [],
       ultimosTrabajosList: [],
       idCantante: this.cantanteSelect,
@@ -441,6 +443,94 @@ export class UserEditComponent implements OnInit {
       fotosManosList: []
     };
 
+  }
+
+
+  isChecked(idItem, id): boolean {
+    if (id === 1) {
+      const valor = this.deporteSelect.find(x => x.nombreDeporte === idItem);
+      if (valor)
+        return true;
+      else return false;
+    } else if (id === 2) {
+      const valor = this.instrumentoSelect.find(x => x.nombreInstrumento === idItem);
+      if (valor)
+        return true;
+      else return false;
+    } else if (id === 3) {
+      const valor = this.estilosBaileSelect.find(x => x.nombreBaile === idItem);
+      if (valor)
+        return true;
+      else return false;
+    } else if (id === 4) {
+      const valor = this.estilosCantoSelect.find(x => x.nombreEstiloCanto === idItem);
+      if (valor)
+        return true;
+      else return false;
+    } else if (id === 5) {
+      const valor = this.habilidadessSelect.find(x => x.nombreHabilidad === idItem);
+      if (valor)
+        return true;
+      else return false;
+    } else if (id === 6) {
+      const valor = this.idiomasSelect.find(x => x.nombreIdioma === idItem);
+      if (valor)
+        return true;
+      else return false;
+    }
+  }
+
+  OnChange($event, item, id) {
+    console.log($event);
+    console.log(item);
+    $event.source.focus();
+
+    /**habilidades deporte 1*/
+    if (id === 1) {
+      if ($event.checked) {
+        this.deporteSelect.push(item);
+      } else {
+        const index: number = this.deporteSelect.indexOf(item);
+        this.deporteSelect.splice(index, 1);
+      }
+    } else if (id === 2) {
+      if ($event.checked) {
+        this.instrumentoSelect.push(item);
+      } else {
+        const index: number = this.instrumentoSelect.indexOf(item);
+        this.instrumentoSelect.splice(index, 1);
+      }
+    } else if (id === 3) {
+      if ($event.checked) {
+        this.estilosBaileSelect.push(item);
+      } else {
+        const index: number = this.estilosBaileSelect.indexOf(item);
+        this.estilosBaileSelect.splice(index, 1);
+      }
+    } else if (id === 4) {
+      if ($event.checked) {
+        this.estilosCantoSelect.push(item);
+      } else {
+        const index: number = this.estilosCantoSelect.indexOf(item);
+        this.estilosCantoSelect.splice(index, 1);
+      }
+    } else if (id === 5) {
+      if ($event.checked) {
+        this.habilidadessSelect.push(item);
+      } else {
+        const index: number = this.habilidadessSelect.indexOf(item);
+        this.habilidadessSelect.splice(index, 1);
+      }
+    } else if (id === 6) {
+      if ($event.checked) {
+        this.idiomasSelect.push(item);
+      } else {
+        const index: number = this.idiomasSelect.indexOf(item);
+        this.idiomasSelect.splice(index, 1);
+      }
+    }
+
+    //MatCheckboxChange {checked,MatCheckbox}
   }
 
   signupChild() {

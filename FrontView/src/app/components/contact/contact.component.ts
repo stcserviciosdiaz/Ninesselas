@@ -53,7 +53,7 @@ export class ContactComponent implements OnInit {
       telefonoTo: this.emailForm.get('phone').value,
       mensajeTo: this.emailForm.get('message').value
     };
-    this.emailService.enviarEmail(email)
+    this.emailService.notificarContacto(email)
       .subscribe(
         res => {
           alert('Correo Enviado! Gracias por contactarnos, en breve nos comunicaremos contigo!');

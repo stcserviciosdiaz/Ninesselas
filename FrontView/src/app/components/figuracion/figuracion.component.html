@@ -30,7 +30,7 @@
                 <div class="form-group example-container">
                   <!-- Nombre de Usuario -->
                   <mat-form-field>
-                    <input matInput placeholder="Nombre de Usuario" id="username" [formControlName]="username"
+                    <input matInput placeholder="Nombre de Usuario" id="username" formControlName="username"
                       [ngClass]="{ 'is-invalid': submitted && actorForm.controls.username.errors }">
                   </mat-form-field>
                   <div *ngIf="submitted && actorForm.controls.username.errors" class="invalid-feedback">
@@ -60,7 +60,7 @@
                     <div class="col-lg-6 example-container">
                       <mat-form-field>
                         <!-- Contraseña -->
-                        <input [formControlName]="password" matInput placeholder="Ingrese contraseña"
+                        <input formControlName="password" matInput placeholder="Ingrese contraseña"
                           [type]="hide ? 'password' : 'text'"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.password.errors }">
                         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
@@ -77,7 +77,7 @@
                     <div class="col-lg-6 example-container">
                       <mat-form-field>
                         <!-- Confirma Contraseña -->
-                        <input [formControlName]="confirmPassword" matInput placeholder="Repita contraseña"
+                        <input formControlName="confirmPassword" matInput placeholder="Repita contraseña"
                           type="number" class="example-right-align"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.confirmPassword.errors }">
                         <div *ngIf="submitted && actorForm.controls.confirmPassword.errors" class="invalid-feedback">
@@ -194,7 +194,7 @@
                   <div class="row">
                     <div class="col-lg-6 example-container">
                       <mat-form-field>
-                        <input id="tallaCamisa" [formControlName]="colorPiel" matInput placeholder="Talla de Pie"
+                        <input  [formControlName]="colorPiel" matInput placeholder="Talla de Pie"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.pie.errors }">
                       </mat-form-field>
                       <div *ngIf="submitted && actorForm.controls.pie.errors" class="invalid-feedback">
@@ -203,7 +203,7 @@
                     </div>
                     <div class="col-lg-6 example-container">
                       <mat-form-field>
-                        <input id="tallaChaqueta" [formControlName]="colorPelo" matInput placeholder="Talla de altura"
+                        <input  [formControlName]="colorPelo" matInput placeholder="Talla de altura"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.altura.errors }">
                       </mat-form-field>
                       <div *ngIf="submitted && actorForm.controls.altura.errors" class="invalid-feedback">
@@ -217,7 +217,7 @@
                   <div class="row">
                     <div class="col-lg-4 example-container">
                       <mat-form-field>
-                        <input id="tallaCamisa" [formControlName]="tallaCamisa" matInput placeholder="Talla de camisa"
+                        <input  [formControlName]="tallaCamisa" matInput placeholder="Talla de camisa"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.tallaCamisa.errors }">
                       </mat-form-field>
                       <div *ngIf="submitted && actorForm.controls.tallaCamisa.errors" class="invalid-feedback">
@@ -226,7 +226,7 @@
                     </div>
                     <div class="col-lg-4 example-container">
                       <mat-form-field>
-                        <input id="tallaChaqueta" [formControlName]="tallaChaqueta" matInput
+                        <input  [formControlName]="tallaChaqueta" matInput
                           placeholder="Talla de chaqueta"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.tallaChaqueta.errors }">
                       </mat-form-field>
@@ -236,7 +236,7 @@
                     </div>
                     <div class="col-lg-4 example-container">
                       <mat-form-field>
-                        <input id="tallaPantalon" [formControlName]="tallaPantalon" matInput
+                        <input  [formControlName]="tallaPantalon" matInput
                           placeholder="Talla de pantalon"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.tallaPantalon.errors }">
                       </mat-form-field>
@@ -251,7 +251,7 @@
                   <div class="row">
                     <div class="col-lg-4 example-container">
                       <mat-form-field>
-                        <input id="tallaCamisa" [formControlName]="colorPiel" matInput placeholder="Color Piel"
+                        <input  [formControlName]="colorPiel" matInput placeholder="Color Piel"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.colorPiel.errors }">
                       </mat-form-field>
                       <div *ngIf="submitted && actorForm.controls.colorPiel.errors" class="invalid-feedback">
@@ -441,7 +441,7 @@
                 <!-- Link de trabajos -->
                 <div *ngIf="WorkingSelect == 'Si'" class="form-group">
                   <label class="control-label">Link de trabajos</label>
-                  <input type="text" class="form-control" id="" formControlName=""
+                  <input type="text" class="form-control" 
                     placeholder="https://www.Trabajos.com">
                 </div>
                 <!-- Adjunta fotos Profesionales -->
@@ -454,11 +454,24 @@
 
                 <div class="form-group">
                   <!-- Deporte -->
+
+                  <mat-form-field>
+                    <mat-label>¿ Es Deportista?</mat-label>
+                    <mat-select [(ngModel)]="deportistaSelect" [ngModelOptions]="{standalone: true}">
+                      <mat-option>None</mat-option>
+                      <mat-option *ngFor="let item of deportista" [value]="item">
+                        {{item.nombreDeportista}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <!--
                   <label class="control-label">Deporte</label>
                   <select class="form-control" [(ngModel)]="deportistaSelect" [ngModelOptions]="{standalone: true}">
                     <option selected>Seleccione...</option>
                     <option [ngValue]="i" *ngFor="let i of deportista">{{i.nombreDeportista}}</option>
                   </select>
+                  -->
                 </div>
 
                 <div class="form-group">
@@ -568,12 +581,25 @@
 
                 <div class="form-group">
                   <!-- Baile -->
+
+                  <mat-form-field>
+                    <mat-label>Baile</mat-label>
+                    <mat-select [(ngModel)]="baileSelect" [ngModelOptions]="{standalone: true}">
+                      <mat-option>None</mat-option>
+                      <mat-option *ngFor="let item of baile" [value]="item">
+                        {{item.nombreBailarin}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <!--
                   <label class="control-label">Baile</label>
                   <select forControlName="baile" class="form-control" [(ngModel)]="baileSelect"
                     [ngModelOptions]="{standalone: true}">
                     <option [ngValue]="null">Seleccione...</option>
                     <option [ngValue]="i" *ngFor="let i of baile">{{i.nombreBailarin}}</option>
                   </select>
+                  -->
                 </div>
 
                 <div class="form-group">
@@ -667,12 +693,25 @@
 
                 <div class="form-group">
                   <!-- Cantantes -->
+
+                  <mat-form-field>
+                    <mat-label>Cantante</mat-label>
+                    <mat-select [(ngModel)]="cantanteSelect" [ngModelOptions]="{standalone: true}">
+                      <mat-option>None</mat-option>
+                      <mat-option *ngFor="let item of cantante" [value]="item">
+                        {{item.nombreCantante}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <!--
                   <label class="control-label">Cantantes</label>
                   <select forControlName="cantante" class="form-control" [(ngModel)]="cantanteSelect"
                     [ngModelOptions]="{standalone: true}">
                     <option [ngValue]="null">Seleccione...</option>
                     <option [ngValue]="i" *ngFor="let i of cantante">{{i.nombreCantante}}</option>
                   </select>
+                  -->
                 </div>
 
                 <div class="form-group">
@@ -867,7 +906,7 @@
                     <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
                       <div *ngFor="let item of idiomas" class="col-md-4 col-sm-6 col-12"
                         style="padding: 5px 0px 5px 0px;">
-                        <mat-checkbox checked="true" (change)="OnChange($event, item, 5)">
+                        <mat-checkbox (change)="OnChange($event, item, 5)">
                           <span class="itemitle">{{item.nombreIdioma}}</span>
                         </mat-checkbox>
                       </div>

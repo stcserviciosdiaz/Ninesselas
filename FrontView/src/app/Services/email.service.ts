@@ -17,8 +17,12 @@ export class EmailService {
   }
 
   /**EMAIL */
-  enviarEmail(email): Observable<any> {
-    return this.http.post<any>(this.url + 'servicio-email/enviar', email);
+  notificarRegistro(email): Observable<any> {
+    return this.http.post<any>(this.url + 'servicio-email/notificarRegistro', email);
+  }
+
+  notificarContacto(email): Observable<any> {
+    return this.http.post<any>(this.url + 'servicio-email/notificarContacto', email);
   }
   /**FIN SERVICIO EMAIL */
 

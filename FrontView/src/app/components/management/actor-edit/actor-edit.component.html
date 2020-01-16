@@ -409,16 +409,19 @@
                 </div>
                 <div class="form-group">
                   <!-- Habilidades del deporte-->
-                  <label class="control-label">Habilidades del deporte</label>
-                  <select class="form-control" [(ngModel)]="deporteSelect" [ngModelOptions]="{standalone: true}">
-                    <option selected>Seleccione...</option>
-                    <option [ngValue]="i" *ngFor="let i of deportes">{{i.nombreDeporte}}</option>
-                  </select>
-                </div>
-                <div *ngIf="deporteSelect.nombreDeporte == 'Otros'" class="form-group">
-                  <!-- Espesifique otro deporte -->
-                  <label class="control-label">Espesifique otro deporte</label>
-                  <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
+                  <h5 class="pb-1">Habilidades de Deporte</h5>
+                  <hr>
+                  <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                    <div *ngFor="let item of deportes" class="col-md-4 col-sm-6 col-12"
+                      style="padding: 5px 0px 5px 0px;">
+                      <mat-checkbox [checked]="isChecked(item.nombreDeporte, 1)" (change)="OnChange($event, item, 1)">
+                        <span class="itemitle">{{item.nombreDeporte}}</span>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                  <mat-form-field>
+                    <input matInput placeholder="Otro">
+                  </mat-form-field>
                 </div>
 
                 <div class="form-group">
@@ -429,19 +432,19 @@
                     <option [ngValue]="i" *ngFor="let i of musico">{{i.nombreMusico}}</option>
                   </select>
                 </div>
-                <div *ngIf="musicoSelect.nombreMusico == 'Profesional'" class="form-group">
-                  <!-- Instrumentos musical -->
-                  <label class="control-label">Instrumentos musical</label>
-                  <select class="form-control" [(ngModel)]="instrumentoSelect" [ngModelOptions]="{standalone: true}">
-                    <option selected>Seleccione...</option>
-                    <option [ngValue]="i" *ngFor="let i of instrumentoss">{{i.nombreInstrumento}}</option>
-                  </select>
+                <h5 class="pb-1">Instrumentos Musicales</h5>
+                <hr>
+                <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                  <div *ngFor="let item of instrumentoss" class="col-md-4 col-sm-6 col-12"
+                    style="padding: 5px 0px 5px 0px;">
+                    <mat-checkbox [checked]="isChecked(item.nombreInstrumento, 2)" (change)="OnChange($event, item, 2)">
+                      <span class="itemitle">{{item.nombreInstrumento}}</span>
+                    </mat-checkbox>
+                  </div>
                 </div>
-                <div *ngIf="instrumentoSelect.nombreInstrumento == 'Otros'" class="form-group">
-                  <!-- Espesifique otro instrumento musical -->
-                  <label class="control-label">Espesifique otro instrumento musical</label>
-                  <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
-                </div>
+                <mat-form-field>
+                  <input matInput placeholder="Otro">
+                </mat-form-field>
 
                 <div class="form-group">
                   <!-- Baile -->
@@ -453,16 +456,19 @@
                 </div>
                 <div class="form-group">
                   <!-- Estilos de Baile -->
-                  <label class="control-label">Estilos de Baile</label>
-                  <select class="form-control" [(ngModel)]="estilosBaileSelect" [ngModelOptions]="{standalone: true}">
-                    <option selected>Seleccione...</option>
-                    <option [ngValue]="i" *ngFor="let i of estilosBaile">{{i.nombreBaile}}</option>
-                  </select>
-                </div>
-                <div *ngIf="estilosBaileSelect.nombreBaile == 'Otros'" class="form-group">
-                  <!-- Espesifique otro baile -->
-                  <label class="control-label">Espesifique otro baile</label>
-                  <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
+                  <h5 class="pb-1">Habilidades de Baile</h5>
+                  <hr>
+                  <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                    <div *ngFor="let item of estilosBaile" class="col-md-4 col-sm-6 col-12"
+                      style="padding: 5px 0px 5px 0px;">
+                      <mat-checkbox [checked]="isChecked(item.nombreBaile, 3)" (change)="OnChange($event, item, 3)">
+                        <span class="itemitle">{{item.nombreBaile}}</span>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                  <mat-form-field>
+                    <input matInput placeholder="Otro">
+                  </mat-form-field>
                 </div>
 
                 <div class="form-group">
@@ -475,44 +481,54 @@
                 </div>
                 <div class="form-group">
                   <!-- Estilos de cantos -->
-                  <label class="control-label">Estilo de cantos</label>
-                  <select class="form-control" [(ngModel)]="estilosCantoSelect" [ngModelOptions]="{standalone: true}">
-                    <option selected>Seleccione...</option>
-                    <option [ngValue]="i" *ngFor="let i of estilosCanto">{{i.nombreEstiloCanto}}</option>
-                  </select>
-                </div>
-                <div *ngIf="estilosCantoSelect.nombreEstiloCanto == 'Otros'" class="form-group">
-                  <!-- Espesifique otros estilos -->
-                  <label class="control-label">Espesifique otro estilos</label>
-                  <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
+                  <h5 class="pb-1">Habilidades de Canto</h5>
+                  <hr>
+                  <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                    <div *ngFor="let item of estilosCanto" class="col-md-4 col-sm-6 col-12"
+                      style="padding: 5px 0px 5px 0px;">
+                      <mat-checkbox [checked]="isChecked(item.nombreEstiloCanto, 4)"
+                        (change)="OnChange($event, item, 4)">
+                        <span class="itemitle">{{item.nombreEstiloCanto}}</span>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                  <mat-form-field>
+                    <input matInput placeholder="Otro">
+                  </mat-form-field>
                 </div>
 
                 <div class="form-group">
                   <!-- Habilidades -->
-                  <label class="control-label">Habilidades</label>
-                  <select class="form-control" [(ngModel)]="habilidadessSelect" [ngModelOptions]="{standalone: true}">
-                    <option selected>Seleccione...</option>
-                    <option [ngValue]="i" *ngFor="let i of habilidadess">{{i.nombreHabilidad}}</option>
-                  </select>
-                </div>
-                <div *ngIf="habilidadessSelect.nombreHabilidad == 'Otros'" class="form-group">
-                  <!-- Espesifique otras habilidades -->
-                  <label class="control-label">Espesifique otras habilidades</label>
-                  <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
+                  <h5 class="pb-1">Habilidades Varias</h5>
+                  <hr>
+                  <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                    <div *ngFor="let item of habilidadess" class="col-md-4 col-sm-6 col-12"
+                      style="padding: 5px 0px 5px 0px;">
+                      <mat-checkbox [checked]="isChecked(item.nombreHabilidad, 5)" (change)="OnChange($event, item, 5)">
+                        <span class="itemitle">{{item.nombreHabilidad}}</span>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                  <mat-form-field>
+                    <input matInput placeholder="Otro">
+                  </mat-form-field>
                 </div>
 
                 <div class="form-group">
                   <!-- Idiomas -->
-                  <label class="control-label">Idiomas</label>
-                  <select class="form-control" [(ngModel)]="idiomasSelect" [ngModelOptions]="{standalone: true}">
-                    <option selected>Seleccione...</option>
-                    <option [ngValue]="i" *ngFor="let i of idiomas">{{i.nombreIdioma}}</option>
-                  </select>
-                </div>
-                <div *ngIf="idiomasSelect.nombreIdioma == 'Otros'" class="form-group">
-                  <!-- Espesifique otro Idioma -->
-                  <label class="control-label">Espesifique otro Idioma</label>
-                  <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
+                  <h5 class="pb-1">Idiomas</h5>
+                  <hr>
+                  <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                    <div *ngFor="let item of idiomas" class="col-md-4 col-sm-6 col-12"
+                      style="padding: 5px 0px 5px 0px;">
+                      <mat-checkbox [checked]="isChecked(item.nombreIdioma, 6)" (change)="OnChange($event, item, 6)">
+                        <span class="itemitle">{{item.nombreIdioma}}</span>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                  <mat-form-field>
+                    <input matInput placeholder="Otro">
+                  </mat-form-field>
                 </div>
 
                 <!-- Bilingue -->

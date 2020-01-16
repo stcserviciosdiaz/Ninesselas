@@ -19,6 +19,8 @@ import { deportista } from 'src/app/models/deportista';
 import { musico } from 'src/app/models/musico';
 import { instrumento } from 'src/app/models/instrumentos';
 import { etnia } from 'src/app/models/etnia';
+import { EmailService } from 'src/app/Services/email.service';
+import { Email } from 'src/app/models/email';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -114,6 +116,7 @@ export class ActorsComponent implements OnInit {
   constructor(
     private storage: AngularFireStorage,
     private authService: AuthService,
+    private emailService: EmailService,
     public ngxSmartModalService: NgxSmartModalService,
     private formBuilder: FormBuilder,
     private router: Router,
@@ -601,6 +604,13 @@ export class ActorsComponent implements OnInit {
         this.registrarFotos(res.idUser);
         this.guardarTalla(res.idUser);
         localStorage.setItem('token', res.idUser);
+        const email: Email = {
+          usernameTo: this.usuario.username,
+          emailTo: this.usuario.email,
+          telefonoTo: this.usuario.telefono,
+          mensajeTo: 'Gracias por registrarte en Ninesselas, pronto nos contactaremos contigo.',
+        };
+        this.emailService.notificarRegistro(email);
         this.router.navigate(['/homeuser']);
         this.ngxSmartModalService.create('confirm', 'Se ha registrado exitosamente' + this.usuario.nombreCompleto).open();
 

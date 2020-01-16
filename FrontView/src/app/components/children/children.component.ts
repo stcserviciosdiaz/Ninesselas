@@ -21,6 +21,8 @@ import { HttpClient, HttpEventType } from '@angular/common/http';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs/internal/Observable';
 import { finalize } from 'rxjs/operators';
+import { Email } from 'src/app/models/email';
+import { EmailService } from 'src/app/Services/email.service';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -134,6 +136,7 @@ export class ChildrenComponent implements OnInit {
     private storage: AngularFireStorage,
     private http: HttpClient,
     private authService: AuthService,
+    private emailService: EmailService,
     public ngxSmartModalService: NgxSmartModalService,
     private formBuilder: FormBuilder,
     private router: Router
@@ -451,6 +454,14 @@ export class ChildrenComponent implements OnInit {
         this.ngxSmartModalService.create('confirm', 'Cuenta de Niño creada exitosamente ' + res.nombres + ' ' + res.apellidos).open();
         this.router.navigate(['/homeuser']);
         this.guardarTalla(res.idUser);
+        localStorage.setItem('token', res.idUser);
+        const email: Email = {
+          usernameTo: this.usuario.username,
+          emailTo: this.usuario.email,
+          telefonoTo: this.usuario.telefono,
+          mensajeTo: 'Gracias por registrarte en Ninesselas, pronto nos contactaremos contigo.',
+        };
+        this.emailService.notificarRegistro(email);
       },
       (err) => {
         this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();

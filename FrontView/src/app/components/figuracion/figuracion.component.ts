@@ -20,6 +20,8 @@ import { finalize } from 'rxjs/operators';
 import { Observable } from 'rxjs/internal/Observable';
 import { deportista } from 'src/app/models/deportista';
 import { deportes } from 'src/app/models/deportes';
+import { EmailService } from 'src/app/Services/email.service';
+import { Email } from 'src/app/models/email';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -63,6 +65,7 @@ export class FiguracionComponent implements OnInit {
   constructor(
     private storage: AngularFireStorage,
     private authService: AuthService,
+    private emailService: EmailService,
     public ngxSmartModalService: NgxSmartModalService,
     private formBuilder: FormBuilder,
     private router: Router
@@ -102,6 +105,7 @@ export class FiguracionComponent implements OnInit {
   idiomas: idiomas[] = [];
   deportista: deportista[] = [];
   deportes: deportes[] = [];
+  listDeportes: deportes[] = [];
   typecarnet: string[] = ['Tipo A', 'Tipo B', 'Tipo C', 'Tipo D', 'Tipo BTP'];
   tattos: string[] = ['Si', 'No'];
   Models: string[] = ['Si', 'No'];
@@ -561,6 +565,13 @@ export class FiguracionComponent implements OnInit {
         this.ngxSmartModalService.create('confirm', 'Cuenta de Figuración creada exitosamente ' + res.nombres + ' ' + res.apellidos).open();
         this.registrarFotos(res.idUser);
         this.guardarTalla(res.idUser);
+        const email: Email = {
+          usernameTo: this.usuario.username,
+          emailTo: this.usuario.email,
+          telefonoTo: this.usuario.telefono,
+          mensajeTo: 'Gracias por registrarte en Ninesselas, pronto nos contactaremos contigo.',
+        };
+        this.emailService.notificarRegistro(email);
         this.router.navigate(['/homeuser']);
       },
       (err) => {
