@@ -76,13 +76,13 @@
                 <div class="form-group">
                   <!-- ¿De qué grupo étnico se considera? -->
                   <label class="control-label">Raza</label>
-                  <select forControlName="etnias" class="form-control" [(ngModel)]="etniaSelect"
+                  <select  class="form-control" [(ngModel)]="etniaSelect"
                     [ngModelOptions]="{standalone: true}">
                     <option [ngValue]="0" selected>Seleccione...</option>
                     <option [ngValue]="i" *ngFor="let i of etnias">{{i.nombreEtnia}}</option>
                   </select>
                 </div>
-                <div *ngIf="etniaSelect.nombreEtnia == 'Otro'" class="form-group">
+                <div [*ngIf]="etniaSelect.nombreEtnia == 'Otro'" class="form-group">
                   <!-- especifique -->
                   <label class="control-label">Especifique otro grupo étnico</label>
                   <textarea forControlName="otro" class="form-control" rows="3"></textarea>
@@ -92,13 +92,13 @@
                   <!-- Sexo -->
                   <div class="row">
                     <legend class="col-form-label col-sm-2 pt-0">Sexo</legend>
-                    <mat-radio-group aria-label="Select an option">
+                    <mat-radio-group (change)="onChangeGenero($event)" name="gender" aria-label="Seleccione un Género">
                       <div class="col">
-                        <mat-radio-button value="1" id="gridRadios1" [formControlName]="sexo">Masculino
+                        <mat-radio-button value="Masculino" id="gridRadios1">Masculino
                         </mat-radio-button>
                       </div>
                       <div class="col">
-                        <mat-radio-button value="2" id="gridRadios2" [formControlName]="sexo">Femenino
+                        <mat-radio-button value="Femenino" id="gridRadios2">Femenino
                         </mat-radio-button>
                       </div>
                     </mat-radio-group>
@@ -126,19 +126,18 @@
                     </div>
                     <div class="col-lg-6 example-container">
                       <mat-form-field>
-                        <!-- Confirma Contraseña -->
-                        <input formControlName="confirmPassword" matInput placeholder="Repita contraseña"
-                          type="number" class="example-right-align"
+                        <!-- Contraseña -->
+                        <input formControlName="confirmPassword" matInput placeholder="Confirme contraseña"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.confirmPassword.errors }">
+
                         <div *ngIf="submitted && actorForm.controls.confirmPassword.errors" class="invalid-feedback">
-                          <div *ngIf="actorForm.controls.confirmPassword.errors.required">Confirme que se requiere
-                            contraseña
+                          <div *ngIf="actorForm.controls.confirmPassword.errors.required">La contraseña es requerida
                           </div>
-                          <div *ngIf="actorForm.controls.confirmPassword.errors.mustMatch">Las contraseñas deben
-                            coincidir
-                          </div>
+                          <div *ngIf="actorForm.controls.confirmPassword.errors.mustMatch">Las Contraseñas deben
+                            Coincidir</div>
                         </div>
                       </mat-form-field>
+
                     </div>
                   </div>
                 </div>
@@ -189,16 +188,15 @@
                       </div>
                     </div>
 
-                    <div class="col-6 example-container">
+                    <div class="example-container">
                       <!-- Correo electronico -->
                       <mat-form-field>
-                        <input matInput placeholder="Ingrese su correo" [formControl]="email"
+                        <input formControlName="email" matInput placeholder="Email"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.email.errors }">
+    
                         <div *ngIf="submitted && actorForm.controls.email.errors" class="invalid-feedback">
-                          <div *ngIf="actorForm.controls.email.errors.required">Correo electrónico es requerido</div>
-                          <div *ngIf="actorForm.controls.email.errors.email">Debe ser una dirección de correo
-                            electrónico
-                            válida</div>
+                          <div *ngIf="actorForm.controls.email.errors.required">El correo es requerido</div>
+                          <div *ngIf="actorForm.controls.email.errors.enail">El correo debe tener un formato válido</div>
                         </div>
                       </mat-form-field>
                     </div>

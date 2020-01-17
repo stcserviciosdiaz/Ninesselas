@@ -6,7 +6,7 @@ import { Component, Input, OnDestroy, OnInit, ViewChild, TemplateRef } from '@an
 import { FormBuilder, FormGroup, FormControl, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { AuthService } from '../../Services/auth.service';
 import { Router } from '@angular/router';
-import { ErrorStateMatcher } from '@angular/material';
+import { ErrorStateMatcher, MatRadioChange } from '@angular/material';
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { etnia } from 'src/app/models/etnia';
 import { bailarin } from 'src/app/models/bailarin';
@@ -243,10 +243,10 @@ export class FiguracionComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(5)]],
       confirmPassword: ['', Validators.required],
       username: [''],
+      submitted:[false],
       acceptTerms: [false, Validators.required],
-      habilidades: [''],
-      cantos: [''],
-      Models: [''],
+      
+      
       tattos: [''],
       estilocantos: [''],
       placebirth: [''],
@@ -256,7 +256,7 @@ export class FiguracionComponent implements OnInit {
       bilingue: [''],
       localidad: [''],
       provincia: [''],
-      bailes: [''],
+     
       estilobailes: [''],
       codpostal: [''],
       direccion: [''],
@@ -292,6 +292,11 @@ export class FiguracionComponent implements OnInit {
       });
 
   }
+
+  onChangeGenero(mrChange: MatRadioChange) {
+    console.log(mrChange.value);
+    this.actorForm.controls.sexo.setValue(mrChange.value);
+ } 
 
   /**Upload avatar */
   onFileAvatarSelected(event) {
@@ -552,9 +557,12 @@ export class FiguracionComponent implements OnInit {
 
   registrarActor() {
     this.submitted = true;
+    
 
     if (this.actorForm.invalid || this.actorForm.get('acceptTerms').value === false) {
       this.ngxSmartModalService.create('confirm', 'Pofavor, Llenar el formulario con todos los datos').open();
+      console.log('VALOR SUBMMIT: '+ JSON.stringify(this.actorForm.value));
+    console.log('VALOR SUBMMIT: '+this.actorForm.get('acceptTerms').value);
       return;
     }
     this.subirArchivos();

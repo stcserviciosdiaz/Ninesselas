@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators, FormControl, FormGroupDirective, Ng
 import { NgxSmartModalService, NgxSmartModalComponent } from 'ngx-smart-modal';
 import { AuthService } from '../../Services/auth.service';
 import { Router } from '@angular/router';
-import { ErrorStateMatcher } from '@angular/material';
+import { ErrorStateMatcher, MatRadioChange } from '@angular/material';
 import { bailarin } from 'src/app/models/bailarin';
 import { estilosBaile } from 'src/app/models/estilosBaile';
 import { cantante } from 'src/app/models/cantante';
@@ -147,19 +147,6 @@ export class ChildrenComponent implements OnInit {
   ngOnInit() {
     this.llenarCombos();
     this.childForm = this.formBuilder.group({
-      /****variables nuevas */
-      etnias: [''],
-      baile: [''],
-      estilosBaile: [''],
-      cantante: [''],
-      estilosCanto: [''],
-      habilidadess: [''],
-      idiomas: [''],
-      deportista: [''],
-      deportes: [''],
-      musico: [''],
-      instrumentoss: [''],
-      /****fin variables nuevas */
       username: ['', Validators.required],
       nombres: ['', Validators.required],
       acceptTerms: [false, Validators.requiredTrue],
@@ -169,24 +156,18 @@ export class ChildrenComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
       sexo: [''],
-      actor: [''],
       videoBook: [''],
-      estilocantos: [''],
-      habdeportes: [''],
-      deporte: [''],
+     
       placebirth: [''],
-      estilobailes: [''],
-      bailes: [''],
-      etnico: [''],
+     
       edad: [''],
       codpostal: [''],
-      musicos: [''],
+     
       telefono: ['', [Validators.required, Validators.minLength(6)]],
       telefonofather: ['', [Validators.required, Validators.minLength(6)]],
       telefonomother: ['', [Validators.required, Validators.minLength(6)]],
       fechaNacimiento: ['', Validators.required],
       nacionalidad: [''],
-      acento: [''],
       tallaPantalon: [''],
       tallaCamisa: [''],
       tallaChaqueta: [''],
@@ -194,9 +175,7 @@ export class ChildrenComponent implements OnInit {
       provincia: [''],
       direccion: [''],
       pie: [''],
-      habilidades: [''],
       altura: [''],
-      instrumentos: [''],
       colorPiel: [''],
       colorPelo: [''],
       colorOjos: [''],
@@ -213,6 +192,7 @@ export class ChildrenComponent implements OnInit {
       copySocialNumber: [''],
       copyDNIkid: [''],
       libroFamilia: [''],
+      submitted: [false],
     }
       , {
         validator: MustMatch('password', 'confirmPassword')
@@ -409,7 +389,7 @@ export class ChildrenComponent implements OnInit {
       telefonoPadre: newChild.telefonofather,
       lugarNacimiento: newChild.placebirth,
       edad: newChild.edad,
-      actor: newChild.actor,
+      actor: this.actorSelect.name,
       username: newChild.username,
       videobook: newChild.videoBook,
       instrumentoList: this.instrumentoSelect,
@@ -444,6 +424,8 @@ export class ChildrenComponent implements OnInit {
 
     if (this.childForm.invalid || this.childForm.get('acceptTerms').value === false) {
       this.ngxSmartModalService.create('confirm', 'Pofavor, Llenar el formulario con todos los datos').open();
+      console.log('VALOR SUBMMIT: ' + JSON.stringify(this.childForm.value));
+      console.log('VALOR SUBMMIT: ' + this.childForm.get('acceptTerms').value);
       return;
     }
     this.subirArchivos();
@@ -469,6 +451,11 @@ export class ChildrenComponent implements OnInit {
       });
   }
 
+
+  onChangeGenero(mrChange: MatRadioChange) {
+    console.log(mrChange.value);
+    this.childForm.controls.sexo.setValue(mrChange.value);
+  }
   OnChange($event, item, id) {
     console.log($event);
     console.log(item);

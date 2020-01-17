@@ -42,9 +42,10 @@
 
                 <div class="form-group">
                   <!-- Nombre de Usuario -->
-                  <label class="control-label">Nombre de Usuario</label>
-                  <input type="text" class="form-control" formControlName="username" placeholder=""
-                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.username.errors }">
+                  <mat-form-field>
+                    <input matInput placeholder="Nombre de Usuario" id="username" formControlName="username"
+                      [ngClass]="{ 'is-invalid': submitted && actorForm.controls.username.errors }">
+                  </mat-form-field>
                   <div *ngIf="submitted && childForm.controls.username.errors" class="invalid-feedback">
                     <div *ngIf="childForm.controls.username.errors.required">El usuario es requerido</div>
                   </div>
@@ -69,6 +70,8 @@
                     <div *ngIf="childForm.controls.apellidos.errors.required">El apellido es requerido</div>
                   </div>
                 </div>
+
+                
 
 
                 <fieldset class="form-group">
@@ -424,7 +427,7 @@
                   </select>
                 </div>
                 <h5 class="pb-1">Habilidades de Baile</h5>
-                  <hr>
+                <hr>
                 <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
                   <div *ngFor="let item of estilosBaile" class="col-md-4 col-sm-6 col-12"
                     style="padding: 5px 0px 5px 0px;">
@@ -446,7 +449,7 @@
                   </select>
                 </div>
                 <h5 class="pb-1">Habilidades de Canto</h5>
-                  <hr>
+                <hr>
                 <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
                   <div *ngFor="let item of estilosCanto" class="col-md-4 col-sm-6 col-12"
                     style="padding: 5px 0px 5px 0px;">
@@ -460,7 +463,7 @@
                 </mat-form-field>
 
                 <h5 class="pb-1">Habilidades Varias</h5>
-                  <hr>
+                <hr>
                 <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
                   <div *ngFor="let item of habilidadess" class="col-md-4 col-sm-6 col-12"
                     style="padding: 5px 0px 5px 0px;">
@@ -474,7 +477,7 @@
                 </mat-form-field>
 
                 <h5 class="pb-1">Idiomas</h5>
-                  <hr>
+                <hr>
                 <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
                   <div *ngFor="let item of idiomas" class="col-md-4 col-sm-6 col-12" style="padding: 5px 0px 5px 0px;">
                     <mat-checkbox [checked]="isChecked(item.nombreIdioma, 5)" (change)="OnChange($event, item, 5)">

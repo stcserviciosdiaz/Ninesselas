@@ -111,6 +111,7 @@ export class FiguracionEditComponent implements OnInit {
       nombres: [''],
       apellidos: [''],
       sexo: [''],
+     
       // bilingue: [''],
       telefono: [''],
       acento: [''],

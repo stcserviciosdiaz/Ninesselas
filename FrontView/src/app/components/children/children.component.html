@@ -57,14 +57,21 @@
                   </div>
                 </div>
 
+
                 <div class="form-group">
                   <!-- Edad -->
-                  <label class="control-label">Edad</label>
-                  <select forControlName="edad" class="form-control">
-                    <option [ngValue]="0">Seleccione....</option>
-                    <option [ngValue]="i" *ngFor="let i of edad">{{i}}</option>
-                  </select>
+                  <mat-form-field>
+                    <mat-label>¿ Que edad Tiene ?</mat-label>
+                    <mat-select formControlName="edad">
+                      <mat-option>None</mat-option>
+                      <mat-option *ngFor="let item of edad" [value]="item">
+                        {{item}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 </div>
+
+
 
                 <div class="form-group">
                   <div class="row">
@@ -87,19 +94,18 @@
                     </div>
                     <div class="col-lg-6 example-container">
                       <mat-form-field>
-                        <!-- Confirma Contraseña -->
-                        <input formControlName="confirmPassword" matInput placeholder="Repita contraseña"
-                          type="number" class="example-right-align"
-                          ngClass="{ 'is-invalid': submitted && childForm.controls.confirmPassword.errors }">
-                        <div *ngIf="submitted &&  childForm.controls.confirmPassword.errors" class="invalid-feedback">
-                          <div *ngIf="childForm.controls.confirmPassword.errors.required">Confirme que se requiere
-                            contraseña
+                        <!-- Contraseña -->
+                        <input formControlName="confirmPassword" matInput placeholder="Confirme contraseña"
+                          [ngClass]="{ 'is-invalid': submitted && childForm.controls.confirmPassword.errors }">
+
+                        <div *ngIf="submitted && childForm.controls.confirmPassword.errors" class="invalid-feedback">
+                          <div *ngIf="childForm.controls.confirmPassword.errors.required">La contraseña es requerida
                           </div>
-                          <div *ngIf="childForm.controls.confirmPassword.errors.mustMatch">Las contraseñas deben
-                            coincidir
-                          </div>
+                          <div *ngIf="childForm.controls.confirmPassword.errors.mustMatch">Las Contraseñas deben
+                            Coincidir</div>
                         </div>
                       </mat-form-field>
+
                     </div>
                   </div>
                 </div>
@@ -108,13 +114,13 @@
                   <!-- Sexo -->
                   <div class="row">
                     <legend class="col-form-label col-sm-2 pt-0">Sexo</legend>
-                    <mat-radio-group aria-label="Select an option">
+                    <mat-radio-group (change)="onChangeGenero($event)" name="gender" aria-label="Seleccione un Género">
                       <div class="col">
-                        <mat-radio-button value="Masculino" id="gridRadios1" [formControlName]="sexo">Masculino
+                        <mat-radio-button value="Masculino" id="gridRadios1">Masculino
                         </mat-radio-button>
                       </div>
                       <div class="col">
-                        <mat-radio-button value="Femenino" id="gridRadios2" [formControlName]="sexo">Femenino
+                        <mat-radio-button value="Femenino" id="gridRadios2">Femenino
                         </mat-radio-button>
                       </div>
                     </mat-radio-group>
@@ -186,16 +192,16 @@
                       </div>
                     </div>
 
-                    <div class="col-6 example-container">
+                    <div class="example-container">
                       <!-- Correo electronico -->
                       <mat-form-field>
-                        <input matInput placeholder="Ingrese su correo" [formControl]="email"
+                        <input formControlName="email" matInput placeholder="Email"
                           [ngClass]="{ 'is-invalid': submitted && childForm.controls.email.errors }">
+
                         <div *ngIf="submitted && childForm.controls.email.errors" class="invalid-feedback">
-                          <div *ngIf="childForm.controls.email.errors.required">Correo electrónico es requerido</div>
-                          <div *ngIf="childForm.controls.email.errors.email">Debe ser una dirección de correo
-                            electrónico
-                            válida</div>
+                          <div *ngIf="childForm.controls.email.errors.required">El correo es requerido</div>
+                          <div *ngIf="childForm.controls.email.errors.enail">El correo debe tener un formato válido
+                          </div>
                         </div>
                       </mat-form-field>
                     </div>
@@ -205,8 +211,7 @@
                 <div class="form-group">
                   <!-- Eres actor-->
                   <label class="control-label">Eres Actor</label>
-                  <select forControlName="actor" class="form-control" [(ngModel)]="actorSelect"
-                    [ngModelOptions]="{standalone: true}">
+                  <select class="form-control" [(ngModel)]="actorSelect" [ngModelOptions]="{standalone: true}">
                     <option [ngValue]="" selected>Seleccione...</option>
                     <option [ngValue]="i.name" *ngFor="let i of actor">{{i.name}}</option>
                   </select>
@@ -279,7 +284,7 @@
                   <div class="row">
                     <div class="col-lg-4 example-container">
                       <mat-form-field>
-                        <input  formControlName="colorPiel" matInput placeholder="Color Piel"
+                        <input formControlName="colorPiel" matInput placeholder="Color Piel"
                           [ngClass]="{ 'is-invalid': submitted && childForm.controls.colorPiel.errors }">
                       </mat-form-field>
                       <div *ngIf="submitted && childForm.controls.colorPiel.errors" class="invalid-feedback">
@@ -288,7 +293,7 @@
                     </div>
                     <div class="col-lg-4 example-container">
                       <mat-form-field>
-                        <input  formControlName="colorPelo" matInput placeholder="Color Pelo"
+                        <input formControlName="colorPelo" matInput placeholder="Color Pelo"
                           [ngClass]="{ 'is-invalid': submitted && childForm.controls.colorPelo.errors }">
                       </mat-form-field>
                       <div *ngIf="submitted && childForm.controls.colorPelo.errors" class="invalid-feedback">
@@ -297,7 +302,7 @@
                     </div>
                     <div class="col-lg-4 example-container">
                       <mat-form-field>
-                        <input  formControlName="colorOjos" matInput placeholder="Color ojos"
+                        <input formControlName="colorOjos" matInput placeholder="Color ojos"
                           [ngClass]="{ 'is-invalid': submitted && childForm.controls.colorOjos.errors }">
                       </mat-form-field>
                       <div *ngIf="submitted && childForm.controls.colorOjos.errors" class="invalid-feedback">
@@ -432,8 +437,8 @@
                 <div class="form-group example-container">
                   <!-- Numero de Teléfono de la madre-->
                   <mat-form-field>
-                    <input id="telefonomother" (keypress)="numberOnly($event)" formControlName="telefonomother"
-                      matInput placeholder="Numero de Teléfono de la madre"
+                    <input id="telefonomother" (keypress)="numberOnly($event)" formControlName="telefonomother" matInput
+                      placeholder="Numero de Teléfono de la madre"
                       [ngClass]="{ 'is-invalid': submitted && childForm.controls.telefonomother.errors }">
                     <mat-hint>Ingrese con codigo de area</mat-hint>
                   </mat-form-field>
@@ -715,22 +720,25 @@
                 </div>
                 <div *ngIf="musicoSelect.nombreMusico == 'Profesional'" class="form-group">
 
-                  <!-- Instrumentos musical -->
-                  <h5 class="pb-1">Instrumentos musical</h5>
-                  <hr>
+                  <mat-card>
+                    <!-- Instrumentos musical -->
+                    <h5 class="pb-1">Instrumentos musical</h5>
+                    <hr>
 
-                  <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
-                    <div *ngFor="let item of instrumentoss" class="col-md-4 col-sm-6 col-12"
-                      style="padding: 5px 0px 5px 0px;">
-                      <mat-checkbox (change)="OnChange($event, item, 3)">
-                        <span class="itemitle">{{item.nombreInstrumento}}</span>
-                      </mat-checkbox>
+                    <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                      <div *ngFor="let item of instrumentoss" class="col-md-4 col-sm-6 col-12"
+                        style="padding: 5px 0px 5px 0px;">
+                        <mat-checkbox (change)="OnChange($event, item, 3)">
+                          <span class="itemitle">{{item.nombreInstrumento}}</span>
+                        </mat-checkbox>
+                      </div>
                     </div>
-                  </div>
 
-                  <mat-form-field>
-                    <input matInput placeholder="Otro">
-                  </mat-form-field>
+                    <mat-form-field>
+
+                      <input matInput placeholder="Otro">
+                    </mat-form-field>
+                  </mat-card>
                 </div>
 
                 <!--

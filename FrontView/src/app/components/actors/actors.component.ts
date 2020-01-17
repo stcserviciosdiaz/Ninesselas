@@ -3,7 +3,7 @@ import { deportes } from './../../models/deportes';
 import { Component, NgModule, Input, OnDestroy, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ErrorStateMatcher } from '@angular/material';
+import { ErrorStateMatcher, MatRadioChange } from '@angular/material';
 import { invalid } from '@angular/compiler/src/render3/view/util';
 import { NgxSmartModalService, NgxSmartModalComponent } from 'ngx-smart-modal';
 import { AuthService } from '../../Services/auth.service';
@@ -289,36 +289,21 @@ export class ActorsComponent implements OnInit {
 
   createRegisterForm() {
     this.actorForm = this.formBuilder.group({
-      /****variables nuevas */
-      etnias: [''],
-      baile: [''],
-      estilosBaile: [''],
-      cantante: [''],
-      estilosCanto: [''],
+
       tattos: [''],
-      habilidadess: [''],
-      idiomas: [''],
-      deportista: [''],
-      deportes: [''],
-      Models: [''],
-      musico: [''],
-      instrumentoss: [''],
+
+
       /****fin variables nuevas */
       email: ['', [Validators.required, Validators.email, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
       acceptTerms: [false, Validators.requiredTrue],
-      bailes: [''],
-      etnico: [''],
+
       placebirth: [''],
-      habilidades: [''],
+
       username: ['', Validators.required],
       nombres: ['', Validators.required],
-      estilobailes: [''],
-      cantos: [''],
-      estilocantos: [''],
-      instrumentos: [''],
-      deporte: [''],
+
       apellidos: ['', Validators.required],
       bilingue: [''],
       nombreArtistico: [''],
@@ -331,16 +316,16 @@ export class ActorsComponent implements OnInit {
       provincia: [''],
       codpostal: [''],
       direccion: [''],
-      acento: [''],
+     
       tallaPantalon: [''],
       tallaCamisa: [''],
       tallaChaqueta: [''],
       pie: [''],
-      tattoos: [''],
+
       avatar: [''],
-      habdeportes: [''],
+
       altura: [''],
-      musicos: [''],
+
       colorPiel: [''],
       colorPelo: [''],
       colorOjos: [''],
@@ -456,6 +441,11 @@ export class ActorsComponent implements OnInit {
         this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
         console.log(JSON.stringify(err));
       });
+  }
+
+  onChangeGenero(mrChange: MatRadioChange) {
+    console.log(mrChange.value);
+    this.actorForm.controls.sexo.setValue(mrChange.value);
   }
 
   OnChange($event, item, id) {
@@ -594,6 +584,8 @@ export class ActorsComponent implements OnInit {
 
     if (this.actorForm.invalid || this.actorForm.get('acceptTerms').value === false) {
       this.ngxSmartModalService.create('confirm', 'Pofavor, Llenar el formulario con todos los datos').open();
+      console.log('VALOR SUBMMIT: ' + JSON.stringify(this.actorForm.value));
+      console.log('VALOR SUBMMIT: ' + this.actorForm.get('acceptTerms').value);
       return;
     }
 

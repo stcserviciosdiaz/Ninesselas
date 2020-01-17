@@ -76,19 +76,18 @@
                     </div>
                     <div class="col-lg-6 example-container">
                       <mat-form-field>
-                        <!-- Confirma Contraseña -->
-                        <input formControlName="confirmPassword" matInput placeholder="Repita contraseña"
-                          type="number" class="example-right-align"
+                        <!-- Contraseña -->
+                        <input formControlName="confirmPassword" matInput placeholder="Confirme contraseña"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.confirmPassword.errors }">
+
                         <div *ngIf="submitted && actorForm.controls.confirmPassword.errors" class="invalid-feedback">
-                          <div *ngIf="actorForm.controls.confirmPassword.errors.required">Confirme que se requiere
-                            contraseña
+                          <div *ngIf="actorForm.controls.confirmPassword.errors.required">La contraseña es requerida
                           </div>
-                          <div *ngIf="actorForm.controls.confirmPassword.errors.mustMatch">Las contraseñas deben
-                            coincidir
-                          </div>
+                          <div *ngIf="actorForm.controls.confirmPassword.errors.mustMatch">Las Contraseñas deben
+                            Coincidir</div>
                         </div>
                       </mat-form-field>
+
                     </div>
                   </div>
                 </div>
@@ -97,13 +96,13 @@
                   <!-- Sexo -->
                   <div class="row">
                     <legend class="col-form-label col-sm-2 pt-0">Sexo</legend>
-                    <mat-radio-group aria-label="Select an option">
+                    <mat-radio-group (change)="onChangeGenero($event)" name="gender" aria-label="Seleccione un Género">
                       <div class="col">
-                        <mat-radio-button value="1" id="gridRadios1" [formControlName]="sexo">Masculino
+                        <mat-radio-button value="Masculino" id="gridRadios1" >Masculino
                         </mat-radio-button>
                       </div>
                       <div class="col">
-                        <mat-radio-button value="2" id="gridRadios2" [formControlName]="sexo">Femenino
+                        <mat-radio-button value="Femenino" id="gridRadios2" >Femenino
                         </mat-radio-button>
                       </div>
                     </mat-radio-group>
@@ -148,7 +147,7 @@
                 <div class="form-group example-container">
                   <!-- Nuemro de teléfono -->
                   <mat-form-field>
-                    <input id="telefono" (keypress)="numberOnly($event)" [formControlName]="telefono" matInput
+                    <input id="telefono" (keypress)="numberOnly($event)" formControlName="telefono" matInput
                       placeholder="Numero de Teléfono"
                       [ngClass]="{ 'is-invalid': submitted && actorForm.controls.telefono.errors }">
                     <mat-hint>Ingrese con codigo de area</mat-hint>
@@ -180,12 +179,12 @@
                 <div class="example-container">
                   <!-- Correo electronico -->
                   <mat-form-field>
-                    <input matInput placeholder="Ingrese su correo" [formControl]="email"
+                    <input formControlName="email" matInput placeholder="Email"
                       [ngClass]="{ 'is-invalid': submitted && actorForm.controls.email.errors }">
+
                     <div *ngIf="submitted && actorForm.controls.email.errors" class="invalid-feedback">
-                      <div *ngIf="actorForm.controls.email.errors.required">Correo electrónico es requerido</div>
-                      <div *ngIf="actorForm.controls.email.errors.email">Debe ser una dirección de correo electrónico
-                        válida</div>
+                      <div *ngIf="actorForm.controls.email.errors.required">El correo es requerido</div>
+                      <div *ngIf="actorForm.controls.email.errors.enail">El correo debe tener un formato válido</div>
                     </div>
                   </mat-form-field>
                 </div>
@@ -194,7 +193,7 @@
                   <div class="row">
                     <div class="col-lg-6 example-container">
                       <mat-form-field>
-                        <input  [formControlName]="colorPiel" matInput placeholder="Talla de Pie"
+                        <input formControlName="pie" matInput placeholder="Talla de Pie"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.pie.errors }">
                       </mat-form-field>
                       <div *ngIf="submitted && actorForm.controls.pie.errors" class="invalid-feedback">
@@ -203,7 +202,7 @@
                     </div>
                     <div class="col-lg-6 example-container">
                       <mat-form-field>
-                        <input  [formControlName]="colorPelo" matInput placeholder="Talla de altura"
+                        <input formControlName="altura" matInput placeholder="Talla de altura"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.altura.errors }">
                       </mat-form-field>
                       <div *ngIf="submitted && actorForm.controls.altura.errors" class="invalid-feedback">
@@ -217,7 +216,7 @@
                   <div class="row">
                     <div class="col-lg-4 example-container">
                       <mat-form-field>
-                        <input  [formControlName]="tallaCamisa" matInput placeholder="Talla de camisa"
+                        <input formControlName="tallaCamisa" matInput placeholder="Talla de camisa"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.tallaCamisa.errors }">
                       </mat-form-field>
                       <div *ngIf="submitted && actorForm.controls.tallaCamisa.errors" class="invalid-feedback">
@@ -226,8 +225,7 @@
                     </div>
                     <div class="col-lg-4 example-container">
                       <mat-form-field>
-                        <input  [formControlName]="tallaChaqueta" matInput
-                          placeholder="Talla de chaqueta"
+                        <input formControlName="tallaChaqueta" matInput placeholder="Talla de chaqueta"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.tallaChaqueta.errors }">
                       </mat-form-field>
                       <div *ngIf="submitted && actorForm.controls.tallaChaqueta.errors" class="invalid-feedback">
@@ -236,8 +234,7 @@
                     </div>
                     <div class="col-lg-4 example-container">
                       <mat-form-field>
-                        <input  [formControlName]="tallaPantalon" matInput
-                          placeholder="Talla de pantalon"
+                        <input formControlName="tallaPantalon" matInput placeholder="Talla de pantalon"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.tallaPantalon.errors }">
                       </mat-form-field>
                       <div *ngIf="submitted && actorForm.controls.tallaPantalon.errors" class="invalid-feedback">
@@ -251,7 +248,7 @@
                   <div class="row">
                     <div class="col-lg-4 example-container">
                       <mat-form-field>
-                        <input  [formControlName]="colorPiel" matInput placeholder="Color Piel"
+                        <input formControlName="colorPiel" matInput placeholder="Color Piel"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.colorPiel.errors }">
                       </mat-form-field>
                       <div *ngIf="submitted && actorForm.controls.colorPiel.errors" class="invalid-feedback">
@@ -260,7 +257,7 @@
                     </div>
                     <div class="col-lg-4 example-container">
                       <mat-form-field>
-                        <input id="tallaChaqueta" [formControlName]="colorPelo" matInput placeholder="Color Pelo"
+                        <input id="tallaChaqueta" formControlName="colorPelo" matInput placeholder="Color Pelo"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.colorPelo.errors }">
                       </mat-form-field>
                       <div *ngIf="submitted && actorForm.controls.colorPelo.errors" class="invalid-feedback">
@@ -269,7 +266,7 @@
                     </div>
                     <div class="col-lg-4 example-container">
                       <mat-form-field>
-                        <input id="tallaPantalon" [formControlName]="colorOjos" matInput placeholder="Color ojos"
+                        <input id="tallaPantalon" formControlName="colorOjos" matInput placeholder="Color ojos"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.colorOjos.errors }">
                       </mat-form-field>
                       <div *ngIf="submitted && actorForm.controls.colorOjos.errors" class="invalid-feedback">
@@ -283,7 +280,7 @@
                   <div class="row">
                     <div class="col-lg-6 example-container">
                       <mat-form-field>
-                        <input id="numeroDNI" [formControlName]="numeroDNI" matInput placeholder="Numero DNI"
+                        <input id="numeroDNI" formControlName="numeroDNI" matInput placeholder="Numero DNI"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.numeroDNI.errors }">
                       </mat-form-field>
                       <div *ngIf="submitted && actorForm.controls.numeroDNI.errors" class="invalid-feedback">
@@ -292,7 +289,7 @@
                     </div>
                     <div class="col-lg-6 example-container">
                       <mat-form-field>
-                        <input id="numeroSeguridadSocial" [formControlName]="numeroSeguridadSocial" matInput
+                        <input id="numeroSeguridadSocial" formControlName="numeroSeguridadSocial" matInput
                           placeholder="Numero de Seguridad Social"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.numeroSeguridadSocial.errors }">
                       </mat-form-field>
@@ -308,7 +305,7 @@
                 <div class="form-group example-container">
                   <!-- Direccion -->
                   <mat-form-field>
-                    <input id="direccion" [formControlName]="direccion" matInput placeholder="Direccion"
+                    <input id="direccion" formControlName="direccion" matInput placeholder="Direccion"
                       [ngClass]="{ 'is-invalid': submitted && actorForm.controls.direccion.errors }">
                   </mat-form-field>
                   <div *ngIf="submitted && actorForm.controls.direccion.errors" class="invalid-feedback">
@@ -321,7 +318,7 @@
                   <div class="row">
                     <div class="col-lg-4 example-container">
                       <mat-form-field>
-                        <input id="localidad" [formControlName]="localidad" matInput placeholder="Localidad"
+                        <input id="localidad" formControlName="localidad" matInput placeholder="Localidad"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.localidad.errors }">
                       </mat-form-field>
                       <div *ngIf="submitted && actorForm.controls.localidad.errors" class="invalid-feedback">
@@ -330,12 +327,12 @@
                     </div>
                     <div class="col-lg-4 example-container">
                       <mat-form-field>
-                        <input id="provincia" [formControlName]="provincia" matInput placeholder="Provincia">
+                        <input id="provincia" formControlName="provincia" matInput placeholder="Provincia">
                       </mat-form-field>
                     </div>
                     <div class="col-lg-4 example-container">
                       <mat-form-field>
-                        <input id="codpostal" (keypress)="check($event)" [formControlName]="codpostal" matInput
+                        <input id="codpostal" (keypress)="check($event)" formControlName="codpostal" matInput
                           placeholder="Codigo postal">
                       </mat-form-field>
                     </div>
@@ -367,7 +364,7 @@
                   <div class="row">
                     <div class="col-lg-6 example-container">
                       <mat-form-field>
-                        <input id="modeloCoche" [formControlName]="modeloCoche" matInput placeholder="Modelo de Coche"
+                        <input id="modeloCoche" formControlName="modeloCoche" matInput placeholder="Modelo de Coche"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.modeloCoche.errors }">
                       </mat-form-field>
                       <div *ngIf="submitted && actorForm.controls.modeloCoche.errors" class="invalid-feedback">
@@ -376,7 +373,7 @@
                     </div>
                     <div class="col-lg-6 example-container">
                       <mat-form-field>
-                        <input id="modeloMoto" [formControlName]="modeloMoto" matInput placeholder="Modelo de Moto"
+                        <input id="modeloMoto" formControlName="modeloMoto" matInput placeholder="Modelo de Moto"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.modeloMoto.errors }">
                       </mat-form-field>
                       <div *ngIf="submitted && actorForm.controls.modeloMoto.errors" class="invalid-feedback">
@@ -402,12 +399,12 @@
                   <div class="row">
                     <div class="col-lg-6 example-container">
                       <mat-form-field>
-                        <input id="colorCoche" [formControlName]="colorCoche" matInput placeholder="Color de Coche">
+                        <input id="colorCoche" formControlName="colorCoche" matInput placeholder="Color de Coche">
                       </mat-form-field>
                     </div>
                     <div class="col-lg-6 example-container">
                       <mat-form-field>
-                        <input id="colorMoto" [formControlName]="colorMoto" matInput placeholder="Color de Moto">
+                        <input id="colorMoto" formControlName="colorMoto" matInput placeholder="Color de Moto">
                       </mat-form-field>
                     </div>
                   </div>
@@ -441,8 +438,7 @@
                 <!-- Link de trabajos -->
                 <div *ngIf="WorkingSelect == 'Si'" class="form-group">
                   <label class="control-label">Link de trabajos</label>
-                  <input type="text" class="form-control" 
-                    placeholder="https://www.Trabajos.com">
+                  <input type="text" class="form-control" placeholder="https://www.Trabajos.com">
                 </div>
                 <!-- Adjunta fotos Profesionales -->
                 <div *ngIf="WorkingSelect == 'Si'" class="form-group">
@@ -991,12 +987,17 @@
 
                 <div class="form-group">
                   <div class="form-check">
-                    <mat-checkbox [formControlName]="acceptTerms" id="acceptTerms"
-                      [ngClass]="{ 'is-invalid': submitted && actorForm.controls.acceptTerms.value === false }">Acepta
-                      los terminos del registro</mat-checkbox>
-                    <div *ngIf="submitted && actorForm.controls.acceptTerms.value === false" class="invalid-feedback">
-                      Los
-                      terminos es requerido</div>
+                   
+
+                      <mat-checkbox formControlName="acceptTerms" 
+                        [ngClass]="{ 'is-invalid': submitted && actorForm.controls.acceptTerms.value === false  }">
+                        Acepta
+                        los terminos del registro</mat-checkbox>
+
+                      <div *ngIf="submitted && actorForm.controls.acceptTerms.value === false" class="invalid-feedback">
+                        Los
+                        terminos es requerido</div>
+
                   </div>
                 </div>
 
