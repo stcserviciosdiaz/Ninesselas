@@ -74,6 +74,9 @@ export class FiguracionComponent implements OnInit {
   }
 
   hide = true;
+  LinktattoSelect;
+  WorkingSelect
+
 
   /***variables para carga de imagenes y archivos */
   fileAvatar: File = null;
@@ -286,6 +289,7 @@ export class FiguracionComponent implements OnInit {
       tattoos: [''],
       manos: [''],
       typecarnet: [''],
+      observaciones:[],
     }
       , {
         validator: MustMatch('password', 'confirmPassword')

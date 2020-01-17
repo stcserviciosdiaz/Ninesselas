@@ -44,7 +44,7 @@
                   <!-- Nombre de Usuario -->
                   <mat-form-field>
                     <input matInput placeholder="Nombre de Usuario" id="username" formControlName="username"
-                      [ngClass]="{ 'is-invalid': submitted && actorForm.controls.username.errors }">
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.username.errors }">
                   </mat-form-field>
                   <div *ngIf="submitted && childForm.controls.username.errors" class="invalid-feedback">
                     <div *ngIf="childForm.controls.username.errors.required">El usuario es requerido</div>

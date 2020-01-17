@@ -60,8 +60,10 @@ export class ActorsComponent implements OnInit {
   submitted = false;
   disa = false;
   matcher = new MyErrorStateMatcher();
-
   hide = true;
+  LinktattoSelect;
+  WorkingSelect
+
 
   /***variables para carga de imagenes y archivos */
   fileAvatar: File = null;
@@ -316,7 +318,7 @@ export class ActorsComponent implements OnInit {
       provincia: [''],
       codpostal: [''],
       direccion: [''],
-     
+
       tallaPantalon: [''],
       tallaCamisa: [''],
       tallaChaqueta: [''],

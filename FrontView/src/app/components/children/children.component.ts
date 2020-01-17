@@ -62,6 +62,10 @@ export class ChildrenComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   childForm: FormGroup;
   submitted = false;
+  hide = true;
+  LinktattoSelect;
+  WorkingSelect
+
 
   isavailable = false;
 
