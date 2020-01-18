@@ -1,15 +1,18 @@
-<nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top">
+<nav class="navbar navbar-b navbar-trans navbar-expand-md fixed-top pl-0">
     <div class="container">
-      <a class="navbar-brand" href="#">
-        <img [src]="'assets/img/LOGONINESSELAS.png'" alt="" width="250" class="d-inline-block align-middle mt-2">
-      </a>
-      <button class="navbar-toggler" (click)="isNvar = !isNvar" type="button" data-toggle="collapse" data-target="#marco" aria-controls="marco" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="toggler-icon">
-            <img [src]="'assets/img/nvarWhite.png'" alt="" *ngIf="!isNvar" width="35" class="d-inline-block align-middle">
-            <img [src]="'assets/img/nvarWhiteX.png'" alt="" *ngIf="isNvar" width="35" class="d-inline-block align-middle">
-        </span>
-      </button>
-      <div class="text-upp d-md-block d-none">
+      <div class="col">
+        <a class="navbar-brand" href="#">
+          <img [src]="'assets/img/LOGONINESSELAS.png'" alt="" width="250" class="img-responsive d-inline-block align-middle mt-2">
+        </a>
+      </div>
+      <div class="col">
+        <button class="d-lg-none d-md-block ajuste-center" (click)="open()" type="button" data-toggle="collapse" data-target="#marco" aria-controls="marco" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="toggler-icon">
+              <img [src]="'assets/img/nvarWhite.png'" alt="" width="35" class="cursor-pointer d-inline-block align-middle">
+          </span>
+        </button>
+      </div>
+      <div class="text-upp d-lg-block d-md-none d-none">
           <ul class="navbar-nav ml-auto">
               <li class="nav-item">
                 <a class="nav-link js-scroll active" routerLink="/home">Home</a>
@@ -32,63 +35,63 @@
           </ul>
       </div>
     </div>
-    <div class="mx-auto d-flex bg-nvar pt-4 animated bounceIn" *ngIf="isNvar">
-        <div class="col-4">
-          <div class="mobile-social-links">
-              <a href="https://www.facebook.com/ninesselas.cuscu.3" target="_blank" title="Facebook">
-                  <i class="fab fa-facebook fa-2x fa-fw"></i>
-              </a>
-              <a href="https://www.instagram.com/ninesselasc/" target="_blank" title="Instagram">
-                  <i class="fab fa-instagram fa-2x fa-fw"></i>
-              </a>
-          </div>
-          <div class="text-light mt-4">
-                <p class="address">
-                  <strong>Ninesselas</strong>
-                  <br>
-                  3203 Lawton Road, 2nd Floor
-                  España, FL 32803
-                </p>
-                <p>
-                  <strong>407.839.8599</strong>
-                </p>
-                <p>
-                  <strong>
-                    <a>info@ninesselas.com</a>
-                  </strong>
-                </p>
-          </div>
-        </div>
-        <div class="col-8">
-          <div class="container">
-              <ul class="fg-20 w-100">
-                <li class="nav-item">
-                    <a class="" href="#home">
-                      <span class="">Home</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="" routerLink="/contact">
-                      <span class="">Contáctenos</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a routerLink="/terms">
-                      <span class="">Terminos y condiciones</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="" routerLink="/register">
-                      <span class="">Empresas</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="" routerLink="/login">
-                      <span class="">Login</span>
-                    </a>
-                </li>
-              </ul>
-          </div>
-        </div>
-    </div>
 </nav>
+<div class="ajusted-position mx-auto d-flex bg-nvar pt-4 animated bounceInRight" *ngIf="isNvar">
+  <div class="col-ajustes" (click)="closed()">
+      <img [src]="'assets/img/nvarWhiteX.png'" alt="x"  width="35" class="cursor-pointer ajustes-img">
+  </div>
+  <div class="col-12">
+    <div class="container">
+        <ul class="fg-20 text-center pl-0">
+          <li class="nav-item">
+              <a class="" href="#home">
+                <span class="">Home</span>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a class="" routerLink="/contact">
+                <span class="">Contáctenos</span>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a routerLink="/terms">
+                <span class="">Terminos y condiciones</span>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a class="" routerLink="/register">
+                <span class="">Empresas</span>
+              </a>
+          </li>
+          <li class="nav-item">
+              <a class="" routerLink="/login">
+                <span class="">Login</span>
+              </a>
+          </li>
+        </ul>
+    </div>
+    <div class="text-center mobile-social-links">
+        <a href="https://www.facebook.com/ninesselas.cuscu.3" target="_blank" title="Facebook">
+            <i class="fab fa-facebook fa-2x fa-fw"></i>
+        </a>
+        <a href="https://www.instagram.com/ninesselasc/" target="_blank" title="Instagram">
+            <i class="fab fa-instagram fa-2x fa-fw"></i>
+        </a>
+    </div>
+    <div class="text-light text-center mt-4">
+          <p class="address">
+            <strong>Ninesselas</strong>
+            <br>
+            Calle Gonzalo herrero 18 madrid
+          </p>
+          <p>
+            <strong>(+34) 664 49 68 52</strong>
+          </p>
+          <p>
+            <strong>
+              <a>ninesselasc@gmail.com</a>
+            </strong>
+          </p>
+    </div>
+  </div>
+</div>

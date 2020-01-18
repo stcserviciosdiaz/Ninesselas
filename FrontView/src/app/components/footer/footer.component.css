@@ -10,3 +10,7 @@ a {
     text-decoration: none;
     background-color: transparent;
 }
+.text-upp{
+    text-transform: uppercase;
+    font-size: 14px;
+}

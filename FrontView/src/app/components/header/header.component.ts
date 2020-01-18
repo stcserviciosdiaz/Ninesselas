@@ -9,9 +9,18 @@ import { AuthService} from '../../Services/auth.service';
 export class HeaderComponent implements OnInit {
 
   constructor(public authService: AuthService) { }
-  isNvar : boolean;
+  isNvar = false;
 
   ngOnInit() {
+  }
+
+  open(){
+    this.isNvar = true;
+  }
+
+  closed(){
+    console.log('eeeee')
+    this.isNvar = false;
   }
 
 }
