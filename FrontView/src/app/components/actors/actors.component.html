@@ -32,6 +32,14 @@
                   <input type="file" (change)="onFileArtisticoSelected($event)" formControlName="avatar"><br>
                 </div>
 
+                 <!-- Adjunta fotos Profesionales -->
+                 <div  class="form-group">
+                  <!-- Modelos de manos -->
+                  <label class="control-label">Foto de Manos</label>
+                  <input type="file" (change)="onFileManoSelected($event)" multiple="multiple"
+                    formControlName="tattoos"><br>
+                </div>
+
                 <div class="form-group example-container">
                   <!-- Nombre de Usuario -->
                   <mat-form-field>
@@ -463,13 +471,7 @@
                   <input type="text" class="form-control" id="" formControlName=""
                     placeholder="https://www.Trabajos.com">
                 </div>
-                <!-- Adjunta fotos Profesionales -->
-                <div *ngIf="WorkingSelect == 'Si'" class="form-group">
-                  <!-- Modelos de manos -->
-                  <label class="control-label">Modelo de manos profesional</label>
-                  <input type="file" (change)="onFileManoSelected($event)" multiple="multiple"
-                    formControlName="tattoos"><br>
-                </div>
+               
 
                 <div class="form-group">
                   <!-- Deporte -->

@@ -246,10 +246,10 @@ export class FiguracionComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(5)]],
       confirmPassword: ['', Validators.required],
       username: [''],
-      submitted:[false],
+      submitted: [false],
       acceptTerms: [false, Validators.required],
-      
-      
+
+
       tattos: [''],
       estilocantos: [''],
       placebirth: [''],
@@ -259,7 +259,7 @@ export class FiguracionComponent implements OnInit {
       bilingue: [''],
       localidad: [''],
       provincia: [''],
-     
+
       estilobailes: [''],
       codpostal: [''],
       direccion: [''],
@@ -289,7 +289,7 @@ export class FiguracionComponent implements OnInit {
       tattoos: [''],
       manos: [''],
       typecarnet: [''],
-      observaciones:[],
+      observaciones: [],
     }
       , {
         validator: MustMatch('password', 'confirmPassword')
@@ -300,7 +300,7 @@ export class FiguracionComponent implements OnInit {
   onChangeGenero(mrChange: MatRadioChange) {
     console.log(mrChange.value);
     this.actorForm.controls.sexo.setValue(mrChange.value);
- } 
+  }
 
   /**Upload avatar */
   onFileAvatarSelected(event) {
@@ -559,14 +559,31 @@ export class FiguracionComponent implements OnInit {
       });
   }
 
+  enviarEmailRegistro() {
+    const email: Email = {
+      usernameTo: this.usuario.username,
+      emailTo: this.usuario.email,
+      telefonoTo: this.usuario.telefono,
+      mensajeTo: 'Gracias por registrarte en Ninesselas, pronto nos contactaremos contigo.',
+    };
+    this.emailService.notificarRegistro(email)
+      .subscribe(
+        res => {
+          //alert('Correo Enviado! Gracias por contactarnos, en breve nos comunicaremos contigo!');
+        },
+        err => console.log(err),
+        () => {
+          alert('Ups, inconvenientes en envío de email!');
+        }
+      );
+  }
+
   registrarActor() {
     this.submitted = true;
-    
+
 
     if (this.actorForm.invalid || this.actorForm.get('acceptTerms').value === false) {
       this.ngxSmartModalService.create('confirm', 'Pofavor, Llenar el formulario con todos los datos').open();
-      console.log('VALOR SUBMMIT: '+ JSON.stringify(this.actorForm.value));
-    console.log('VALOR SUBMMIT: '+this.actorForm.get('acceptTerms').value);
       return;
     }
     this.subirArchivos();
@@ -577,13 +594,7 @@ export class FiguracionComponent implements OnInit {
         this.ngxSmartModalService.create('confirm', 'Cuenta de Figuración creada exitosamente ' + res.nombres + ' ' + res.apellidos).open();
         this.registrarFotos(res.idUser);
         this.guardarTalla(res.idUser);
-        const email: Email = {
-          usernameTo: this.usuario.username,
-          emailTo: this.usuario.email,
-          telefonoTo: this.usuario.telefono,
-          mensajeTo: 'Gracias por registrarte en Ninesselas, pronto nos contactaremos contigo.',
-        };
-        this.emailService.notificarRegistro(email);
+        this.enviarEmailRegistro();
         this.router.navigate(['/homeuser']);
       },
       (err) => {

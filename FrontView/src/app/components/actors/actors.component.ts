@@ -579,6 +579,24 @@ export class ActorsComponent implements OnInit {
 
   }
 
+  enviarEmailRegistro() {
+    const email: Email = {
+      usernameTo: this.usuario.username,
+      emailTo: this.usuario.email,
+      telefonoTo: this.usuario.telefono,
+      mensajeTo: 'Gracias por registrarte en Ninesselas, pronto nos contactaremos contigo.',
+    };
+    this.emailService.notificarRegistro(email)
+      .subscribe(
+        res => {
+          //alert('Correo Enviado! Gracias por contactarnos, en breve nos comunicaremos contigo!');
+        },
+        err => console.log(err),
+        () => {
+          alert('Ups, inconvenientes en envío de email!');
+        }
+      );
+  }
 
   registrarActor() {
 
@@ -586,8 +604,6 @@ export class ActorsComponent implements OnInit {
 
     if (this.actorForm.invalid || this.actorForm.get('acceptTerms').value === false) {
       this.ngxSmartModalService.create('confirm', 'Pofavor, Llenar el formulario con todos los datos').open();
-      console.log('VALOR SUBMMIT: ' + JSON.stringify(this.actorForm.value));
-      console.log('VALOR SUBMMIT: ' + this.actorForm.get('acceptTerms').value);
       return;
     }
 
@@ -597,14 +613,9 @@ export class ActorsComponent implements OnInit {
       res => {
         this.registrarFotos(res.idUser);
         this.guardarTalla(res.idUser);
+        this.enviarEmailRegistro();
         localStorage.setItem('token', res.idUser);
-        const email: Email = {
-          usernameTo: this.usuario.username,
-          emailTo: this.usuario.email,
-          telefonoTo: this.usuario.telefono,
-          mensajeTo: 'Gracias por registrarte en Ninesselas, pronto nos contactaremos contigo.',
-        };
-        this.emailService.notificarRegistro(email);
+
         this.router.navigate(['/homeuser']);
         this.ngxSmartModalService.create('confirm', 'Se ha registrado exitosamente' + this.usuario.nombreCompleto).open();
 

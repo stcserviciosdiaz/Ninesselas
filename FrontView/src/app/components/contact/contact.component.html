@@ -37,15 +37,15 @@
                                                           </div>
                                                           <div class="col-md-12 mb-3">
                                                               <div class="form-group">
-                                                                <input type="tel" class="form-control" name="tel" formControlName="phone" placeholder="Ingresa tu telefono" [ngClass]="{ 'is-invalid': submitted && emailForm.controls.phone.errors }"/>
+                                                                <input type="tel" class="form-control" name="tel" formControlName="phone" placeholder="Ingresa tu teléfono" [ngClass]="{ 'is-invalid': submitted && emailForm.controls.phone.errors }"/>
                                                                 <div *ngIf="submitted && emailForm.controls.phone.errors" class="invalid-feedback">
-                                                                  <div *ngIf="emailForm.controls.phone.errors.required">El telefono es requerida</div>
+                                                                  <div *ngIf="emailForm.controls.phone.errors.required">El teléfono es requerida</div>
                                                                 </div>
                                                               </div>
                                                           </div>
                                                           <div class="col-md-12 mb-3">
                                                             <div class="form-group">
-                                                              <textarea class="form-control" formControlName="message" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Message"></textarea>
+                                                              <textarea class="form-control" formControlName="message" name="message" rows="5" data-rule="required" data-msg="Please write something for us" placeholder="Mensaje"></textarea>
                                                               <div class="validation"></div>
                                                             </div>
                                                           </div>
@@ -77,7 +77,7 @@
                                                     </div>
                                                     <div class="socials">
                                                       <ul>
-                                                        
+
                                                         <li>
                                                             <a href="https://www.facebook.com/ninesselas.cuscu.3" target="_blank">
                                                               <i class="fab fa-facebook fa-2x fa-fw"></i>
