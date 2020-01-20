@@ -8,7 +8,7 @@
               <form [formGroup]="loginForm">
               <div class="form-group">
                 <label>Correo Electronico</label>
-                <input type="email" formControlName="email" class="form-control" placeholder="Enter email" [ngClass]="{ 'is-invalid': isSubmitted &amp;&amp; loginForm.controls.email.errors }">
+                <input type="email" formControlName="email" class="form-control" placeholder="Ingresa tu correo" [ngClass]="{ 'is-invalid': isSubmitted &amp;&amp; loginForm.controls.email.errors }">
                 <div *ngIf="isSubmitted &amp;&amp; loginForm.controls.email.errors" class="text-danger">
                     <div *ngIf="loginForm.controls.email.errors.required">Correo electrónico es requerido</div>
                     <div *ngIf="loginForm.controls.email.errors.email">Debe ser una dirección de correo electrónico válida</div>
