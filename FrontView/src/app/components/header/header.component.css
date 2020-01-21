@@ -26,6 +26,14 @@ ul li a:after{
     transition: opacity 0.3s ease 0s, transform 0.3s ease 0s;
     transform: translateY(20px);        
 }
+
+button.d-lg-none.d-md-block.ajuste-center {
+    background-color: rgba(255, 255, 255, 0);
+    border-color: rgba(216, 216, 216, 0) rgba(209, 209, 209, 0) rgba(186, 186, 186, 0);
+}
+button:focus {
+    outline: none;
+}
 ul li a:hover:after{
     opacity:1;
     transform: translateY(15px)
