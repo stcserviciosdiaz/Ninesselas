@@ -66,7 +66,23 @@
 <ngx-smart-modal #myModal identifier="myModal">
   <h1> Bienvenidos </h1>
   <p class="mb-0"> Somos la principal Agencia Profesional </p>
-  <a  routerLink="/figuracion" class="btn btn-elect btn-xl  mt-5 ml-2">Figuración</a>
-  <a  routerLink="/actors" class="btn btn-elect btn-xl  mt-5 ml-2">Actor</a>
-  <a  routerLink="/children" class="btn btn-elect btn-xl  mt-5 ml-1">Niños</a>
+  <div class="col-12 mt-5 p-0">
+      <div class="row">
+          <div class="col-sm-4 col-12">
+              <a  routerLink="/figuracion">
+                <button type="button" class="w-100 btn btn-option btn-xl">Figuración</button>
+              </a>
+          </div>
+          <div class="col-sm-4 col-12">
+              <a  routerLink="/actors" >
+                <button type="button" class="w-100 btn btn-option btn-xl">Actor</button>
+              </a>
+          </div>
+          <div class="col-sm-4 col-12">
+              <a  routerLink="/children">
+                <button type="button" class="w-100 btn btn-option btn-xl">Niños</button>
+              </a>
+          </div>
+      </div>
+  </div>
 </ngx-smart-modal>
