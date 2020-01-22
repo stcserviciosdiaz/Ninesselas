@@ -120,7 +120,7 @@
                 <div class="form-group">
                   <!-- ¿De qué grupo étnico se considera? -->
                   <label class="control-label">Raza</label>
-                  <select forControlName="etnias" class="form-control" [(ngModel)]="etniaSelect"
+                  <select  class="form-control" [(ngModel)]="etniaSelect"
                     [ngModelOptions]="{standalone: true}">
                     <option [ngValue]="0" selected>Seleccione...</option>
                     <option [ngValue]="i" *ngFor="let i of etnias">{{i.nombreEtnia}}</option>

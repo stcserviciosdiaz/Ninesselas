@@ -83,6 +83,8 @@ export class ActorsComponent implements OnInit {
   urlCuerpoEntero: string;
   urlArtistico: string;
 
+  tamanioFotos = 1024;
+
   /*******variables para combos********/
   etnias;
   baile;
@@ -132,36 +134,87 @@ export class ActorsComponent implements OnInit {
 
   /**Upload avatar */
   onFileAvatarSelected(event) {
-    this.fileAvatar = event.target.files[0] as File;
+    let file: File = event.target.files[0] as File;
+    if (file.size <= this.tamanioFotos) {
+      this.fileAvatar = event.target.files[0] as File;
+    } else {
+      this.fileAvatar = null;
+      this.ngxSmartModalService.create('file1', 'Tamaño de Foto no aceptada, tamaño máximo de 1MB').open();
+
+    }
+
+
   }
   /**Upload foto cuerpo entero */
   onFileCuerpoEnteroSelected(event) {
-    this.fileCuerpoEntero = event.target.files[0] as File;
+    let file: File = event.target.files[0] as File;
+    if (file.size <= this.tamanioFotos) {
+      this.fileCuerpoEntero = event.target.files[0] as File;
+    } else {
+      this.fileCuerpoEntero = null;
+      this.ngxSmartModalService.create('file2', 'Tamaño de Foto no aceptada, tamaño máximo de 1MB').open();
+
+    }
   }
 
   /**Upload foto artistica */
   onFileArtisticoSelected(event) {
-    this.fileArtistico = event.target.files[0] as File;
+    let file: File = event.target.files[0] as File;
+    if (file.size <= this.tamanioFotos) {
+      this.fileArtistico = event.target.files[0] as File;
+    } else {
+      this.fileArtistico = null;
+      this.ngxSmartModalService.create('file3', 'Tamaño de Foto no aceptada, tamaño máximo de 1MB').open();
+
+    }
   }
 
   /**Upload foto moto */
   onFileMotoSelected(event) {
-    this.fileMoto = event.target.files[0] as File;
+    let file: File = event.target.files[0] as File;
+    if (file.size <= this.tamanioFotos) {
+      this.fileMoto = event.target.files[0] as File;
+    } else {
+      this.fileMoto = null;
+      this.ngxSmartModalService.create('file4', 'Tamaño de Foto no aceptada, tamaño máximo de 1MB').open();
+
+    }
   }
 
   /**Upload foto coche */
   onFileCocheSelected(event) {
-    this.fileCoche = event.target.files[0] as File;
+    let file: File = event.target.files[0] as File;
+    if (file.size <= this.tamanioFotos) {
+      this.fileCoche = event.target.files[0] as File;
+    } else {
+      this.fileCoche = null;
+      this.ngxSmartModalService.create('file5', 'Tamaño de Foto no aceptada, tamaño máximo de 1MB').open();
+
+    }
   }
 
   /**Upload foto tatuajes */
   onFileTatuajeSelected(event) {
-    this.fileTatuajes = event.target.files[0] as File;
+    let file: File = event.target.files[0] as File;
+    if (file.size <= this.tamanioFotos) {
+      this.fileTatuajes = event.target.files[0] as File;
+    } else {
+      this.fileTatuajes = null;
+      this.ngxSmartModalService.create('file6', 'Tamaño de Foto no aceptada, tamaño máximo de 1MB').open();
+
+    }
   }
 
   /**Upload foto manos */
   onFileManoSelected(event) {
-    this.fileManos = event.target.files[0] as File;
+    let file: File = event.target.files[0] as File;
+    if (file.size <= this.tamanioFotos) {
+      this.fileManos = event.target.files[0] as File;
+    } else {
+      this.fileManos = null;
+      this.ngxSmartModalService.create('file7', 'Tamaño de Foto no aceptada, tamaño máximo de 1MB').open();
+
+    }
   }
 
   llenarCombos() {
@@ -310,38 +363,36 @@ export class ActorsComponent implements OnInit {
       bilingue: [''],
       nombreArtistico: [''],
       sexo: [''],
-      telefono: [''],
+      telefono: ['', Validators.required],
       fechaNacimiento: [''],
       nacionalidad: [''],
       localidad: [''],
       videoBook: [''],
       provincia: [''],
       codpostal: [''],
-      direccion: [''],
+      direccion: ['', Validators.required],
 
-      tallaPantalon: [''],
-      tallaCamisa: [''],
-      tallaChaqueta: [''],
-      pie: [''],
+      tallaPantalon: ['', Validators.required],
+      tallaCamisa: ['', Validators.required],
+      tallaChaqueta: ['', Validators.required],
+      pie: ['', Validators.required],
 
-      avatar: [''],
 
-      altura: [''],
 
-      colorPiel: [''],
-      colorPelo: [''],
-      colorOjos: [''],
-      numeroDNI: [''],
-      numeroSeguridadSocial: [''],
+      altura: ['', Validators.required],
+
+      colorPiel: ['', Validators.required],
+      colorPelo: ['', Validators.required],
+      colorOjos: ['', Validators.required],
+      numeroDNI: ['', Validators.required],
+      numeroSeguridadSocial: ['', Validators.required],
       carnetConducir: [''],
       modeloCoche: [''],
       colorCoche: [''],
       modeloMoto: [''],
       colorMoto: [''],
       ultimosTrabajos: [''],
-      typecarnet: [''],
-      fotoCoche: [''],
-      fotoMoto: [''],
+
     }
 
       , {
@@ -593,7 +644,7 @@ export class ActorsComponent implements OnInit {
         },
         err => console.log(err),
         () => {
-          alert('Ups, inconvenientes en envío de email!');
+          //alert('Ups, inconvenientes en envío de email!');
         }
       );
   }
@@ -601,12 +652,15 @@ export class ActorsComponent implements OnInit {
   registrarActor() {
 
     this.submitted = true;
-
     if (this.actorForm.invalid || this.actorForm.get('acceptTerms').value === false) {
-      this.ngxSmartModalService.create('confirm', 'Pofavor, Llenar el formulario con todos los datos').open();
+      this.ngxSmartModalService.open('myMtrlzModal');
       return;
     }
 
+    if (this.fileAvatar === null || this.fileCuerpoEntero === null || this.fileArtistico === null) {
+      this.ngxSmartModalService.create('nopics', 'Por favor, cargar las 3 primeras fotos: perfil, cuerpo entero y artístico').open();
+      return;
+    }
     this.subirArchivos();
     this.pasarDatosFormUsuario();
     this.authService.signup2(this.usuario).subscribe(
@@ -621,7 +675,7 @@ export class ActorsComponent implements OnInit {
 
       },
       (err) => {
-        this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
+        this.ngxSmartModalService.create('error', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
         console.log(JSON.stringify(err));
       });
   }
@@ -629,34 +683,42 @@ export class ActorsComponent implements OnInit {
   subirArchivos() {
     /**subir avatar */
     let idUser = this.actorForm.get('numeroDNI').value;
-    this.urlAvatar = 'actor/' + idUser + '/avatar-' + this.fileAvatar.name;
-    let task = this.storage.upload(this.urlAvatar, this.fileAvatar);
-
+    let task;
+    if (this.fileAvatar != null) {
+      this.urlAvatar = 'actor/' + idUser + '/avatar-' + this.fileAvatar.name;
+      task = this.storage.upload(this.urlAvatar, this.fileAvatar);
+    }
 
     /**subir cuerpo entero */
-    this.urlCuerpoEntero = 'actor/' + idUser + '/cuerpo-' + this.fileCuerpoEntero.name;
-    task = this.storage.upload(this.urlCuerpoEntero, this.fileCuerpoEntero);
-
-    /**subir foto artistica */
-    this.urlArtistico = 'actor/' + idUser + '/artistico-' + this.fileArtistico.name;
-    task = this.storage.upload(this.urlArtistico, this.fileArtistico);
-
-    /**subir coche */
-    this.urlCoche = 'actor/' + idUser + '/coche-' + this.fileCoche.name;
-    task = this.storage.upload(this.urlCoche, this.fileCoche);
-
-    /**subir moto */
-    this.urlMoto = 'actor/' + idUser + '/moto-' + this.fileMoto.name;
-    task = this.storage.upload(this.urlMoto, this.fileMoto);
-
-    /**subir tatuajes */
-    this.urlTatuajes = 'actor/' + idUser + '/tatuajes-' + this.fileTatuajes.name;
-    task = this.storage.upload(this.urlTatuajes, this.fileTatuajes);
-
-    /**subir manos */
-    this.urlManos = 'actor/' + idUser + '/manos-' + this.fileManos.name;
-    task = this.storage.upload(this.urlManos, this.fileManos);
-
+    if (this.fileCuerpoEntero != null) {
+      this.urlCuerpoEntero = 'actor/' + idUser + '/cuerpo-' + this.fileCuerpoEntero.name;
+      task = this.storage.upload(this.urlCuerpoEntero, this.fileCuerpoEntero);
+    }
+    if (this.fileArtistico != null) {
+      /**subir foto artistica */
+      this.urlArtistico = 'actor/' + idUser + '/artistico-' + this.fileArtistico.name;
+      task = this.storage.upload(this.urlArtistico, this.fileArtistico);
+    }
+    if (this.fileCoche != null) {
+      /**subir coche */
+      this.urlCoche = 'actor/' + idUser + '/coche-' + this.fileCoche.name;
+      task = this.storage.upload(this.urlCoche, this.fileCoche);
+    }
+    if (this.fileMoto != null) {
+      /**subir moto */
+      this.urlMoto = 'actor/' + idUser + '/moto-' + this.fileMoto.name;
+      task = this.storage.upload(this.urlMoto, this.fileMoto);
+    }
+    if (this.fileTatuajes != null) {
+      /**subir tatuajes */
+      this.urlTatuajes = 'actor/' + idUser + '/tatuajes-' + this.fileTatuajes.name;
+      task = this.storage.upload(this.urlTatuajes, this.fileTatuajes);
+    }
+    if (this.fileManos != null) {
+      /**subir manos */
+      this.urlManos = 'actor/' + idUser + '/manos-' + this.fileManos.name;
+      task = this.storage.upload(this.urlManos, this.fileManos);
+    }
 
 
   }

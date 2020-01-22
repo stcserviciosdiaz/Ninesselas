@@ -161,12 +161,12 @@ export class ChildrenComponent implements OnInit {
       confirmPassword: ['', Validators.required],
       sexo: [''],
       videoBook: [''],
-     
+
       placebirth: [''],
-     
+
       edad: [''],
       codpostal: [''],
-     
+
       telefono: ['', [Validators.required, Validators.minLength(6)]],
       telefonofather: ['', [Validators.required, Validators.minLength(6)]],
       telefonomother: ['', [Validators.required, Validators.minLength(6)]],
@@ -436,7 +436,7 @@ export class ChildrenComponent implements OnInit {
         },
         err => console.log(err),
         () => {
-          alert('Ups, inconvenientes en envío de email!');
+          // alert('Ups, inconvenientes en envío de email!');
         }
       );
   }
@@ -446,9 +446,15 @@ export class ChildrenComponent implements OnInit {
     this.submitted = true;
 
     if (this.childForm.invalid || this.childForm.get('acceptTerms').value === false) {
-      this.ngxSmartModalService.create('confirm', 'Pofavor, Llenar el formulario con todos los datos').open();
+      this.ngxSmartModalService.open('myMtrlzModal');
       return;
     }
+
+    if (this.avatarFile === null || this.fileCuerpoEntero === null || this.fileArtistico === null) {
+      this.ngxSmartModalService.create('nopics', 'Por favor, cargar las 3 primeras fotos: perfil, cuerpo entero y artístico.').open();
+      return;
+    }
+
     this.subirArchivos();
     this.pasarDatosFormUsuario();
     this.authService.signup2(this.usuario).subscribe(
@@ -459,7 +465,7 @@ export class ChildrenComponent implements OnInit {
         this.enviarEmailRegistro();
         localStorage.setItem('token', res.idUser);
         this.router.navigate(['/homeuser']);
-        
+
       },
       (err) => {
         this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
@@ -562,37 +568,47 @@ export class ChildrenComponent implements OnInit {
   subirArchivos() {
     /**subir avatar */
     let idUser = this.childForm.get('numeroDNI').value;
-    this.urlAvatar = 'ninios/' + idUser + '/avatar-' + this.avatarFile.name;
-    let task = this.storage.upload(this.urlAvatar, this.avatarFile);
+    let task;
 
-    /**subir cuerpo entero */
-    this.urlCuerpoEntero = 'ninios/' + idUser + '/cuerpo-' + this.fileCuerpoEntero.name;
-    task = this.storage.upload(this.urlCuerpoEntero, this.fileCuerpoEntero);
-
-    /**subir foto artistica */
-    this.urlArtistico = 'ninios/' + idUser + '/artistico-' + this.fileArtistico.name;
-    task = this.storage.upload(this.urlArtistico, this.fileArtistico);
-
-    /**subir dnipadre */
-    this.urlPadre = 'ninios/' + idUser + '/dnipadre-' + this.copyDNIFather.name;
-    task = this.storage.upload(this.urlPadre, this.copyDNIFather);
-
-    /**subir dnimadre */
-    this.urlMadre = 'ninios/' + idUser + '/dnimadre-' + this.CopyDNIMother.name;
-    task = this.storage.upload(this.urlMadre, this.CopyDNIMother);
-
-    /**subir family book  */
-    this.urlLibroFamilia = 'ninios/' + idUser + '/librofamiliar-' + this.familyBookFile.name;
-    task = this.storage.upload(this.urlLibroFamilia, this.familyBookFile);
-
-    /**subir numero de seguro social  */
-    this.urlSegurosocial = 'ninios/' + idUser + '/segurosocial-' + this.copySocialNumber.name;
-    task = this.storage.upload(this.urlSegurosocial, this.copySocialNumber);
-
-    /**subir dni user  */
-    this.urlUsuario = 'ninios/' + idUser + '/dniuser-' + this.copyDNIkid.name;
-    task = this.storage.upload(this.urlUsuario, this.copyDNIkid);
-
+    if (this.avatarFile != null) {
+      this.urlAvatar = 'ninios/' + idUser + '/avatar-' + this.avatarFile.name;
+      task = this.storage.upload(this.urlAvatar, this.avatarFile);
+    }
+    if (this.fileCuerpoEntero != null) {
+      /**subir cuerpo entero */
+      this.urlCuerpoEntero = 'ninios/' + idUser + '/cuerpo-' + this.fileCuerpoEntero.name;
+      task = this.storage.upload(this.urlCuerpoEntero, this.fileCuerpoEntero);
+    }
+    if (this.fileArtistico != null) {
+      /**subir foto artistica */
+      this.urlArtistico = 'ninios/' + idUser + '/artistico-' + this.fileArtistico.name;
+      task = this.storage.upload(this.urlArtistico, this.fileArtistico);
+    }
+    if (this.copyDNIFather != null) {
+      /**subir dnipadre */
+      this.urlPadre = 'ninios/' + idUser + '/dnipadre-' + this.copyDNIFather.name;
+      task = this.storage.upload(this.urlPadre, this.copyDNIFather);
+    }
+    if (this.CopyDNIMother != null) {
+      /**subir dnimadre */
+      this.urlMadre = 'ninios/' + idUser + '/dnimadre-' + this.CopyDNIMother.name;
+      task = this.storage.upload(this.urlMadre, this.CopyDNIMother);
+    }
+    if (this.familyBookFile != null) {
+      /**subir family book  */
+      this.urlLibroFamilia = 'ninios/' + idUser + '/librofamiliar-' + this.familyBookFile.name;
+      task = this.storage.upload(this.urlLibroFamilia, this.familyBookFile);
+    }
+    if (this.copySocialNumber != null) {
+      /**subir numero de seguro social  */
+      this.urlSegurosocial = 'ninios/' + idUser + '/segurosocial-' + this.copySocialNumber.name;
+      task = this.storage.upload(this.urlSegurosocial, this.copySocialNumber);
+    }
+    if (this.copyDNIkid != null) {
+      /**subir dni user  */
+      this.urlUsuario = 'ninios/' + idUser + '/dniuser-' + this.copyDNIkid.name;
+      task = this.storage.upload(this.urlUsuario, this.copyDNIkid);
+    }
   }
 
   copyDNIFatherSelected(event) {

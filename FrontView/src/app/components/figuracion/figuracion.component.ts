@@ -573,7 +573,7 @@ export class FiguracionComponent implements OnInit {
         },
         err => console.log(err),
         () => {
-          alert('Ups, inconvenientes en envío de email!');
+         // alert('Ups, inconvenientes en envío de email!');
         }
       );
   }
@@ -583,7 +583,12 @@ export class FiguracionComponent implements OnInit {
 
 
     if (this.actorForm.invalid || this.actorForm.get('acceptTerms').value === false) {
-      this.ngxSmartModalService.create('confirm', 'Pofavor, Llenar el formulario con todos los datos').open();
+      this.ngxSmartModalService.open('myMtrlzModal');
+      return;
+    }
+
+    if (this.fileAvatar === null || this.fileCuerpoEntero === null) {
+      this.ngxSmartModalService.create('nopics', 'Por favor, cargar las 2 primeras fotos: perfil y cuerpo entero.').open();
       return;
     }
     this.subirArchivos();
@@ -598,7 +603,7 @@ export class FiguracionComponent implements OnInit {
         this.router.navigate(['/homeuser']);
       },
       (err) => {
-        this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
+        this.ngxSmartModalService.create('error', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
         console.log(JSON.stringify(err));
       });
   }
@@ -606,32 +611,41 @@ export class FiguracionComponent implements OnInit {
   subirArchivos() {
     /**subir avatar */
     let idUser = this.actorForm.get('numeroDNI').value;
-    this.urlAvatar = 'figuracion/' + idUser + '/avatar-' + this.fileAvatar.name;
-    let task = this.storage.upload(this.urlAvatar, this.fileAvatar);
+    let task;
 
-    /**subir cuerpo entero */
-    this.urlCuerpoEntero = 'figuracion/' + idUser + '/cuerpo-' + this.fileCuerpoEntero.name;
-    task = this.storage.upload(this.urlCuerpoEntero, this.fileCuerpoEntero);
-
+    if (this.fileAvatar != null) {
+      this.urlAvatar = 'figuracion/' + idUser + '/avatar-' + this.fileAvatar.name;
+      task = this.storage.upload(this.urlAvatar, this.fileAvatar);
+    }
+    if (this.fileAvatar != null) {
+      /**subir cuerpo entero */
+      this.urlCuerpoEntero = 'figuracion/' + idUser + '/cuerpo-' + this.fileCuerpoEntero.name;
+      task = this.storage.upload(this.urlCuerpoEntero, this.fileCuerpoEntero);
+    }
     /**subir foto artistica */
     /*  this.urlArtistico = 'figuracion/' + idUser + '/artistico-' + this.fileArtistico.name;
      task = this.storage.upload(this.urlArtistico, this.fileArtistico); */
 
-    /**subir coche */
-    this.urlCoche = 'figuracion/' + idUser + '/coche-' + this.fileCoche.name;
-    task = this.storage.upload(this.urlCoche, this.fileCoche);
-
-    /**subir moto */
-    this.urlMoto = 'figuracion/' + idUser + '/moto-' + this.fileMoto.name;
-    task = this.storage.upload(this.urlMoto, this.fileMoto);
-
-    /**subir tatuajes */
-    this.urlTatuajes = 'figuracion/' + idUser + '/tatuajes-' + this.fileTatuajes.name;
-    task = this.storage.upload(this.urlTatuajes, this.fileTatuajes);
-
-    /**subir manos */
-    this.urlManos = 'figuracion/' + idUser + '/manos-' + this.fileManos.name;
-    task = this.storage.upload(this.urlManos, this.fileManos);
+    if (this.fileAvatar != null) {
+      /**subir coche */
+      this.urlCoche = 'figuracion/' + idUser + '/coche-' + this.fileCoche.name;
+      task = this.storage.upload(this.urlCoche, this.fileCoche);
+    }
+    if (this.fileAvatar != null) {
+      /**subir moto */
+      this.urlMoto = 'figuracion/' + idUser + '/moto-' + this.fileMoto.name;
+      task = this.storage.upload(this.urlMoto, this.fileMoto);
+    }
+    if (this.fileAvatar != null) {
+      /**subir tatuajes */
+      this.urlTatuajes = 'figuracion/' + idUser + '/tatuajes-' + this.fileTatuajes.name;
+      task = this.storage.upload(this.urlTatuajes, this.fileTatuajes);
+    }
+    if (this.fileAvatar != null) {
+      /**subir manos */
+      this.urlManos = 'figuracion/' + idUser + '/manos-' + this.fileManos.name;
+      task = this.storage.upload(this.urlManos, this.fileManos);
+    }
   }
   /*  Función para permitir solo numeros */
   numberOnly(event): boolean {

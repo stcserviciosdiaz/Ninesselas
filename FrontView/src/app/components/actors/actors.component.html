@@ -18,18 +18,18 @@
                 <div class="form-group">
                   <!-- Subida de avatar -->
                   <label class="control-label">Foto de Perfil</label>
-                  <input type="file" (change)="onFileAvatarSelected($event)" formControlName="avatar">
+                  <input type="file" (change)="onFileAvatarSelected($event)" >
                 </div>
 
                 <div class="form-group">
                   <!-- cuerpo entero -->
                   <label class="control-label">Foto cuerpo entero</label>
-                  <input type="file" (change)="onFileCuerpoEnteroSelected($event)" formControlName="avatar"><br>
+                  <input type="file" (change)="onFileCuerpoEnteroSelected($event)" ><br>
                 </div>
                 <div class="form-group">
                   <!-- foto artistico -->
                   <label class="control-label">Foto artistico</label>
-                  <input type="file" (change)="onFileArtisticoSelected($event)" formControlName="avatar"><br>
+                  <input type="file" (change)="onFileArtisticoSelected($event)" ><br>
                 </div>
 
                  <!-- Adjunta fotos Profesionales -->
@@ -37,7 +37,7 @@
                   <!-- Modelos de manos -->
                   <label class="control-label">Foto de Manos</label>
                   <input type="file" (change)="onFileManoSelected($event)" multiple="multiple"
-                    formControlName="tattoos"><br>
+                    ><br>
                 </div>
 
                 <div class="form-group example-container">
@@ -58,12 +58,18 @@
                       <mat-form-field>
                         <input matInput placeholder="Nombre" id="nombres" formControlName="nombres">
                       </mat-form-field>
+                      <div *ngIf="submitted && actorForm.controls.nombres.errors" class="invalid-feedback">
+                        <div *ngIf="actorForm.controls.nombres.errors.required">Su Nombre son requeridos</div>
+                      </div>
                     </div>
                     <div class="col-6 example-container">
                       <!-- Apellidos completos -->
                       <mat-form-field>
                         <input matInput placeholder="Apellido" id="apellidos" formControlName="apellidos">
                       </mat-form-field>
+                      <div *ngIf="submitted && actorForm.controls.apellidos.errors" class="invalid-feedback">
+                        <div *ngIf="actorForm.controls.apellidos.errors.required">Su Apellido es requerido</div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -75,10 +81,7 @@
                       formControlName="nombreArtistico"
                       [ngClass]="{ 'is-invalid': submitted && actorForm.controls.nombreArtistico.errors }">
                   </mat-form-field>
-                  <div *ngIf="submitted && actorForm.controls.nombreArtistico.errors" class="invalid-feedback">
-                    <div *ngIf="actorForm.controls.nombreArtistico.errors.required">La nombre artistico es requerida
-                    </div>
-                  </div>
+                  
                 </div>
 
                 <div class="form-group">
@@ -191,9 +194,7 @@
                         <input id="nacionalidad" formControlName="nacionalidad" matInput placeholder="Nacionalidad"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.nacionalidad.errors }">
                       </mat-form-field>
-                      <div *ngIf="submitted && actorForm.controls.nacionalidad.errors" class="invalid-feedback">
-                        <div *ngIf="actorForm.controls.nacionalidad.errors.required">La nacionalidad es requerida</div>
-                      </div>
+                      
                     </div>
 
                     <div class="col-6 example-container">
@@ -345,9 +346,7 @@
                         <input id="localidad" formControlName="localidad" matInput placeholder="Localidad"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.localidad.errors }">
                       </mat-form-field>
-                      <div *ngIf="submitted && actorForm.controls.localidad.errors" class="invalid-feedback">
-                        <div *ngIf="actorForm.controls.localidad.errors.required">La talla es requerido</div>
-                      </div>
+                      
                     </div>
                     <div class="col-lg-4 example-container">
                       <mat-form-field>
@@ -369,14 +368,12 @@
                     <label class="control-label">Carnet de conducir</label>
                     <input type="text" class="d-inline form-control" formControlName="carnetConducir" placeholder=""
                       [ngClass]="{ 'is-invalid': submitted && actorForm.controls.carnetConducir.errors }">
-                    <div *ngIf="submitted && actorForm.controls.carnetConducir.errors" class="invalid-feedback">
-                      <div *ngIf="actorForm.controls.carnetConducir.errors.required">Carnet es requerido</div>
-                    </div>
+                    
                   </div>
                   <div class="form-group">
                     <!-- Tipo de carnet -->
                     <label for="exampleFormControlSelect2">Tipo de carnet</label>
-                    <select class="form-control" formControlName="typecarnet" [(ngModel)]="tipoCarnetSelect"
+                    <select class="form-control" [(ngModel)]="tipoCarnetSelect"
                       [ngModelOptions]="{standalone: true}">
                       <option [ngValue]="">Seleccione</option>
                       <option [ngValue]="item" *ngFor="let item of typecarnet">{{item}}</option>
@@ -398,18 +395,14 @@
                         <input id="modeloCoche" formControlName="modeloCoche" matInput placeholder="Modelo de Coche"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.modeloCoche.errors }">
                       </mat-form-field>
-                      <div *ngIf="submitted && actorForm.controls.modeloCoche.errors" class="invalid-feedback">
-                        <div *ngIf="actorForm.controls.modeloCoche.errors.required">El modelo es requerido</div>
-                      </div>
+                      
                     </div>
                     <div class="col-lg-6 example-container">
                       <mat-form-field>
                         <input id="modeloMoto" formControlName="modeloMoto" matInput placeholder="Modelo de Moto"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.modeloMoto.errors }">
                       </mat-form-field>
-                      <div *ngIf="submitted && actorForm.controls.modeloMoto.errors" class="invalid-feedback">
-                        <div *ngIf="actorForm.controls.modeloMoto.errors.required">El modelo es requerido</div>
-                      </div>
+                      
                     </div>
                   </div>
                 </div>
@@ -418,11 +411,11 @@
                   <!-- Foto coche y  foto moto-->
                   <div class="form-group mr-3">
                     <label class="control-label">Foto coche</label>
-                    <input type="file" (change)="onFileCocheSelected($event)" formControlName="fotoCoche">
+                    <input type="file" (change)="onFileCocheSelected($event)" >
                   </div>
                   <div class="form-group">
                     <label class="control-label">Foto moto</label>
-                    <input type="file" (change)="onFileMotoSelected($event)" formControlName="fotoMoto">
+                    <input type="file" (change)="onFileMotoSelected($event)" >
                   </div>
                 </div>
 
@@ -454,7 +447,7 @@
                   <!-- Fotos Tatuajes -->
                   <label class="control-label">Fotos Tatuajes</label>
                   <input type="file" (change)="onFileTatuajeSelected($event)" multiple="multiple"
-                    formControlName="tattoos"><br>
+                    ><br>
                 </div>
 
                 <!-- Eres modelo de manos? -->
@@ -468,10 +461,16 @@
                 <!-- Link de trabajos -->
                 <div *ngIf="WorkingSelect == 'Si'" class="form-group">
                   <label class="control-label">Link de trabajos</label>
-                  <input type="text" class="form-control" id="" formControlName=""
+                  <input type="text" class="form-control" 
                     placeholder="https://www.Trabajos.com">
                 </div>
-               
+                <!-- Adjunta fotos Profesionales -->
+                <div *ngIf="WorkingSelect == 'Si'" class="form-group">
+                  <!-- Modelos de manos -->
+                  <label class="control-label">Modelo de manos profesional</label>
+                  <input type="file" (change)="onFileManoSelected($event)" multiple="multiple"
+                    ><br>
+                </div>
 
                 <div class="example-container form-group">
                   <!-- Deporte -->
@@ -1112,9 +1111,16 @@
           <a routerLink="/login" class="link-primary">
             Entrar
           </a>
+         
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
+
+
+
+
 <app-footer></app-footer>
