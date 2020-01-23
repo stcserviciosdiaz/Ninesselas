@@ -16,17 +16,17 @@
 
                 <div class="form-group">
                   <label class="control-label">Foto de Perfil</label>
-                  <input type="file" (change)="onAvatarSelected($event)" formControlName="avatar"><br>
+                  <input type="file" accept="image/*" (change)="onAvatarSelected($event)" formControlName="avatar"><br>
                 </div>
                 <div class="form-group">
                   <!-- cuerpo entero -->
                   <label class="control-label">Foto cuerpo entero</label>
-                  <input type="file" (change)="onFileCuerpoEnteroSelected($event)" formControlName="avatar"><br>
+                  <input type="file" accept="image/*" (change)="onFileCuerpoEnteroSelected($event)" formControlName="avatar"><br>
                 </div>
                 <div class="form-group">
                   <!-- foto artistico -->
                   <label class="control-label">Foto artistico</label>
-                  <input type="file" (change)="onFileArtisticoSelected($event)" formControlName="avatar"><br>
+                  <input type="file" accept="image/*" (change)="onFileArtisticoSelected($event)" formControlName="avatar"><br>
                 </div>
 
                 <div class="form-group example-container">
@@ -40,7 +40,7 @@
                   </div>
                 </div>
 
-               
+
 
                 <div class="form-group">
                     <div class="row">
@@ -365,7 +365,7 @@
                 <div class="form-group">
                   <!-- Copia del Numero DNI del niño -->
                   <label>Copia del Numero DNI del niño</label>
-                  <input type="file" (change)="copyDNIkidSelected($event)" formControlName="copyDNIkid">
+                  <input type="file" accept="image/*" (change)="copyDNIkidSelected($event)" formControlName="copyDNIkid">
                 </div>
 
                 <div class="form-group example-container">
@@ -383,7 +383,7 @@
                 <div class="form-group">
                   <!-- Copia numero seguridad social -->
                   <label>Copia numero seguridad social del niño</label>
-                  <input type="file" (change)="copySocialNumberSelected($event)" formControlName="copySocialNumber">
+                  <input type="file" accept="image/*" (change)="copySocialNumberSelected($event)" formControlName="copySocialNumber">
                 </div>
 
                 <div class="form-group example-container">
@@ -400,7 +400,7 @@
                 <div class="form-group">
                   <!-- Copia del DNI del padre -->
                   <label>Copia del DNI del padre</label>
-                  <input type="file" (change)="copyDNIFatherSelected($event)" formControlName="copyDNIFather">
+                  <input type="file" accept="image/*" (change)="copyDNIFatherSelected($event)" formControlName="copyDNIFather">
                 </div>
 
                 <div class="form-group example-container">
@@ -429,7 +429,7 @@
                 <div class="form-group">
                   <!-- Copia del DNI de la madre -->
                   <label>Copia del DNI de la madre</label>
-                  <input type="file" (change)="copyDNIMotherSelected($event)" formControlName="CopyDNIMother"
+                  <input type="file" accept="image/*" (change)="copyDNIMotherSelected($event)" formControlName="CopyDNIMother"
                     [ngClass]="{ 'is-invalid': submitted && childForm.controls.CopyDNIMother.errors }">
                   <div *ngIf="submitted && childForm.controls.CopyDNIMother.errors" class="invalid-feedback">
                     <div *ngIf="childForm.controls.CopyDNIMother.errors.required">La copia es requerida</div>
@@ -452,7 +452,7 @@
                 <div class="form-group">
                   <!-- Libro de familiar -->
                   <label>Libro de familiar</label>
-                  <input type="file" (change)="onFamilyBookSelected($event)" formControlName="libroFamilia">
+                  <input type="file" accept="image/*" (change)="onFamilyBookSelected($event)" formControlName="libroFamilia">
                 </div>
 
                 <div class="form-group example-container">

@@ -68,6 +68,7 @@ export class ChildrenComponent implements OnInit {
 
 
   isavailable = false;
+  tamanioFotos = 4;//MB
 
   avatarFile: File = null;
   copyDNIFather: File = null;
@@ -446,7 +447,7 @@ export class ChildrenComponent implements OnInit {
     this.submitted = true;
 
     if (this.childForm.invalid || this.childForm.get('acceptTerms').value === false) {
-      this.ngxSmartModalService.open('myMtrlzModal');
+      this.ngxSmartModalService.create('failform', 'Por favor, ingresar los datos del formulario requeridos').open();
       return;
     }
 
@@ -531,18 +532,40 @@ export class ChildrenComponent implements OnInit {
     //MatCheckboxChange {checked,MatCheckbox}
   }
 
+
+  /**Verifica tamanio y tipo de archivo */
+  verificaTamanioTypeFile(file: any) {
+    let archivo;
+    if (file.size <= (this.tamanioFotos * 1048576)) {
+      if (file.type.match(/image\/*/) != null) {
+        archivo = file;
+      } else {
+        archivo = null;
+        this.ngxSmartModalService.create('filetype', 'Tipo de Foto no aceptada, intente con formatos (.png, .jpg, .jpeg)').open();
+      }
+    } else {
+      archivo = null;
+      this.ngxSmartModalService.create('filesize', 'Tamaño de Foto no aceptada, tamaño máximo de ' + this.tamanioFotos + 'MB').open();
+    }
+    return archivo;
+  }
+
   onAvatarSelected(event) {
-    this.avatarFile = event.target.files[0] as File;
+    let file = event.target.files[0] as File;
+    this.avatarFile = this.verificaTamanioTypeFile(file);
+
   }
 
   /**Upload foto cuerpo entero */
   onFileCuerpoEnteroSelected(event) {
-    this.fileCuerpoEntero = event.target.files[0] as File;
+    let file = event.target.files[0] as File;
+    this.fileCuerpoEntero = this.verificaTamanioTypeFile(file);
   }
 
   /**Upload foto artistica */
   onFileArtisticoSelected(event) {
-    this.fileArtistico = event.target.files[0] as File;
+    let file = event.target.files[0] as File;
+    this.fileArtistico = this.verificaTamanioTypeFile(file);
   }
 
 
@@ -612,23 +635,28 @@ export class ChildrenComponent implements OnInit {
   }
 
   copyDNIFatherSelected(event) {
-    this.copyDNIFather = event.target.files[0] as File;
+    let file = event.target.files[0] as File;
+    this.copyDNIFather = this.verificaTamanioTypeFile(file);
   }
 
   copyDNIMotherSelected(event) {
-    this.CopyDNIMother = event.target.files[0] as File;
+    let file = event.target.files[0] as File;
+    this.CopyDNIMother = this.verificaTamanioTypeFile(file);
   }
 
   onFamilyBookSelected(event) {
-    this.familyBookFile = event.target.files[0] as File;
+    let file = event.target.files[0] as File;
+    this.familyBookFile = this.verificaTamanioTypeFile(file);
   }
 
   copySocialNumberSelected(event) {
-    this.copySocialNumber = event.target.files[0] as File;
+    let file = event.target.files[0] as File;
+    this.copySocialNumber = this.verificaTamanioTypeFile(file);
   }
 
   copyDNIkidSelected(event) {
-    this.copyDNIkid = event.target.files[0] as File;
+    let file = event.target.files[0] as File;
+    this.copyDNIkid = this.verificaTamanioTypeFile(file);
   }
 
   /*  Función para permitir solo numeros */

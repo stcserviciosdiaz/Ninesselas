@@ -18,25 +18,25 @@
                 <div class="form-group">
                   <!-- Subida de avatar -->
                   <label class="control-label">Foto de Perfil</label>
-                  <input type="file" (change)="onFileAvatarSelected($event)" >
+                  <input type="file" accept="image/*" accept="image/*" (change)="onFileAvatarSelected($event)" >
                 </div>
 
                 <div class="form-group">
                   <!-- cuerpo entero -->
                   <label class="control-label">Foto cuerpo entero</label>
-                  <input type="file" (change)="onFileCuerpoEnteroSelected($event)" ><br>
+                  <input type="file" accept="image/*" (change)="onFileCuerpoEnteroSelected($event)" ><br>
                 </div>
                 <div class="form-group">
                   <!-- foto artistico -->
                   <label class="control-label">Foto artistico</label>
-                  <input type="file" (change)="onFileArtisticoSelected($event)" ><br>
+                  <input type="file" accept="image/*" (change)="onFileArtisticoSelected($event)" ><br>
                 </div>
 
                  <!-- Adjunta fotos Profesionales -->
                  <div  class="form-group">
                   <!-- Modelos de manos -->
                   <label class="control-label">Foto de Manos</label>
-                  <input type="file" (change)="onFileManoSelected($event)" multiple="multiple"
+                  <input type="file" accept="image/*" (change)="onFileManoSelected($event)" multiple="multiple"
                     ><br>
                 </div>
 
@@ -81,7 +81,7 @@
                       formControlName="nombreArtistico"
                       [ngClass]="{ 'is-invalid': submitted && actorForm.controls.nombreArtistico.errors }">
                   </mat-form-field>
-                  
+
                 </div>
 
                 <div class="form-group">
@@ -194,7 +194,7 @@
                         <input id="nacionalidad" formControlName="nacionalidad" matInput placeholder="Nacionalidad"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.nacionalidad.errors }">
                       </mat-form-field>
-                      
+
                     </div>
 
                     <div class="col-6 example-container">
@@ -202,7 +202,7 @@
                       <mat-form-field>
                         <input formControlName="email" matInput placeholder="Email"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.email.errors }">
-    
+
                         <div *ngIf="submitted && actorForm.controls.email.errors" class="invalid-feedback">
                           <div *ngIf="actorForm.controls.email.errors.required">El correo es requerido</div>
                           <div *ngIf="actorForm.controls.email.errors.enail">El correo debe tener un formato válido</div>
@@ -346,7 +346,7 @@
                         <input id="localidad" formControlName="localidad" matInput placeholder="Localidad"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.localidad.errors }">
                       </mat-form-field>
-                      
+
                     </div>
                     <div class="col-lg-4 example-container">
                       <mat-form-field>
@@ -368,7 +368,7 @@
                     <label class="control-label">Carnet de conducir</label>
                     <input type="text" class="d-inline form-control" formControlName="carnetConducir" placeholder=""
                       [ngClass]="{ 'is-invalid': submitted && actorForm.controls.carnetConducir.errors }">
-                    
+
                   </div>
                   <div class="form-group">
                     <!-- Tipo de carnet -->
@@ -395,14 +395,14 @@
                         <input id="modeloCoche" formControlName="modeloCoche" matInput placeholder="Modelo de Coche"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.modeloCoche.errors }">
                       </mat-form-field>
-                      
+
                     </div>
                     <div class="col-lg-6 example-container">
                       <mat-form-field>
                         <input id="modeloMoto" formControlName="modeloMoto" matInput placeholder="Modelo de Moto"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.modeloMoto.errors }">
                       </mat-form-field>
-                      
+
                     </div>
                   </div>
                 </div>
@@ -411,11 +411,11 @@
                   <!-- Foto coche y  foto moto-->
                   <div class="form-group mr-3">
                     <label class="control-label">Foto coche</label>
-                    <input type="file" (change)="onFileCocheSelected($event)" >
+                    <input type="file" accept="image/*" (change)="onFileCocheSelected($event)" >
                   </div>
                   <div class="form-group">
                     <label class="control-label">Foto moto</label>
-                    <input type="file" (change)="onFileMotoSelected($event)" >
+                    <input type="file" accept="image/*" (change)="onFileMotoSelected($event)" >
                   </div>
                 </div>
 
@@ -446,7 +446,7 @@
                 <div *ngIf="LinktattoSelect == 'Si'" class="form-group">
                   <!-- Fotos Tatuajes -->
                   <label class="control-label">Fotos Tatuajes</label>
-                  <input type="file" (change)="onFileTatuajeSelected($event)" multiple="multiple"
+                  <input type="file" accept="image/*" (change)="onFileTatuajeSelected($event)" multiple="multiple"
                     ><br>
                 </div>
 
@@ -461,14 +461,14 @@
                 <!-- Link de trabajos -->
                 <div *ngIf="WorkingSelect == 'Si'" class="form-group">
                   <label class="control-label">Link de trabajos</label>
-                  <input type="text" class="form-control" 
+                  <input type="text" class="form-control"
                     placeholder="https://www.Trabajos.com">
                 </div>
                 <!-- Adjunta fotos Profesionales -->
                 <div *ngIf="WorkingSelect == 'Si'" class="form-group">
                   <!-- Modelos de manos -->
                   <label class="control-label">Modelo de manos profesional</label>
-                  <input type="file" (change)="onFileManoSelected($event)" multiple="multiple"
+                  <input type="file" accept="image/*" (change)="onFileManoSelected($event)" multiple="multiple"
                     ><br>
                 </div>
 
@@ -483,7 +483,7 @@
                       </mat-option>
                     </mat-select>
                   </mat-form-field>
-                  <!--                 
+                  <!--
                     <select forControlName="deportista" class="form-control" [(ngModel)]="deportistaSelect"
                     [ngModelOptions]="{standalone: true}">
                     <option selected>Seleccione...</option>
@@ -1111,7 +1111,7 @@
           <a routerLink="/login" class="link-primary">
             Entrar
           </a>
-         
+
         </div>
       </div>
     </div>

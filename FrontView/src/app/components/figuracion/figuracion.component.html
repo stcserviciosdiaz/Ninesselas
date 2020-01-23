@@ -18,20 +18,20 @@
                 <div class="form-group">
                   <!-- Subida de avatar -->
                   <label class="control-label">Foto de Perfil</label>
-                  <input type="file" (change)="onFileAvatarSelected($event)" formControlName="avatar"><br>
+                  <input type="file" accept="image/*" (change)="onFileAvatarSelected($event)" formControlName="avatar"><br>
                 </div>
 
                 <div class="form-group">
                   <!-- cuerpo entero -->
                   <label class="control-label">Foto cuerpo entero</label>
-                  <input type="file" (change)="onFileCuerpoEnteroSelected($event)" formControlName="avatar"><br>
+                  <input type="file" accept="image/*" (change)="onFileCuerpoEnteroSelected($event)" formControlName="avatar"><br>
                 </div>
 
                  <!-- Adjunta fotos Profesionales -->
                  <div  class="form-group">
                   <!-- Modelos de Manos -->
                   <label class="control-label">Foto de Manos</label>
-                  <input type="file" (change)="onFileManoSelected($event)" multiple="multiple"
+                  <input type="file" accept="image/*" (change)="onFileManoSelected($event)" multiple="multiple"
                     formControlName="manos"><br>
                 </div>
 
@@ -395,11 +395,11 @@
                   <!-- Foto coche y  foto moto-->
                   <div class="form-group mr-3">
                     <label class="control-label">Foto coche</label>
-                    <input type="file" (change)="onFileCocheSelected($event)" formControlName="fotoCoche">
+                    <input type="file" accept="image/*" (change)="onFileCocheSelected($event)" formControlName="fotoCoche">
                   </div>
                   <div class="form-group">
                     <label class="control-label">Foto moto</label>
-                    <input type="file" (change)="onFileMotoSelected($event)" formControlName="fotoMoto">
+                    <input type="file" accept="image/*" (change)="onFileMotoSelected($event)" formControlName="fotoMoto">
                   </div>
                 </div>
 
@@ -431,7 +431,7 @@
                 <div *ngIf="LinktattoSelect == 'Si'" class="form-group">
                   <!-- Fotos Tatuajes -->
                   <label class="control-label">Fotos Tatuajes</label>
-                  <input type="file" (change)="onFileTatuajeSelected($event)" multiple="multiple"
+                  <input type="file" accept="image/*" (change)="onFileTatuajeSelected($event)" multiple="multiple"
                     formControlName="tattoos"><br>
                 </div>
 
@@ -448,7 +448,7 @@
                   <label class="control-label">Link de trabajos</label>
                   <input type="text" class="form-control" placeholder="https://www.Trabajos.com">
                 </div>
-               
+
 
                 <div class="form-group example-container">
                   <!-- Deporte -->
@@ -989,9 +989,9 @@
 
                 <div class="form-group">
                   <div class="form-check">
-                   
 
-                      <mat-checkbox formControlName="acceptTerms" 
+
+                      <mat-checkbox formControlName="acceptTerms"
                         [ngClass]="{ 'is-invalid': submitted && actorForm.controls.acceptTerms.value === false  }">
                         Acepta
                         los terminos del registro</mat-checkbox>

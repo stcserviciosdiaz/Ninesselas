@@ -83,7 +83,7 @@ export class ActorsComponent implements OnInit {
   urlCuerpoEntero: string;
   urlArtistico: string;
 
-  tamanioFotos = 1024;
+  tamanioFotos = 4;//MB
 
   /*******variables para combos********/
   etnias;
@@ -132,89 +132,72 @@ export class ActorsComponent implements OnInit {
     this.llenarCombos();
   }
 
+  /**Verifica tamanio y tipo de archivo */
+  verificaTamanioTypeFile(file: any) {
+    let archivo;
+    if (file.size <= (this.tamanioFotos * 1048576)) {
+      if (file.type.match(/image\/*/) != null) {
+        archivo = file;
+      } else {
+        archivo = null;
+        this.ngxSmartModalService.create('filetype', 'Tipo de Foto no aceptada, intente con formatos (.png, .jpg, .jpeg)').open();
+      }
+    } else {
+      archivo = null;
+      this.ngxSmartModalService.create('filesize', 'Tamaño de Foto no aceptada, tamaño máximo de ' + this.tamanioFotos + 'MB').open();
+    }
+    return archivo;
+  }
+
   /**Upload avatar */
   onFileAvatarSelected(event) {
     let file: File = event.target.files[0] as File;
-    if (file.size <= this.tamanioFotos) {
-      this.fileAvatar = event.target.files[0] as File;
-    } else {
-      this.fileAvatar = null;
-      this.ngxSmartModalService.create('file1', 'Tamaño de Foto no aceptada, tamaño máximo de 1MB').open();
 
-    }
+    this.fileAvatar = this.verificaTamanioTypeFile(file);
+
 
 
   }
   /**Upload foto cuerpo entero */
   onFileCuerpoEnteroSelected(event) {
     let file: File = event.target.files[0] as File;
-    if (file.size <= this.tamanioFotos) {
-      this.fileCuerpoEntero = event.target.files[0] as File;
-    } else {
-      this.fileCuerpoEntero = null;
-      this.ngxSmartModalService.create('file2', 'Tamaño de Foto no aceptada, tamaño máximo de 1MB').open();
+    this.fileCuerpoEntero = this.verificaTamanioTypeFile(file);
 
-    }
   }
 
   /**Upload foto artistica */
   onFileArtisticoSelected(event) {
     let file: File = event.target.files[0] as File;
-    if (file.size <= this.tamanioFotos) {
-      this.fileArtistico = event.target.files[0] as File;
-    } else {
-      this.fileArtistico = null;
-      this.ngxSmartModalService.create('file3', 'Tamaño de Foto no aceptada, tamaño máximo de 1MB').open();
+    this.fileArtistico = this.verificaTamanioTypeFile(file);
 
-    }
   }
 
   /**Upload foto moto */
   onFileMotoSelected(event) {
     let file: File = event.target.files[0] as File;
-    if (file.size <= this.tamanioFotos) {
-      this.fileMoto = event.target.files[0] as File;
-    } else {
-      this.fileMoto = null;
-      this.ngxSmartModalService.create('file4', 'Tamaño de Foto no aceptada, tamaño máximo de 1MB').open();
+    this.fileMoto = this.verificaTamanioTypeFile(file);
 
-    }
   }
 
   /**Upload foto coche */
   onFileCocheSelected(event) {
     let file: File = event.target.files[0] as File;
-    if (file.size <= this.tamanioFotos) {
-      this.fileCoche = event.target.files[0] as File;
-    } else {
-      this.fileCoche = null;
-      this.ngxSmartModalService.create('file5', 'Tamaño de Foto no aceptada, tamaño máximo de 1MB').open();
+    this.fileCoche = this.verificaTamanioTypeFile(file);
 
-    }
   }
 
   /**Upload foto tatuajes */
   onFileTatuajeSelected(event) {
     let file: File = event.target.files[0] as File;
-    if (file.size <= this.tamanioFotos) {
-      this.fileTatuajes = event.target.files[0] as File;
-    } else {
-      this.fileTatuajes = null;
-      this.ngxSmartModalService.create('file6', 'Tamaño de Foto no aceptada, tamaño máximo de 1MB').open();
+    this.fileTatuajes = this.verificaTamanioTypeFile(file);
 
-    }
   }
 
   /**Upload foto manos */
   onFileManoSelected(event) {
     let file: File = event.target.files[0] as File;
-    if (file.size <= this.tamanioFotos) {
-      this.fileManos = event.target.files[0] as File;
-    } else {
-      this.fileManos = null;
-      this.ngxSmartModalService.create('file7', 'Tamaño de Foto no aceptada, tamaño máximo de 1MB').open();
+    this.fileManos = this.verificaTamanioTypeFile(file);
 
-    }
   }
 
   llenarCombos() {
@@ -653,7 +636,7 @@ export class ActorsComponent implements OnInit {
 
     this.submitted = true;
     if (this.actorForm.invalid || this.actorForm.get('acceptTerms').value === false) {
-      this.ngxSmartModalService.open('myMtrlzModal');
+      this.ngxSmartModalService.create('failform', 'Por favor, ingresar los datos del formulario requeridos').open();
       return;
     }
 

@@ -75,7 +75,9 @@ export class FiguracionComponent implements OnInit {
 
   hide = true;
   LinktattoSelect;
-  WorkingSelect
+  WorkingSelect;
+
+  tamanioFotos = 4;//MB
 
 
   /***variables para carga de imagenes y archivos */
@@ -302,13 +304,31 @@ export class FiguracionComponent implements OnInit {
     this.actorForm.controls.sexo.setValue(mrChange.value);
   }
 
+  /**Verifica tamanio y tipo de archivo */
+  verificaTamanioTypeFile(file: any) {
+    let archivo;
+    if (file.size <= (this.tamanioFotos * 1048576)) {
+      if (file.type.match(/image\/*/) != null) {
+        archivo = file;
+      } else {
+        archivo = null;
+        this.ngxSmartModalService.create('filetype', 'Tipo de Foto no aceptada, intente con formatos (.png, .jpg, .jpeg)').open();
+      }
+    } else {
+      archivo = null;
+      this.ngxSmartModalService.create('filesize', 'Tamaño de Foto no aceptada, tamaño máximo de ' + this.tamanioFotos + 'MB').open();
+    }
+    return archivo;
+  }
+
   /**Upload avatar */
   onFileAvatarSelected(event) {
-    this.fileAvatar = event.target.files[0] as File;
+    this.fileAvatar = this.verificaTamanioTypeFile(event.target.files[0] as File);
+
   }
   /**Upload foto cuerpo entero */
   onFileCuerpoEnteroSelected(event) {
-    this.fileCuerpoEntero = event.target.files[0] as File;
+    this.fileCuerpoEntero = this.verificaTamanioTypeFile(event.target.files[0] as File);
   }
 
   /**Upload foto artistica */
@@ -318,22 +338,22 @@ export class FiguracionComponent implements OnInit {
 
   /**Upload foto moto */
   onFileMotoSelected(event) {
-    this.fileMoto = event.target.files[0] as File;
+    this.fileMoto = this.verificaTamanioTypeFile(event.target.files[0] as File);
   }
 
   /**Upload foto coche */
   onFileCocheSelected(event) {
-    this.fileCoche = event.target.files[0] as File;
+    this.fileCoche = this.verificaTamanioTypeFile(event.target.files[0] as File);
   }
 
   /**Upload foto tatuajes */
   onFileTatuajeSelected(event) {
-    this.fileTatuajes = event.target.files[0] as File;
+    this.fileTatuajes = this.verificaTamanioTypeFile(event.target.files[0] as File);
   }
 
   /**Upload foto manos */
   onFileManoSelected(event) {
-    this.fileManos = event.target.files[0] as File;
+    this.fileManos = this.verificaTamanioTypeFile(event.target.files[0] as File);
   }
 
   pasarDatosFormUsuario() {
@@ -573,7 +593,7 @@ export class FiguracionComponent implements OnInit {
         },
         err => console.log(err),
         () => {
-         // alert('Ups, inconvenientes en envío de email!');
+          // alert('Ups, inconvenientes en envío de email!');
         }
       );
   }
@@ -583,7 +603,7 @@ export class FiguracionComponent implements OnInit {
 
 
     if (this.actorForm.invalid || this.actorForm.get('acceptTerms').value === false) {
-      this.ngxSmartModalService.open('myMtrlzModal');
+      this.ngxSmartModalService.create('failform', 'Por favor, ingresar los datos del formulario requeridos').open();
       return;
     }
 
