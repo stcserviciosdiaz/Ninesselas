@@ -247,39 +247,35 @@ export class FiguracionComponent implements OnInit {
       email: ['', [Validators.required, Validators.email, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
       password: ['', [Validators.required, Validators.minLength(5)]],
       confirmPassword: ['', Validators.required],
-      username: [''],
-      submitted: [false],
+      username: ['', Validators.required],
       acceptTerms: [false, Validators.required],
 
 
       tattos: [''],
-      estilocantos: [''],
       placebirth: [''],
-      idiomasHablados: [''],
-      nombres: [''],
-      apellidos: [''],
+      nombres: ['', Validators.required],
+      apellidos: ['', Validators.required],
       bilingue: [''],
       localidad: [''],
       provincia: [''],
 
-      estilobailes: [''],
       codpostal: [''],
-      direccion: [''],
+      direccion: ['', Validators.required],
       sexo: [''],
       telefono: ['', Validators.required],
       fechaNacimiento: [''],
       nacionalidad: [''],
       acento: [''],
-      tallaPantalon: [''],
-      tallaCamisa: [''],
-      tallaChaqueta: [''],
-      pie: [''],
-      altura: [''],
-      colorPiel: [''],
-      colorPelo: [''],
-      colorOjos: [''],
-      numeroDNI: [''],
-      numeroSeguridadSocial: [''],
+      tallaPantalon: ['', Validators.required],
+      tallaCamisa: ['', Validators.required],
+      tallaChaqueta: ['', Validators.required],
+      pie: ['', Validators.required],
+      altura: ['', Validators.required],
+      colorPiel: ['', Validators.required],
+      colorPelo: ['', Validators.required],
+      colorOjos: ['', Validators.required],
+      numeroDNI: ['', Validators.required],
+      numeroSeguridadSocial: ['', Validators.required],
       carnetConducir: [''],
       modeloCoche: [''],
       colorCoche: [''],
@@ -291,7 +287,7 @@ export class FiguracionComponent implements OnInit {
       tattoos: [''],
       manos: [''],
       typecarnet: [''],
-      observaciones: [],
+      observaciones: [''],
     }
       , {
         validator: MustMatch('password', 'confirmPassword')
@@ -637,7 +633,7 @@ export class FiguracionComponent implements OnInit {
       this.urlAvatar = 'figuracion/' + idUser + '/avatar-' + this.fileAvatar.name;
       task = this.storage.upload(this.urlAvatar, this.fileAvatar);
     }
-    if (this.fileAvatar != null) {
+    if (this.fileCuerpoEntero != null) {
       /**subir cuerpo entero */
       this.urlCuerpoEntero = 'figuracion/' + idUser + '/cuerpo-' + this.fileCuerpoEntero.name;
       task = this.storage.upload(this.urlCuerpoEntero, this.fileCuerpoEntero);
@@ -646,22 +642,22 @@ export class FiguracionComponent implements OnInit {
     /*  this.urlArtistico = 'figuracion/' + idUser + '/artistico-' + this.fileArtistico.name;
      task = this.storage.upload(this.urlArtistico, this.fileArtistico); */
 
-    if (this.fileAvatar != null) {
+    if (this.fileCoche != null) {
       /**subir coche */
       this.urlCoche = 'figuracion/' + idUser + '/coche-' + this.fileCoche.name;
       task = this.storage.upload(this.urlCoche, this.fileCoche);
     }
-    if (this.fileAvatar != null) {
+    if (this.fileMoto != null) {
       /**subir moto */
       this.urlMoto = 'figuracion/' + idUser + '/moto-' + this.fileMoto.name;
       task = this.storage.upload(this.urlMoto, this.fileMoto);
     }
-    if (this.fileAvatar != null) {
+    if (this.fileTatuajes != null) {
       /**subir tatuajes */
       this.urlTatuajes = 'figuracion/' + idUser + '/tatuajes-' + this.fileTatuajes.name;
       task = this.storage.upload(this.urlTatuajes, this.fileTatuajes);
     }
-    if (this.fileAvatar != null) {
+    if (this.fileManos != null) {
       /**subir manos */
       this.urlManos = 'figuracion/' + idUser + '/manos-' + this.fileManos.name;
       task = this.storage.upload(this.urlManos, this.fileManos);

@@ -162,6 +162,7 @@ export class ChildrenComponent implements OnInit {
       confirmPassword: ['', Validators.required],
       sexo: [''],
       videoBook: [''],
+      actor:[''],
 
       placebirth: [''],
 
@@ -173,20 +174,20 @@ export class ChildrenComponent implements OnInit {
       telefonomother: ['', [Validators.required, Validators.minLength(6)]],
       fechaNacimiento: ['', Validators.required],
       nacionalidad: [''],
-      tallaPantalon: [''],
-      tallaCamisa: [''],
-      tallaChaqueta: [''],
+      tallaPantalon: ['', Validators.required],
+      tallaCamisa: ['', Validators.required],
+      tallaChaqueta: ['', Validators.required],
       localidad: [''],
       provincia: [''],
-      direccion: [''],
-      pie: [''],
-      altura: [''],
-      colorPiel: [''],
-      colorPelo: [''],
-      colorOjos: [''],
+      direccion: ['', Validators.required],
+      pie: ['', Validators.required],
+      altura: ['', Validators.required],
+      colorPiel: ['', Validators.required],
+      colorPelo: ['', Validators.required],
+      colorOjos: ['', Validators.required],
       observaciones: [''],
-      numeroDNI: [''],
-      numeroSeguridadSocial: [''],
+      numeroDNI: ['', Validators.required],
+      numeroSeguridadSocial: ['', Validators.required],
       numeroDNIPadre: [''],
       numeroDNIMadre: [''],
       numeroDNIRepresentante: [''],
@@ -197,7 +198,6 @@ export class ChildrenComponent implements OnInit {
       copySocialNumber: [''],
       copyDNIkid: [''],
       libroFamilia: [''],
-      submitted: [false],
     }
       , {
         validator: MustMatch('password', 'confirmPassword')
@@ -351,7 +351,6 @@ export class ChildrenComponent implements OnInit {
   pasarDatosFormUsuario() {
 
     const newChild = this.childForm.value;
-    console.log('Niño a registrar: ' + JSON.stringify(newChild));
     this.usuario = {
       idUser: 0,
       avatar: this.urlAvatar,
@@ -394,7 +393,7 @@ export class ChildrenComponent implements OnInit {
       telefonoPadre: newChild.telefonofather,
       lugarNacimiento: newChild.placebirth,
       edad: newChild.edad,
-      actor: this.actorSelect.name,
+      actor: newChild.actor,
       username: newChild.username,
       videobook: newChild.videoBook,
       instrumentoList: this.instrumentoSelect,
@@ -445,6 +444,7 @@ export class ChildrenComponent implements OnInit {
   signupChild() {
 
     this.submitted = true;
+
 
     if (this.childForm.invalid || this.childForm.get('acceptTerms').value === false) {
       this.ngxSmartModalService.create('failform', 'Por favor, ingresar los datos del formulario requeridos').open();
