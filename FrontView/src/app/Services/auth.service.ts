@@ -18,7 +18,7 @@ export class AuthService {
   ) {
 
     //this.urlGenerica = 'http://localhost:5000/';
-    this.urlGenerica = 'https://servicio-login.herokuapp.com/';
+    this.urlGenerica = 'https://servicio-ninesselas.herokuapp.com/';
   }
 
   /********  USUARIO *******/
