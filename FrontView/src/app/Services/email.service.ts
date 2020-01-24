@@ -13,7 +13,7 @@ export class EmailService {
     private http: HttpClient
   ) {
     //this.url = 'http://localhost:5000/';
-    this.url = 'https://servicio-login.herokuapp.com/';
+    this.url = 'https://servicio-ninesselas.herokuapp.com/';
   }
 
   /**EMAIL */
