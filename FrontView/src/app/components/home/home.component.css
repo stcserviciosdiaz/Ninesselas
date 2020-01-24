@@ -99,8 +99,8 @@ h4.masthead-subheading {
 .crossfade>figure:nth-child(1){background-image:url(/assets/img/sliderview/slider05-min.jpg)}
 .crossfade>figure:nth-child(2){animation-delay:6s;background-image:url(/assets/img/sliderview/slider04-min.jpg)}
 .crossfade>figure:nth-child(3){animation-delay:12s;background-image:url(/assets/img/sliderview/slider01-min.jpg)}
-.crossfade>figure:nth-child(4){animation-delay:18s;background-image:url(/assets/img/slider4.jpg)}
-.crossfade>figure:nth-child(5){animation-delay:24s;background-image:url(/assets/img/slider4.jpg)}
+.crossfade>figure:nth-child(4){animation-delay:18s;background-image:url(/assets/img/sliderview/slider11-min.jpg)}
+.crossfade>figure:nth-child(5){animation-delay:24s;background-image:url(/assets/img/sliderview/slider12-min.jpg)}
 
 @keyframes imageAnimation{
 
@@ -141,7 +141,20 @@ h4.masthead-subheading {
 }
 
 /* Media 480 */
-@media (max-width: 480px) {
+@media (max-width: 560px) {
+
+  .crossfade{
+    display: none;
+  }
+
+  .bg-fondo{
+    background-image: url(/assets/img/sliderview/slider05-min.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: scroll;
+    background-size: cover;
+    height: 100%;
+  }
 
   .nsm-body h1{
     font-size: 10px;
