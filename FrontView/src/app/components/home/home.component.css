@@ -98,8 +98,8 @@ h4.masthead-subheading {
 }
 .crossfade>figure:nth-child(1){background-image:url(/assets/img/sliderview/slider05-min.jpg)}
 .crossfade>figure:nth-child(2){animation-delay:6s;background-image:url(/assets/img/sliderview/slider04-min.jpg)}
-.crossfade>figure:nth-child(3){animation-delay:12s;background-image:url(/assets/img/sliderview/slider01-min.jpg)}
-.crossfade>figure:nth-child(4){animation-delay:18s;background-image:url(/assets/img/sliderview/slider11-min.jpg)}
+.crossfade>figure:nth-child(3){animation-delay:12s;background-image:url(/assets/img/sliderview/slider03-min.jpg)}
+.crossfade>figure:nth-child(4){animation-delay:18s;background-image:url(/assets/img/sliderview/slider02-min.jpg)}
 .crossfade>figure:nth-child(5){animation-delay:24s;background-image:url(/assets/img/sliderview/slider12-min.jpg)}
 
 @keyframes imageAnimation{
