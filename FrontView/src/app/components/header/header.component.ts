@@ -19,7 +19,6 @@ export class HeaderComponent implements OnInit {
   }
 
   closed(){
-    console.log('eeeee')
     this.isNvar = false;
   }
 

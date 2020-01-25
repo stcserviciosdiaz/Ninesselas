@@ -238,7 +238,7 @@
                     </div>
                     <div class="col-lg-6 example-container">
                       <mat-form-field>
-                        <input id="altura" formControlName="altura" matInput placeholder="Talla de Altura"
+                        <input id="altura" formControlName="altura" matInput placeholder="Talla de Altura" type="number" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01"
                           [ngClass]="{ 'is-invalid': submitted && childForm.controls.altura.errors }">
                       </mat-form-field>
                       <div *ngIf="submitted && childForm.controls.altura.errors" class="invalid-feedback">
