@@ -72,6 +72,7 @@ import { environment } from '../environments/environment';
 import { DatePipe } from './pipes/date/date.pipe';
 import { UserEditComponent } from './components/management/user-edit/user-edit.component';
 import { AboutComponent } from './components/about/about.component';
+import { ProyectComponent } from './components/management/proyect/proyect.component';
 @NgModule({
   declarations: [
     ActorEditComponent,
@@ -98,6 +99,7 @@ import { AboutComponent } from './components/about/about.component';
     IsotopeComponent,
     ChildrenComponent,
     AboutComponent,
+    ProyectComponent,
   ],
   imports: [
     MatSliderModule,
