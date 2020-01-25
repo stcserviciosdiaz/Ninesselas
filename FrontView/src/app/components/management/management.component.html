@@ -13,34 +13,22 @@
     </div>
     <div class="sidebar-wrapper">
       <ul class="nav">
-        <li class="active ">
-          <a routerLink="/home">
+        <li class="active" [ngClass]="{'active': offcreate == false}">
+          <a (click)="offcreate = false">
             <i class="fas fa-user-cog"></i>
-            <p>Dashboard</p>
+            <p>Tablero Administrativo</p>
           </a>
         </li>
-        <li>
-          <a>
-            <i class="fa fa-bell"></i>
-            <p>Notifications</p>
-          </a>
-        </li>
-        <li>
-          <a>
-            <i class="fas fa-user"></i>
-            <p>User Profile</p>
-          </a>
-        </li>
-        <li>
-          <a>
-            <i class="fas fa-list"></i>
-            <p>Table List</p>
+        <li [ngClass]="{'active': offcreate == true}">
+          <a (click)="offcreate = true">
+            <i class="fas fa-users"></i>
+            <p>Crear Proyecto</p>
           </a>
         </li>
       </ul>
     </div>
   </div>
-  <div class="main-panel">
+  <div class="main-panel" *ngIf="!offcreate">
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
       <div class="container-fluid">
@@ -292,12 +280,6 @@
 
               <canvas id=chartHours width="400" height="100"></canvas>
             </div>
-            <div class="card-footer ">
-              <hr>
-              <div class="stats">
-                <i class="fa fa-history"></i> Updated 3 minutes ago
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -310,19 +292,25 @@
           <nav class="footer-nav">
             <ul>
               <li>
-                <a target="_blank">Creative Tim</a>
+                <a target="_blank">SOBRE NOSOTROS</a>
               </li>
               <li>
-                <a target="_blank">Blog</a>
+                <a target="_blank">CONTÁCTANOS</a>
               </li>
               <li>
-                <a routerLink="/terms" target="_blank">Licenses</a>
+                <a routerLink="/terms" target="_blank">TÉRMINOS Y CONDICIONES</a>
+              </li>
+              <li>
+                <a routerLink="/terms" target="_blank">POLÍTICA DE PRIVACIDAD</a>
               </li>
             </ul>
           </nav>
         </div>
       </div>
     </footer>
+  </div>
+  <div class="main-panel" *ngIf="offcreate">
+    <app-proyect></app-proyect>
   </div>
 </div>
 
