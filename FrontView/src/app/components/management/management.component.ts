@@ -32,7 +32,7 @@ export function MustMatch(controlName: string, matchingControlName: string) {
 
 export class ManagementComponent implements OnInit {
 
-  @ViewChild(MdbTableDirective, { static: true })
+  @ViewChild(MdbTableDirective, { static: true }) 
   mdbTableUsers: MdbTableDirective;
   userInfo: Usuario = new Usuario();
   allUsers: Usuario[] = [];
