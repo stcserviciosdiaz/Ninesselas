@@ -1,12 +1,14 @@
+.example-container > * {
+  width: 100%;
+}
+
 .navbar.navbar-transparent {
     background-color: transparent !important;
     box-shadow: none;
     border-bottom: 1px solid #ddd;
     z-index: 1;
 }
-.content {
-    padding-top: 3rem;
-}
+
 .footer {
     padding: 24px 15px;
   }

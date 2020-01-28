@@ -32,6 +32,8 @@ export function MustMatch(controlName: string, matchingControlName: string) {
 
 export class ManagementComponent implements OnInit {
 
+  panelOpenState = false;
+
   @ViewChild(MdbTableDirective, { static: true }) 
   mdbTableUsers: MdbTableDirective;
   userInfo: Usuario = new Usuario();
@@ -233,5 +235,3 @@ export class ManagementComponent implements OnInit {
   }
 
 }
-
-
