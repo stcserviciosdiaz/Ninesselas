@@ -13,6 +13,44 @@ export class ProyectComponent implements OnInit {
 
   Oncreated = false;
 
+  @ViewChild(MdbTableDirective, { static: true }) 
+  mdbTableUsers: MdbTableDirective;
+  userInfo: Usuario = new Usuario();
+  allUsers: Usuario[] = [];
+  editField: string;
+  numberOfUsers: number;
+  idUserToUpdatePass: number;
+  passtoUpdate: string;
+  searchText = '';
+  previousUser: string;
+  mayorEdad: string;
+  validatingForm: FormGroup;
+  headElementsUsers = [
+    'ID',
+    'Nombres Completos',
+    'Mayor de Edad',
+    'Nombre Artístico',
+    'Género',
+    'Fecha de Nacimiento',
+    'País',
+    'Talla de Pantalón',
+    'Talla de Camisa',
+    'Talla de Chaqueta',
+    'Pie',
+    'Altura',
+    'Color de Piel',
+    'Color de Pelo',
+    'Color de Ojos',
+    'Modelo de Coche',
+    'Modelo de Moto',
+    'Número DNI',
+    'Número de Seguridad Social',
+    'Correo de Contacto',
+    'Contraseña',
+    'Teléfono de Contacto',
+    'Eliminar',
+  ];
+
   constructor(public authService: AuthService,
   ) { }
 
