@@ -22,6 +22,8 @@ import { deportista } from 'src/app/models/deportista';
 import { deportes } from 'src/app/models/deportes';
 import { EmailService } from 'src/app/Services/email.service';
 import { Email } from 'src/app/models/email';
+import { musico } from 'src/app/models/musico';
+import { instrumento } from 'src/app/models/instrumentos';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -117,6 +119,10 @@ export class FiguracionComponent implements OnInit {
   //selected
   actorSelect;
   tipoCarnetSelect;
+  musico;
+  instrumentoss;
+  musicoSelect: musico = new musico();
+  instrumentoSelect: instrumento[] = [];
   usuario: Usuario = new Usuario();
   etniaSelect: etnia = new etnia();
   baileSelect: bailarin = new bailarin();
@@ -239,6 +245,24 @@ export class FiguracionComponent implements OnInit {
        .subscribe(resp => {
          this.idiomasSelect = resp;
        });*/
+
+    //llenado de musico
+    this.authService.getAllMusico()
+      .subscribe(resp => {
+        this.musico = resp;
+      });
+
+    this.authService.finByIdMusico(1)
+      .subscribe(resp => {
+        this.musicoSelect = resp;
+      });
+
+    //llenado de instrumento
+    this.authService.getAllInstrumentos()
+      .subscribe(resp => {
+        this.instrumentoss = resp;
+      });
+
   }
 
   /**Construccion de form match variables y campos */
@@ -401,7 +425,7 @@ export class FiguracionComponent implements OnInit {
       actor: '',
       username: newUserObject.username,
       videobook: '',
-      instrumentoList: [],
+      instrumentoList: this.instrumentoSelect,
       estilosCantoList: this.estilosCantoSelect,
       deporteList: this.deporteSelect,
       estiloBaileList: this.estilosBaileSelect,
@@ -420,11 +444,7 @@ export class FiguracionComponent implements OnInit {
         nombres: 'FIGURACION'
       },
       idDeportista: this.deportistaSelect,
-      idMusico: {
-        idMusico: 1,
-        descipcionMusico: 'NO APLICA',
-        nombreMusico: 'NO APLICA'
-      },
+      idMusico: this.musicoSelect,
       motoList: [],
       cocheList: [],
       fotosTatuajesList: [],
@@ -455,19 +475,26 @@ export class FiguracionComponent implements OnInit {
       }
     } else if (id === 3) {
       if ($event.checked) {
+        this.instrumentoSelect.push(item);
+      } else {
+        const index: number = this.instrumentoSelect.indexOf(item);
+        this.instrumentoSelect.splice(index, 1);
+      }
+    } else if (id === 4) {
+      if ($event.checked) {
         this.estilosCantoSelect.push(item);
       } else {
         const index: number = this.estilosCantoSelect.indexOf(item);
         this.estilosCantoSelect.splice(index, 1);
       }
-    } else if (id === 4) {
+    } else if (id === 5) {
       if ($event.checked) {
         this.habilidadessSelect.push(item);
       } else {
         const index: number = this.habilidadessSelect.indexOf(item);
         this.habilidadessSelect.splice(index, 1);
       }
-    } else if (id === 5) {
+    } else if (id === 6) {
       if ($event.checked) {
         this.idiomasSelect.push(item);
       } else {

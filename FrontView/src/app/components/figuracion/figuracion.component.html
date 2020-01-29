@@ -187,7 +187,7 @@
                 <div class="example-container ">
                   <!-- Correo electronico -->
                   <mat-form-field>
-                    <input formControlName="email" matInput placeholder="Email"
+                    <input formControlName="email" matInput placeholder="Email" type="email"
                       [ngClass]="{ 'is-invalid': submitted && actorForm.controls.email.errors }">
 
                     <div *ngIf="submitted && actorForm.controls.email.errors" class="invalid-feedback">
@@ -690,6 +690,52 @@
                 </div>
 
                 <div class="form-group example-container">
+                  <!-- Musico -->
+
+                  <mat-form-field>
+                    <mat-label>Músico</mat-label>
+                    <mat-select [(ngModel)]="musicoSelect" [ngModelOptions]="{standalone: true}">
+                      <mat-option>None</mat-option>
+                      <mat-option *ngFor="let item of musico" [value]="item">
+                        {{item.nombreMusico}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+
+                  <!--
+
+                  <label class="control-label">Musico</label>
+                  <select forControlName="musico" class="form-control" [(ngModel)]="musicoSelect"
+                    [ngModelOptions]="{standalone: true}">
+                    <option selected>Seleccione...</option>
+                    <option [ngValue]="i" *ngFor="let i of musico">{{i.nombreMusico}}</option>
+                  </select>
+                  -->
+                </div>
+                <div class="form-group">
+
+                  <mat-card>
+                    <!-- Instrumentos musical -->
+                    <h5 class="pb-1">Instrumentos musical</h5>
+                    <hr>
+
+                    <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                      <div *ngFor="let item of instrumentoss" class="col-md-4 col-sm-6 col-12"
+                        style="padding: 5px 0px 5px 0px;">
+                        <mat-checkbox (change)="OnChange($event, item, 3)">
+                          <span class="itemitle">{{item.nombreInstrumento}}</span>
+                        </mat-checkbox>
+                      </div>
+                    </div>
+
+                    <mat-form-field>
+
+                      <input matInput placeholder="Otro">
+                    </mat-form-field>
+                  </mat-card>
+                </div>
+
+                <div class="form-group example-container">
                   <!-- Cantantes -->
 
                   <mat-form-field>
@@ -721,7 +767,7 @@
                     <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
                       <div *ngFor="let item of estilosCanto" class="col-md-4 col-sm-6 col-12"
                         style="padding: 5px 0px 5px 0px;">
-                        <mat-checkbox (change)="OnChange($event, item, 3)">
+                        <mat-checkbox (change)="OnChange($event, item, 4)">
                           <span class="itemitle">{{item.nombreEstiloCanto}}</span>
                         </mat-checkbox>
                       </div>
@@ -805,6 +851,8 @@
                       </div> -->
                 </div>
 
+                
+
                 <div class="form-group">
                   <!-- Habilidades -->
                   <mat-card>
@@ -813,7 +861,7 @@
                     <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
                       <div *ngFor="let item of habilidadess" class="col-md-4 col-sm-6 col-12"
                         style="padding: 5px 0px 5px 0px;">
-                        <mat-checkbox (change)="OnChange($event, item, 4)">
+                        <mat-checkbox (change)="OnChange($event, item, 5)">
                           <span class="itemitle">{{item.nombreHabilidad}}</span>
                         </mat-checkbox>
                       </div>
@@ -904,7 +952,7 @@
                     <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
                       <div *ngFor="let item of idiomas" class="col-md-4 col-sm-6 col-12"
                         style="padding: 5px 0px 5px 0px;">
-                        <mat-checkbox (change)="OnChange($event, item, 5)">
+                        <mat-checkbox (change)="OnChange($event, item, 6)">
                           <span class="itemitle">{{item.nombreIdioma}}</span>
                         </mat-checkbox>
                       </div>
