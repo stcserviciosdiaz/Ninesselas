@@ -13,43 +13,25 @@ export class ProyectComponent implements OnInit {
 
   Oncreated = false;
 
-  @ViewChild(MdbTableDirective, { static: true }) 
-  mdbTableUsers: MdbTableDirective;
-  userInfo: Usuario = new Usuario();
-  allUsers: Usuario[] = [];
-  editField: string;
-  numberOfUsers: number;
-  idUserToUpdatePass: number;
-  passtoUpdate: string;
-  searchText = '';
-  previousUser: string;
-  mayorEdad: string;
-  validatingForm: FormGroup;
-  headElementsUsers = [
-    'ID',
-    'Nombres Completos',
-    'Mayor de Edad',
-    'Nombre Artístico',
-    'Género',
-    'Fecha de Nacimiento',
-    'País',
-    'Talla de Pantalón',
-    'Talla de Camisa',
-    'Talla de Chaqueta',
-    'Pie',
-    'Altura',
-    'Color de Piel',
-    'Color de Pelo',
-    'Color de Ojos',
-    'Modelo de Coche',
-    'Modelo de Moto',
-    'Número DNI',
-    'Número de Seguridad Social',
-    'Correo de Contacto',
-    'Contraseña',
-    'Teléfono de Contacto',
-    'Eliminar',
-  ];
+  art={
+    pytName: null,
+    pytDescript: null,
+    id: null,
+    fullname: null,
+    artname: null,
+    gender: null,
+    country: null,
+    day: null,
+    sizePant: null,
+    sizeShirt: null,    
+  }
+
+  ptyUser = [{ id:1, fullname:'papas', artname:'artistico 01', gender:'Masculino', country:'Ecuador', day:'30 de noviembre', sizePant:'16', sizeShirt: '10'},
+               {id:2, fullname:'manzanas', artname:'artistico 02', gender:'Masculino', country:'Ecuador', day:'30 de noviembre', sizePant:'16', sizeShirt: '10'},
+               {id:3, fullname:'melon', artname:'artistico 03', gender:'Masculino', country:'Ecuador', day:'30 de noviembre', sizePant:'16', sizeShirt: '10'},
+               {id:4, fullname:'cebollas', artname:'artistico 04', gender:'Masculino', country:'Ecuador', day:'30 de noviembre', sizePant:'16', sizeShirt: '10'},
+               {id:5, fullname:'calabaza', artname:'artistico 05', gender:'Masculino', country:'Ecuador', day:'30 de noviembre', sizePant:'16', sizeShirt: '10'},
+            ];
 
   constructor(public authService: AuthService,
   ) { }
@@ -57,9 +39,26 @@ export class ProyectComponent implements OnInit {
   ngOnInit() {
   }
 
-  /***Crear Proyect */
-  setUpProyect(){
+  /*** Seleccionar Usuario */
+  ptySeleccion(art) {
+    this.art.id=art.id;
+    this.art.fullname=art.fullname;
+    this.art.artname=art.artname;
+    this.art.gender=art.gender;
+    this.art.country=art.country;
+    this.art.day=art.day;
+    this.art.sizePant=art.sizePant;
+    this.art.sizeShirt=art.sizeShirt;
+  }
+
+  /*** Crear Proyect */
+  ptyCrear() {
     this.Oncreated = true;
   }
+
+  /*** Borrar Proyect */
+  ptyborrar(art) {
+    this.Oncreated = false;
+  } 
 
 }
