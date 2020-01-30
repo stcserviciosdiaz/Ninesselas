@@ -1,13 +1,11 @@
-.ddd{
+.element{
   position: absolute;
-  top: 0px;
-  left: 0px;
-  z-index: 0;
   width: 100%;
-  height: 100%;
-  visibility: inherit;
-  opacity: 1;
-  transform: matrix(1, 0, 0, 1, 0, 0);
+  top: 30%;
+}
+.jumbotron{
+  background-color: rgba(233, 236, 239, 0);
+  box-shadow: none;
 }
 
 button:focus {
@@ -83,77 +81,11 @@ h4.masthead-subheading {
     text-transform: uppercase;
 }
 
-.crossfade>figure{
-  animation:imageAnimation 30s linear infinite 0s;
-  backface-visibility:hidden;
-  background-size:cover;
-  background-position:center center;
-  color:transparent;height:100%;
-  left:0;
-  opacity:0;
-  position: fixed;;
-  top:0;
-  width:100%;
-  z-index:0;
-}
-.crossfade>figure:nth-child(1){background-image:url(/assets/img/sliderview/slider05-min.jpg)}
-.crossfade>figure:nth-child(2){animation-delay:6s;background-image:url(/assets/img/sliderview/slider04-min.jpg)}
-.crossfade>figure:nth-child(3){animation-delay:12s;background-image:url(/assets/img/sliderview/slider03-min.jpg)}
-.crossfade>figure:nth-child(4){animation-delay:18s;background-image:url(/assets/img/sliderview/slider02-min.jpg)}
-.crossfade>figure:nth-child(5){animation-delay:24s;background-image:url(/assets/img/sliderview/slider12-min.jpg)}
-
-@keyframes imageAnimation{
-
-0%{
-  animation-timing-function:ease-in;
-  opacity:0
-}
-8%{
-  animation-timing-function:ease-out;
-  opacity:1
-}
-17%{
-  opacity:1
-}
-25%{
-  opacity:0
-}
-100%{
-  opacity:0
-}
-
-}
-
-
-/* Media 576 */
-@media (min-width: 576px){
-  
-}
-
-
-/* Media 992 */
-@media (min-width: 992px){
-   
-}
-
-@media (min-width: 775px) and (max-width: 995px){
-
-}
-
 /* Media 480 */
 @media (max-width: 560px) {
 
   .crossfade{
     display: none;
-  }
-
-  .bg-fondo{
-    background-image: url(/assets/img/sliderview/slider05-min.jpg);
-    background-repeat: no-repeat;
-    background-position: center center;
-    background-attachment: scroll;
-    background-size: cover;
-    height: 100%;
   }
 
   .nsm-body h1{
