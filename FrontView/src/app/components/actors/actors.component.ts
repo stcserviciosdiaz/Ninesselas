@@ -375,6 +375,7 @@ export class ActorsComponent implements OnInit {
       modeloMoto: [''],
       colorMoto: [''],
       ultimosTrabajos: [''],
+      observaciones: [''],
 
     }
 

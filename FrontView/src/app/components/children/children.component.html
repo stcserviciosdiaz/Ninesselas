@@ -1052,10 +1052,11 @@
                       </div> -->
                 </div>
 
-                <!-- Bilingue -->
-                <div class="form-group">
-                  <label class="control-label">Bilingue</label>
-                  <input type="text" class="form-control" id="bilingue" formControlName="bilingue" placeholder="">
+                <div class="form-group example-container">
+                    <!-- Bilingue -->
+                    <mat-form-field>
+                        <input id="bilingue" formControlName="bilingue" matInput placeholder="Bilingue">
+                    </mat-form-field>
                 </div>
 
                 <div class="form-group">
@@ -1069,10 +1070,12 @@
                   <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos"
                     placeholder="Publicidad">
                 </div>
-                <div class="form-group">
-                  <!-- Observaciones -->
-                  <label for="">Observaciones</label>
-                  <textarea class="form-control" id="observaciones" formControlName="observaciones" rows="3"></textarea>
+               
+                <div class="form-group example-container">
+                    <!-- Observaciones -->
+                    <mat-form-field>
+                      <textarea id="observaciones" formControlName="observaciones" matInput placeholder="Observaciones"></textarea>
+                    </mat-form-field>
                 </div>
 
                 <div class="form-group">
