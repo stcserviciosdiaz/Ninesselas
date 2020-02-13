@@ -1,3 +1,33 @@
+.inner-addon {
+  position: relative;
+}
+
+.inner-addon .fas {
+  left: 0px;
+  top: 32px;
+  color: rgba(0, 0, 0, 0.31);
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+.inner-addon2 {
+  position: relative;
+}
+
+.inner-addon2 .fas {
+  left: 15px;
+  top: 30px;
+  color: rgba(0, 0, 0, 0.31);
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+.form-control{
+  padding: 5px 5px 5px 35px;
+}
+
 .bg-register{
   background-image: url(/assets/img/sliderview/slider07-min.jpg);
     background-size: cover;
@@ -126,13 +156,26 @@
   width: 100%;
 }
 
+.formular-register{
+  width: 50%;
+}
+
 /* Fallback for Edge
 -------------------------------------------------- */
 
 /* Media 480 */
 
-@media screen and (max-width: 480px) {
-  
+@media (max-width: 480px) {
+  .formular-register{
+    font-size: 12px;
+    width: 100%;
+  }
+  button{
+    width: 100%;
+  }
+  h1{
+    font-size: 21px;
+  }
   
 }
 

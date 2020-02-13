@@ -5,15 +5,16 @@
         <div class="">
           <div class="">
             <div class="transparent">
-              <div class="w-50 mx-auto text-light">
+              <div class="formular-register mx-auto text-light">
                 <form [formGroup]="companyForm" (ngSubmit)="registrarEmpresa()">
                   <div class="#">
                     <div class="#">
                       <h1 class="text-center">Registrate</h1>
                     </div>
-                    <div class="#">
-                        <div class="#">
+                    <div class="">
+                        <div class="inner-addon">
                             <label class="control-label">Nombre de Usuario</label>
+                            <i class="fas fa-user"></i>
                             <input type="text" class="form-control" formControlName="username" placeholder="" [ngClass]="{ 'is-invalid': submitted &amp;&amp; companyForm.controls.username.errors }">
                             <div *ngIf="submitted &amp;&amp; companyForm.controls.username.errors" class="invalid-feedback">
                               <div *ngIf="companyForm.controls.username.errors.required">
@@ -21,26 +22,29 @@
                               </div>
                             </div>
                         </div>
-                        <div class="mt-2">
+                        <div class="mt-2 inner-addon">
                             <label class="control-label">Correo</label>
+                            <i class="fas fa-envelope"></i>
                             <input type="email" class="form-control" formControlName="email" placeholder="" [ngClass]="{ 'is-invalid': submitted &amp;&amp; companyForm.controls.email.errors }">
                             <div *ngIf="submitted &amp;&amp; companyForm.controls.email.errors" class="invalid-feedback">
                                 <div *ngIf="companyForm.controls.email.errors.required">Correo electrónico es requerido</div>
                                 <div *ngIf="companyForm.controls.email.errors.email">Email Inválida</div>
                             </div>
                         </div>
-                        <div class="mt-2">
+                        <div class="mt-2 inner-addon">
                             <label class="control-label">Teléfono</label>
-                            <input type="text" class="form-control" formControlName="telefono"  placeholder="" [ngClass]="{ 'is-invalid': submitted &amp;&amp; companyForm.controls.telefono.errors }" >
+                            <i class="fas fa-phone"></i>
+                            <input (keypress)="numberOnly($event)" type="text" class="form-control" formControlName="telefono"  placeholder="" [ngClass]="{ 'is-invalid': submitted &amp;&amp; companyForm.controls.telefono.errors }" >
                             <div *ngIf="submitted &amp;&amp; companyForm.controls.telefono.errors" class="invalid-feedback">
                                 <div *ngIf="companyForm.controls.telefono.errors.required">El teléfono es requerido</div>
                                 <div *ngIf="companyForm.get('telefono').hasError('pattern')">No es un numero de telefono valido</div>
                             </div>
                         </div>
                     </div>
-                    <div class="#">
-                        <div class="mt-2">
-                            <label class="control-label">Ingresa tu contraseña</label>
+                    <div class="inner-addon2 row">
+                        <div class="col-6 mt-2">
+                            <label class="control-label">Contraseña</label>
+                            <i class="fas fa-lock"></i>
                             <input type="Password" class="form-control" formControlName="password" placeholder="***********" [ngClass]="{ 'is-invalid': submitted && companyForm.controls.password.errors }">
                             <div *ngIf="submitted && companyForm.controls.password.errors" class="invalid-feedback">
                                 <div *ngIf="companyForm.controls.password.errors.required">La contraseña es requerida</div>
@@ -48,15 +52,15 @@
                             </div>
                           </div>
 
-                          <div class="mt-2"><!-- Confirma Contraseña -->
+                          <div class="col-6 mt-2"><!-- Confirma Contraseña -->
                             <label>Confirma contraseña</label>
+                            <i class="fas fa-lock"></i>
                             <input type="password" formControlName="confirmPassword" class="form-control" placeholder="***********" [ngClass]="{ 'is-invalid': submitted && companyForm.controls.confirmPassword.errors }">
                               <div *ngIf="submitted && companyForm.controls.confirmPassword.errors" class="invalid-feedback">
                                 <div *ngIf="companyForm.controls.confirmPassword.errors.required">Confirme que se requiere contraseña</div>
                                 <div *ngIf="companyForm.controls.confirmPassword.errors.mustMatch">Las contraseñas deben coincidir</div>
                               </div>
                           </div>
-
                     </div>
                   </div>
                   <div class="mt-3 submit-btn">
