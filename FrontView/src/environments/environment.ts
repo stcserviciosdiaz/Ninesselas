@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  firebase:{
+  firebase: {
     apiKey: "AIzaSyC1Xi_KPZfByVuXPPJTQhk-nF09wL0vptQ",
     authDomain: "ninesselas-351a6.firebaseapp.com",
     databaseURL: "https://ninesselas-351a6.firebaseio.com",

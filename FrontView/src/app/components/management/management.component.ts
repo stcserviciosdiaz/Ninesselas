@@ -6,6 +6,8 @@ import { MdbTableDirective } from 'angular-bootstrap-md';
 import { Router } from "@angular/router";
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import { Observable } from 'rxjs';
+import { AngularFireStorage } from '@angular/fire/storage';
 export function MustMatch(controlName: string, matchingControlName: string) {
   return (formGroup: FormGroup) => {
     const control = formGroup.controls[controlName];
@@ -33,6 +35,9 @@ export function MustMatch(controlName: string, matchingControlName: string) {
 export class ManagementComponent implements OnInit {
 
   panelOpenState = false;
+
+  /**URL IMAGENES FIREBASE **/
+  obsAvatar: Observable<string>;
 
   @ViewChild(MdbTableDirective, { static: true }) 
   mdbTableUsers: MdbTableDirective;
@@ -73,6 +78,7 @@ export class ManagementComponent implements OnInit {
   ];
 
   constructor(
+    private storage: AngularFireStorage,
     public ngxSmartModalService: NgxSmartModalService,
     private formBuilder: FormBuilder,
     public authService: AuthService,
@@ -86,6 +92,7 @@ export class ManagementComponent implements OnInit {
     this.authService.findByToken()
       .subscribe(res => {
         this.userInfo = res;
+        this.pasarFotos();
       }, (err) => {
         this.userInfo = new Usuario();
       });
@@ -99,6 +106,17 @@ export class ManagementComponent implements OnInit {
         this.llenaListasVacias();
 
       });
+  }
+
+  pasarFotos() {
+    let filePath = this.userInfo.avatar;
+    let ref = this.storage.ref(filePath);
+
+    /**AVATAR */
+    this.obsAvatar = ref.getDownloadURL();
+    ref.getDownloadURL().subscribe(resp => {
+      this.obsAvatar = resp;
+    });
   }
 
   /**Iniciar FORM CAMBIO PASS */
@@ -209,6 +227,8 @@ export class ManagementComponent implements OnInit {
       localStorage.setItem('ninioedit', user.idUser);
     }
   }
+
+  
 
   /**ELIMINACION */
   removeUser(idList: any, userId: any) {

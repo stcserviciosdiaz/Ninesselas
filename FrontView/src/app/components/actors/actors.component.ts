@@ -393,6 +393,8 @@ export class ActorsComponent implements OnInit {
     this.usuario = {
       idUser: 0,
       avatar: this.urlAvatar,
+      fotoCuerpo: this.urlCuerpoEntero,
+      fotoProfesional: this.urlArtistico,
       acento: newUserObject.acento,
       altura: newUserObject.altura,
       apellidos: newUserObject.apellidos,
@@ -649,13 +651,17 @@ export class ActorsComponent implements OnInit {
     this.pasarDatosFormUsuario();
     this.authService.signup2(this.usuario).subscribe(
       res => {
-        this.registrarFotos(res.idUser);
-        this.guardarTalla(res.idUser);
-        this.enviarEmailRegistro();
-        localStorage.setItem('token', res.idUser);
 
-        this.router.navigate(['/homeuser']);
-        this.ngxSmartModalService.create('confirm', 'Se ha registrado exitosamente' + this.usuario.nombreCompleto).open();
+
+        if (res.nombreArtistico !== 'ENCONTRADO') {
+          this.registrarFotos(res.idUser);
+          this.guardarTalla(res.idUser);
+          this.enviarEmailRegistro();
+          localStorage.setItem('token', res.idUser);
+
+          this.router.navigate(['/homeuser']);
+          this.ngxSmartModalService.create('confirm', 'Se ha registrado exitosamente' + this.usuario.nombreCompleto).open();
+        } else { this.ngxSmartModalService.create('userexist', 'El usuario con email: ' + this.usuario.email + ' YA EXISTE.!').open(); }
 
       },
       (err) => {

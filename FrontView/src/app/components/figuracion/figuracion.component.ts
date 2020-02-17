@@ -383,6 +383,8 @@ export class FiguracionComponent implements OnInit {
     this.usuario = {
       idUser: 0,
       avatar: this.urlAvatar,
+      fotoCuerpo: this.urlCuerpoEntero,
+      fotoProfesional: "",
       acento: newUserObject.acento,
       altura: newUserObject.altura,
       apellidos: newUserObject.apellidos,
@@ -638,12 +640,14 @@ export class FiguracionComponent implements OnInit {
     this.pasarDatosFormUsuario();
     this.authService.signup2(this.usuario).subscribe(
       res => {
-        localStorage.setItem('token', res.idUser);
-        this.ngxSmartModalService.create('confirm', 'Cuenta de Figuración creada exitosamente ' + res.nombres + ' ' + res.apellidos).open();
-        this.registrarFotos(res.idUser);
-        this.guardarTalla(res.idUser);
-        this.enviarEmailRegistro();
-        this.router.navigate(['/homeuser']);
+        if (res.nombreArtistico !== 'ENCONTRADO') {
+          localStorage.setItem('token', res.idUser);
+          this.ngxSmartModalService.create('confirm', 'Cuenta de Figuración creada exitosamente ' + res.nombres + ' ' + res.apellidos).open();
+          this.registrarFotos(res.idUser);
+          this.guardarTalla(res.idUser);
+          this.enviarEmailRegistro();
+          this.router.navigate(['/homeuser']);
+        } else { this.ngxSmartModalService.create('userexist', 'El usuario con email: ' + this.usuario.email + ' YA EXISTE.!').open(); }
       },
       (err) => {
         this.ngxSmartModalService.create('error', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();

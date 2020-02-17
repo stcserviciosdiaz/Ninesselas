@@ -24,19 +24,84 @@
 
 
 
-                <div class="form-group">
-                  <label class="control-label">Foto de Perfil</label>
-                  <input type="file" (change)="onAvatarSelected($event)"><br>
-                </div>
-                <div class="form-group">
-                  <!-- cuerpo entero -->
-                  <label class="control-label">Foto cuerpo entero</label>
-                  <input type="file" (change)="onFileCuerpoEnteroSelected($event)"><br>
-                </div>
-                <div class="form-group">
-                  <!-- foto artistico -->
-                  <label class="control-label">Foto artistico</label>
-                  <input type="file" (change)="onFileArtisticoSelected($event)"><br>
+                <div class="row">
+                  <div class="col-md-4">
+                    <mat-card class="example-card">
+                      <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"> <img [src]="obsAvatar"
+                            style="width: inherit;border-radius: 10%;" /></div>
+                        <mat-card-title style="font-size: small;">{{usuario.email}}</mat-card-title>
+                        <mat-card-subtitle>Imagen Primer Plano</mat-card-subtitle>
+                      </mat-card-header>
+                      <img mat-card-image style="padding: 5px 0px 0px 0px;" [src]="obsAvatar" alt={{usuario.nombres}}>
+
+                      <mat-card-actions style="font-size: 0.8rem;">
+                       <!-- <input type="file" (change)="onAvatarSelected($event)"><br>-->
+                        <div class="input-group">
+                          <div class="input-group-prepend" >
+                            <span class="input-group-text" style="font-size: 0.8rem;" id="inputGroupFileAddon01">Subir</span>
+                          </div>
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input btn btn-primary" id="inputGroupFile01"
+                              aria-describedby="inputGroupFileAddon01" (change)="onAvatarSelected($event)">
+                            <label class="custom-file-label" for="inputGroupFile01" ></label>
+                          </div>
+                        </div>
+                      </mat-card-actions>
+                    </mat-card>
+                  </div>
+
+                  <div class="col-md-4">
+                    <mat-card class="example-card">
+                      <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"> <img [src]="obsAvatar"
+                            style="width: inherit;border-radius: 10%;" /></div>
+                        <mat-card-title style="font-size: small;">{{usuario.email}}</mat-card-title>
+                        <mat-card-subtitle>Imagen Cuerpo Completo</mat-card-subtitle>
+                      </mat-card-header>
+                      <img mat-card-image style="padding: 5px 0px 0px 0px;" [src]="obsFotoCuerpo" alt={{usuario.nombres}}>
+
+                      <mat-card-actions style="font-size: 0.8rem;">
+                        <!--<input type="file" (change)="onFileCuerpoEnteroSelected($event)"><br>-->
+                        <div class="input-group">
+                          <div class="input-group-prepend" >
+                            <span class="input-group-text" style="font-size: 0.8rem;" id="inputGroupFileAddon01">Subir</span>
+                          </div>
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input btn btn-primary" id="inputGroupFile01"
+                              aria-describedby="inputGroupFileAddon01" (change)="onFileCuerpoEnteroSelected($event)">
+                            <label class="custom-file-label" for="inputGroupFile01" ></label>
+                          </div>
+                        </div>
+                      </mat-card-actions>
+                    </mat-card>
+                  </div>
+
+                  <div class="col-md-4">
+                    <mat-card class="example-card">
+                      <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"> <img [src]="obsAvatar"
+                            style="width: inherit;border-radius: 10%;" /></div>
+                        <mat-card-title style="font-size: small;">{{usuario.email}}</mat-card-title>
+                        <mat-card-subtitle>Imagen Artística</mat-card-subtitle>
+                      </mat-card-header>
+                      <img mat-card-image style="padding: 5px 0px 0px 0px;" [src]="obsFotoArtistico" alt={{usuario.nombres}}>
+
+                      <mat-card-actions style="font-size: 0.8rem;">
+                        <!--<input type="file" (change)="onFileCuerpoEnteroSelected($event)"><br>-->
+                        <div class="input-group">
+                          <div class="input-group-prepend" >
+                            <span class="input-group-text" style="font-size: 0.8rem;" id="inputGroupFileAddon01">Subir</span>
+                          </div>
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input btn btn-primary" id="inputGroupFile01"
+                              aria-describedby="inputGroupFileAddon01" (change)="onFileArtisticoSelected($event)">
+                            <label class="custom-file-label" for="inputGroupFile01" ></label>
+                          </div>
+                        </div>
+                      </mat-card-actions>
+                    </mat-card>
+                  </div>
                 </div>
 
 

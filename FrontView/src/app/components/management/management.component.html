@@ -1,396 +1,394 @@
 <div class="wrapper ">
-    <div class="sidebar" data-color="white" data-active-color="danger">
-      <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
-          <div class="logo-image-small">
-            <img
-              src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/46b63d3c-ae67-464c-9a37-670829b2a157/d8ttdm6-5617aa77-87d8-4fb7-bb78-4aab6b0956b5.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzQ2YjYzZDNjLWFlNjctNDY0Yy05YTM3LTY3MDgyOWIyYTE1N1wvZDh0dGRtNi01NjE3YWE3Ny04N2Q4LTRmYjctYmI3OC00YWFiNmIwOTU2YjUucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.L80L4l2NOeCIV3WB491ANP4Ii_9NiIg2m-tgY5M_IaA">
+  <div class="sidebar" data-color="white" data-active-color="danger">
+    <div class="logo">
+      <a href="/home" class="simple-text logo-mini">
+        <div class="logo-image-small">
+          <img [src]="obsAvatar" style="border-radius: 50%;" /></div>
+      </a>
+      <a href="/home" class="fg-16 simple-text logo-normal">
+        Administrativo
+      </a>
+    </div>
+    <div class="sidebar-wrapper">
+      <ul class="nav">
+        <li class="active ">
+          <a>
+            <i class="fas fa-user-cog"></i>
+            <p>Dashboard</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="main-panel">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+      <div class="container-fluid">
+        <div class="navbar-wrapper">
+          <div class="navbar-toggle">
+            <button type="button" class="navbar-toggler">
+              <span class="navbar-toggler-bar bar1"></span>
+              <span class="navbar-toggler-bar bar2"></span>
+              <span class="navbar-toggler-bar bar3"></span>
+            </button>
           </div>
-        </a>
-        <a href="http://www.creative-tim.com" class="fg-16 simple-text logo-normal">
-          Administrativo
-        </a>
+          <a>{{userInfo.idUser}} {{userInfo.username}} : {{userInfo.nombres}} {{userInfo.apellidos}}</a>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
+          aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-bar navbar-kebab"></span>
+          <span class="navbar-toggler-bar navbar-kebab"></span>
+          <span class="navbar-toggler-bar navbar-kebab"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navigation">
+
+          <ul class="navbar-nav">
+
+            <li> <a class="btn btn-primary" (click)="authService.logoutUser()" routerLink="#/home">Salir</a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div class="sidebar-wrapper">
-        <ul class="nav">
-          <li class="active ">
-            <a>
-              <i class="fas fa-user-cog"></i>
-              <p>Dashboard</p>
-            </a>
-          </li>
-        </ul>
+    </nav>
+
+
+    <div class="content">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="card card-stats">
+            <div class="card-body ">
+              <div class="row">
+                <div class="col-5 col-md-4">
+                  <div class="icon-big text-center icon-warning">
+                    <i class="fas fa-warehouse"></i>
+                  </div>
+                </div>
+                <div class="col-7 col-md-8">
+                  <div class="numbers">
+                    <p class="card-category">Capacity</p>
+                    <p class="card-title">150GB
+                      <p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer ">
+              <hr>
+              <div class="stats">
+                <i class="fa fa-refresh"></i> Actualizar ahora
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="card card-stats">
+            <div class="card-body ">
+              <div class="row">
+                <div class="col-5 col-md-4">
+                  <div class="icon-big text-center icon-warning">
+                    <i class="fas fa-users"></i>
+                  </div>
+                </div>
+                <div class="col-7 col-md-8">
+                  <div class="numbers">
+                    <p class="card-category">Usuarios</p>
+                    <p class="card-title">{{numberOfUsers}}
+                      <p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer ">
+              <hr>
+              <div class="stats">
+                <i class="fa fa-calendar-o"></i> Último día
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="card card-stats">
+            <div class="card-body ">
+              <div class="row">
+                <div class="col-5 col-md-4">
+                  <div class="icon-big text-center icon-warning">
+                    <i class="fab fa-pushed"></i>
+                  </div>
+                </div>
+                <div class="col-7 col-md-8">
+                  <div class="numbers">
+                    <p class="card-category">Errors</p>
+                    <p class="card-title">23
+                      <p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer ">
+              <hr>
+              <div class="stats">
+                <i class="fa fa-clock-o"></i> En la ultima hora
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <div class="card card-stats">
+            <div class="card-body ">
+              <div class="row">
+                <div class="col-5 col-md-4">
+                  <div class="icon-big text-center icon-warning">
+                    <i class="fab fa-twitter"></i>
+                  </div>
+                </div>
+                <div class="col-7 col-md-8">
+                  <div class="numbers">
+                    <p class="card-category">Seguidores</p>
+                    <p class="card-title">+45K
+                      <p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer ">
+              <hr>
+              <div class="stats">
+                <i class="fa fa-refresh"></i> Actualizar ahora
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card ">
+            <div class="card-header ">
+              <h5 class="card-title">Información de Usuario Administrativo</h5>
+            </div>
+            <div class="card-body ">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <tbody>
+                  <tr>
+                    <td>Nombre Usuario</td>
+                    <td>{{userInfo.username}}</td>
+                  </tr>
+                  <tr>
+                    <td>Correo eléctronico</td>
+                    <td>{{userInfo.email}}</td>
+                  </tr>
+                  <tr>
+                    <td>Contraseña</td>
+                    <td>{{userInfo.password}}</td>
+                  </tr>
+                  <tr>
+                    <td>Teléfonos</td>
+                    <td>{{userInfo.telefono}}</td>
+                  </tr>
+                </tbody>
+              </table>
+
+
+
+              <mdb-card cascade="true" narrower="true">
+                <!--Card image-->
+                <div style="padding: 25px;"
+                  class="view view-cascade gradient-card-header blue-gradient narrower py-4 mx-2 mb-3 d-flex justify-content-between align-items-center">
+
+                  <div style="width: 50%;">
+                    <div class="md-form">
+                      <input type="text" placeholder="Búsqueda por parámetros" [(ngModel)]="searchText"
+                        class="form-control" id="search" mdbInput>
+                    </div>
+                  </div>
+
+                  <a href="" class="white-text mx-3">Usuarios</a>
+
+                  <div>
+
+                  </div>
+
+                </div>
+                <!--/Card image-->
+
+                <div class="px-8">
+
+                  <div class="table-wrapper">
+                    <table class="mb-0" hover="true" ng-table="tableParams2" small="true" resposive="true"
+                      striped="true" mdbTable mdbTableScroll scrollY="true" maxHeight="350" scrollX="true"
+                      class="table table-bordered table-responsive-md table-striped text-center">
+                      <thead>
+                        <tr>
+                          <th *ngFor="let head of headElementsUsers; let i = index" aria-controls="tableSortExample"
+                            scope="col" [mdbTableSort]="allUsers" [sortBy]="headElementsUsers[i]">{{head | titlecase}}
+                          </th>
+                          <mdb-icon fas icon="sort"></mdb-icon>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr *ngFor="let user of allUsers; let i = index">
+                          <th scope="row">{{user.idUser}}</th>
+                          <td>{{user.nombres}} {{user.apellidos}}</td>
+                          <td>{{user.edad}}</td>
+                          <td>{{user.nombreArtistico}}</td>
+                          <td>{{user.sexo}}</td>
+                          <td>{{user.fechaNacimiento}}</td>
+                          <td>{{user.localidad}}</td>
+                          <td>{{user.tallasList[0].pantalonTalla}}</td>
+                          <td>{{user.tallasList[0].camisaTalla}}</td>
+                          <td>{{user.tallasList[0].chaquetaTalla}}</td>
+                          <td>{{user.tallasList[0].pieTalla}}</td>
+                          <td>{{user.altura}}</td>
+                          <td>{{user.colorPiel}}</td>
+                          <td>{{user.colorPelo}}</td>
+                          <td>{{user.colorOjos}}</td>
+                          <td>{{user.cocheList[0].modeloCoche}}</td>
+                          <td>{{user.motoList[0].modeloMoto}}</td>
+                          <td>{{user.dniUser}}</td>
+                          <td>{{user.numeroSeguroSocial}}</td>
+                          <td>{{user.email}}</td>
+                          <td>{{user.password}}</td>
+                          <td>{{user.telefono}}</td>
+                          <td>
+                            <div class="d-flex flex-row">
+                              <button type="button" mdbBtn color="danger" rounded="true" size="sm"
+                                (click)="removeUser(i,user.idUser)">Eliminar</button>
+
+                              <button type="button" mdbBtn mdbWavesEffect gradient="blue" rounded="true" size="sm"
+                                (click)="editarUser(i,user)">Editar</button>
+
+                              <button type="button" mdbBtn color="warning" rounded="true" data-toggle="modal"
+                                data-target="#basicExample" (click)="pasarUsuarioUpdatePassword(user);frame.show()"
+                                mdbWavesEffect>Up
+                                Pass</button>
+                            </div>
+                          </td>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </mdb-card>
+              <br />
+              <app-management-company></app-management-company>
+
+              <div class="panel-dasboard">
+                <app-proyect></app-proyect>
+              </div>
+
+              <canvas id=chartHours width="400" height="100"></canvas>
+            </div>
+            <div class="card-footer ">
+              <hr>
+              <div class="stats">
+                <i class="fa fa-history"></i> Actualizado hace 3 minutos
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="main-panel">
-      <!-- Navbar -->
-      <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
-        <div class="container-fluid">
-          <div class="navbar-wrapper">
-            <div class="navbar-toggle">
-              <button type="button" class="navbar-toggler">
-                <span class="navbar-toggler-bar bar1"></span>
-                <span class="navbar-toggler-bar bar2"></span>
-                <span class="navbar-toggler-bar bar3"></span>
-              </button>
-            </div>
-            <a>{{userInfo.idUser}} {{userInfo.username}} : {{userInfo.nombres}} {{userInfo.apellidos}}</a>
-          </div>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
-            aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-          </button>
-          <div class="collapse navbar-collapse justify-content-end" id="navigation">
-  
-            <ul class="navbar-nav">
-  
-              <li> <a class="btn btn-primary" (click)="authService.logoutUser()" routerLink="#/home">Salir</a>
+    <footer class="footer footer-black  footer-white ">
+      <div class="container-fluid">
+        <div class="row">
+          <nav class="footer-nav">
+            <ul>
+              <li>
+                <a routerLink="/about" target="_blank">SOBRE NOSOTROS</a>
+              </li>
+              <li>
+                <a routerLink="/contact" target="_blank">CONTÁCTANOS</a>
+              </li>
+              <li>
+                <a routerLink="/terms" target="_blank">TÉRMINOS Y CONDICIONES</a>
+              </li>
+              <li>
+                <a routerLink="/privacy" target="_blank">POLÍTICA DE PRIVACIDAD</a>
               </li>
             </ul>
-          </div>
-        </div>
-      </nav>
-  
-        
-            <div class="content">
-                <div class="row">
-                  <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-stats">
-                      <div class="card-body ">
-                        <div class="row">
-                          <div class="col-5 col-md-4">
-                            <div class="icon-big text-center icon-warning">
-                              <i class="fas fa-warehouse"></i>
-                            </div>
-                          </div>
-                          <div class="col-7 col-md-8">
-                            <div class="numbers">
-                              <p class="card-category">Capacity</p>
-                              <p class="card-title">150GB
-                                <p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card-footer ">
-                        <hr>
-                        <div class="stats">
-                          <i class="fa fa-refresh"></i> Actualizar ahora
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-stats">
-                      <div class="card-body ">
-                        <div class="row">
-                          <div class="col-5 col-md-4">
-                            <div class="icon-big text-center icon-warning">
-                              <i class="fas fa-users"></i>
-                            </div>
-                          </div>
-                          <div class="col-7 col-md-8">
-                            <div class="numbers">
-                              <p class="card-category">Usuarios</p>
-                              <p class="card-title">{{numberOfUsers}}
-                                <p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card-footer ">
-                        <hr>
-                        <div class="stats">
-                          <i class="fa fa-calendar-o"></i> Último día
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-stats">
-                      <div class="card-body ">
-                        <div class="row">
-                          <div class="col-5 col-md-4">
-                            <div class="icon-big text-center icon-warning">
-                              <i class="fab fa-pushed"></i>
-                            </div>
-                          </div>
-                          <div class="col-7 col-md-8">
-                            <div class="numbers">
-                              <p class="card-category">Errors</p>
-                              <p class="card-title">23
-                                <p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card-footer ">
-                        <hr>
-                        <div class="stats">
-                          <i class="fa fa-clock-o"></i> En la ultima hora
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-3 col-md-6 col-sm-6">
-                    <div class="card card-stats">
-                      <div class="card-body ">
-                        <div class="row">
-                          <div class="col-5 col-md-4">
-                            <div class="icon-big text-center icon-warning">
-                              <i class="fab fa-twitter"></i>
-                            </div>
-                          </div>
-                          <div class="col-7 col-md-8">
-                            <div class="numbers">
-                              <p class="card-category">Seguidores</p>
-                              <p class="card-title">+45K
-                                <p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="card-footer ">
-                        <hr>
-                        <div class="stats">
-                          <i class="fa fa-refresh"></i> Actualizar ahora
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-          
-                <div class="row">
-                  <div class="col-md-12">
-                    <div class="card ">
-                      <div class="card-header ">
-                        <h5 class="card-title">Información de Usuario Administrativo</h5>
-                      </div>
-                      <div class="card-body ">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                          <tbody>
-                            <tr>
-                              <td>Nombre Usuario</td>
-                              <td>{{userInfo.username}}</td>
-                            </tr>
-                            <tr>
-                              <td>Correo eléctronico</td>
-                              <td>{{userInfo.email}}</td>
-                            </tr>
-                            <tr>
-                              <td>Contraseña</td>
-                              <td>{{userInfo.password}}</td>
-                            </tr>
-                            <tr>
-                              <td>Teléfonos</td>
-                              <td>{{userInfo.telefono}}</td>
-                            </tr>
-                          </tbody>
-                        </table>
-          
-          
-          
-                        <mdb-card cascade="true" narrower="true">
-                          <!--Card image-->
-                          <div style="padding: 25px;"
-                            class="view view-cascade gradient-card-header blue-gradient narrower py-4 mx-2 mb-3 d-flex justify-content-between align-items-center">
-          
-                            <div style="width: 50%;">
-                              <div class="md-form">
-                                <input type="text" placeholder="Búsqueda por parámetros" [(ngModel)]="searchText"
-                                  class="form-control" id="search" mdbInput>
-                              </div>
-                            </div>
-          
-                            <a href="" class="white-text mx-3">Usuarios</a>
-          
-                            <div>
-          
-                            </div>
-          
-                          </div>
-                          <!--/Card image-->
-          
-                          <div class="px-8">
-          
-                            <div class="table-wrapper">
-                              <table class="mb-0" hover="true" ng-table="tableParams2" small="true" resposive="true"
-                                striped="true" mdbTable mdbTableScroll scrollY="true" maxHeight="350" scrollX="true"
-                                class="table table-bordered table-responsive-md table-striped text-center">
-                                <thead>
-                                  <tr>
-                                    <th *ngFor="let head of headElementsUsers; let i = index" aria-controls="tableSortExample"
-                                      scope="col" [mdbTableSort]="allUsers" [sortBy]="headElementsUsers[i]">{{head | titlecase}}
-                                    </th>
-                                    <mdb-icon fas icon="sort"></mdb-icon>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <tr *ngFor="let user of allUsers; let i = index">
-                                    <th scope="row">{{user.idUser}}</th>
-                                    <td>{{user.nombres}} {{user.apellidos}}</td>
-                                    <td>{{user.edad}}</td>
-                                    <td>{{user.nombreArtistico}}</td>
-                                    <td>{{user.sexo}}</td>
-                                    <td>{{user.fechaNacimiento}}</td>
-                                    <td>{{user.localidad}}</td>
-                                    <td>{{user.tallasList[0].pantalonTalla}}</td>
-                                    <td>{{user.tallasList[0].camisaTalla}}</td>
-                                    <td>{{user.tallasList[0].chaquetaTalla}}</td>
-                                    <td>{{user.tallasList[0].pieTalla}}</td>
-                                    <td>{{user.altura}}</td>
-                                    <td>{{user.colorPiel}}</td>
-                                    <td>{{user.colorPelo}}</td>
-                                    <td>{{user.colorOjos}}</td>
-                                    <td>{{user.cocheList[0].modeloCoche}}</td>
-                                    <td>{{user.motoList[0].modeloMoto}}</td>
-                                    <td>{{user.dniUser}}</td>
-                                    <td>{{user.numeroSeguroSocial}}</td>
-                                    <td>{{user.email}}</td>
-                                    <td>{{user.password}}</td>
-                                    <td>{{user.telefono}}</td>
-                                    <td>
-                                      <div class="d-flex flex-row">
-                                        <button type="button" mdbBtn color="danger" rounded="true" size="sm"
-                                          (click)="removeUser(i,user.idUser)">Eliminar</button>
-          
-                                        <button type="button" mdbBtn mdbWavesEffect gradient="blue" rounded="true" size="sm"
-                                          (click)="editarUser(i,user)">Editar</button>
-          
-                                        <button  type="button" mdbBtn color="warning" rounded="true"
-                                          data-toggle="modal" data-target="#basicExample"
-                                          (click)="pasarUsuarioUpdatePassword(user);frame.show()" mdbWavesEffect>Up
-                                          Pass</button>
-                                      </div>
-                                    </td>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                        </mdb-card>
-                        <br />
-                        <app-management-company></app-management-company>
-
-                        <div class="panel-dasboard">
-                            <app-proyect></app-proyect>
-                        </div>
-          
-                        <canvas id=chartHours width="400" height="100"></canvas>
-                      </div>
-                      <div class="card-footer ">
-                        <hr>
-                        <div class="stats">
-                          <i class="fa fa-history"></i> Actualizado hace 3 minutos
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
-            <footer class="footer footer-black  footer-white ">
-                <div class="container-fluid">
-                  <div class="row">
-                    <nav class="footer-nav">
-                      <ul>
-                          <li>
-                              <a routerLink="/about" target="_blank">SOBRE NOSOTROS</a>
-                            </li>
-                            <li>
-                              <a routerLink="/contact" target="_blank">CONTÁCTANOS</a>
-                            </li>
-                            <li>
-                              <a routerLink="/terms" target="_blank">TÉRMINOS Y CONDICIONES</a>
-                            </li>
-                            <li>
-                              <a routerLink="/privacy" target="_blank">POLÍTICA DE PRIVACIDAD</a>
-                            </li>
-                      </ul>
-                    </nav>
-                  </div>
-                </div>
-            </footer>
-       
-    </div>
-  </div>
-
-  
-  <div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog"
-    aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-notify modal-danger" role="document">
-      <!--Content-->
-      <div class="modal-content">
-        <!--Header-->
-        <div class="modal-header">
-          <p class="heading lead">Cambio de Contraseña</p>
-  
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
-            <span aria-hidden="true" class="white-text">&times;</span>
-          </button>
-        </div>
-  
-        <!--Body-->
-        <div class="modal-body">
-  
-          <form [formGroup]="validatingForm">
-  
-  
-            <div class="md-form form-sm">
-              <mdb-icon fas icon="envelope" class="prefix"></mdb-icon>
-              <input mdbInput type="text" id="form24" class="form-control" formControlName="modalFormRegisterEmail"
-                readonly />
-              <label for="form24">Email</label>
-            </div>
-  
-  
-            <div class="md-form form-sm">
-              <mdb-icon fas icon="lock" class="prefix"></mdb-icon>
-              <label for="form25">  Nuevo Password</label>
-  
-              <input mdbInput mdbValidate type="password" id="form25" class="form-control"
-                formControlName="modalFormRegisterPassword"
-                [ngClass]="{ 'is-invalid': validatingForm.controls.modalFormRegisterPassword.errors }">
-              <div *ngIf="validatingForm.controls.modalFormRegisterPassword.errors" class="invalid-feedback">
-                <div *ngIf="validatingForm.controls.modalFormRegisterPassword.errors.required">La contraseña es requerida
-                </div>
-  
-              </div>
-  
-            </div>
-  
-  
-  
-            <div class="md-form form-sm">
-              <mdb-icon fas icon="lock" class="prefix"></mdb-icon>
-              <label for="form26">Confirmar password</label>
-              <input mdbInput mdbValidate type="password" id="form26" class="form-control"
-                formControlName="modalFormRegisterRepeatPassword" />
-              <div *ngIf="validatingForm.controls.modalFormRegisterRepeatPassword.errors" class="invalid-feedback">
-                <div *ngIf="validatingForm.controls.modalFormRegisterRepeatPassword.errors.required">Confirme que se
-                  requiere contraseña
-                </div>
-                <div *ngIf="validatingForm.controls.modalFormRegisterRepeatPassword.errors.mustMatch">Las contraseñas
-                  deben coincidir
-                </div>
-              </div>
-            </div>
-  
-          </form>
-  
-  
-        </div>
-  
-        <!--Footer-->
-        <div class="modal-footer justify-content-center">
-          <a type="button" mdbBtn color="danger" (click)="actualizarPassword();frame.hide()" outline="true" class="waves-effect"
-            mdbWavesEffect>Actualizar
-            <mdb-icon fas icon="check"></mdb-icon>
-          </a>
-          <a type="button" mdbBtn size="1x" color="danger" class="waves-effect" mdbWavesEffect (click)="frame.hide()">
-            No, gracias</a>
+          </nav>
         </div>
       </div>
-      <!--/.Content-->
-    </div>
+    </footer>
+
   </div>
+</div>
+
+
+<div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-danger" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <p class="heading lead">Cambio de Contraseña</p>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <div class="modal-body">
+
+        <form [formGroup]="validatingForm">
+
+
+          <div class="md-form form-sm">
+            <mdb-icon fas icon="envelope" class="prefix"></mdb-icon>
+            <input mdbInput type="text" id="form24" class="form-control" formControlName="modalFormRegisterEmail"
+              readonly />
+            <label for="form24">Email</label>
+          </div>
+
+
+          <div class="md-form form-sm">
+            <mdb-icon fas icon="lock" class="prefix"></mdb-icon>
+            <label for="form25"> Nuevo Password</label>
+
+            <input mdbInput mdbValidate type="password" id="form25" class="form-control"
+              formControlName="modalFormRegisterPassword"
+              [ngClass]="{ 'is-invalid': validatingForm.controls.modalFormRegisterPassword.errors }">
+            <div *ngIf="validatingForm.controls.modalFormRegisterPassword.errors" class="invalid-feedback">
+              <div *ngIf="validatingForm.controls.modalFormRegisterPassword.errors.required">La contraseña es requerida
+              </div>
+
+            </div>
+
+          </div>
+
+
+
+          <div class="md-form form-sm">
+            <mdb-icon fas icon="lock" class="prefix"></mdb-icon>
+            <label for="form26">Confirmar password</label>
+            <input mdbInput mdbValidate type="password" id="form26" class="form-control"
+              formControlName="modalFormRegisterRepeatPassword" />
+            <div *ngIf="validatingForm.controls.modalFormRegisterRepeatPassword.errors" class="invalid-feedback">
+              <div *ngIf="validatingForm.controls.modalFormRegisterRepeatPassword.errors.required">Confirme que se
+                requiere contraseña
+              </div>
+              <div *ngIf="validatingForm.controls.modalFormRegisterRepeatPassword.errors.mustMatch">Las contraseñas
+                deben coincidir
+              </div>
+            </div>
+          </div>
+
+        </form>
+
+
+      </div>
+
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <a type="button" mdbBtn color="danger" (click)="actualizarPassword();frame.hide()" outline="true"
+          class="waves-effect" mdbWavesEffect>Actualizar
+          <mdb-icon fas icon="check"></mdb-icon>
+        </a>
+        <a type="button" mdbBtn size="1x" color="danger" class="waves-effect" mdbWavesEffect (click)="frame.hide()">
+          No, gracias</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>

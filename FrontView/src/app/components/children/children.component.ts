@@ -162,7 +162,7 @@ export class ChildrenComponent implements OnInit {
       confirmPassword: ['', Validators.required],
       sexo: [''],
       videoBook: [''],
-      actor:[''],
+      actor: [''],
 
       placebirth: [''],
 
@@ -354,6 +354,8 @@ export class ChildrenComponent implements OnInit {
     this.usuario = {
       idUser: 0,
       avatar: this.urlAvatar,
+      fotoCuerpo: this.urlCuerpoEntero,
+      fotoProfesional: this.urlArtistico,
       acento: newChild.acento,
       altura: newChild.altura,
       apellidos: newChild.apellidos,
@@ -460,12 +462,14 @@ export class ChildrenComponent implements OnInit {
     this.pasarDatosFormUsuario();
     this.authService.signup2(this.usuario).subscribe(
       res => {
-        localStorage.setItem('token', res.idUser);
-        this.ngxSmartModalService.create('confirm', 'Cuenta de Niño creada exitosamente ' + res.nombres + ' ' + res.apellidos).open();
-        this.guardarTalla(res.idUser);
-        this.enviarEmailRegistro();
-        localStorage.setItem('token', res.idUser);
-        this.router.navigate(['/homeuser']);
+        if (res.nombreArtistico !== 'ENCONTRADO') {
+          localStorage.setItem('token', res.idUser);
+          this.ngxSmartModalService.create('confirm', 'Cuenta de Niño creada exitosamente ' + res.nombres + ' ' + res.apellidos).open();
+          this.guardarTalla(res.idUser);
+          this.enviarEmailRegistro();
+          localStorage.setItem('token', res.idUser);
+          this.router.navigate(['/homeuser']);
+        } else { this.ngxSmartModalService.create('userexist', 'El usuario con email: ' + this.usuario.email + ' YA EXISTE.!').open(); }
 
       },
       (err) => {
