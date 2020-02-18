@@ -190,7 +190,7 @@
                         <input id="telefono" (keypress)="numberOnly($event)" formControlName="telefono" matInput
                           placeholder="Numero de Teléfono"
                           [ngClass]="{ 'is-invalid': submitted && childForm.controls.telefono.errors }">
-                        <mat-hint>Ingrese con codigo de area</mat-hint>
+                        <!-- <mat-hint>Ingrese con codigo de area</mat-hint> -->
                       </mat-form-field>
                       <div *ngIf="submitted && childForm.controls.telefono.errors" class="invalid-feedback">
                         <div *ngIf="childForm.controls.telefono.errors.required">El telefono es requerida</div>
@@ -227,7 +227,11 @@
                   <!-- Link de VideoBook -->
                   <label class="control-label">Link de VideoBook</label>
                   <input type="text" class="form-control" formControlName="videoBook"
-                    placeholder="https://www.videoBook.com">
+                    placeholder="https://www.videoBook.com" />
+                  <div *ngIf="submitted && childForm.controls.videoBook.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.videoBook.errors.required">El videobook es requerido
+                    </div>
+                  </div>
                 </div>
 
                 <div class="form-group">
@@ -1053,10 +1057,10 @@
                 </div>
 
                 <div class="form-group example-container">
-                    <!-- Bilingue -->
-                    <mat-form-field>
-                        <input id="bilingue" formControlName="bilingue" matInput placeholder="Bilingue">
-                    </mat-form-field>
+                  <!-- Bilingue -->
+                  <mat-form-field>
+                    <input id="bilingue" formControlName="bilingue" matInput placeholder="Bilingue">
+                  </mat-form-field>
                 </div>
 
                 <div class="form-group">
@@ -1070,12 +1074,13 @@
                   <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos"
                     placeholder="Publicidad">
                 </div>
-               
+
                 <div class="form-group example-container">
-                    <!-- Observaciones -->
-                    <mat-form-field>
-                      <textarea id="observaciones" formControlName="observaciones" matInput placeholder="Observaciones"></textarea>
-                    </mat-form-field>
+                  <!-- Observaciones -->
+                  <mat-form-field>
+                    <textarea id="observaciones" formControlName="observaciones" matInput
+                      placeholder="Observaciones"></textarea>
+                  </mat-form-field>
                 </div>
 
                 <div class="form-group">

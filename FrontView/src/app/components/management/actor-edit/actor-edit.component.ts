@@ -17,6 +17,7 @@ import { Usuario } from 'src/app/models/usuario';
 import { AuthService } from 'src/app/Services/auth.service';
 import { musico } from 'src/app/models/musico';
 import { instrumento } from 'src/app/models/instrumentos';
+import { Observable } from 'rxjs';
 
 
 
@@ -29,6 +30,11 @@ export class ActorEditComponent implements OnInit {
   childForm: FormGroup;
   submitted = false;
   isavailable = false;
+
+  /**URL IMAGENES FIREBASE **/
+  obsAvatar: Observable<string>;
+  obsFotoCuerpo: Observable<string>;
+  obsFotoArtistico: Observable<string>;
 
   /**VAriables FILES para fotos */
   avatarFile: File = null;
@@ -96,6 +102,11 @@ export class ActorEditComponent implements OnInit {
   ngOnInit() {
     this.setearDataForm();
     this.llenarCombos();
+  }
+
+  ngOnDestroy(): void {
+    localStorage.removeItem('actoredit');
+
   }
 
   setearDataForm() {
@@ -166,6 +177,7 @@ export class ActorEditComponent implements OnInit {
     this.childForm.controls.codpostal.setValue(this.usuario.codigoPostal);
     this.childForm.controls.tipoCarnet.setValue(this.usuario.tipoCarnetConducir);
     this.childForm.controls.carnetConducir.setValue(this.usuario.carnetConducir);
+    this.childForm.controls.videobook.setValue(this.usuario.videobook);
     this.childForm.controls.colorCoche.setValue(this.usuario.cocheList[0].colorCoche);
     this.childForm.controls.modeloCoche.setValue(this.usuario.cocheList[0].modeloCoche);
     this.childForm.controls.colorMoto.setValue(this.usuario.motoList[0].colorMoto);
@@ -189,10 +201,39 @@ export class ActorEditComponent implements OnInit {
     this.instrumentoSelect = this.usuario.instrumentoList;
   }
 
+  pasarFotos() {
+    let filePath = this.usuario.avatar;
+    let ref = this.storage.ref(filePath);
+
+    /**AVATAR */
+    this.obsAvatar = ref.getDownloadURL();
+    ref.getDownloadURL().subscribe(resp => {
+      this.obsAvatar = resp;
+    });
+
+
+    /**FOTO CUERPO ENTERO */
+    filePath = this.usuario.fotoCuerpo;
+    ref = this.storage.ref(filePath);
+    this.obsFotoCuerpo = ref.getDownloadURL();
+    ref.getDownloadURL().subscribe(resp => {
+      this.obsFotoCuerpo = resp;
+    });
+
+    /**FOTO PROFESIONAL */
+    filePath = this.usuario.fotoProfesional;
+    ref = this.storage.ref(filePath);
+    this.obsFotoArtistico = ref.getDownloadURL();
+    ref.getDownloadURL().subscribe(resp => {
+      this.obsFotoArtistico = resp;
+    });
+
+  }
+
   pasarUrlPaths() {
     this.urlAvatar = this.usuario.avatar;
-    this.urlCuerpoEntero = '';
-    this.urlArtistico = '';
+    this.urlCuerpoEntero = this.usuario.fotoCuerpo;
+    this.urlArtistico = this.usuario.fotoProfesional;
 
     this.urlMoto = this.usuario.motoList[0].fotoMoto;
     this.urlCoche = this.usuario.cocheList[0].fotoCoche;
@@ -209,6 +250,7 @@ export class ActorEditComponent implements OnInit {
         this.pasarEntidadesSelect();
         this.pasarUrlPaths();
         this.pasarDatosForm();
+        this.pasarFotos();
       });
 
 
@@ -458,6 +500,8 @@ export class ActorEditComponent implements OnInit {
     this.usuarioEdit = {
       idUser: this.usuario.idUser,
       avatar: this.urlAvatar,
+      fotoCuerpo: this.urlCuerpoEntero,
+      fotoProfesional: this.urlArtistico,
       acento: '',
       altura: newChild.altura,
       apellidos: newChild.apellidos,

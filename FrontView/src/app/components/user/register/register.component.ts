@@ -82,6 +82,8 @@ export class RegisterComponent implements OnInit {
     this.usuario = {
       idUser: 0,
       avatar: "",
+      fotoCuerpo:"",
+      fotoProfesional: "",
       acento: "",
       altura: 0.0,
       apellidos: "",

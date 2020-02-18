@@ -158,7 +158,7 @@
                     <input id="telefono" (keypress)="numberOnly($event)" formControlName="telefono" matInput
                       placeholder="Numero de Teléfono"
                       [ngClass]="{ 'is-invalid': submitted && actorForm.controls.telefono.errors }">
-                    <mat-hint>Ingrese con codigo de area</mat-hint>
+                    <!-- <mat-hint>Ingrese con codigo de area</mat-hint> -->
                   </mat-form-field>
                   <div *ngIf="submitted && actorForm.controls.telefono.errors" class="invalid-feedback">
                     <div *ngIf="actorForm.controls.telefono.errors.required">El telefono es requerida</div>

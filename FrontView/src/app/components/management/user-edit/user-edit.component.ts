@@ -77,6 +77,11 @@ export class UserEditComponent implements OnInit {
   fileCuerpoEntero: File = null;
   fileArtistico: File = null;
 
+  /**URL IMAGENES FIREBASE **/
+  obsAvatar: Observable<string>;
+  obsFotoCuerpo: Observable<string>;
+  obsFotoArtistico: Observable<string>;
+
   /***variables para carga de imagenes y archivos */
   uploadPercent: Observable<number>;
   urlImage: Observable<string>;
@@ -145,6 +150,11 @@ export class UserEditComponent implements OnInit {
   ngOnInit() {
     this.setearDataForm();
     this.llenarCombos();
+  }
+
+  ngOnDestroy(): void {
+    localStorage.removeItem('ninioedit');
+
   }
 
   setearDataForm() {
@@ -255,6 +265,37 @@ export class UserEditComponent implements OnInit {
     this.idiomasSelect = this.usuario.idiomasList;
   }
 
+
+  pasarFotos() {
+    let filePath = this.usuario.avatar;
+    let ref = this.storage.ref(filePath);
+
+    /**AVATAR */
+    this.obsAvatar = ref.getDownloadURL();
+    ref.getDownloadURL().subscribe(resp => {
+      this.obsAvatar = resp;
+    });
+
+
+    /**FOTO CUERPO ENTERO */
+    filePath = this.usuario.fotoCuerpo;
+    ref = this.storage.ref(filePath);
+    this.obsFotoCuerpo = ref.getDownloadURL();
+    ref.getDownloadURL().subscribe(resp => {
+      this.obsFotoCuerpo = resp;
+    });
+
+    /**FOTO PROFESIONAL */
+    filePath = this.usuario.fotoProfesional;
+    ref = this.storage.ref(filePath);
+    this.obsFotoArtistico = ref.getDownloadURL();
+    ref.getDownloadURL().subscribe(resp => {
+      this.obsFotoArtistico = resp;
+    });
+
+  }
+
+
   pasarUrlPaths() {
     this.urlAvatar = this.usuario.avatar;
     this.urlUsuario = this.usuario.pathDniUser;
@@ -263,8 +304,8 @@ export class UserEditComponent implements OnInit {
     this.urlMadre = this.usuario.pathDniMadre;
     this.urlLibroFamilia = this.usuario.libroFamilia;
     this.urlRepresentante = this.usuario.pathDniRepresentante;
-    this.urlCuerpoEntero = '';
-    this.urlArtistico = '';
+    this.urlCuerpoEntero = this.usuario.fotoCuerpo;
+    this.urlArtistico = this.usuario.fotoProfesional;
   }
 
   llenarCombos() {
@@ -276,6 +317,7 @@ export class UserEditComponent implements OnInit {
         this.pasarEntidadesSelect();
         this.pasarUrlPaths();
         this.pasarDatosForm();
+        this.pasarFotos();
 
 
 
@@ -377,6 +419,8 @@ export class UserEditComponent implements OnInit {
     this.usuarioEdit = {
       idUser: this.usuario.idUser,
       avatar: this.urlAvatar,
+      fotoCuerpo: this.urlCuerpoEntero,
+      fotoProfesional: this.urlArtistico,
       acento: '',
       altura: newChild.altura,
       apellidos: newChild.apellidos,

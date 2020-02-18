@@ -20,6 +20,8 @@ import { ultimosTrabajos } from './ultimosTrabajos';
 export class Usuario {
   idUser: number;
   avatar: string;
+  fotoCuerpo: string;
+  fotoProfesional: string;
   acento: string;
   altura: number;
   apellidos: string;

@@ -4,6 +4,7 @@ import { NgxSmartModalService } from 'ngx-smart-modal';
 import { Observable } from 'rxjs/internal/Observable';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Usuario } from 'src/app/models/usuario';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-user',
@@ -19,6 +20,7 @@ export class HomeUserComponent implements OnInit {
 
 
   constructor(
+    private router: Router,
     private storage: AngularFireStorage,
     public authService: AuthService,
     public ngxSmartModalService: NgxSmartModalService,
@@ -66,9 +68,22 @@ export class HomeUserComponent implements OnInit {
         this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
         console.log(JSON.stringify(err));
       });
+  }
 
 
-
+  /**IR A EDICION DE USUARIO */
+  editarUser(idList: any, user: any) {
+    //localStorage.setItem('useredit', user.idUser);
+    if (user.idType.nombres === 'FIGURACION') {
+      this.router.navigate(['/figuracionedit']);
+      localStorage.setItem('figuracionedit', user.idUser);
+    } else if (user.idType.nombres === 'ACTOR') {
+      this.router.navigate(['/actoredit']);
+      localStorage.setItem('actoredit', user.idUser);
+    } else if (user.idType.nombres === 'NIÑOS') {
+      this.router.navigate(['/ninioedit']);
+      localStorage.setItem('ninioedit', user.idUser);
+    }
   }
 
 }
