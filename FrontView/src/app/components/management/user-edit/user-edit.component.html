@@ -470,7 +470,7 @@
                     <mat-label>¿ Es Deportista?</mat-label>
 
                     <mat-select [(ngModel)]="deportistaSelect"  [ngModelOptions]="{standalone: true}">
-                      <mat-option>None</mat-option>
+                      <mat-option>Ninguno</mat-option>
                       <mat-option *ngFor="let item of deportista" [value]="item">
                         {{item.nombreDeportista}}
                       </mat-option>

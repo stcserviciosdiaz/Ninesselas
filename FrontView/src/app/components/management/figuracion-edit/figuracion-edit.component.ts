@@ -42,6 +42,10 @@ export class FiguracionEditComponent implements OnInit {
   obsFotoCuerpo: Observable<string>;
   obsFotoArtistico: Observable<string>;
 
+  obsMoto: Observable<string>;
+  obsCoche: Observable<string>;
+  obsTatuajes: Observable<string>;
+
   /**VAriables FILES para fotos */
   avatarFile: File = null;
   fileCuerpoEntero: File = null;
@@ -121,7 +125,7 @@ export class FiguracionEditComponent implements OnInit {
       apellidos: [''],
       sexo: [''],
      
-      // bilingue: [''],
+      videobook: [''],
       telefono: [''],
       acento: [''],
       modeloCoche: [''],
@@ -221,12 +225,38 @@ export class FiguracionEditComponent implements OnInit {
     });
 
     /**FOTO PROFESIONAL */
-    filePath = this.usuario.fotoProfesional;
+    //filePath = this.usuario.fotoProfesional;
+    filePath = this.usuario.fotosManosList.pop().urlFotoMano;
     ref = this.storage.ref(filePath);
     this.obsFotoArtistico = ref.getDownloadURL();
     ref.getDownloadURL().subscribe(resp => {
       this.obsFotoArtistico = resp;
     });
+
+     /**FOTO DE MOTO */
+     filePath = this.usuario.motoList.pop().fotoMoto;
+     ref = this.storage.ref(filePath);
+     this.obsMoto = ref.getDownloadURL();
+     ref.getDownloadURL().subscribe(resp => {
+       this.obsMoto = resp;
+     });
+
+      /**FOTO DE COCHE */
+      filePath = this.usuario.cocheList.pop().fotoCoche;
+      ref = this.storage.ref(filePath);
+      this.obsCoche = ref.getDownloadURL();
+      ref.getDownloadURL().subscribe(resp => {
+        this.obsCoche = resp;
+      });
+
+      /**FOTO DE TATUAJES */
+      filePath = this.usuario.fotosTatuajesList.pop().urlFotoTatuaje;
+      ref = this.storage.ref(filePath);
+      this.obsTatuajes = ref.getDownloadURL();
+      ref.getDownloadURL().subscribe(resp => {
+        this.obsTatuajes = resp;
+      });
+ 
 
   }
 

@@ -51,7 +51,9 @@ import {
   MatTooltipModule,
   MatButtonToggleModule,
   MatCheckboxModule,
-  MatExpansionModule
+  MatExpansionModule,
+  MAT_DATE_LOCALE,
+  DateAdapter
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -164,7 +166,13 @@ import { ProyectComponent } from './components/management/proyect/proyect.compon
     {
       provide: ErrorStateMatcher,
       useClass: ShowOnDirtyErrorStateMatcher
-    }
+    },
+    {provide: MAT_DATE_LOCALE, useValue: 'es-ES'},
+
+    // `MomentDateAdapter` and `MAT_MOMENT_DATE_FORMATS` can be automatically provided by importing
+    // `MatMomentDateModule` in your applications root module. We provide it at the component level
+    // here, due to limitations of our example generation script.
+    
   ],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]

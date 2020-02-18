@@ -158,10 +158,10 @@
                     <div class="col-6 example-container">
                       <!-- Fecha de nacimiento -->
                       <mat-form-field>
-                        <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento"
+                        <input  matInput [matDatepicker]="dp" formControlName="fechaNacimiento"
                           placeholder="Fecha de nacimiento">
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
+                        <mat-datepicker #dp></mat-datepicker>
                       </mat-form-field>
                     </div>
                     <div class="col-6 example-container">
@@ -388,6 +388,10 @@
                   <mat-form-field>
                     <input id="videoBook" formControlName="videoBook" matInput placeholder="Link de VideoBook">
                   </mat-form-field>
+                  <div *ngIf="submitted && actorForm.controls.videoBook.errors" class="invalid-feedback">
+                    <div *ngIf="actorForm.controls.videoBook.errors.required">El videobook es requerido
+                    </div>
+                  </div>
                 </div>
 
                 <div class="form-group">
@@ -476,7 +480,7 @@
                   <mat-form-field>
                     <mat-label>¿ Es Deportista?</mat-label>
                     <mat-select [(ngModel)]="deportistaSelect" [ngModelOptions]="{standalone: true}">
-                      <mat-option>None</mat-option>
+                      <mat-option>Ninguno</mat-option>
                       <mat-option *ngFor="let item of deportista" [value]="item">
                         {{item.nombreDeportista}}
                       </mat-option>
@@ -605,7 +609,7 @@
                   <mat-form-field>
                     <mat-label>Baile</mat-label>
                     <mat-select [(ngModel)]="baileSelect" [ngModelOptions]="{standalone: true}">
-                      <mat-option>None</mat-option>
+                      <mat-option>Ninguno</mat-option>
                       <mat-option *ngFor="let item of baile" [value]="item">
                         {{item.nombreBailarin}}
                       </mat-option>
@@ -719,7 +723,7 @@
                   <mat-form-field>
                     <mat-label>Músico</mat-label>
                     <mat-select [(ngModel)]="musicoSelect" [ngModelOptions]="{standalone: true}">
-                      <mat-option>None</mat-option>
+                      <mat-option>Ninguno</mat-option>
                       <mat-option *ngFor="let item of musico" [value]="item">
                         {{item.nombreMusico}}
                       </mat-option>
@@ -782,7 +786,7 @@
                   <mat-form-field>
                     <mat-label>Cantante</mat-label>
                     <mat-select [(ngModel)]="cantanteSelect" [ngModelOptions]="{standalone: true}">
-                      <mat-option>None</mat-option>
+                      <mat-option>Ninguno</mat-option>
                       <mat-option *ngFor="let item of cantante" [value]="item">
                         {{item.nombreCantante}}
                       </mat-option>
