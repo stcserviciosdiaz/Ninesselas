@@ -67,7 +67,7 @@
                   <mat-form-field>
                     <mat-label>¿ Que edad Tiene ?</mat-label>
                     <mat-select formControlName="edad">
-                      <mat-option>None</mat-option>
+                      <mat-option>Ninguno</mat-option>
                       <mat-option *ngFor="let item of edad" [value]="item">
                         {{item}}
                       </mat-option>
@@ -477,7 +477,7 @@
                   <mat-form-field>
                     <mat-label>¿ Es Deportista?</mat-label>
                     <mat-select [(ngModel)]="deportistaSelect" [ngModelOptions]="{standalone: true}">
-                      <mat-option>None</mat-option>
+                      <mat-option>Ninguno</mat-option>
                       <mat-option *ngFor="let item of deportista" [value]="item">
                         {{item.nombreDeportista}}
                       </mat-option>
@@ -605,7 +605,7 @@
                   <mat-form-field>
                     <mat-label>Baile</mat-label>
                     <mat-select [(ngModel)]="baileSelect" [ngModelOptions]="{standalone: true}">
-                      <mat-option>None</mat-option>
+                      <mat-option>Ninguno</mat-option>
                       <mat-option *ngFor="let item of baile" [value]="item">
                         {{item.nombreBailarin}}
                       </mat-option>
@@ -718,7 +718,7 @@
                   <mat-form-field>
                     <mat-label>Músico</mat-label>
                     <mat-select [(ngModel)]="musicoSelect" [ngModelOptions]="{standalone: true}">
-                      <mat-option>None</mat-option>
+                      <mat-option>Ninguno</mat-option>
                       <mat-option *ngFor="let item of musico" [value]="item">
                         {{item.nombreMusico}}
                       </mat-option>
@@ -778,7 +778,7 @@
                   <mat-form-field>
                     <mat-label>Cantante</mat-label>
                     <mat-select [(ngModel)]="cantanteSelect" [ngModelOptions]="{standalone: true}">
-                      <mat-option>None</mat-option>
+                      <mat-option>Ninguno</mat-option>
                       <mat-option *ngFor="let item of cantante" [value]="item">
                         {{item.nombreCantante}}
                       </mat-option>

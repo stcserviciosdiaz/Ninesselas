@@ -42,6 +42,10 @@ export class FiguracionEditComponent implements OnInit {
   obsFotoCuerpo: Observable<string>;
   obsFotoArtistico: Observable<string>;
 
+  obsMoto: Observable<string>;
+  obsCoche: Observable<string>;
+  obsTatuajes: Observable<string>;
+
   /**VAriables FILES para fotos */
   avatarFile: File = null;
   fileCuerpoEntero: File = null;
@@ -109,7 +113,7 @@ export class FiguracionEditComponent implements OnInit {
 
   ngOnDestroy(): void {
     localStorage.removeItem('figuracionedit');
-  
+
   }
 
   setearDataForm() {
@@ -120,8 +124,8 @@ export class FiguracionEditComponent implements OnInit {
       nombres: [''],
       apellidos: [''],
       sexo: [''],
-     
-      // bilingue: [''],
+
+      videobook: [''],
       telefono: [''],
       acento: [''],
       modeloCoche: [''],
@@ -221,12 +225,49 @@ export class FiguracionEditComponent implements OnInit {
     });
 
     /**FOTO PROFESIONAL */
-    filePath = this.usuario.fotoProfesional;
+    //filePath = this.usuario.fotoProfesional;
+    filePath = this.usuario.fotosManosList.pop().urlFotoMano;
     ref = this.storage.ref(filePath);
     this.obsFotoArtistico = ref.getDownloadURL();
     ref.getDownloadURL().subscribe(resp => {
       this.obsFotoArtistico = resp;
     });
+
+    /**FOTO DE MOTO */
+    if (this.usuario.motoList !== null && this.usuario.motoList.pop().fotoMoto !== null ) {
+      filePath = this.usuario.motoList.pop().fotoMoto;
+    } else { filePath = 'admin/9999999999/no-moto.jpg'; }
+
+    ref = this.storage.ref(filePath);
+    this.obsMoto = ref.getDownloadURL();
+    ref.getDownloadURL().subscribe(resp => {
+      this.obsMoto = resp;
+    });
+
+    /**FOTO DE COCHE */
+    if (this.usuario.cocheList !== null && this.usuario.cocheList.pop().fotoCoche !== null) {
+      filePath = this.usuario.motoList.pop().fotoMoto;
+    } else { filePath = 'admin/9999999999/no-car.jpg'; }
+
+    ref = this.storage.ref(filePath);
+    this.obsCoche = ref.getDownloadURL();
+    ref.getDownloadURL().subscribe(resp => {
+      this.obsCoche = resp;
+    });
+
+    /**FOTO DE TATUAJES */
+
+
+    if (this.usuario.fotosTatuajesList !== null && this.usuario.fotosTatuajesList.pop().urlFotoTatuaje !== null) {
+      filePath = this.usuario.motoList.pop().fotoMoto;
+    } else { filePath = 'admin/9999999999/no-tatuaje.jpg'; }
+
+    ref = this.storage.ref(filePath);
+    this.obsTatuajes = ref.getDownloadURL();
+    ref.getDownloadURL().subscribe(resp => {
+      this.obsTatuajes = resp;
+    });
+
 
   }
 
@@ -594,7 +635,7 @@ export class FiguracionEditComponent implements OnInit {
   /**Upload foto cuerpo entero */
   onFileCuerpoEnteroSelected(event) {
     this.fileCuerpoEntero = event.target.files[0] as File;
-    console.log('IMAGEN SUBIDA: '+this.fileCuerpoEntero.name);
+    console.log('IMAGEN SUBIDA: ' + this.fileCuerpoEntero.name);
   }
 
   /**Upload foto artistica */

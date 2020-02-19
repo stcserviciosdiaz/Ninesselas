@@ -161,7 +161,7 @@ export class ChildrenComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
       sexo: [''],
-      videoBook: [''],
+      videoBook: ['', Validators.required],
       actor: [''],
 
       placebirth: [''],

@@ -3,7 +3,7 @@ import { deportes } from './../../models/deportes';
 import { Component, NgModule, Input, OnDestroy, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ErrorStateMatcher, MatRadioChange } from '@angular/material';
+import { ErrorStateMatcher, MatRadioChange, DateAdapter } from '@angular/material';
 import { invalid } from '@angular/compiler/src/render3/view/util';
 import { NgxSmartModalService, NgxSmartModalComponent } from 'ngx-smart-modal';
 import { AuthService } from '../../Services/auth.service';
@@ -132,6 +132,8 @@ export class ActorsComponent implements OnInit {
     this.llenarCombos();
   }
 
+
+ 
   /**Verifica tamanio y tipo de archivo */
   verificaTamanioTypeFile(file: any) {
     let archivo;
@@ -350,7 +352,7 @@ export class ActorsComponent implements OnInit {
       fechaNacimiento: [''],
       nacionalidad: [''],
       localidad: [''],
-      videoBook: [''],
+      videoBook: ['',Validators.required],
       provincia: [''],
       codpostal: [''],
       direccion: ['', Validators.required],
