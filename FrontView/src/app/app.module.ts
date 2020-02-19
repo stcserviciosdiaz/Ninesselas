@@ -75,6 +75,18 @@ import { DatePipe } from './pipes/date/date.pipe';
 import { UserEditComponent } from './components/management/user-edit/user-edit.component';
 import { AboutComponent } from './components/about/about.component';
 import { ProyectComponent } from './components/management/proyect/proyect.component';
+
+export const MY_FORMATS = {
+  parse: {
+      dateInput: 'DD/MM/YYYY',
+  },
+  display: {
+      dateInput: 'DD/MM/YYYY',
+      monthYearLabel: 'MM YYYY',
+      dateA11yLabel: 'DD/MM/YYYY',
+      monthYearA11yLabel: 'MM YYYY',
+  },
+};
 @NgModule({
   declarations: [
     ActorEditComponent,
@@ -167,7 +179,7 @@ import { ProyectComponent } from './components/management/proyect/proyect.compon
       provide: ErrorStateMatcher,
       useClass: ShowOnDirtyErrorStateMatcher
     },
-    {provide: MAT_DATE_LOCALE, useValue: 'es-ES'},
+    {provide: MAT_DATE_LOCALE, useValue: MY_FORMATS},
 
     // `MomentDateAdapter` and `MAT_MOMENT_DATE_FORMATS` can be automatically provided by importing
     // `MatMomentDateModule` in your applications root module. We provide it at the component level
