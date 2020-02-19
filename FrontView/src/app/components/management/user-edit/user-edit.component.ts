@@ -82,6 +82,12 @@ export class UserEditComponent implements OnInit {
   obsFotoCuerpo: Observable<string>;
   obsFotoArtistico: Observable<string>;
 
+  obsDniUser: Observable<string>;
+  obsSeguroUser: Observable<string>;
+  obsDniPadre: Observable<string>;
+  obsDniMadre: Observable<string>;
+  obsLibroFamiliar: Observable<string>;
+
   /***variables para carga de imagenes y archivos */
   uploadPercent: Observable<number>;
   urlImage: Observable<string>;
@@ -292,6 +298,73 @@ export class UserEditComponent implements OnInit {
     ref.getDownloadURL().subscribe(resp => {
       this.obsFotoArtistico = resp;
     });
+
+    /**FOTO DE DNI */
+    let variableNull = this.usuario.pathDniUser;
+
+    if (variableNull !== null) {
+      filePath = this.usuario.pathDniUser;
+    } else { filePath = 'admin/9999999999/no-imagen.png'; }
+
+    ref = this.storage.ref(filePath);
+    this.obsDniUser = ref.getDownloadURL();
+    ref.getDownloadURL().subscribe(resp => {
+      this.obsDniUser = resp;
+    });
+
+    /**FOTO DE SEGURO */
+    variableNull = this.usuario.pathSeguroSocial;
+
+    if (variableNull !== null) {
+      filePath = this.usuario.pathSeguroSocial;
+    } else { filePath = 'admin/9999999999/no-imagen.png'; }
+
+    ref = this.storage.ref(filePath);
+    this.obsSeguroUser = ref.getDownloadURL();
+    ref.getDownloadURL().subscribe(resp => {
+      this.obsSeguroUser = resp;
+    });
+
+    /**FOTO DE DNI PADRE */
+    variableNull = this.usuario.pathDniPadre;
+
+    if (variableNull !== null) {
+      filePath = this.usuario.pathDniPadre;
+    } else { filePath = 'admin/9999999999/no-imagen.png'; }
+
+    ref = this.storage.ref(filePath);
+    this.obsDniPadre = ref.getDownloadURL();
+    ref.getDownloadURL().subscribe(resp => {
+      this.obsDniPadre = resp;
+    });
+
+    /**FOTO DE DNI MADRE */
+    variableNull = this.usuario.pathDniMadre;
+
+    if (variableNull !== null) {
+      filePath = this.usuario.pathDniMadre;
+    } else { filePath = 'admin/9999999999/no-imagen.png'; }
+
+    ref = this.storage.ref(filePath);
+    this.obsDniMadre = ref.getDownloadURL();
+    ref.getDownloadURL().subscribe(resp => {
+      this.obsDniMadre = resp;
+    });
+
+    /**FOTO DE LIBRO FAMILIAR */
+    variableNull = this.usuario.libroFamilia;
+
+    if (variableNull !== null) {
+      filePath = this.usuario.libroFamilia;
+    } else { filePath = 'admin/9999999999/no-imagen.png'; }
+
+    ref = this.storage.ref(filePath);
+    this.obsLibroFamiliar = ref.getDownloadURL();
+    ref.getDownloadURL().subscribe(resp => {
+      this.obsLibroFamiliar = resp;
+    });
+
+
 
   }
 

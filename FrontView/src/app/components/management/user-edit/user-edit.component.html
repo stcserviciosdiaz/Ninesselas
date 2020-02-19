@@ -20,7 +20,7 @@
           <div class="">
             <div class="">
               <br />
-              <form [formGroup]="childForm">
+              <div [formGroup]="childForm">
 
 
 
@@ -33,18 +33,21 @@
                         <mat-card-title style="font-size: small;">{{usuario.email}}</mat-card-title>
                         <mat-card-subtitle>Imagen Primer Plano</mat-card-subtitle>
                       </mat-card-header>
-                      <img mat-card-image style="padding: 5px 0px 0px 0px;height: 450px;" [src]="obsAvatar" alt={{usuario.nombres}}>
+                      <img mat-card-image style="padding: 5px 0px 0px 0px;height: 450px;" [src]="obsAvatar"
+                        alt={{usuario.nombres}}>
 
                       <mat-card-actions style="font-size: 0.8rem;">
-                       <!-- <input type="file" (change)="onAvatarSelected($event)"><br>-->
+                        <!-- <input type="file" (change)="onAvatarSelected($event)"><br>-->
                         <div class="input-group">
-                          <div class="input-group-prepend" >
-                            <span class="input-group-text" style="font-size: 0.8rem;" id="inputGroupFileAddon01">Subir</span>
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" style="font-size: 0.8rem;"
+                              id="inputGroupFileAddonAV">Subir</span>
                           </div>
                           <div class="custom-file">
-                            <input type="file" class="custom-file-input btn btn-primary" id="inputGroupFile01"
-                              aria-describedby="inputGroupFileAddon01" (change)="onAvatarSelected($event)">
-                            <label class="custom-file-label" for="inputGroupFile01" value="fileCuerpoEntero.name"></label>
+                            <input type="file" class="custom-file-input btn btn-primary" id="inputGroupFileAV"
+                              aria-describedby="inputGroupFileAddonAV" (change)="onAvatarSelected($event)">
+                            <label class="custom-file-label" for="inputGroupFileAV"
+                              value="fileCuerpoEntero.name"></label>
                           </div>
                         </div>
                       </mat-card-actions>
@@ -59,18 +62,21 @@
                         <mat-card-title style="font-size: small;">{{usuario.email}}</mat-card-title>
                         <mat-card-subtitle>Imagen Cuerpo Completo</mat-card-subtitle>
                       </mat-card-header>
-                      <img mat-card-image style="padding: 5px 0px 0px 0px;height: 450px;" [src]="obsFotoCuerpo" alt={{usuario.nombres}}>
+                      <img mat-card-image style="padding: 5px 0px 0px 0px;height: 450px;" [src]="obsFotoCuerpo"
+                        alt={{usuario.nombres}}>
 
                       <mat-card-actions style="font-size: 0.8rem;">
                         <!--<input type="file" (change)="onFileCuerpoEnteroSelected($event)"><br>-->
                         <div class="input-group">
-                          <div class="input-group-prepend" >
-                            <span class="input-group-text" style="font-size: 0.8rem;" id="inputGroupFileAddon01">Subir</span>
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" style="font-size: 0.8rem;"
+                              id="inputGroupFileAddonCUERPO">Subir</span>
                           </div>
                           <div class="custom-file">
-                            <input type="file" class="custom-file-input btn btn-primary" id="inputGroupFile01"
-                              aria-describedby="inputGroupFileAddon01" (change)="onFileCuerpoEnteroSelected($event)">
-                          <label class="custom-file-label" for="inputGroupFile01" readonly="true"></label>
+                            <input type="file" class="custom-file-input btn btn-primary" id="inputGroupFileCUERPO"
+                              aria-describedby="inputGroupFileAddonCUERPO"
+                              (change)="onFileCuerpoEnteroSelected($event)">
+                            <label class="custom-file-label" for="inputGroupFileCUERPO" readonly="true"></label>
                           </div>
                         </div>
                       </mat-card-actions>
@@ -85,18 +91,21 @@
                         <mat-card-title style="font-size: small;">{{usuario.email}}</mat-card-title>
                         <mat-card-subtitle>Imagen Artística</mat-card-subtitle>
                       </mat-card-header>
-                      <img mat-card-image style="padding: 5px 0px 0px 0px;height: 450px;" [src]="obsFotoArtistico" alt={{usuario.nombres}}>
+                      <img mat-card-image style="padding: 5px 0px 0px 0px;height: 450px;" [src]="obsFotoArtistico"
+                        alt={{usuario.nombres}}>
 
                       <mat-card-actions style="font-size: 0.8rem;">
                         <!--<input type="file" (change)="onFileCuerpoEnteroSelected($event)"><br>-->
                         <div class="input-group">
-                          <div class="input-group-prepend" >
-                            <span class="input-group-text" style="font-size: 0.8rem;" id="inputGroupFileAddon01">Subir</span>
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" style="font-size: 0.8rem;"
+                              id="inputGroupFileAddonARTS">Subir</span>
                           </div>
                           <div class="custom-file">
-                            <input type="file" class="custom-file-input btn btn-primary" id="inputGroupFile01"
-                              aria-describedby="inputGroupFileAddon01" (change)="onFileArtisticoSelected($event)">
-                            <label class="custom-file-label" for="inputGroupFile01" value="fileCuerpoEntero.name"></label>
+                            <input type="file" class="custom-file-input btn btn-primary" id="inputGroupFileARTS"
+                              aria-describedby="inputGroupFileAddonARTS" (change)="onFileArtisticoSelected($event)">
+                            <label class="custom-file-label" for="inputGroupFileARTS"
+                              value="fileCuerpoEntero.name"></label>
                           </div>
                         </div>
                       </mat-card-actions>
@@ -370,98 +379,249 @@
 
                 <div class="form-group">
                   <!-- Numero DNI del niño-->
-                  <label class="control-label">Numero DNI</label>
-                  <input type="text" (keypress)="check($event)" class="d-inline form-control"
-                    formControlName="numeroDNI" placeholder="#####"
-                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNI.errors }">
-                  <div *ngIf="submitted && childForm.controls.numeroDNI.errors" class="invalid-feedback">
-                    <div *ngIf="childForm.controls.numeroDNI.errors.required">El numero es requerida</div>
+                  <div class="row">
+
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <label class="control-label">Numero DNI</label>
+                        <input type="text" (keypress)="check($event)" class="d-inline form-control"
+                          formControlName="numeroDNI" placeholder="#####"
+                          [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNI.errors }">
+                        <div *ngIf="submitted && childForm.controls.numeroDNI.errors" class="invalid-feedback">
+                          <div *ngIf="childForm.controls.numeroDNI.errors.required">El numero es requerida</div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <!-- Numero seguridad social -->
+                        <label class="control-label">Numero propio de la seguridad social del niño</label>
+                        <input type="text" class="form-control" formControlName="numeroSeguridadSocial" placeholder=""
+                          [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroSeguridadSocial.errors }">
+                        <div *ngIf="submitted && childForm.controls.numeroSeguridadSocial.errors"
+                          class="invalid-feedback">
+                          <div *ngIf="childForm.controls.numeroSeguridadSocial.errors.required">El numero es requerida
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="col-md-4">
+                      <mat-card class="example-card">
+                        <mat-card-header>
+                          <div mat-card-avatar class="example-header-image"> <img [src]="obsAvatar"
+                              style="width: inherit;border-radius: 10%;" /></div>
+                          <mat-card-title style="font-size: small;"></mat-card-title>
+                          <mat-card-subtitle>Imagen DNI</mat-card-subtitle>
+                        </mat-card-header>
+                        <img mat-card-image style="padding: 5px 0px 0px 0px;height: 450px;" [src]="obsDniUser"
+                          alt={{usuario.nombres}}>
+
+                        <mat-card-actions style="font-size: 0.8rem;">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" style="font-size: 0.8rem;"
+                                id="inputGroupFileAddonDNI">Subir</span>
+                            </div>
+                            <div class="custom-file">
+                              <input type="file" class="custom-file-input btn btn-primary" id="inputGroupFileDNI"
+                                aria-describedby="inputGroupFileAddonDNI" (change)="copyDNIkidSelected($event)">
+                              <label class="custom-file-label" for="inputGroupFileDNI"
+                                value="fileCuerpoEntero.name"></label>
+                            </div>
+                          </div>
+                        </mat-card-actions>
+                      </mat-card>
+                    </div>
+
+
+                    <div class="col-md-4">
+                      <mat-card class="example-card">
+                        <mat-card-header>
+                          <div mat-card-avatar class="example-header-image"> <img [src]="obsAvatar"
+                              style="width: inherit;border-radius: 10%;" /></div>
+                          <mat-card-title style="font-size: small;"></mat-card-title>
+                          <mat-card-subtitle>Imagen Seguro Social</mat-card-subtitle>
+                        </mat-card-header>
+                        <img mat-card-image style="padding: 5px 0px 0px 0px;height: 450px;" [src]="obsSeguroUser"
+                          alt={{usuario.nombres}}>
+
+                        <mat-card-actions style="font-size: 0.8rem;">
+                          <div class="input-group">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text" style="font-size: 0.8rem;"
+                                id="inputGroupFileAddonSEGURO">Subir</span>
+                            </div>
+                            <div class="custom-file">
+                              <input type="file" class="custom-file-input btn btn-primary" id="inputGroupFileSEGURO"
+                                aria-describedby="inputGroupFileAddonSEGURO"
+                                (change)="copySocialNumberSelected($event)">
+                              <label class="custom-file-label" for="inputGroupFileSEGURO"
+                                value="fileCuerpoEntero.name"></label>
+                            </div>
+                          </div>
+                        </mat-card-actions>
+                      </mat-card>
+                    </div>
                   </div>
                 </div>
 
-                <div class="form-group">
-                  <!-- Copia del Numero DNI del niño -->
-                  <label>Copia del Numero DNI del niño</label>
-                  <input type="file" (change)="copyDNIkidSelected($event)">
-                </div>
+                <div class="row">
 
-                <div class="form-group">
-                  <!-- Numero seguridad social -->
-                  <label class="control-label">Numero propio de la seguridad social del niño</label>
-                  <input type="text" class="form-control" formControlName="numeroSeguridadSocial" placeholder=""
-                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroSeguridadSocial.errors }">
-                  <div *ngIf="submitted && childForm.controls.numeroSeguridadSocial.errors" class="invalid-feedback">
-                    <div *ngIf="childForm.controls.numeroSeguridadSocial.errors.required">El numero es requerida</div>
+                  <div class="class col-md-3">
+                    <div class="form-group">
+                      <!-- DNI del padre -->
+                      <label>DNI del padre</label>
+                      <input type="text" (keypress)="check($event)" class="form-control"
+                        formControlName="numeroDNIPadre" placeholder=""
+                        [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNIPadre.errors }">
+                      <div *ngIf="submitted && childForm.controls.numeroDNIPadre.errors" class="invalid-feedback">
+                        <div *ngIf="childForm.controls.numeroDNIPadre.errors.required">El DNI es requerida</div>
+                      </div>
+                    </div>
+
                   </div>
-                </div>
 
-                <div class="form-group">
-                  <!-- Copia numero seguridad social -->
-                  <label>Copia numero seguridad social del niño</label>
-                  <input type="file" (change)="copySocialNumberSelected($event)">
-                </div>
+                  <div class="class col-md-3">
 
-                <div class="form-group">
-                  <!-- DNI del padre -->
-                  <label>DNI del padre</label>
-                  <input type="text" (keypress)="check($event)" class="form-control" formControlName="numeroDNIPadre"
-                    placeholder="" [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNIPadre.errors }">
-                  <div *ngIf="submitted && childForm.controls.numeroDNIPadre.errors" class="invalid-feedback">
-                    <div *ngIf="childForm.controls.numeroDNIPadre.errors.required">El DNI es requerida</div>
+                    <div class="form-group">
+                      <!-- Numero de Teléfono del padre-->
+                      <label>Numero de Teléfono del padre</label>
+                      <input type="text" (keypress)="numberOnly($event)" class="form-control"
+                        formControlName="telefonofather" placeholder=""
+                        [ngClass]="{ 'is-invalid': submitted && childForm.controls.telefonofather.errors }">
+                      <div *ngIf="submitted && childForm.controls.telefonofather.errors" class="invalid-feedback">
+                        <div *ngIf="childForm.controls.telefonofather.errors.required">El telefono es requerida</div>
+                      </div>
+                    </div>
                   </div>
-                </div>
 
-                <div class="form-group">
-                  <!-- Copia del DNI del padre -->
-                  <label>Copia del DNI del padre</label>
-                  <input type="file" (change)="copyDNIFatherSelected($event)">
-                </div>
+                  <div class="class col-md-3">
 
-
-                <div class="form-group">
-                  <!-- Numero de Teléfono del padre-->
-                  <label>Numero de Teléfono del padre</label>
-                  <input type="text" (keypress)="numberOnly($event)" class="form-control"
-                    formControlName="telefonofather" placeholder=""
-                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.telefonofather.errors }">
-                  <div *ngIf="submitted && childForm.controls.telefonofather.errors" class="invalid-feedback">
-                    <div *ngIf="childForm.controls.telefonofather.errors.required">El telefono es requerida</div>
+                    <div class="form-group">
+                      <!-- DNI de la Madre -->
+                      <label>DNI de la Madre</label>
+                      <input type="text" (keypress)="check($event)" class="form-control"
+                        formControlName="numeroDNIMadre" placeholder=""
+                        [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNIMadre.errors }">
+                      <div *ngIf="submitted && childForm.controls.numeroDNIMadre.errors" class="invalid-feedback">
+                        <div *ngIf="childForm.controls.numeroDNIMadre.errors.required">El DNI es requerida</div>
+                      </div>
+                    </div>
                   </div>
-                </div>
 
-                <div class="form-group">
-                  <!-- DNI de la Madre -->
-                  <label>DNI de la Madre</label>
-                  <input type="text" (keypress)="check($event)" class="form-control" formControlName="numeroDNIMadre"
-                    placeholder="" [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNIMadre.errors }">
-                  <div *ngIf="submitted && childForm.controls.numeroDNIMadre.errors" class="invalid-feedback">
-                    <div *ngIf="childForm.controls.numeroDNIMadre.errors.required">El DNI es requerida</div>
+
+                  <div class="class col-md-3">
+                    <div class="form-group">
+                      <!-- Numero de Teléfono de la madre-->
+                      <label>Numero de Teléfono de la madre</label>
+                      <input type="text" (keypress)="numberOnly($event)" class="form-control"
+                        formControlName="telefonomother" placeholder=""
+                        [ngClass]="{ 'is-invalid': submitted && childForm.controls.telefonomother.errors }">
+                      <div *ngIf="submitted && childForm.controls.telefonomother.errors" class="invalid-feedback">
+                        <div *ngIf="childForm.controls.telefonomother.errors.required">El teléfono es requerida</div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-
-                <div class="form-group">
-                  <!-- Copia del DNI de la madre -->
-                  <label>Copia del DNI de la madre</label>
-                  <input type="file" (change)="copyDNIMotherSelected($event)">
 
                 </div>
 
-                <div class="form-group">
-                  <!-- Numero de Teléfono de la madre-->
-                  <label>Numero de Teléfono de la madre</label>
-                  <input type="text" (keypress)="numberOnly($event)" class="form-control"
-                    formControlName="telefonomother" placeholder=""
-                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.telefonomother.errors }">
-                  <div *ngIf="submitted && childForm.controls.telefonomother.errors" class="invalid-feedback">
-                    <div *ngIf="childForm.controls.telefonomother.errors.required">El teléfono es requerida</div>
+                <div class="row">
+
+                  <div class="col-md-4">
+
+                    <mat-card class="example-card">
+                      <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"> <img [src]="obsAvatar"
+                            style="width: inherit;border-radius: 10%;" /></div>
+                        <mat-card-title style="font-size: small;"></mat-card-title>
+                        <mat-card-subtitle>Imagen Libro Familiar</mat-card-subtitle>
+                      </mat-card-header>
+                      <img mat-card-image style="padding: 5px 0px 0px 0px;height: 450px;" [src]="obsLibroFamiliar"
+                        alt={{usuario.nombres}}>
+
+                      <mat-card-actions style="font-size: 0.8rem;">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" style="font-size: 0.8rem;"
+                              id="inputGroupFileAddonDNILibro">Subir</span>
+                          </div>
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input btn btn-primary" id="inputGroupFileDNILibro"
+                              aria-describedby="inputGroupFileAddonDNILibro" (change)="onFamilyBookSelected($event)">
+                            <label class="custom-file-label" for="inputGroupFileDNILibro"
+                              value="fileCuerpoEntero.name"></label>
+                          </div>
+                        </div>
+                      </mat-card-actions>
+                    </mat-card>
+
                   </div>
+
+                  <div class="col-md-4">
+                    <mat-card class="example-card">
+                      <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"> <img [src]="obsAvatar"
+                            style="width: inherit;border-radius: 10%;" /></div>
+                        <mat-card-title style="font-size: small;"></mat-card-title>
+                        <mat-card-subtitle>Imagen DNI Padre</mat-card-subtitle>
+                      </mat-card-header>
+                      <img mat-card-image style="padding: 5px 0px 0px 0px;height: 450px;" [src]="obsDniPadre"
+                        alt={{usuario.nombres}}>
+
+                      <mat-card-actions style="font-size: 0.8rem;">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" style="font-size: 0.8rem;"
+                              id="inputGroupFileAddonDNIPadre">Subir</span>
+                          </div>
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input btn btn-primary" id="inputGroupFileDNIPadre"
+                              aria-describedby="inputGroupFileAddonDNIPadre" (change)="copyDNIFatherSelected($event)">
+                            <label class="custom-file-label" for="inputGroupFileDNIPadre"
+                              value="fileCuerpoEntero.name"></label>
+                          </div>
+                        </div>
+                      </mat-card-actions>
+                    </mat-card>
+                  </div>
+
+                  <div class="col-md-4">
+                    <mat-card class="example-card">
+                      <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"> <img [src]="obsAvatar"
+                            style="width: inherit;border-radius: 10%;" /></div>
+                        <mat-card-title style="font-size: small;"></mat-card-title>
+                        <mat-card-subtitle>Imagen DNI Madre</mat-card-subtitle>
+                      </mat-card-header>
+                      <img mat-card-image style="padding: 5px 0px 0px 0px;height: 450px;" [src]="obsDniMadre"
+                        alt={{usuario.nombres}}>
+
+                      <mat-card-actions style="font-size: 0.8rem;">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" style="font-size: 0.8rem;"
+                              id="inputGroupFileAddonDNIMadre">Subir</span>
+                          </div>
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input btn btn-primary" id="inputGroupFileDNIMadre"
+                              aria-describedby="inputGroupFileAddonDNIMadre" (change)="copyDNIMotherSelected($event)">
+                            <label class="custom-file-label" for="inputGroupFileDNIMadre"
+                              value="fileCuerpoEntero.name"></label>
+                          </div>
+                        </div>
+                      </mat-card-actions>
+                    </mat-card>
+                  </div>
+
                 </div>
 
-                <div class="form-group">
-                  <!-- Libro de familiar -->
-                  <label>Libro de familiar</label>
-                  <input type="file" (change)="onFamilyBookSelected($event)">
-                </div>
+
+
+
+
+
+
+
 
                 <div class="form-group">
                   <!-- Deporte -->
@@ -469,7 +629,7 @@
                   <mat-form-field>
                     <mat-label>¿ Es Deportista?</mat-label>
 
-                    <mat-select [(ngModel)]="deportistaSelect"  [ngModelOptions]="{standalone: true}">
+                    <mat-select [(ngModel)]="deportistaSelect" [ngModelOptions]="{standalone: true}">
                       <mat-option>Ninguno</mat-option>
                       <mat-option *ngFor="let item of deportista" [value]="item">
                         {{item.nombreDeportista}}
@@ -655,12 +815,11 @@
                         class="fa fa-spinner fa-spin fa-3x fa-fw" style="font-size: 13px;"></i></span>
                   </button>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
-        </div>
 
+        </div>
       </div>
     </div>
   </div>
-</div>
