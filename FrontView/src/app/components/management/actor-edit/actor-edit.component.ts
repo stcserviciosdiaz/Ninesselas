@@ -36,6 +36,11 @@ export class ActorEditComponent implements OnInit {
   obsFotoCuerpo: Observable<string>;
   obsFotoArtistico: Observable<string>;
 
+  obsMoto: Observable<string>;
+  obsCoche: Observable<string>;
+  obsTatuajes: Observable<string>;
+  obsManos: Observable<string>;
+
   /**VAriables FILES para fotos */
   avatarFile: File = null;
   fileCuerpoEntero: File = null;
@@ -227,6 +232,58 @@ export class ActorEditComponent implements OnInit {
     ref.getDownloadURL().subscribe(resp => {
       this.obsFotoArtistico = resp;
     });
+
+
+    /**FOTO DE MANOS */
+    filePath = this.usuario.fotosManosList.pop().urlFotoMano;
+    ref = this.storage.ref(filePath);
+    this.obsManos = ref.getDownloadURL();
+    ref.getDownloadURL().subscribe(resp => {
+      this.obsManos = resp;
+    });
+
+    /**FOTO DE MOTO */
+    let variableNull = this.usuario.motoList[0].fotoMoto;
+
+    if (variableNull !== null) {
+      filePath = this.usuario.motoList.pop().fotoMoto;
+    } else { filePath = 'admin/9999999999/no-moto.jpg'; }
+
+    ref = this.storage.ref(filePath);
+    this.obsMoto = ref.getDownloadURL();
+    ref.getDownloadURL().subscribe(resp => {
+      this.obsMoto = resp;
+    });
+
+    /**FOTO DE COCHE */
+    variableNull = this.usuario.cocheList[0].fotoCoche;
+
+    if (variableNull !== null) {
+      filePath = this.usuario.cocheList.pop().fotoCoche;
+    } else { filePath = 'admin/9999999999/no-car.jpg'; }
+
+    ref = this.storage.ref(filePath);
+    this.obsCoche = ref.getDownloadURL();
+    ref.getDownloadURL().subscribe(resp => {
+      this.obsCoche = resp;
+    });
+
+    /**FOTO DE TATUAJES */
+
+
+    variableNull = this.usuario.fotosTatuajesList[0].urlFotoTatuaje;
+
+    if (variableNull !== null) {
+      filePath = this.usuario.fotosTatuajesList.pop().urlFotoTatuaje;
+    } else { filePath = 'admin/9999999999/no-tatuaje.jpg'; }
+
+    ref = this.storage.ref(filePath);
+    this.obsTatuajes = ref.getDownloadURL();
+    ref.getDownloadURL().subscribe(resp => {
+      this.obsTatuajes = resp;
+    });
+
+
 
   }
 

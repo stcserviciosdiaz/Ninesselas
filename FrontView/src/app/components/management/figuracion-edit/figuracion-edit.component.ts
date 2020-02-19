@@ -246,7 +246,7 @@ export class FiguracionEditComponent implements OnInit {
 
     /**FOTO DE COCHE */
     if (this.usuario.cocheList !== null && this.usuario.cocheList.pop().fotoCoche !== null) {
-      filePath = this.usuario.motoList.pop().fotoMoto;
+      filePath = this.usuario.cocheList.pop().fotoCoche;
     } else { filePath = 'admin/9999999999/no-car.jpg'; }
 
     ref = this.storage.ref(filePath);
@@ -259,7 +259,7 @@ export class FiguracionEditComponent implements OnInit {
 
 
     if (this.usuario.fotosTatuajesList !== null && this.usuario.fotosTatuajesList.pop().urlFotoTatuaje !== null) {
-      filePath = this.usuario.motoList.pop().fotoMoto;
+      filePath = this.usuario.fotosTatuajesList.pop().urlFotoTatuaje;
     } else { filePath = 'admin/9999999999/no-tatuaje.jpg'; }
 
     ref = this.storage.ref(filePath);
