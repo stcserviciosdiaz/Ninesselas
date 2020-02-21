@@ -18,6 +18,8 @@ import { AuthService } from 'src/app/Services/auth.service';
 import { musico } from 'src/app/models/musico';
 import { instrumento } from 'src/app/models/instrumentos';
 import { Observable } from 'rxjs';
+import { DateAdapter } from '@angular/material/core';
+
 
 
 
@@ -60,6 +62,8 @@ export class ActorEditComponent implements OnInit {
   urlTatuajes: string;
   urlManos: string;
 
+  date;
+
   /*******variables para combos********/
   etnias;
   baile;
@@ -95,18 +99,20 @@ export class ActorEditComponent implements OnInit {
   @ViewChild(TemplateRef, { static: false }) tpl: TemplateRef<any>;
 
   constructor(
+    private _adapter: DateAdapter<any>,
     private storage: AngularFireStorage,
     private authService: AuthService,
     public ngxSmartModalService: NgxSmartModalService,
     private formBuilder: FormBuilder,
     private router: Router
   ) {
-
+    this._adapter.setLocale('fr');
   }
 
   ngOnInit() {
     this.setearDataForm();
     this.llenarCombos();
+
   }
 
   ngOnDestroy(): void {
@@ -157,6 +163,8 @@ export class ActorEditComponent implements OnInit {
 
   }
 
+ 
+
   pasarDatosForm() {
     this.childForm.controls.username.setValue(this.usuario.username);
     this.childForm.controls.nombres.setValue(this.usuario.nombres);
@@ -164,7 +172,7 @@ export class ActorEditComponent implements OnInit {
     this.childForm.controls.apellidos.setValue(this.usuario.apellidos);
     this.childForm.controls.sexo.setValue(this.usuario.sexo);
     this.childForm.controls.telefono.setValue(this.usuario.telefono);
-    this.childForm.controls.fechaNacimiento.setValue(this.usuario.fechaNacimiento);
+    this.childForm.controls.fechaNacimiento.setValue(this.date);
     this.childForm.controls.placebirth.setValue(this.usuario.lugarNacimiento);
     this.childForm.controls.nacionalidad.setValue(this.usuario.nacionalidad);
     this.childForm.controls.email.setValue(this.usuario.email);
@@ -298,15 +306,32 @@ export class ActorEditComponent implements OnInit {
     this.urlManos = this.usuario.fotosManosList[0].urlFotoMano;
   }
 
+  onChangeDate($event) {
+    let date1 = new Date($event.value);
+    this.date = new Date();
+    this.date.setDate(date1.getUTCDate());
+    this.date.setMonth(date1.getUTCMonth());
+    this.date.setFullYear(date1.getUTCFullYear());
+  }
+
   llenarCombos() {
 
     //llenado de etnias
     this.authService.finByIdUsuario(localStorage.getItem('actoredit'))
       .pipe().subscribe(res => {
         this.usuario = res;
+
+        let fecha = new Date(this.usuario.fechaNacimiento);
+        this.date = new Date();
+        this.date.setDate(fecha.getUTCDate());
+        this.date.setMonth(fecha.getUTCMonth());
+        this.date.setFullYear(fecha.getUTCFullYear());
+
         this.pasarEntidadesSelect();
         this.pasarUrlPaths();
         this.pasarDatosForm();
+
+        console.log('FECHA PASADA: ' + this.childForm.controls.fechaNacimiento.value)
         this.pasarFotos();
       });
 
@@ -576,7 +601,7 @@ export class ActorEditComponent implements OnInit {
       dniPadre: '',
       dniUser: newChild.numeroDNI,
       email: newChild.email,
-      fechaNacimiento: newChild.fechaNacimiento,
+      fechaNacimiento: this.date,
       libroFamilia: '',
       localidad: newChild.localidad,
       nacionalidad: newChild.nacionalidad,
@@ -642,8 +667,12 @@ export class ActorEditComponent implements OnInit {
         localStorage.removeItem('actoredit');
 
         this.actualizarTalla(res.tallasList[0].idTalla);
-        this.actualizarCoche(this.usuario.cocheList[0].idCoche);
-        this.actualizarMoto(this.usuario.motoList[0].idMoto);
+        if (this.usuario.cocheList !== null && typeof(this.usuario.cocheList.pop()) !== 'undefined') {
+          this.actualizarCoche(this.usuario.cocheList[0].idCoche);
+        }
+        if (this.usuario.motoList !== null && typeof(this.usuario.motoList.pop()) !== 'undefined') {
+          this.actualizarMoto(this.usuario.motoList[0].idMoto);
+        }
 
         if (this.fileTatuajes !== null) {
           this.actualizarTatuajes(this.usuario.fotosTatuajesList[0].idFotoTatuaje);

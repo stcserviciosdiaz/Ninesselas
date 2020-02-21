@@ -36,6 +36,7 @@ export class FiguracionEditComponent implements OnInit {
   childForm: FormGroup;
   submitted = false;
   isavailable = false;
+  date;
 
   /**URL IMAGENES FIREBASE **/
   obsAvatar: Observable<string>;
@@ -234,7 +235,7 @@ export class FiguracionEditComponent implements OnInit {
     });
 
     /**FOTO DE MOTO */
-    if (this.usuario.motoList !== null && this.usuario.motoList.pop().fotoMoto !== null ) {
+    if (this.usuario.motoList !== null && this.usuario.motoList.pop().fotoMoto !== null) {
       filePath = this.usuario.motoList.pop().fotoMoto;
     } else { filePath = 'admin/9999999999/no-moto.jpg'; }
 
@@ -282,12 +283,27 @@ export class FiguracionEditComponent implements OnInit {
     this.urlManos = this.usuario.fotosManosList[0].urlFotoMano;
   }
 
+  onChangeDate($event) {
+    let date1 = new Date($event.value);
+    this.date = new Date();
+    this.date.setDate(date1.getUTCDate());
+    this.date.setMonth(date1.getUTCMonth());
+    this.date.setFullYear(date1.getUTCFullYear());
+  }
+
   llenarCombos() {
 
     //llenado de etnias
     this.authService.finByIdUsuario(localStorage.getItem('figuracionedit'))
       .pipe().subscribe(res => {
         this.usuario = res;
+
+        let fecha = new Date(this.usuario.fechaNacimiento);
+        this.date = new Date();
+        this.date.setDate(fecha.getUTCDate());
+        this.date.setMonth(fecha.getUTCMonth());
+        this.date.setFullYear(fecha.getUTCFullYear());
+
         this.pasarEntidadesSelect();
         this.pasarUrlPaths();
         this.pasarDatosForm();
@@ -543,7 +559,7 @@ export class FiguracionEditComponent implements OnInit {
       dniPadre: '',
       dniUser: '',
       email: newChild.email,
-      fechaNacimiento: newChild.fechaNacimiento,
+      fechaNacimiento: this.date,
       libroFamilia: '',
       localidad: newChild.localidad,
       nacionalidad: newChild.nacionalidad,
@@ -608,9 +624,15 @@ export class FiguracionEditComponent implements OnInit {
       res => {
         localStorage.removeItem('figuracionedit');
 
+
         this.actualizarTalla(this.usuario.idUser, res.tallasList[0].idTalla);
-        this.actualizarCoche(this.usuario.cocheList[0].idCoche);
-        this.actualizarMoto(this.usuario.motoList[0].idMoto);
+
+        if (this.usuario.cocheList !== null && typeof(this.usuario.cocheList.pop()) !== 'undefined') {
+          this.actualizarCoche(this.usuario.cocheList[0].idCoche);
+        }
+        if (this.usuario.motoList !== null && typeof(this.usuario.motoList.pop()) !== 'undefined') {
+          this.actualizarMoto(this.usuario.motoList[0].idMoto);
+        }
 
         if (this.fileTatuajes !== null) {
           this.actualizarTatuajes(this.usuario.fotosTatuajesList[0].idFotoTatuaje);

@@ -158,10 +158,10 @@
                     <div class="col-6 example-container">
                       <!-- Fecha de nacimiento -->
                       <mat-form-field>
-                        <input  matInput [matDatepicker]="dp" formControlName="fechaNacimiento"
-                          placeholder="Fecha de nacimiento">
-                        <mat-datepicker-toggle matSuffix [for]="dp"></mat-datepicker-toggle>
-                        <mat-datepicker #dp></mat-datepicker>
+                        <input matInput (dateInput)="onChangeDate($event)" [matDatepicker]="pd" [value]="date"
+                          placeholder="">
+                        <mat-datepicker-toggle matSuffix [for]="pd"></mat-datepicker-toggle>
+                        <mat-datepicker #pd disabled="false"></mat-datepicker>
                       </mat-form-field>
                     </div>
                     <div class="col-6 example-container">
@@ -740,25 +740,25 @@
                   </select>
                   -->
                 </div>
-                <div  class="form-group">
+                <div class="form-group">
                   <!-- Instrumentos musical -->
                   <mat-card>
-                  <h5 class="pb-1">Instrumentos musical</h5>
-                  <hr>
+                    <h5 class="pb-1">Instrumentos musical</h5>
+                    <hr>
 
-                  <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
-                    <div *ngFor="let item of instrumentoss" class="col-md-4 col-sm-6 col-12"
-                      style="padding: 5px 0px 5px 0px;">
-                      <mat-checkbox (change)="OnChange($event, item, 3)">
-                        <span class="itemitle">{{item.nombreInstrumento}}</span>
-                      </mat-checkbox>
+                    <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                      <div *ngFor="let item of instrumentoss" class="col-md-4 col-sm-6 col-12"
+                        style="padding: 5px 0px 5px 0px;">
+                        <mat-checkbox (change)="OnChange($event, item, 3)">
+                          <span class="itemitle">{{item.nombreInstrumento}}</span>
+                        </mat-checkbox>
+                      </div>
                     </div>
-                  </div>
 
-                  <mat-form-field>
-                    <input matInput placeholder="Otro">
-                  </mat-form-field>
-                </mat-card>
+                    <mat-form-field>
+                      <input matInput placeholder="Otro">
+                    </mat-form-field>
+                  </mat-card>
                 </div>
 
                 <!--
@@ -1057,10 +1057,10 @@
                 </div>
 
                 <div class="form-group example-container">
-                    <!-- Bilingue -->
-                    <mat-form-field>
-                        <input id="bilingue" formControlName="bilingue" matInput placeholder="Bilingue">
-                    </mat-form-field>
+                  <!-- Bilingue -->
+                  <mat-form-field>
+                    <input id="bilingue" formControlName="bilingue" matInput placeholder="Bilingue">
+                  </mat-form-field>
                 </div>
 
                 <div class="form-group">

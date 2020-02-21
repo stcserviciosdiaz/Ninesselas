@@ -80,6 +80,7 @@ export class FiguracionComponent implements OnInit {
   WorkingSelect;
 
   tamanioFotos = 4;//MB
+  date;
 
 
   /***variables para carga de imagenes y archivos */
@@ -341,6 +342,14 @@ export class FiguracionComponent implements OnInit {
     return archivo;
   }
 
+  onChangeDate($event) {
+    let date1 = new Date($event.value);
+    this.date = new Date();
+    this.date.setDate(date1.getUTCDate());
+    this.date.setMonth(date1.getUTCMonth());
+    this.date.setFullYear(date1.getUTCFullYear());
+  }
+
   /**Upload avatar */
   onFileAvatarSelected(event) {
     this.fileAvatar = this.verificaTamanioTypeFile(event.target.files[0] as File);
@@ -402,7 +411,7 @@ export class FiguracionComponent implements OnInit {
       dniPadre: '',
       dniUser: newUserObject.numeroDNI,
       email: newUserObject.email,
-      fechaNacimiento: newUserObject.fechaNacimiento,
+      fechaNacimiento: this.date,
       libroFamilia: '',
       localidad: newUserObject.localidad,
       nacionalidad: newUserObject.nacionalidad,

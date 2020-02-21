@@ -84,6 +84,7 @@ export class ActorsComponent implements OnInit {
   urlArtistico: string;
 
   tamanioFotos = 4;//MB
+  date;
 
   /*******variables para combos********/
   etnias;
@@ -414,7 +415,7 @@ export class ActorsComponent implements OnInit {
       dniPadre: '',
       dniUser: newUserObject.numeroDNI,
       email: newUserObject.email,
-      fechaNacimiento: newUserObject.fechaNacimiento,
+      fechaNacimiento: this.date,
       libroFamilia: '',
       localidad: newUserObject.localidad,
       nacionalidad: newUserObject.nacionalidad,
@@ -482,6 +483,14 @@ export class ActorsComponent implements OnInit {
         this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
         console.log(JSON.stringify(err));
       });
+  }
+
+  onChangeDate($event) {
+    let date1 = new Date($event.value);
+    this.date = new Date();
+    this.date.setDate(date1.getUTCDate());
+    this.date.setMonth(date1.getUTCMonth());
+    this.date.setFullYear(date1.getUTCFullYear());
   }
 
   onChangeGenero(mrChange: MatRadioChange) {
@@ -638,6 +647,10 @@ export class ActorsComponent implements OnInit {
   }
 
   registrarActor() {
+
+    console.log('FECHA NACIMIENOT: '+this.actorForm.get('fechaNacimiento').value)
+    const date:Date = new Date(this.actorForm.get('fechaNacimiento').value);
+    console.log('FECHA NACIMIENOT: '+date.toUTCString())
 
     this.submitted = true;
     if (this.actorForm.invalid || this.actorForm.get('acceptTerms').value === false) {

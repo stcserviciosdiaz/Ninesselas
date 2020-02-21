@@ -69,6 +69,7 @@ export class ChildrenComponent implements OnInit {
 
   isavailable = false;
   tamanioFotos = 4;//MB
+  date;
 
   avatarFile: File = null;
   copyDNIFather: File = null;
@@ -373,7 +374,7 @@ export class ChildrenComponent implements OnInit {
       dniPadre: newChild.numeroDNIPadre,
       dniUser: newChild.numeroDNI,
       email: newChild.email,
-      fechaNacimiento: newChild.fechaNacimiento,
+      fechaNacimiento: this.date,
       libroFamilia: this.urlLibroFamilia,
       localidad: newChild.localidad,
       nacionalidad: newChild.nacionalidad,
@@ -478,6 +479,13 @@ export class ChildrenComponent implements OnInit {
       });
   }
 
+  onChangeDate($event) {
+    let date1 = new Date($event.value);
+    this.date = new Date();
+    this.date.setDate(date1.getUTCDate());
+    this.date.setMonth(date1.getUTCMonth());
+    this.date.setFullYear(date1.getUTCFullYear());
+  }
 
   onChangeGenero(mrChange: MatRadioChange) {
     console.log(mrChange.value);

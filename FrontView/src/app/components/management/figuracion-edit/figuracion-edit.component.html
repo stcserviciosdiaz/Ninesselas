@@ -206,9 +206,10 @@
                 <div class="form-group">
                   <!-- Fecha de nacimiento -->
                   <mat-form-field>
-                    <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento" placeholder="">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
+                    <input matInput (dateInput)="onChangeDate($event)" [matDatepicker]="pd"
+                      [value]="date" placeholder="">
+                    <mat-datepicker-toggle matSuffix [for]="pd"></mat-datepicker-toggle>
+                    <mat-datepicker #pd disabled="false"></mat-datepicker>
                   </mat-form-field>
                 </div>
 

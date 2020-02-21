@@ -59,8 +59,8 @@ export class UserEditComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
   childForm: FormGroup;
   submitted = false;
-
   isavailable = false;
+  date;
 
   avatarFile: File = null;
   copyDNIFather: File = null;
@@ -381,12 +381,27 @@ export class UserEditComponent implements OnInit {
     this.urlArtistico = this.usuario.fotoProfesional;
   }
 
+  onChangeDate($event) {
+    let date1 = new Date($event.value);
+    this.date = new Date();
+    this.date.setDate(date1.getUTCDate());
+    this.date.setMonth(date1.getUTCMonth());
+    this.date.setFullYear(date1.getUTCFullYear());
+  }
+
   llenarCombos() {
 
     //llenado de etnias
     this.authService.finByIdUsuario(localStorage.getItem('ninioedit'))
       .pipe().subscribe(res => {
         this.usuario = res;
+
+        let fecha = new Date(this.usuario.fechaNacimiento);
+        this.date = new Date();
+        this.date.setDate(fecha.getUTCDate());
+        this.date.setMonth(fecha.getUTCMonth());
+        this.date.setFullYear(fecha.getUTCFullYear());
+
         this.pasarEntidadesSelect();
         this.pasarUrlPaths();
         this.pasarDatosForm();
@@ -511,7 +526,7 @@ export class UserEditComponent implements OnInit {
       dniPadre: newChild.numeroDNIPadre,
       dniUser: newChild.numeroDNI,
       email: newChild.email,
-      fechaNacimiento: newChild.fechaNacimiento,
+      fechaNacimiento: this.date,
       libroFamilia: this.urlLibroFamilia,
       localidad: newChild.localidad,
       nacionalidad: newChild.nacionalidad,

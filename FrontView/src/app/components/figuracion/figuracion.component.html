@@ -18,17 +18,19 @@
                 <div class="form-group">
                   <!-- Subida de avatar -->
                   <label class="control-label">Foto de Perfil</label>
-                  <input type="file" accept="image/*" (change)="onFileAvatarSelected($event)" formControlName="avatar"><br>
+                  <input type="file" accept="image/*" (change)="onFileAvatarSelected($event)"
+                    formControlName="avatar"><br>
                 </div>
 
                 <div class="form-group">
                   <!-- cuerpo entero -->
                   <label class="control-label">Foto cuerpo entero</label>
-                  <input type="file" accept="image/*" (change)="onFileCuerpoEnteroSelected($event)" formControlName="avatar"><br>
+                  <input type="file" accept="image/*" (change)="onFileCuerpoEnteroSelected($event)"
+                    formControlName="avatar"><br>
                 </div>
 
-                 <!-- Adjunta fotos Profesionales -->
-                 <div  class="form-group">
+                <!-- Adjunta fotos Profesionales -->
+                <div class="form-group">
                   <!-- Modelos de Manos -->
                   <label class="control-label">Foto de Manos</label>
                   <input type="file" accept="image/*" (change)="onFileManoSelected($event)" multiple="multiple"
@@ -106,11 +108,11 @@
                     <legend class="col-form-label col-sm-2 pt-0">Sexo</legend>
                     <mat-radio-group (change)="onChangeGenero($event)" name="gender" aria-label="Seleccione un Género">
                       <div class="col">
-                        <mat-radio-button value="Masculino" id="gridRadios1" >Masculino
+                        <mat-radio-button value="Masculino" id="gridRadios1">Masculino
                         </mat-radio-button>
                       </div>
                       <div class="col">
-                        <mat-radio-button value="Femenino" id="gridRadios2" >Femenino
+                        <mat-radio-button value="Femenino" id="gridRadios2">Femenino
                         </mat-radio-button>
                       </div>
                     </mat-radio-group>
@@ -120,8 +122,7 @@
                 <div class="form-group">
                   <!-- ¿De qué grupo étnico se considera? -->
                   <label class="control-label">Raza</label>
-                  <select  class="form-control" [(ngModel)]="etniaSelect"
-                    [ngModelOptions]="{standalone: true}">
+                  <select class="form-control" [(ngModel)]="etniaSelect" [ngModelOptions]="{standalone: true}">
                     <option [ngValue]="0" selected>Seleccione...</option>
                     <option [ngValue]="i" *ngFor="let i of etnias">{{i.nombreEtnia}}</option>
                   </select>
@@ -136,12 +137,14 @@
                   <div class="row">
                     <div class="col-6 example-container">
                       <!-- Fecha de nacimiento -->
+
                       <mat-form-field>
-                        <input matInput [matDatepicker]="picker" formControlName="fechaNacimiento"
-                          placeholder="Fecha de nacimiento">
-                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                        <mat-datepicker #picker></mat-datepicker>
+                        <input matInput (dateInput)="onChangeDate($event)" [matDatepicker]="pd" [value]="date"
+                          placeholder="">
+                        <mat-datepicker-toggle matSuffix [for]="pd"></mat-datepicker-toggle>
+                        <mat-datepicker #pd disabled="false"></mat-datepicker>
                       </mat-form-field>
+
                     </div>
                     <div class="col-6 example-container">
                       <!-- Lugar de nacimiento -->
@@ -210,7 +213,8 @@
                     </div>
                     <div class="col-lg-6 example-container">
                       <mat-form-field>
-                        <input formControlName="altura" matInput placeholder="Talla de altura" type="number" ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01"
+                        <input formControlName="altura" matInput placeholder="Talla de altura" type="number"
+                          ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01"
                           [ngClass]="{ 'is-invalid': submitted && actorForm.controls.altura.errors }">
                       </mat-form-field>
                       <div *ngIf="submitted && actorForm.controls.altura.errors" class="invalid-feedback">
@@ -395,11 +399,13 @@
                   <!-- Foto coche y  foto moto-->
                   <div class="form-group mr-3">
                     <label class="control-label">Foto coche</label>
-                    <input type="file" accept="image/*" (change)="onFileCocheSelected($event)" formControlName="fotoCoche">
+                    <input type="file" accept="image/*" (change)="onFileCocheSelected($event)"
+                      formControlName="fotoCoche">
                   </div>
                   <div class="form-group">
                     <label class="control-label">Foto moto</label>
-                    <input type="file" accept="image/*" (change)="onFileMotoSelected($event)" formControlName="fotoMoto">
+                    <input type="file" accept="image/*" (change)="onFileMotoSelected($event)"
+                      formControlName="fotoMoto">
                   </div>
                 </div>
 
@@ -851,7 +857,7 @@
                       </div> -->
                 </div>
 
-                
+
 
                 <div class="form-group">
                   <!-- Habilidades -->
@@ -1023,10 +1029,10 @@
                 </div>
 
                 <div class="form-group example-container">
-                    <!-- Bilingue -->
-                    <mat-form-field>
-                        <input id="bilingue" formControlName="bilingue" matInput placeholder="Bilingue">
-                    </mat-form-field>
+                  <!-- Bilingue -->
+                  <mat-form-field>
+                    <input id="bilingue" formControlName="bilingue" matInput placeholder="Bilingue">
+                  </mat-form-field>
                 </div>
 
                 <div class="form-group example-container">
@@ -1040,14 +1046,14 @@
                   <div class="form-check">
 
 
-                      <mat-checkbox formControlName="acceptTerms"
-                        [ngClass]="{ 'is-invalid': submitted && actorForm.controls.acceptTerms.value === false  }">
-                        Acepta
-                        los terminos del registro</mat-checkbox>
+                    <mat-checkbox formControlName="acceptTerms"
+                      [ngClass]="{ 'is-invalid': submitted && actorForm.controls.acceptTerms.value === false  }">
+                      Acepta
+                      los terminos del registro</mat-checkbox>
 
-                      <div *ngIf="submitted && actorForm.controls.acceptTerms.value === false" class="invalid-feedback">
-                        Los
-                        terminos es requerido</div>
+                    <div *ngIf="submitted && actorForm.controls.acceptTerms.value === false" class="invalid-feedback">
+                      Los
+                      terminos es requerido</div>
 
                   </div>
                 </div>
