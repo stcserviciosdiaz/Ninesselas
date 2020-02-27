@@ -51,11 +51,22 @@ textarea {
   margin-bottom: 0;
 }
 
-/* Media 480 */
-
-@media screen and (max-width: 480px) {
-  .alt-padding{
-    padding-top: 25%;
+/* Tablet Device : 768px */
+@media only screen and (min-width: 280px) and (max-width: 991px) {
+  .btn-elect{
+    width: 100%;
+    padding: 10px 10px 10px 10px;
   }
-  
+  .alt-padding{
+    padding-top: 0;
+  }
+	.transparent{
+    max-width: 1200px;
+    transform: translate(0px, 30%);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    height: 70vh;
+    background: rgba(255, 255, 255, 0.08);
+    padding: 10px;
+  }
 }

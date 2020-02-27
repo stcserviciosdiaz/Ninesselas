@@ -160,13 +160,9 @@
   width: 50%;
 }
 
-/* Fallback for Edge
--------------------------------------------------- */
-
-/* Media 480 */
-
-@media (max-width: 480px) {
-  .formular-register{
+/* Tablet Device : 768px */
+@media only screen and (min-width: 280px) and (max-width: 991px) {
+	.formular-register{
     font-size: 12px;
     width: 100%;
   }
@@ -176,13 +172,4 @@
   h1{
     font-size: 21px;
   }
-  
 }
-
-
-
-
-
-/* Fallback for IE
--------------------------------------------------- */
-
