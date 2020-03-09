@@ -3,7 +3,8 @@
   <div class="container contect-Ajuste mx-w">
     <div class="">
       <div class="">
-        <a class="logo">Registro de Niños</a>
+        <h4 class="pt-2">Registro de Niños</h4>
+        <p class="mt-3">-----------------</p>
       </div>
       <div class="">
         <div class="">
@@ -13,7 +14,6 @@
                 <p class="mt-3">Llena el siguiente formulario</p>
               </div>
               <form [formGroup]="childForm">
-
                 <div class="form-group">
                   <label class="control-label">Foto de Perfil</label>
                   <input type="file" accept="image/*" (change)="onAvatarSelected($event)" formControlName="avatar"><br>
@@ -30,7 +30,6 @@
                   <input type="file" accept="image/*" (change)="onFileArtisticoSelected($event)"
                     formControlName="avatar"><br>
                 </div>
-
                 <div class="form-group example-container">
                   <!-- Nombre de Usuario -->
                   <mat-form-field>
@@ -41,9 +40,6 @@
                     <div *ngIf="childForm.controls.username.errors.required">El usuario es requerido</div>
                   </div>
                 </div>
-
-
-
                 <div class="form-group">
                   <div class="row">
                     <div class="col-6 example-container">
@@ -60,8 +56,6 @@
                     </div>
                   </div>
                 </div>
-
-
                 <div class="example-container form-group">
                   <!-- Edad -->
                   <mat-form-field>
@@ -74,9 +68,6 @@
                     </mat-select>
                   </mat-form-field>
                 </div>
-
-
-
                 <div class="form-group">
                   <div class="row">
                     <div class="col-lg-6 example-container">
@@ -150,9 +141,9 @@
                 <div class="form-group">
                   <div class="row">
                     <div class="col-6 example-container">
-
                       <!-- Fecha de nacimiento -->
                       <mat-form-field>
+                        <mat-label>Dia/Mes/Año</mat-label>
                         <input matInput (dateInput)="onChangeDate($event)" [matDatepicker]="pd" [value]="date"
                           placeholder="">
                         <mat-datepicker-toggle matSuffix [for]="pd"></mat-datepicker-toggle>
@@ -979,7 +970,6 @@
                         <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
                       </div> -->
                 </div>
-
                 <div class="form-group">
                   <!-- Idiomas -->
                   <mat-card>
@@ -1056,14 +1046,12 @@
                         <textarea class="form-control" forControlName="Otros" rows="3"></textarea>
                       </div> -->
                 </div>
-
                 <div class="form-group example-container">
                   <!-- Bilingue -->
                   <mat-form-field>
                     <input id="bilingue" formControlName="bilingue" matInput placeholder="Bilingue">
                   </mat-form-field>
                 </div>
-
                 <div class="form-group">
                   <!-- Ultimos trabajos -->
                   <label class="control-label">Descripción de Ultimos Trabajos</label>
@@ -1083,9 +1071,8 @@
                       placeholder="Observaciones"></textarea>
                   </mat-form-field>
                 </div>
-
                 <div class="form-group">
-                  <div class="form-check">
+                  <div class="">
                     <mat-checkbox formControlName="acceptTerms" id="acceptTerms"
                       [ngClass]="{ 'is-invalid': submitted && childForm.controls.acceptTerms.value === false }">Acepta
                       los terminos del registro</mat-checkbox>
@@ -1094,7 +1081,6 @@
                       terminos es requerido</div>
                   </div>
                 </div>
-
                 <div class="info info--sm">
                   Al aceptar los "Terminos del registro" certifico que tengo 16 años o más y acepto las
                   <a class="link-secondary--underlined" target="blank" routerLink="/terms">Condiciones de Uso</a>, la
