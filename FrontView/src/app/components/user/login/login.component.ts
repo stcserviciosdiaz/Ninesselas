@@ -4,6 +4,8 @@ import { FormBuilder, FormGroup, Validators, FormControl, FormGroupDirective, Ng
 import { AuthService } from '../../../Services/auth.service';
 import { Router } from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material';
+import { SeoService } from 'src/app/Services/seo.service';
+import { Title } from '@angular/platform-browser';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -25,6 +27,8 @@ export class LoginComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
 
   constructor(
+    private title: Title,
+    private seo: SeoService,
     private authService: AuthService,
     private formBuilder: FormBuilder,
     private router: Router,
@@ -33,6 +37,14 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
+    let t:string = "Ninesselas - Login";
+    this.title.setTitle(t);
+
+    this.seo.generateTags({
+      title: "Ninesselas - Login",
+      description: "Nines Selas Agency",
+      slug: "login"
+    });
   }
 
   createLoginForm() {

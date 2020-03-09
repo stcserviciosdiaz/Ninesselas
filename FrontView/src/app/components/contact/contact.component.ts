@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { EmailService } from '../../Services/email.service';
 import { ErrorStateMatcher } from '@angular/material';
 import { Email } from 'src/app/models/email';
+import { SeoService } from 'src/app/Services/seo.service';
+import { Title } from '@angular/platform-browser';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -23,6 +25,8 @@ export class ContactComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
 
   constructor(
+    private title: Title,
+    private seo: SeoService,
     private formBuilder: FormBuilder,
     private router: Router,
     private emailService: EmailService
@@ -31,6 +35,14 @@ export class ContactComponent implements OnInit {
   }
 
   ngOnInit() {
+    let t:string = "Ninesselas - Contáctenos";
+    this.title.setTitle(t);
+
+    this.seo.generateTags({
+      title: "Ninesselas - Contáctenos",
+      description: "Nines Selas Agency",
+      slug: "contactenos"
+    });
   }
 
   createEmailForm() {

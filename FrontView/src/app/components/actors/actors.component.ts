@@ -21,6 +21,8 @@ import { instrumento } from 'src/app/models/instrumentos';
 import { etnia } from 'src/app/models/etnia';
 import { EmailService } from 'src/app/Services/email.service';
 import { Email } from 'src/app/models/email';
+import { SeoService } from 'src/app/Services/seo.service';
+import { Title } from '@angular/platform-browser';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -119,6 +121,8 @@ export class ActorsComponent implements OnInit {
   instrumentoSelect: instrumento[] = [];
   /*****fin variables combos*****/
   constructor(
+    private title: Title,
+    private seo: SeoService,
     private storage: AngularFireStorage,
     private authService: AuthService,
     private emailService: EmailService,
@@ -130,6 +134,15 @@ export class ActorsComponent implements OnInit {
     this.createRegisterForm();
   }
   ngOnInit() {
+    let t:string = "Ninesselas - Actores";
+    this.title.setTitle(t);
+
+    this.seo.generateTags({
+      title: "Ninesselas - Actores",
+      description: "Nines Selas Agency",
+      slug: "actores"
+    });
+
     this.llenarCombos();
   }
 

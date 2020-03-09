@@ -7,6 +7,8 @@ import { EmailService } from '../../../Services/email.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { NgxSmartModalService } from 'ngx-smart-modal';
+import { SeoService } from 'src/app/Services/seo.service';
+import { Title } from '@angular/platform-browser';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -54,6 +56,8 @@ export class RegisterComponent implements OnInit {
   matcher = new MyErrorStateMatcher();
 
   constructor(
+    private title: Title,
+    private seo: SeoService,
     private authService: AuthService,
     public ngxSmartModalService: NgxSmartModalService,
     private formBuilder: FormBuilder,
@@ -63,6 +67,15 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
+    let t:string = "Ninesselas - Registros";
+    this.title.setTitle(t);
+
+    this.seo.generateTags({
+      title: "Ninesselas - Registros",
+      description: "Nines Selas Agency",
+      slug: "registros"
+    });
+
     this.companyForm = this.formBuilder.group({
       username: ['', Validators.required],
       password: ['', Validators.required],

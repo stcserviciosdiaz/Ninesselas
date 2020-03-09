@@ -23,6 +23,8 @@ import { Observable } from 'rxjs/internal/Observable';
 import { finalize } from 'rxjs/operators';
 import { Email } from 'src/app/models/email';
 import { EmailService } from 'src/app/Services/email.service';
+import { SeoService } from 'src/app/Services/seo.service';
+import { Title } from '@angular/platform-browser';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -139,6 +141,8 @@ export class ChildrenComponent implements OnInit {
   @ViewChild(TemplateRef, { static: false }) tpl: TemplateRef<any>;
 
   constructor(
+    private title: Title,
+    private seo: SeoService,
     private storage: AngularFireStorage,
     private http: HttpClient,
     private authService: AuthService,
@@ -151,6 +155,15 @@ export class ChildrenComponent implements OnInit {
   }
 
   ngOnInit() {
+    let t:string = "Ninesselas - Niños";
+    this.title.setTitle(t);
+
+    this.seo.generateTags({
+      title: "Ninesselas - Niños",
+      description: "Nines Selas Agency",
+      slug: "niños"
+    });
+
     this.llenarCombos();
     this.childForm = this.formBuilder.group({
       username: ['', Validators.required],

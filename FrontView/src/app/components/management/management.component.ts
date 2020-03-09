@@ -8,6 +8,8 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { NgxSmartModalService } from 'ngx-smart-modal';
 import { Observable } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/storage';
+import { SeoService } from 'src/app/Services/seo.service';
+import { Title } from '@angular/platform-browser';
 export function MustMatch(controlName: string, matchingControlName: string) {
   return (formGroup: FormGroup) => {
     const control = formGroup.controls[controlName];
@@ -78,6 +80,8 @@ export class ManagementComponent implements OnInit {
   ];
 
   constructor(
+    private title: Title,
+    private seo: SeoService,
     private storage: AngularFireStorage,
     public ngxSmartModalService: NgxSmartModalService,
     private formBuilder: FormBuilder,
@@ -87,6 +91,15 @@ export class ManagementComponent implements OnInit {
   }
 
   ngOnInit() {
+    let t:string = "Ninesselas - Administrador";
+    this.title.setTitle(t);
+
+    this.seo.generateTags({
+      title: "Ninesselas - Administrador",
+      description: "Nines Selas Agency",
+      slug: "administrador"
+    });
+
     this.iniciarFormCambioPass();
 
     this.authService.findByToken()

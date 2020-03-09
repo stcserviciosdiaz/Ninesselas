@@ -24,6 +24,8 @@ import { EmailService } from 'src/app/Services/email.service';
 import { Email } from 'src/app/models/email';
 import { musico } from 'src/app/models/musico';
 import { instrumento } from 'src/app/models/instrumentos';
+import { SeoService } from 'src/app/Services/seo.service';
+import { Title } from '@angular/platform-browser';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -65,6 +67,8 @@ export class FiguracionComponent implements OnInit {
 
   /**Constructor */
   constructor(
+    private title: Title,
+    private seo: SeoService,
     private storage: AngularFireStorage,
     private authService: AuthService,
     private emailService: EmailService,
@@ -140,6 +144,15 @@ export class FiguracionComponent implements OnInit {
 
   /**Inicializacion */
   ngOnInit() {
+    let t:string = "Ninesselas - Figuración";
+    this.title.setTitle(t);
+
+    this.seo.generateTags({
+      title: "Ninesselas - Figuración",
+      description: "Nines Selas Agency",
+      slug: "figuracion"
+    });
+
     this.createRegisterForm();
     this.llenarCombos();
 

@@ -2,6 +2,8 @@ import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
 import { AuthService } from '../../Services/auth.service';
 import { MdbTableDirective } from 'angular-bootstrap-md';
 import { Usuario } from 'src/app/models/usuario';
+import { SeoService } from 'src/app/Services/seo.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-company',
@@ -45,6 +47,8 @@ export class CompanyComponent implements OnInit {
   mayorEdad: any;
 
   constructor(
+    private title: Title,
+    private seo: SeoService,
     public authService: AuthService,
   ) {
   }
@@ -54,6 +58,15 @@ export class CompanyComponent implements OnInit {
   }
 
   ngOnInit() {
+    let t:string = "Ninesselas - Empresas";
+    this.title.setTitle(t);
+
+    this.seo.generateTags({
+      title: "Ninesselas - Empresas",
+      description: "Nines Selas Agency",
+      slug: "empresas"
+    });
+
     this.authService.findByToken()
       .subscribe(res => this.companyInfo = res);
     this.authService.getAllUsers()

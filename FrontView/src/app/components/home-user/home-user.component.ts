@@ -5,6 +5,8 @@ import { Observable } from 'rxjs/internal/Observable';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Usuario } from 'src/app/models/usuario';
 import { Router } from '@angular/router';
+import { SeoService } from 'src/app/Services/seo.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home-user',
@@ -20,6 +22,8 @@ export class HomeUserComponent implements OnInit {
 
 
   constructor(
+    private title: Title,
+    private seo: SeoService,
     private router: Router,
     private storage: AngularFireStorage,
     public authService: AuthService,
@@ -27,6 +31,14 @@ export class HomeUserComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    let t:string = "Ninesselas - Usuarios";
+    this.title.setTitle(t);
+
+    this.seo.generateTags({
+      title: "Ninesselas - Usuarios",
+      description: "Nines Selas Agency",
+      slug: "usuarios"
+    });
 
     this.authService.findByToken().subscribe(
       res => {
