@@ -28,6 +28,6 @@ export class SeoService {
     this.meta.updateTag({ property: 'og:title', content: config.title });
     this.meta.updateTag({ property: 'og:description', content: config.description });
     this.meta.updateTag({ property: 'og:image', content: config.image });
-    this.meta.updateTag({ property: 'og:url', content: `localhost/${config.slug}` });
+    this.meta.updateTag({ property: 'og:url', content: `https://www.ninesselas.com/${config.slug}` });
   }
 }
