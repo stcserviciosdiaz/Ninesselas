@@ -13,8 +13,7 @@
               <div class="">
                 <span>Llena el siguiente formulario</span>
               </div>
-              <form [formGroup]="actorForm">
-
+              <form [formGroup]="actorForm">                
                 <div class="form-group">
                   <!-- Subida de avatar -->
                   <label class="control-label">Foto de Perfil</label>
@@ -777,9 +776,7 @@
                         </mat-checkbox>
                       </div>
                     </div>
-
                     <mat-form-field>
-
                       <input matInput placeholder="Otro">
                     </mat-form-field>
                   </mat-card>
@@ -787,7 +784,6 @@
 
                 <div class="form-group example-container">
                   <!-- Cantantes -->
-
                   <mat-form-field>
                     <mat-label>Cantante</mat-label>
                     <mat-select [(ngModel)]="cantanteSelect" [ngModelOptions]="{standalone: true}">
