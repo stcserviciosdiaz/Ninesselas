@@ -80,21 +80,32 @@
                       formControlName="nombreArtistico"
                       [ngClass]="{ 'is-invalid': submitted && actorForm.controls.nombreArtistico.errors }">
                   </mat-form-field>
-
                 </div>
 
-                <div class="form-group">
+                <div class="form-group example-container">
                   <!-- ¿De qué grupo étnico se considera? -->
-                  <label class="control-label">Raza</label>
+                  <!-- <label class="control-label">Raza</label>
                   <select class="form-control" [(ngModel)]="etniaSelect" [ngModelOptions]="{standalone: true}">
                     <option [ngValue]="0" selected>Seleccione...</option>
                     <option [ngValue]="i" *ngFor="let i of etnias">{{i.nombreEtnia}}</option>
-                  </select>
+                  </select> -->
+                  <mat-form-field>
+                    <mat-label>Raza</mat-label>
+                    <mat-select [(ngModel)]="etniaSelect" [ngModelOptions]="{standalone: true}">
+                      <mat-option *ngFor="let i of etnias" [value]="i">
+                        {{i.nombreEtnia}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
                 </div>
-                <div [*ngIf]="etniaSelect.nombreEtnia == 'Otro'" class="form-group">
+                <div *ngIf="etniaSelect.nombreEtnia == 'Otro'" class="form-group example-container">
                   <!-- especifique -->
-                  <label class="control-label">Especifique otro grupo étnico</label>
-                  <textarea forControlName="otro" class="form-control" rows="3"></textarea>
+                  <!-- <label class="control-label">Especifique otro grupo étnico</label>
+                  <textarea forControlName="otro" class="form-control" rows="3"></textarea> -->
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Especifique otro grupo étnico</mat-label>
+                    <textarea matInput placeholder="" forControlName="otro" rows="3"></textarea>
+                  </mat-form-field>
                 </div>
 
                 <fieldset class="form-group">
@@ -366,21 +377,33 @@
                   </div>
                 </div>
 
-                <div class="form-group d-lg-flex d-md-flex d-block">
+                <div class="form-group row">
                   <!-- Carnet de conducir y coche-->
-                  <div class="form-group mr-lg-3 mr-md-3 mr-0">
-                    <label class="control-label">Carnet de conducir</label>
+                  <div class="col-lg-6 example-container">
+                    <!-- <label class="control-label">Carnet de conducir</label>
                     <input type="text" class="d-inline form-control" formControlName="carnetConducir" placeholder=""
-                      [ngClass]="{ 'is-invalid': submitted && actorForm.controls.carnetConducir.errors }">
-
+                      [ngClass]="{ 'is-invalid': submitted && actorForm.controls.carnetConducir.errors }"> -->
+                      <mat-form-field class="example-full-width">
+                        <mat-label>Carnet de conducir</mat-label>
+                        <input matInput placeholder="" formControlName="carnetConducir" 
+                        [ngClass]="{ 'is-invalid': submitted && actorForm.controls.carnetConducir.errors }">
+                      </mat-form-field>
                   </div>
-                  <div class="form-group">
+                  <div class="col-lg-6 example-container">
                     <!-- Tipo de carnet -->
-                    <label for="exampleFormControlSelect2">Tipo de carnet</label>
+                    <!-- <label for="exampleFormControlSelect2">Tipo de carnet</label>
                     <select class="form-control" [(ngModel)]="tipoCarnetSelect" [ngModelOptions]="{standalone: true}">
                       <option [ngValue]="">Seleccione</option>
                       <option [ngValue]="item" *ngFor="let item of typecarnet">{{item}}</option>
-                    </select>
+                    </select> -->
+                    <mat-form-field>
+                      <mat-label>Tipo de carnet</mat-label>
+                      <mat-select [(ngModel)]="tipoCarnetSelect" [ngModelOptions]="{standalone: true}">
+                        <mat-option *ngFor="let item of typecarnet" [value]="item">
+                          {{item}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
                   </div>
                 </div>
 
@@ -443,13 +466,21 @@
                   </div>
                 </div>
                 <!-- Tienes tatuajes? -->
-                <div class="form-group">
-                  <label class="control-label">Tienes tatuajes?</label>
+                <div class="form-group example-container">
+                  <!-- <label class="control-label">Tienes tatuajes?</label>
                   <select class="form-control" id="tattos" formControlName="tattos" [(ngModel)]="LinktattoSelect"
                     [ngModelOptions]="{standalone: true}">
                     <option [ngValue]="0" selected>Seleccione...</option>
                     <option *ngFor="let i of tattos">{{i}}</option>
-                  </select>
+                  </select> -->
+                  <mat-form-field>
+                      <mat-label>Tienes tatuajes?</mat-label>
+                      <mat-select formControlName="tattos" [(ngModel)]="LinktattoSelect" [ngModelOptions]="{standalone: true}">
+                        <mat-option *ngFor="let i of tattos" [value]="i">
+                          {{i}}
+                        </mat-option>
+                      </mat-select>
+                  </mat-form-field>
                 </div>
                 <!-- Adjuntar fotos de tatuaje-->
                 <div *ngIf="LinktattoSelect == 'Si'" class="form-group">
@@ -459,17 +490,31 @@
                 </div>
 
                 <!-- Eres modelo de manos? -->
-                <div class="form-group">
-                  <label class="control-label">Eres modelo de manos?</label>
+                <div class="form-group example-container">
+                  <!-- <label class="control-label">Eres modelo de manos?</label>
                   <select class="form-control" [(ngModel)]="WorkingSelect" [ngModelOptions]="{standalone: true}">
                     <option [ngValue]="0">Seleccione...</option>
                     <option *ngFor="let item of Models">{{item}}</option>
-                  </select>
+                  </select> -->
+                  <mat-form-field>
+                      <mat-label>Eres modelo de manos?</mat-label>
+                      <mat-select [(ngModel)]="WorkingSelect" [ngModelOptions]="{standalone: true}">
+                        <mat-option *ngFor="let item of Models" [value]="item">
+                          {{item}}
+                        </mat-option>
+                      </mat-select>
+                  </mat-form-field>
                 </div>
                 <!-- Link de trabajos -->
-                <div *ngIf="WorkingSelect == 'Si'" class="form-group">
+                <!-- <div *ngIf="WorkingSelect == 'Si'" class="form-group">
                   <label class="control-label">Link de trabajos</label>
                   <input type="text" class="form-control" placeholder="https://www.Trabajos.com">
+                </div> -->
+                <div *ngIf="WorkingSelect == 'Si'" class="example-container">
+                  <mat-form-field class="example-full-width">
+                    <mat-label>Link de trabajos</mat-label>
+                    <input matInput placeholder="https://www.Trabajos.com">
+                  </mat-form-field>
                 </div>
                 <!-- Adjunta fotos Profesionales -->
                 <div *ngIf="WorkingSelect == 'Si'" class="form-group">
