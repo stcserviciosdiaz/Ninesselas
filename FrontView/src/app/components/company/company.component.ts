@@ -4,6 +4,37 @@ import { MdbTableDirective } from 'angular-bootstrap-md';
 import { Usuario } from 'src/app/models/usuario';
 import { SeoService } from 'src/app/Services/seo.service';
 import { Title } from '@angular/platform-browser';
+import { FormControl, Validators, FormGroup, FormGroupDirective, NgForm } from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material';
+
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+  isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
+  }
+}
+
+// custom validator to check that two fields match
+export function MustMatch(controlName: string, matchingControlName: string) {
+  return (formGroup: FormGroup) => {
+    const control = formGroup.controls[controlName];
+    const matchingControl = formGroup.controls[matchingControlName];
+
+    if (matchingControl.errors && !matchingControl.errors.mustMatch) {
+      // return if another validator has already found an error on the matchingControl
+      return;
+    }
+
+    // set error on matchingControl if validation fails
+    if (control.value !== matchingControl.value) {
+      matchingControl.setErrors({ mustMatch: true });
+    } else {
+      matchingControl.setErrors(null);
+    }
+  }
+}
+
 
 @Component({
   selector: 'app-company',
@@ -12,6 +43,13 @@ import { Title } from '@angular/platform-browser';
 })
 
 export class CompanyComponent implements OnInit {
+  emailFormControl = new FormControl('', [
+    //Validators.required,
+    Validators.email,
+  ]);
+
+  matcher = new MyErrorStateMatcher();
+
   @ViewChild(MdbTableDirective, { static: true }) mdbTable: MdbTableDirective;
   companyInfo;
   allUsers: Usuario[];

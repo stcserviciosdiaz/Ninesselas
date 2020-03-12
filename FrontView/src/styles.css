@@ -2,6 +2,13 @@
 @import"~ngx-smart-modal/ngx-smart-modal";
 @import"~animate.css/animate.min";
 /*Tamaños de texto*/
+.fg-10 {
+    font-size: 10px;
+}
+.fg-5 {
+    font-size: 5px;
+}
+
 .fg-30 {
     font-size: 30px;
 }

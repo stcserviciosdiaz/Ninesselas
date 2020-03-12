@@ -1,28 +1,34 @@
 <div class="wrapper ">
   <div class="sidebar" data-color="white" data-active-color="danger">
     <div class="logo">
-      <a href="/home" class="simple-text logo-mini">
+      <a routerLink="#/home" class="simple-text logo-mini">
         <div class="logo-image-small">
           <img [src]="obsAvatar" style="border-radius: 50%;" /></div>
       </a>
-      <a href="/home" class="fg-16 simple-text logo-normal">
-        Administrativo
+      <a routerLink="#/home" class="fg-16 simple-text logo-normal">
+        {{userInfo.nombres}} {{userInfo.apellidos}}
       </a>
     </div>
     <div class="sidebar-wrapper">
       <ul class="nav">
         <li class="active ">
-          <a>
-            <i class="fas fa-user-cog"></i>
-            <p>Dashboard</p>
-          </a>
+            <a routerLink="#/home">
+              <i class="fas fa-home"></i>
+              <p>Home</p>
+            </a>
+          </li>
+          <li>
+            <a data-toggle="modal" data-target="#modalDatauser">
+                <i class="fas fa-digital-tachograph"></i>
+                <p>Mi Perfil</p>
+            </a>
         </li>
       </ul>
     </div>
   </div>
   <div class="main-panel">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+    <!-- <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
       <div class="container-fluid">
         <div class="navbar-wrapper">
           <div class="navbar-toggle">
@@ -32,7 +38,7 @@
               <span class="navbar-toggler-bar bar3"></span>
             </button>
           </div>
-          <a>{{userInfo.idUser}} {{userInfo.username}} : {{userInfo.nombres}} {{userInfo.apellidos}}</a>
+          <a>{{userInfo.idUser}}  : {{userInfo.nombres}} {{userInfo.apellidos}}</a>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
           aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -49,9 +55,28 @@
           </ul>
         </div>
       </div>
+    </nav> -->
+    <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+        <div class="container-fluid">
+          <div class="col-12 col-lg-6">
+            <a class="text-dark"><i class="fas fa-envelope-open-text"> &nbsp; {{userInfo.username}}</i></a>
+          </div>
+          <div class="col-12 col-lg-6">
+            <div class="row py-2">
+              <div class="col">
+                  <a class="d-lg-none d-block text-dark" data-toggle="modal" data-target="#modalDatauser">
+                      <i class="fas fa-digital-tachograph"> &nbsp;Mi Perfil</i></a>
+              </div>
+              <div class="col">
+                  <a class="d-lg-none d-block text-dark" routerLink="#/home"><i class="fas fa-home"> &nbsp; Home</i></a>
+              </div>
+              <div class="col" style="cursor: pointer;">
+                  <a class="text-dark" (click)="authService.logoutUser()"><i class="fas fa-file-export"> &nbsp; Salir</i></a>
+              </div>
+            </div>
+          </div>
+        </div>
     </nav>
-
-
     <div class="content">
       <div class="row">
         <div class="col-lg-3 col-md-6 col-sm-6">
@@ -163,56 +188,22 @@
       <div class="row">
         <div class="col-md-12">
           <div class="card ">
-            <div class="card-header ">
-              <h5 class="card-title">Información de Usuario Administrativo</h5>
-            </div>
+            
             <div class="card-body ">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <tbody>
-                  <tr>
-                    <td>Nombre Usuario</td>
-                    <td>{{userInfo.username}}</td>
-                  </tr>
-                  <tr>
-                    <td>Correo eléctronico</td>
-                    <td>{{userInfo.email}}</td>
-                  </tr>
-                  <tr>
-                    <td>Contraseña</td>
-                    <td>{{userInfo.password}}</td>
-                  </tr>
-                  <tr>
-                    <td>Teléfonos</td>
-                    <td>{{userInfo.telefono}}</td>
-                  </tr>
-                </tbody>
-              </table>
-
-
-
               <mdb-card cascade="true" narrower="true">
                 <!--Card image-->
                 <div style="padding: 25px;"
                   class="view view-cascade gradient-card-header blue-gradient narrower py-4 mx-2 mb-3 d-flex justify-content-between align-items-center">
-
                   <div style="width: 50%;">
                     <div class="md-form">
                       <input type="text" placeholder="Búsqueda por parámetros" [(ngModel)]="searchText"
                         class="form-control" id="search" mdbInput>
                     </div>
                   </div>
-
-                  <a href="" class="white-text mx-3">Usuarios</a>
-
-                  <div>
-
-                  </div>
-
+                  <a href="" class="white-text mx-3" data-toggle="modal" data-target="#ModalNforUser">Usuarios</a>
                 </div>
                 <!--/Card image-->
-
                 <div class="px-8">
-
                   <div class="table-wrapper">
                     <table class="mb-0" hover="true" ng-table="tableParams2" small="true" resposive="true"
                       striped="true" mdbTable mdbTableScroll scrollY="true" maxHeight="350" scrollX="true"
@@ -251,16 +242,30 @@
                           <td>{{user.telefono}}</td>
                           <td>
                             <div class="d-flex flex-row">
-                              <button type="button" mdbBtn color="danger" rounded="true" size="sm"
-                                (click)="removeUser(i,user.idUser)">Eliminar</button>
-
-                              <button type="button" mdbBtn mdbWavesEffect gradient="blue" rounded="true" size="sm"
-                                (click)="editarUser(i,user)">Editar</button>
-
-                              <button type="button" mdbBtn color="warning" rounded="true" data-toggle="modal"
-                                data-target="#basicExample" (click)="pasarUsuarioUpdatePassword(user);frame.show()"
-                                mdbWavesEffect>Up
-                                Pass</button>
+                                <button class="btn-danger"
+                                        mat-raised-button
+                                        matTooltip="Eliminar"
+                                        aria-label="Eliminar"
+                                        (click)="removeUser(i,user.idUser)">
+                                        <i class="fas fa-trash-alt"></i>
+                                </button>
+                                <button class="btn-primary"
+                                        mat-raised-button
+                                        matTooltip="Ver & Editar"
+                                        aria-label="Ver & Editar"
+                                        (click)="editarUser(i,user)">
+                                        <i class="fas fa-eye"></i>
+                                </button>
+                                <button class="btn-warning"
+                                        mat-raised-button
+                                        matTooltip="Cambiar contraseña"
+                                        aria-label="Cambiar contraseña"
+                                        data-toggle="modal"
+                                        data-target="#basicExample" 
+                                        (click)="pasarUsuarioUpdatePassword(user);frame.show()">
+                                        <i class="fas fa-edit"></i>
+                                </button>
+                                <!-- data-toggle="modal" data-target="#ModalNforUser" (click)="editarUser(i,user)" -->
                             </div>
                           </td>
                       </tbody>
@@ -309,7 +314,6 @@
         </div>
       </div>
     </footer>
-
   </div>
 </div>
 
@@ -322,43 +326,30 @@
       <!--Header-->
       <div class="modal-header">
         <p class="heading lead">Cambio de Contraseña</p>
-
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
           <span aria-hidden="true" class="white-text">&times;</span>
         </button>
       </div>
-
       <!--Body-->
       <div class="modal-body">
-
         <form [formGroup]="validatingForm">
-
-
           <div class="md-form form-sm">
             <mdb-icon fas icon="envelope" class="prefix"></mdb-icon>
             <input mdbInput type="text" id="form24" class="form-control" formControlName="modalFormRegisterEmail"
               readonly />
             <label for="form24">Email</label>
           </div>
-
-
           <div class="md-form form-sm">
             <mdb-icon fas icon="lock" class="prefix"></mdb-icon>
             <label for="form25"> Nuevo Password</label>
-
             <input mdbInput mdbValidate type="password" id="form25" class="form-control"
               formControlName="modalFormRegisterPassword"
               [ngClass]="{ 'is-invalid': validatingForm.controls.modalFormRegisterPassword.errors }">
             <div *ngIf="validatingForm.controls.modalFormRegisterPassword.errors" class="invalid-feedback">
               <div *ngIf="validatingForm.controls.modalFormRegisterPassword.errors.required">La contraseña es requerida
               </div>
-
             </div>
-
           </div>
-
-
-
           <div class="md-form form-sm">
             <mdb-icon fas icon="lock" class="prefix"></mdb-icon>
             <label for="form26">Confirmar password</label>
@@ -373,12 +364,8 @@
               </div>
             </div>
           </div>
-
         </form>
-
-
       </div>
-
       <!--Footer-->
       <div class="modal-footer justify-content-center">
         <a type="button" mdbBtn color="danger" (click)="actualizarPassword();frame.hide()" outline="true"
@@ -392,3 +379,520 @@
     <!--/.Content-->
   </div>
 </div>
+
+
+
+
+
+<!---------------------------------------------------------- Modales -------------------------------------------------------->
+
+
+<!-- Modal Datos de Usuario Empresa-->
+<div class="modal fade" id="modalDatauser" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+aria-hidden="true">
+<div class="modal-dialog modal-notify modal-primary" role="document">
+  <!--Content-->
+  <div class="modal-content">
+    <!--Header-->
+    <div class="modal-header">
+      <h6 class="card-title">Usuario Administrativo</h6>
+      <p class="text-muted " style="font-size: 13px"></p>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true" class="white-text">&times;</span>
+      </button>
+    </div>
+    <!--Body-->
+    <div class="modal-body">
+        <div class="row">
+          <div class="col-12">
+              <form class="example-form example-container">
+                  <mat-form-field class="example-full-width" fxFlex>
+                    <mat-label>{{userInfo.username}}</mat-label>
+                    <input matInput placeholder="{{userInfo.username}}" readonly>
+                  </mat-form-field>
+                
+                  <mat-form-field class="example-full-width" fxFlex>
+                      <mat-label>{{userInfo.email}}</mat-label>
+                      <input matInput placeholder="{{userInfo.email}}" readonly>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width" fxFlex>
+                      <mat-label>{{userInfo.telefono}}</mat-label>
+                      <input matInput placeholder="{{userInfo.telefono}}" readonly>
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width" readonly>
+                      <mat-label>{{userInfo.password}}</mat-label>
+                      <input matInput [type]="hide ? 'password' : 'text'" readonly>
+                      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" >
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                      </button>
+                  </mat-form-field>
+              </form>
+          </div>
+        </div>
+      </div>
+    <!--Footer-->
+    <div class="modal-footer justify-content-center">
+      <a type="button" class="btn btn-primary"><i class="fas fa-user-edit"></i>&nbsp; Editar</a>
+      <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal"><i class="fas fa-times-circle"></i>&nbsp; No, Gracias</a>
+    </div>
+  </div>
+  <!--/.Content-->
+</div>
+</div>
+
+<!--Modal: Usuarios Editor-->
+<div class="modal fade" id="ModalNforUser" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-info" role="document">
+    <!--Content-->
+    <div class="modal-content text-center">
+      <!--Header-->
+      <div class="modal-header d-flex justify-content-center">
+        <p class="heading">Nombre de Usuario</p>
+      </div>
+      <!--Body-->
+      <div class="modal-body scroll-modal-out">
+
+        <!-- <form [formGroup]="validatingForm">
+              <div class="form-group">
+                <label class="control-label">Foto de Perfil</label>
+                <input type="file" accept="image/*" (change)="onAvatarSelected($event)" formControlName="avatar"><br>
+              </div>
+              <div class="form-group">
+                <label class="control-label">Foto cuerpo entero</label>
+                <input type="file" accept="image/*" (change)="onFileCuerpoEnteroSelected($event)"
+                  formControlName="avatar"><br>
+              </div>
+              <div class="form-group">
+                <label class="control-label">Foto artistico</label>
+                <input type="file" accept="image/*" (change)="onFileArtisticoSelected($event)"
+                  formControlName="avatar"><br>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-6 example-container">
+                    <mat-form-field>
+                      <input matInput placeholder="Nombre" id="nombres" formControlName="nombres">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-6 example-container">
+                    <mat-form-field>
+                      <input matInput placeholder="Apellido" id="apellidos" formControlName="apellidos">
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <div class="example-container form-group">
+                <mat-form-field>
+                  <mat-label>¿ Que edad Tiene ?</mat-label>
+                  <mat-select formControlName="edad">
+                    <mat-option>Ninguno</mat-option>
+                    <mat-option *ngFor="let item of edad" [value]="item">
+                        ¿ Que edad Tiene ?
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <fieldset class="form-group">
+                <div class="row">
+                  <legend class="col-form-label col-sm-2 pt-0">Sexo</legend>
+                  <mat-radio-group (change)="onChangeGenero($event)" name="gender" aria-label="Seleccione un Género">
+                    <div class="col">
+                      <mat-radio-button value="Masculino" id="gridRadios1">Masculino
+                      </mat-radio-button>
+                    </div>
+                    <div class="col">
+                      <mat-radio-button value="Femenino" id="gridRadios2">Femenino
+                      </mat-radio-button>
+                    </div>
+                  </mat-radio-group>
+                </div>
+              </fieldset>
+              <div class="form-group example-container">
+                <mat-form-field>
+                    <mat-label>Raza</mat-label>
+                    <mat-select [(ngModel)]="etniaSelect" [ngModelOptions]="{standalone: true}">
+                      <mat-option [value]="i">
+                          Raza
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="form-group example-container">
+                <mat-form-field class="example-full-width">
+                  <mat-label>Especifique otro grupo étnico</mat-label>
+                  <textarea matInput placeholder="" forControlName="otro" rows="3"></textarea>
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-6 example-container">
+                    <mat-form-field>
+                      <mat-label>Dia/Mes/Año</mat-label>
+                      <input matInput (dateInput)="onChangeDate($event)" [matDatepicker]="pd" [value]="date"
+                        placeholder="">
+                      <mat-datepicker-toggle matSuffix [for]="pd"></mat-datepicker-toggle>
+                      <mat-datepicker #pd disabled="false"></mat-datepicker>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-6 example-container">
+                    <mat-form-field>
+                      <input id="placebirth" formControlName="placebirth" matInput placeholder="Lugar de nacimiento">
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-6 example-container">
+                    <mat-form-field>
+                      <input id="nacionalidad" formControlName="nacionalidad" matInput placeholder="Nacionalidad">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-6 example-container">
+                    <mat-form-field>
+                      <input id="telefono" formControlName="telefono" matInput
+                        placeholder="Numero de Teléfono">
+                    </mat-form-field>
+                  </div>
+                </div>
+                <div class="example-container">
+                  <mat-form-field>
+                    <input formControlName="email" matInput placeholder="Email" type="email">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="form-group example-container">
+                <mat-form-field>
+                    <mat-label>Eres Actor</mat-label>
+                    <mat-select formControlName="actor" [ngModelOptions]="{standalone: true}">
+                      <mat-option [value]="i.name">
+                          Eres Actor
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+              </div>
+              <div *ngIf="childForm.controls.actor.value == 'Si'" class="form-group">
+                <div class="example-container">
+                    <mat-form-field class="example-full-width">
+                      <mat-label>Link de VideoBook</mat-label>
+                      <input formControlName="videoBook" matInput placeholder="https://www.videoBook.com">
+                    </mat-form-field>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-6 example-container">
+                    <mat-form-field>
+                      <input id="pie" formControlName="pie" matInput placeholder="Talla de Pie">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-lg-6 example-container">
+                    <mat-form-field>
+                      <input id="altura" formControlName="altura" matInput placeholder="Talla de Altura" type="number"
+                        ng-pattern="/^[0-9]+(\.[0-9]{1,2})?$/" step="0.01">
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-4 example-container">
+                    <mat-form-field>
+                      <input id="tallaCamisa" formControlName="tallaCamisa" matInput placeholder="Talla de camisa">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-lg-4 example-container">
+                    <mat-form-field>
+                      <input id="tallaChaqueta" formControlName="tallaChaqueta" matInput
+                        placeholder="Talla de chaqueta">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-lg-4 example-container">
+                    <mat-form-field>
+                      <input id="tallaPantalon" formControlName="tallaPantalon" matInput
+                        placeholder="Talla de pantalon">
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-4 example-container">
+                    <mat-form-field>
+                      <input formControlName="colorPiel" matInput placeholder="Color Piel">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-lg-4 example-container">
+                    <mat-form-field>
+                      <input formControlName="colorPelo" matInput placeholder="Color Pelo">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-lg-4 example-container">
+                    <mat-form-field>
+                      <input formControlName="colorOjos" matInput placeholder="Color ojos">
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group example-container">
+                <mat-form-field>
+                  <input matInput placeholder="Dirección" id="direccion" formControlName="direccion">
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-lg-4 example-container">
+                    <mat-form-field>
+                      <input id="localidad" formControlName="localidad" matInput placeholder="Localidad">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-lg-4 example-container">
+                    <mat-form-field>
+                      <input id="provincia" formControlName="provincia" matInput placeholder="Provincia">
+                    </mat-form-field>
+                  </div>
+                  <div class="col-lg-4 example-container">
+                    <mat-form-field>
+                      <input id="codpostal" formControlName="codpostal" matInput
+                        placeholder="Codigo postal">
+                    </mat-form-field>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group example-container">
+                <mat-form-field>
+                  <input matInput placeholder="Numero DNI" id="numeroDNI" formControlName="numeroDNI">
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <label>Copia del Numero DNI del niño</label>
+                <input type="file" accept="image/*" (change)="copyDNIkidSelected($event)"
+                  formControlName="copyDNIkid">
+              </div>
+              <div class="form-group example-container">
+                <mat-form-field>
+                  <input matInput placeholder="Numero propio de la seguridad social del niño"
+                    id="numeroSeguridadSocial" formControlName="numeroSeguridadSocial">
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <label>Copia numero seguridad social del niño</label>
+                <input type="file" accept="image/*" (change)="copySocialNumberSelected($event)"
+                  formControlName="copySocialNumber">
+              </div>
+              <div class="form-group example-container">
+                <mat-form-field>
+                  <input matInput placeholder="DNI del padre" id="numeroDNIPadre" formControlName="numeroDNIPadre">
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <label>Copia del DNI del padre</label>
+                <input type="file" accept="image/*" (change)="copyDNIFatherSelected($event)"
+                  formControlName="copyDNIFather">
+              </div>
+              <div class="form-group example-container">
+                <mat-form-field>
+                  <input matInput placeholder="Numero de Teléfono del padre" id="telefonofather"
+                    formControlName="telefonofather">
+                </mat-form-field>
+              </div>
+              <div class="form-group example-container">
+                <mat-form-field>
+                  <input matInput placeholder="DNI de la Madre" id="numeroDNIMadre" formControlName="numeroDNIMadre">
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <label>Copia del DNI de la madre</label>
+                <input type="file" accept="image/*" (change)="copyDNIMotherSelected($event)"
+                  formControlName="CopyDNIMother">
+              </div>
+              <div class="form-group example-container">
+                <mat-form-field>
+                  <input id="telefonomother" (keypress)="numberOnly($event)" formControlName="telefonomother" matInput
+                    placeholder="Numero de Teléfono de la madre">
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <label>Libro de familiar</label>
+                <input type="file" accept="image/*" (change)="onFamilyBookSelected($event)"
+                  formControlName="libroFamilia">
+              </div>
+              <div class="form-group example-container">
+                <mat-form-field>
+                  <mat-label>¿ Es Deportista?</mat-label>
+                  <mat-select [(ngModel)]="deportistaSelect" [ngModelOptions]="{standalone: true}">
+                    <mat-option>Ninguno</mat-option>
+                    <mat-option [value]="item">
+                        ¿ Es Deportista?
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <mat-card>
+                  <h5 class="pb-1">Habilidades del deporte</h5>
+                  <hr>
+                  <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                    <div *ngFor="let item of deportes" class="col-md-4 col-sm-6 col-12"
+                      style="padding: 5px 0px 5px 0px;">
+                      <mat-checkbox (change)="OnChange($event, item, 1)">
+                        <span class="itemitle">Habilidades del deporte</span>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                  <mat-form-field>
+                    <input matInput placeholder="Otro">
+                  </mat-form-field>
+                </mat-card>
+              </div>
+              <div class="form-group example-container">
+                <mat-form-field>
+                  <mat-label>Baile</mat-label>
+                  <mat-select [(ngModel)]="baileSelect" [ngModelOptions]="{standalone: true}">
+                    <mat-option>Ninguno</mat-option>
+                    <mat-option [value]="item">
+                        Baile
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <mat-card>
+                  <h5 class="pb-1">Estilos de Baile</h5>
+                  <hr>
+                  <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                    <div *ngFor="let item of estilosBaile" class="col-md-4 col-sm-6 col-12"
+                      style="padding: 5px 0px 5px 0px;">
+                      <mat-checkbox (change)="OnChange($event, item, 2)">
+                        <span class="itemitle">Estilos de Baile</span>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                  <mat-form-field>
+                    <input matInput placeholder="Otro">
+                  </mat-form-field>
+                </mat-card>
+              </div>
+              <div class="form-group example-container">
+                <mat-form-field>
+                  <mat-label>Músico</mat-label>
+                  <mat-select [(ngModel)]="musicoSelect" [ngModelOptions]="{standalone: true}">
+                    <mat-option>Ninguno</mat-option>
+                    <mat-option [value]="item">
+                        Músico
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <mat-card>
+                  <h5 class="pb-1">Instrumentos musical</h5>
+                  <hr>
+                  <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                    <div *ngFor="let item of instrumentoss" class="col-md-4 col-sm-6 col-12"
+                      style="padding: 5px 0px 5px 0px;">
+                      <mat-checkbox (change)="OnChange($event, item, 3)">
+                        <span class="itemitle">Instrumentos musical</span>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                  <mat-form-field>
+                    <input matInput placeholder="Otro">
+                  </mat-form-field>
+                </mat-card>
+              </div>
+              <div class="form-group example-container">
+                <mat-form-field>
+                  <mat-label>Cantante</mat-label>
+                  <mat-select [(ngModel)]="cantanteSelect" [ngModelOptions]="{standalone: true}">
+                    <mat-option>Ninguno</mat-option>
+                    <mat-option [value]="item">
+                        Cantante
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                <mat-card>
+                  <h5 class="pb-1">Estilos de cantos</h5>
+                  <hr>
+                  <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                    <div *ngFor="let item of estilosCanto" class="col-md-4 col-sm-6 col-12"
+                      style="padding: 5px 0px 5px 0px;">
+                      <mat-checkbox (change)="OnChange($event, item, 4)">
+                        <span class="itemitle">Estilos de cantos</span>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                  <mat-form-field>
+                    <input matInput placeholder="Otro">
+                  </mat-form-field>
+                </mat-card>
+              </div>
+              <div class="form-group">
+                <mat-card>
+                  <h5 class="pb-1">Habilidades</h5>
+                  <hr>
+                  <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                    <div *ngFor="let item of habilidadess" class="col-md-4 col-sm-6 col-12"
+                      style="padding: 5px 0px 5px 0px;">
+                      <mat-checkbox (change)="OnChange($event, item, 5)">
+                        <span class="itemitle">Habilidades</span>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                  <mat-form-field>
+                    <input matInput placeholder="Otro">
+                  </mat-form-field>
+                </mat-card>
+              </div>
+              <div class="form-group">
+                <mat-card>
+                  <h5 class="pb-1">Idiomas</h5>
+                  <hr>
+                  <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                    <div *ngFor="let item of idiomas" class="col-md-4 col-sm-6 col-12"
+                      style="padding: 5px 0px 5px 0px;">
+                      <mat-checkbox (change)="OnChange($event, item, 6)">
+                        <span class="itemitle">Idiomas</span>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                  <mat-form-field>
+                    <input matInput placeholder="Otro">
+                  </mat-form-field>
+                </mat-card>
+              </div>
+              <div class="form-group example-container">
+                <mat-form-field>
+                  <input id="bilingue" formControlName="bilingue" matInput placeholder="Bilingue">
+                </mat-form-field>
+              </div>
+              <div class="form-group">
+                  <mat-form-field> 
+                        <textarea id="observaciones" formControlName="ultimosTrabajos" matInput
+                        placeholder="Observaciones"></textarea>
+                  </mat-form-field>
+              </div>
+              <div class="form-group example-container">
+                <mat-form-field>
+                  <textarea id="observaciones" formControlName="observaciones" matInput
+                    placeholder="Observaciones"></textarea>
+                </mat-form-field>
+              </div>
+          </form> -->
+
+      </div>
+      <!--Footer-->
+      <div class="modal-footer flex-center">
+        <a href="" class="btn btn-info">Yes</a>
+        <a type="button" class="btn btn-outline-info waves-effect" data-dismiss="modal">No</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!--Modal: ModalNforUser-->

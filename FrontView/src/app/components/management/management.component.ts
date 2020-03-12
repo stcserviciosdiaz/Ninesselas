@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { SeoService } from 'src/app/Services/seo.service';
 import { Title } from '@angular/platform-browser';
+
 export function MustMatch(controlName: string, matchingControlName: string) {
   return (formGroup: FormGroup) => {
     const control = formGroup.controls[controlName];
@@ -240,8 +241,6 @@ export class ManagementComponent implements OnInit {
       localStorage.setItem('ninioedit', user.idUser);
     }
   }
-
-  
 
   /**ELIMINACION */
   removeUser(idList: any, userId: any) {
