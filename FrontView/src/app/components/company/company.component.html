@@ -91,6 +91,7 @@
                 class="form-control" id="search" mdbInput>
             </div>
       </div>
+      
       <div class="row main-scroll">
         <div class="col-md-12">
           <!-- <div class="card ">
@@ -171,7 +172,13 @@
             </div>
           </div> -->
             <!-- Card -->
+            
             <div class="row">
+                <div class="center-spiner" *ngIf="!allUsers">
+                  <div class="modal-dialog modal-sm">
+                      <span class="fa fa-spinner fa-spin fa-3x"></span>
+                  </div>
+                </div>
                 <div class="col-md-4" *ngFor="let user of allUsers; let i = index">
                   <div class="card mb-4 shadow-sm">
                     <img src="/assets/img/perfil.jpg" style="min-height: 225px; max-height: 225px;" class="img-responsive" alt="">
@@ -243,13 +250,12 @@ aria-hidden="true">
     <!--Body-->
     <div class="modal-body">
         <div class="row">
-          <div class="col-3 text-center">
+          <!-- <div class="col-3 text-center">
             <img src="/assets/img/perfil.jpg" style="min-height: 100px; max-height: 100px;" alt="" class="img-fluid z-depth-1-half rounded-circle">
             <div style="height: 10px"></div>
             <p class="title mb-0">{{companyInfo.username}}</p>
-            
-          </div>
-          <div class="col-9">
+          </div> -->
+          <div class="col-12">
               <form class="example-form example-container">
                   <mat-form-field class="example-full-width" fxFlex>
                     <mat-label>{{companyInfo.username}}</mat-label>
