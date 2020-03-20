@@ -17,8 +17,8 @@ export class AuthService {
     private router: Router
   ) {
 
-    //this.urlGenerica = 'http://localhost:5000/';
-    this.urlGenerica = 'https://servicio-ninesselas.herokuapp.com/';
+    this.urlGenerica = 'http://localhost:5000/';
+    //this.urlGenerica = 'https://servicio-ninesselas.herokuapp.com/';
   }
 
   /********  USUARIO *******/
@@ -27,7 +27,7 @@ export class AuthService {
   }
 
   findUsuariosByTipo(expresion): Observable<any> {
-    return this.http.post(this.urlGenerica + 'servicio-login/listaByTipoUser', expresion);
+    return this.http.post(this.urlGenerica + 'servicio-login/listar2', expresion);
   }
 
   editUser(user): Observable<any> {

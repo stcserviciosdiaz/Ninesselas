@@ -1,8 +1,8 @@
 import { tallas } from './../../models/tallas';
 import { Usuario } from './../../models/usuario';
-import { Component, OnInit, HostListener, ViewChild } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { AuthService } from '../../Services/auth.service';
-import { MdbTableDirective } from 'angular-bootstrap-md';
+import { MdbTableDirective, MdbTablePaginationComponent } from 'angular-bootstrap-md';
 import { Router } from "@angular/router";
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { NgxSmartModalService } from 'ngx-smart-modal';
@@ -10,6 +10,9 @@ import { Observable } from 'rxjs';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { SeoService } from 'src/app/Services/seo.service';
 import { Title } from '@angular/platform-browser';
+
+
+
 export function MustMatch(controlName: string, matchingControlName: string) {
   return (formGroup: FormGroup) => {
     const control = formGroup.controls[controlName];
@@ -41,8 +44,37 @@ export class ManagementComponent implements OnInit {
   /**URL IMAGENES FIREBASE **/
   obsAvatar: Observable<string>;
 
-  @ViewChild(MdbTableDirective, { static: true }) 
+  @ViewChild(MdbTablePaginationComponent, { static: true }) mdbTablePagination: MdbTablePaginationComponent;
+  elements: any = [];
+  previous: any = [];
+  headElements = ['ID',
+    'Nombres Completos',
+    'Mayor de Edad',
+    'Nombre Artístico',
+    'Género',
+    'Fecha de Nacimiento',
+    'País',
+    'Altura',
+    'Color de Piel',
+    'Color de Pelo',
+    'Color de Ojos',
+    'Correo de Contacto',
+    'Teléfono de Contacto',
+    'Opciones',];
+
+  @ViewChild(MdbTableDirective, { static: true })
+  mdbTable: MdbTableDirective;
+
+
+  @ViewChild(MdbTableDirective, { static: true })
   mdbTableUsers: MdbTableDirective;
+
+
+  /*******TOTAL X TIPO USUARIO */
+  totalFiguracion: any = 0;
+  totalActor: any = 0;
+  totalNinio: any = 0;
+
   userInfo: Usuario = new Usuario();
   allUsers: Usuario[] = [];
   editField: string;
@@ -80,6 +112,7 @@ export class ManagementComponent implements OnInit {
   ];
 
   constructor(
+    private cdRef: ChangeDetectorRef,
     private title: Title,
     private seo: SeoService,
     private storage: AngularFireStorage,
@@ -88,10 +121,30 @@ export class ManagementComponent implements OnInit {
     public authService: AuthService,
     private router: Router,
   ) {
+    this.authService.findUsuariosByTipo([1, 2, 3])
+      .subscribe(res => {
+        this.allUsers = res;
+        // this.mdbTableUsers.setDataSource(this.allUsers);
+        //this.previousUser = this.mdbTableUsers.getDataSource();
+        this.numberOfUsers = this.allUsers.length;
+        //this.llenaListasVacias();
+
+        this.mdbTable.setDataSource(this.allUsers);
+        this.elements = this.mdbTable.getDataSource();
+        this.previous = this.mdbTable.getDataSource();
+
+      });
+  }
+  ngAfterViewInit() {
+    this.mdbTablePagination.setMaxVisibleItemsNumberTo(5);
+
+    this.mdbTablePagination.calculateFirstItemIndex();
+    this.mdbTablePagination.calculateLastItemIndex();
+    this.cdRef.detectChanges();
   }
 
   ngOnInit() {
-    let t:string = "Ninesselas - Administrador";
+    let t: string = "Ninesselas - Administrador";
     this.title.setTitle(t);
 
     this.seo.generateTags({
@@ -110,15 +163,25 @@ export class ManagementComponent implements OnInit {
         this.userInfo = new Usuario();
       });
 
-    this.authService.findUsuariosByTipo([1, 2, 3])
-      .subscribe(res => {
-        this.allUsers = res;
-        this.mdbTableUsers.setDataSource(this.allUsers);
-        this.previousUser = this.mdbTableUsers.getDataSource();
-        this.numberOfUsers = this.allUsers.length;
-        this.llenaListasVacias();
 
+    this.authService.findUsuariosByTipo([2])
+      .subscribe(res => {
+        this.totalFiguracion = res.length;
       });
+
+
+    this.authService.findUsuariosByTipo([1])
+      .subscribe(res => {
+        this.totalActor = res.length;
+      });
+
+
+    this.authService.findUsuariosByTipo([3])
+      .subscribe(res => {
+        console.log('valor'+res.length);
+        this.totalNinio = res.length;
+      });
+
   }
 
   pasarFotos() {
@@ -179,14 +242,26 @@ export class ManagementComponent implements OnInit {
 
 
   buscarUsuarios() {
+
+    const prev1 = this.mdbTable.getDataSource();
+
+
+
+
     const prev = this.mdbTableUsers.getDataSource();
     if (!this.searchText) {
-      this.mdbTableUsers.setDataSource(this.previousUser);
-      this.allUsers = this.mdbTableUsers.getDataSource();
+      // this.mdbTableUsers.setDataSource(this.previousUser);
+      // this.allUsers = this.mdbTableUsers.getDataSource();
+
+      this.mdbTable.setDataSource(this.previous);
+      this.allUsers = this.mdbTable.getDataSource();
     }
     if (this.searchText) {
-      this.allUsers = this.mdbTableUsers.searchLocalDataBy(this.searchText);
-      this.mdbTableUsers.setDataSource(prev);
+      //this.allUsers = this.mdbTableUsers.searchLocalDataBy(this.searchText);
+      //this.mdbTableUsers.setDataSource(prev);
+
+      this.allUsers = this.mdbTable.searchLocalDataBy(this.searchText);
+      this.mdbTable.setDataSource(prev1);
     }
   }
 
@@ -229,24 +304,49 @@ export class ManagementComponent implements OnInit {
   /**IR A EDICION DE USUARIO */
   editarUser(idList: any, user: any) {
     localStorage.setItem('useredit', user.idUser);
-    if (user.idType.nombres === 'FIGURACION') {
-      this.router.navigate(['/figuracionedit']);
-      localStorage.setItem('figuracionedit', user.idUser);
-    } else if (user.idType.nombres === 'ACTOR') {
-      this.router.navigate(['/actoredit']);
-      localStorage.setItem('actoredit', user.idUser);
-    } else if (user.idType.nombres === 'NIÑOS') {
-      this.router.navigate(['/ninioedit']);
-      localStorage.setItem('ninioedit', user.idUser);
-    }
+
+
+
+    this.authService.finByIdUsuario(user.idUser)
+      .subscribe(
+        res => {
+          console.log(res);
+          user = res;
+
+          if (user.idType.nombres === 'FIGURACION') {
+            this.router.navigate(['/figuracionedit']);
+            localStorage.setItem('figuracionedit', user.idUser);
+          } else if (user.idType.nombres === 'ACTOR') {
+            this.router.navigate(['/actoredit']);
+            localStorage.setItem('actoredit', user.idUser);
+          } else if (user.idType.nombres === 'NIÑOS') {
+            this.router.navigate(['/ninioedit']);
+            localStorage.setItem('ninioedit', user.idUser);
+          }
+        }
+      );
+
+
   }
 
-  
+
 
   /**ELIMINACION */
-  removeUser(idList: any, userId: any) {
-    this.allUsers.splice(idList, 1);
-    this.authService.deleteUser(userId).subscribe(res => console.log(res));
+  public idListaEliminar: any;
+  public idUSerEliminar: any;
+  public nombreUserElimina: any;
+  removeUser(idList: any, userId: any, nombresDelete: any, apellidoDelete: any) {
+    this.idListaEliminar = idList;
+    this.idUSerEliminar = userId;
+    this.nombreUserElimina = nombresDelete + " " + apellidoDelete;
+
+  }
+
+  eliminarUser() {
+    this.allUsers.splice(this.idListaEliminar, 1);
+    this.authService.deleteUser(this.idUSerEliminar).subscribe(res => console.log(res));
+    this.ngxSmartModalService.create('confirmaeliminaUser', 'Usuario Eliminado Correctamente').open();
+
   }
 
   changeValue(id: number, property: string, event: any) {

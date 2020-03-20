@@ -1,28 +1,8 @@
-<div class="wrapper ">
-  <div class="sidebar" data-color="white" data-active-color="danger">
-    <div class="logo">
-      <a href="/home" class="simple-text logo-mini">
-        <div class="logo-image-small">
-          <img [src]="obsAvatar" style="border-radius: 50%;" /></div>
-      </a>
-      <a href="/home" class="fg-16 simple-text logo-normal">
-        Administrativo
-      </a>
-    </div>
-    <div class="sidebar-wrapper">
-      <ul class="nav">
-        <li class="active ">
-          <a>
-            <i class="fas fa-user-cog"></i>
-            <p>Dashboard</p>
-          </a>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <div class="main-panel">
+<div class="wrapper " style="background-image: url(assets/img/sliderview/slider08-min.jpg);background-size: cover;">
+
+  <div class="main-panel" style="width: 100% !important;">
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
+    <nav class="glassHeader navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
       <div class="container-fluid">
         <div class="navbar-wrapper">
           <div class="navbar-toggle">
@@ -32,7 +12,10 @@
               <span class="navbar-toggler-bar bar3"></span>
             </button>
           </div>
-          <a>{{userInfo.idUser}} {{userInfo.username}} : {{userInfo.nombres}} {{userInfo.apellidos}}</a>
+          <div>
+            <mdb-icon fas icon="user-circle" class="pink-text"></mdb-icon><a> Usuario Logeado : {{userInfo.nombres}}
+              {{userInfo.apellidos}}</a>
+          </div>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation"
           aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,142 +35,181 @@
     </nav>
 
 
-    <div class="content">
+    <div class="content"
+      style="background: linear-gradient(0deg, rgba(2,0,36,1) 0%, #d65b85fa 55%, rgba(245,248,249,0.008841036414565795) 80%);">
+
+
+
+
       <div class="row">
-        <div class="col-lg-3 col-md-6 col-sm-6">
-          <div class="card card-stats">
-            <div class="card-body ">
-              <div class="row">
-                <div class="col-5 col-md-4">
-                  <div class="icon-big text-center icon-warning">
-                    <i class="fas fa-warehouse"></i>
-                  </div>
-                </div>
-                <div class="col-7 col-md-8">
-                  <div class="numbers">
-                    <p class="card-category">Capacity</p>
-                    <p class="card-title">150GB
-                      <p>
-                  </div>
-                </div>
+
+
+        <div class="col-lg-3 col-md-6 col-sm-6  ">
+          <!-- Card -->
+          <mdb-card
+            style="border-radius: 0.75rem !important;background-size: 100% 100%;background-image: url('assets/img/sliderview/slider12-min.jpg')"
+            class="card card-image mb-3 mx-2 rounded mb-0">
+            <!-- Content -->
+            <div style="border-radius: 0.75rem !important;
+              padding: 0.5rem 0.5rem !important;"
+              class="text-white  d-flex align-items-center rgba-black-strong py-5 px-4">
+              <div>
+                <h5 class="pink-text">
+                  <mdb-icon fas icon="users"></mdb-icon>
+                  Usuarios
+                </h5>
+                <h3 class="card-title pt-2" style="text-align: end;"><strong>#{{numberOfUsers}}</strong></h3>
+
               </div>
             </div>
-            <div class="card-footer ">
-              <hr>
-              <div class="stats">
-                <i class="fa fa-refresh"></i> Actualizar ahora
-              </div>
-            </div>
-          </div>
+            <!-- Content -->
+          </mdb-card>
+          <!-- Card -->
         </div>
+
         <div class="col-lg-3 col-md-6 col-sm-6">
-          <div class="card card-stats">
-            <div class="card-body ">
-              <div class="row">
-                <div class="col-5 col-md-4">
-                  <div class="icon-big text-center icon-warning">
-                    <i class="fas fa-users"></i>
-                  </div>
-                </div>
-                <div class="col-7 col-md-8">
-                  <div class="numbers">
-                    <p class="card-category">Usuarios</p>
-                    <p class="card-title">{{numberOfUsers}}
-                      <p>
-                  </div>
-                </div>
+          <!-- Card -->
+          <mdb-card
+            style="border-radius: 0.75rem !important;background-size: 100% 100%;background-image: url('assets/img/sliderview/slider10-min.jpg')"
+            class="card card-image mb-3 mx-2 rounded mb-0">
+            <!-- Content -->
+            <div style="border-radius: 0.75rem !important;padding: 0.5rem 0.5rem !important;"
+              class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+              <div>
+                <h5 class="pink-text">
+                  <mdb-icon fas icon="film"></mdb-icon>
+                  Figuración
+                </h5>
+                <h3 class="card-title pt-2" style="text-align: end;"><strong>#{{totalFiguracion}}</strong></h3>
               </div>
             </div>
-            <div class="card-footer ">
-              <hr>
-              <div class="stats">
-                <i class="fa fa-calendar-o"></i> Último día
-              </div>
-            </div>
-          </div>
+            <!-- Content -->
+          </mdb-card>
+          <!-- Card -->
         </div>
+
+
         <div class="col-lg-3 col-md-6 col-sm-6">
-          <div class="card card-stats">
-            <div class="card-body ">
-              <div class="row">
-                <div class="col-5 col-md-4">
-                  <div class="icon-big text-center icon-warning">
-                    <i class="fab fa-pushed"></i>
-                  </div>
-                </div>
-                <div class="col-7 col-md-8">
-                  <div class="numbers">
-                    <p class="card-category">Errors</p>
-                    <p class="card-title">23
-                      <p>
-                  </div>
-                </div>
+          <!-- Card -->
+          <mdb-card
+            style="border-radius: 0.75rem !important;background-size: 100% 100%;background-image: url('assets/img/sliderview/slider02-min.jpg')"
+            class="card card-image mb-3 mx-2 rounded mb-0">
+            <!-- Content -->
+            <div style="border-radius: 0.75rem !important;
+padding: 0.5rem 0.5rem !important;"
+              class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+              <div>
+                <h5 class="pink-text">
+                  <mdb-icon fas icon="film"></mdb-icon>
+                  Actores/Actrices
+                </h5>
+                <h3 class="card-title pt-2"><strong>#{{totalActor}}</strong></h3>
               </div>
             </div>
-            <div class="card-footer ">
-              <hr>
-              <div class="stats">
-                <i class="fa fa-clock-o"></i> En la ultima hora
-              </div>
-            </div>
-          </div>
+            <!-- Content -->
+          </mdb-card>
+          <!-- Card -->
         </div>
+
+
+
+
+
         <div class="col-lg-3 col-md-6 col-sm-6">
-          <div class="card card-stats">
-            <div class="card-body ">
-              <div class="row">
-                <div class="col-5 col-md-4">
-                  <div class="icon-big text-center icon-warning">
-                    <i class="fab fa-twitter"></i>
-                  </div>
-                </div>
-                <div class="col-7 col-md-8">
-                  <div class="numbers">
-                    <p class="card-category">Seguidores</p>
-                    <p class="card-title">+45K
-                      <p>
-                  </div>
-                </div>
+          <!-- Card -->
+          <mdb-card
+            style="border-radius: 0.75rem !important;background-size: 100% 100%;background-image: url('assets/img/sliderview/slider11-min.jpg')"
+            class="card card-image mb-3 mx-2 rounded mb-0">
+            <!-- Content -->
+            <div style="border-radius: 0.75rem !important;
+padding: 0.5rem 0.5rem !important;"
+              class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+              <div>
+                <h5 class="pink-text">
+                  <mdb-icon fas icon="user-friends"></mdb-icon>
+                  Niños
+                </h5>
+                <h3 class="card-title pt-2" style="text-align: end;"><strong>#{{totalNinio}}</strong></h3>
+
+
               </div>
             </div>
-            <div class="card-footer ">
-              <hr>
-              <div class="stats">
-                <i class="fa fa-refresh"></i> Actualizar ahora
-              </div>
-            </div>
-          </div>
+            <!-- Content -->
+          </mdb-card>
+          <!-- Card -->
         </div>
       </div>
+
+      <section>
+
+
+        <!-- Grid row -->
+        <div class="row align-items-center justify-content-center">
+
+          <!-- Grid column -->
+          <div class="col-lg-6 d-flex justify-content-between" style="color:whitesmoke;">
+
+            <!-- Grid row -->
+            <div class="row mb-3">
+              <div class="col-md-1 col-2">
+                <mdb-icon fas icon="user-astronaut" size="2x" class="indigo-text"></mdb-icon>
+              </div>
+
+              <div class="col-md-11 col-10">
+                <h5 class="font-weight-bold mb-3">Usuario Adm</h5>
+                <p class="white-text">{{userInfo.username}}</p>
+              </div>
+            </div>
+            <!-- Grid row -->
+
+            <!-- Grid row -->
+            <div class="row mb-3">
+              <div class="col-md-1 col-2">
+                <mdb-icon fas icon="envelope-open" size="2x" class="pink-text"></mdb-icon>
+              </div>
+              <div class="col-md-11 col-10">
+                <h5 class="font-weight-bold mb-3">Email Empresarial</h5>
+                <p class="white-text">{{userInfo.email}}</p>
+              </div>
+            </div>
+            <!-- Grid row -->
+
+            <!-- Grid row -->
+            <div class="row mb-3">
+              <div class="col-md-1 col-2">
+                <mdb-icon fas icon="phone" size="2x" class="blue-text"></mdb-icon>
+              </div>
+              <div class="col-md-11 col-10">
+                <h5 class="font-weight-bold mb-3">Teléfonos</h5>
+                <p class="white-text">{{userInfo.telefono}}</p>
+              </div>
+            </div>
+            <!-- Grid row -->
+
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-lg-3" style="background-color: black; border-radius: 10px;">
+            <!--Image-->
+            <img src="../../../assets/img/LOGONINESSELAS.png" alt="Sample project image"
+              class="img-fluid rounded z-depth-1">
+          </div>
+          <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+      </section>
+
+
 
       <div class="row">
         <div class="col-md-12">
           <div class="card ">
             <div class="card-header ">
-              <h5 class="card-title">Información de Usuario Administrativo</h5>
+              <h5 class="card-title">Usuarios, Empresas y Proyectos</h5>
             </div>
             <div class="card-body ">
-              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                <tbody>
-                  <tr>
-                    <td>Nombre Usuario</td>
-                    <td>{{userInfo.username}}</td>
-                  </tr>
-                  <tr>
-                    <td>Correo eléctronico</td>
-                    <td>{{userInfo.email}}</td>
-                  </tr>
-                  <tr>
-                    <td>Contraseña</td>
-                    <td>{{userInfo.password}}</td>
-                  </tr>
-                  <tr>
-                    <td>Teléfonos</td>
-                    <td>{{userInfo.telefono}}</td>
-                  </tr>
-                </tbody>
-              </table>
-
 
 
               <mdb-card cascade="true" narrower="true">
@@ -211,62 +233,92 @@
                 </div>
                 <!--/Card image-->
 
-                <div class="px-8">
+                <div>
+                  <table mdbTable #tableEl="mdbTable" small="true" resposive="true" striped="true" mdbTableScroll
+                    maxWidth="100%" scrollX="true"
+                    class="table table-bordered  table-responsive-md table-striped text-center">
+                    <thead>
+                      <tr>
+                        <th *ngFor="let head of headElements; let i = index" scope="col">{{head}}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let user of allUsers; let i = index">
+                        <th *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex"
+                          scope="row">{{user.idUser}}</th>
+                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                          {{user.nombres}} {{user.apellidos}}</td>
+                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                          {{user.edad}}</td>
+                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                          {{user.nombreArtistico}}</td>
+                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                          {{user.sexo}}</td>
+                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                          {{user.fechaNacimiento}}</td>
+                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                          {{user.localidad}}</td>
+                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                          {{user.altura}}</td>
+                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                          {{user.colorPiel}}</td>
+                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                          {{user.colorPelo}}</td>
+                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                          {{user.colorOjos}}</td>
+                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                          {{user.email}}</td>
+                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                          {{user.telefono}}</td>
+                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
 
-                  <div class="table-wrapper">
-                    <table class="mb-0" hover="true" ng-table="tableParams2" small="true" resposive="true"
-                      striped="true" mdbTable mdbTableScroll scrollY="true" maxHeight="350" scrollX="true"
-                      class="table table-bordered table-responsive-md table-striped text-center">
-                      <thead>
-                        <tr>
-                          <th *ngFor="let head of headElementsUsers; let i = index" aria-controls="tableSortExample"
-                            scope="col" [mdbTableSort]="allUsers" [sortBy]="headElementsUsers[i]">{{head | titlecase}}
-                          </th>
-                          <mdb-icon fas icon="sort"></mdb-icon>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr *ngFor="let user of allUsers; let i = index">
-                          <th scope="row">{{user.idUser}}</th>
-                          <td>{{user.nombres}} {{user.apellidos}}</td>
-                          <td>{{user.edad}}</td>
-                          <td>{{user.nombreArtistico}}</td>
-                          <td>{{user.sexo}}</td>
-                          <td>{{user.fechaNacimiento}}</td>
-                          <td>{{user.localidad}}</td>
-                          <td>{{user.tallasList[0].pantalonTalla}}</td>
-                          <td>{{user.tallasList[0].camisaTalla}}</td>
-                          <td>{{user.tallasList[0].chaquetaTalla}}</td>
-                          <td>{{user.tallasList[0].pieTalla}}</td>
-                          <td>{{user.altura}}</td>
-                          <td>{{user.colorPiel}}</td>
-                          <td>{{user.colorPelo}}</td>
-                          <td>{{user.colorOjos}}</td>
-                          <td>{{user.cocheList[0].modeloCoche}}</td>
-                          <td>{{user.motoList[0].modeloMoto}}</td>
-                          <td>{{user.dniUser}}</td>
-                          <td>{{user.numeroSeguroSocial}}</td>
-                          <td>{{user.email}}</td>
-                          <td>{{user.password}}</td>
-                          <td>{{user.telefono}}</td>
-                          <td>
-                            <div class="d-flex flex-row">
-                              <button type="button" mdbBtn color="danger" rounded="true" size="sm"
-                                (click)="removeUser(i,user.idUser)">Eliminar</button>
+                          <div class="btn-group" mdbDropdown>
+                            <button mdbDropdownToggle type="button" mdbBtn color="primary" style="width: 0px;"
+                              class="dropdown-toggle waves-light" size="sm" mdbWavesEffect>
+                              <i class="fas fa-bars"></i>
+                            </button>
 
-                              <button type="button" mdbBtn mdbWavesEffect gradient="blue" rounded="true" size="sm"
-                                (click)="editarUser(i,user)">Editar</button>
+                            <div class="dropdown-menu dropdown-primary " style="width: 0px;">
 
-                              <button type="button" mdbBtn color="warning" rounded="true" data-toggle="modal"
-                                data-target="#basicExample" (click)="pasarUsuarioUpdatePassword(user);frame.show()"
-                                mdbWavesEffect>Up
-                                Pass</button>
+
+
+
+                              <button mdbTooltip="Eliminar" placement="left" style="width: 0px;" class="dropdown-item"
+                                mdbBtn color="danger" rounded="true" size="sm"
+                                (click)="removeUser(i,user.idUser, user.nombres, user.apellidos);basicModal.show()"
+                                data-toggle="modal" mdbWavesEffect><i class="fas fa-trash"></i></button>
+
+                              <button mdbTooltip="Editar" placement="left" style="width: 0px;" class="dropdown-item"
+                                mdbBtn mdbWavesEffect gradient="blue" rounded="true" size="sm"
+                                (click)="editarUser(i,user)"><i class="fas fa-edit"></i></button>
+
+                              <div class="divider dropdown-divider"></div>
+                              <button mdbTooltip="Cambiar Contraseña" placement="left" style="width: 0px;"
+                                class="dropdown-item" mdbBtn color="warning" rounded="true" data-toggle="modal"
+                                size="sm" (click)="pasarUsuarioUpdatePassword(user);frame.show()" mdbWavesEffect><i
+                                  class="fas fa-key"></i></button>
+
                             </div>
-                          </td>
-                      </tbody>
-                    </table>
-                  </div>
+                          </div>
+
+
+
+                        </td>
+                      </tr>
+                    </tbody>
+                    <tfoot class="grey lighten-5 w-100">
+                      <tr>
+                        <td colspan="4">
+                          <mdb-table-pagination [tableEl]="tableEl" [searchDataSource]="allUsers">
+                          </mdb-table-pagination>
+                        </td>
+                      </tr>
+                    </tfoot>
+                  </table>
                 </div>
+
+
               </mdb-card>
               <br />
               <app-management-company></app-management-company>
@@ -390,5 +442,34 @@
       </div>
     </div>
     <!--/.Content-->
+  </div>
+</div>
+
+
+
+<div mdbModal #basicModal="mdbModal" class="modal fade top modal-scrolling" tabindex="-1" role="dialog"
+  aria-labelledby="myBasicModalLabel" aria-hidden="true" [config]="{backdrop: false, ignoreBackdropClick: true}">
+  <div class="modal-dialog modal-frame modal-top modal-notify modal-danger modal-side" role="document">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <div class="row d-flex justify-content-center align-items-center">
+
+          <h3>
+            <span class="badge" style="color: white;">Eliminación !</span>
+          </h3>
+          <p class="pt-3 mx-4">Está usted seguro en la eliminacón del Usuario
+            <strong>{{nombreUserElimina}} </strong> ?.</p>
+
+          <a (click)="eliminarUser();basicModal.hide()" type="button" mdbBtn color="danger" class="waves-light"
+            mdbWavesEffect>Eliminar
+            <mdb-icon fas icon="check" class="ml-1"></mdb-icon>
+          </a>
+          <a type="button" mdbBtn color="danger" outline="true" class="waves-light" mdbWavesEffect data-dismiss="modal"
+            (click)="basicModal.hide()">NO, gracias</a>
+
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -61,6 +61,7 @@ const routes: Routes = [
   {
     path: 'management',
     component: ManagementComponent,
+    
     canActivate: [AuthGuard]
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
