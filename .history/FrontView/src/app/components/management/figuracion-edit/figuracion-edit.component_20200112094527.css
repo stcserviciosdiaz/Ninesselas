@@ -1,0 +1,47 @@
+.contect-Ajuste{
+  max-width: 85%;
+  background: rgba(255, 255, 255, 0.72);
+  transform: translate(0px, 5%);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 90%;
+  padding: 3%;
+}
+
+.bg-fondo{
+    background-image: url(/assets/img/sliderview/slider03-min.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: scroll;
+    background-size: cover;
+    height: 100%;
+}
+
+::-webkit-scrollbar{
+  width: 10px;
+  background-color: #F5F5F5;
+}
+::-webkit-scrollbar-track{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #F5F5F5;
+}
+::-webkit-scrollbar-thumb{
+  background-color: #0b164a;
+  background-image: -webkit-linear-gradient(90deg,rgba(255, 255, 255, .2) 25%,transparent 25%,transparent 50%,rgba(255, 255, 255, .2) 50%,rgba(255, 255, 255, .2) 75%,transparent 75%,transparent)
+}
+
+.form-control{
+    border: 1px solid #f7f7f7;
+    box-shadow: 3px 3px 11px 0 #ccc;
+    outline: none;
+}
+
+
+  @media (min-width: 992px){
+
+  }
+
+  @media (max-width: 775px){
+
+
+  }

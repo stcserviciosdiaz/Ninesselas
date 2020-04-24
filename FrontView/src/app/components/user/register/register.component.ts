@@ -67,7 +67,7 @@ export class RegisterComponent implements OnInit {
   }
 
   ngOnInit() {
-    let t:string = "Ninesselas - Registros";
+    let t: string = "Ninesselas - Registros";
     this.title.setTitle(t);
 
     this.seo.generateTags({
@@ -95,7 +95,7 @@ export class RegisterComponent implements OnInit {
     this.usuario = {
       idUser: 0,
       avatar: "",
-      fotoCuerpo:"",
+      fotoCuerpo: "",
       fotoProfesional: "",
       acento: "",
       altura: 0.0,
@@ -115,7 +115,12 @@ export class RegisterComponent implements OnInit {
       email: newChild.email,
       fechaNacimiento: null,
       libroFamilia: "",
+      libroFamiliarList: [],
+      pathDniMadreB: '',
+      pathDniPadreB: '',
+      pathDniUserB: '',
       bilingue: "",
+      nrocuenta: "",
       localidad: "",
       nacionalidad: "",
       nombreArtistico: "",

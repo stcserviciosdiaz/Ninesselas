@@ -6419,3 +6419,18 @@ img {
 	filter: blur(20px);
 	margin: -20px;
 }
+
+
+.navbar {
+  background-color: #e91e63;
+}
+
+.top-nav-collapse {
+  background-color: #4285F4;
+}
+
+@media only screen and (max-width: 768px) {
+  .navbar {
+      background-color: #4285F4;
+  }
+}

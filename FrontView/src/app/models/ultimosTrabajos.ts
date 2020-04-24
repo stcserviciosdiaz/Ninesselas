@@ -1,5 +1,5 @@
 export interface ultimosTrabajos {
-    idUltimosTrabajos: Int32Array
+    idUltimosTrabajos: any;
     descripcionUltimoTrabajo: string;
     nombreUltimoTrabajo: string;
 }

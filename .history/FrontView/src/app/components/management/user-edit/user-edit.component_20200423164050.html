@@ -1,0 +1,1050 @@
+<div class="bg-fondo">
+  <div class="container contect-Ajuste">
+    <div class="">
+      <mdb-card cascade="true" narrower="true">
+        <div style="padding: 15px;"
+          class="view view-cascade blue-gradient narrower py-4 mx-2 mb-3 d-flex justify-content-between align-items-center">
+
+          <div>
+          </div>
+
+          <a href="" class="white-text mx-3">EDICION DE USUARIO TIPO NIÑO</a>
+
+          <div>
+          </div>
+
+        </div>
+      </mdb-card>
+      <div class="" id="divInicial">
+        <div class="">
+          <div class="">
+            <div class="">
+              <br />
+              <div [formGroup]="childForm">
+
+
+
+                <div class="row">
+                  <div class="col-md-4">
+                    <mat-card class="example-card">
+                      <mat-card-header>
+                        <div mat-card-avatar class="example-header-image">
+                          <div class="text-center">
+                            <a mat-card-avatar class="example-header-image" mdbBtn color="primary" floating="true"
+                              size="sm" mdbTooltip="Cambiar Foto">
+                              <label class="control-label" style="width: max-content;">
+                                <mdb-icon fas icon="camera" aria-hidden="true" class="white-text">
+                                </mdb-icon>
+                                <input type="file" accept="image/*" (change)="onAvatarSelected($event)"
+                                  class="none"><br>
+                              </label>
+                            </a>
+                            <a (click)="deleteAvatar()" mdbBtn color="danger" mat-card-avatar
+                              class="example-header-image" floating="true" size="sm" mdbTooltip="Cancelar"
+                              *ngIf="previewAvatar">
+                              <mdb-icon fas icon="trash" class="white-text"></mdb-icon>
+                            </a>
+                          </div>
+                        </div>
+                        <mat-card-title style="font-size: small;">{{usuario.nombres}}</mat-card-title>
+                        <mat-card-subtitle>Imagen Primer Plano</mat-card-subtitle>
+
+                        <img mat-card-image [src]="obsAvatar" style="width:50px;margin-left: 60px;"
+                          alt={{usuario.nombres}} *ngIf="previewAvatar">
+
+                      </mat-card-header>
+                      <img mat-card-image style="padding: 5px 0px 0px 0px;height: 300px;" [src]="obsAvatar"
+                        alt={{usuario.nombres}} *ngIf="!previewAvatar">
+                      <img mat-card-image [src]="previewAvatar" style="padding: 5px 0px 0px 0px;height: 300px;"
+                        alt="Card image cap" *ngIf="previewAvatar">
+
+
+                    </mat-card>
+                  </div>
+
+                  <div class="col-md-4">
+                    <mat-card class="example-card">
+                      <mat-card-header>
+                        <div mat-card-avatar class="example-header-image">
+
+                          <div class="text-center">
+                            <a mat-card-avatar class="example-header-image" mdbBtn color="primary" floating="true"
+                              size="sm" mdbTooltip="Cambiar Foto">
+                              <label class="control-label" style="width: max-content;">
+                                <mdb-icon fas icon="camera" aria-hidden="true" class="white-text">
+                                </mdb-icon>
+                                <input type="file" accept="image/*" (change)="onFileCuerpoEnteroSelected($event)"
+                                  class="none"><br>
+                              </label>
+                            </a>
+                            <a (click)="deleteCuerpo()" mdbBtn color="danger" mat-card-avatar
+                              class="example-header-image" floating="true" size="sm" mdbTooltip="Cancelar"
+                              *ngIf="previewCuerpo">
+                              <mdb-icon fas icon="trash" class="white-text"></mdb-icon>
+                            </a>
+                          </div>
+
+                        </div>
+                        <mat-card-title style="font-size: small;">{{usuario.nombres}}</mat-card-title>
+                        <mat-card-subtitle>Imagen Cuerpo Completo</mat-card-subtitle>
+                        <img mat-card-image [src]="obsFotoCuerpo" style="width:50px;margin-left: 60px;"
+                          alt={{usuario.nombres}} *ngIf="previewCuerpo">
+                      </mat-card-header>
+                      <img mat-card-image style="padding: 5px 0px 0px 0px;height: 300px;" [src]="obsFotoCuerpo"
+                        alt={{usuario.nombres}} *ngIf="!previewCuerpo">
+                      <img mat-card-image [src]="previewCuerpo" style="padding: 5px 0px 0px 0px;height: 300px;"
+                        alt="Card image cap" *ngIf="previewCuerpo">
+                    </mat-card>
+                  </div>
+
+                  <div class="col-md-4">
+                    <mat-card class="example-card">
+                      <mat-card-header>
+                        <div mat-card-avatar class="example-header-image">
+
+                          <div class="text-center">
+                            <a mat-card-avatar class="example-header-image" mdbBtn color="primary" floating="true"
+                              size="sm" mdbTooltip="Cambiar Foto">
+                              <label class="control-label" style="width: max-content;">
+                                <mdb-icon fas icon="camera" aria-hidden="true" class="white-text">
+                                </mdb-icon>
+                                <input type="file" accept="image/*" (change)="onFileArtisticoSelected($event)"
+                                  class="none"><br>
+                              </label>
+                            </a>
+                            <a (click)="deleteArtistico()" mdbBtn color="danger" mat-card-avatar
+                              class="example-header-image" floating="true" size="sm" mdbTooltip="Cancelar"
+                              *ngIf="previewArtistico">
+                              <mdb-icon fas icon="trash" class="white-text"></mdb-icon>
+                            </a>
+                          </div>
+
+                        </div>
+                        <mat-card-title style="font-size: small;">{{usuario.nombres}}</mat-card-title>
+                        <mat-card-subtitle>Imagen Artística</mat-card-subtitle>
+                        <img mat-card-image [src]="obsFotoArtistico" style="width:50px;margin-left: 60px;"
+                          alt={{usuario.nombres}} *ngIf="previewArtistico">
+                      </mat-card-header>
+                      <img mat-card-image style="padding: 5px 0px 0px 0px;height: 300px;" [src]="obsFotoArtistico"
+                        alt={{usuario.nombres}} *ngIf="!previewArtistico">
+                      <img mat-card-image [src]="previewArtistico" style="padding: 5px 0px 0px 0px;height: 300px;"
+                        alt="Card image cap" *ngIf="previewArtistico">
+
+                    </mat-card>
+                  </div>
+                </div>
+
+
+                <hr>
+                <mat-card>
+                  <div class="form-group">
+                    <!-- Nombre de Usuario -->
+                    <label class="control-label">Nombre de Usuario</label>
+                    <input type="text" class="form-control" formControlName="username" placeholder=""
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.username.errors }">
+                    <div *ngIf="submitted && childForm.controls.username.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.username.errors.required">El usuario es requerido</div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <!-- Nombres Completos -->
+                    <label class="control-label">Nombres</label>
+                    <input type="text" class="form-control" formControlName="nombres" placeholder=""
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.nombres.errors }">
+                    <div *ngIf="submitted && childForm.controls.nombres.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.nombres.errors.required">El nombre es requerido</div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <!-- Apellidos Completos -->
+                    <label class="control-label">Apellidos</label>
+                    <input type="text" class="form-control" formControlName="apellidos" placeholder=""
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.apellidos.errors }">
+                    <div *ngIf="submitted && childForm.controls.apellidos.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.apellidos.errors.required">El apellido es requerido</div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <!-- Edad -->
+                    <label class="control-label">Edad</label>
+                    <select forControlName="edad" class="form-control">
+                      <option [ngValue]="0">Seleccione....</option>
+                      <option selected [ngValue]="i" *ngFor="let i of edad">{{i}}</option>
+                    </select>
+                  </div>
+
+
+
+
+
+                  <fieldset class="form-group">
+                    <!-- Sexo -->
+                    <div class="row">
+                      <legend class="col-form-label col-sm-2 pt-0">Sexo</legend>
+                      <div class="col-sm-10">
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" formControlName="sexo" value="Masculino" checked>
+                          <label class="form-check-label">
+                            Masculino
+                          </label>
+                        </div>
+                        <div class="form-check">
+                          <input class="form-check-input" type="radio" formControlName="sexo" value="Femenino">
+                          <label class="form-check-label">
+                            Femenino
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </fieldset>
+
+                  <div class="form-group">
+                    <!-- ¿De qué grupo étnico se considera? -->
+                    <mat-form-field style="width: 100%;">
+                      <mat-label>
+                        Raza {{etniaSelect.nombreEtnia}}</mat-label>
+                      <select matNativeControl [(ngModel)]="etniaSelect" style="padding-left: 5%; width: 100%;"
+                        [ngModelOptions]="{standalone: true}">
+                        <option [ngValue]="0">Seleccione...</option>
+                        <option [ngValue]="i" *ngFor="let i of etnias">{{i.nombreEtnia}}</option>
+                      </select>
+                    </mat-form-field>
+                  </div>
+                  <div *ngIf="etniaSelect.nombreEtnia == 'Otro'" class="form-group">
+                    <!-- especifique -->
+                    <label class="control-label">Especifique otro grupo étnico</label>
+                    <textarea forControlName="otro" class="form-control" rows="3"></textarea>
+                  </div>
+                </mat-card>
+
+
+                <div class="form-group">
+                  <!-- Numero de Teléfono -->
+                  <label>Numero de Teléfono</label>
+                  <label class="sr-only" for="inlineFormInputGroup">Numero de Teléfono</label>
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">+34</div>
+                    </div>
+                    <input type="text" (keypress)="numberOnly($event)" class="form-control" formControlName="telefono"
+                      placeholder="" [ngClass]="{ 'is-invalid': submitted && childForm.controls.telefono.errors }">
+                    <div *ngIf="submitted && childForm.controls.telefono.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.telefono.errors.required">El telefono es requerida</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!-- Fecha de nacimiento -->
+                  <mat-form-field>
+                    <input matInput (dateInput)="onChangeDate($event)" [matDatepicker]="pd" [value]="date"
+                      placeholder="">
+                    <mat-datepicker-toggle matSuffix [for]="pd"></mat-datepicker-toggle>
+                    <mat-datepicker #pd disabled="false"></mat-datepicker>
+                  </mat-form-field>
+                </div>
+
+                <div class="form-group">
+                  <!-- Lugar de nacimiento -->
+                  <label class="control-label">Lugar de nacimiento</label>
+                  <input type="text" class="form-control" id="placebirth" formControlName="placebirth" placeholder=""
+                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.placebirth.errors }">
+                  <div *ngIf="submitted && childForm.controls.placebirth.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.placebirth.errors.required">El lugar es requerido</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!-- Nacionalidad -->
+                  <label class="control-label">Nacionalidad</label>
+                  <input type="text" class="form-control" formControlName="nacionalidad" placeholder=""
+                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.nacionalidad.errors }">
+                  <div *ngIf="submitted && childForm.controls.nacionalidad.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.nacionalidad.errors.required">La nacionalidad es requerido</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!-- Correo electronico -->
+                  <label>Correo electronico</label>
+                  <input type="email" class="form-control" formControlName="email" placeholder=""
+                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.email.errors }">
+                  <div *ngIf="submitted && childForm.controls.email.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.email.errors.required">Correo electrónico es requerido</div>
+                    <div *ngIf="childForm.controls.email.errors.email">Debe ser una dirección de correo electrónico
+                      válida</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!-- Eres actor-->
+                  <label class="control-label">Eres Actor</label>
+                  <select forControlName="actor" class="form-control" [(ngModel)]="actorSelect"
+                    [ngModelOptions]="{standalone: true}">
+                    <option [ngValue]="0">Seleccione...</option>
+                    <option [ngValue]="i.name" selected *ngFor="let i of actor">{{i.name}}</option>
+                  </select>
+                </div>
+                <div *ngIf="actorSelect == 'Si'" class="form-group">
+                  <!-- Link de VideoBook -->
+                  <label class="control-label">Link de VideoBook</label>
+                  <input type="text" class="form-control" formControlName="videoBook"
+                    placeholder="https://www.videoBook.com">
+                </div>
+
+                <div class="form-group d-lg-flex d-md-flex d-block">
+                  <div class="form-group mr-2">
+                    <!-- Talla de camisa -->
+                    <label class="control-label">Talla de camisa</label>
+                    <input type="text" class="d-inline form-control" formControlName="tallaCamisa" placeholder=""
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.tallaCamisa.errors }">
+                    <div *ngIf="submitted && childForm.controls.tallaCamisa.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.tallaCamisa.errors.required">La talla es requerido</div>
+                    </div>
+                  </div>
+                  <div class="form-group mr-2">
+                    <!-- talla de chaqueta -->
+                    <label class="control-label">talla de chaqueta</label>
+                    <input type="text" class="d-inline form-control" formControlName="tallaChaqueta" placeholder=""
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.tallaChaqueta.errors }">
+                    <div *ngIf="submitted && childForm.controls.tallaChaqueta.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.tallaChaqueta.errors.required">La talla es requerido</div>
+                    </div>
+                  </div>
+                  <div class="form-group mr-2">
+                    <!-- Talla de pantalon -->
+                    <label class="control-label">Talla de pantalon</label>
+                    <input type="text" class="d-inline form-control" formControlName="tallaPantalon" placeholder=""
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.tallaPantalon.errors }">
+                    <div *ngIf="submitted && childForm.controls.tallaPantalon.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.tallaPantalon.errors.required">La talla es requerido</div>
+                    </div>
+                  </div>
+                  <div class="form-group mr-3">
+                    <!-- Talla de Pie -->
+                    <label class="control-label">Pie</label>
+                    <input type="text" class="d-inline form-control" formControlName="pie" placeholder=""
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.pie.errors }">
+                    <div *ngIf="submitted && childForm.controls.pie.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.pie.errors.required">La talla es requerido</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <!-- Talla de Altura -->
+                    <label class="control-label">Altura</label>
+                    <input type="text" class="d-inline form-control" formControlName="altura" placeholder=""
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.altura.errors }">
+                    <div *ngIf="submitted && childForm.controls.altura.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.altura.errors.required">La talla es requerido</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group d-lg-flex d-md-flex d-block">
+                  <div class="form-group mr-3">
+                    <!-- Color de Piel -->
+                    <label class="control-label">Color de Piel</label>
+                    <input type="text" class="d-inline form-control" formControlName="colorPiel" placeholder=""
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.colorPiel.errors }">
+                    <div *ngIf="submitted && childForm.controls.colorPiel.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.colorPiel.errors.required">El color es requerido</div>
+                    </div>
+                  </div>
+                  <div class="form-group mr-3">
+                    <!-- Color de Pelo -->
+                    <label class="control-label">Color de Pelo</label>
+                    <input type="text" class="d-inline form-control" formControlName="colorPelo" placeholder=""
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.colorPelo.errors }">
+                    <div *ngIf="submitted && childForm.controls.colorPelo.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.colorPelo.errors.required">El color es requerido</div>
+                    </div>
+                  </div>
+                  <div class="form-group mr-3">
+                    <!-- Color de ojos -->
+                    <label class="control-label">Color de ojos</label>
+                    <input type="text" class="d-inline form-control" formControlName="colorOjos" placeholder=""
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.colorOjos.errors }">
+                    <div *ngIf="submitted && childForm.controls.colorOjos.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.colorOjos.errors.required">El color es requerido</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!-- Direccion -->
+                  <label class="control-label">Dirección</label>
+                  <input type="text" class="form-control" formControlName="direccion" placeholder=""
+                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.direccion.errors }">
+                  <div *ngIf="submitted && childForm.controls.direccion.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.direccion.errors.required">La dirección es requerida
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <!-- Localidad -->
+                    <label class="control-label">Localidad</label>
+                    <input type="text" class="form-control" formControlName="localidad" placeholder=""
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.localidad.errors }">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <!-- Provincia -->
+                    <label class="control-label">Provincia</label>
+                    <input type="text" class="form-control" formControlName="provincia" placeholder="">
+                  </div>
+                  <div class="form-group col-md-2">
+                    <!-- Codigo Postal -->
+                    <label for="inputZip">Codigo Postal</label>
+                    <input type="text" (keypress)="check($event)" class="form-control" formControlName="codpostal"
+                      placeholder="">
+                  </div>
+                </div>
+
+
+                <div class="form-group">
+                  <!-- Numero DNI del niño-->
+                  <div class="row">
+                    <div class="col-md-8">
+                      <div class="form-group">
+                        <label class="control-label">Numero DNI</label>
+                        <input type="text" (keypress)="check($event)" class="d-inline form-control"
+                          formControlName="numeroDNI" placeholder="#####"
+                          [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNI.errors }">
+                        <div *ngIf="submitted && childForm.controls.numeroDNI.errors" class="invalid-feedback">
+                          <div *ngIf="childForm.controls.numeroDNI.errors.required">El numero es requerida</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-4">
+                      <div class="form-group">
+                        <!-- Numero seguridad social -->
+                        <label class="control-label">Numero propio de la seguridad social del niño</label>
+                        <input type="text" class="form-control" formControlName="numeroSeguridadSocial" placeholder=""
+                          [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroSeguridadSocial.errors }">
+                        <div *ngIf="submitted && childForm.controls.numeroSeguridadSocial.errors"
+                          class="invalid-feedback">
+                          <div *ngIf="childForm.controls.numeroSeguridadSocial.errors.required">El numero es requerida
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <mat-card class="example-card">
+                        <mat-card-header>
+                          <div mat-card-avatar class="example-header-image">
+                            <div class="text-center">
+                              <a mat-card-avatar class="example-header-image" mdbBtn color="primary" floating="true"
+                                size="sm" mdbTooltip="Cambiar Foto">
+                                <label class="control-label" style="width: max-content;">
+                                  <mdb-icon fas icon="camera" aria-hidden="true" class="white-text">
+                                  </mdb-icon>
+                                  <input type="file" accept="image/*" (change)="copyDNIkidSelected($event)"
+                                    class="none"><br>
+                                </label>
+                              </a>
+                              <a (click)="deleteDNIUserA()" mdbBtn color="danger" mat-card-avatar
+                                class="example-header-image" floating="true" size="sm" mdbTooltip="Cancelar"
+                                *ngIf="previewDNIA">
+                                <mdb-icon fas icon="trash" class="white-text"></mdb-icon>
+                              </a>
+                            </div>
+                          </div>
+                          <mat-card-title style="font-size: small;">{{usuario.nombres}}</mat-card-title>
+                          <mat-card-subtitle>Dni Lado Delantero</mat-card-subtitle>
+
+                          <img mat-card-image [src]="obsDniUser" style="width:50px;margin-left: 60px;"
+                            alt={{usuario.nombres}} *ngIf="previewDNIA">
+
+                        </mat-card-header>
+                        <img mat-card-image style="padding: 5px 0px 0px 0px;height: 300px;" [src]="obsDniUser"
+                          alt={{usuario.nombres}} *ngIf="!previewDNIA">
+                        <img mat-card-image [src]="previewDNIA" style="padding: 5px 0px 0px 0px;height: 300px;"
+                          alt="Card image cap" *ngIf="previewDNIA">
+
+
+                      </mat-card>
+                    </div>
+
+                    <div class="col-md-4">
+                      <mat-card class="example-card">
+                        <mat-card-header>
+                          <div mat-card-avatar class="example-header-image">
+                            <div class="text-center">
+                              <a mat-card-avatar class="example-header-image" mdbBtn color="primary" floating="true"
+                                size="sm" mdbTooltip="Cambiar Foto">
+                                <label class="control-label" style="width: max-content;">
+                                  <mdb-icon fas icon="camera" aria-hidden="true" class="white-text">
+                                  </mdb-icon>
+                                  <input type="file" accept="image/*" (change)="copyDNIUserB($event)" class="none"><br>
+                                </label>
+                              </a>
+                              <a (click)="deleteDNIUserB()" mdbBtn color="danger" mat-card-avatar
+                                class="example-header-image" floating="true" size="sm" mdbTooltip="Cancelar"
+                                *ngIf="previewDNIB">
+                                <mdb-icon fas icon="trash" class="white-text"></mdb-icon>
+                              </a>
+                            </div>
+                          </div>
+                          <mat-card-title style="font-size: small;">{{usuario.nombres}}</mat-card-title>
+                          <mat-card-subtitle>Dni Lado Trasero</mat-card-subtitle>
+
+                          <img mat-card-image [src]="obsDniUserB" style="width:50px;margin-left: 60px;"
+                            alt={{usuario.nombres}} *ngIf="previewDNIB">
+
+                        </mat-card-header>
+                        <img mat-card-image style="padding: 5px 0px 0px 0px;height: 300px;" [src]="obsDniUserB"
+                          alt={{usuario.nombres}} *ngIf="!previewDNIB">
+                        <img mat-card-image [src]="previewDNIB" style="padding: 5px 0px 0px 0px;height: 300px;"
+                          alt="Card image cap" *ngIf="previewDNIB">
+                      </mat-card>
+
+
+
+                    </div>
+
+                    <div class="col-md-4">
+                      <mat-card class="example-card">
+                        <mat-card-header>
+                          <div mat-card-avatar class="example-header-image">
+                            <div class="text-center">
+                              <a mat-card-avatar class="example-header-image" mdbBtn color="primary" floating="true"
+                                size="sm" mdbTooltip="Cambiar Foto">
+                                <label class="control-label" style="width: max-content;">
+                                  <mdb-icon fas icon="camera" aria-hidden="true" class="white-text">
+                                  </mdb-icon>
+                                  <input type="file" accept="image/*" (change)="copySocialNumberSelected($event)"
+                                    class="none"><br>
+                                </label>
+                              </a>
+                              <a (click)="deleteSeguroSocial()" mdbBtn color="danger" mat-card-avatar
+                                class="example-header-image" floating="true" size="sm" mdbTooltip="Cancelar"
+                                *ngIf="previewSS">
+                                <mdb-icon fas icon="trash" class="white-text"></mdb-icon>
+                              </a>
+                            </div>
+                          </div>
+                          <mat-card-title style="font-size: small;">{{usuario.nombres}}</mat-card-title>
+                          <mat-card-subtitle>Seguro Social</mat-card-subtitle>
+
+                          <img mat-card-image [src]="obsSeguroUser" style="width:50px;margin-left: 60px;"
+                            alt={{usuario.nombres}} *ngIf="previewSS">
+
+                        </mat-card-header>
+                        <img mat-card-image style="padding: 5px 0px 0px 0px;height: 300px;" [src]="obsSeguroUser"
+                          alt={{usuario.nombres}} *ngIf="!previewSS">
+                        <img mat-card-image [src]="previewSS" style="padding: 5px 0px 0px 0px;height: 300px;"
+                          alt="Card image cap" *ngIf="previewSS">
+                      </mat-card>
+                    </div>
+
+
+
+                  </div>
+                </div>
+
+
+                <div class="row">
+
+                  <div class="class col-md-3">
+                    <div class="form-group">
+                      <!-- DNI del padre -->
+                      <label>DNI del padre</label>
+                      <input type="text" (keypress)="check($event)" class="form-control"
+                        formControlName="numeroDNIPadre" placeholder=""
+                        [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNIPadre.errors }">
+                      <div *ngIf="submitted && childForm.controls.numeroDNIPadre.errors" class="invalid-feedback">
+                        <div *ngIf="childForm.controls.numeroDNIPadre.errors.required">El DNI es requerida</div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <mat-card class="example-card">
+                        <mat-card-header>
+                          <div mat-card-avatar class="example-header-image">
+                            <div class="text-center">
+                              <a mat-card-avatar class="example-header-image" mdbBtn color="primary" floating="true"
+                                size="sm" mdbTooltip="Cambiar Foto">
+                                <label class="control-label" style="width: max-content;">
+                                  <mdb-icon fas icon="camera" aria-hidden="true" class="white-text">
+                                  </mdb-icon>
+                                  <input type="file" accept="image/*" (change)="copyDNIFatherSelected($event)"
+                                    class="none"><br>
+                                </label>
+                              </a>
+                              <a (click)="deleteDNIPadreA()" mdbBtn color="danger" mat-card-avatar
+                                class="example-header-image" floating="true" size="sm" mdbTooltip="Cancelar"
+                                *ngIf="previewDNIPadreA">
+                                <mdb-icon fas icon="trash" class="white-text"></mdb-icon>
+                              </a>
+                            </div>
+                          </div>
+                          <mat-card-title style="font-size: small;">{{usuario.nombres}}</mat-card-title>
+                          <mat-card-subtitle>DNI Padre Lado Frontal</mat-card-subtitle>
+
+                          <img mat-card-image [src]="obsDniPadre" style="width:50px;margin-left: 60px;"
+                            alt={{usuario.nombres}} *ngIf="previewDNIPadreA">
+
+                        </mat-card-header>
+                        <img mat-card-image style="padding: 5px 0px 0px 0px;height: 300px;" [src]="obsDniPadre"
+                          alt={{usuario.nombres}} *ngIf="!previewDNIPadreA">
+                        <img mat-card-image [src]="previewDNIPadreA" style="padding: 5px 0px 0px 0px;height: 300px;"
+                          alt="Card image cap" *ngIf="previewDNIPadreA">
+                      </mat-card>
+                    </div>
+
+                  </div>
+
+                  <div class="class col-md-3">
+
+                    <div class="form-group">
+                      <!-- Numero de Teléfono del padre-->
+                      <label>Numero de Teléfono del padre</label>
+                      <input type="text" (keypress)="numberOnly($event)" class="form-control"
+                        formControlName="telefonofather" placeholder=""
+                        [ngClass]="{ 'is-invalid': submitted && childForm.controls.telefonofather.errors }">
+                      <div *ngIf="submitted && childForm.controls.telefonofather.errors" class="invalid-feedback">
+                        <div *ngIf="childForm.controls.telefonofather.errors.required">El telefono es requerida</div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <mat-card class="example-card">
+                        <mat-card-header>
+                          <div mat-card-avatar class="example-header-image">
+                            <div class="text-center">
+                              <a mat-card-avatar class="example-header-image" mdbBtn color="primary" floating="true"
+                                size="sm" mdbTooltip="Cambiar Foto">
+                                <label class="control-label" style="width: max-content;">
+                                  <mdb-icon fas icon="camera" aria-hidden="true" class="white-text">
+                                  </mdb-icon>
+                                  <input type="file" accept="image/*" (change)="copyDNIPadreB($event)" class="none"><br>
+                                </label>
+                              </a>
+                              <a (click)="deleteDNIPadreB()" mdbBtn color="danger" mat-card-avatar
+                                class="example-header-image" floating="true" size="sm" mdbTooltip="Cancelar"
+                                *ngIf="previewDNIPadreB">
+                                <mdb-icon fas icon="trash" class="white-text"></mdb-icon>
+                              </a>
+                            </div>
+                          </div>
+                          <mat-card-title style="font-size: small;">{{usuario.nombres}}</mat-card-title>
+                          <mat-card-subtitle>DNI Padre Lado Trasero</mat-card-subtitle>
+
+                          <img mat-card-image [src]="obsDniPadreB" style="width:50px;margin-left: 60px;"
+                            alt={{usuario.nombres}} *ngIf="previewDNIPadreB">
+
+                        </mat-card-header>
+                        <img mat-card-image style="padding: 5px 0px 0px 0px;height: 300px;" [src]="obsDniPadreB"
+                          alt={{usuario.nombres}} *ngIf="!previewDNIPadreB">
+                        <img mat-card-image [src]="previewDNIPadreB" style="padding: 5px 0px 0px 0px;height: 300px;"
+                          alt="Card image cap" *ngIf="previewDNIPadreB">
+                      </mat-card>
+                    </div>
+                  </div>
+
+                  <div class="class col-md-3">
+
+                    <div class="form-group">
+                      <!-- DNI de la Madre -->
+                      <label>DNI de la Madre</label>
+                      <input type="text" (keypress)="check($event)" class="form-control"
+                        formControlName="numeroDNIMadre" placeholder=""
+                        [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNIMadre.errors }">
+                      <div *ngIf="submitted && childForm.controls.numeroDNIMadre.errors" class="invalid-feedback">
+                        <div *ngIf="childForm.controls.numeroDNIMadre.errors.required">El DNI es requerida</div>
+                      </div>
+                    </div>
+
+
+                    <div class="form-group">
+                      <mat-card class="example-card">
+                        <mat-card-header>
+                          <div mat-card-avatar class="example-header-image">
+                            <div class="text-center">
+                              <a mat-card-avatar class="example-header-image" mdbBtn color="primary" floating="true"
+                                size="sm" mdbTooltip="Cambiar Foto">
+                                <label class="control-label" style="width: max-content;">
+                                  <mdb-icon fas icon="camera" aria-hidden="true" class="white-text">
+                                  </mdb-icon>
+                                  <input type="file" accept="image/*" (change)="copyDNIMotherSelected($event)"
+                                    class="none"><br>
+                                </label>
+                              </a>
+                              <a (click)="deleteDNIMadreA()" mdbBtn color="danger" mat-card-avatar
+                                class="example-header-image" floating="true" size="sm" mdbTooltip="Cancelar"
+                                *ngIf="previewDNIMadreA">
+                                <mdb-icon fas icon="trash" class="white-text"></mdb-icon>
+                              </a>
+                            </div>
+                          </div>
+                          <mat-card-title style="font-size: small;">{{usuario.nombres}}</mat-card-title>
+                          <mat-card-subtitle>DNI Madre Lado Delantero</mat-card-subtitle>
+
+                          <img mat-card-image [src]="obsDniMadre" style="width:50px;margin-left: 60px;"
+                            alt={{usuario.nombres}} *ngIf="previewDNIMadreA">
+
+                        </mat-card-header>
+                        <img mat-card-image style="padding: 5px 0px 0px 0px;height: 300px;" [src]="obsDniMadre"
+                          alt={{usuario.nombres}} *ngIf="!previewDNIMadreA">
+                        <img mat-card-image [src]="previewDNIMadreA" style="padding: 5px 0px 0px 0px;height: 300px;"
+                          alt="Card image cap" *ngIf="previewDNIMadreA">
+                      </mat-card>
+                    </div>
+                  </div>
+
+
+                  <div class="class col-md-3">
+                    <div class="form-group">
+                      <!-- Numero de Teléfono de la madre-->
+                      <label>Numero de Teléfono de la madre</label>
+                      <input type="text" (keypress)="numberOnly($event)" class="form-control"
+                        formControlName="telefonomother" placeholder=""
+                        [ngClass]="{ 'is-invalid': submitted && childForm.controls.telefonomother.errors }">
+                      <div *ngIf="submitted && childForm.controls.telefonomother.errors" class="invalid-feedback">
+                        <div *ngIf="childForm.controls.telefonomother.errors.required">El teléfono es requerida</div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <mat-card class="example-card">
+                        <mat-card-header>
+                          <div mat-card-avatar class="example-header-image">
+                            <div class="text-center">
+                              <a mat-card-avatar class="example-header-image" mdbBtn color="primary" floating="true"
+                                size="sm" mdbTooltip="Cambiar Foto">
+                                <label class="control-label" style="width: max-content;">
+                                  <mdb-icon fas icon="camera" aria-hidden="true" class="white-text">
+                                  </mdb-icon>
+                                  <input type="file" accept="image/*" (change)="copyDNIMadreB($event)" class="none"><br>
+                                </label>
+                              </a>
+                              <a (click)="deleteDNIMadreB()" mdbBtn color="danger" mat-card-avatar
+                                class="example-header-image" floating="true" size="sm" mdbTooltip="Cancelar"
+                                *ngIf="previewDNIMadreB">
+                                <mdb-icon fas icon="trash" class="white-text"></mdb-icon>
+                              </a>
+                            </div>
+                          </div>
+                          <mat-card-title style="font-size: small;">{{usuario.nombres}}</mat-card-title>
+                          <mat-card-subtitle>DNI Madre Lado Delantero</mat-card-subtitle>
+
+                          <img mat-card-image [src]="obsDniMadreB" style="width:50px;margin-left: 60px;"
+                            alt={{usuario.nombres}} *ngIf="previewDNIMadreB">
+
+                        </mat-card-header>
+                        <img mat-card-image style="padding: 5px 0px 0px 0px;height: 300px;" [src]="obsDniMadreB"
+                          alt={{usuario.nombres}} *ngIf="!previewDNIMadreB">
+                        <img mat-card-image [src]="previewDNIMadreB" style="padding: 5px 0px 0px 0px;height: 300px;"
+                          alt="Card image cap" *ngIf="previewDNIMadreB">
+                      </mat-card>
+                    </div>
+
+                  </div>
+
+                </div>
+
+                <mat-card class="example-card">
+                  <mat-card-header>
+                    <mat-card-title style="font-size: small;">
+                      <!-- Adjuntar fotos de tatuaje-->
+                      <div class="form-group">
+                        <!-- Foto tatuajes -->
+
+                        <div class="btn btn-primary btn-sm" size="sm">
+                          <label class="control-label" style="width: max-content;">
+                            <mdb-icon fas icon="cloud-upload-alt" aria-hidden="true"></mdb-icon>
+                            Libro Familiar <input type="file" accept="image/*" (change)="onFileLibroSelected($event)"
+                              multiple class="none"><br>
+                          </label>
+                        </div>
+                        <label>Fotos Libro Familiar ({{urlsLibroFamiliar.length}} archivos
+                          precargados.)</label>
+                      </div>
+                    </mat-card-title>
+                  </mat-card-header>
+                  <!-- Adjuntar fotos de tatuaje-->
+
+                  <!--Carousel Wrapper-->
+                  <mdb-carousel [isControls]="true" class="carousel slide carousel-fade" [animation]="'fade'">
+                    <!--Dinamyc slide-->
+                    <mdb-carousel-item>
+                      <div class="view w-100">
+                        <img height="350" class="d-block w-100"
+                          src="https://c2.staticflickr.com/8/7309/26790704683_7a5b7010e8_o.jpg" alt="Foto">
+                        <div class="mask rgba-black-light waves-light" mdbWavesEffect></div>
+                      </div>
+                      <div class="carousel-caption">
+                        <h3 class="h3-responsive rgba-black-light">Libro Familiar</h3>
+                      </div>
+                    </mdb-carousel-item>
+                    <!--/Dinamyc slide-->
+                    <!--Dinamyc slide-->
+                    <mdb-carousel-item *ngFor='let url of listLibroFamiliar; let i = index'>
+                      <div class="view w-100">
+                        <img height="350" class="d-block w-100" style="border-radius: 0px 25px 25px 0px;"
+                          [src]="url.urlFotoLibro" alt="Foto">
+                        <div class="mask rgba-black-light waves-light" mdbWavesEffect></div>
+                      </div>
+                      <div class="carousel-caption">
+                        <a (click)="confirmDeleteLibro(i);frameDeleteLibro.show()" matTooltip="Eliminar Imagen" mdbBtn
+                          floating="true" size="sm" color="danger" mdbWavesEffect>
+                          <mdb-icon fas icon="trash" class="white-text"></mdb-icon>
+                        </a>
+                        <h3 class="h3-responsive rgba-black-light">{{verNombreLibroPage(i)}}</h3>
+                      </div>
+                    </mdb-carousel-item>
+                    <!--/Dinamyc slide-->
+                  </mdb-carousel>
+                  <!--/.Carousel Wrapper-->
+                </mat-card>
+
+
+
+
+
+
+
+
+
+
+                <mat-card>
+                  <div class="form-group">
+                    <!-- Deporte -->
+
+                    <mat-form-field class="col-lg-12">
+                      <mat-label class="purple-text">¿ Es Deportista? {{deportistaSelect.nombreDeportista}} </mat-label>
+                      <mat-select matNativeControl [(ngModel)]="deportistaSelect" [ngModelOptions]="{standalone: true}">
+                        <mat-option>Ninguno</mat-option>
+                        <mat-option *ngFor="let item of deportista" [value]="item">
+                          {{item.nombreDeportista}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="form-group">
+                    <!-- Habilidades del deporte-->
+                    <h5 class="pb-1">Habilidades de Deporte</h5>
+                    <hr>
+                    <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                      <div *ngFor="let item of deportes" class="col-md-4 col-sm-6 col-12"
+                        style="padding: 5px 0px 5px 0px;">
+                        <mat-checkbox [checked]="isChecked(item.nombreDeporte, 1)" (change)="OnChange($event, item, 1)">
+                          <span class="itemitle">{{item.nombreDeporte}}</span>
+                        </mat-checkbox>
+                      </div>
+                    </div>
+                    <mat-form-field>
+                      <input matInput placeholder="Otro">
+                    </mat-form-field>
+                  </div>
+                </mat-card>
+
+                <mat-card>
+                  <div class="form-group">
+                    <!-- Musico -->
+                    <mat-form-field class="col-lg-12">
+                      <mat-label class="purple-text">¿ Es Músico? {{musicoSelect.nombreMusico}} </mat-label>
+                      <mat-select matNativeControl [(ngModel)]="musicoSelect" [ngModelOptions]="{standalone: true}">
+                        <mat-option>Ninguno</mat-option>
+                        <mat-option *ngFor="let i of musico" [value]="i">
+                          {{i.nombreMusico}}
+                        </mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    
+                  </div>
+                  <h5 class="pb-1">Instrumentos Musicales</h5>
+                  <hr>
+                  <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                    <div *ngFor="let item of instrumentoss" class="col-md-4 col-sm-6 col-12"
+                      style="padding: 5px 0px 5px 0px;">
+                      <mat-checkbox [checked]="isChecked(item.nombreInstrumento, 2)"
+                        (change)="OnChange($event, item, 2)">
+                        <span class="itemitle">{{item.nombreInstrumento}}</span>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                  <mat-form-field>
+                    <input matInput placeholder="Otro">
+                  </mat-form-field>
+                </mat-card>
+
+                <div class="form-group">
+                  <!-- Baile -->
+                  <mat-form-field class="col-lg-12">
+                    <mat-label class="purple-text">
+                      Baile {{baileSelect.nombreBailarin}}</mat-label>
+                    <mat-select matNativeControl class="form-control" [(ngModel)]="baileSelect"
+                      [ngModelOptions]="{standalone: true}">
+                      <mat-option selected>Seleccione...</mat-option>
+                      <mat-option [ngValue]="i" *ngFor="let i of baile">{{i.nombreBailarin}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="form-group">
+                  <!-- Estilos de Baile -->
+                  <h5 class="pb-1">Habilidades de Baile</h5>
+                  <hr>
+                  <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                    <div *ngFor="let item of estilosBaile" class="col-md-4 col-sm-6 col-12"
+                      style="padding: 5px 0px 5px 0px;">
+                      <mat-checkbox [checked]="isChecked(item.nombreBaile, 3)" (change)="OnChange($event, item, 3)">
+                        <span class="itemitle">{{item.nombreBaile}}</span>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                  <mat-form-field>
+                    <input matInput placeholder="Otro">
+                  </mat-form-field>
+                </div>
+
+                <div class="form-group">
+                  <!-- Cantantes -->
+                  <mat-form-field class="col-lg-12">
+                    <mat-label class="purple-text">
+                      Cantante {{cantanteSelect.nombreCantante}}</mat-label>
+                    <mat-select matNativeControl class="form-control" [(ngModel)]="cantanteSelect"
+                      [ngModelOptions]="{standalone: true}">
+                      <mat-option selected>Seleccione...</mat-option>
+                      <mat-option [ngValue]="i" *ngFor="let i of cantante">{{i.nombreCantante}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="form-group">
+                  <!-- Estilos de cantos -->
+                  <h5 class="pb-1">Habilidades de Canto</h5>
+                  <hr>
+                  <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                    <div *ngFor="let item of estilosCanto" class="col-md-4 col-sm-6 col-12"
+                      style="padding: 5px 0px 5px 0px;">
+                      <mat-checkbox [checked]="isChecked(item.nombreEstiloCanto, 4)"
+                        (change)="OnChange($event, item, 4)">
+                        <span class="itemitle">{{item.nombreEstiloCanto}}</span>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                  <mat-form-field>
+                    <input matInput placeholder="Otro">
+                  </mat-form-field>
+                </div>
+
+                <div class="form-group">
+                  <!-- Habilidades -->
+                  <h5 class="pb-1">Habilidades Varias</h5>
+                  <hr>
+                  <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                    <div *ngFor="let item of habilidadess" class="col-md-4 col-sm-6 col-12"
+                      style="padding: 5px 0px 5px 0px;">
+                      <mat-checkbox [checked]="isChecked(item.nombreHabilidad, 5)" (change)="OnChange($event, item, 5)">
+                        <span class="itemitle">{{item.nombreHabilidad}}</span>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                  <mat-form-field>
+                    <input matInput placeholder="Otro">
+                  </mat-form-field>
+                </div>
+
+                <div class="form-group">
+                  <!-- Idiomas -->
+                  <h5 class="pb-1">Idiomas</h5>
+                  <hr>
+                  <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                    <div *ngFor="let item of idiomas" class="col-md-4 col-sm-6 col-12"
+                      style="padding: 5px 0px 5px 0px;">
+                      <mat-checkbox [checked]="isChecked(item.nombreIdioma, 6)" (change)="OnChange($event, item, 6)">
+                        <span class="itemitle">{{item.nombreIdioma}}</span>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                  <mat-form-field>
+                    <input matInput placeholder="Otro">
+                  </mat-form-field>
+                </div>
+
+                <div class="form-group example-container">
+                  <!-- Bilingue -->
+                  <mat-form-field class="col-lg-12">
+                    <input id="bilingue" formControlName="bilingue" matInput placeholder="Bilingue">
+                  </mat-form-field>
+                </div>
+
+                <div class="form-group example-container">
+                  <!-- nrocuenta -->
+                  <mat-form-field class="col-lg-12">
+                    <input id="nrocuenta" formControlName="nrocuenta" matInput placeholder="Número de Cuenta del Niño">
+                  </mat-form-field>
+                </div>
+                <div class="form-group">
+                  <!-- Ultimos trabajos -->
+                  <label class="control-label">Descripción de Ultimos Trabajos</label>
+                  <input type="text" class="d-inline form-control" formControlName="utTeatro" placeholder="Teatro">
+                  <input type="text" class="d-inline form-control" formControlName="utCine" placeholder="Cine">
+                  <input type="text" class="d-inline form-control" formControlName="utFiccion" placeholder="Ficcion">
+                  <input type="text" class="d-inline form-control" formControlName="utPublicidad"
+                    placeholder="Publicidad">
+                </div>
+                <div class="form-group">
+                  <!-- Observaciones -->
+                  <label for="">Observaciones</label>
+                  <textarea class="form-control" id="observaciones" formControlName="observaciones" rows="3"></textarea>
+                </div>
+
+                <div class="mt-5 form-group d-flex justify-content-between" style="width: 25%;">
+                  <button class="btn btn-primary" (click)="signupChild()">Actualizar
+                    <span *ngIf="submitted && childForm.controls.acceptTerms.value === true"><i
+                        class="fa fa-spinner fa-spin fa-3x fa-fw" style="font-size: 13px;"></i></span>
+                  </button>
+
+                  <button class="btn btn-danger" (click)="ngOnInit();goTop()">Cancelar
+
+                  </button>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Modal Confirmar eliminacion de tatuaje-->
+  <div mdbModal #frameDeleteLibro="mdbModal" class="modal fade top modal-scrolling" tabindex="-1" role="dialog"
+    aria-labelledby="myBasicModalLabel" aria-hidden="true" [config]="{backdrop: false, ignoreBackdropClick: true}">
+    <div class="modal-dialog modal-frame modal-top modal-notify modal-danger modal-side" role="document">
+      <div class="modal-content">
+
+        <div class="modal-body">
+          <div class="row d-flex justify-content-center align-items-center">
+
+            <h3>
+              <mdb-icon fas icon="times" size="2x" class="animated rotateIn"></mdb-icon>
+              <span class="badge" style="color: white;">Eliminación !</span>
+            </h3>
+            <p class="pt-3 mx-4">Está usted seguro en la eliminación de la imagen ?.</p>
+
+            <a (click)="deleteLibroPage();frameDeleteLibro.hide()" type="button" mdbBtn color="danger"
+              class="waves-light" mdbWavesEffect>Eliminar
+              <mdb-icon fas icon="check" class="ml-1"></mdb-icon>
+            </a>
+            <a type="button" mdbBtn color="danger" outline="true" class="waves-light" mdbWavesEffect
+              data-dismiss="modal" (click)="frameDeleteLibro.hide()">NO, gracias</a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Modal Confirmar eliminacion de tatuaje-->

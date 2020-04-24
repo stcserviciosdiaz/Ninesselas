@@ -16,6 +16,7 @@ import { musico } from './musico';
 import { tallas } from './tallas';
 import { tipoUsuario } from './tipoUsuario';
 import { ultimosTrabajos } from './ultimosTrabajos';
+import { libroFamiliar } from './libroFamiliar';
 
 export class Usuario {
   idUser: number;
@@ -46,12 +47,16 @@ export class Usuario {
   nombreArtistico: string;
   nombreCompleto: string;
   nombres: string;
+  nrocuenta: string;
   numeroSeguroSocial: string;
   observaciones: string;
   password: string;
   pathDniMadre: string;
   pathDniPadre: string;
   pathDniUser: string;
+  pathDniMadreB: string;
+  pathDniPadreB: string;
+  pathDniUserB: string;
   pathDniRepresentante: string;
   pathSeguroSocial: string;
   provincia: string;
@@ -82,6 +87,8 @@ export class Usuario {
   cocheList: coche[];
   fotosTatuajesList: fotosTatuajes[];
   fotosManosList: fotosManos[];
+
+  libroFamiliarList: libroFamiliar[];
 
 
 

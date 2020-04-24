@@ -1,0 +1,708 @@
+<div class="bg-fondo">
+  <div class="container contect-Ajuste">
+    <div class="">
+      <mdb-card cascade="true" narrower="true">
+        <div style="padding: 15px;"
+          class="view view-cascade blue-gradient narrower py-4 mx-2 mb-3 d-flex justify-content-between align-items-center">
+
+          <div>
+          </div>
+
+          <a href="" class="white-text mx-3">EDICION DE USUARIO TIPO FIGURACIÓN</a>
+
+          <div>
+          </div>
+
+        </div>
+      </mdb-card>
+      <div class="" id="divInicial">
+        <div class="">
+          <div class="">
+            <div class="">
+              <br />
+              <form [formGroup]="childForm">
+
+                <div class="row">
+                  <div class="col-md-4">
+                    <!-- Card -->
+                    <mdb-card>
+                      <div class="view rgba-white-slight waves-light" mdbWavesEffect style="height: 70%;">
+                        <!-- Card img -->
+                        <mdb-card-img [src]="obsFotoCuerpo"  alt="Card image cap"></mdb-card-img>
+                        <a>
+                          <div class="mask"></div>
+                        </a>
+                      </div>
+                      <!--Card content-->
+                      <mdb-card-body>
+                        <!--Title-->
+                        <mdb-card-title>
+                          <h4></h4>
+                        </mdb-card-title>
+
+                        <!--Text-->
+                        <mdb-card-text class="d-flex"> 
+                          <div class="btn btn-primary btn-sm" size="sm">
+                            <label class="control-label" style="width: max-content;">
+                              <mdb-icon fas icon="cloud-upload-alt" aria-hidden="true"></mdb-icon>
+                              Foto de Perfil
+                              <input type="file" accept="image/*" (change)="onFileAvatarSelected($event)"
+                                class="none"><br>
+                            </label>
+                          </div>
+                          <a mdbTooltip="Resetear Foto"><mdb-icon fas icon="undo-alt" size="2x" class="red-text pr-3"></mdb-icon></a>
+                          <a mdbTooltip="Aceptar Nueva Foto"><mdb-icon fas icon="paper-plane" size="2x" class="green-text pr-3"></mdb-icon></a>
+                          
+                        </mdb-card-text>
+
+
+                      </mdb-card-body>
+                    </mdb-card>
+                    <!-- Card -->
+                  </div>
+                  <!-- FOTO DE PERFIL -->
+                  <div class="col-md-4">
+                    <mat-card class="example-card" style="height: 80%;">
+                      <mat-card-header>
+                        <div mat-card-avatar class="example-header-image">
+                          <a (click)="deleteAvatar()" matTooltip="Eliminar Avatar" *ngIf="obsAvatar" mdbBtn
+                            floating="true" size="sm" color="danger" mdbWavesEffect>
+                            <mdb-icon fas icon="trash" class="white-text"></mdb-icon>
+                          </a>
+                        </div>
+                        <mat-card-title style="font-size: small;">
+                          <div class="btn btn-primary btn-sm" size="sm">
+                            <label class="control-label" style="width: max-content;">
+                              <mdb-icon fas icon="cloud-upload-alt" aria-hidden="true"></mdb-icon>
+                              Foto de Perfil
+                              <input type="file" accept="image/*" (change)="onFileAvatarSelected($event)"
+                                class="none"><br>
+                            </label>
+                          </div>
+                        </mat-card-title>
+                      </mat-card-header>
+                      <img mat-card-image [src]="obsAvatar" height="100%" *ngIf="obsAvatar">
+                      <mat-card-tools>
+                        <a (click)="deleteAvatar()" matTooltip="Eliminar Avatar" *ngIf="obsAvatar" mdbBtn
+                          floating="true" size="sm" color="danger" mdbWavesEffect>
+                          <mdb-icon fas icon="trash" class="white-text"></mdb-icon>
+                        </a>
+                      </mat-card-tools>
+                    </mat-card>
+                  </div>
+                  <!-- FOTO DE PERFIL -->
+
+
+                  <!-- FOTO DE CUERPO ENTERO -->
+                  <div class="col-md-4">
+                    <mat-card class="example-card" style="height: 80%;">
+                      <mat-card-header>
+                        <div mat-card-avatar class="example-header-image">
+                          <a (click)="deleteCuerpo()" matTooltip="Eliminar Foto Cuerpo" *ngIf="obsFotoCuerpo" mdbBtn
+                            floating="true" size="sm" color="danger" mdbWavesEffect>
+                            <mdb-icon fas icon="trash" class="white-text"></mdb-icon>
+                          </a>
+                        </div>
+                        <mat-card-title style="font-size: small;">
+                          <div class="btn btn-primary btn-sm" size="sm">
+                            <label class="control-label" style="width: max-content;">
+                              <mdb-icon fas icon="cloud-upload-alt" aria-hidden="true"></mdb-icon>
+                              Foto Cuerpo
+                              <input type="file" accept="image/*" (change)="onFileCuerpoEnteroSelected($event)"
+                                class="none"><br>
+                            </label>
+                          </div>
+                        </mat-card-title>
+                      </mat-card-header>
+                      <img mat-card-image [src]="obsFotoCuerpo" height="100%" *ngIf="obsFotoCuerpo">
+                    </mat-card>
+                  </div>
+                  <!-- FOTO DE CUERPO ENTERO -->
+
+                </div>
+
+                <br />
+
+
+                <div class="form-group">
+                  <!-- Nombre de Usuario -->
+                  <label class="control-label">Nombre de Usuario</label>
+                  <input type="text" class="form-control" placeholder="Nombre de Usuario" id="username"
+                    formControlName="username"
+                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.username.errors }">
+                  <div *ngIf="submitted && childForm.controls.username.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.username.errors.required">El usuario es requerido</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!-- Nombres Completos -->
+                  <label class="control-label">Nombres</label>
+                  <input type="text" class="form-control" formControlName="nombres" placeholder=""
+                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.nombres.errors }">
+                  <div *ngIf="submitted && childForm.controls.nombres.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.nombres.errors.required">El nombre es requerido</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!-- Apellidos Completos -->
+                  <label class="control-label">Apellidos</label>
+                  <input type="text" class="form-control" formControlName="apellidos" placeholder=""
+                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.apellidos.errors }">
+                  <div *ngIf="submitted && childForm.controls.apellidos.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.apellidos.errors.required">El apellido es requerido</div>
+                  </div>
+                </div>
+
+
+
+
+                <fieldset class="form-group">
+                  <!-- Sexo -->
+                  <div class="row">
+                    <legend class="col-form-label col-sm-2 pt-0">Sexo</legend>
+                    <div class="col-sm-10">
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" formControlName="sexo" value="Masculino" checked>
+                        <label class="form-check-label">
+                          Masculino
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input class="form-check-input" type="radio" formControlName="sexo" value="Femenino">
+                        <label class="form-check-label">
+                          Femenino
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+
+                <div class="form-group">
+                  <!-- ¿De qué grupo étnico se considera? -->
+                  <mat-form-field>
+                    <mat-label>
+                      Raza {{etniaSelect.nombreEtnia}}</mat-label>
+                    <select matNativeControl [(ngModel)]="etniaSelect" style="padding-left: 5%; width: 100%;"
+                      [ngModelOptions]="{standalone: true}">
+                      <option [ngValue]="0">Seleccione...</option>
+                      <option [ngValue]="i" *ngFor="let i of etnias">{{i.nombreEtnia}}</option>
+                    </select>
+                  </mat-form-field>
+                </div>
+                <div *ngIf="etniaSelect.nombreEtnia == 'Otro'" class="form-group">
+                  <!-- especifique -->
+                  <label class="control-label">Especifique otro grupo étnico</label>
+                  <textarea forControlName="otro" class="form-control" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                  <!-- Numero de Teléfono -->
+                  <label>Numero de Teléfono</label>
+                  <label class="sr-only" for="inlineFormInputGroup">Numero de Teléfono</label>
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">+34</div>
+                    </div>
+                    <input type="text" (keypress)="numberOnly($event)" class="form-control" formControlName="telefono"
+                      placeholder="" [ngClass]="{ 'is-invalid': submitted && childForm.controls.telefono.errors }">
+                    <div *ngIf="submitted && childForm.controls.telefono.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.telefono.errors.required">El telefono es requerida</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!-- Acento -->
+                  <label class="control-label">Acento</label>
+                  <input type="text" class="form-control" id="acento" formControlName="acento" placeholder="Español">
+                </div>
+
+                <div class="form-group">
+                  <!-- Fecha de nacimiento -->
+                  <mat-form-field>
+                    <input matInput (dateInput)="onChangeDate($event)" [matDatepicker]="pd" [value]="date"
+                      placeholder="">
+                    <mat-datepicker-toggle matSuffix [for]="pd"></mat-datepicker-toggle>
+                    <mat-datepicker #pd disabled="false"></mat-datepicker>
+                  </mat-form-field>
+                </div>
+
+                <div class="form-group">
+                  <!-- Lugar de nacimiento -->
+                  <label class="control-label">Lugar de nacimiento</label>
+                  <input type="text" class="form-control" id="placebirth" formControlName="placebirth" placeholder=""
+                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.placebirth.errors }">
+                  <div *ngIf="submitted && childForm.controls.placebirth.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.placebirth.errors.required">El lugar es requerido</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!-- Nacionalidad -->
+                  <label class="control-label">Nacionalidad</label>
+                  <input type="text" class="form-control" formControlName="nacionalidad" placeholder=""
+                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.nacionalidad.errors }">
+                  <div *ngIf="submitted && childForm.controls.nacionalidad.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.nacionalidad.errors.required">La nacionalidad es requerido</div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!-- Correo electronico -->
+                  <label>Correo electronico</label>
+                  <input type="email" class="form-control" formControlName="email" placeholder=""
+                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.email.errors }">
+                  <div *ngIf="submitted && childForm.controls.email.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.email.errors.required">Correo electrónico es requerido</div>
+                    <div *ngIf="childForm.controls.email.errors.email">Debe ser una dirección de correo electrónico
+                      válida</div>
+                  </div>
+                </div>
+
+                <div class="form-group d-lg-flex d-md-flex d-block">
+                  <div class="form-group mr-2">
+                    <!-- Talla de camisa -->
+                    <label class="control-label">Talla de camisa</label>
+                    <input type="text" class="d-inline form-control" formControlName="tallaCamisa" placeholder=""
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.tallaCamisa.errors }">
+                    <div *ngIf="submitted && childForm.controls.tallaCamisa.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.tallaCamisa.errors.required">La talla es requerido</div>
+                    </div>
+                  </div>
+                  <div class="form-group mr-2">
+                    <!-- talla de chaqueta -->
+                    <label class="control-label">talla de chaqueta</label>
+                    <input type="text" class="d-inline form-control" formControlName="tallaChaqueta" placeholder=""
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.tallaChaqueta.errors }">
+                    <div *ngIf="submitted && childForm.controls.tallaChaqueta.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.tallaChaqueta.errors.required">La talla es requerido</div>
+                    </div>
+                  </div>
+                  <div class="form-group mr-2">
+                    <!-- Talla de pantalon -->
+                    <label class="control-label">Talla de pantalon</label>
+                    <input type="text" class="d-inline form-control" formControlName="tallaPantalon" placeholder=""
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.tallaPantalon.errors }">
+                    <div *ngIf="submitted && childForm.controls.tallaPantalon.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.tallaPantalon.errors.required">La talla es requerido</div>
+                    </div>
+                  </div>
+                  <div class="form-group mr-3">
+                    <!-- Talla de Pie -->
+                    <label class="control-label">Pie</label>
+                    <input type="text" class="d-inline form-control" formControlName="pie" placeholder=""
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.pie.errors }">
+                    <div *ngIf="submitted && childForm.controls.pie.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.pie.errors.required">La talla es requerido</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <!-- Talla de Altura -->
+                    <label class="control-label">Altura</label>
+                    <input type="text" class="d-inline form-control" formControlName="altura" placeholder=""
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.altura.errors }">
+                    <div *ngIf="submitted && childForm.controls.altura.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.altura.errors.required">La talla es requerido</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group d-lg-flex d-md-flex d-block">
+                  <div class="form-group mr-3">
+                    <!-- Color de Piel -->
+                    <label class="control-label">Color de Piel</label>
+                    <input type="text" class="d-inline form-control" formControlName="colorPiel" placeholder=""
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.colorPiel.errors }">
+                    <div *ngIf="submitted && childForm.controls.colorPiel.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.colorPiel.errors.required">El color es requerido</div>
+                    </div>
+                  </div>
+                  <div class="form-group mr-3">
+                    <!-- Color de Pelo -->
+                    <label class="control-label">Color de Pelo</label>
+                    <input type="text" class="d-inline form-control" formControlName="colorPelo" placeholder=""
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.colorPelo.errors }">
+                    <div *ngIf="submitted && childForm.controls.colorPelo.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.colorPelo.errors.required">El color es requerido</div>
+                    </div>
+                  </div>
+                  <div class="form-group mr-3">
+                    <!-- Color de ojos -->
+                    <label class="control-label">Color de ojos</label>
+                    <input type="text" class="d-inline form-control" formControlName="colorOjos" placeholder=""
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.colorOjos.errors }">
+                    <div *ngIf="submitted && childForm.controls.colorOjos.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.colorOjos.errors.required">El color es requerido</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <!-- Numero DNI del niño-->
+                  <label class="control-label">Numero DNI</label>
+                  <input type="text" (keypress)="check($event)" class="d-inline form-control"
+                    formControlName="numeroDNI" placeholder="#####"
+                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroDNI.errors }">
+                  <div *ngIf="submitted && childForm.controls.numeroDNI.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.numeroDNI.errors.required">El numero es requerida</div>
+                  </div>
+                </div>
+
+
+
+                <div class="form-group">
+                  <!-- Numero seguridad social -->
+                  <label class="control-label">Numero propio de la seguridad social</label>
+                  <input type="text" class="form-control" formControlName="numeroSeguridadSocial" placeholder=""
+                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.numeroSeguridadSocial.errors }">
+                  <div *ngIf="submitted && childForm.controls.numeroSeguridadSocial.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.numeroSeguridadSocial.errors.required">El numero es requerida</div>
+                  </div>
+                </div>
+
+
+                <div class="form-group">
+                  <!-- Direccion -->
+                  <label class="control-label">Dirección</label>
+                  <input type="text" class="form-control" formControlName="direccion" placeholder=""
+                    [ngClass]="{ 'is-invalid': submitted && childForm.controls.direccion.errors }">
+                  <div *ngIf="submitted && childForm.controls.direccion.errors" class="invalid-feedback">
+                    <div *ngIf="childForm.controls.direccion.errors.required">La dirección es requerida
+                    </div>
+                  </div>
+                </div>
+
+
+                <div class="form-row">
+                  <div class="form-group col-md-6">
+                    <!-- Localidad -->
+                    <label class="control-label">Localidad</label>
+                    <input type="text" class="form-control" formControlName="localidad" placeholder=""
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.localidad.errors }">
+                  </div>
+                  <div class="form-group col-md-4">
+                    <!-- Provincia -->
+                    <label class="control-label">Provincia</label>
+                    <input type="text" class="form-control" formControlName="provincia" placeholder="">
+                  </div>
+                  <div class="form-group col-md-2">
+                    <!-- Codigo Postal -->
+                    <label for="inputZip">Codigo Postal</label>
+                    <input type="text" (keypress)="check($event)" class="form-control" formControlName="codpostal"
+                      placeholder="">
+                  </div>
+                </div>
+
+                <div class="form-group d-lg-flex d-md-flex d-block">
+                  <!-- Carnet de conducir y coche-->
+                  <div class="form-group mr-lg-3 mr-md-3 mr-0">
+                    <label class="control-label">Carnet de conducir</label>
+                    <input type="text" class="d-inline form-control" formControlName="carnetConducir" placeholder=""
+                      [ngClass]="{ 'is-invalid': submitted && childForm.controls.carnetConducir.errors }">
+                    <div *ngIf="submitted && childForm.controls.carnetConducir.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.carnetConducir.errors.required">Carnet es requerido</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <!-- Tipo de carnet -->
+                    <label>Tipo de carnet</label>
+                    <select class="form-control" formControlName="tipoCarnet" [ngModelOptions]="{standalone: true}">
+                      <option [ngValue]="0" selected>Seleccione</option>
+                      <option [ngValue]="item" *ngFor="let item of listaTipoCarnet">{{item}}</option>
+                    </select>
+                  </div>
+                </div>
+
+
+
+                <div class="form-group d-flex">
+                  <div class="form-group mr-3">
+                    <!-- Modelo de Coche -->
+                    <label class="control-label">Modelo de Coche</label>
+                    <input type="text" class="d-inline form-control" id="modeloCoche" formControlName="modeloCoche"
+                      placeholder="" [ngClass]="{ 'is-invalid': submitted && childForm.controls.modeloCoche.errors }">
+                    <div *ngIf="submitted && childForm.controls.modeloCoche.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.modeloCoche.errors.required">El modelo es requerido</div>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <!-- Modelo de Moto-->
+                    <label class="control-label">Modelo de Moto</label>
+                    <input type="text" class="d-inline form-control" id="modeloMoto" formControlName="modeloMoto"
+                      placeholder="" [ngClass]="{ 'is-invalid': submitted && childForm.controls.modeloMoto.errors }">
+                    <div *ngIf="submitted && childForm.controls.modeloMoto.errors" class="invalid-feedback">
+                      <div *ngIf="childForm.controls.modeloMoto.errors.required">El modelo es requerido</div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group d-flex">
+                  <!-- FOTO MOTO-->
+                  <div class="col-md-4">
+                    <mat-card class="example-card">
+                      <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"> <img [src]="obsCoche"
+                            style="width: inherit;border-radius: 10%;" /></div>
+                        <mat-card-title style="font-size: small;">{{usuario.nombres}}</mat-card-title>
+                        <mat-card-subtitle>Imagen Coche</mat-card-subtitle>
+                      </mat-card-header>
+                      <img mat-card-image style="padding: 5px 0px 0px 0px;" [src]="obsCoche" alt={{usuario.nombres}}>
+
+                      <mat-card-actions style="font-size: 0.8rem;">
+                        <!--<input type="file" (change)="onFileCuerpoEnteroSelected($event)"><br>-->
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" style="font-size: 0.8rem;"
+                              id="inputGroupFileAddonCoche">Subir</span>
+                          </div>
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input btn btn-primary" id="inputGroupFileCoche"
+                              aria-describedby="inputGroupFileAddonCoche" (change)="onFileCocheSelected($event)" />
+                            <label class="custom-file-label" for="inputGroupFileCoche"></label>
+                          </div>
+                        </div>
+                      </mat-card-actions>
+                    </mat-card>
+                  </div>
+
+                  <!--FOTO MOTO-->
+                  <div class="col-md-4">
+                    <mat-card class="example-card">
+                      <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"> <img [src]="obsMoto"
+                            style="width: inherit;border-radius: 10%;" /></div>
+                        <mat-card-title style="font-size: small;">{{usuario.nombres}}</mat-card-title>
+                        <mat-card-subtitle>Imagen Moto</mat-card-subtitle>
+                      </mat-card-header>
+                      <img mat-card-image style="padding: 5px 0px 0px 0px;" [src]="obsMoto" alt={{usuario.nombres}}>
+
+                      <mat-card-actions style="font-size: 0.8rem;">
+                        <!--<input type="file" (change)="onFileCuerpoEnteroSelected($event)"><br>-->
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" style="font-size: 0.8rem;"
+                              id="inputGroupFileAddonMoto">Subir</span>
+                          </div>
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input btn btn-primary" id="inputGroupFileMoto"
+                              aria-describedby="inputGroupFileAddonMoto" (change)="onFileMotoSelected($event)" />
+                            <label class="custom-file-label" for="inputGroupFileMoto"></label>
+                          </div>
+                        </div>
+                      </mat-card-actions>
+                    </mat-card>
+                  </div>
+                </div>
+
+                <div class="form-group d-flex">
+                  <!-- Color de Coche y Moto-->
+                  <div class="form-group mr-3">
+                    <label class="control-label">Color de Coche</label>
+                    <input type="text" class="d-inline form-control" id="colorCoche" formControlName="colorCoche"
+                      placeholder="">
+                  </div>
+                  <div class="form-group">
+                    <label class="control-label">Color de Moto</label>
+                    <input type="text" class="d-inline form-control" id="colorMoto" formControlName="colorMoto"
+                      placeholder="">
+                  </div>
+                </div>
+
+                <!-- Adjuntar fotos de tatuaje-->
+                <div class="form-group">
+                  <!-- Fotos Tatuajes -->
+                  <label class="control-label">Fotos Tatuajes</label>
+                  <!--FOTO MOTO-->
+                  <div class="col-md-4">
+                    <mat-card class="example-card">
+                      <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"> <img [src]="obsTatuajes"
+                            style="width: inherit;border-radius: 10%;" /></div>
+                        <mat-card-title style="font-size: small;">{{usuario.nombres}}</mat-card-title>
+                        <mat-card-subtitle>Imagen Tatuaje</mat-card-subtitle>
+                      </mat-card-header>
+                      <img mat-card-image style="padding: 5px 0px 0px 0px;" [src]="obsTatuajes" alt={{usuario.nombres}}>
+
+                      <mat-card-actions style="font-size: 0.8rem;">
+                        <!--<input type="file" (change)="onFileCuerpoEnteroSelected($event)"><br>-->
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" style="font-size: 0.8rem;"
+                              id="inputGroupFileAddonTatuaje">Subir</span>
+                          </div>
+                          <div class="custom-file">
+                            <input type="file" class="custom-file-input btn btn-primary" id="inputGroupFileTatuaje"
+                              aria-describedby="inputGroupFileAddonTatuaje" (change)="onFileTatuajeSelected($event)" />
+                            <label class="custom-file-label" for="inputGroupFileTatuaje"></label>
+                          </div>
+                        </div>
+                      </mat-card-actions>
+                    </mat-card>
+                  </div>
+                </div>
+
+
+
+
+                <div class="form-group">
+                  <!-- Deporte -->
+                  <mat-form-field>
+                    <mat-label>
+                      Deporte {{deportistaSelect.nombreDeportista}}</mat-label>
+                    <select matNativeControl class="form-control" [(ngModel)]="deportistaSelect"
+                      [ngModelOptions]="{standalone: true}">
+                      <option selected>Seleccione...</option>
+                      <option [ngValue]="i" *ngFor="let i of deportista">{{i.nombreDeportista}}</option>
+                    </select>
+                  </mat-form-field>
+                </div>
+                <div class="form-group">
+                  <!-- Habilidades del deporte-->
+                  <h5 class="pb-1">Habilidades de Deporte</h5>
+                  <hr>
+                  <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                    <div *ngFor="let item of deportes" class="col-md-4 col-sm-6 col-12"
+                      style="padding: 5px 0px 5px 0px;">
+                      <mat-checkbox [checked]="isChecked(item.nombreDeporte, 1)" (change)="OnChange($event, item, 1)">
+                        <span class="itemitle">{{item.nombreDeporte}}</span>
+                      </mat-checkbox>
+                    </div>
+                  </div>
+                  <mat-form-field>
+                    <input matInput placeholder="Otro">
+                  </mat-form-field>
+                </div>
+
+
+
+                <div class="form-group">
+                  <!-- Baile -->
+                  <mat-form-field>
+                    <mat-label>
+                      Baile {{baileSelect.nombreBailarin}}</mat-label>
+                    <select matNativeControl class="form-control" [(ngModel)]="baileSelect"
+                      [ngModelOptions]="{standalone: true}">
+                      <option selected>Seleccione...</option>
+                      <option [ngValue]="i" *ngFor="let i of baile">{{i.nombreBailarin}}</option>
+                    </select>
+                  </mat-form-field>
+                </div>
+                <h5 class="pb-1">Habilidades de Baile</h5>
+                <hr>
+                <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                  <div *ngFor="let item of estilosBaile" class="col-md-4 col-sm-6 col-12"
+                    style="padding: 5px 0px 5px 0px;">
+                    <mat-checkbox [checked]="isChecked(item.nombreBaile, 2)" (change)="OnChange($event, item, 2)">
+                      <span class="itemitle">{{item.nombreBaile}}</span>
+                    </mat-checkbox>
+                  </div>
+                </div>
+                <mat-form-field>
+                  <input matInput placeholder="Otro">
+                </mat-form-field>
+
+                <div class="form-group">
+                  <!-- Cantantes -->
+                  <mat-form-field>
+                    <mat-label>
+                      Cantante {{cantanteSelect.nombreCantante}}</mat-label>
+                    <select matNativeControl class="form-control" [(ngModel)]="cantanteSelect"
+                      [ngModelOptions]="{standalone: true}">
+                      <option selected>Seleccione...</option>
+                      <option [ngValue]="i" *ngFor="let i of cantante">{{i.nombreCantante}}</option>
+                    </select>
+                  </mat-form-field>
+                </div>
+                <h5 class="pb-1">Habilidades de Canto</h5>
+                <hr>
+                <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                  <div *ngFor="let item of estilosCanto" class="col-md-4 col-sm-6 col-12"
+                    style="padding: 5px 0px 5px 0px;">
+                    <mat-checkbox [checked]="isChecked(item.nombreEstiloCanto, 3)" (change)="OnChange($event, item, 3)">
+                      <span class="itemitle">{{item.nombreEstiloCanto}}</span>
+                    </mat-checkbox>
+                  </div>
+                </div>
+                <mat-form-field>
+                  <input matInput placeholder="Otro">
+                </mat-form-field>
+
+                <h5 class="pb-1">Habilidades Varias</h5>
+                <hr>
+                <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                  <div *ngFor="let item of habilidadess" class="col-md-4 col-sm-6 col-12"
+                    style="padding: 5px 0px 5px 0px;">
+                    <mat-checkbox [checked]="isChecked(item.nombreHabilidad, 4)" (change)="OnChange($event, item, 4)">
+                      <span class="itemitle">{{item.nombreHabilidad}}</span>
+                    </mat-checkbox>
+                  </div>
+                </div>
+                <mat-form-field>
+                  <input matInput placeholder="Otro">
+                </mat-form-field>
+
+                <h5 class="pb-1">Idiomas</h5>
+                <hr>
+                <div class="row itemsBlock" style="padding: 0% 5% 0% 5%;">
+                  <div *ngFor="let item of idiomas" class="col-md-4 col-sm-6 col-12" style="padding: 5px 0px 5px 0px;">
+                    <mat-checkbox [checked]="isChecked(item.nombreIdioma, 5)" (change)="OnChange($event, item, 5)">
+                      <span class="itemitle">{{item.nombreIdioma}}</span>
+                    </mat-checkbox>
+                  </div>
+                </div>
+                <mat-form-field>
+                  <input matInput placeholder="Otro">
+                </mat-form-field>
+
+                <div class="form-group example-container">
+                  <!-- Bilingue -->
+                  <mat-form-field>
+                    <input id="bilingue" formControlName="bilingue" matInput placeholder="Bilingue">
+                  </mat-form-field>
+                </div>
+
+                <div class="form-group example-container">
+                  <!-- nrocuenta -->
+                  <mat-form-field>
+                    <input id="nrocuenta" formControlName="nrocuenta" matInput placeholder="Número de Cuenta">
+                  </mat-form-field>
+                </div>
+                <div class="form-group">
+                  <!-- Ultimos trabajos -->
+                  <label class="control-label">Descripción de Ultimos Trabajos</label>
+                  <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos"
+                    placeholder="Teatro">
+                  <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos" placeholder="Cine">
+                  <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos"
+                    placeholder="Ficcion">
+                  <input type="text" class="d-inline form-control" formControlName="ultimosTrabajos"
+                    placeholder="Publicidad">
+                </div>
+                <div class="form-group">
+                  <!-- Observaciones -->
+                  <label for="">Observaciones</label>
+                  <textarea class="form-control" id="observaciones" formControlName="observaciones" rows="3"></textarea>
+                </div>
+
+
+
+
+                <div class="mt-5 form-group d-flex justify-content-between" style="width: 25%;">
+                  <button class="btn btn-primary" (click)="signupChild()">Actualizar
+                    <span *ngIf="submitted && childForm.controls.acceptTerms.value === true"><i
+                        class="fa fa-spinner fa-spin fa-3x fa-fw" style="font-size: 13px;"></i></span>
+                  </button>
+
+                  <button class="btn btn-danger" (click)="ngOnInit();goTop()">Cancelar
+
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

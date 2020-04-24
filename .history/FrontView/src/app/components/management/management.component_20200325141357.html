@@ -1,0 +1,572 @@
+<div class="wrapper " style="background-image: url(assets/img/sliderview/slider08-min.jpg);background-size: cover;">
+
+  <div class="main-panel" style="width: 100% !important;">
+
+    <mdb-navbar SideClass="navbar  navbar-expand-lg navbar-dark scrolling-navbar intro-fixed-nav"
+      [containerInside]="false">
+
+      <!-- Navbar brand -->
+      <mdb-navbar-brand><a class="navbar-brand" href="#">
+          <div>
+            <mdb-icon fas icon="user-circle" class="pink-text"></mdb-icon>
+            Usuario Logeado : {{userInfo.nombres}}
+            {{userInfo.apellidos}}
+
+          </div>
+        </a></mdb-navbar-brand>
+
+      <!-- Collapsible content -->
+      <links>
+
+        <!-- Links -->
+        <ul class="navbar-nav mr-auto" style="width: inherit;">
+        </ul>
+        <!-- Links -->
+
+        <ul class="navbar-nav ml-auto nav-flex-icons" style="width: inherit;
+        display: flex;
+        justify-content: space-evenly;">
+          <li class="nav-item">
+            <a (click)="modalDatauser.show()" class="white-text">
+              <mdb-icon class="pink-text" fas icon="user-edit" mdbTooltip="Editar Info Principal"></mdb-icon>
+              Editar
+            </a>
+          </li>
+          <li class="nav-item">
+            <a (click)="pasarUsuarioUpdatePassword(userInfo);frame.show()" class="white-text">
+              <mdb-icon fas icon="fas fa-key" class="pink-text" mdbTooltip="Cambiar Contraseña"></mdb-icon>
+              Cambiar Clave
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="white-text" (click)="authService.logoutUser()" routerLink="#/home">
+              <mdb-icon fas icon="sign-out-alt" class="pink-text" mdbTooltip="Salir"></mdb-icon>
+              Salir
+            </a>
+          </li>
+        </ul>
+      </links>
+      <!-- Collapsible content -->
+
+    </mdb-navbar>
+    <!--/.Navbar-->
+
+    <div class="content"
+      style="margin-top: 3%; background: linear-gradient(0deg, rgba(2,0,36,1) 0%, #d65b85fa 55%, rgba(245,248,249,0.008841036414565795) 80%);">
+
+
+
+
+
+
+      <div class="row">
+
+
+        <div class="col-lg-3 col-md-6 col-sm-6  ">
+          <!-- Card -->
+          <mdb-card
+            style="border-radius: 0.75rem !important;background-size: 100% 100%;background-image: url('assets/img/sliderview/slider12-min.jpg')"
+            class="card card-image mb-3 mx-2 rounded mb-0">
+            <!-- Content -->
+            <div style="border-radius: 0.75rem !important;
+              padding: 0.5rem 0.5rem !important;"
+              class="text-white  d-flex align-items-center rgba-black-strong py-5 px-4">
+              <div>
+                <h5 class="pink-text">
+                  <mdb-icon fas icon="users"></mdb-icon>
+                  Usuarios
+                </h5>
+                <h3 class="card-title pt-2" style="text-align: end;"><strong>#{{numberOfUsers}}</strong></h3>
+
+              </div>
+            </div>
+            <!-- Content -->
+          </mdb-card>
+          <!-- Card -->
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <!-- Card -->
+          <mdb-card
+            style="border-radius: 0.75rem !important;background-size: 100% 100%;background-image: url('assets/img/sliderview/slider10-min.jpg')"
+            class="card card-image mb-3 mx-2 rounded mb-0">
+            <!-- Content -->
+            <div style="border-radius: 0.75rem !important;padding: 0.5rem 0.5rem !important;"
+              class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+              <div>
+                <h5 class="pink-text">
+                  <mdb-icon fas icon="film"></mdb-icon>
+                  Figuración
+                </h5>
+                <h3 class="card-title pt-2" style="text-align: end;"><strong>#{{totalFiguracion}}</strong></h3>
+              </div>
+            </div>
+            <!-- Content -->
+          </mdb-card>
+          <!-- Card -->
+        </div>
+
+
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <!-- Card -->
+          <mdb-card
+            style="border-radius: 0.75rem !important;background-size: 100% 100%;background-image: url('assets/img/sliderview/slider02-min.jpg')"
+            class="card card-image mb-3 mx-2 rounded mb-0">
+            <!-- Content -->
+            <div style="border-radius: 0.75rem !important;
+padding: 0.5rem 0.5rem !important;"
+              class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+              <div>
+                <h5 class="pink-text">
+                  <mdb-icon fas icon="film"></mdb-icon>
+                  Actores/Actrices
+                </h5>
+                <h3 class="card-title pt-2"><strong>#{{totalActor}}</strong></h3>
+              </div>
+            </div>
+            <!-- Content -->
+          </mdb-card>
+          <!-- Card -->
+        </div>
+
+
+
+
+
+        <div class="col-lg-3 col-md-6 col-sm-6">
+          <!-- Card -->
+          <mdb-card
+            style="border-radius: 0.75rem !important;background-size: 100% 100%;background-image: url('assets/img/sliderview/slider11-min.jpg')"
+            class="card card-image mb-3 mx-2 rounded mb-0">
+            <!-- Content -->
+            <div style="border-radius: 0.75rem !important;
+padding: 0.5rem 0.5rem !important;"
+              class="text-white text-center d-flex align-items-center rgba-black-strong py-5 px-4">
+              <div>
+                <h5 class="pink-text">
+                  <mdb-icon fas icon="user-friends"></mdb-icon>
+                  Niños
+                </h5>
+                <h3 class="card-title pt-2" style="text-align: end;"><strong>#{{totalNinio}}</strong></h3>
+
+
+              </div>
+            </div>
+            <!-- Content -->
+          </mdb-card>
+          <!-- Card -->
+        </div>
+      </div>
+
+      <section>
+
+
+        <!-- Grid row -->
+        <div class="row align-items-center justify-content-center">
+
+          <!-- Grid column -->
+          <div class="col-lg-6 d-flex justify-content-between" style="color:whitesmoke;">
+
+            <!-- Grid row -->
+            <div class="row mb-3">
+              <div class="col-md-1 col-2">
+                <mdb-icon fas icon="user-astronaut" size="2x" class="indigo-text"></mdb-icon>
+              </div>
+
+              <div class="col-md-11 col-10">
+                <h5 class="font-weight-bold mb-3">Usuario Adm</h5>
+                <p class="white-text">{{userInfo.username}}</p>
+              </div>
+            </div>
+            <!-- Grid row -->
+
+            <!-- Grid row -->
+            <div class="row mb-3">
+              <div class="col-md-1 col-2">
+                <mdb-icon fas icon="envelope-open" size="2x" class="pink-text"></mdb-icon>
+              </div>
+              <div class="col-md-11 col-10">
+                <h5 class="font-weight-bold mb-3">Email Empresarial</h5>
+                <p class="white-text">{{userInfo.email}}</p>
+              </div>
+            </div>
+            <!-- Grid row -->
+
+            <!-- Grid row -->
+            <div class="row mb-3">
+              <div class="col-md-1 col-2">
+                <mdb-icon fas icon="phone" size="2x" class="blue-text"></mdb-icon>
+              </div>
+              <div class="col-md-11 col-10">
+                <h5 class="font-weight-bold mb-3">Teléfonos</h5>
+                <p class="white-text">{{userInfo.telefono}}</p>
+              </div>
+            </div>
+            <!-- Grid row -->
+
+          </div>
+          <!-- Grid column -->
+
+          <!-- Grid column -->
+          <div class="col-lg-3" style="background-color: black; border-radius: 10px;">
+            <!--Image-->
+            <img src="../../../assets/img/LOGONINESSELAS.png" alt="Sample project image"
+              class="img-fluid rounded z-depth-1">
+          </div>
+          <!-- Grid column -->
+
+        </div>
+        <!-- Grid row -->
+      </section>
+
+
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="card ">
+            <div class="card-header">
+              <div class="justify-content-between d-flex">
+                <div >
+                  <h5 class="card-title">Usuarios, Empresas y Proyectos</h5>
+                </div>
+
+                
+                  <div class="justify-content-between d-flex">
+                    <mat-form-field>
+                      <mat-label>Tipo Usuario</mat-label>
+                      <mat-select [(ngModel)]="idsTipousuario" multiple>
+                        <mat-option [value]="2">Figuración</mat-option>
+                        <mat-option [value]="1">Actor</mat-option>
+                        <mat-option [value]="3">Niño</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                    <button (click)="filtroBuscarusuarios()" mdbBtn type="button" color="primary" mdbWavesEffect size="sm" >
+                      <mdb-icon fas icon="search" class="mr-1"></mdb-icon>Buscar
+                    </button>
+                </div>
+              </div>
+
+            </div>
+            <div class="card-body ">
+
+
+              <mdb-card cascade="true" narrower="true">
+                <!--Card image-->
+                <div style="padding: 25px;"
+                  class="view view-cascade gradient-card-header blue-gradient narrower py-4 mx-2 mb-3 d-flex justify-content-between align-items-center">
+
+                  <div style="width: 50%;">
+                    <div class="md-form">
+                      <input type="text" placeholder="Búsqueda por parámetros" [(ngModel)]="searchText"
+                        class="form-control" id="search" mdbInput>
+                    </div>
+                  </div>
+
+                  <a href="" class="white-text mx-3">Usuarios</a>
+
+                  <div>
+
+                  </div>
+
+                </div>
+                <!--/Card image-->
+
+                <div>
+                  <table mdbTable #tableEl="mdbTable" small="true" resposive="true" striped="true" mdbTableScroll
+                    maxWidth="100%" scrollX="true"
+                    class="table table-bordered  table-responsive-md table-striped text-center">
+                    <thead>
+                      <tr>
+                        <th *ngFor="let head of headElements; let i = index" scope="col">{{head}}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let user of allUsers; let i = index">
+                        <th *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex"
+                          scope="row">{{user.idUser}}</th>
+                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                          {{user.nombres}} {{user.apellidos}}</td>
+                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                          {{user.edad}}</td>
+                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                          {{user.nombreArtistico}}</td>
+                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                          {{user.sexo}}</td>
+                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                          {{user.fechaNacimiento}}</td>
+                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                          {{user.localidad}}</td>
+                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                          {{user.altura}}</td>
+                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                          {{user.colorPiel}}</td>
+                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                          {{user.colorPelo}}</td>
+                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                          {{user.colorOjos}}</td>
+                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                          {{user.email}}</td>
+                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                          {{user.telefono}}</td>
+                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+
+                          <div class="btn-group" mdbDropdown>
+                            <button mdbDropdownToggle type="button" mdbBtn color="primary" style="width: 0px;"
+                              class="dropdown-toggle waves-light" size="sm" mdbWavesEffect>
+                              <i class="fas fa-bars"></i>
+                            </button>
+
+                            <div class="dropdown-menu dropdown-primary " style="width: 0px;">
+
+
+
+
+                              <button mdbTooltip="Eliminar" placement="left" style="width: 0px;" class="dropdown-item"
+                                mdbBtn color="danger" rounded="true" size="sm"
+                                (click)="removeUser(i,user.idUser, user.nombres, user.apellidos);basicModal.show()"
+                                data-toggle="modal" mdbWavesEffect><i class="fas fa-trash"></i></button>
+
+                              <button mdbTooltip="Editar" placement="left" style="width: 0px;" class="dropdown-item"
+                                mdbBtn mdbWavesEffect gradient="blue" rounded="true" size="sm"
+                                (click)="editarUser(i,user)"><i class="fas fa-edit"></i></button>
+
+                              <div class="divider dropdown-divider"></div>
+                              <button mdbTooltip="Cambiar Contraseña" placement="left" style="width: 0px;"
+                                class="dropdown-item" mdbBtn color="warning" rounded="true" data-toggle="modal"
+                                size="sm" (click)="pasarUsuarioUpdatePassword(user);frame.show()" mdbWavesEffect><i
+                                  class="fas fa-key"></i></button>
+
+                            </div>
+                          </div>
+
+
+
+                        </td>
+                      </tr>
+                    </tbody>
+                    <tfoot class="grey lighten-5 w-100">
+                      <tr>
+                        <td colspan="4">
+                          <mdb-table-pagination [tableEl]="tableEl" [searchDataSource]="allUsers">
+                          </mdb-table-pagination>
+                        </td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                </div>
+
+
+              </mdb-card>
+              <br />
+              <app-management-company></app-management-company>
+
+              <div class="panel-dasboard">
+                <app-proyect></app-proyect>
+              </div>
+
+              <canvas id=chartHours width="400" height="100"></canvas>
+            </div>
+            <div class="card-footer ">
+              <hr>
+              <div class="stats">
+                <i class="fa fa-history"></i> Actualizado hace 3 minutos
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer footer-black  footer-white ">
+      <div class="container-fluid">
+        <div class="row">
+          <nav class="footer-nav">
+            <ul>
+              <li>
+                <a routerLink="/about" target="_blank">SOBRE NOSOTROS</a>
+              </li>
+              <li>
+                <a routerLink="/contact" target="_blank">CONTÁCTANOS</a>
+              </li>
+              <li>
+                <a routerLink="/terms" target="_blank">TÉRMINOS Y CONDICIONES</a>
+              </li>
+              <li>
+                <a routerLink="/privacy" target="_blank">POLÍTICA DE PRIVACIDAD</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+</div>
+
+
+<!--Modal cambio de contrasenia-->
+<div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-danger" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <p class="heading lead">Cambio de Contraseña</p>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+      <!--Body-->
+      <div class="modal-body">
+        <form [formGroup]="validatingForm">
+
+          <div class="md-form form-sm">
+            <mdb-icon fas icon="envelope" class="prefix"></mdb-icon>
+            <input mdbInput type="text" id="form24" class="form-control" formControlName="modalFormRegisterEmail"
+              readonly />
+            <label for="form24">Email</label>
+          </div>
+
+          <div class="md-form form-sm">
+            <mdb-icon fas icon="lock" class="prefix"></mdb-icon>
+            <label for="form25"> Nuevo Password</label>
+            <input mdbInput mdbValidate type="password" id="form25" class="form-control"
+              formControlName="modalFormRegisterPassword"
+              [ngClass]="{ 'is-invalid': validatingForm.controls.modalFormRegisterPassword.errors }">
+            <div *ngIf="validatingForm.controls.modalFormRegisterPassword.errors" class="invalid-feedback">
+              <div *ngIf="validatingForm.controls.modalFormRegisterPassword.errors.required">La contraseña es requerida
+              </div>
+            </div>
+          </div>
+
+          <div class="md-form form-sm">
+            <mdb-icon fas icon="lock" class="prefix"></mdb-icon>
+            <label for="form26">Confirmar password</label>
+            <input mdbInput mdbValidate type="password" id="form26" class="form-control"
+              formControlName="modalFormRegisterRepeatPassword" />
+            <div *ngIf="validatingForm.controls.modalFormRegisterRepeatPassword.errors" class="invalid-feedback">
+              <div *ngIf="validatingForm.controls.modalFormRegisterRepeatPassword.errors.required">Confirme que se
+                requiere contraseña
+              </div>
+              <div *ngIf="validatingForm.controls.modalFormRegisterRepeatPassword.errors.mustMatch">Las contraseñas
+                deben coincidir
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!--Footer-->
+      <div class="modal-footer justify-content-center">
+        <a type="button" mdbBtn color="danger" (click)="actualizarPassword();frame.hide()" outline="true"
+          class="waves-effect" mdbWavesEffect>Actualizar
+          <mdb-icon fas icon="check"></mdb-icon>
+        </a>
+        <a type="button" mdbBtn size="1x" color="danger" class="waves-effect" mdbWavesEffect (click)="frame.hide()">
+          No, gracias</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!--Modal cambio de contrasenia-->
+
+
+<!-- Modal Confirmar eliminacion de usuario-->
+<div mdbModal #basicModal="mdbModal" class="modal fade top modal-scrolling" tabindex="-1" role="dialog"
+  aria-labelledby="myBasicModalLabel" aria-hidden="true" [config]="{backdrop: false, ignoreBackdropClick: true}">
+  <div class="modal-dialog modal-frame modal-top modal-notify modal-danger modal-side" role="document">
+    <div class="modal-content">
+
+      <div class="modal-body">
+        <div class="row d-flex justify-content-center align-items-center">
+
+          <h3>
+            <mdb-icon fas icon="times" size="2x" class="animated rotateIn"></mdb-icon>
+            <span class="badge" style="color: white;">Eliminación !</span>
+          </h3>
+          <p class="pt-3 mx-4">Está usted seguro en la eliminación del Usuario
+            <strong>{{nombreUserElimina}} </strong> ?.</p>
+
+          <a (click)="eliminarUser();basicModal.hide()" type="button" mdbBtn color="danger" class="waves-light"
+            mdbWavesEffect>Eliminar
+            <mdb-icon fas icon="check" class="ml-1"></mdb-icon>
+          </a>
+          <a type="button" mdbBtn color="danger" outline="true" class="waves-light" mdbWavesEffect data-dismiss="modal"
+            (click)="basicModal.hide()">NO, gracias</a>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Confirmar eliminacion de usuario-->
+
+
+<!-- Modal Datos de Usuario Empresa-->
+<div mdbModal #modalDatauser="mdbModal" class="modal fade top" id="modalDatauser" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-notify modal-primary" role="document">
+    <!--Content-->
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header">
+        <h6 class="card-title heading lead">Usuario Administrativo</h6>
+        <p class="text-muted " style="font-size: 13px"></p>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text">&times;</span>
+        </button>
+      </div>
+      <!--Body-->
+      <div class="modal-body">
+
+        <form class="example-form example-container">
+
+          <div class="md-form form-sm">
+
+            <p class="blue-text">
+              <mdb-icon fas icon="user-astronaut" class="indigo-text"></mdb-icon>
+              Nombre de Usuario
+            </p>
+            <mat-form-field class="example-full-width" style="display: block;">
+              <mat-label>{{userInfo.username}}</mat-label>
+              <input matInput placeholder="{{userInfo.username}}">
+            </mat-form-field>
+          </div>
+
+          <div class="md-form form-sm">
+            <p class="blue-text">
+              <mdb-icon fas icon="envelope-open" class="pink-text"></mdb-icon>
+              Email Empresarial
+            </p>
+            <mat-form-field class="example-full-width" style="display: block;">
+              <mat-label>{{userInfo.email}}</mat-label>
+              <input matInput placeholder="{{userInfo.email}}">
+            </mat-form-field>
+          </div>
+
+          <div class="md-form form-sm">
+            <p class="blue-text justify-content-end">
+              <mdb-icon fas icon="phone" class="blue-text"></mdb-icon>
+              Teléfono de Contacto
+            </p>
+            <mat-form-field class="example-full-width" style="display: block;">
+              <mat-label>{{userInfo.telefono}}</mat-label>
+              <input matInput placeholder="{{userInfo.telefono}}">
+            </mat-form-field>
+          </div>
+
+
+        </form>
+      </div>
+      <!--Footer-->
+      <div class="modal-footer justify-content-end">
+        <a type="button" class="btn btn-primary"><i class="fas fa-user-edit" (click)="modalDatauser.hide()"></i>&nbsp;
+          Editar</a>
+        <a type="button" class="btn btn-outline-primary waves-effect" (click)="modalDatauser.hide()"><i
+            class="fas fa-times-circle"></i>&nbsp; No, Gracias</a>
+      </div>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>

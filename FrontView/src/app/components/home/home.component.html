@@ -40,10 +40,10 @@
 
 <app-footer></app-footer>
 <!-- Modal -->
-<ngx-smart-modal #myModal identifier="myModal">
+<ngx-smart-modal #myModal identifier="myModal" customClass="nsm-dialog">
   <h1> Bienvenidos </h1>
   <p class="mb-0"> Somos la principal Agencia Profesional </p>
-  <div class="col-12 mt-5 p-0">
+  <div class="col-12 mt-5 p-0 .nsm-content" style="width: 600px;">
       <div class="row">
           <div class="col-sm-4 col-12">
               <a  routerLink="/figuracion">
@@ -57,7 +57,7 @@
           </div>
           <div class="col-sm-4 col-12">
               <a  routerLink="/children">
-                <button type="button" class="w-100 btn btn-option btn-xl">Niños</button>
+                <button type="button" class="w-100 btn btn-option btn-xl">Niños (0-15 años)</button>
               </a>
           </div>
       </div>

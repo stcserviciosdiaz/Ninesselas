@@ -1,0 +1,317 @@
+<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+  <a class="navbar-brand mr-1" routerLink="#/home">Administrativo Usuarios</a>
+
+  <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+    <i class="fas fa-bars"></i>
+  </button>
+
+  <!-- Navbar Search -->
+  <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+
+  </form>
+
+  <!-- Navbar -->
+  <ul class="navbar-nav ml-auto ml-md-0">
+    <li class="nav-item dropdown no-arrow mx-1">
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+    </li>
+    <li class="nav-item dropdown no-arrow mx-1">
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
+        <a class="dropdown-item" href="#">Action</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+    </li>
+
+    <li class=" nav-item dropdown no-arrow">
+
+    </li>
+
+    <li class=" nav-item dropdown no-arrow">
+      <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+
+      </a>
+
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+        <!-- <a class="dropdown-item" href="#">Settings</a>
+              <a class="dropdown-item" href="#">Activity Log</a> -->
+        <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Salir</a>
+      </div>
+    </li>
+    <li> <a class="btn btn-primary" (click)="authService.logoutUser()" routerLink="#/home">Salir</a>
+    </li>
+  </ul>
+
+</nav>
+<div id="wrapper">
+  <!-- Sidebar -->
+  <ul class="sidebar navbar-nav">
+    <li class="nav-item active">
+      <a class="nav-link" routerLink="#/home">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span> Dashboard</span>
+      </a>
+    </li>
+
+  </ul>
+
+  <div id="content-wrapper">
+
+    <div class="container-fluid">
+
+      <!-- Breadcrumbs-->
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="#">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">{{userInfo.idUser}}</li>
+      </ol>
+
+
+
+
+      <!-- Card Narrower -->
+      <div class="row">
+        <div class="col-md-3">
+          <mat-card class="example-card">
+            <mat-card-header>
+              <div mat-card-avatar class="example-header-image"> <img [src]="urlImage"
+                  style="width: inherit;border-radius: 10%;" /></div>
+              <mat-card-title style="font-size: small;">{{userInfo.nombres}}</mat-card-title>
+              <mat-card-subtitle>Imagen Avatar</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image style="padding: 5px 0px 0px 0px;" [src]="urlImage" alt={{userInfo.nombres}}>
+
+            <mat-card-actions style="font-size: 0.8rem;align-items: flex-end;">
+              <button type="button" mdbBtn mdbWavesEffect gradient="aqua" rounded="true" size=""
+                (click)="editarUser(0, userInfo)">Ver Perfil Completo</button>
+              <button mdbTooltip="Cambiar Contraseña"  class="dropdown-item" mdbBtn
+                color="warning" rounded="true" data-toggle="modal" size="sm"
+                (click)="frame.show()" mdbWavesEffect><i
+                  class="fas fa-key"></i></button>
+            </mat-card-actions>
+          </mat-card>
+
+        </div>
+        <div class="col-md-9">
+          <!-- DataTables Example -->
+          <div class="card mb-3">
+            <div class="card-header" style="justify-content: space-between;display: flex;">
+              <div> <i class="fas fa-table"></i>
+                Información Personal
+              </div>
+
+
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <tbody>
+
+                    <tr>
+                      <td>Nombre Usuario </td>
+                      <td>{{userInfo.nombres}} {{userInfo.apellidos}}</td>
+                    </tr>
+                    <tr>
+                      <td>Correo eléctronico</td>
+                      <td>{{userInfo.email}}</td>
+                    </tr>
+                    <tr>
+                      <td>Contraseña</td>
+                      <td>{{userInfo.password}}</td>
+                    </tr>
+                    <tr>
+                      <td>Alias</td>
+                      <td>N/A</td>
+                    </tr>
+                    <tr>
+                      <td>Genero</td>
+                      <td>{{userInfo.sexo}}</td>
+                    </tr>
+                    <tr>
+                      <td>Numero de Teléfono</td>
+                      <td>{{userInfo.telefono}}</td>
+                    </tr>
+                    <tr>
+                      <td>Fecha de nacimiento</td>
+                      <td>{{userInfo.fechaNacimiento}}</td>
+                    </tr>
+                    <tr>
+                      <td>Pais</td>
+                      <td>{{userInfo.nacionalidad}}</td>
+                    </tr>
+                    <tr>
+                      <td>Talla de camisa</td>
+                      <td>{{userInfo.tallasList[0].camisaTalla}}</td>
+                    </tr>
+                    <tr>
+                      <td>Talla de Pantalon</td>
+                      <td>{{userInfo.tallasList[0].pantalonTalla}}</td>
+                    </tr>
+                    <tr>
+                      <td>Talla de chaqueta</td>
+                      <td>{{userInfo.tallasList[0].chaquetaTalla}}</td>
+                    </tr>
+                    <tr>
+                      <td>Pie</td>
+                      <td>{{userInfo.tallasList[0].pieTalla}}</td>
+                    </tr>
+                    <tr>
+                      <td>Altura</td>
+                      <td>{{userInfo.altura}}</td>
+                    </tr>
+                    <tr>
+                      <td>Color de Pelo</td>
+                      <td>{{userInfo.colorPelo}}</td>
+                    </tr>
+                    <tr>
+                      <td>Color de Piel</td>
+                      <td>{{userInfo.colorPiel}}</td>
+                    </tr>
+                    <tr>
+                      <td>Color de ojos</td>
+                      <td>{{userInfo.colorOjos}}</td>
+                    </tr>
+                    <tr>
+                      <td>Code DNI</td>
+                      <td>{{userInfo.dniUser}}</td>
+                    </tr>
+                    <tr>
+                      <td>Modelo de Coche</td>
+                      <td>{{userInfo.cocheList[0].modeloCoche}}</td>
+                    </tr>
+                    <tr>
+                      <td>Modelo de Moto</td>
+                      <td>{{userInfo.motoList[0].modeloMoto}}</td>
+                    </tr>
+                    <tr>
+                      <td>Numero de seguridad social</td>
+                      <td>{{userInfo.numeroSeguroSocial}}</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+
+      </div>
+      <!-- /.container-fluid -->
+
+      <!-- Sticky Footer -->
+      <footer>
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright © Ninesselas 2019</span>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+    <!-- /.content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" (click)="authService.logoutUser()" routerLink="#/home">Salir</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Modal cambio de contrasenia-->
+  <div mdbModal #frame="mdbModal" class="modal fade top" id="frameModalTop" tabindex="-1" role="dialog"
+    aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-notify modal-danger" role="document">
+      <!--Content-->
+      <div class="modal-content">
+        <!--Header-->
+        <div class="modal-header">
+          <p class="heading lead">Cambio de Contraseña</p>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="frame.hide()">
+            <span aria-hidden="true" class="white-text">&times;</span>
+          </button>
+        </div>
+        <!--Body-->
+        <div class="modal-body">
+          <form [formGroup]="validatingForm">
+
+            <div class="md-form form-sm">
+              <mdb-icon fas icon="envelope" class="prefix"></mdb-icon>
+              <input mdbInput type="text" id="form24" class="form-control" formControlName="modalFormRegisterEmail"
+                readonly />
+              <label for="form24">Email</label>
+            </div>
+
+            <div class="md-form form-sm">
+              <mdb-icon fas icon="lock" class="prefix"></mdb-icon>
+              <label for="form25"> Nuevo Password</label>
+              <input mdbInput mdbValidate type="password" id="form25" class="form-control"
+                formControlName="modalFormRegisterPassword"
+                [ngClass]="{ 'is-invalid': validatingForm.controls.modalFormRegisterPassword.errors }">
+              <div *ngIf="validatingForm.controls.modalFormRegisterPassword.errors" class="invalid-feedback">
+                <div *ngIf="validatingForm.controls.modalFormRegisterPassword.errors.required">La contraseña es
+                  requerida
+                </div>
+              </div>
+            </div>
+
+            <div class="md-form form-sm">
+              <mdb-icon fas icon="lock" class="prefix"></mdb-icon>
+              <label for="form26">Confirmar password</label>
+              <input mdbInput mdbValidate type="password" id="form26" class="form-control"
+                formControlName="modalFormRegisterRepeatPassword" />
+              <div *ngIf="validatingForm.controls.modalFormRegisterRepeatPassword.errors" class="invalid-feedback">
+                <div *ngIf="validatingForm.controls.modalFormRegisterRepeatPassword.errors.required">Confirme que se
+                  requiere contraseña
+                </div>
+                <div *ngIf="validatingForm.controls.modalFormRegisterRepeatPassword.errors.mustMatch">Las contraseñas
+                  deben coincidir
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+        <!--Footer-->
+        <div class="modal-footer justify-content-center">
+          <a type="button" mdbBtn color="danger" (click)="actualizarPassword();frame.hide()" outline="true"
+            class="waves-effect" mdbWavesEffect>Actualizar
+            <mdb-icon fas icon="check"></mdb-icon>
+          </a>
+          <a type="button" mdbBtn size="1x" color="danger" class="waves-effect" mdbWavesEffect (click)="frame.hide()">
+            No, gracias</a>
+        </div>
+      </div>
+      <!--/.Content-->
+    </div>
+  </div>
+  <!--Modal cambio de contrasenia-->
