@@ -16,10 +16,7 @@ export class ManageGuard implements CanActivate {
   }
 
   canActivate(): boolean {
-    let perfil: string; this.authService.getPerfilById().pipe().subscribe(res => { console.log('RES ' + res); perfil = res; });
-    console.log('PERFIL CONSERVICIO: ' + perfil);
     if (this.authService.getAdmin() === 'ADMIN') {
-      console.log('ENTRA TRUE MANAGEMENT GUARD');
       return true;
     } else {
       this.router.navigate(['/homeuser']);
