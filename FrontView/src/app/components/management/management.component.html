@@ -278,16 +278,40 @@ padding: 0.5rem 0.5rem !important;"
                     class="table table-bordered  table-responsive-md table-striped text-center">
                     <thead>
                       <tr>
-                        <th *ngFor="let head of headElements; let i = index" scope="col">{{head}}
+                        <th style="font-size: small !important;"  *ngFor="let head of headElements; let i = index" scope="col">{{head}}
                         </th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr *ngFor="let user of allUsers; let i = index">
                         <th *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex"
-                          scope="row">{{user.idUser}}</th>
+                          scope="row">{{i}}</th>
+
+                        <td style="display: inline-grid;"
+                          *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+
+                          <a (click)="editarUser(i, user)" mdbBtn color="blue" mat-card-avatar
+                            class="example-header-image" floating="true" size="sm" mdbTooltip="Editar">
+                            <mdb-icon fas icon="edit" class="white-text"></mdb-icon>
+                          </a>
+                          <a (click)="removeUser(i,user.idUser, user.nombres, user.apellidos);basicModal.show()" mdbBtn
+                            color="danger" mat-card-avatar class="example-header-image" floating="true" size="sm"
+                            mdbTooltip="Eliminar">
+                            <mdb-icon fas icon="trash" class="white-text"></mdb-icon>
+                          </a>
+                          <a (click)="pasarUsuarioUpdatePassword(user);frame.show()" mdbBtn color="warning"
+                            mat-card-avatar class="example-header-image" floating="true" size="sm"
+                            mdbTooltip="Cambiar Clave">
+                            <mdb-icon fas icon="key" class="white-text"></mdb-icon>
+                          </a>
+                        </td>
+
                         <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
                           {{user.nombres}} {{user.apellidos}}</td>
+                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                          {{user.email}}</td>
+                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
+                          {{user.telefono}}</td>
                         <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
                           {{user.edad}}</td>
                         <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
@@ -306,25 +330,8 @@ padding: 0.5rem 0.5rem !important;"
                           {{user.colorPelo}}</td>
                         <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
                           {{user.colorOjos}}</td>
-                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
-                          {{user.email}}</td>
-                        <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
-                          {{user.telefono}}</td>
-                        <td style="display: inline-grid;" *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
 
-                          <a (click)="editarUser(i, user)" mdbBtn color="blue" mat-card-avatar class="example-header-image"
-                            floating="true" size="sm" mdbTooltip="Editar" >
-                            <mdb-icon fas icon="edit" class="white-text"></mdb-icon>
-                          </a>
-                          <a (click)="removeUser(i,user.idUser, user.nombres, user.apellidos);basicModal.show()" mdbBtn color="danger" mat-card-avatar class="example-header-image"
-                            floating="true" size="sm" mdbTooltip="Eliminar" >
-                            <mdb-icon fas icon="trash" class="white-text"></mdb-icon>
-                          </a>
-                          <a (click)="pasarUsuarioUpdatePassword(user);frame.show()" mdbBtn color="warning" mat-card-avatar class="example-header-image"
-                            floating="true" size="sm" mdbTooltip="Cambiar Clave" >
-                            <mdb-icon fas icon="key" class="white-text"></mdb-icon>
-                          </a>
-                        </td>
+
                       </tr>
                     </tbody>
                     <tfoot class="grey lighten-5 w-100">

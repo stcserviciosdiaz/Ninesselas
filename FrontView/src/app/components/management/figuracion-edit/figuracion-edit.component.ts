@@ -1252,8 +1252,9 @@ export class FiguracionEditComponent implements OnInit {
         this.actualizarFotos(this.usuario.idUser);
 
         this.ngxSmartModalService.create('EDICION', 'Cuenta actualizada exitosamente ').open();
-        this.router.navigate(['/management']);
-      },
+        if (this.usuario.idType.nombres === 'ADMIN') {
+          this.router.navigate(['/management']);
+        } else { this.router.navigate(['/homeuser']); }      },
       (err) => {
         this.ngxSmartModalService.create('confirm', 'Se ha presentado un Error, vuelva a intentarlo y si el problema persiste, contáctenos').open();
         console.log(JSON.stringify(err));

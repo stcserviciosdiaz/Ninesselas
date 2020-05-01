@@ -40,7 +40,7 @@
                       <mdb-card-body>
                         <!--Title-->
                         <mdb-card-title>
-                          <h4>Foto de Perfil</h4>
+                          <h4>Foto Primer Plano</h4>
                         </mdb-card-title>
 
 
@@ -171,8 +171,8 @@
                 <fieldset class="form-group">
                   <!-- Sexo -->
                   <div class="row">
-                    <legend class="col-form-label col-sm-2 pt-0">Sexo</legend>
-                    <div class="col-sm-10">
+                    <legend class="col-form-label col-lg-2 pt-0">Sexo</legend>
+                    <div class="col-lg-4">
                       <div class="form-check">
                         <input class="form-check-input" type="radio" formControlName="sexo" value="Masculino" checked>
                         <label class="form-check-label">
@@ -186,8 +186,16 @@
                         </label>
                       </div>
                     </div>
+                    
                   </div>
                 </fieldset>
+
+                <div class="form-group example-container col-lg-12">
+                  <!-- nrocuenta -->
+                  <mat-form-field class="col-lg-12">
+                    <input id="nrocuenta" formControlName="nrocuenta" matInput placeholder="Número de Cuenta">
+                  </mat-form-field>
+                </div>
 
                 <div class="form-group">
                   <!-- ¿De qué grupo étnico se considera? -->
@@ -379,7 +387,7 @@
                         <mdb-card-body>
                           <!--Title-->
                           <mdb-card-title>
-                            <h4>DNI Lado Delantera</h4>
+                            <h4>Foto DNI Lado Delantera</h4>
                           </mdb-card-title>
 
 
@@ -426,7 +434,7 @@
                         <mdb-card-body>
                           <!--Title-->
                           <mdb-card-title>
-                            <h4>DNI Lado Trasera</h4>
+                            <h4>Foto DNI Lado Trasera</h4>
                           </mdb-card-title>
 
 
@@ -489,7 +497,7 @@
                         <mdb-card-body>
                           <!--Title-->
                           <mdb-card-title>
-                            <h4>Seguro Social</h4>
+                            <h4>Foto Seguridad Social</h4>
                           </mdb-card-title>
 
 
@@ -887,7 +895,7 @@
 
                 <div class="form-group">
                   <!-- Deporte -->
-                  <mat-form-field>
+                  <mat-form-field class="col-lg-12">
                     <mat-label>
                       Deporte {{deportistaSelect.nombreDeportista}}</mat-label>
                     <select matNativeControl class="form-control" [(ngModel)]="deportistaSelect"
@@ -918,7 +926,7 @@
 
                 <div class="form-group">
                   <!-- Baile -->
-                  <mat-form-field>
+                  <mat-form-field class="col-lg-12">
                     <mat-label>
                       Baile {{baileSelect.nombreBailarin}}</mat-label>
                     <select matNativeControl class="form-control" [(ngModel)]="baileSelect"
@@ -944,7 +952,7 @@
 
                 <div class="form-group">
                   <!-- Cantantes -->
-                  <mat-form-field>
+                  <mat-form-field class="col-lg-12">
                     <mat-label>
                       Cantante {{cantanteSelect.nombreCantante}}</mat-label>
                     <select matNativeControl class="form-control" [(ngModel)]="cantanteSelect"
@@ -1002,12 +1010,7 @@
                   </mat-form-field>
                 </div>
 
-                <div class="form-group example-container">
-                  <!-- nrocuenta -->
-                  <mat-form-field>
-                    <input id="nrocuenta" formControlName="nrocuenta" matInput placeholder="Número de Cuenta">
-                  </mat-form-field>
-                </div>
+                
                 <div class="form-group">
                   <!-- Ultimos trabajos -->
                   <label class="control-label">Descripción de Ultimos Trabajos</label>

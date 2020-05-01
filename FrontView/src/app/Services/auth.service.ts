@@ -63,11 +63,19 @@ export class AuthService {
     return this.http.post<any>(this.urlGenerica + 'servicio-login/crear', newUser);
   }
 
-  login2(usuario, password): Observable<any> {
-    return this.http.get(this.urlGenerica + 'servicio-login/login/' + usuario + "/" + password);
+  login2(usuario, password, perfil): Observable<any> {
+    return this.http.get(this.urlGenerica + 'servicio-login/login/' + usuario + "/" + password + "/" + perfil);
   }
   findByToken(): Observable<any> {
     return this.http.get(this.urlGenerica + 'servicio-login/ver/' + this.getToken());
+  }
+
+  getUserByToken() {
+    return this.http.get<Usuario>(this.urlGenerica + 'servicio-login/ver/' + this.getToken()).subscribe(res => { return res; });
+  }
+
+  getPerfilById(): Observable<any> {
+    return this.http.get(this.urlGenerica + 'servicio-login/tipoUsuarioByIdUser/' + this.getToken());
   }
 
   /******* FIN USUARIO *********/
@@ -281,6 +289,12 @@ export class AuthService {
     return this.http.put<any>(this.urlGenerica + 'servicio-ultimosTrabajos/editar/' + ut.idUltimosTrabajos, ut);
   }
   /********* FIN ULTIMOS TRABAJOS */
+  valor: boolean = false;
+
+  getAdmin() {
+    return localStorage.getItem('admin');
+
+  }
 
   loggedIn() {
     return !!localStorage.getItem('token');
@@ -295,7 +309,8 @@ export class AuthService {
   }
 
   logoutUser() {
-    localStorage.removeItem('token'); 0
+    localStorage.removeItem('token');
+    localStorage.removeItem('admin');
     this.router.navigate(['/home']);
   }
 

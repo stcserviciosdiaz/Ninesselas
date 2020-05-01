@@ -77,7 +77,13 @@ import { UserEditComponent } from './components/management/user-edit/user-edit.c
 import { AboutComponent } from './components/about/about.component';
 import { ProyectComponent } from './components/management/proyect/proyect.component';
 
+import {
+  MAT_MOMENT_DATE_FORMATS,
+  MomentDateAdapter,
+  MAT_MOMENT_DATE_ADAPTER_OPTIONS,
+} from '@angular/material-moment-adapter';
 
+import {MAT_DATE_FORMATS} from '@angular/material/core';
 
 export const MY_FORMATS = {
   parse: {
@@ -170,6 +176,13 @@ export const MY_FORMATS = {
     MatSlideToggleModule
   ],
   providers: [
+    { provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: { useUtc: true } },
+    {
+      provide: DateAdapter,
+      useClass: MomentDateAdapter,
+      deps: [MAT_DATE_LOCALE, MAT_MOMENT_DATE_ADAPTER_OPTIONS]
+    },
+    {provide: MAT_DATE_FORMATS, useValue: MAT_MOMENT_DATE_FORMATS},
     AuthService,
     EmailService,
     AuthGuard,

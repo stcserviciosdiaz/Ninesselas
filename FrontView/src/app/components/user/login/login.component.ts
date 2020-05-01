@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { ErrorStateMatcher } from '@angular/material';
 import { SeoService } from 'src/app/Services/seo.service';
 import { Title } from '@angular/platform-browser';
+import { NgxSmartModalService } from 'ngx-smart-modal';
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -23,10 +24,9 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   isSubmitted = false;
-
   matcher = new MyErrorStateMatcher();
 
-  constructor(
+  constructor(public ngxSmartModalService: NgxSmartModalService,
     private title: Title,
     private seo: SeoService,
     private authService: AuthService,
@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    let t:string = "Ninesselas - Login";
+    let t: string = "Ninesselas - Login";
     this.title.setTitle(t);
 
     this.seo.generateTags({
@@ -49,8 +49,9 @@ export class LoginComponent implements OnInit {
 
   createLoginForm() {
     this.loginForm = this.formBuilder.group({
-      password: [''],
+      password: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
+      perfil: ['', Validators.required],
     });
   }
 
@@ -58,30 +59,38 @@ export class LoginComponent implements OnInit {
     this.isSubmitted = true;
     //alert('SUCCESS!!');
     if (this.loginForm.invalid) {
-      console.log(this.loginForm.get('email').value);
-
-      console.log(this.loginForm.get('password').value);
       return;
     }
     const user = {
       email: this.loginForm.get('email').value,
       password: this.loginForm.get('password').value,
+      perfil: this.loginForm.get('perfil').value,
     };
-    this.authService.login2(user.email, user.password)
+    this.authService.login2(user.email, user.password, user.perfil)
       .subscribe(
         res => {
           let usuario: Usuario = res;
 
-          localStorage.setItem('token', res.idUser);
-          if (usuario.idType.nombres === 'COMPAÑIA') {
-            this.router.navigate(['/company']);
-          } else if (usuario.idType.nombres === 'ROOT' || usuario.idType.nombres === 'ADMIN') {
-            this.router.navigate(['/management']);
+          if (res !== null) {
+            localStorage.setItem('token', res.idUser);
+            if (usuario.idType.nombres === 'COMPAÑIA') {
+              this.router.navigate(['/company']);
+            } else if (usuario.idType.nombres === 'ROOT' || usuario.idType.nombres === 'ADMIN') {
+              localStorage.setItem('admin',res.idType.nombres);
+              this.router.navigate(['/management']);
+            } else {
+              this.router.navigate(['/homeuser']);
+            }
           } else {
-            this.router.navigate(['/homeuser']);
+            this.ngxSmartModalService.create('error',
+              'Datos Incorrectos, verifíquelos porfavor !').open();
           }
         },
-        err => console.log(JSON.stringify(err))
+        err => {
+          this.ngxSmartModalService.create('error',
+            'Usuario o Clave Incorrectas, imposible logearse').open();
+          console.log('ERROR' + JSON.stringify(err))
+        }
       );
   }
 

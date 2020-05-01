@@ -6434,3 +6434,7 @@ img {
       background-color: #4285F4;
   }
 }
+
+th{
+  font-size: 0.8rem !important;
+}

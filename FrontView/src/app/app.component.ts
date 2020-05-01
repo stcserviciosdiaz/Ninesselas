@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from './Services/auth.service';
+import { DateAdapter } from '@angular/material/core';
+
 
 @Component({
   selector: 'app-root',
@@ -9,6 +11,7 @@ import { AuthService } from './Services/auth.service';
 export class AppComponent {
   title = 'FrontView';
   constructor(
-    private authService: AuthService
-  ) { }
+    private authService: AuthService,
+    private _adapter: DateAdapter<any>
+  ) { this._adapter.setLocale('es');}
 }

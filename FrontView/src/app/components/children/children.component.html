@@ -28,7 +28,7 @@
                           <div class="btn btn-primary btn-sm" size="sm">
                             <label class="control-label" style="width: max-content;">
                               <mdb-icon fas icon="cloud-upload-alt" aria-hidden="true"></mdb-icon>
-                              Foto de Perfil
+                              Foto de Primer Plano
                               <input type="file" accept="image/*" (change)="onAvatarSelected($event)"
                                 formControlName="avatar" class="none"><br>
                             </label>
@@ -193,6 +193,13 @@
                     </mat-radio-group>
                   </div>
                 </fieldset>
+
+                <div class="form-group example-container">
+                  <!-- nrocuenta -->
+                  <mat-form-field>
+                    <input id="nrocuenta" formControlName="nrocuenta" matInput placeholder="Número de Cuenta del Niño">
+                  </mat-form-field>
+                </div>
 
                 <div class="form-group example-container">
                   <!-- ¿De qué grupo étnico se considera? -->
@@ -483,7 +490,7 @@
                             <div class="btn btn-primary btn-sm" size="sm">
                               <label class="control-label" style="width: max-content;">
                                 <mdb-icon fas icon="cloud-upload-alt" aria-hidden="true"></mdb-icon>
-                                DNI Delantero
+                                Foto DNI Delantero
                                 <input type="file" accept="image/*" (change)="copyDNIkidSelected($event)"
                                   formControlName="copyDNIkid" class="none"><br>
                               </label>
@@ -510,7 +517,7 @@
                             <div class="btn btn-primary btn-sm" size="sm">
                               <label class="control-label" style="width: max-content;">
                                 <mdb-icon fas icon="cloud-upload-alt" aria-hidden="true"></mdb-icon>
-                                DNI Trasero
+                                Foto DNI Trasero
                                 <input type="file" accept="image/*" (change)="copyDNIUserB($event)"
                                   formControlName="copyDNIkid" class="none"><br>
                               </label>
@@ -558,7 +565,7 @@
                             <div class="btn btn-primary btn-sm" size="sm">
                               <label class="control-label" style="width: max-content;">
                                 <mdb-icon fas icon="cloud-upload-alt" aria-hidden="true"></mdb-icon>
-                                Seguro Social
+                                Foto Seguridad Social
                                 <input type="file" accept="image/*" (change)="copySocialNumberSelected($event)"
                                   formControlName="copySocialNumber" class="none"><br>
                               </label>
@@ -611,7 +618,7 @@
                             <div class="btn btn-primary btn-sm" size="sm">
                               <label class="control-label" style="width: max-content;">
                                 <mdb-icon fas icon="cloud-upload-alt" aria-hidden="true"></mdb-icon>
-                                DNI Delantero
+                                Foto DNI Delantero
                                 <input type="file" accept="image/*" (change)="copyDNIFatherSelected($event)"
                                   formControlName="copyDNIFather" class="none"><br>
                               </label>
@@ -639,7 +646,7 @@
                             <div class="btn btn-primary btn-sm" size="sm">
                               <label class="control-label" style="width: max-content;">
                                 <mdb-icon fas icon="cloud-upload-alt" aria-hidden="true"></mdb-icon>
-                                DNI Trasero
+                                Foto DNI Trasero
                                 <input type="file" accept="image/*" (change)="copyDNIPadreB($event)"
                                   formControlName="copyDNIFather" class="none"><br>
                               </label>
@@ -700,7 +707,7 @@
                             <div class="btn btn-primary btn-sm" size="sm">
                               <label class="control-label" style="width: max-content;">
                                 <mdb-icon fas icon="cloud-upload-alt" aria-hidden="true"></mdb-icon>
-                                DNI Delantero
+                                Foto DNI Delantero
                                 <input type="file" accept="image/*" (change)="copyDNIMotherSelected($event)"
                                   formControlName="CopyDNIMother" class="none"><br>
                               </label>
@@ -728,7 +735,7 @@
                             <div class="btn btn-primary btn-sm" size="sm">
                               <label class="control-label" style="width: max-content;">
                                 <mdb-icon fas icon="cloud-upload-alt" aria-hidden="true"></mdb-icon>
-                                DNI Trasero
+                                Foto DNI Trasero
                                 <input type="file" accept="image/*" (change)="copyDNIMadreB($event)"
                                   formControlName="CopyDNIMother" class="none"><br>
                               </label>
@@ -1383,12 +1390,7 @@
                   </mat-form-field>
                 </div>
 
-                <div class="form-group example-container">
-                  <!-- nrocuenta -->
-                  <mat-form-field>
-                    <input id="nrocuenta" formControlName="nrocuenta" matInput placeholder="Número de Cuenta del Niño">
-                  </mat-form-field>
-                </div>
+               
 
                 <div class="form-group">
                   <!-- Ultimos trabajos -->

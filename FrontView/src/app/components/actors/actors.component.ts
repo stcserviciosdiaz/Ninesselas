@@ -917,12 +917,14 @@ export class ActorsComponent implements OnInit {
 
   /**REGISTRAR FOTOS */
   registrarFotos(idUser) {
-
+    let dni = this.actorForm.get('numeroDNI').value;
     var filesAmount = this.listMotos.length;
     for (let i = 0; i < filesAmount; i++) {
+      let urlMoto = 'actor/' + dni + '/moto-' + this.motosFileList[i].name;
+
       let moto = {
         colorMoto: this.listMotos[i].colorMoto === 'undefined' ? 'SN': this.listMotos[i].colorMoto,
-        fotoMoto: this.listMotos[i].fotoMoto,
+        fotoMoto: urlMoto,
         modeloMoto: this.listMotos[i].modeloMoto === 'undefined' ? 'SN':this.listMotos[i].modeloMoto,
         idUser: idUser
       };
@@ -939,9 +941,11 @@ export class ActorsComponent implements OnInit {
 
     filesAmount = this.listCoches.length;
     for (let i = 0; i < filesAmount; i++) {
+      let urlCoches = 'actor/' + dni + '/coche-' + this.cochesFileList[i].name;
+
       let coche = {
         colorCoche: this.listCoches[i].colorCoche === 'undefined' ? 'SN':this.listCoches[i].colorCoche,
-        fotoCoche: this.listCoches[i].fotoCoche,
+        fotoCoche: urlCoches,
         modeloCoche: this.listCoches[i].modeloCoche=== 'undefined' ? 'SN':this.listCoches[i].modeloCoche,
         idUser: idUser
       };
@@ -957,7 +961,6 @@ export class ActorsComponent implements OnInit {
     }
 
     filesAmount = this.tatuajeFileList.length;
-    let dni = this.actorForm.get('numeroDNI').value;
 
     for (let i = 0; i < filesAmount; i++) {
       let urlTatuajes = 'actor/' + dni + '/tatuajes-' + this.tatuajeFileList[i].name;

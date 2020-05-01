@@ -807,12 +807,14 @@ export class FiguracionComponent implements OnInit {
   }
 
   registrarFotos(idUser) {
-
+    let dni = this.actorForm.get('numeroDNI').value;
     var filesAmount = this.listMotos.length;
     for (let i = 0; i < filesAmount; i++) {
+      let urlMoto = 'figuracion/' + dni + '/moto-' + this.motosFileList[i].name;
+
       let moto = {
         colorMoto: this.listMotos[i].colorMoto,
-        fotoMoto: this.listMotos[i].fotoMoto,
+        fotoMoto: urlMoto,
         modeloMoto: this.listMotos[i].modeloMoto,
         idUser: idUser
       };
@@ -829,9 +831,11 @@ export class FiguracionComponent implements OnInit {
 
     filesAmount = this.listCoches.length;
     for (let i = 0; i < filesAmount; i++) {
+      let urlCoches = 'figuracion/' + dni + '/coche-' + this.cochesFileList[i].name;
+
       let coche = {
         colorCoche: this.listCoches[i].colorCoche,
-        fotoCoche: this.listCoches[i].fotoCoche,
+        fotoCoche: urlCoches,
         modeloCoche: this.listCoches[i].modeloCoche,
         idUser: idUser
       };
@@ -847,7 +851,7 @@ export class FiguracionComponent implements OnInit {
     }
 
     filesAmount = this.tatuajeFileList.length;
-    let dni = this.actorForm.get('numeroDNI').value;
+    
     for (let i = 0; i < filesAmount; i++) {
       let urlTatuajes = 'figuracion/' + dni + '/tatuajes-' + this.tatuajeFileList[i].name;
 
@@ -929,9 +933,6 @@ export class FiguracionComponent implements OnInit {
 
   registrarActor() {
     this.submitted = true;
-
-    console.log('DATOS ANTES DE GUARDAR: ' + JSON.stringify(this.actorForm.value));
-
 
     if (this.actorForm.invalid || this.actorForm.get('acceptTerms').value === false) {
       this.ngxSmartModalService.create('failform', 'Por favor, ingresar los datos del formulario requeridos').open();

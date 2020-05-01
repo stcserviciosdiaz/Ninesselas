@@ -48,8 +48,11 @@ export class ManagementComponent implements OnInit {
   elements: any = [];
   previous: any = [];
   headElements = ['ID',
+    'Opciones',
     'Nombres Completos',
-    'Mayor de Edad',
+    'Email',
+    'Teléfono',
+    'Edad',
     'Nombre Artístico',
     'Género',
     'Fecha de Nacimiento',
@@ -57,10 +60,7 @@ export class ManagementComponent implements OnInit {
     'Altura',
     'Color de Piel',
     'Color de Pelo',
-    'Color de Ojos',
-    'Correo de Contacto',
-    'Teléfono de Contacto',
-    'Opciones',];
+    'Color de Ojos',];
 
   idsTipousuario: any = [];
 
@@ -321,25 +321,25 @@ export class ManagementComponent implements OnInit {
   /**IR A EDICION DE USUARIO */
   editarUser(idList: any, user: any) {
     //localStorage.setItem('useredit', user.idUser);
-     this.authService.finByIdUsuario(user.idUser)
-       .subscribe(
-         res => {
-           console.log(res);
-           let user = res;
- 
-           if (user.idType.nombres === 'FIGURACION') {
-             this.router.navigate(['/figuracionedit']);
-             localStorage.setItem('figuracionedit', user.idUser);
-           } else if (user.idType.nombres === 'ACTOR') {
-             this.router.navigate(['/actoredit']);
-             localStorage.setItem('actoredit', user.idUser);
-           } else if (user.idType.nombres === 'NIÑOS') {
-             this.router.navigate(['/ninioedit']);
-             localStorage.setItem('ninioedit', user.idUser);
-           }
-         }
-       );
- 
+    this.authService.finByIdUsuario(user.idUser)
+      .subscribe(
+        res => {
+          console.log(res);
+          let user = res;
+
+          if (user.idType.nombres === 'FIGURACION') {
+            this.router.navigate(['/figuracionedit']);
+            localStorage.setItem('figuracionedit', user.idUser);
+          } else if (user.idType.nombres === 'ACTOR') {
+            this.router.navigate(['/actoredit']);
+            localStorage.setItem('actoredit', user.idUser);
+          } else if (user.idType.nombres === 'NIÑOS') {
+            this.router.navigate(['/ninioedit']);
+            localStorage.setItem('ninioedit', user.idUser);
+          }
+        }
+      );
+
 
   }
 

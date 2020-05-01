@@ -19,6 +19,7 @@ import { ChildrenComponent } from './components/children/children.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { UserEditComponent } from './components/management/user-edit/user-edit.component';
 import { AboutComponent } from './components/about/about.component';
+import { ManageGuard } from './Guards/manage.guard';
 
 
 const routes: Routes = [
@@ -61,8 +62,7 @@ const routes: Routes = [
   {
     path: 'management',
     component: ManagementComponent,
-    
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard, ManageGuard]
   },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: PageNotFoundComponent }
