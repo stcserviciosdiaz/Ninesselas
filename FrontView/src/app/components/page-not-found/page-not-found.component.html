@@ -1,11 +1,31 @@
-<app-header></app-header>
-<div id="notfound">
-        <div class="notfound">
-                <div class="notfound-404">
-                        <h1>Oops!</h1>
-                        <h2>404 - Pagina no Encontrada</h2>
+<!-- <app-header></app-header> -->
+<div class="bg-foud">
+        <div class="container-fluid">
+            <div class="row superfi">
+                <div class="center-foud">
+                   <div class="col-lg-6 col-md-12">
+                        <img src="/assets/img/error-404.png" class="img-foud mx-auto" alt="Error-404">
+                   </div>
+                   <div class="col-lg-6 col-md-12">
+                        <div class="notfound-404">
+                                <h1>Oops!</h1>
+                                <p>La Pagina que intentas ingresar, no esta en el servidor</p>
+                                <h3>Error - 404</h3>
+                                <div class="menu-foud">
+                                        <p>Prueba mejor suerte en estos Link</p>
+                                        <ul class="d-block">
+                                                <li><a routerLink="/about">SOBRE NOSOTROS</a></li>
+                                                <li><a routerLink="/contact">CONTÁCTANOS</a></li>
+                                                <li><a routerLink="/register">EMPRESAS</a></li>
+                                                <li><a routerLink="/login">LOGIN</a></li>
+                                        </ul>
+                                </div>
+                                <a class="hm" href="#">Ir al Home</a>
+                        </div>
+                   </div>
                 </div>
-                <a href="#">Ir al Home</a>
+                
+            </div>
         </div>
+        <app-footer></app-footer>
 </div>
-<app-footer></app-footer>

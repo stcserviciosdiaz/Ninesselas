@@ -7,6 +7,10 @@
     height: 100%;
 }
 
+input:-internal-autofill-selected {
+    background-color: none;
+}
+
 .example-container > * {
     width: 100%;
 }

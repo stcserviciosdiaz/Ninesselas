@@ -1,38 +1,86 @@
-#notfound {
-    position: relative;
-    height: 100vh;
-}
-#notfound .notfound {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    -webkit-transform: translate(-50%,-50%);
-    -ms-transform: translate(-50%,-50%);
-    transform: translate(-50%,-50%);
-}
-.notfound a {
-    font-family: montserrat,sans-serif;
-    display: inline-block;
-    font-weight: 700;
-    text-decoration: none;
-    color: #fff;
-    text-transform: uppercase;
-    padding: 13px 23px;
-    background: #ff6300;
-    font-size: 18px;
-    -webkit-transition: .2s all;
-    transition: .2s all;
-}
-.notfound .notfound-404 {
-    position: relative;
-    height: 200px;
-    margin: 0 auto 20px;
-    z-index: -1;
-}
 
-.notfound {
-    max-width: 520px;
-    width: 100%;
-    line-height: 1.4;
-    text-align: center;
-}
+    .center-foud{
+        display: flex;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+        transform: translate(-50%,-50%);
+    }
+    .superfi{
+        padding: 35px 0px 0px 0px;
+        height: 100vh;
+    }
+    .menu-foud ul{
+        padding-left: 0px;
+        display: flex;
+    }
+    .menu-foud ul li{
+        padding: 0px 20px 2px 2px;
+    }
+    .menu-foud ul li a{
+        font-family: montserrat,sans-serif;
+        display: inline-block;
+        font-weight: 700;
+        text-decoration: none;
+      
+        color: #0b174a;
+        text-transform: uppercase;
+        padding: 0px 15px;
+        font-size: 10px;
+        transition: .2s all;
+    }
+    .img-foud{
+        background-position: right;
+        background-repeat: no-repeat;
+        background-size: cover;
+        float: right;
+        width: 450px;
+        height: auto;
+    }
+   
+    .hm{
+        font-family: montserrat,sans-serif;
+        display: inline-block;
+        font-weight: 700;
+        -webkit-transition: .2s all;
+        transition: .2s all;
+    }
+    
+    .notfound-404 {
+        padding-top: 51px;
+    }
+    
+    .notfound {
+        max-width: 520px;
+        width: 100%;
+        line-height: 1.4;
+        text-align: center;
+    }
+    
+    @media only screen and (min-width: 250px) and (max-width: 991px){
+        .center-foud{
+            display: block;
+        }
+        .img-foud{
+            padding-top: 100%;
+            width: 280px;
+        }
+        .superfi{
+            padding: 15px 0px 0px 0px;
+            max-width: 1000px;
+            background: rgba(255, 255, 255, 0.72);
+            transform: translate(0px, 0%);
+            overflow-y: scroll;
+            overflow-x: hidden;
+            height: 100vh;
+        }
+        .notfound-404 {
+            text-align: center;
+            padding-bottom: 40px;
+        }
+        .menu-foud ul li{
+            list-style-type: none;
+        }
+    } 

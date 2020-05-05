@@ -1,6 +1,6 @@
 
 import { deportes } from './../../models/deportes';
-import { Component, NgModule, Input, OnDestroy, OnInit, ViewChild, TemplateRef } from '@angular/core';
+import { Component, NgModule, Input, Injectable, OnDestroy, OnInit, ViewChild, TemplateRef } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ErrorStateMatcher, MatRadioChange, DateAdapter } from '@angular/material';
@@ -26,6 +26,7 @@ import { Title } from '@angular/platform-browser';
 import { coche } from 'src/app/models/coche';
 import { moto } from 'src/app/models/moto';
 import { equal } from 'assert';
+import { Subscription } from 'rxjs';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -57,8 +58,8 @@ export function MustMatch(controlName: string, matchingControlName: string) {
   templateUrl: './actors.component.html',
   styleUrls: ['./actors.component.css']
 })
-export class ActorsComponent implements OnInit {
-
+export class ActorsComponent implements OnInit, OnDestroy {
+  
   @ViewChild(TemplateRef, { static: false }) tpl: TemplateRef<any>;
 
   actorForm: FormGroup;
@@ -179,6 +180,9 @@ export class ActorsComponent implements OnInit {
     this.llenarCombos();
   }
 
+  ngOnDestroy() {
+
+  }
 
 
   /**Verifica tamanio y tipo de archivo */
