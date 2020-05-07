@@ -443,7 +443,6 @@ export class FiguracionEditComponent implements OnInit {
 
     /**FOTO DE MANOS */
     this.listManos = this.usuario.fotosManosList;
-    console.log('MANOS: ' + this.listManos.length);
     if (this.listManos.length !== 0) { this.WorkingSelect = 'Si'; } else { this.WorkingSelect = 'No'; }
     for (var x = 0; x < this.listManos.length; x++) {
       this.verImagenFB(this.listManos[x].urlFotoMano, x, 4);
@@ -1253,7 +1252,7 @@ export class FiguracionEditComponent implements OnInit {
         this.actualizarFotos(this.usuario.idUser);
 
         this.ngxSmartModalService.create('EDICION', 'Cuenta actualizada exitosamente ').open();
-        if (this.usuario.idType.nombres === 'ADMIN') {
+        if (this.authService.getAdmin() === 'ADMIN') {
           this.router.navigate(['/management']);
         } else { this.router.navigate(['/homeuser']); }
       },

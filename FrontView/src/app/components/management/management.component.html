@@ -319,7 +319,7 @@ padding: 0.5rem 0.5rem !important;"
                         <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
                           {{user.sexo}}</td>
                         <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
-                          {{user.fechaNacimiento}}</td>
+                          {{user.fechaNacimiento.substring(0,10)}}</td>
                         <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">
                           {{user.localidad}}</td>
                         <td *ngIf="i+1 >= mdbTablePagination.firstItemIndex && i < mdbTablePagination.lastItemIndex">

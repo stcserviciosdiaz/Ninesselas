@@ -869,7 +869,7 @@ export class UserEditComponent implements OnInit {
         this.actualizarUltimosTrabajos(this.usuario.idUser);
 
         this.ngxSmartModalService.create('EDICION', 'Cuenta actualizada exitosamente ').open();
-        if (this.usuario.idType.nombres === 'ADMIN') {
+        if (this.authService.getAdmin() === 'ADMIN') {
           this.router.navigate(['/management']);
         } else { this.router.navigate(['/homeuser']); }
       },
